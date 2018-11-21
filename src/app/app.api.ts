@@ -1,0 +1,1 @@
+export const SALV_API = 'http://localhost:3000'
