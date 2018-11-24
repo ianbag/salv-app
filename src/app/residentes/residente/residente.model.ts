@@ -29,7 +29,7 @@ export interface Residente {
     banco_inss: string,
     agencia_inss: string,
     conta_inss: string,
-    valor_inss: string,
+    valor_inss: number,
     situacao_inss: string,
     prova_vida_inss: string,
 
