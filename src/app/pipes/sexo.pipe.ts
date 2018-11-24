@@ -5,15 +5,15 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class SexoPipe implements PipeTransform {
 
-  transform(value: any, ...args): any {
+  transform(value: any, args?: any): any {
     let sexo
 
-    if (value === 'M') {
+    if (value === 'M' || value === 'm') {
       sexo = 'Masculino'
-    } else if (value === 'F') {
+    } else if (value === 'F' || value === 'f') {
       sexo = 'Feminino'
     }
-    
+
     return sexo
   }
 

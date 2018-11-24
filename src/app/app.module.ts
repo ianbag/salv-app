@@ -16,6 +16,7 @@ import { ResidentesService } from './residentes/residentes.service';
 import { ResidenteComponent } from './residentes/residente/residente.component';
 import { InfosPessoaisComponent } from './residentes/residente/infos-pessoais/infos-pessoais.component';
 import { SexoPipe } from './pipes/sexo.pipe';
+import { EscolaridadePipe } from './pipes/escolaridade.pipe';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { SexoPipe } from './pipes/sexo.pipe';
     ResidentesComponent,
     ResidenteComponent,
     InfosPessoaisComponent,
-    SexoPipe
+    SexoPipe,
+    EscolaridadePipe
   ],
   imports: [
     BrowserModule,
