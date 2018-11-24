@@ -9,7 +9,11 @@ export class ResidentesService {
 
     constructor(private http: HttpClient) { }
 
-    pessoa(): Observable<visualizarResidentes[]> {
+    residentes(): Observable<visualizarResidentes[]> {
         return this.http.get<visualizarResidentes[]>(`${SALV_API}/pessoa`)
+    }
+
+    residenteById(codigo: string): Observable<any>{
+        return this.http.get<any>(`${SALV_API}/residente/${codigo}`)
     }
 }

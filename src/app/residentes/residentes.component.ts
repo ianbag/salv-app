@@ -14,8 +14,9 @@ export class ResidentesComponent implements OnInit {
   constructor(private residentesService: ResidentesService) { }
 
   ngOnInit() {
-    this.residentesService.pessoa()
-      .subscribe(residentes => { this.residentes = residentes
+    this.residentesService.residentes()
+      .subscribe(residentes => {
+      this.residentes = residentes
         console.log(residentes)
       })
   }
