@@ -46,7 +46,7 @@
             "escolaridade": "sc"
         },
         {
-            "codigo": 400,
+            "codigo": 500,
             "nome": "André",
             "sobrenome": "Mufasa",
             "rg": "149875201",
@@ -56,6 +56,21 @@
             "data_nascimento": "15/05/1970",
             "religiao": "cat",
             "escolaridade": "sc"
+        }
+    ],
+
+    "residente": [
+        {
+            "apelido": "derson",
+            "pessoa_codigo": 300
+        },
+        {
+            "apelido": "marcin",
+            "pessoa_codigo": 400
+        },
+        {
+            "apelido": "dezao",
+            "pessoa_codigo": 500
         }
     ],
 
