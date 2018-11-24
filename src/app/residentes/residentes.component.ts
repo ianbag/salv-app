@@ -11,4 +11,9 @@ export class ResidentesComponent implements OnInit {
   ngOnInit() {
   }
 
+  nome = 'Cleusa'
+  apelido = 'Cleu'
+  cpf = '111.111.111-11'
+  rg = '22.222.222-2'
+
 }
