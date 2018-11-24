@@ -13,7 +13,7 @@ export class ResidentesService {
         return this.http.get<visualizarResidentes[]>(`${SALV_API}/pessoa`)
     }
 
-    residenteById(codigo: string): Observable<any>{
-        return this.http.get<any>(`${SALV_API}/residente/${codigo}`)
+    residenteById(id: string): Observable<any>{
+        return this.http.get<any>(`${SALV_API}/pessoa/${id}`)
     }
 }

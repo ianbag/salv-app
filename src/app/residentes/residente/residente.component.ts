@@ -13,7 +13,7 @@ export class ResidenteComponent implements OnInit {
   constructor(private residentesService: ResidentesService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.residentesService.residenteById(this.route.snapshot.params['codigo'])
+    this.residentesService.residenteById(this.route.snapshot.params['id'])
       .subscribe(residente => {
       this.residente = residente
         console.log(residente)

@@ -7,6 +7,6 @@ export const ROUTES: Routes = [
     //ROTAS VÃO AQUI
 
     { path: 'residentes', component: ResidentesComponent },
-    { path: 'residente/:codigo', component: ResidenteComponent }
+    { path: 'residente/:id', component: ResidenteComponent }
 
 ]

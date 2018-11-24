@@ -3,5 +3,5 @@ export interface visualizarResidentes {
     apelido: string,
     cpf: string,
     rg: string,
-    codigo: string
+    id: string
 }
