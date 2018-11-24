@@ -13,6 +13,7 @@ import { SidebarComponent } from './fixed-elements/sidebar/sidebar.component';
 import { FooterComponent } from './fixed-elements/footer/footer.component';
 import { ResidentesComponent } from './residentes/residentes.component';
 import { ResidenteComponent } from './residentes/residente/residente.component';
+import { ResidentesService } from './residentes/residentes.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,9 @@ import { ResidenteComponent } from './residentes/residente/residente.component';
     ReactiveFormsModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [],
+  providers: [
+    ResidentesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
