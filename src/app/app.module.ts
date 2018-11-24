@@ -17,6 +17,7 @@ import { ResidenteComponent } from './residentes/residente/residente.component';
 import { InfosPessoaisComponent } from './residentes/residente/infos-pessoais/infos-pessoais.component';
 import { SexoPipe } from './pipes/sexo.pipe';
 import { EscolaridadePipe } from './pipes/escolaridade.pipe';
+import { EstadoCivilPipe } from './pipes/estado-civil.pipe';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { EscolaridadePipe } from './pipes/escolaridade.pipe';
     ResidenteComponent,
     InfosPessoaisComponent,
     SexoPipe,
-    EscolaridadePipe
+    EscolaridadePipe,
+    EstadoCivilPipe
   ],
   imports: [
     BrowserModule,
