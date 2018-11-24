@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ResidentesService } from './residentes.service';
-import { Pessoa } from './pessoa.model';
+import { visualizarResidentes } from './visualizar-residentes.model';
 
 
 @Component({
@@ -9,14 +9,13 @@ import { Pessoa } from './pessoa.model';
 })
 export class ResidentesComponent implements OnInit {
 
-  pessoas: Pessoa[]
+  visualizarResidentes: visualizarResidentes[]
 
   constructor(private residentesService: ResidentesService) { }
 
   ngOnInit() {
     this.residentesService.pessoa()
-      .subscribe(pessoa => {
-        this.pessoas = pessoa
+      .subscribe(pessoa => { this.visualizarResidentes = pessoa
         console.log(pessoa)
       })
   }

@@ -1,4 +1,4 @@
-export interface Pessoa {
+export interface visualizarResidentes {
     nome: string,
     apelido: string,
     cpf: string,
