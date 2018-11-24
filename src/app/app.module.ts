@@ -15,6 +15,8 @@ import { ResidentesComponent } from './residentes/residentes.component';
 import { ResidentesService } from './residentes/residentes.service';
 import { ResidenteComponent } from './residentes/residente/residente.component';
 import { InfosPessoaisComponent } from './residentes/residente/infos-pessoais/infos-pessoais.component';
+import { SexoPipe } from './pipes/sexo.pipe';
+
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { InfosPessoaisComponent } from './residentes/residente/infos-pessoais/in
     ResidentesComponent,
     ResidenteComponent,
     InfosPessoaisComponent,
+    SexoPipe
   ],
   imports: [
     BrowserModule,
