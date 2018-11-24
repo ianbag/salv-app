@@ -25,6 +25,7 @@
             "codigo": 300,
             "nome": "Anderson",
             "sobrenome": "Silva",
+            "apelido": "derson",
             "rg": "149875201",
             "cpf": "12356987412",
             "sexo": "M",
@@ -37,6 +38,7 @@
             "codigo": 400,
             "nome": "Marcio",
             "sobrenome": "Madeixa",
+            "apelido": "marcin",
             "rg": "149875201",
             "cpf": "12356987412",
             "sexo": "M",
@@ -49,6 +51,7 @@
             "codigo": 500,
             "nome": "André",
             "sobrenome": "Mufasa",
+            "apelido": "desao",
             "rg": "149875201",
             "cpf": "12356987412",
             "sexo": "M",
@@ -56,21 +59,6 @@
             "data_nascimento": "15/05/1970",
             "religiao": "cat",
             "escolaridade": "sc"
-        }
-    ],
-
-    "residente": [
-        {
-            "apelido": "derson",
-            "pessoa_codigo": 300
-        },
-        {
-            "apelido": "marcin",
-            "pessoa_codigo": 400
-        },
-        {
-            "apelido": "dezao",
-            "pessoa_codigo": 500
         }
     ],
 
