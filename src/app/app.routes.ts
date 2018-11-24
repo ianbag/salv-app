@@ -1,7 +1,10 @@
 import { Routes } from "@angular/router";
 
-export const ROUTES: Routes = [
+import { ResidentesComponent } from "./residentes/residentes.component";
 
+export const ROUTES: Routes = [
     //ROTAS VÃO AQUI
+
+    {path: 'residentes', component: ResidentesComponent}
 
 ]
