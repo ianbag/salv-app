@@ -10,8 +10,8 @@ export class ResidentesService {
 
     constructor(private http: HttpClient) { }
 
-    residentes(): Observable<visualizarResidentes[]> {
-        return this.http.get<visualizarResidentes[]>(`${SALV_API}/pessoa`)
+    residentes(): Observable<Residente[]> {
+        return this.http.get<Residente[]>(`${SALV_API}/pessoa`)
     }
 
     residenteById(id: string): Observable<Residente>{

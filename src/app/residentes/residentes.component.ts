@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ResidentesService } from './residentes.service';
 import { visualizarResidentes } from './visualizar-residentes.model';
+import { Residente } from './residente/residente.model';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { visualizarResidentes } from './visualizar-residentes.model';
 })
 export class ResidentesComponent implements OnInit {
 
-  residentes: visualizarResidentes[]
+  residentes: Residente[]
 
   constructor(private residentesService: ResidentesService) { }
 

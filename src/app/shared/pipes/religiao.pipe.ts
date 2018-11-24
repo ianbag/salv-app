@@ -10,7 +10,7 @@ export class ReligiaoPipe implements PipeTransform {
 
     switch (value) {
       default:
-        religiao = 'Não especificada'
+        religiao = 'Não Especificada'
         break;
       case 'cat':
         religiao = 'Católico'

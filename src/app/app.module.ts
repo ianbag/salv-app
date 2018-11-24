@@ -15,10 +15,11 @@ import { ResidentesComponent } from './residentes/residentes.component';
 import { ResidentesService } from './residentes/residentes.service';
 import { ResidenteComponent } from './residentes/residente/residente.component';
 import { InfosPessoaisComponent } from './residentes/residente/infos-pessoais/infos-pessoais.component';
-import { SexoPipe } from './pipes/sexo.pipe';
-import { EscolaridadePipe } from './pipes/escolaridade.pipe';
-import { EstadoCivilPipe } from './pipes/estado-civil.pipe';
-import { ReligiaoPipe } from './pipes/religiao.pipe';
+import { SexoPipe } from './shared/pipes/sexo.pipe';
+import { EscolaridadePipe } from './shared/pipes/escolaridade.pipe';
+import { EstadoCivilPipe } from './shared/pipes/estado-civil.pipe';
+import { ReligiaoPipe } from './shared/pipes/religiao.pipe';
+import { CpfPipe } from './shared/pipes/cpf.pipe';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { ReligiaoPipe } from './pipes/religiao.pipe';
     SexoPipe,
     EscolaridadePipe,
     EstadoCivilPipe,
-    ReligiaoPipe
+    ReligiaoPipe,
+    CpfPipe
   ],
   imports: [
     BrowserModule,
