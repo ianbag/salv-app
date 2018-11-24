@@ -12,6 +12,7 @@ import { HeaderComponent } from './fixed-elements/header/header.component';
 import { SidebarComponent } from './fixed-elements/sidebar/sidebar.component';
 import { FooterComponent } from './fixed-elements/footer/footer.component';
 import { ResidentesComponent } from './residentes/residentes.component';
+import { ResidenteComponent } from './residentes/residente/residente.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ResidentesComponent } from './residentes/residentes.component';
     HeaderComponent,
     SidebarComponent,
     FooterComponent,
-    ResidentesComponent
+    ResidentesComponent,
+    ResidenteComponent
   ],
   imports: [
     BrowserModule,
