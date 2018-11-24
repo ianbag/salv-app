@@ -12,8 +12,6 @@ import { HeaderComponent } from './fixed-elements/header/header.component';
 import { SidebarComponent } from './fixed-elements/sidebar/sidebar.component';
 import { FooterComponent } from './fixed-elements/footer/footer.component';
 import { ResidentesComponent } from './residentes/residentes.component';
-import { ResidenteComponent } from './residentes/residente/residente.component';
-import { ResidentesService } from './residentes/residentes.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +20,6 @@ import { ResidentesService } from './residentes/residentes.service';
     SidebarComponent,
     FooterComponent,
     ResidentesComponent,
-    ResidenteComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +30,6 @@ import { ResidentesService } from './residentes/residentes.service';
     RouterModule.forRoot(ROUTES)
   ],
   providers: [
-    ResidentesService
   ],
   bootstrap: [AppComponent]
 })

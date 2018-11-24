@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ResidenteDetalhes } from './residente/residente-detalhes.model';
-import { ResidentesService } from './residentes.service';
+
 
 @Component({
   selector: 'salv-residentes',
@@ -8,12 +7,9 @@ import { ResidentesService } from './residentes.service';
 })
 export class ResidentesComponent implements OnInit {
 
-  residentes: ResidenteDetalhes[]
-
-  constructor(private residentesService: ResidentesService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.residentesService.residentes()
-      .subscribe(residentes => this.residentes = residentes)
+   
   }
 }
