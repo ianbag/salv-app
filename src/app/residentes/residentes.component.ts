@@ -16,5 +16,4 @@ export class ResidentesComponent implements OnInit {
     this.residentesService.residentes()
       .subscribe(residentes => this.residentes = residentes)
   }
-
 }
