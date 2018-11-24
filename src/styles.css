@@ -20,6 +20,7 @@
   .botao{
     padding: .3em .9em;
     text-align: right;
+    margin-left: 3px;
   }
   
   a{
