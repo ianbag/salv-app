@@ -1,25 +1,4 @@
 {
-    "telefone":[
-        {
-            "codigo": 100,
-            "ddd": "16",
-            "numero": "32631001"
-        }
-    ],
-
-    "endereco":[
-        {
-            "codigo": 200,
-            "endereco": "Rua das Flores",
-            "numero": "100",
-            "complemento": null,
-            "cidade": "Itápolis",
-            "estado": "SP",
-            "cep": "14900000",
-            "referencia": null
-        }
-    ],
-
     "pessoa": [
         {
             "codigo": 300,
@@ -60,43 +39,6 @@
             "religiao": "cat",
             "escolaridade": "sc"
         }
-    ],
-
-    "telefone_pessoa": [
-        {
-            "pessoa_codigo": 300,
-            "telefone_codigo": 100
-        }
-    ],
-
-    "endereco_pessoa": [
-        {
-            "pessoa_codigo": 300,
-            "endereco_codigo": 200
-        }
-    ], 
-
-    "funcionario": [
-        {
-            "codigo_funcionario": 400,
-            "filhos_menor_14": "n",
-            "cargo": "administrador",
-            "data_admissao": "10/02/2011",
-            "data_demissao": null,
-            "pessoa_codigo": 300
-        }
-    ],
-
-    "usuario": [
-        {
-            "codigo_funcionario": 400,
-            "email": "anderson@email.com",
-            "login": "anderson",
-            "senha": "anderson123"
-        }
-    ],
-
-    "dependente": [
     ]
 
 }

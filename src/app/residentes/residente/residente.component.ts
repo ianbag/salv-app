@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ResidentesService } from '../residentes.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'salv-residente',
@@ -6,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResidenteComponent implements OnInit {
 
-  constructor() { }
+  residente: any
+
+  constructor(private residentesService: ResidentesService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.residentesService.residenteById(this.route.snapshot.params['codigo'])
+      .subscribe(residente => {
+      this.residente = residente
+        console.log(residente)
+      })
   }
 
 }
