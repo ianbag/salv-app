@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { visualizarResidentes } from "./visualizar-residentes.model";
+import { Residente } from './residente/residente.model';
 
 @Injectable()
 export class ResidentesService {
@@ -13,7 +14,7 @@ export class ResidentesService {
         return this.http.get<visualizarResidentes[]>(`${SALV_API}/pessoa`)
     }
 
-    residenteById(id: string): Observable<any>{
-        return this.http.get<any>(`${SALV_API}/pessoa/${id}`)
+    residenteById(id: string): Observable<Residente>{
+        return this.http.get<Residente>(`${SALV_API}/pessoa/${id}`)
     }
 }

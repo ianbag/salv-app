@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ResidentesService } from '../residentes.service';
 import { ActivatedRoute } from '@angular/router';
+import { Residente } from './residente.model';
 
 @Component({
   selector: 'salv-residente',
@@ -8,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ResidenteComponent implements OnInit {
 
-  residente: any
+  residente: Residente
 
   constructor(private residentesService: ResidentesService, private route: ActivatedRoute) { }
 

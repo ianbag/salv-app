@@ -1,3 +1,72 @@
-<p>
-  residente works!
-</p>
+<section class="content">
+  <div>
+    <ol class="breadcrumb" style="margin-top: -15px;">
+      <li>
+        <a href="home.html" class="breadcrump-color">Início</a>
+      </li>
+      <li>
+        <a href="visualizacaoResidente.html" class="breadcrump-color">Residentes</a>
+      </li>
+      <li class="active">Detalhes do Residente</li>
+    </ol>
+  </div>
+
+  <div class="box">
+    <h1>Detalhes do Residente</h1>
+    <hr><br>
+
+    <div>
+      <salv-infos-pessoais [residente]="residente"></salv-infos-pessoais>
+
+
+      <div>
+        <div class="box box-default box-solid">
+          <div class="box-header with-border">
+
+            <h3 class="box-title">Informações Familiares</h3>
+            <div class="box-tools pull-right">
+              <a href="addNovoFamiliar.html" type="submit" class="btn btn-success" style="margin-right: 50px; color: white">Adicionar</a>
+              <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                <i class="fa fa-minus">
+
+                </i>
+              </button>
+            </div>
+          </div>
+          <div class="box-body" style>
+            <strong>Nome: </strong> Jéssica do Rosário <br>
+            <strong>Parentesco: </strong> Filha <br>
+            <strong>Telefone: </strong> (16) 3262-70740 <br>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="box box-default box-solid">
+          <div class="box-header with-border">
+
+            <h3 class="box-title">Convênio de Maria</h3>
+            <div class="box-tools pull-right">
+              <a href="addOutroConvenio.html" type="submit" class="btn btn-success" style="margin-right: 50px; color: white">Adicionar</a>
+              <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                <i class="fa fa-minus">
+
+                </i>
+              </button>
+            </div>
+          </div>
+          <div class="box-body" style>
+            <strong>Convênio: </strong> Santa Casa <br>
+            <strong>Telefone: </strong> (16) 3262-70740 <br>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+  <!-- /.row -->
+</section>

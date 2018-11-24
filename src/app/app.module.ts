@@ -14,6 +14,7 @@ import { FooterComponent } from './fixed-elements/footer/footer.component';
 import { ResidentesComponent } from './residentes/residentes.component';
 import { ResidentesService } from './residentes/residentes.service';
 import { ResidenteComponent } from './residentes/residente/residente.component';
+import { InfosPessoaisComponent } from './residentes/residente/infos-pessoais/infos-pessoais.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ResidenteComponent } from './residentes/residente/residente.component';
     FooterComponent,
     ResidentesComponent,
     ResidenteComponent,
+    InfosPessoaisComponent,
   ],
   imports: [
     BrowserModule,
