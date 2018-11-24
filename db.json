@@ -1,7 +1,7 @@
 {
     "pessoa": [
         {
-            "codigo": 300,
+            "id": 300,
             "nome": "Anderson",
             "sobrenome": "Silva",
             "apelido": "derson",
@@ -14,7 +14,7 @@
             "escolaridade": "sc"
         },
         {
-            "codigo": 400,
+            "id": 400,
             "nome": "Marcio",
             "sobrenome": "Madeixa",
             "apelido": "marcin",
@@ -27,7 +27,7 @@
             "escolaridade": "sc"
         },
         {
-            "codigo": 500,
+            "id": 500,
             "nome": "André",
             "sobrenome": "Mufasa",
             "apelido": "desao",
@@ -40,5 +40,4 @@
             "escolaridade": "sc"
         }
     ]
-
 }
