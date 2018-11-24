@@ -9,14 +9,14 @@ import { visualizarResidentes } from './visualizar-residentes.model';
 })
 export class ResidentesComponent implements OnInit {
 
-  visualizarResidentes: visualizarResidentes[]
+  residentes: visualizarResidentes[]
 
   constructor(private residentesService: ResidentesService) { }
 
   ngOnInit() {
     this.residentesService.pessoa()
-      .subscribe(pessoa => { this.visualizarResidentes = pessoa
-        console.log(pessoa)
+      .subscribe(residentes => { this.residentes = residentes
+        console.log(residentes)
       })
   }
 

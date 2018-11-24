@@ -19,15 +19,15 @@
           <th>Ações</th>
         </tr>
         <tr *ngFor="let pessoa of pessoas">
-          <td>{{pessoa.nome}}</td>
-          <td>{{pessoa.apelido}}</td>
-          <td>{{pessoa.cpf}}</td>
-          <td>{{pessoa.rg}}</td>
+          <td>{{residentes.nome}}</td>
+          <td>{{residentes.apelido}}</td>
+          <td>{{residentes.cpf}}</td>
+          <td>{{residentes.rg}}</td>
 
           <td>
               <button type="submit" class="btn btn-danger botao" >Apagar</button>
               <a type="submit" class="btn btn-warning botao" href="#">Editar</a>
-              <a type="submit" class="btn btn-success botao" href="#">+ Informações</a>
+              <a type="submit" class="btn btn-success botao" [routerLink]="['/residente', residentes.codigo">+ Informações</a>
             </td>
         </tr>
 
