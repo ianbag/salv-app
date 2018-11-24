@@ -20,6 +20,7 @@ import { EscolaridadePipe } from './shared/pipes/escolaridade.pipe';
 import { EstadoCivilPipe } from './shared/pipes/estado-civil.pipe';
 import { ReligiaoPipe } from './shared/pipes/religiao.pipe';
 import { CpfPipe } from './shared/pipes/cpf.pipe';
+import { RgPipe } from './shared/pipes/rg.pipe';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { CpfPipe } from './shared/pipes/cpf.pipe';
     EscolaridadePipe,
     EstadoCivilPipe,
     ReligiaoPipe,
-    CpfPipe
+    CpfPipe,
+    RgPipe
   ],
   imports: [
     BrowserModule,

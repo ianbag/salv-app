@@ -7,12 +7,16 @@ export class CpfPipe implements PipeTransform {
 
   transform(value: any): any {
     let cpf = value
-    
-    function cpfPoints(value: string): string {
-      return `${value.substr(0, 3)}.${value.substr(3, 3)}.${value.substr(6, 3)}-${value.substr(9, 2)}`
+
+    if (cpf) {
+      return cpfPoints(cpf)
+    }else{
+      return 'Não Declarado'
     }
 
-    return cpfPoints(cpf)
+    function cpfPoints(value?: string): string {
+      return `${value.substr(0, 3)}.${value.substr(3, 3)}.${value.substr(6, 3)}-${value.substr(9, 2)}`
+    }
   }
 
 }
