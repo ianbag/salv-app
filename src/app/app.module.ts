@@ -11,13 +11,15 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './fixed-elements/header/header.component';
 import { SidebarComponent } from './fixed-elements/sidebar/sidebar.component';
 import { FooterComponent } from './fixed-elements/footer/footer.component';
+import { ResidentesComponent } from './residentes/residentes.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     SidebarComponent,
-    FooterComponent
+    FooterComponent,
+    ResidentesComponent
   ],
   imports: [
     BrowserModule,
