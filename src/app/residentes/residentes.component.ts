@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ResidentesService } from './residentes.service';
-import { visualizarResidentes } from './visualizar-residentes.model';
 import { Residente } from './residente/residente.model';
 
 

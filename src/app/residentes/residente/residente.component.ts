@@ -1,7 +1,9 @@
+
 import { Component, OnInit } from '@angular/core';
 import { ResidentesService } from '../residentes.service';
 import { ActivatedRoute } from '@angular/router';
 import { Residente } from './residente.model';
+import { Familiar } from './infos-familiar/familiar.model';
 
 @Component({
   selector: 'salv-residente',
@@ -10,6 +12,7 @@ import { Residente } from './residente.model';
 export class ResidenteComponent implements OnInit {
 
   residente: Residente
+  familiares: Familiar[]
 
   constructor(private residentesService: ResidentesService, private route: ActivatedRoute) { }
 
@@ -18,6 +21,12 @@ export class ResidenteComponent implements OnInit {
       .subscribe(residente => {
       this.residente = residente
         console.log(residente)
+      })
+      
+      this.residentesService.familiarById(this.route.snapshot.params['id'])
+      .subscribe(familiar => {
+        this.familiares = familiar
+        console.log(familiar)
       })
   }
 

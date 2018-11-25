@@ -21,6 +21,7 @@ import { EstadoCivilPipe } from './shared/pipes/estado-civil.pipe';
 import { ReligiaoPipe } from './shared/pipes/religiao.pipe';
 import { CpfPipe } from './shared/pipes/cpf.pipe';
 import { RgPipe } from './shared/pipes/rg.pipe';
+import { InfosFamiliarComponent } from './residentes/residente/infos-familiar/infos-familiar.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { RgPipe } from './shared/pipes/rg.pipe';
     EstadoCivilPipe,
     ReligiaoPipe,
     CpfPipe,
-    RgPipe
+    RgPipe,
+    InfosFamiliarComponent
   ],
   imports: [
     BrowserModule,
