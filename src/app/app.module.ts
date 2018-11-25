@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './fixed-elements/header/header.component';
 import { SidebarComponent } from './fixed-elements/sidebar/sidebar.component';
 import { FooterComponent } from './fixed-elements/footer/footer.component';
+import { TelaInicialComponent } from './tela-inicial/tela-inicial.component';
 import { ResidentesComponent } from './residentes/residentes.component';
 import { ResidentesService } from './residentes/residentes.service';
 import { ResidenteComponent } from './residentes/residente/residente.component';
@@ -24,13 +25,13 @@ import { RgPipe } from './shared/pipes/rg.pipe';
 import { InfosFamiliarComponent } from './residentes/residente/infos-familiar/infos-familiar.component';
 import { ConveniosComponent } from './convenios/convenios.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     SidebarComponent,
     FooterComponent,
+    TelaInicialComponent
     ResidentesComponent,
     ResidenteComponent,
     InfosPessoaisComponent,
