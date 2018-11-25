@@ -24,6 +24,9 @@ import { CpfPipe } from './shared/pipes/cpf.pipe';
 import { RgPipe } from './shared/pipes/rg.pipe';
 import { InfosFamiliarComponent } from './residentes/residente/infos-familiar/infos-familiar.component';
 import { ConveniosComponent } from './convenios/convenios.component';
+import { AniversariantesComponent } from './tela-inicial/aniversariantes/aniversariantes.component';
+import { ProvaDeVidaComponent } from './tela-inicial/prova-de-vida/prova-de-vida.component';
+import { AniversarianteComponent } from './tela-inicial/aniversariantes/aniversariante/aniversariante.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,10 @@ import { ConveniosComponent } from './convenios/convenios.component';
     CpfPipe,
     RgPipe,
     InfosFamiliarComponent,
-    ConveniosComponent
+    ConveniosComponent,
+    AniversariantesComponent,
+    ProvaDeVidaComponent,
+    AniversarianteComponent
   ],
   imports: [
     BrowserModule,
