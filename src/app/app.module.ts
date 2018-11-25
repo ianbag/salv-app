@@ -22,6 +22,7 @@ import { ReligiaoPipe } from './shared/pipes/religiao.pipe';
 import { CpfPipe } from './shared/pipes/cpf.pipe';
 import { RgPipe } from './shared/pipes/rg.pipe';
 import { InfosFamiliarComponent } from './residentes/residente/infos-familiar/infos-familiar.component';
+import { ConveniosComponent } from './convenios/convenios.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { InfosFamiliarComponent } from './residentes/residente/infos-familiar/in
     ReligiaoPipe,
     CpfPipe,
     RgPipe,
-    InfosFamiliarComponent
+    InfosFamiliarComponent,
+    ConveniosComponent
   ],
   imports: [
     BrowserModule,
