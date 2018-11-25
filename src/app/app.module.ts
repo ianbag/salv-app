@@ -31,7 +31,7 @@ import { ConveniosComponent } from './convenios/convenios.component';
     HeaderComponent,
     SidebarComponent,
     FooterComponent,
-    TelaInicialComponent
+    TelaInicialComponent,
     ResidentesComponent,
     ResidenteComponent,
     InfosPessoaisComponent,
