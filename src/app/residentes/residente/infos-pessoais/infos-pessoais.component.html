@@ -1,0 +1,156 @@
+<div class="box box-default box-solid">
+  <div class="box-header with-border">
+
+    <h3 class="box-title">Informações do Residente</h3>
+    <div class="box-tools pull-right">
+      <button type="button" class="btn btn-box-tool" data-widget="collapse">
+        <i class="fa fa-minus">
+
+        </i>
+      </button>
+    </div>
+  </div>
+  <div class="box-body" style>
+
+    <div class="col-sm-12 col-xs-12">
+      <h4><strong>Informações pessoais</strong></h4>
+    </div>
+
+    <div class="col-xs-4 col-xs-12">
+      <strong>Nome: </strong> {{residente?.nome}} {{residente?.sobrenome}}<br>
+    </div>
+
+    <div class="col-xs-4 col-xs-12">
+      <strong>Apelido: </strong> {{residente?.apelido}} <br>
+    </div>
+
+    <div class="col-xs-4 col-xs-12">
+      <strong>CPF: </strong> {{residente?.cpf | cpf}} <br>
+    </div>
+
+    <div class="col-xs-4 col-xs-12">
+      <strong>RG: </strong> {{residente?.rg | rg}} <br>
+    </div>
+
+    <div class="col-xs-4 col-xs-12">
+      <strong>Sexo: </strong> {{residente?.sexo | sexo}} <br>
+    </div>
+
+    <div class="col-xs-4 col-xs-12">
+      <strong>Estado Civil: </strong> {{residente?.estado_civil | estadoCivil}} <br>
+    </div>
+
+    <div class="col-xs-3 col-xs-12">
+      <strong>Data de Nascimento: </strong> {{residente?.data_nascimento | date: 'dd/MM/yyy'}} <br>
+    </div>
+
+    <div class="col-xs-3 col-xs-12">
+      <strong>Religião: </strong> {{residente?.religiao | religiao}} <br>
+    </div>
+
+    <div class="col-xs-3 col-xs-12">
+      <strong>Escolaridade: </strong> {{residente?.escolaridade | escolaridade}} <br>
+    </div>
+
+    <div class="col-xs-3 col-xs-12">
+      <strong>Profissão: </strong> {{residente?.profissao}} <br>
+    </div>
+
+    <hr>
+
+    <div class="col-sm-12 col-xs-12">
+      <h4><strong>Eleitoral</strong></h4>
+    </div>
+
+    <div class="col-xs-4 col-xs-12">
+      <strong>Título de Eleitor: </strong> {{residente?.titulo_eleitor}} <br>
+    </div>
+
+    <div class="col-xs-4 col-xs-12">
+      <strong>Zona Eleitoral: </strong> {{residente?.zona_eleitoral}} <br>
+    </div>
+
+    <div class="col-xs-4 col-xs-12">
+      <strong>Seção Eleitoral: </strong> {{residente?.secao_eleitoral}} <br>
+    </div>
+
+    <hr>
+
+    <div class="col-sm-12 col-xs-12">
+      <h4><strong>Certidão de Nascimento</strong></h4>
+    </div>
+
+    <div class="col-xs-6 col-xs-12">
+      <strong>Nº Certidão de Nascimento: </strong> {{residente?.numero_certidao_nascimento}} <br>
+    </div>
+
+    <div class="col-xs-6 col-xs-12">
+      <strong>Folha: </strong> {{residente?.folha_certidao_nascimento}} <br>
+    </div>
+
+    <div class="col-xs-4 col-xs-12">
+      <strong>Livro: </strong> {{residente?.livro_certidao_nascimento}} <br>
+    </div>
+
+    <div class="col-xs-4 col-xs-12">
+      <strong>Cidade: </strong> {{residente?.cidade_certidao_nascimento}} <br>
+    </div>
+
+    <div class="col-xs-4 col-xs-12">
+      <strong>Estado: </strong> {{residente?.estado_certidao_nascimento}} <br>
+    </div>
+
+    <hr>
+
+    <div class="col-sm-12 col-xs-12">
+      <h4><strong>INSS</strong></h4>
+    </div>
+
+    <div class="col-xs-3 col-xs-12">
+      <strong>Nº: </strong> {{residente?.numero_inss}} <br>
+    </div>
+
+    <div class="col-xs-3 col-xs-12">
+      <strong>Banco: </strong> {{residente?.banco_inss}} <br>
+    </div>
+
+    <div class="col-xs-3 col-xs-12">
+      <strong>Agência: </strong> {{residente?.agencia_inss}} <br>
+    </div>
+
+    <div class="col-xs-3 col-xs-12">
+      <strong>Conta: </strong> {{residente?.conta_inss}} <br>
+    </div>
+
+    <div class="col-xs-4 col-xs-12">
+      <strong>Valor: </strong> {{residente?.valor_inss}} <br>
+    </div>
+
+    <div class="col-xs-4 col-xs-12">
+      <strong>Situação: </strong> {{residente?.situacao_inss}} <br>
+    </div>
+
+    <div class="col-xs-4 col-xs-12">
+      <strong>Prova de Vida: </strong> {{residente?.prova_vida_inss}} <br>
+    </div>
+
+    <hr>
+
+    <div class="col-sm-12 col-xs-12">
+      <h4><strong>Outros</strong></h4>
+    </div>
+
+    <div class="col-xs-4 col-xs-12">
+      <strong>Cartão SUS: </strong> {{residente?.cartao_sus}} <br>
+    </div>
+
+    <div class="col-xs-4 col-xs-12">
+      <strong>Cartão SAMS: </strong> {{residente?.cartao_sams}} <br>
+    </div>
+
+    <div class="col-xs-4 col-xs-12">
+      <strong>Data de Acolhimento: </strong> {{residente?.data_acolhimento}} <br>
+    </div>
+
+  </div>
+</div>
