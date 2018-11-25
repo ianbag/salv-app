@@ -1,7 +1,14 @@
+import { ConveniosComponent } from './convenios/convenios.component';
 import { Routes } from "@angular/router";
 
-export const ROUTES: Routes = [
+import { ResidentesComponent } from "./residentes/residentes.component";
+import { ResidenteComponent } from "./residentes/residente/residente.component";
 
+export const ROUTES: Routes = [
     //ROTAS VÃO AQUI
+
+    { path: 'residentes', component: ResidentesComponent },
+    { path: 'residente/:id', component: ResidenteComponent },
+    { path: 'convenios', component: ConveniosComponent }
 
 ]
