@@ -12,7 +12,6 @@ export class InfosFamiliarComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.familiar)
   }
 
 
