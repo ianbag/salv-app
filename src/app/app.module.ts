@@ -23,6 +23,7 @@ import { CpfPipe } from './shared/pipes/cpf.pipe';
 import { RgPipe } from './shared/pipes/rg.pipe';
 import { InfosFamiliarComponent } from './residentes/residente/infos-familiar/infos-familiar.component';
 import { ConveniosComponent } from './convenios/convenios.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { ConveniosComponent } from './convenios/convenios.component';
     CpfPipe,
     RgPipe,
     InfosFamiliarComponent,
-    ConveniosComponent
+    ConveniosComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
