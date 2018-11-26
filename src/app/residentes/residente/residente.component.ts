@@ -1,3 +1,4 @@
+import { Convenio } from './infos-convenio/convenio.model';
 
 import { Component, OnInit } from '@angular/core';
 import { ResidentesService } from '../residentes.service';
@@ -13,6 +14,7 @@ export class ResidenteComponent implements OnInit {
 
   residente: Residente
   familiares: Familiar[]
+  convenios: Convenio[]
 
   constructor(private residentesService: ResidentesService, private route: ActivatedRoute) { }
 
@@ -27,6 +29,12 @@ export class ResidenteComponent implements OnInit {
       .subscribe(familiar => {
         this.familiares = familiar
         console.log(familiar)
+      })
+
+      this.residentesService.convenioById(this.route.snapshot.params['id'])
+      .subscribe(convenio => {
+        this.convenios = convenio
+        console.log(convenio)
       })
   }
 
