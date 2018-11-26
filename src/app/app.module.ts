@@ -28,6 +28,7 @@ import { AniversariantesComponent } from './tela-inicial/aniversariantes/anivers
 import { ProvaDeVidaComponent } from './tela-inicial/prova-de-vida/prova-de-vida.component';
 import { AniversarianteComponent } from './tela-inicial/aniversariantes/aniversariante/aniversariante.component';
 import { InfosConvenioComponent } from './residentes/residente/infos-convenio/infos-convenio.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { InfosConvenioComponent } from './residentes/residente/infos-convenio/in
     AniversariantesComponent,
     ProvaDeVidaComponent,
     AniversarianteComponent,
-    InfosConvenioComponent
+    InfosConvenioComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
