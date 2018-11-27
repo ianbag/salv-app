@@ -27,6 +27,12 @@ import { ConveniosComponent } from './convenios/convenios.component';
 import { AniversariantesComponent } from './tela-inicial/aniversariantes/aniversariantes.component';
 import { ProvaDeVidaComponent } from './tela-inicial/prova-de-vida/prova-de-vida.component';
 import { AniversarianteComponent } from './tela-inicial/aniversariantes/aniversariante/aniversariante.component';
+import { InfosConvenioComponent } from './residentes/residente/infos-convenio/infos-convenio.component';
+<<<<<<< HEAD
+=======
+import { InfosConvenioComponent } from './residentes/residente/infos-convenio/infos-convenio.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+>>>>>>> upstream/master
 
 @NgModule({
   declarations: [
@@ -49,6 +55,9 @@ import { AniversarianteComponent } from './tela-inicial/aniversariantes/aniversa
     AniversariantesComponent,
     ProvaDeVidaComponent,
     AniversarianteComponent
+    AniversarianteComponent,
+    InfosConvenioComponentponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
