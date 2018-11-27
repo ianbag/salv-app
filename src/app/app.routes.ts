@@ -12,6 +12,8 @@ export const ROUTES: Routes = [
     { path: 'residentes', component: ResidentesComponent },
     { path: 'residente/:id', component: ResidenteComponent },
     { path: 'convenios', component: ConveniosComponent },
+    { path: 'tela-inicial', component: TelaInicialComponent}
+
     { path: 'tela-inicial', component: TelaInicialComponent},
     { path: '**', component: NotFoundComponent}
 ]
