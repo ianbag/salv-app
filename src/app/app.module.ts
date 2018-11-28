@@ -28,11 +28,15 @@ import { AniversariantesComponent } from './tela-inicial/aniversariantes/anivers
 import { ProvaDeVidaComponent } from './tela-inicial/prova-de-vida/prova-de-vida.component';
 import { AniversarianteComponent } from './tela-inicial/aniversariantes/aniversariante/aniversariante.component';
 import { InfosConvenioComponent } from './residentes/residente/infos-convenio/infos-convenio.component';
-<<<<<<< HEAD
-=======
 import { InfosConvenioComponent } from './residentes/residente/infos-convenio/infos-convenio.component';
 import { NotFoundComponent } from './not-found/not-found.component';
->>>>>>> upstream/master
+import { FuncionariosComponent } from './funcionarios/funcionarios.component';
+import { FuncionarioComponent } from './funcionarios/funcionario/funcionario.component';
+import { InfosDependenteComponent } from './funcionarios/funcionario/infos-dependente/infos-dependente.component';
+import { InfosFuncionaisComponent } from './funcionarios/funcionario/infos-funcionais/infos-funcionais.component';
+import { NovoFuncionarioComponent } from './funcionarios/funcionario/novo-funcionario/novo-funcionario.component';
+import { NovoDependenteComponent } from './funcionarios/funcionario/novo-funcionario/novo-dependente/novo-dependente.component';
+import { NovaInfoFuncionalComponent } from './funcionarios/funcionario/novo-funcionario/nova-info-funcional/nova-info-funcional.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +60,15 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ProvaDeVidaComponent,
     AniversarianteComponent
     AniversarianteComponent,
+    InfosConvenioComponent,
+    NotFoundComponent,
+    FuncionariosComponent,
+    FuncionarioComponent,
+    InfosDependenteComponent,
+    InfosFuncionaisComponent,
+    NovoFuncionarioComponent,
+    NovoDependenteComponent,
+    NovaInfoFuncionalComponent
     InfosConvenioComponentponent,
     NotFoundComponent
   ],
