@@ -1,0 +1,39 @@
+          <!-- Main content -->
+          <section class="content">
+              <div>
+                  <ol class="breadcrumb" style="margin-top: -15px;">
+                      <li>
+                          <a href="home.html" class="breadcrump-color">Iníco</a>
+                      </li>
+                      <li class="active">Funcionários</li>
+                  </ol>
+
+                  <div class="form-group">
+                      <a type="submit" class="btn btn-primary" [routerLink]="['/novo-funcionario']">Novo funcionário</a>
+                  </div>
+                  <div class="box box-default table-responsive no-padding">
+                      <h1 align="center">Visualização geral dos funcionários</h1>
+                      <br>
+                      <table class="table table-hover">
+                          <tr>
+                              <td>Lucia Maria</td>
+                              <td>456.894.423-55</td>
+                              <td>54.235.896-4</td>
+                              <td>Não</td>
+                              <td>
+                                  <a type="submit" class="btn btn-danger botao">Apagar</a>
+                                  <a type="submit" class="btn btn-warning botao" href="funcionarios-alterar.html">Editar</a>
+                                  <a type="submit" class="btn btn-success botao" [routerLink]="['/funcionario/:id']">+ Informações</a>
+                              </td>
+                          </tr>
+
+
+                      </table>
+                      <!-- Fim da tabela  -->
+                  </div>
+
+              </div>
+              <!-- /.row -->
+          </section>
+          <!-- /.content -->
+  
