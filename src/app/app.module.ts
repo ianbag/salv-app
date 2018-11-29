@@ -27,8 +27,8 @@ import { ConveniosComponent } from './convenios/convenios.component';
 import { AniversariantesComponent } from './tela-inicial/aniversariantes/aniversariantes.component';
 import { ProvaDeVidaComponent } from './tela-inicial/prova-de-vida/prova-de-vida.component';
 import { AniversarianteComponent } from './tela-inicial/aniversariantes/aniversariante/aniversariante.component';
-import { InfosConvenioComponent } from './residentes/residente/infos-convenio/infos-convenio.component';
 import { DialogConfirmService } from './residentes/dialog-confirm.service';
+import { InfosConvenioComponent } from './residentes/residente/infos-convenio/infos-convenio.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 import { FuncionarioComponent } from './funcionarios/funcionario/funcionario.component';
@@ -68,6 +68,7 @@ import { NovaInfoFuncionalComponent } from './funcionarios/funcionario/novo-func
     NovoFuncionarioComponent,
     NovoDependenteComponent,
     NovaInfoFuncionalComponent,
+    InfosConvenioComponent,
     NotFoundComponent
   ],
   imports: [
