@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ResidentesService } from './residentes.service';
 import { Residente } from './residente/residente.model';
@@ -18,4 +19,9 @@ export class ResidentesComponent implements OnInit {
       .subscribe(residentes => this.residentes = residentes)
   }
 
+
+  deleteResidente(id: string){
+    this.residentesService.deleteResidente(id)
+    .subscribe(result => this.residentesService.residentes().subscribe(residentes => this.residentes = residentes))
+  }
 }
