@@ -28,6 +28,7 @@ import { AniversariantesComponent } from './tela-inicial/aniversariantes/anivers
 import { ProvaDeVidaComponent } from './tela-inicial/prova-de-vida/prova-de-vida.component';
 import { AniversarianteComponent } from './tela-inicial/aniversariantes/aniversariante/aniversariante.component';
 import { InfosConvenioComponent } from './residentes/residente/infos-convenio/infos-convenio.component';
+import { DialogConfirmService } from './residentes/dialog-confirm.service';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { InfosConvenioComponent } from './residentes/residente/infos-convenio/in
     RouterModule.forRoot(ROUTES)
   ],
   providers: [
-    ResidentesService
+    ResidentesService,
+    DialogConfirmService
   ],
   bootstrap: [AppComponent]
 })

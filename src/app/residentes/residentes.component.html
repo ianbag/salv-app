@@ -25,7 +25,7 @@
           <td>{{residente.rg | rg}}</td>
 
           <td>
-            <button type="submit" class="btn btn-danger botao" (click)="deleteResidente(residente.id)">Apagar</button>
+            <button type="submit" class="btn btn-danger botao" (click)="deleteResidente(residente.id); $event.stopPropagation()">Apagar</button>
             <a type="submit" class="btn btn-warning botao" href="#">Editar</a>
             <a type="submit" class="btn btn-success botao" [routerLink]="['/residente', residente.id]">+
               Informações</a>
