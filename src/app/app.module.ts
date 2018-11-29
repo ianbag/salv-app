@@ -37,6 +37,7 @@ import { InfosFuncionaisComponent } from './funcionarios/funcionario/infos-funci
 import { NovoFuncionarioComponent } from './funcionarios/funcionario/novo-funcionario/novo-funcionario.component';
 import { NovoDependenteComponent } from './funcionarios/funcionario/novo-funcionario/novo-dependente/novo-dependente.component';
 import { NovaInfoFuncionalComponent } from './funcionarios/funcionario/novo-funcionario/nova-info-funcional/nova-info-funcional.component';
+import { AcompanhamentosComponent } from './acompanhamentos/acompanhamentos.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { NovaInfoFuncionalComponent } from './funcionarios/funcionario/novo-func
     NovoFuncionarioComponent,
     NovoDependenteComponent,
     NovaInfoFuncionalComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    AcompanhamentosComponent
   ],
   imports: [
     BrowserModule,
