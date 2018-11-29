@@ -22,7 +22,7 @@ export const ROUTES: Routes = [
     { path: 'funcionario/:id', component: FuncionarioComponent},
     { path: 'novo-funcionario', component: NovoFuncionarioComponent},
     { path: 'novo-dependente', component: NovoDependenteComponent},
-    { path: '**', component: TelaInicialComponent},
+    { path: '', component: TelaInicialComponent},
     { path: '**', component: NotFoundComponent}
     
 

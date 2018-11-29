@@ -35,5 +35,6 @@ export interface Residente {
 
     data_acolhimento: string,
     data_desacolhimento: string,
-    motivo_desacolhimento: string
+    motivo_desacolhimento: string,
+    id: string
 }

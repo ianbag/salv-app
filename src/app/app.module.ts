@@ -28,6 +28,7 @@ import { AniversariantesComponent } from './tela-inicial/aniversariantes/anivers
 import { ProvaDeVidaComponent } from './tela-inicial/prova-de-vida/prova-de-vida.component';
 import { AniversarianteComponent } from './tela-inicial/aniversariantes/aniversariante/aniversariante.component';
 import { InfosConvenioComponent } from './residentes/residente/infos-convenio/infos-convenio.component';
+import { DialogConfirmService } from './residentes/dialog-confirm.service';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 import { FuncionarioComponent } from './funcionarios/funcionario/funcionario.component';
@@ -66,7 +67,8 @@ import { NovaInfoFuncionalComponent } from './funcionarios/funcionario/novo-func
     InfosFuncionaisComponent,
     NovoFuncionarioComponent,
     NovoDependenteComponent,
-    NovaInfoFuncionalComponent
+    NovaInfoFuncionalComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +79,8 @@ import { NovaInfoFuncionalComponent } from './funcionarios/funcionario/novo-func
     RouterModule.forRoot(ROUTES)
   ],
   providers: [
-    ResidentesService
+    ResidentesService,
+    DialogConfirmService
   ],
   bootstrap: [AppComponent]
 })
