@@ -24,6 +24,7 @@ export const ROUTES: Routes = [
     { path: 'novo-funcionario', component: NovoFuncionarioComponent},
     { path: 'novo-dependente', component: NovoDependenteComponent},
     { path: 'acompanhamentos', component: AcompanhamentosComponent},
+    
     { path: '', component: TelaInicialComponent},
     { path: '**', component: NotFoundComponent}
 ]
