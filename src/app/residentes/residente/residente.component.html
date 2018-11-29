@@ -1,0 +1,54 @@
+<section class="content">
+
+  <div class="box">
+    <h1>Detalhes do Residente</h1>
+    <hr><br>
+
+    <div>
+      <salv-infos-pessoais [residente]="residente"></salv-infos-pessoais>
+
+      <div class="box box-default box-solid">
+        <div class="box-header with-border">
+
+          <h3 class="box-title">Familiares do {{residente?.nome}}</h3>
+          <div class="box-tools pull-right">
+
+            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+              <i class="fa fa-minus">
+              </i>
+            </button>
+          </div>
+        </div>
+        <div class="box-body" style>
+          <salv-infos-familiar *ngFor="let familiar of familiares" [familiar]="familiar"></salv-infos-familiar>
+        </div>
+      </div>
+
+      <div>
+        <div class="box box-default box-solid">
+          <div class="box-header with-border">
+
+            <h3 class="box-title">Convênios do {{residente?.nome}}</h3>
+            <div class="box-tools pull-right">
+              <a href="addOutroConvenio.html" type="submit" class="btn btn-success" style="margin-right: 50px; color: white">Adicionar</a>
+              <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                <i class="fa fa-minus">
+
+                </i>
+              </button>
+            </div>
+          </div>
+          <div class="box-body" style>
+            <salv-infos-convenio *ngFor="let convenio of convenios" [convenio]="convenio"></salv-infos-convenio>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+  <!-- /.row -->
+</section>

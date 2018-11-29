@@ -20,6 +20,7 @@
   .botao{
     padding: .3em .9em;
     text-align: right;
+    margin-left: 3px;
   }
   
   a{
@@ -36,4 +37,9 @@
   
   .breadcrump-color {
     color: black;
+  }
+
+  /*Centralizar o conteudo da pagina not-found*/
+  .erro{
+    text-align: center;
   }

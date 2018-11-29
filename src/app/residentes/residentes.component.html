@@ -1,0 +1,41 @@
+<!-- Main content -->
+<section class="content">
+  <div>
+
+    <div class="form-group">
+      <a type="submit" class="btn btn-primary" href="addResidente1.html">Novo Residente</a>
+    </div>
+
+
+    <div class="box box-default table-responsive no-padding">
+      <h1>Visualização geral dos residentes</h1>
+      <br>
+      <table class="table table-hover">
+        <tr>
+          <th>Nome</th>
+          <th>Apelido</th>
+          <th>CPF</th>
+          <th>RG</th>
+          <th>Ações</th>
+        </tr>
+        <tr *ngFor="let residente of residentes">
+          <td>{{residente.nome}}</td>
+          <td>{{residente.apelido}}</td>
+          <td>{{residente.cpf | cpf}}</td>
+          <td>{{residente.rg | rg}}</td>
+
+          <td>
+            <button type="submit" class="btn btn-danger botao" (click)="deleteResidente(residente.id); $event.stopPropagation()">Apagar</button>
+            <a type="submit" class="btn btn-warning botao" href="#">Editar</a>
+            <a type="submit" class="btn btn-success botao" [routerLink]="['/residente', residente.id]">+
+              Informações</a>
+          </td>
+        </tr>
+
+      </table>
+      <!-- Fim da tabela  -->
+    </div>
+
+  </div>
+  <!-- /.row -->
+</section>
