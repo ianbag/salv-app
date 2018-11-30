@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,9 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AcompanhamentoComponent implements OnInit {
 
-  constructor() { }
 
-  ngOnInit() {
+  constructor(private route: ActivatedRoute) { }
+
+  ngOnInit() { 
   }
 
 }
