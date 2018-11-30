@@ -1,3 +1,4 @@
+import { AcompanhamentoComponent } from './acompanhamentos/acompanhamento/acompanhamento.component';
 import { AcompanhamentosComponent } from './acompanhamentos/acompanhamentos.component';
 import { FuncionarioComponent } from './funcionarios/funcionario/funcionario.component';
 import { Component } from '@angular/core';
@@ -24,6 +25,7 @@ export const ROUTES: Routes = [
     { path: 'novo-funcionario', component: NovoFuncionarioComponent},
     { path: 'novo-dependente', component: NovoDependenteComponent},
     { path: 'acompanhamentos', component: AcompanhamentosComponent},
+    { path: 'acompanhamento/:id', component: AcompanhamentoComponent},
     { path: '', component: TelaInicialComponent},
     { path: '**', component: NotFoundComponent}
 ]
