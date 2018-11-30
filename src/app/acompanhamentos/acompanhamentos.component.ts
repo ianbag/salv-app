@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AcompanhamentosComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private acompanhamentosService: AcompanhamentosService, private route: ActivatedRoute) { }
 
   ngOnInit() {
   }
