@@ -1,6 +1,7 @@
-export interface Acompanhamento {
+export interface Acompanhamento { 
     atividade: string,
     data: string,
     funcionario: string,
-    residente: string
+    residente: string,
+    id: string
 }
