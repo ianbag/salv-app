@@ -2,7 +2,6 @@ import { Acompanhamento } from './acompanhamento/acompanhamento.model';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AcompanhamentosService } from './acompanhamentos.service';
-import { TouchSequence } from 'selenium-webdriver';
 
 @Component({
   selector: 'salv-acompanhamentos',
