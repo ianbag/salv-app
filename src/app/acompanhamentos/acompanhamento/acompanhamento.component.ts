@@ -1,6 +1,7 @@
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AcompanhamentosService } from '../acompanhamentos.service';
+import { Acompanhamento } from './acompanhamento.model';
 
 @Component({
   selector: 'salv-acompanhamento',
@@ -18,11 +19,3 @@ export class AcompanhamentoComponent implements OnInit {
   }
 
 }
-
-
-
-export class ResidenteComponent implements OnInit {
-
-  residente: Residente
-  familiares: Familiar[]
-  convenios: Convenio[]

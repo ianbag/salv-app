@@ -10,19 +10,11 @@ export class AcompanhamentosService {
     constructor(private http: HttpClient) { }
 
     acompanhamentos(): Observable<Acompanhamento[]> {
-        return this.http.get<Acompanhamento[]>(`${SALV_API}/pessoa`)
+        return this.http.get<Acompanhamento[]>(`${SALV_API}/acompanhamento`)
     }
 
     acompanhamentoById(id: string): Observable<Acompanhamento>{
-        return this.http.get<Acompanhamento>(`${SALV_API}/pessoa/${id}`)
+        return this.http.get<Acompanhamento>(`${SALV_API}/acompanhamento/${id}`)
     }
-
-    familiarById(id: string): Observable<Familiar[]>{
-        return this.http.get<Familiar[]>(`${SALV_API}/pessoa/${id}/familiar`)
-    }
-
-
-    deleteResidente(id: string): Observable<any>{
-        return this.http.delete<any>(`${SALV_API}/pessoa/${id}`)
-    }
+     
 }
