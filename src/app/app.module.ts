@@ -39,6 +39,7 @@ import { NovoDependenteComponent } from './funcionarios/funcionario/novo-funcion
 import { NovaInfoFuncionalComponent } from './funcionarios/funcionario/novo-funcionario/nova-info-funcional/nova-info-funcional.component';
 import { AcompanhamentosComponent } from './acompanhamentos/acompanhamentos.component';
 import { AcompanhamentoComponent } from './acompanhamentos/acompanhamento/acompanhamento.component';
+import { AcompanhamentosService } from './acompanhamentos/acompanhamentos.service';
 
 @NgModule({
   declarations: [
@@ -86,7 +87,8 @@ import { AcompanhamentoComponent } from './acompanhamentos/acompanhamento/acompa
   ],
   providers: [
     ResidentesService,
-    DialogConfirmService
+    DialogConfirmService,
+    AcompanhamentosService
   ],
   bootstrap: [AppComponent]
 })
