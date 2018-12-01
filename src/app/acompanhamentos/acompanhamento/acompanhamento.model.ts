@@ -1,4 +1,4 @@
-export interface Residente {
+export interface Acompanhamento {
     atividade: string,
     data: string,
     funcionario: string,

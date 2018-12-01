@@ -1,5 +1,6 @@
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { AcompanhamentosService } from './acompanhamentos.service';
 
 @Component({
   selector: 'salv-acompanhamentos',
