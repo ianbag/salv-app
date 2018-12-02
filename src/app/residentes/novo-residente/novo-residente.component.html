@@ -41,6 +41,7 @@
               <div class="col-sm-2 col-sm-12">
                 <label>Estado Civil </label>
                 <select class="form-control" formControlName="estadoCivil">
+                  <option value="" label="Selecione" disabled selected="selected"></option>
                   <option value="S">Solteiro</option>
                   <option value="C">Casado</option>
                   <option value="D">Divorciado</option>
@@ -50,6 +51,7 @@
               <div class="col-sm-2 col-sm-12">
                 <label>Sexo </label>
                 <select class="form-control" formControlName="sexo">
+                  <option value="" label="Selecione" disabled selected="selected"></option>
                   <option value="M">Masculino</option>
                   <option value="F">Feminino</option>
                 </select>
@@ -57,6 +59,7 @@
               <div class="col-sm-2 col-sm-12">
                 <label>Gênero </label>
                 <select class="form-control" formControlName="genero">
+                  <option value="" label="Selecione" disabled selected="selected"></option>
                   <option>-------</option>
                   <option>-------</option>
                 </select>
@@ -68,6 +71,7 @@
               <div class="col-sm-3 col-sm-12">
                 <label>Religião </label>
                 <select class="form-control" formControlName="religiao">
+                  <option value="" label="Selecione" disabled selected="selected"></option>
                   <option value="CAT">Católico</option>
                   <option value="EVG">Evangélico</option>
                   <option value="ESP">Espiríta</option>
@@ -80,6 +84,7 @@
               <div class="col-sm-4 col-sm-12">
                 <label>Escolaridade </label>
                 <select class="form-control" formControlName="escolaridade">
+                  <option value="" label="Selecione" disabled selected="selected"></option>
                   <option value="FI">Fundamental incompleto</option>
                   <option value="FC">Fundamental completo</option>
                   <option value="MI">Médio incompleto</option>
@@ -108,26 +113,31 @@
             <div class="row">
               <div class="col-sm-4 col-sm-12">
                 <label>Número </label>
-                <input type="text" class="form-control" formControlName="numeroCertidaoNascimento" placeholder="Número" autocomplete="off">
+                <input type="text" class="form-control" formControlName="numeroCertidaoNascimento" placeholder="Número"
+                  autocomplete="off">
               </div>
               <div class="col-sm-4 col-sm-12">
                 <label>Folha </label>
-                <input type="text" class="form-control" formControlName="folhaCertidaoNascimento" placeholder="Folha" autocomplete="off">
+                <input type="text" class="form-control" formControlName="folhaCertidaoNascimento" placeholder="Folha"
+                  autocomplete="off">
               </div>
               <div class="col-sm-4 col-sm-12">
                 <label>Livro </label>
-                <input type="text" class="form-control" formControlName="livroCertidaoNascimento" placeholder="Livro" autocomplete="off">
+                <input type="text" class="form-control" formControlName="livroCertidaoNascimento" placeholder="Livro"
+                  autocomplete="off">
               </div>
             </div>
             <br />
             <div class="row">
               <div class="col-sm-3 col-sm-12">
                 <label>Cidade </label>
-                <input type="text" class="form-control" formControlName="cidadeCertidaoNascimento" placeholder="Cidade" autocomplete="off">
+                <input type="text" class="form-control" formControlName="cidadeCertidaoNascimento" placeholder="Cidade"
+                  autocomplete="off">
               </div>
               <div class="col-sm-2 col-sm-12">
                 <label>Estado </label>
                 <select class="form-control" formControlName="estadoCertidaoNascimento">
+                  <option value="" label="Selecione" disabled selected="selected"></option>
                   <option *ngFor="let estado of estados">{{estado}}</option>
                 </select>
                 <br>
@@ -143,7 +153,8 @@
             <div class="row">
               <div class="col-sm-4 col-sm-12">
                 <label for="exampleInputPassword1">Título </label>
-                <input type="text" class="form-control" formControlName="tituloEleitoral" placeholder="Título" autocomplete="off">
+                <input type="text" class="form-control" formControlName="tituloEleitoral" placeholder="Título"
+                  autocomplete="off">
               </div>
               <div class="col-sm-4 col-sm-12">
                 <label for="exampleInputPassword1">Zona </label>
@@ -151,7 +162,8 @@
               </div>
               <div class="col-sm-4 col-sm-12">
                 <label for="exampleInputPassword1">Seção </label>
-                <input type="text" class="form-control" formControlName="secaoEleitoral" placeholder="Seção" autocomplete="off">
+                <input type="text" class="form-control" formControlName="secaoEleitoral" placeholder="Seção"
+                  autocomplete="off">
                 <br>
               </div>
             </div>
@@ -173,7 +185,8 @@
               </div>
               <div class="col-sm-2 col-smm-12">
                 <label for="exampleInputPassword1">Agência </label>
-                <input type="text" class="form-control" formControlName="agenciaInss" placeholder="Agência" autocomplete="off">
+                <input type="text" class="form-control" formControlName="agenciaInss" placeholder="Agência"
+                  autocomplete="off">
               </div>
               <div class="col-sm-3 col-sm-12">
                 <label for="exampleInputPassword1">Conta </label>
@@ -185,6 +198,7 @@
               <div class="col-sm-4 col-sm-12">
                 <label for="exampleInputPassword1">Situação </label>
                 <select class="form-control" formControlName="situacaoInss">
+                  <option value="" label="Selecione" disabled selected="selected"></option>
                   <option value="BPC">Benefício de prestação continuada</option>
                   <option value="AIV">Aposentadoria por invalidez</option>
                   <option value="AID">Aposentadoria por idade</option>
