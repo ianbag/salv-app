@@ -55,6 +55,13 @@ export class NovoResidenteComponent implements OnInit {
       situacaoInss: this.formBuilder.control('', [Validators.required]),
       valorInss: this.formBuilder.control('', [Validators.required]),
       provaVidaInss: this.formBuilder.control('', [Validators.required]),
+      //INSS FINAL
+
+      //OUTROS INICIO
+      cartaoSams: this.formBuilder.control('', [Validators.required]),
+      cartaoSus: this.formBuilder.control('', [Validators.required]),
+      dataAcolhimento: this.formBuilder.control('', [Validators.required])
+      //OUTROS FINAL
     })
   }
 

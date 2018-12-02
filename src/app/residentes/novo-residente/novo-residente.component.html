@@ -3,7 +3,7 @@
   <div class="box">
     <h1>Adicionar residente</h1>
     <hr>
-    
+
     <form [formGroup]="novoResidenteForm" novalidate>
       <div class="box-body">
         <div>
@@ -212,17 +212,16 @@
             <div class="row">
               <div class="col-sm-4 col-sm-12">
                 <label for="exampleInputPassword1">Cartão SAMS </label>
-                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Número do Cartão SAMS">
+                <input type="text" class="form-control" formControlName="cartaoSams" placeholder="Número do Cartão SAMS">
               </div>
               <div class="col-sm-4 col-sm-12">
                 <label for="exampleInputPassword1">Cartão SUS </label>
-                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Número do Cartão SUS">
+                <input type="text" class="form-control" formControlName="cartaoSus" placeholder="Número do Cartão SUS">
               </div>
               <div class="col-sm-3 col-sm-12">
-                <label for="exampleInputPassword1"> <i class="fa fa-calendar"></i> Data de
-                  acolhimento </label>
+                <label>Data de acolhimento </label>
                 <div class="input-group date">
-                  <input type="date" class="form-control pull-right" id="datepicker">
+                  <input type="date" class="form-control pull-right" id="datepicker" formControlName="dataAcolhimento">
                 </div>
                 <br>
               </div>
