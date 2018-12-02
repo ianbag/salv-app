@@ -49,8 +49,7 @@
                 <label>Sexo </label>
                 <select class="form-control" formControlName="sexo">
                   <option value="" label="Selecione" disabled selected="selected"></option>
-                  <option value="M">Masculino</option>
-                  <option value="F">Feminino</option>
+                  <option *ngFor="let sexo of sexos" [value]="sexo.value">{{sexo.option}}</option>
                 </select>
               </div>
               <div class="col-sm-2 col-sm-12">

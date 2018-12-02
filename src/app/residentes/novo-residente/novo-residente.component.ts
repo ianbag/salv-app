@@ -17,6 +17,11 @@ export class NovoResidenteComponent implements OnInit {
     { value: "C", option: "Casado" },
     { value: "D", option: "Divorciado" },
     { value: "V", option: "Viúvo" }
+  ];
+
+  sexos = [
+    { value: "M", option: "Masculino" },
+    { value: "F", option: "Feminino" }
   ]
 
   novoResidenteForm: FormGroup;
