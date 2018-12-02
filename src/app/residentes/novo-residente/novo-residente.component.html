@@ -31,13 +31,15 @@
             </div>
             <br />
             <div class="row">
-              <div class="col-sm-3 col-sm-12">
-                <label for="exampleInputPassword1">CPF </label>
-                <input type="text" class="form-control" formControlName="cpf" placeholder="CPF" autocomplete="off">
+              <div class="col-sm-3 col-sm-12" style="margin-top: -10px; margin-left: -10px">
+                <salv-input-container errorMessage="Minimo 11 caracteres" label="CPF">
+                  <input type="text" class="form-control" formControlName="cpf" placeholder="CPF" autocomplete="off">
+                </salv-input-container>
               </div>
-              <div class="col-sm-3 col-sm-12">
-                <label for="exampleInputPassword1">RG </label>
-                <input type="text" class="form-control" formControlName="rg" placeholder="RG" autocomplete="off">
+              <div class="col-sm-3 col-sm-12" style="margin-top: -10px; margin-left: -10px">
+                <salv-input-container errorMessage="Minimo 9 caracteres" label="RG">
+                  <input type="text" class="form-control" formControlName="rg" placeholder="RG" autocomplete="off">
+                </salv-input-container>
               </div>
               <div class="col-sm-2 col-sm-12">
                 <label>Estado Civil </label>
