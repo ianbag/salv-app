@@ -4,6 +4,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
+import {NgxMaskModule} from "ngx-mask";
 
 import { ROUTES } from "./app.routes";
 
@@ -93,7 +94,8 @@ import { InputComponent } from './shared/input/input.component';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+    NgxMaskModule.forRoot()
   ],
   providers: [
     ResidentesService,
