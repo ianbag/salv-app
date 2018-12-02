@@ -32,13 +32,20 @@ export class NovoResidenteComponent implements OnInit {
       escolaridade: this.formBuilder.control('', [Validators.required]),
       dataNascimento: this.formBuilder.control('', [Validators.required]),
       // INFORMAÇÕES PESSOAIS FINAL
-      
+
       // CERTIDAO NASCIMENTO INICIO
       numeroCertidaoNascimento: this.formBuilder.control('', [Validators.required]),
       folhaCertidaoNascimento: this.formBuilder.control('', [Validators.required]),
       livroCertidaoNascimento: this.formBuilder.control('', [Validators.required]),
       cidadeCertidaoNascimento: this.formBuilder.control('', [Validators.required]),
       estadoCertidaoNascimento: this.formBuilder.control('', [Validators.required]),
+      //CERTIDAO NASCIMENTO FINAL
+
+      //ELEITORAL INICIO
+      tituloEleitoral: this.formBuilder.control('', [Validators.required]),
+      zonaEleitoral: this.formBuilder.control('', [Validators.required]),
+      secaoEleitoral: this.formBuilder.control('', [Validators.required]),
+      //ELEITORAL FINAL
     })
   }
 
