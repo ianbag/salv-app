@@ -41,20 +41,25 @@
                   <input type="text" class="form-control" formControlName="rg" placeholder="RG" autocomplete="off">
                 </salv-input-container>
               </div>
-              <div class="col-sm-2 col-sm-12">
+              <div class="col-sm-3 col-sm-12">
                 <label>Estado Civil </label>
                 <select class="form-control" formControlName="estadoCivil">
                   <option value="" label="Selecione" disabled selected="selected"></option>
                   <option *ngFor="let estadoCivil of estadosCivil" [value]="estadoCivil.value">{{estadoCivil.option}}</option>
                 </select>
               </div>
-              <div class="col-sm-2 col-sm-12">
-                <label>Sexo </label>
-                <select class="form-control" formControlName="sexo">
-                  <option value="" label="Selecione" disabled selected="selected"></option>
-                  <option *ngFor="let sexo of sexos" [value]="sexo.value">{{sexo.option}}</option>
-                </select>
+              <div class="col-sm-3 col-sm-12" style="margin-top: -10px; margin-left: -10px">
+                <salv-input-container errorMessage="Campo Obrigatório" label="Sexo">
+                  <select class="form-control" formControlName="sexo">
+                    <option value="" label="Selecione" disabled selected="selected"></option>
+                    <option *ngFor="let sexo of sexos" [value]="sexo.value">{{sexo.option}}</option>
+                  </select>
+                </salv-input-container>
               </div>
+            </div>
+            <br />
+
+            <div class="row">
               <div class="col-sm-2 col-sm-12">
                 <label>Gênero </label>
                 <select class="form-control" formControlName="genero">
@@ -63,10 +68,6 @@
                   <option>-------</option>
                 </select>
               </div>
-            </div>
-            <br />
-
-            <div class="row">
               <div class="col-sm-3 col-sm-12">
                 <label>Religião </label>
                 <select class="form-control" formControlName="religiao">
@@ -217,24 +218,25 @@
                 <label for="exampleInputPassword1">Cartão SUS </label>
                 <input type="text" class="form-control" formControlName="cartaoSus" placeholder="Número do Cartão SUS">
               </div>
-              <div class="col-sm-3 col-sm-12">
-                <label>Data de acolhimento </label>
-                <div class="input-group date">
-                  <input type="date" class="form-control pull-right" id="datepicker" formControlName="dataAcolhimento">
-                </div>
-                <br>
+              <div class="col-sm-3 col-sm-12" style="margin-top: -10px; margin-left: -10px">
+                <salv-input-container errorMessage="Campo Obrigatório" label="Data de Acolhimento">
+                  <div class="input-group date">
+                    <input type="date" class="form-control pull-right" id="datepicker" formControlName="dataAcolhimento">
               </div>
+            </salv-input-container>
+              <br>
             </div>
           </div>
-          <!--OUTROS FINAL-->
+        </div>
+        <!--OUTROS FINAL-->
 
-          <!--BOTÃO-->
-          <div class="col-sm-12 col-sm-12">
-            <button (click)="novoResidente(novoResidenteForm.value)" style="margin-left: 10px" class="btn btn-success botao pull-right">Próximo</button>
-          </div>
+        <!--BOTÃO-->
+        <div class="col-sm-12 col-sm-12">
+          <button (click)="novoResidente(novoResidenteForm.value)" style="margin-left: 10px" class="btn btn-success botao pull-right">Próximo</button>
         </div>
       </div>
-    </form>
+  </div>
+  </form>
   </div>
 
 </section>
