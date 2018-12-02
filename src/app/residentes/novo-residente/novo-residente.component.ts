@@ -19,6 +19,7 @@ export class NovoResidenteComponent implements OnInit {
   ngOnInit() {
 
     this.novoResidenteForm = this.formBuilder.group({
+      // INFORMAÇÕES PESSOAIS INICIO
       nome: this.formBuilder.control('', [Validators.required]),
       apelido: this.formBuilder.control('', [Validators.required]),
       profissao: this.formBuilder.control('', [Validators.required]),
@@ -30,10 +31,18 @@ export class NovoResidenteComponent implements OnInit {
       religiao: this.formBuilder.control('', [Validators.required]),
       escolaridade: this.formBuilder.control('', [Validators.required]),
       dataNascimento: this.formBuilder.control('', [Validators.required]),
+      // INFORMAÇÕES PESSOAIS FINAL
+      
+      // CERTIDAO NASCIMENTO INICIO
+      numeroCertidaoNascimento: this.formBuilder.control('', [Validators.required]),
+      folhaCertidaoNascimento: this.formBuilder.control('', [Validators.required]),
+      livroCertidaoNascimento: this.formBuilder.control('', [Validators.required]),
+      cidadeCertidaoNascimento: this.formBuilder.control('', [Validators.required]),
+      estadoCertidaoNascimento: this.formBuilder.control('', [Validators.required]),
     })
   }
 
-  novoResidente(residente: Residente){
+  novoResidente(residente: Residente) {
     console.log(residente)
   }
 
