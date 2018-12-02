@@ -43,6 +43,7 @@ import { AcompanhamentosComponent } from './acompanhamentos/acompanhamentos.comp
 import { AcompanhamentoComponent } from './acompanhamentos/acompanhamento/acompanhamento.component';
 import { AcompanhamentosService } from './acompanhamentos/acompanhamentos.service';
 import { NovoResidenteComponent } from './residentes/novo-residente/novo-residente.component';
+import { InputContainerComponent } from './shared/input-container/input-container.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { NovoResidenteComponent } from './residentes/novo-residente/novo-residen
     InfosConvenioComponent,
     NotFoundComponent,
     AcompanhamentoComponent,
-    NovoResidenteComponent
+    NovoResidenteComponent,
+    InputContainerComponent
   ],
   imports: [
     BrowserModule,
