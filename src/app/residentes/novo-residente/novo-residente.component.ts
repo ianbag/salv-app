@@ -34,6 +34,16 @@ export class NovoResidenteComponent implements OnInit {
     { value: "NEC", option: "Não Especificado" },
   ];
 
+  escolaridades = [
+    { value: "FI", option: "Fundamental Incompleto" },
+    { value: "FC", option: "Fundamental Completo" },
+    { value: "MI", option: "Médio Incompleto" },
+    { value: "MC", option: "Médio Completo" },
+    { value: "SI", option: "Superior Incompleto" },
+    { value: "SC", option: "Superior Completo" },
+    { value: "NE", option: "Não Especificado" },
+  ];
+
   novoResidenteForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder) { }

@@ -75,13 +75,7 @@
                 <label>Escolaridade </label>
                 <select class="form-control" formControlName="escolaridade">
                   <option value="" label="Selecione" disabled selected="selected"></option>
-                  <option value="FI">Fundamental incompleto</option>
-                  <option value="FC">Fundamental completo</option>
-                  <option value="MI">Médio incompleto</option>
-                  <option value="MC">Médio completo</option>
-                  <option value="SI">Superior incompleto</option>
-                  <option value="SC">Superior completo</option>
-                  <option value="NE">Não especificado</option>
+                  <option *ngFor="let escolaridade of escolaridades" [value]="escolaridade.value">{{escolaridade.option}}</option>
                 </select>
               </div>
               <div class="col-sm-3 col-sm-12">
