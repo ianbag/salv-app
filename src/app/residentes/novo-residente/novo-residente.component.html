@@ -3,7 +3,7 @@
   <div class="box">
     <h1>Adicionar residente</h1>
     <hr>
-
+    
     <form [formGroup]="novoResidenteForm" novalidate>
       <div class="box-body">
         <div>
@@ -165,26 +165,26 @@
             <div class="row">
               <div class="col-sm-4 col-sm-12">
                 <label for="exampleInputPassword1">Número </label>
-                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Número">
+                <input type="text" class="form-control" formControlName="numeroInss" placeholder="Número" autocomplete="off">
               </div>
               <div class="col-sm-3 col-sm-12">
                 <label for="exampleInputPassword1">Banco </label>
-                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Banco">
+                <input type="text" class="form-control" formControlName="bancoInss" placeholder="Banco" autocomplete="off">
               </div>
               <div class="col-sm-2 col-smm-12">
                 <label for="exampleInputPassword1">Agência </label>
-                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Agência">
+                <input type="text" class="form-control" formControlName="agenciaInss" placeholder="Agência" autocomplete="off">
               </div>
               <div class="col-sm-3 col-sm-12">
                 <label for="exampleInputPassword1">Conta </label>
-                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Conta">
+                <input type="text" class="form-control" formControlName="contaInss" placeholder="Conta" autocomplete="off">
               </div>
             </div>
             <br />
             <div class="row">
               <div class="col-sm-4 col-sm-12">
                 <label for="exampleInputPassword1">Situação </label>
-                <select class="form-control">
+                <select class="form-control" formControlName="situacaoInss">
                   <option>Benefício de prestação continuada</option>
                   <option>Aposentadoria por invalidez</option>
                   <option>Aposentadoria por idade</option>
@@ -192,13 +192,12 @@
               </div>
               <div class="col-sm-3 col-sm-12">
                 <label for="exampleInputPassword1">Valor </label>
-                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Valor">
+                <input type="text" class="form-control" formControlName="valorInss" placeholder="Valor" autocomplete="off">
               </div>
               <div class="col-sm-3 col-sm-12">
-                <label for="exampleInputPassword1"> <i class="fa fa-calendar"></i> Prova de
-                  vida </label>
+                <label>Prova de vida </label>
                 <div class="input-group date">
-                  <input type="date" class="form-control pull-right" id="datepicker">
+                  <input type="date" class="form-control pull-right" id="datepicker" formControlName="provaVidaInss">
                 </div>
                 <br>
               </div>

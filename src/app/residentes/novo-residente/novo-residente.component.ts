@@ -46,6 +46,15 @@ export class NovoResidenteComponent implements OnInit {
       zonaEleitoral: this.formBuilder.control('', [Validators.required]),
       secaoEleitoral: this.formBuilder.control('', [Validators.required]),
       //ELEITORAL FINAL
+
+      //INSS INICIO
+      numeroInss: this.formBuilder.control('', [Validators.required]),
+      bancoInss: this.formBuilder.control('', [Validators.required]),
+      agenciaInss: this.formBuilder.control('', [Validators.required]),
+      contaInss: this.formBuilder.control('', [Validators.required]),
+      situacaoInss: this.formBuilder.control('', [Validators.required]),
+      valorInss: this.formBuilder.control('', [Validators.required]),
+      provaVidaInss: this.formBuilder.control('', [Validators.required]),
     })
   }
 
