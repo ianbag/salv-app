@@ -26,4 +26,8 @@ export class ResidentesService {
     convenioById(id: string): Observable<Convenio[]>{
         return this.http.get<Convenio[]>(`${SALV_API}/pessoa/${id}/convenio`)
     }
+
+    deleteResidente(id: string): Observable<any>{
+        return this.http.delete<any>(`${SALV_API}/pessoa/${id}`)
+    }
 }

@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "pessoa": [
         {
             "nome": "Sebastião",
@@ -134,4 +135,137 @@
             "referencia": null
         }
     ]
+=======
+  "pessoa": [
+    {
+      "nome": "Sebastião",
+      "sobrenome": " Caleb Campos",
+      "rg": "470908221",
+      "cpf": "79356358893",
+      "sexo": "m",
+      "estado_civil": "c",
+      "data_nascimento": "1950-12-27",
+      "religiao": "cat",
+      "escolaridade": "sc",
+      "apelido": "Caleb",
+      "profissao": "Mecânico",
+      "titulo_eleitor": "277760530140",
+      "zona_eleitoral": "055",
+      "secao_eleitoral": "218",
+      "numero_certidao_nascimento": "11800501552012158661815692581855",
+      "folha_certidao_nascimento": "25",
+      "livro_certidao_nascimento": "358",
+      "cidade_certidao_nascimento": "Itararé",
+      "estado_certidao_nascimento": "SP",
+      "cartao_sams": "259451561",
+      "cartao_sus": "626526526",
+      "numero_inss": "618498181",
+      "banco_inss": "Itaú",
+      "agencia_inss": "0144",
+      "conta_inss": "256663",
+      "valor_inss": 1550,
+      "situacao_inss": "bpc",
+      "prova_vida_inss": "15/12/2018",
+      "data_acolhimento": "10/11/2016",
+      "data_desacolhimento": null,
+      "movito_desacolhimento": null,
+      "id": 300
+    }
+  ],
+  "familiar": [
+    {
+      "pessoaId": 100,
+      "id": 1000,
+      "nome": "Raquel Lívia Jéssica",
+      "sobrenome": "da Cunha",
+      "parentesco": "Filha",
+      "ddd": "16",
+      "telefone": "32659874",
+      "endereco": "Rua Padre José da Cunha D'Eça",
+      "numero": "498",
+      "bairro": "Centro",
+      "complemento": null,
+      "cidade": "Arari",
+      "estado": "MA",
+      "cep": "65480970",
+      "referencia": null
+    },
+    {
+      "pessoaId": 100,
+      "id": 1001,
+      "nome": "Analu Adriana",
+      "sobrenome": "Pereira",
+      "parentesco": "Filha",
+      "ddd": "16",
+      "telefone": "32659874",
+      "endereco": "Rua Padre José da Cunha D'Eça",
+      "numero": "498",
+      "bairro": "Centro",
+      "complemento": null,
+      "cidade": "Arari",
+      "estado": "MA",
+      "cep": "65480970",
+      "referencia": null
+    }
+  ],
+  "convenio": [
+    {
+      "pessoaId": 100,
+      "id": 10001,
+      "nome": "Unimed",
+      "tipo": "Saúde",
+      "ddd": "16",
+      "telefone": "32588744",
+      "endereco": "Rua Santa Fé",
+      "numero": "118",
+      "bairro": "Potengi",
+      "complemento": null,
+      "cidade": "Natal",
+      "estado": "RN",
+      "cep": "59124405",
+      "referencia": null
+    },
+    {
+      "pessoaId": 100,
+      "id": 10001,
+      "nome": "Unimed",
+      "tipo": "Saúde",
+      "ddd": "16",
+      "telefone": "32588744",
+      "endereco": "Rua Santa Fé",
+      "numero": "118",
+      "bairro": "Potengi",
+      "complemento": null,
+      "cidade": "Natal",
+      "estado": "RN",
+      "cep": "59124405",
+      "referencia": null
+    }
+  ],
+  "acompanhamento": [
+    {
+      "id": 1,
+      "atividade": "atividade no parque", 
+      "data": "25/01/2018",
+      "funcionario": "Dr kauemelazor",
+      "residente": "Antonio Aloizio"
+    },
+    {
+      "id": 2,
+      "atividade": "fisioterapia", 
+      "data": "25/01/2018",
+      "funcionario": "Dra. Luísa",
+      "residente": "Sebastião Caleb"
+    },
+    {
+      "id": 3,
+      "atividade": "Massagem", 
+      "data": "25/01/2018",
+      "funcionario": "Dr kauemelazor",
+      "residente": "Maria do Rosário"
+    }
+  ]
+
+
+>>>>>>> upstream/master
 }

@@ -1,0 +1,243 @@
+<section class="content">
+
+  <div class="box">
+    <h1>Adicionar residente</h1>
+    <hr>
+
+    <form [formGroup]="novoResidenteForm" novalidate>
+      <div class="box-body">
+        <div>
+          <div class="form-group">
+
+            <!--INFORMAÇÕES PESSOAIS INICIO-->
+            <div class="col-sm-12 col-sm-12" id="formTitle">
+              <h4><strong>Informações pessoais</strong></h4>
+            </div>
+            <div class="row">
+              <div class="col-sm-4 col-sm-12">
+                <label for="exampleInputPassword1">Nome </label>
+                <input type="text" class="form-control" formControlName="nome" placeholder="Nome" autocomplete="off">
+              </div>
+              <div class="col-sm-4 col-sm-12">
+                <label for="exampleInputPassword1">Apelido </label>
+                <input type="text" class="form-control" formControlName="apelido" placeholder="Apelido" autocomplete="off">
+              </div>
+              <div class="col-sm-4 col-sm-12">
+                <label for="exampleInputPassword1">Profissão </label>
+                <input type="text" class="form-control" formControlName="profissao" placeholder="Profissão"
+                  autocomplete="off">
+              </div>
+            </div>
+            <br />
+            <div class="row">
+              <div class="col-sm-3 col-sm-12">
+                <label for="exampleInputPassword1">CPF </label>
+                <input type="text" class="form-control" formControlName="cpf" placeholder="CPF" autocomplete="off">
+              </div>
+              <div class="col-sm-3 col-sm-12">
+                <label for="exampleInputPassword1">RG </label>
+                <input type="text" class="form-control" formControlName="rg" placeholder="RG" autocomplete="off">
+              </div>
+              <div class="col-sm-2 col-sm-12">
+                <label>Estado Civil </label>
+                <select class="form-control" formControlName="estadoCivil">
+                  <option>Solteiro</option>
+                  <option>Casado</option>
+                  <option>Divorciado</option>
+                  <option>Viúvo</option>
+                </select>
+              </div>
+              <div class="col-sm-2 col-sm-12">
+                <label>Sexo </label>
+                <select class="form-control" formControlName="sexo">
+                  <option>Masculino</option>
+                  <option>Feminino</option>
+                </select>
+              </div>
+              <div class="col-sm-2 col-sm-12">
+                <label>Gênero </label>
+                <select class="form-control" formControlName="genero">
+                  <option>-------</option>
+                  <option>-------</option>
+                </select>
+              </div>
+            </div>
+            <br />
+
+            <div class="row">
+              <div class="col-sm-3 col-sm-12">
+                <label>Religião </label>
+                <select class="form-control" formControlName="religiao">
+                  <option>Católico</option>
+                  <option>Evangélico</option>
+                  <option>Espiríta</option>
+                  <option>Umbanda e Candomblé</option>
+                  <option>Outras</option>
+                  <option>Sem religião</option>
+                  <option>Não especificado</option>
+                </select>
+              </div>
+              <div class="col-sm-4 col-sm-12">
+                <label>Escolaridade </label>
+                <select class="form-control" formControlName="escolaridade">
+                  <option>Fundamental incompleto</option>
+                  <option>Fundamental completo</option>
+                  <option>Médio incompleto</option>
+                  <option>Médio completo</option>
+                  <option>Superior incompleto</option>
+                  <option>Superior completo</option>
+                  <option>Não especificado</option>
+                </select>
+              </div>
+              <div class="col-sm-3 col-sm-12">
+                <label>Data de Nascimento </label>
+                <div class="input-group date">
+                  <input type="date" class="form-control pull-right" id="datepicker" formControlName="dataNascimento">
+                </div>
+                <br>
+              </div>
+            </div>
+            <hr>
+            <!--INFORMAÇÕES PESSOAIS FINAL-->
+
+            <!--CERTIDÃO DE NASCIMENTO INICIO-->
+            <div class="col-sm-12 col-sm-12" id="formTitle">
+              <h4><strong>Certidão de Nascimento </strong></h4>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-4 col-sm-12">
+                <label>Número </label>
+                <input type="text" class="form-control" formControlName="numeroCertidaoNascimento" placeholder="Número" autocomplete="off">
+              </div>
+              <div class="col-sm-4 col-sm-12">
+                <label>Folha </label>
+                <input type="text" class="form-control" formControlName="folhaCertidaoNascimento" placeholder="Folha" autocomplete="off">
+              </div>
+              <div class="col-sm-4 col-sm-12">
+                <label>Livro </label>
+                <input type="text" class="form-control" formControlName="livroCertidaoNascimento" placeholder="Livro" autocomplete="off">
+              </div>
+            </div>
+            <br />
+            <div class="row">
+              <div class="col-sm-3 col-sm-12">
+                <label>Cidade </label>
+                <input type="text" class="form-control" formControlName="cidadeCertidaoNascimento" placeholder="Cidade" autocomplete="off">
+              </div>
+              <div class="col-sm-2 col-sm-12">
+                <label>Estado </label>
+                <select class="form-control" formControlName="estadoCertidaoNascimento">
+                  <option *ngFor="let estado of estados">{{estado}}</option>
+                </select>
+                <br>
+              </div>
+            </div>
+            <hr>
+            <!--CERTIDÃO DE NASCIMENTO FINAL-->
+
+            <!--SEÇÃO ELEITORAL INICIO-->
+            <div class="col-sm-12 col-sm-12" id="formTitle">
+              <h4><strong>Eleitoral</strong></h4>
+            </div>
+            <div class="row">
+              <div class="col-sm-4 col-sm-12">
+                <label for="exampleInputPassword1">Título </label>
+                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Título">
+              </div>
+              <div class="col-sm-4 col-sm-12">
+                <label for="exampleInputPassword1">Zona </label>
+                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Zona">
+              </div>
+              <div class="col-sm-4 col-sm-12">
+                <label for="exampleInputPassword1">Seção </label>
+                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Seção">
+                <br>
+              </div>
+            </div>
+            <hr>
+            <!--SEÇÃO ELEITORAL FINAL-->
+
+            <!--INSS INICIO-->
+            <div class="col-sm-12 col-sm-12" id="formTitle">
+              <h4><strong>INSS </strong></h4>
+            </div>
+            <div class="row">
+              <div class="col-sm-4 col-sm-12">
+                <label for="exampleInputPassword1">Número </label>
+                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Número">
+              </div>
+              <div class="col-sm-3 col-sm-12">
+                <label for="exampleInputPassword1">Banco </label>
+                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Banco">
+              </div>
+              <div class="col-sm-2 col-smm-12">
+                <label for="exampleInputPassword1">Agência </label>
+                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Agência">
+              </div>
+              <div class="col-sm-3 col-sm-12">
+                <label for="exampleInputPassword1">Conta </label>
+                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Conta">
+              </div>
+            </div>
+            <br />
+            <div class="row">
+              <div class="col-sm-4 col-sm-12">
+                <label for="exampleInputPassword1">Situação </label>
+                <select class="form-control">
+                  <option>Benefício de prestação continuada</option>
+                  <option>Aposentadoria por invalidez</option>
+                  <option>Aposentadoria por idade</option>
+                </select>
+              </div>
+              <div class="col-sm-3 col-sm-12">
+                <label for="exampleInputPassword1">Valor </label>
+                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Valor">
+              </div>
+              <div class="col-sm-3 col-sm-12">
+                <label for="exampleInputPassword1"> <i class="fa fa-calendar"></i> Prova de
+                  vida </label>
+                <div class="input-group date">
+                  <input type="date" class="form-control pull-right" id="datepicker">
+                </div>
+                <br>
+              </div>
+            </div>
+            <hr>
+            <!--INSS FINAL-->
+
+            <!--OUTROS INICIO-->
+            <div class="col-sm-12 col-sm-12" id="formTitle">
+              <h4><strong>Outros </strong></h4>
+            </div>
+            <div class="row">
+              <div class="col-sm-4 col-sm-12">
+                <label for="exampleInputPassword1">Cartão SAMS </label>
+                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Número do Cartão SAMS">
+              </div>
+              <div class="col-sm-4 col-sm-12">
+                <label for="exampleInputPassword1">Cartão SUS </label>
+                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Número do Cartão SUS">
+              </div>
+              <div class="col-sm-3 col-sm-12">
+                <label for="exampleInputPassword1"> <i class="fa fa-calendar"></i> Data de
+                  acolhimento </label>
+                <div class="input-group date">
+                  <input type="date" class="form-control pull-right" id="datepicker">
+                </div>
+                <br>
+              </div>
+            </div>
+          </div>
+          <!--OUTROS FINAL-->
+
+          <!--BOTÃO-->
+          <div class="col-sm-12 col-sm-12">
+            <button (click)="novoResidente(novoResidenteForm.value)" style="margin-left: 10px" class="btn btn-success botao pull-right">Próximo</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</section>

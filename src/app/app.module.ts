@@ -31,6 +31,10 @@ import { ConveniosService } from './convenios/convenios.service';
 import { AniversariantesComponent } from './tela-inicial/aniversariantes/aniversariantes.component';
 import { ProvaDeVidaComponent } from './tela-inicial/prova-de-vida/prova-de-vida.component';
 import { AniversarianteComponent } from './tela-inicial/aniversariantes/aniversariante/aniversariante.component';
+<<<<<<< HEAD
+=======
+import { DialogConfirmService } from './residentes/dialog-confirm.service';
+>>>>>>> upstream/master
 import { InfosConvenioComponent } from './residentes/residente/infos-convenio/infos-convenio.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 <<<<<<< HEAD
@@ -41,9 +45,16 @@ import { InfosFuncionaisComponent } from './funcionarios/funcionario/infos-funci
 import { NovoFuncionarioComponent } from './funcionarios/funcionario/novo-funcionario/novo-funcionario.component';
 import { NovoDependenteComponent } from './funcionarios/funcionario/novo-funcionario/novo-dependente/novo-dependente.component';
 import { NovaInfoFuncionalComponent } from './funcionarios/funcionario/novo-funcionario/nova-info-funcional/nova-info-funcional.component';
+<<<<<<< HEAD
 import { ConvenioComponent } from './convenios/convenio/convenio.component';
 =======
 >>>>>>> 1b6cc3466863356b6cf019954b61c51efea14101
+=======
+import { AcompanhamentosComponent } from './acompanhamentos/acompanhamentos.component';
+import { AcompanhamentoComponent } from './acompanhamentos/acompanhamento/acompanhamento.component';
+import { AcompanhamentosService } from './acompanhamentos/acompanhamentos.service';
+import { NovoResidenteComponent } from './residentes/novo-residente/novo-residente.component';
+>>>>>>> upstream/master
 
 @NgModule({
   declarations: [
@@ -65,8 +76,11 @@ import { ConvenioComponent } from './convenios/convenio/convenio.component';
     ConveniosComponent,
     AniversariantesComponent,
     ProvaDeVidaComponent,
+<<<<<<< HEAD
     AniversarianteComponent,
 <<<<<<< HEAD
+=======
+>>>>>>> upstream/master
     AniversarianteComponent,
     InfosConvenioComponent,
     NotFoundComponent,
@@ -77,6 +91,7 @@ import { ConvenioComponent } from './convenios/convenio/convenio.component';
     NovoFuncionarioComponent,
     NovoDependenteComponent,
     NovaInfoFuncionalComponent,
+<<<<<<< HEAD
     InfosConvenioComponent,
     NotFoundComponent,
     ConvenioComponent
@@ -84,6 +99,14 @@ import { ConvenioComponent } from './convenios/convenio/convenio.component';
     InfosConvenioComponent,
     NotFoundComponent
 >>>>>>> 1b6cc3466863356b6cf019954b61c51efea14101
+=======
+    NotFoundComponent,
+    AcompanhamentosComponent,
+    InfosConvenioComponent,
+    NotFoundComponent,
+    AcompanhamentoComponent,
+    NovoResidenteComponent
+>>>>>>> upstream/master
   ],
   imports: [
     BrowserModule,
@@ -94,7 +117,13 @@ import { ConvenioComponent } from './convenios/convenio/convenio.component';
     RouterModule.forRoot(ROUTES)
   ],
   providers: [
+<<<<<<< HEAD
     ResidentesService,ConveniosService
+=======
+    ResidentesService,
+    DialogConfirmService,
+    AcompanhamentosService
+>>>>>>> upstream/master
   ],
   bootstrap: [AppComponent]
 })
