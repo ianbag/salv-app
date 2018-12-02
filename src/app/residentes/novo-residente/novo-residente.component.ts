@@ -22,7 +22,17 @@ export class NovoResidenteComponent implements OnInit {
   sexos = [
     { value: "M", option: "Masculino" },
     { value: "F", option: "Feminino" }
-  ]
+  ];
+
+  religioes = [
+    { value: "CAT", option: "Católico" },
+    { value: "EVG", option: "Evangélico" },
+    { value: "ESP", option: "Espírita" },
+    { value: "UBC", option: "Umbanda e Candomblé" },
+    { value: "OUT", option: "Outras religiões" },
+    { value: "SRG", option: "Sem Religião" },
+    { value: "NEC", option: "Não Especificado" },
+  ];
 
   novoResidenteForm: FormGroup;
 

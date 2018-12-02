@@ -68,13 +68,7 @@
                 <label>Religião </label>
                 <select class="form-control" formControlName="religiao">
                   <option value="" label="Selecione" disabled selected="selected"></option>
-                  <option value="CAT">Católico</option>
-                  <option value="EVG">Evangélico</option>
-                  <option value="ESP">Espiríta</option>
-                  <option value="UBC">Umbanda e Candomblé</option>
-                  <option value="OUT">Outras</option>
-                  <option value="SRG">Sem religião</option>
-                  <option value="NEC">Não especificado</option>
+                  <option *ngFor="let religiao of religioes" [value]="religiao.value">{{religiao.option}}</option>
                 </select>
               </div>
               <div class="col-sm-4 col-sm-12">
