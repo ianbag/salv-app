@@ -59,45 +59,45 @@ export class NovoResidenteComponent implements OnInit {
     this.novoResidenteForm = this.formBuilder.group({
       // INFORMAÇÕES PESSOAIS INICIO
       nome: this.formBuilder.control('', [Validators.required]),
-      apelido: this.formBuilder.control('', [Validators.required]),
-      profissao: this.formBuilder.control('', [Validators.required]),
-      cpf: this.formBuilder.control('', [Validators.required]),
-      rg: this.formBuilder.control('', [Validators.required]),
-      estadoCivil: this.formBuilder.control('', [Validators.required]),
+      apelido: this.formBuilder.control('', []),
+      profissao: this.formBuilder.control('', []),
+      cpf: this.formBuilder.control('', []),
+      rg: this.formBuilder.control('', []),
+      estadoCivil: this.formBuilder.control('', []),
       sexo: this.formBuilder.control('', [Validators.required]),
-      genero: this.formBuilder.control('', [Validators.required]),
-      religiao: this.formBuilder.control('', [Validators.required]),
-      escolaridade: this.formBuilder.control('', [Validators.required]),
-      dataNascimento: this.formBuilder.control('', [Validators.required]),
+      genero: this.formBuilder.control('', []),
+      religiao: this.formBuilder.control('', []),
+      escolaridade: this.formBuilder.control('', []),
+      dataNascimento: this.formBuilder.control('', []),
       // INFORMAÇÕES PESSOAIS FINAL
 
       // CERTIDAO NASCIMENTO INICIO
-      numeroCertidaoNascimento: this.formBuilder.control('', [Validators.required]),
-      folhaCertidaoNascimento: this.formBuilder.control('', [Validators.required]),
-      livroCertidaoNascimento: this.formBuilder.control('', [Validators.required]),
-      cidadeCertidaoNascimento: this.formBuilder.control('', [Validators.required]),
-      estadoCertidaoNascimento: this.formBuilder.control('', [Validators.required]),
+      numeroCertidaoNascimento: this.formBuilder.control('', []),
+      folhaCertidaoNascimento: this.formBuilder.control('', []),
+      livroCertidaoNascimento: this.formBuilder.control('', []),
+      cidadeCertidaoNascimento: this.formBuilder.control('', []),
+      estadoCertidaoNascimento: this.formBuilder.control('', []),
       //CERTIDAO NASCIMENTO FINAL
 
       //ELEITORAL INICIO
-      tituloEleitoral: this.formBuilder.control('', [Validators.required]),
-      zonaEleitoral: this.formBuilder.control('', [Validators.required]),
-      secaoEleitoral: this.formBuilder.control('', [Validators.required]),
+      tituloEleitoral: this.formBuilder.control('', []),
+      zonaEleitoral: this.formBuilder.control('', []),
+      secaoEleitoral: this.formBuilder.control('', []),
       //ELEITORAL FINAL
 
       //INSS INICIO
-      numeroInss: this.formBuilder.control('', [Validators.required]),
-      bancoInss: this.formBuilder.control('', [Validators.required]),
-      agenciaInss: this.formBuilder.control('', [Validators.required]),
-      contaInss: this.formBuilder.control('', [Validators.required]),
-      situacaoInss: this.formBuilder.control('', [Validators.required]),
-      valorInss: this.formBuilder.control('', [Validators.required]),
-      provaVidaInss: this.formBuilder.control('', [Validators.required]),
+      numeroInss: this.formBuilder.control('', []),
+      bancoInss: this.formBuilder.control('', []),
+      agenciaInss: this.formBuilder.control('', []),
+      contaInss: this.formBuilder.control('', []),
+      situacaoInss: this.formBuilder.control('', []),
+      valorInss: this.formBuilder.control('', []),
+      provaVidaInss: this.formBuilder.control('', []),
       //INSS FINAL
 
       //OUTROS INICIO
-      cartaoSams: this.formBuilder.control('', [Validators.required]),
-      cartaoSus: this.formBuilder.control('', [Validators.required]),
+      cartaoSams: this.formBuilder.control('', []),
+      cartaoSus: this.formBuilder.control('', []),
       dataAcolhimento: this.formBuilder.control('', [Validators.required])
       //OUTROS FINAL
     })
