@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ConveniosService } from 'src/app/convenios/convenios.service';
+import { Convenio } from 'src/app/residentes/residente/infos-convenio/convenio.model';
 
 @Component({
   selector: 'salv-convenios',
@@ -6,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConveniosComponent implements OnInit {
 
-  constructor() { }
+  constructor(private conveniosService: ConveniosService) { }
 
+  convenios: Convenio[]
+  
   ngOnInit() {
+    this.conveniosService.convenios().subscribe(convenios => this.convenios = convenios)
   }
 
 }

@@ -52,7 +52,6 @@
             "estado": "MA",
             "cep": "65480970",
             "referencia": null
-                
         },
         {
             "pessoaId": 100,
@@ -70,7 +69,69 @@
             "estado": "MA",
             "cep": "65480970",
             "referencia": null
-            
+        }
+    ],
+    "convenio": [
+        {
+            "pessoaId": 100,
+            "id": 10001,
+            "nome": "Unimed",
+            "tipo": "Saúde",
+            "ddd": "16",
+            "telefone": "32588744",
+            "endereco": "Rua Santa Fé",
+            "numero": "118",
+            "bairro": "Potengi",
+            "complemento": null,
+            "cidade": "Natal",
+            "estado": "RN",
+            "cep": "59124405",
+            "referencia": null
+        },
+        {
+            "pessoaId": 100,
+            "id": 10002,
+            "nome": "Unimed",
+            "tipo": "Saúde",
+            "ddd": "16",
+            "telefone": "32588744",
+            "endereco": "Rua Santa Fé",
+            "numero": "118",
+            "bairro": "Potengi",
+            "complemento": null,
+            "cidade": "Natal",
+            "estado": "RN",
+            "cep": "59124405",
+            "referencia": null
+        },
+        {
+            "id": 10003,
+            "nome": "Unimed",
+            "tipo": "Saúde",
+            "ddd": "16",
+            "telefone": "32588744",
+            "endereco": "Rua Santa Fé",
+            "numero": "118",
+            "bairro": "Potengi",
+            "complemento": null,
+            "cidade": "Natal",
+            "estado": "RN",
+            "cep": "59124405",
+            "referencia": null
+        },{
+            "id": 1000,
+            "nome": "Farma Vita",
+            "tipo": "Saúde",
+            "ddd": "16",
+            "telefone": "32588744",
+            "endereco": "Rua Brasil",
+            "numero": "120",
+            "bairro": "Portugal",
+            "complemento": null,
+            "cidade": "São Paulo",
+            "estado": "SP",
+            "cep": "59124405",
+            "referencia": null
         }
     ]
 }

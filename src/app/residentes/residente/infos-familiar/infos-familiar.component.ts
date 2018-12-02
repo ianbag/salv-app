@@ -12,15 +12,7 @@ export class InfosFamiliarComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.familiar)
   }
 
-  isComplemento(complemento: Familiar): boolean {
-    if (this.familiar.complemento) {
-      return true
-    } else {
-      return true
-    }
-  }
 
 }
