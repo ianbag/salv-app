@@ -127,7 +127,9 @@
               </div>
               <div class="col-sm-2 col-sm-12">
                 <label for="exampleInputEmail1">Estado </label>
-                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Estado">
+                <select class="form-control">
+                    <option *ngFor="let estado of estados">{{estado}}</option>
+                  </select>
                 <br>
               </div>
             </div>
