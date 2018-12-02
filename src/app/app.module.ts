@@ -24,12 +24,16 @@ import { CpfPipe } from './shared/pipes/cpf.pipe';
 import { RgPipe } from './shared/pipes/rg.pipe';
 import { InfosFamiliarComponent } from './residentes/residente/infos-familiar/infos-familiar.component';
 import { ConveniosComponent } from './convenios/convenios.component';
+<<<<<<< HEAD
 import { ConveniosService } from './convenios/convenios.service';
+=======
+>>>>>>> 1b6cc3466863356b6cf019954b61c51efea14101
 import { AniversariantesComponent } from './tela-inicial/aniversariantes/aniversariantes.component';
 import { ProvaDeVidaComponent } from './tela-inicial/prova-de-vida/prova-de-vida.component';
 import { AniversarianteComponent } from './tela-inicial/aniversariantes/aniversariante/aniversariante.component';
 import { InfosConvenioComponent } from './residentes/residente/infos-convenio/infos-convenio.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+<<<<<<< HEAD
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 import { FuncionarioComponent } from './funcionarios/funcionario/funcionario.component';
 import { InfosDependenteComponent } from './funcionarios/funcionario/infos-dependente/infos-dependente.component';
@@ -38,6 +42,8 @@ import { NovoFuncionarioComponent } from './funcionarios/funcionario/novo-funcio
 import { NovoDependenteComponent } from './funcionarios/funcionario/novo-funcionario/novo-dependente/novo-dependente.component';
 import { NovaInfoFuncionalComponent } from './funcionarios/funcionario/novo-funcionario/nova-info-funcional/nova-info-funcional.component';
 import { ConvenioComponent } from './convenios/convenio/convenio.component';
+=======
+>>>>>>> 1b6cc3466863356b6cf019954b61c51efea14101
 
 @NgModule({
   declarations: [
@@ -60,6 +66,7 @@ import { ConvenioComponent } from './convenios/convenio/convenio.component';
     AniversariantesComponent,
     ProvaDeVidaComponent,
     AniversarianteComponent,
+<<<<<<< HEAD
     AniversarianteComponent,
     InfosConvenioComponent,
     NotFoundComponent,
@@ -73,6 +80,10 @@ import { ConvenioComponent } from './convenios/convenio/convenio.component';
     InfosConvenioComponent,
     NotFoundComponent,
     ConvenioComponent
+=======
+    InfosConvenioComponent,
+    NotFoundComponent
+>>>>>>> 1b6cc3466863356b6cf019954b61c51efea14101
   ],
   imports: [
     BrowserModule,
