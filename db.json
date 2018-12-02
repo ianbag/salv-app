@@ -115,7 +115,7 @@
     },
     {
       "id": 2,
-      "atividade": "Consulta com a Nutricionista", 
+      "atividade": "fisioterapia", 
       "data": "25/01/2018",
       "funcionario": "Dra. Luísa",
       "residente": "Sebastião Caleb"
@@ -125,7 +125,7 @@
       "atividade": "Massagem", 
       "data": "25/01/2018",
       "funcionario": "Dr kauemelazor",
-      "residente": "Sebastião Caleb"
+      "residente": "Maria do Rosário"
     }
   ]
 
