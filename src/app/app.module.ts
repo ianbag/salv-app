@@ -43,7 +43,7 @@ import { AcompanhamentosComponent } from './acompanhamentos/acompanhamentos.comp
 import { AcompanhamentoComponent } from './acompanhamentos/acompanhamento/acompanhamento.component';
 import { AcompanhamentosService } from './acompanhamentos/acompanhamentos.service';
 import { NovoResidenteComponent } from './residentes/novo-residente/novo-residente.component';
-import { InputContainerComponent } from './shared/input-container/input-container.component';
+import { InputComponent } from './shared/input/input.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +85,7 @@ import { InputContainerComponent } from './shared/input-container/input-containe
     NotFoundComponent,
     AcompanhamentoComponent,
     NovoResidenteComponent,
-    InputContainerComponent
+    InputComponent
   ],
   imports: [
     BrowserModule,

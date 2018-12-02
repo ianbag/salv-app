@@ -14,12 +14,13 @@
               <h4><strong>Informações pessoais</strong></h4>
             </div>
             <div class="row">
-              <div class="col-sm-4 col-sm-12">
-                <label for="exampleInputPassword1">Nome </label>
-                <input type="text" class="form-control" formControlName="nome" placeholder="Nome" autocomplete="off">
+              <div class="col-sm-4 col-sm-12" style="margin-top: -10px; margin-left: -10px">
+                <salv-input-container errorMessage="Campo Obrigatório" label="Nome">
+                  <input type="text" class="form-control" formControlName="nome" placeholder="Nome" autocomplete="off">
+                </salv-input-container>
               </div>
               <div class="col-sm-4 col-sm-12">
-                <label for="exampleInputPassword1">Apelido </label>
+                <label>Apelido </label>
                 <input type="text" class="form-control" formControlName="apelido" placeholder="Apelido" autocomplete="off">
               </div>
               <div class="col-sm-4 col-sm-12">
