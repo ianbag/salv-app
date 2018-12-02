@@ -13,12 +13,14 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 import { NovoFuncionarioComponent } from './funcionarios/funcionario/novo-funcionario/novo-funcionario.component';
 import { NovoDependenteComponent } from './funcionarios/funcionario/novo-funcionario/novo-dependente/novo-dependente.component';
+import { NovoResidenteComponent } from './residentes/novo-residente/novo-residente.component';
 
 
 export const ROUTES: Routes = [
     //ROTAS VÃO AQUI
     { path: 'residentes', component: ResidentesComponent },
     { path: 'residente/:id', component: ResidenteComponent },
+    {path: 'novo-residente', component: NovoResidenteComponent},
     { path: 'convenios', component: ConveniosComponent },
     { path: 'funcionarios', component: FuncionariosComponent},
     { path: 'funcionario/:id', component: FuncionarioComponent},

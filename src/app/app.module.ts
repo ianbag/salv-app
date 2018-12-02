@@ -40,6 +40,7 @@ import { NovaInfoFuncionalComponent } from './funcionarios/funcionario/novo-func
 import { AcompanhamentosComponent } from './acompanhamentos/acompanhamentos.component';
 import { AcompanhamentoComponent } from './acompanhamentos/acompanhamento/acompanhamento.component';
 import { AcompanhamentosService } from './acompanhamentos/acompanhamentos.service';
+import { NovoResidenteComponent } from './residentes/novo-residente/novo-residente.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { AcompanhamentosService } from './acompanhamentos/acompanhamentos.servic
     AcompanhamentosComponent,
     InfosConvenioComponent,
     NotFoundComponent,
-    AcompanhamentoComponent
+    AcompanhamentoComponent,
+    NovoResidenteComponent
   ],
   imports: [
     BrowserModule,
