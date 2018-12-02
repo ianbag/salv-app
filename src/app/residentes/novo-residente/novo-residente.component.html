@@ -14,7 +14,7 @@
               <h4><strong>Informações pessoais</strong></h4>
             </div>
             <div class="row">
-              <div class="col-sm-4 col-sm-12" style="margin-top: -10px; margin-left: -10px">
+              <div class="col-sm-4 col-sm-12" id="inputValidator">
                 <salv-input-container errorMessage="Campo Obrigatório" label="Nome">
                   <input type="text" class="form-control" formControlName="nome" placeholder="Nome" autocomplete="off">
                 </salv-input-container>
@@ -31,12 +31,12 @@
             </div>
             <br />
             <div class="row">
-              <div class="col-sm-3 col-sm-12" style="margin-top: -10px; margin-left: -10px">
+              <div class="col-sm-3 col-sm-12" id="inputValidator">
                 <salv-input-container errorMessage="Minimo 11 caracteres" label="CPF">
                   <input type="text" mask="000.000.000-00" class="form-control" formControlName="cpf" placeholder="CPF" autocomplete="off">
                 </salv-input-container>
               </div>
-              <div class="col-sm-3 col-sm-12" style="margin-top: -10px; margin-left: -10px">
+              <div class="col-sm-3 col-sm-12" id="inputValidator">
                 <salv-input-container errorMessage="Minimo 9 caracteres" label="RG">
                   <input type="text" mask="00.000.000-0" class="form-control" formControlName="rg" placeholder="RG" autocomplete="off">
                 </salv-input-container>
@@ -48,7 +48,7 @@
                   <option *ngFor="let estadoCivil of estadosCivil" [value]="estadoCivil.value">{{estadoCivil.option}}</option>
                 </select>
               </div>
-              <div class="col-sm-3 col-sm-12" style="margin-top: -10px; margin-left: -10px">
+              <div class="col-sm-3 col-sm-12" id="inputValidator">
                 <salv-input-container errorMessage="Campo Obrigatório" label="Sexo">
                   <select class="form-control" formControlName="sexo">
                     <option value="" label="Selecione" disabled selected="selected"></option>
@@ -218,7 +218,7 @@
                 <label for="exampleInputPassword1">Cartão SUS </label>
                 <input type="text" class="form-control" formControlName="cartaoSus" placeholder="Número do Cartão SUS">
               </div>
-              <div class="col-sm-3 col-sm-12" style="margin-top: -10px; margin-left: -10px">
+              <div class="col-sm-3 col-sm-12" id="inputValidator">
                 <salv-input-container errorMessage="Campo Obrigatório" label="Data de Acolhimento">
                   <div class="input-group date">
                     <input type="date" class="form-control pull-right" id="datepicker" formControlName="dataAcolhimento">
