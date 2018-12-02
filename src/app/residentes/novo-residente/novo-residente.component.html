@@ -183,9 +183,7 @@
                 <label for="exampleInputPassword1">Situação </label>
                 <select class="form-control" formControlName="situacaoInss">
                   <option value="" label="Selecione" disabled selected="selected"></option>
-                  <option value="BPC">Benefício de prestação continuada</option>
-                  <option value="AIV">Aposentadoria por invalidez</option>
-                  <option value="AID">Aposentadoria por idade</option>
+                  <option *ngFor="let situacao of situacoesInss" [value]="situacao.value">{{situacao.option}}</option>
                 </select>
               </div>
               <div class="col-sm-3 col-sm-12">
