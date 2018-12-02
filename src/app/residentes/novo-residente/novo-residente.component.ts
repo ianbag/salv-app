@@ -12,6 +12,13 @@ export class NovoResidenteComponent implements OnInit {
     "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"
   ];
 
+  estadosCivil = [
+    { value: "S", option: "Solteiro" },
+    { value: "C", option: "Casado" },
+    { value: "D", option: "Divorciado" },
+    { value: "V", option: "Viúvo" }
+  ]
+
   novoResidenteForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder) { }

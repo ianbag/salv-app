@@ -42,10 +42,7 @@
                 <label>Estado Civil </label>
                 <select class="form-control" formControlName="estadoCivil">
                   <option value="" label="Selecione" disabled selected="selected"></option>
-                  <option value="S">Solteiro</option>
-                  <option value="C">Casado</option>
-                  <option value="D">Divorciado</option>
-                  <option value="V">Viúvo</option>
+                  <option *ngFor="let estadoCivil of estadosCivil" [value]="estadoCivil.value">{{estadoCivil.option}}</option>
                 </select>
               </div>
               <div class="col-sm-2 col-sm-12">
