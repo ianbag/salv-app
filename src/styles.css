@@ -43,3 +43,7 @@
   .erro{
     text-align: center;
   }
+
+  #formTitle{
+    margin-left: -16px;
+  }
