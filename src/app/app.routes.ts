@@ -14,24 +14,26 @@ import { AcompanhamentosComponent } from './acompanhamentos/acompanhamentos.comp
 import { AcompanhamentoComponent } from './acompanhamentos/acompanhamento/acompanhamento.component';
 import { ConvenioComponent } from './convenios/convenio/convenio.component';
 import { FuncionarioComponent } from './funcionarios/funcionario/funcionario.component';
+import { FamiliarResidenteComponent } from './residentes/novo-residente/familiar-residente/familiar-residente.component';
 
 
 export const ROUTES: Routes = [
     //ROTAS VÃO AQUI
     { path: 'residentes', component: ResidentesComponent },
     { path: 'residente/:id', component: ResidenteComponent },
-    {path: 'novo-residente', component: NovoResidenteComponent},
+    { path: 'novo-residente', component: NovoResidenteComponent },
+    { path: 'familiar-residente', component: FamiliarResidenteComponent },
     { path: 'convenios', component: ConveniosComponent },
-    { path: 'convenio/:id', component: ConvenioComponent},
-    { path: 'funcionarios', component: FuncionariosComponent},
-    { path: 'funcionario/:id', component: FuncionarioComponent},
-    { path: 'novo-funcionario', component: NovoFuncionarioComponent},
-    { path: 'novo-dependente', component: NovoDependenteComponent},
-    { path: 'acompanhamentos', component: AcompanhamentosComponent},
-    { path: 'acompanhamento/:id', component: AcompanhamentoComponent},
-    { path: '', component: TelaInicialComponent},
-    { path: '**', component: NotFoundComponent}
-    
+    { path: 'convenio/:id', component: ConvenioComponent },
+    { path: 'funcionarios', component: FuncionariosComponent },
+    { path: 'funcionario/:id', component: FuncionarioComponent },
+    { path: 'novo-funcionario', component: NovoFuncionarioComponent },
+    { path: 'novo-dependente', component: NovoDependenteComponent },
+    { path: 'acompanhamentos', component: AcompanhamentosComponent },
+    { path: 'acompanhamento/:id', component: AcompanhamentoComponent },
+    { path: '', component: TelaInicialComponent },
+    { path: '**', component: NotFoundComponent }
+
 
 
 ]
