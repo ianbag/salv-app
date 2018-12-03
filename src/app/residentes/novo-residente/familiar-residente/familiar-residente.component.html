@@ -1,3 +1,77 @@
-<p>
-  familiar-residente works!
-</p>
+<section class="content">
+
+  <div class="box">
+    <h1>Adicionar familiar</h1>
+    <hr>
+
+    <form role="form">
+      <div class="box-body">
+        <div>
+          <div class="form-group">
+            <div class="col-sm-12 col-sm-12" id="formTitle">
+              <h4><strong>Informações do familiar</strong></h4>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-sm-6 col-sm-12">
+                  <label for="exampleInputPassword1">Nome </label>
+                  <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nome">
+                </div>
+                <div class="col-sm-6 col-sm-12">
+                  <label for="exampleInputPassword1">Parentesco </label>
+                  <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Parentesco">
+                </div>
+              </div>
+              <br />
+              <div class="col-sm-6 col-sm-12">
+                <label for="exampleInputPassword1">Rua </label>
+                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Rua">
+              </div>
+              <div class="col-sm-2 col-sm-12">
+                <label for="exampleInputPassword1">Número </label>
+                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Número">
+              </div>
+              <div class="col-sm-4 col-sm-12">
+                <label for="exampleInputPassword1">Bairro </label>
+                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Bairro">
+              </div>
+              <div class="col-sm-3 col-sm-12">
+                <label for="exampleInputPassword1">Cidade </label>
+                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Cidade">
+              </div>
+              <div class="col-sm-2 col-sm-12">
+                <label for="exampleInputPassword1">Estado </label>
+                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Estado">
+              </div>
+              <div class="col-sm-3 col-sm-12">
+                <label for="exampleInputPassword1">CEP </label>
+                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="CEP">
+              </div>
+              <div class="col-sm-4 col-sm-12">
+                <label for="exampleInputPassword1">Complemento </label>
+                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Complemento">
+              </div>
+              <div class="col-sm-4 col-sm-12">
+                <label for="exampleInputPassword1">Número telefone </label>
+                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Número telefone">
+              </div>
+              <div class="col-sm-2 col-sm-12" style="margin-top: 25px">
+                <a type="submit" class="btn btn-success botao"><i class="fa fa-plus"></i></a>
+              </div>
+              <div class="col-sm-6 col-sm-12">
+                <label for="exampleInputPassword1">Referência </label>
+                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Referência">
+                <br>
+              </div>
+
+            </div>
+            <div class="col-sm-12 col-sm-12">
+              <a style="margin-left: 10px" type="submit" class="btn btn-success botao pull-right">Próximo</a>
+              <a type="submit" class="btn btn-default botao pull-right" [routerLink]="['/novo-residente']">Voltar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
