@@ -15,6 +15,7 @@ import { AcompanhamentoComponent } from './acompanhamentos/acompanhamento/acompa
 import { ConvenioComponent } from './convenios/convenio/convenio.component';
 import { FuncionarioComponent } from './funcionarios/funcionario/funcionario.component';
 import { FamiliarResidenteComponent } from './residentes/novo-residente/familiar-residente/familiar-residente.component';
+import { ConvenioResidenteComponent } from './residentes/novo-residente/convenio-residente/convenio-residente.component';
 
 
 export const ROUTES: Routes = [
@@ -23,6 +24,7 @@ export const ROUTES: Routes = [
     { path: 'residente/:id', component: ResidenteComponent },
     { path: 'novo-residente', component: NovoResidenteComponent },
     { path: 'familiar-residente', component: FamiliarResidenteComponent },
+    { path: 'convenio-residente', component: ConvenioResidenteComponent },
     { path: 'convenios', component: ConveniosComponent },
     { path: 'convenio/:id', component: ConvenioComponent },
     { path: 'funcionarios', component: FuncionariosComponent },
