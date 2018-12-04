@@ -47,6 +47,7 @@ import { NovoResidenteComponent } from './residentes/novo-residente/novo-residen
 import { InputComponent } from './shared/input/input.component';
 import { FamiliarResidenteComponent } from './residentes/novo-residente/familiar-residente/familiar-residente.component';
 import { ConvenioResidenteComponent } from './residentes/novo-residente/convenio-residente/convenio-residente.component';
+import { NovoAcompanhamentoComponent } from './acompanhamentos/novo-acompanhamento/novo-acompanhamento.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +91,8 @@ import { ConvenioResidenteComponent } from './residentes/novo-residente/convenio
     NovoResidenteComponent,
     InputComponent,
     FamiliarResidenteComponent,
-    ConvenioResidenteComponent
+    ConvenioResidenteComponent,
+    NovoAcompanhamentoComponent
   ],
   imports: [
     BrowserModule,
