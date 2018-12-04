@@ -4,7 +4,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
-import {NgxMaskModule} from "ngx-mask";
+import { NgxMaskModule } from "ngx-mask";
 
 import { ROUTES } from "./app.routes";
 
@@ -48,6 +48,8 @@ import { InputComponent } from './shared/input/input.component';
 import { FamiliarResidenteComponent } from './residentes/novo-residente/familiar-residente/familiar-residente.component';
 import { ConvenioResidenteComponent } from './residentes/novo-residente/convenio-residente/convenio-residente.component';
 import { NovoAcompanhamentoComponent } from './acompanhamentos/novo-acompanhamento/novo-acompanhamento.component';
+
+import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
 
 @NgModule({
   declarations: [
@@ -101,7 +103,8 @@ import { NovoAcompanhamentoComponent } from './acompanhamentos/novo-acompanhamen
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(ROUTES),
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [
     ResidentesService,

@@ -8,16 +8,22 @@
       <div class="box-body">
         <div class="form-group">
 
+
           <div class="col-sm-8 col-xs-12">
-            <label>Residentes que participaram da atividade </label><br>
-            <select name="selections[]" class="dix" multiple="multiple" style="width: 100%;">
-              <option value="MR">Mária do Rosário</option>
-              <option>Sergio Reis</option>
-              <option>João Cancelo</option>
-              <option>Everaldo Oliveira</option>
-              <option>Conceição Souza</option>
-            </select>
+              <label>Residentes que participaram da atividade </label><br>
+              <ng-multiselect-dropdown 
+                name="city"
+                [placeholder]="'Select city'"
+                [data]="cities"
+                formControlName="city"
+                [disabled]="disabled"
+                [settings]="dropdownSettings"
+                (onSelect)="onItemSelect($event)">
+
+              </ng-multiselect-dropdown>
+
           </div>
+
 
           <div class="col-sm-3 col-xs-12">
             <label for="exampleInputPassword1"> <i class="fa fa-calendar"></i> Data
