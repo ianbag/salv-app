@@ -1,3 +1,4 @@
+import { NovoAcompanhamentoComponent } from './acompanhamentos/novo-acompanhamento/novo-acompanhamento.component';
 
 import { ConveniosComponent } from './convenios/convenios.component';
 import { Routes } from "@angular/router";
@@ -33,9 +34,9 @@ export const ROUTES: Routes = [
     { path: 'novo-dependente', component: NovoDependenteComponent },
     { path: 'acompanhamentos', component: AcompanhamentosComponent },
     { path: 'acompanhamento/:id', component: AcompanhamentoComponent },
+    { path: 'novo-acompanhamento', component: NovoAcompanhamentoComponent},
     { path: '', component: TelaInicialComponent },
     { path: '**', component: NotFoundComponent }
-
 
 
 ]
