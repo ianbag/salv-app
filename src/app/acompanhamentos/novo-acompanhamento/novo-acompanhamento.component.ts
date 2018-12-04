@@ -1,3 +1,4 @@
+import { Acompanhamento } from './../acompanhamento/acompanhamento.model';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
@@ -16,9 +17,21 @@ export class NovoAcompanhamentoComponent implements OnInit {
   selectedItems: any = []
   dropdownSettings: any = []
 
+
+  novoAcompanhamentoForm: FormGroup;
+
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+
+    //Formulário Novo Acompanhamento
+
+    this.novoAcompanhamentoForm = this.formBuilder.group({
+      residente: this.formBuilder.control(''),
+      data: this.formBuilder.control(''),
+      atividade: this.formBuilder.control(''),
+      funcionario: this.formBuilder.control('')
+    })
 
     //City List 
     this.cities = [
@@ -47,6 +60,10 @@ export class NovoAcompanhamentoComponent implements OnInit {
       city: [this.selectedItems]
     })
 
+  }
+
+  novoAcompanhamento(acompanhamento: Acompanhamento){
+    console.log(acompanhamento)
   }
 
   onItemSelect(item: any){
