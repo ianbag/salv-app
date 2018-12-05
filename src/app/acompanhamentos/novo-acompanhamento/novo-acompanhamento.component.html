@@ -12,10 +12,10 @@
           <div class="col-sm-8 col-xs-12">
               <label>Residentes que participaram da atividade </label><br>
               <ng-multiselect-dropdown 
-                name="city"
-                [placeholder]="'Select city'"
-                [data]="cities"
-                formControlName="city"
+                name="nome"
+                [placeholder]="'Selecione os residentes'"
+                [data]="nomes"
+                formControlName="nome"
                 [disabled]="disabled"
                 [settings]="dropdownSettings"
                 (onSelect)="onItemSelect($event)">

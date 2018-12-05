@@ -13,7 +13,7 @@ export class NovoAcompanhamentoComponent implements OnInit {
   disabled = false;
   ShowFilter = false;
   limitSelection = false;
-  cities: any = []
+  nomes: any = []
   selectedItems: any = []
   dropdownSettings: any = []
 
@@ -34,30 +34,30 @@ export class NovoAcompanhamentoComponent implements OnInit {
     })
 
     //City List 
-    this.cities = [
-      { item_id: 1, item_text: 'Delhi' },
-      { item_id: 2, item_text: 'Noida' },
-      { item_id: 3, item_text: 'Banglaore' },
-      { item_id: 4, item_text: 'Pune' },
-      { item_id: 5, item_text: 'Chennai' },
-      { item_id: 6, item_text: 'Mumbai' }
+    this.nomes = [
+      { item_id: 1, item_text: 'Orlando Nunes' },
+      { item_id: 2, item_text: 'Vera Noida' },
+      { item_id: 3, item_text: 'Cássia Banglaore' },
+      { item_id: 4, item_text: 'Chico Pune' },
+      { item_id: 5, item_text: 'Chiao Chennai' },
+      { item_id: 6, item_text: 'Tenerife Mumbai' }
     ]
 
-    this.selectedItems = [{ item_id: 4, item_text: 'Pune' },
-                          { item_id: 6, item_text: 'Mumbai' }]
+    this.selectedItems = [{ item_id: 4, item_text: 'Chico Pune' },
+                          { item_id: 6, item_text: 'Tenerife Mumbai' }]
 
     this.dropdownSettings = {
       singleSelection: false,
       idField: 'item_id',
       textField: 'item_text',
-      selectAllText: 'Select All',
-      unSelectAlltext: 'UnSelect All',
+      selectAllText: 'Marcar todos',
+      unSelectAlltext: 'Desmarcar todos',
       itemsShowLimit: 10,
       allowSearchFilter: this.ShowFilter
     }
 
     this.myForm = this.formBuilder.group({
-      city: [this.selectedItems]
+      nome: [this.selectedItems]
     })
 
   }
