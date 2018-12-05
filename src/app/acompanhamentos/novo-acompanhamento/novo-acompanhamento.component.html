@@ -10,20 +10,12 @@
 
 
           <div class="col-sm-8 col-xs-12">
-              <label>Residentes que participaram da atividade </label><br>
-              <ng-multiselect-dropdown 
-                name="nome"
-                [placeholder]="'Selecione os residentes'"
-                [data]="nomes"
-                formControlName="nome"
-                [disabled]="disabled"
-                [settings]="dropdownSettings"
-                (onSelect)="onItemSelect($event)">
-
-              </ng-multiselect-dropdown>
-
+            <label>Residentes que participaram da atividade </label><br>
+            <ng-multiselect-dropdown name="residentes" [placeholder]="'Selecione os residentes'" [data]="residentes"
+              formControlName="residente" [disabled]="disabled" [settings]="dropdownSettings" (onSelect)="onResidenteSelect($event)">
+            </ng-multiselect-dropdown>
           </div>
- 
+
 
           <div class="col-sm-3 col-xs-12">
             <label for="exampleInputPassword1"> <i class="fa fa-calendar"></i> Data
@@ -37,25 +29,27 @@
 
           <div class="col-sm-10 col-xs-12">
             <label>Atividade realizada</label>
-            <textarea class="form-control" rows="3" formControlName="atividade" placeholder="Descrição da atividade realizada" auatocomplete="off"></textarea>
+            <textarea class="form-control" rows="3" formControlName="atividade" placeholder="Descrição da atividade realizada"
+              auatocomplete="off"></textarea>
             <br>
           </div>
 
           <div class="col-sm-8 col-xs-12">
             <label>Funcionários que realizaram a atividade </label><br>
-            <select name="selections[]" class="dix" multiple="multiple" style="width: 100%;">
-              <option value="CA">Dr(a) Camila</option>
-              <option>Dr Saulo</option>
-              <option>Dr Camilo</option>
-            </select>
+            <ng-multiselect-dropdown name="nome" [placeholder]="'Selecione os funcionários'" [data]="nomes"
+              formControlName="nome" [disabled]="disabled" [settings]="dropdownSettings" (onSelect)="onItemSelect($event)">
+            </ng-multiselect-dropdown>
           </div>
+
+
         </div>
         <!--form group-->
 
         <!--Botão-->
         <div class="col-sm-12 col-xs-12">
           <br>
-          <button (click)="novoAcompanhamento(novoAcompanhamentoForm.value)" style="margin-left: 10px" class="btn btn-success botao pull-right" [routerLink]="['/acompanhamentos']">Salvar</button>
+          <button (click)="novoAcompanhamento(novoAcompanhamentoForm.value)" style="margin-left: 10px" class="btn btn-success botao pull-right"
+            [routerLink]="['/acompanhamentos']">Salvar</button>
 
           <button type="submit" class="btn btn-default botao pull-right" [routerLink]="['/acompanhamentos']">Voltar</button>
         </div>
