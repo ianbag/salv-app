@@ -27,10 +27,10 @@ export class NovoAcompanhamentoComponent implements OnInit {
     //Formulário Novo Acompanhamento
 
     this.novoAcompanhamentoForm = this.formBuilder.group({
-      residente: this.formBuilder.control(''),
-      data: this.formBuilder.control(''),
-      atividade: this.formBuilder.control(''),
-      funcionario: this.formBuilder.control('')
+      residente: this.formBuilder.control('', []),
+      data: this.formBuilder.control('', []),
+      atividade: this.formBuilder.control('', []),
+      funcionario: this.formBuilder.control('', [])
     })
 
     //City List 
