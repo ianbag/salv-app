@@ -23,7 +23,7 @@
               </ng-multiselect-dropdown>
 
           </div>
-
+ 
 
           <div class="col-sm-3 col-xs-12">
             <label for="exampleInputPassword1"> <i class="fa fa-calendar"></i> Data
@@ -52,11 +52,15 @@
         </div>
         <!--form group-->
 
+        <!--Botão-->
         <div class="col-sm-12 col-xs-12">
           <br>
-          <a style="margin-left: 10px" type="submit" class="btn btn-success botao pull-right" href="visualizacaoAcompanhamento.html">Salvar</a>
-          <a type="submit" class="btn btn-default botao pull-right" href="visualizacaoAcompanhamento.html">Voltar</a>
+          <button (click)="novoAcompanhamento(novoAcompanhamentoForm.value)" style="margin-left: 10px" class="btn btn-success botao pull-right" [routerLink]="['/acompanhamentos']">Salvar</button>
+
+          <button type="submit" class="btn btn-default botao pull-right" [routerLink]="['/acompanhamentos']">Voltar</button>
         </div>
+        <!--Fim botão-->
+
       </div>
 
     </form>
