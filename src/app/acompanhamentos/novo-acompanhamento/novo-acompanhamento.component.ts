@@ -13,8 +13,8 @@ export class NovoAcompanhamentoComponent implements OnInit {
   disabled = false;
   ShowFilter = false;
   limitSelection = false;
-  cities: any = []
-  selectedItems: any = []
+  residentes: any = []
+  selectedResidentes: any = []
   dropdownSettings: any = []
 
 
@@ -27,37 +27,37 @@ export class NovoAcompanhamentoComponent implements OnInit {
     //Formulário Novo Acompanhamento
 
     this.novoAcompanhamentoForm = this.formBuilder.group({
-      residente: this.formBuilder.control(''),
-      data: this.formBuilder.control(''),
-      atividade: this.formBuilder.control(''),
-      funcionario: this.formBuilder.control('')
+      residente: this.formBuilder.control('', []),
+      data: this.formBuilder.control('', []),
+      atividade: this.formBuilder.control('', []),
+      funcionario: this.formBuilder.control('', [])
     })
 
-    //City List 
-    this.cities = [
-      { item_id: 1, item_text: 'Delhi' },
-      { item_id: 2, item_text: 'Noida' },
-      { item_id: 3, item_text: 'Banglaore' },
-      { item_id: 4, item_text: 'Pune' },
-      { item_id: 5, item_text: 'Chennai' },
-      { item_id: 6, item_text: 'Mumbai' }
+    //Residentes List 
+    this.residentes = [
+      { residente_id: 1, residente_text: 'Orlando Nunes' },
+      { residente_id: 2, residente_text: 'Vera Noida' },
+      { residente_id: 3, residente_text: 'Cássia Banglaore' },
+      { residente_id: 4, residente_text: 'Chico Pune' },
+      { residente_id: 5, residente_text: 'Chiao Chennai' },
+      { residente_id: 6, residente_text: 'Tenerife Mumbai' }
     ]
 
-    this.selectedItems = [{ item_id: 4, item_text: 'Pune' },
-                          { item_id: 6, item_text: 'Mumbai' }]
+    this.selectedResidentes = [{ residente_id: 4, residente_text: 'Chico Pune' },
+                          { residente_id: 6, residente_text: 'Tenerife Mumbai' }]
 
     this.dropdownSettings = {
       singleSelection: false,
-      idField: 'item_id',
-      textField: 'item_text',
-      selectAllText: 'Select All',
-      unSelectAlltext: 'UnSelect All',
-      itemsShowLimit: 10,
+      idField: 'residente_id',
+      textField: 'residente_text',
+      selectAllText: 'Marcar todos',
+      unSelectAlltext: 'Desmarcar todos',
+      residentesShowLimit: 10,
       allowSearchFilter: this.ShowFilter
     }
 
     this.myForm = this.formBuilder.group({
-      city: [this.selectedItems]
+      residente: [this.selectedResidentes]
     })
 
   }
@@ -66,12 +66,12 @@ export class NovoAcompanhamentoComponent implements OnInit {
     console.log(acompanhamento)
   }
 
-  onItemSelect(item: any){
-    console.log('onItemSelect', item)
+  onResidenteSelect(residente: any){
+    console.log('onResidenteSelect', residente)
   }
 
-  onSelectAll(items: any){
-    console.log('onSelectAll', items)
+  onSelectAll(residentes: any){
+    console.log('onSelectAll', residentes)
   }
 
 }
