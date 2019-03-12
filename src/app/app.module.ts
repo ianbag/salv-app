@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -50,6 +50,9 @@ import { ConvenioResidenteComponent } from './residentes/novo-residente/convenio
 import { NovoAcompanhamentoComponent } from './acompanhamentos/novo-acompanhamento/novo-acompanhamento.component';
 
 import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
+import { ErrorComponent } from './error/error.component';
+import { GlobalErrorHandler } from './global-error-handler.service';
+
 
 @NgModule({
   declarations: [
@@ -94,7 +97,8 @@ import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
     InputComponent,
     FamiliarResidenteComponent,
     ConvenioResidenteComponent,
-    NovoAcompanhamentoComponent
+    NovoAcompanhamentoComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -110,7 +114,8 @@ import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
     ResidentesService,
     ConveniosService,
     DialogConfirmService,
-    AcompanhamentosService
+    AcompanhamentosService,
+   {provide: ErrorHandler, useClass: GlobalErrorHandler}  
   ],
   bootstrap: [AppComponent]
 })

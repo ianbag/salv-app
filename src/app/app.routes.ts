@@ -17,6 +17,7 @@ import { ConvenioComponent } from './convenios/convenio/convenio.component';
 import { FuncionarioComponent } from './funcionarios/funcionario/funcionario.component';
 import { FamiliarResidenteComponent } from './residentes/novo-residente/familiar-residente/familiar-residente.component';
 import { ConvenioResidenteComponent } from './residentes/novo-residente/convenio-residente/convenio-residente.component';
+import { ErrorComponent } from './error/error.component';
 
 
 export const ROUTES: Routes = [
@@ -35,6 +36,7 @@ export const ROUTES: Routes = [
     { path: 'acompanhamentos', component: AcompanhamentosComponent },
     { path: 'acompanhamento/:id', component: AcompanhamentoComponent },
     { path: 'novo-acompanhamento', component: NovoAcompanhamentoComponent},
+    { path: 'error', component: ErrorComponent},
     { path: '', component: TelaInicialComponent },
     { path: '**', component: NotFoundComponent }
 
