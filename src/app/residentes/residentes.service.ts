@@ -12,22 +12,22 @@ export class ResidentesService {
     constructor(private http: HttpClient) { }
 
     residentes(): Observable<Residente[]> {
-        return this.http.get<Residente[]>(`${SALV_API}/pessoa`)
+        return this.http.get<Residente[]>(`${SALV_API}/residente`)
     }
 
     residenteById(id: string): Observable<Residente>{
-        return this.http.get<Residente>(`${SALV_API}/pessoa/${id}`)
+        return this.http.get<Residente>(`${SALV_API}/residente/${id}`)
     }
 
     familiarById(id: string): Observable<Familiar[]>{
-        return this.http.get<Familiar[]>(`${SALV_API}/pessoa/${id}/familiar`)
+        return this.http.get<Familiar[]>(`${SALV_API}/residente_familiar/${id}`)
     }
 
     convenioById(id: string): Observable<Convenio[]>{
-        return this.http.get<Convenio[]>(`${SALV_API}/pessoa/${id}/convenio`)
+        return this.http.get<Convenio[]>(`${SALV_API}/residente_convenio/${id}`)
     }
 
     deleteResidente(id: string): Observable<any>{
-        return this.http.delete<any>(`${SALV_API}/pessoa/${id}`)
+        return this.http.delete<any>(`${SALV_API}/residente/${id}`)
     }
 }
