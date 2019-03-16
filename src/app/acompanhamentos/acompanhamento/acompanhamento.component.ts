@@ -15,7 +15,7 @@ export class AcompanhamentoComponent implements OnInit {
 
   ngOnInit() {
     this.acompanhamentosService.acompanhamentoById(this.route.snapshot.params['id'])
-      .subscribe(acompanhamento => this.acompanhamento = acompanhamento)
+      .subscribe(acompanhamento => {this.acompanhamento = acompanhamento[0]; console.log(acompanhamento)})
   }
 
 }
