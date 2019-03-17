@@ -1,15 +1,14 @@
 export interface Convenio {
-    id: number,
-    nome: string,
-    tipo: string,
-    ddd: string,
-    telefone: string,
-    endereco: string,
-    numero: string,
-    bairro: string,
-    complemento: string,
-    cidade: string,
-    estado: string,
-    cep: string,
-    referencia: string 
+    CODIGO: number,
+    NOME_CONVENIO: string,
+    TIPO_CONVENIO: string,
+    DDD: number,
+    TELEFONE: number,
+    ENDERECO: string,
+    BAIRRO: string,
+    COMPLEMENTO: string,
+    CIDADE: string,
+    ESTADO: string,
+    CEP: number,
+    REFERENCIA: number
 }

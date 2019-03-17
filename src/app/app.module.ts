@@ -1,10 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
+<<<<<<< HEAD
 import {NgxMaskModule} from "ngx-mask";
+=======
+import { NgxMaskModule } from "ngx-mask";
+
+>>>>>>> 1b4c7ec11ee7212f50ee62573630a52bc0341af5
 import { ROUTES } from "./app.routes";
 
 import { AppComponent } from './app.component';
@@ -46,6 +51,12 @@ import { NovoResidenteComponent } from './residentes/novo-residente/novo-residen
 import { InputComponent } from './shared/input/input.component';
 import { FamiliarResidenteComponent } from './residentes/novo-residente/familiar-residente/familiar-residente.component';
 import { ConvenioResidenteComponent } from './residentes/novo-residente/convenio-residente/convenio-residente.component';
+import { NovoAcompanhamentoComponent } from './acompanhamentos/novo-acompanhamento/novo-acompanhamento.component';
+
+import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
+import { ErrorComponent } from './error/error.component';
+import { GlobalErrorHandler } from './global-error-handler.service';
+
 
 @NgModule({
   declarations: [
@@ -89,7 +100,9 @@ import { ConvenioResidenteComponent } from './residentes/novo-residente/convenio
     NovoResidenteComponent,
     InputComponent,
     FamiliarResidenteComponent,
-    ConvenioResidenteComponent
+    ConvenioResidenteComponent,
+    NovoAcompanhamentoComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -98,13 +111,15 @@ import { ConvenioResidenteComponent } from './residentes/novo-residente/convenio
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(ROUTES),
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [
     ResidentesService,
     ConveniosService,
     DialogConfirmService,
-    AcompanhamentosService
+    AcompanhamentosService,
+   {provide: ErrorHandler, useClass: GlobalErrorHandler}  
   ],
   bootstrap: [AppComponent]
 })
