@@ -4,12 +4,9 @@ import { HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
-<<<<<<< HEAD
-import {NgxMaskModule} from "ngx-mask";
-=======
+
 import { NgxMaskModule } from "ngx-mask";
 
->>>>>>> 1b4c7ec11ee7212f50ee62573630a52bc0341af5
 import { ROUTES } from "./app.routes";
 
 import { AppComponent } from './app.component';
