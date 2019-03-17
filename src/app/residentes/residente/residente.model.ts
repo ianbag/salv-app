@@ -1,40 +1,37 @@
 export interface Residente {
-    nome: string,
-    sobrenome: string,
-    rg: string,
-    cpf: string,
-    sexo: string,
-    estado_civil: string
-    data_nascimento: string
-    religiao: string,
-    escolaridade: string,
-
-    apelido: string,
-    profissao: string,
-
-    titulo_eleitor: string,
-    zona_eleitoral: string,
-    secao_eleitoral: string,
-
-    numero_certidao_nascimento: string,
-    folha_certidao_nascimento: string,
-    livro_certidao_nascimento: string,
-    cidade_certidao_nascimento: string,
-    estado_certidao_nascimento: string,
-
-    cartao_sams: string,
-    cartao_sus: string,
-
-    numero_inss: string,
-    banco_inss: string,
-    agencia_inss: string,
-    conta_inss: string,
-    valor_inss: number,
-    situacao_inss: string,
-    prova_vida_inss: string,
-
-    data_acolhimento: string,
-    data_desacolhimento: string,
-    motivo_desacolhimento: string,
-    id: string
+    CODIGO_RESIDENTE: number,
+    APELIDO: string,
+    PROFISSAO: string,
+    TITULO_ELEITOR: string,
+    ZONA_ELEITORAL: string,
+    SECAO_ELEITORAL: string,
+    NUMERO_CERTIDAO_NASCIMENTO: string,
+    FOLHA_CERTIDAO_NASCIMENTO: string,
+    LIVRO_CERTIDAO_NASCIMENTO: string,
+    CIDADE_CERTIDAO_NASCIMENTO: string,
+    ESTADO_CERTIDAO_NASCIMENTO: string,
+    CARTAO_SAMS: string,
+    CARTAO_SUS: string,
+    NUMERO_INSS: string,
+    BANCO_INSS: string,
+    AGENCIA_INSS: string,
+    CONTA_INSS: string,
+    VALOR_INSS: number,
+    SITUACAO_INSS: string,
+    PROVA_VIDA_INSS: string,
+    DATA_ACOLHIMENTO: string,
+    DATA_DESACOLHIMENTO: string,
+    MOTIVO_DESACOLHIMENTO: string,
+    PESSOA_CODIGO: number,
+    PESSOA: {
+        NOME: string,
+        SOBRENOME: string,
+        RG: string,
+        CPF: string,
+        SEXO: string,
+        ESTADO_CIVIL: string
+        DATA_NASCIMENTO: string
+        RELIGIAO: string,
+        ESCOLARIDADE: string
+    }
 }

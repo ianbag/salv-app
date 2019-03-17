@@ -13,12 +13,12 @@
                     <th style="width: 350px">Ações</th>
                 </tr>
                 <tr *ngFor="let convenio of convenios">
-                    <td>{{convenio.nome}}</td>
-                    <td>{{convenio.telefone}}</td>
+                    <td>{{convenio.NOME_CONVENIO}}</td>
+                    <td>{{convenio.DDD}} {{convenio.TELEFONE}}</td>
                     <td>
-                        <a type="submit" class="btn btn-danger botao botao-espaço" href="#">Apagar</a>
+                        <button type="submit" class="btn btn-danger botao" (click)="deleteConvenio(convenio.CODIGO); $event.stopPropagation()">Apagar</button>
                         <a type="submit" class="btn btn-warning botao botao-espaço" href="#">Editar</a>
-                        <a type="submit" class="btn btn-success botao" [routerLink]="['/convenio',convenio.id]">+ Informações</a>
+                        <a type="submit" class="btn btn-success botao" [routerLink]="['/convenio',convenio.CODIGO]">+ Informações</a>
                     </td>
                 </tr>
             </table>

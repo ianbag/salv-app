@@ -20,13 +20,22 @@ export class ResidenteComponent implements OnInit {
 
   ngOnInit() {
     this.residentesService.residenteById(this.route.snapshot.params['id'])
-      .subscribe(residente => this.residente = residente)
+      .subscribe(residente => {
+        this.residente = residente
+        console.log('residente by id', residente.CODIGO_RESIDENTE)
+      })
 
     this.residentesService.familiarById(this.route.snapshot.params['id'])
-      .subscribe(familiar => this.familiares = familiar)
+      .subscribe(familiar => {
+        this.familiares = familiar
+        console.log('FAMILIAR',familiar)
+      })
 
     this.residentesService.convenioById(this.route.snapshot.params['id'])
-      .subscribe(convenio => this.convenios = convenio)
+      .subscribe(convenio => {
+        this.convenios = convenio
+        console.log('CONVENIO', this.convenios)
+      })
   }
 
 }

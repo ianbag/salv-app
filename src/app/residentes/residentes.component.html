@@ -19,15 +19,15 @@
           <th>Ações</th>
         </tr>
         <tr *ngFor="let residente of residentes">
-          <td>{{residente.nome}}</td>
-          <td>{{residente.apelido}}</td>
-          <td>{{residente.cpf | cpf}}</td>
-          <td>{{residente.rg | rg}}</td>
+          <td>{{residente.PESSOA.NOME}}</td>
+          <td>{{residente.APELIDO}}</td>
+          <td>{{residente.PESSOA.CPF | cpf}}</td>
+          <td>{{residente.PESSOA.RG | rg}}</td>
 
           <td>
-            <button type="submit" class="btn btn-danger botao" (click)="deleteResidente(residente.id); $event.stopPropagation()">Apagar</button>
+            <button type="submit" class="btn btn-danger botao" (click)="deleteResidente(residente.CODIGO_RESIDENTE); $event.stopPropagation()">Apagar</button>
             <a type="submit" class="btn btn-warning botao" href="#">Editar</a>
-            <a type="submit" class="btn btn-success botao" [routerLink]="['/residente', residente.id]">+
+            <a type="submit" class="btn btn-success botao" [routerLink]="['/residente', residente.CODIGO_RESIDENTE]">+
               Informações</a>
           </td>
         </tr>
