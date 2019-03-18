@@ -53,7 +53,7 @@ import { NovoAcompanhamentoComponent } from './acompanhamentos/novo-acompanhamen
 import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
 import { ErrorComponent } from './error/error.component';
 import { GlobalErrorHandler } from './global-error-handler.service';
-import { LoginComponent } from './security/login/login.component';
+import { LoginComponent } from './auth/login/login.component';
 
 
 @NgModule({
