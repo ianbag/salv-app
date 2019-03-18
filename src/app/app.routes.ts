@@ -18,7 +18,7 @@ import { FuncionarioComponent } from './funcionarios/funcionario/funcionario.com
 import { FamiliarResidenteComponent } from './residentes/novo-residente/familiar-residente/familiar-residente.component';
 import { ConvenioResidenteComponent } from './residentes/novo-residente/convenio-residente/convenio-residente.component';
 import { ErrorComponent } from './error/error.component';
-
+import { LoginComponent } from './security/login/login.component'
 
 export const ROUTES: Routes = [
     //ROTAS VÃO AQUI
@@ -35,9 +35,10 @@ export const ROUTES: Routes = [
     { path: 'novo-dependente', component: NovoDependenteComponent },
     { path: 'acompanhamentos', component: AcompanhamentosComponent },
     { path: 'acompanhamento/:id', component: AcompanhamentoComponent },
-    { path: 'novo-acompanhamento', component: NovoAcompanhamentoComponent},
-    { path: 'error', component: ErrorComponent},
+    { path: 'novo-acompanhamento', component: NovoAcompanhamentoComponent },
+    { path: 'error', component: ErrorComponent },
     { path: '', component: TelaInicialComponent },
+    { path: 'login', component: LoginComponent },
     { path: '**', component: NotFoundComponent }
 
 
