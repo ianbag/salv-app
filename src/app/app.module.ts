@@ -1,3 +1,4 @@
+import { NotificationService } from './shared/notification.service';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -124,7 +125,8 @@ import { SnackbarComponent } from './shared/snackbar/snackbar.component';
     ResidentesService,
     ConveniosService,
     DialogConfirmService,
-    AcompanhamentosService,    
+    AcompanhamentosService,
+    NotificationService,    
    {provide: ErrorHandler, useClass: GlobalErrorHandler}  
   ],
   bootstrap: [AppComponent]
