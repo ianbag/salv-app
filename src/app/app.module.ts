@@ -54,6 +54,7 @@ import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
 import { ErrorComponent } from './error/error.component';
 import { GlobalErrorHandler } from './global-error-handler.service';
 import { LoginComponent } from './auth/login/login.component';
+import { LoginService } from './auth/login/login.service';
 
 
 @NgModule({
@@ -118,6 +119,7 @@ import { LoginComponent } from './auth/login/login.component';
     ConveniosService,
     DialogConfirmService,
     AcompanhamentosService,
+    LoginService,
    {provide: ErrorHandler, useClass: GlobalErrorHandler}  
   ],
   bootstrap: [AppComponent]

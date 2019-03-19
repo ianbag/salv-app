@@ -12,7 +12,7 @@
       </salv-input-container>
 
       <salv-input-container [showTip]=false>
-        <input type="password" formControlName="password" class="form-control" placeholder="Senha">
+        <input type="password" formControlName="senha" class="form-control" placeholder="Senha">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </salv-input-container>
 
@@ -22,7 +22,7 @@
         </div>
         <!-- /.col -->
         <div class=" col-xs-12">
-          <button type="submit" [disabled]="loginForm.invalid" class="btn btn-success btn-block btn-flat">Entrar</button>
+          <button type="submit" (click)="login()" [disabled]="loginForm.invalid" class="btn btn-success btn-block btn-flat">Entrar</button>
         </div>
         <!-- /.col -->
       </div>
