@@ -17,13 +17,21 @@ import { ConvenioComponent } from './convenios/convenio/convenio.component';
 import { FuncionarioComponent } from './funcionarios/funcionario/funcionario.component';
 import { FamiliarResidenteComponent } from './residentes/novo-residente/familiar-residente/familiar-residente.component';
 import { ConvenioResidenteComponent } from './residentes/novo-residente/convenio-residente/convenio-residente.component';
+<<<<<<< HEAD
+
+=======
 import { ErrorComponent } from './error/error.component';
 import { LoginComponent } from './auth/login/login.component'
+<<<<<<< HEAD
 import {AuthGuardService as AuthGuard} from './auth/auth-guard.service'
+=======
+>>>>>>> upstream/master
+>>>>>>> ca77f87d5156b146a37d655ab761b1facae4c8e1
 
 export const ROUTES: Routes = [
     //ROTAS VÃO AQUI
     { path: 'login', component: LoginComponent },
+<<<<<<< HEAD
     { path: 'residentes', component: ResidentesComponent, canActivate: [AuthGuard] },
     { path: 'residente/:id', component: ResidenteComponent, canActivate: [AuthGuard]},
     { path: 'novo-residente', component: NovoResidenteComponent, canActivate: [AuthGuard] },
@@ -40,6 +48,28 @@ export const ROUTES: Routes = [
     { path: 'novo-acompanhamento', component: NovoAcompanhamentoComponent, canActivate: [AuthGuard] },
     { path: 'error', component: ErrorComponent },
     { path: '', component: TelaInicialComponent, canActivate: [AuthGuard] },
+=======
+    { path: 'residentes', component: ResidentesComponent },
+    { path: 'residente/:id', component: ResidenteComponent },
+    { path: 'novo-residente', component: NovoResidenteComponent },
+    { path: 'familiar-residente', component: FamiliarResidenteComponent },
+    { path: 'convenio-residente', component: ConvenioResidenteComponent },
+    { path: 'convenios', component: ConveniosComponent },
+    { path: 'convenio/:id', component: ConvenioComponent },
+    { path: 'funcionarios', component: FuncionariosComponent },
+    { path: 'funcionario/:id', component: FuncionarioComponent },
+    { path: 'novo-funcionario', component: NovoFuncionarioComponent },
+    { path: 'novo-dependente', component: NovoDependenteComponent },
+    { path: 'acompanhamentos', component: AcompanhamentosComponent },
+    { path: 'acompanhamento/:id', component: AcompanhamentoComponent },
+<<<<<<< HEAD
+    { path: 'novo-acompanhamento', component: NovoAcompanhamentoComponent},   
+=======
+    { path: 'novo-acompanhamento', component: NovoAcompanhamentoComponent },
+    { path: 'error', component: ErrorComponent },
+>>>>>>> upstream/master
+    { path: '', component: TelaInicialComponent },
+>>>>>>> ca77f87d5156b146a37d655ab761b1facae4c8e1
     { path: '**', component: NotFoundComponent }
 
 
