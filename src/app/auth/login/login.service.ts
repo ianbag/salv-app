@@ -1,16 +1,19 @@
 import { Observable } from 'rxjs';
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { SALV_API } from './../../app.api';
 import { User } from './user.model';
 import { tap } from 'rxjs/operators'
+import { Router } from '@angular/router';
 
 @Injectable()
 export class LoginService {
 
     user: User
+    private userAuth: boolean = false;
+    showMenuEmitter = new EventEmitter<boolean>()
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private router: Router) { }
 
     isLoggedIn(): boolean {
         return this.user !== undefined
@@ -18,6 +21,11 @@ export class LoginService {
 
     login(email: string, senha: string): Observable<User> {
         return this.http.post<User>(`${SALV_API}/login`,
-            { email: email, senha: senha }).pipe(tap(user => this.user = user))
+            { email: email, senha: senha }).pipe(tap(user => {
+                this.user = user
+                this.userAuth = true
+                this.showMenuEmitter.emit(true)
+                this.router.navigate(['/'])
+            }))
     }
 }
