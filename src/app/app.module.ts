@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 
 
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import {  ReactiveFormsModule } from "@angular/forms";
+import { ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { NgxMaskModule } from "ngx-mask";
 
@@ -56,17 +56,13 @@ import { ConvenioResidenteComponent } from './residentes/novo-residente/convenio
 import { NovoAcompanhamentoComponent } from './acompanhamentos/novo-acompanhamento/novo-acompanhamento.component';
 
 import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
-<<<<<<< HEAD
-import { ErrorComponent } from './error/error.component';
-import { GlobalErrorHandler } from './global-error-handler.service';
+
 import { LoginComponent } from './auth/login/login.component';
 import { LoginService } from './auth/login/login.service';
 import { AuthGuardService } from './auth/auth-guard.service';
-=======
-
 import { GlobalErrorHandler } from './app.global-error-handler';
 import { SnackbarComponent } from './shared/snackbar/snackbar.component';
->>>>>>> ca77f87d5156b146a37d655ab761b1facae4c8e1
+
 
 
 @NgModule({
@@ -114,14 +110,13 @@ import { SnackbarComponent } from './shared/snackbar/snackbar.component';
     FamiliarResidenteComponent,
     ConvenioResidenteComponent,
     NovoAcompanhamentoComponent,
-    SnackbarComponent
-    
-    
+    LoginComponent
+
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    HttpModule, 
+    HttpModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
@@ -134,13 +129,10 @@ import { SnackbarComponent } from './shared/snackbar/snackbar.component';
     ConveniosService,
     DialogConfirmService,
     AcompanhamentosService,
-<<<<<<< HEAD
     LoginService,
     AuthGuardService,
-=======
-    NotificationService,    
->>>>>>> ca77f87d5156b146a37d655ab761b1facae4c8e1
-   {provide: ErrorHandler, useClass: GlobalErrorHandler}  
+    NotificationService,
+    { provide: ErrorHandler, useClass: GlobalErrorHandler }
   ],
   bootstrap: [AppComponent]
 })
