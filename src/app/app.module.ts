@@ -55,6 +55,7 @@ import { ErrorComponent } from './error/error.component';
 import { GlobalErrorHandler } from './global-error-handler.service';
 import { LoginComponent } from './auth/login/login.component';
 import { LoginService } from './auth/login/login.service';
+import { AuthGuardService } from './auth/auth-guard.service';
 
 
 @NgModule({
@@ -120,6 +121,7 @@ import { LoginService } from './auth/login/login.service';
     DialogConfirmService,
     AcompanhamentosService,
     LoginService,
+    AuthGuardService,
    {provide: ErrorHandler, useClass: GlobalErrorHandler}  
   ],
   bootstrap: [AppComponent]
