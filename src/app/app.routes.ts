@@ -17,10 +17,16 @@ import { ConvenioComponent } from './convenios/convenio/convenio.component';
 import { FuncionarioComponent } from './funcionarios/funcionario/funcionario.component';
 import { FamiliarResidenteComponent } from './residentes/novo-residente/familiar-residente/familiar-residente.component';
 import { ConvenioResidenteComponent } from './residentes/novo-residente/convenio-residente/convenio-residente.component';
+<<<<<<< HEAD
 
+=======
+import { ErrorComponent } from './error/error.component';
+import { LoginComponent } from './auth/login/login.component'
+>>>>>>> upstream/master
 
 export const ROUTES: Routes = [
     //ROTAS VÃO AQUI
+    { path: 'login', component: LoginComponent },
     { path: 'residentes', component: ResidentesComponent },
     { path: 'residente/:id', component: ResidenteComponent },
     { path: 'novo-residente', component: NovoResidenteComponent },
@@ -34,7 +40,12 @@ export const ROUTES: Routes = [
     { path: 'novo-dependente', component: NovoDependenteComponent },
     { path: 'acompanhamentos', component: AcompanhamentosComponent },
     { path: 'acompanhamento/:id', component: AcompanhamentoComponent },
+<<<<<<< HEAD
     { path: 'novo-acompanhamento', component: NovoAcompanhamentoComponent},   
+=======
+    { path: 'novo-acompanhamento', component: NovoAcompanhamentoComponent },
+    { path: 'error', component: ErrorComponent },
+>>>>>>> upstream/master
     { path: '', component: TelaInicialComponent },
     { path: '**', component: NotFoundComponent }
 
