@@ -20,21 +20,25 @@
     "@angular/platform-browser": "~7.2.9",
     "@angular/platform-browser-dynamic": "~7.2.9",
     "@angular/router": "~7.2.9",
-    "admin-lte": "^2.4.8",
+    "admin-lte": "^2.4.10",
     "core-js": "^2.6.5",
     "jquery-slimscroll": "^1.3.8",
     "json-server": "^0.14.2",
     "ng-multiselect-dropdown": "^0.2.3",
     "ng-select2-component": "^6.0.3",
     "ngx-mask": "^7.0.1",
+<<<<<<< HEAD
+    "rxjs": "^6.4.0",
+=======
     "rxjs": "~6.4.0",
+>>>>>>> upstream/master
     "rxjs-compat": "^6.4.0",
     "tslib": "^1.9.0",
     "web-animations-js": "^2.3.1",
     "zone.js": "^0.8.29"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.10.7",
+    "@angular-devkit/build-angular": "^0.13.6",
     "@angular/cli": "^7.3.5",
     "@angular/compiler-cli": "~7.2.9",
     "@angular/language-service": "~7.2.9",
