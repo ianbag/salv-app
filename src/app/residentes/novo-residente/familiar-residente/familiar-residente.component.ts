@@ -1,12 +1,24 @@
 import { Familiar } from './../../residente/infos-familiar/familiar.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { trigger, state, transition, style, animate } from '@angular/animations'
 
 @Component({
   selector: 'salv-familiar-residente',
-  templateUrl: './familiar-residente.component.html'
+  templateUrl: './familiar-residente.component.html',
+  animations: [
+    trigger('familiar-residenteAppeared', [
+      state('ready', style({opacity: 1})),
+      transition('void => ready', [
+        style({opacity: 0, transform: 'translate(-30px, -10px)'}),
+        animate('500ms 0s ease-in-out')
+      ])
+    ])
+  ]
 })
 export class FamiliarResidenteComponent implements OnInit {
+
+  familiarresidenteState = 'ready'
 
   estados = [
     "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"
