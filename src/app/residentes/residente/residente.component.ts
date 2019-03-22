@@ -5,12 +5,24 @@ import { ResidentesService } from '../residentes.service';
 import { ActivatedRoute } from '@angular/router';
 import { Residente } from './residente.model';
 import { Familiar } from './infos-familiar/familiar.model';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'salv-residente',
-  templateUrl: './residente.component.html'
+  templateUrl: './residente.component.html',
+  animations: [
+    trigger('residenteAppeared', [
+      state('ready', style({opacity: 1})),
+      transition('void => ready', [
+        style({opacity: 0, transform: 'translate(-30px, -10px)'}),
+        animate('500ms 0s ease-in-out')
+      ])
+    ])
+  ]
 })
 export class ResidenteComponent implements OnInit {
+
+  residenteState = 'ready'
 
   residente: Residente
   familiares: Familiar[]
