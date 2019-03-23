@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoginService } from './auth/login/login.service';
 
 @Component({
   selector: 'salv-root',
@@ -7,4 +8,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'salv-app';
+
+  showMenu: boolean = false
+
+  constructor(private loginService: LoginService) {
+
+  }
+
+  ngOnInit() {
+    this.loginService.showMenuEmitter.subscribe(
+      show => this.showMenu = show
+    )
+  }
 }

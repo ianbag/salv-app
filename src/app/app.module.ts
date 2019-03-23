@@ -1,14 +1,20 @@
+import { NotificationService } from './shared/notification.service';
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
-import { HttpClientModule } from "@angular/common/http";
+import { FormsModule } from '@angular/forms';
+import { AppComponent } from './app.component';
+
+
+
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { NgxMaskModule } from "ngx-mask";
 
 import { ROUTES } from "./app.routes";
 
-import { AppComponent } from './app.component';
 import { HeaderComponent } from './fixed-elements/header/header.component';
 import { SidebarComponent } from './fixed-elements/sidebar/sidebar.component';
 import { FooterComponent } from './fixed-elements/footer/footer.component';
@@ -50,8 +56,13 @@ import { ConvenioResidenteComponent } from './residentes/novo-residente/convenio
 import { NovoAcompanhamentoComponent } from './acompanhamentos/novo-acompanhamento/novo-acompanhamento.component';
 
 import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
-import { ErrorComponent } from './error/error.component';
-import { GlobalErrorHandler } from './global-error-handler.service';
+
+import { LoginComponent } from './auth/login/login.component';
+import { LoginService } from './auth/login/login.service';
+import { AuthGuardService } from './auth/auth-guard.service';
+import { GlobalErrorHandler } from './app.global-error-handler';
+import { SnackbarComponent } from './shared/snackbar/snackbar.component';
+
 
 
 @NgModule({
@@ -78,6 +89,7 @@ import { GlobalErrorHandler } from './global-error-handler.service';
     InfosConvenioComponent,
     NotFoundComponent,
     FuncionariosComponent,
+    SnackbarComponent,
     FuncionarioComponent,
     InfosDependenteComponent,
     InfosFuncionaisComponent,
@@ -98,11 +110,13 @@ import { GlobalErrorHandler } from './global-error-handler.service';
     FamiliarResidenteComponent,
     ConvenioResidenteComponent,
     NovoAcompanhamentoComponent,
-    ErrorComponent
+    LoginComponent
+
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    HttpModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
@@ -115,7 +129,10 @@ import { GlobalErrorHandler } from './global-error-handler.service';
     ConveniosService,
     DialogConfirmService,
     AcompanhamentosService,
-   {provide: ErrorHandler, useClass: GlobalErrorHandler}  
+    LoginService,
+    AuthGuardService,
+    NotificationService,
+    { provide: ErrorHandler, useClass: GlobalErrorHandler }
   ],
   bootstrap: [AppComponent]
 })

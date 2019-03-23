@@ -3,6 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    
     "salv-app": {
       "root": "",
       "sourceRoot": "src",
@@ -28,6 +29,7 @@
               "./node_modules/jvectormap/jquery-jvectormap.css",
               "./node_modules/admin-lte/dist/css/AdminLTE.min.css",
               "./node_modules/admin-lte/dist/css/skins/skin-green.min.css",
+              "./node_modules/select2/dist/css/select2.min.css",
               "src/styles.css"
             ],
             "scripts": [
@@ -35,7 +37,8 @@
               "./node_modules/admin-lte/dist/js/adminlte.min.js",
               "./node_modules/bootstrap/dist/js/bootstrap.min.js",
               "./node_modules/fastclick/lib/fastclick.js",
-              "./node_modules/jquery-slimscroll/jquery.slimscroll.js"
+              "./node_modules/jquery-slimscroll/jquery.slimscroll.js",
+              "./node_modules/select2/dist/js/select2.min.js"
             ]
           },
           "configurations": {
