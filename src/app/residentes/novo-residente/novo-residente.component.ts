@@ -1,13 +1,26 @@
 import { Residente } from './../residente/residente.model';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { ResidentesService } from '../residentes.service';
+import { trigger, state, style, transition, animate } from '@angular/animations'
 
 @Component({
   selector: 'salv-novo-residente',
-  templateUrl: './novo-residente.component.html'
+  templateUrl: './novo-residente.component.html',
+  animations: [
+    trigger('novo-residenteAppeared', [
+      state('ready', style({opacity: 1})),
+      transition('void => ready', [
+        style({opacity: 0, transform: 'translate(-30px, -10px)'}),
+        animate('500ms 0s ease-in-out')
+      ])
+    ])
+  ]
 })
 export class NovoResidenteComponent implements OnInit {
+
+  novoresidenteState = 'ready'
 
   estados = [
     "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"

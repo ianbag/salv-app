@@ -17,27 +17,27 @@ import { ConvenioComponent } from './convenios/convenio/convenio.component';
 import { FuncionarioComponent } from './funcionarios/funcionario/funcionario.component';
 import { FamiliarResidenteComponent } from './residentes/novo-residente/familiar-residente/familiar-residente.component';
 import { ConvenioResidenteComponent } from './residentes/novo-residente/convenio-residente/convenio-residente.component';
-import { ErrorComponent } from './error/error.component';
-
+import { LoginComponent } from './auth/login/login.component'
+import { AuthGuardService as AuthGuard } from './auth/auth-guard.service'
 
 export const ROUTES: Routes = [
     //ROTAS VÃO AQUI
-    { path: 'residentes', component: ResidentesComponent },
-    { path: 'residente/:id', component: ResidenteComponent },
-    { path: 'novo-residente', component: NovoResidenteComponent },
-    { path: 'familiar-residente', component: FamiliarResidenteComponent },
-    { path: 'convenio-residente', component: ConvenioResidenteComponent },
-    { path: 'convenios', component: ConveniosComponent },
-    { path: 'convenio/:id', component: ConvenioComponent },
-    { path: 'funcionarios', component: FuncionariosComponent },
-    { path: 'funcionario/:id', component: FuncionarioComponent },
-    { path: 'novo-funcionario', component: NovoFuncionarioComponent },
-    { path: 'novo-dependente', component: NovoDependenteComponent },
-    { path: 'acompanhamentos', component: AcompanhamentosComponent },
-    { path: 'acompanhamento/:id', component: AcompanhamentoComponent },
-    { path: 'novo-acompanhamento', component: NovoAcompanhamentoComponent},
-    { path: 'error', component: ErrorComponent},
-    { path: '', component: TelaInicialComponent },
+    { path: 'login', component: LoginComponent },
+    { path: 'residentes', component: ResidentesComponent, canActivate: [AuthGuard] },
+    { path: 'residente/:id', component: ResidenteComponent, canActivate: [AuthGuard] },
+    { path: 'novo-residente', component: NovoResidenteComponent, canActivate: [AuthGuard] },
+    { path: 'familiar-residente', component: FamiliarResidenteComponent, canActivate: [AuthGuard] },
+    { path: 'convenio-residente', component: ConvenioResidenteComponent, canActivate: [AuthGuard] },
+    { path: 'convenios', component: ConveniosComponent, canActivate: [AuthGuard] },
+    { path: 'convenio/:id', component: ConvenioComponent, canActivate: [AuthGuard] },
+    { path: 'funcionarios', component: FuncionariosComponent, canActivate: [AuthGuard] },
+    { path: 'funcionario/:id', component: FuncionarioComponent, canActivate: [AuthGuard] },
+    { path: 'novo-funcionario', component: NovoFuncionarioComponent, canActivate: [AuthGuard] },
+    { path: 'novo-dependente', component: NovoDependenteComponent, canActivate: [AuthGuard] },
+    { path: 'acompanhamentos', component: AcompanhamentosComponent, canActivate: [AuthGuard] },
+    { path: 'acompanhamento/:id', component: AcompanhamentoComponent, canActivate: [AuthGuard] },
+    { path: 'novo-acompanhamento', component: NovoAcompanhamentoComponent, canActivate: [AuthGuard] },
+    { path: '', component: TelaInicialComponent, canActivate: [AuthGuard] },
     { path: '**', component: NotFoundComponent }
 
 
