@@ -65,6 +65,8 @@ import { SnackbarComponent } from './shared/snackbar/snackbar.component';
 
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -124,6 +126,9 @@ import { SnackbarComponent } from './shared/snackbar/snackbar.component';
     NgxMaskModule.forRoot(),
     NgMultiSelectDropDownModule.forRoot()
   ],
+  
+
+  
   providers: [
     ResidentesService,
     ConveniosService,
