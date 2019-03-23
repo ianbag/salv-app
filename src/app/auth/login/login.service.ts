@@ -28,4 +28,9 @@ export class LoginService {
                 this.router.navigate(['/'])
             }))
     }
+
+    logout() {
+        this.user = undefined
+        this.userAuth = false
+    }
 }

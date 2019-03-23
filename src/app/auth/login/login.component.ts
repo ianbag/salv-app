@@ -12,7 +12,10 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup
 
-  constructor(private fb: FormBuilder, private ls: LoginService, private ns: NotificationService) { }
+  constructor(private fb: FormBuilder, private ls: LoginService, private ns: NotificationService) {
+    this.ls.logout()
+    this.ls.showMenuEmitter.emit(false)
+   }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
