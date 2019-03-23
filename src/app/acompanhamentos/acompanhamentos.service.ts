@@ -1,3 +1,4 @@
+import { Funcionario } from './../funcionarios/funcionario/funcionario.model';
 import { Acompanhamento } from './acompanhamento/acompanhamento.model';
 import { SALV_API } from './../app.api';
 import { Injectable } from "@angular/core";
@@ -17,4 +18,8 @@ export class AcompanhamentosService {
         return this.http.get<Acompanhamento>(`${SALV_API}/acompanhamento/${id}`)
     }
      
+    funcionarioAcompanhamento ():Observable<Funcionario[]>{
+        return this.http.get<Funcionario[]>(`${SALV_API}/acompanhamento_funcionario`)
+
+    }
 }
