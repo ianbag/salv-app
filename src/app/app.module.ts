@@ -52,6 +52,7 @@ import { NovoAcompanhamentoComponent } from './acompanhamentos/novo-acompanhamen
 import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
 import { ErrorComponent } from './error/error.component';
 import { GlobalErrorHandler } from './global-error-handler.service';
+import { FuncionariosService } from './funcionarios/funcionarios.service';
 
 
 @NgModule({
@@ -115,6 +116,7 @@ import { GlobalErrorHandler } from './global-error-handler.service';
     ConveniosService,
     DialogConfirmService,
     AcompanhamentosService,
+    FuncionariosService,
    {provide: ErrorHandler, useClass: GlobalErrorHandler}  
   ],
   bootstrap: [AppComponent]
