@@ -29,15 +29,21 @@
 
           <div class="col-sm-10 col-xs-12">
             <label>Atividade realizada</label>
-            <textarea class="form-control" rows="3" formControlName="atividade" placeholder="Descrição da atividade realizada"
+            <textarea class="form-control" rows="3" formControlName="atividade" 
+            placeholder="Descrição da atividade realizada"
               auatocomplete="off"></textarea>
+             
             <br>
           </div>
 
           <div class="col-sm-8 col-xs-12">
             <label>Funcionários que realizaram a atividade </label><br>
-            <ng-multiselect-dropdown name="nome" [placeholder]="'Selecione os funcionários'" [data]="nomes"
-              formControlName="nome" [disabled]="disabled" [settings]="dropdownSettings" (onSelect)="onItemSelect($event)">
+            <ng-multiselect-dropdown name="nome"
+            [placeholder]="'Selecione os funcionários'" [data]="nomes"
+            formControlName="nome"
+            [disabled]="disabled"
+            [settings]="dropdownSettings"
+            (onSelect)="onFuncioanrioSelect($event)">
             </ng-multiselect-dropdown>
           </div>
 

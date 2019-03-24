@@ -1,16 +1,20 @@
+
+import { ActivatedRoute } from '@angular/router';
+import { NovoAcompanhamentoService } from './novo-acompanhamento.service';
 import { Acompanhamento } from './../acompanhamento/acompanhamento.model';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, transition, style, animate } from '@angular/animations';
+
 
 @Component({
   selector: 'salv-novo-acompanhamento',
   templateUrl: './novo-acompanhamento.component.html',
   animations: [
     trigger('novo-acompanhamentoAppeared', [
-      state('ready', style({opacity: 1})),
+      state('ready', style({ opacity: 1 })),
       transition('void => ready', [
-        style({opacity: 0, transform: 'translate(-30px, -10px)'}),
+        style({ opacity: 0, transform: 'translate(-30px, -10px)' }),
         animate('500ms 0s ease-in-out')
       ])
     ])
@@ -25,16 +29,38 @@ export class NovoAcompanhamentoComponent implements OnInit {
   disabled = false;
   ShowFilter = false;
   limitSelection = false;
-  residentes: any = []
+
   selectedResidentes: any = []
   dropdownSettings: any = []
-
-
   novoAcompanhamentoForm: FormGroup;
+  residentes: any = []
+  funcionarios: any = []
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private NovoAcompanhamentoService: NovoAcompanhamentoService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+
+
+    //Residentes List         
+    
+    this.residentes = [
+    this.NovoAcompanhamentoService.residentes()
+      .subscribe(residentes => {
+        this.residentes = residentes
+        console.log('residente', residentes)
+      })
+    ]
+
+    this.funcionarios = [
+    //funcionarios List
+    this.NovoAcompanhamentoService.funcionarios()
+      .subscribe(funcionarios => {
+        this.funcionarios = funcionarios
+        console.log('funcionario', funcionarios)
+      })
+    ]
+
+
 
     //Formulário Novo Acompanhamento
 
@@ -43,20 +69,9 @@ export class NovoAcompanhamentoComponent implements OnInit {
       data: this.formBuilder.control('', []),
       atividade: this.formBuilder.control('', []),
       funcionario: this.formBuilder.control('', [])
+
+
     })
-
-    //Residentes List 
-    this.residentes = [
-      { residente_id: 1, residente_text: 'Orlando Nunes' },
-      { residente_id: 2, residente_text: 'Vera Noida' },
-      { residente_id: 3, residente_text: 'Cássia Banglaore' },
-      { residente_id: 4, residente_text: 'Chico Pune' },
-      { residente_id: 5, residente_text: 'Chiao Chennai' },
-      { residente_id: 6, residente_text: 'Tenerife Mumbai' }
-    ]
-
-    this.selectedResidentes = [{ residente_id: 4, residente_text: 'Chico Pune' },
-                          { residente_id: 6, residente_text: 'Tenerife Mumbai' }]
 
     this.dropdownSettings = {
       singleSelection: false,
@@ -74,16 +89,16 @@ export class NovoAcompanhamentoComponent implements OnInit {
 
   }
 
-  novoAcompanhamento(acompanhamento: Acompanhamento){
+  novoAcompanhamento(acompanhamento: Acompanhamento) {
     console.log(acompanhamento)
   }
 
-  onResidenteSelect(residente: any){
+  onResidenteSelect(residente: any) {
     console.log('onResidenteSelect', residente)
   }
 
-  onSelectAll(residentes: any){
-    console.log('onSelectAll', residentes)
+  onFuncioanrioSelect(funcionarios: any) {
+    console.log('onFuncioanrioSelect', funcionarios)
   }
 
 }
