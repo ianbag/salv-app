@@ -1,3 +1,4 @@
+import { UserDetailsComponent } from './fixed-elements/header/user-details/user-details.component';
 import { NotificationService } from './shared/notification.service';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
@@ -113,7 +114,9 @@ import { NovoAcompanhamentoService } from './acompanhamentos/novo-acompanhamento
     FamiliarResidenteComponent,
     ConvenioResidenteComponent,
     NovoAcompanhamentoComponent,
-    LoginComponent
+    LoginComponent,
+    UserDetailsComponent
+    
 
   ],
   imports: [

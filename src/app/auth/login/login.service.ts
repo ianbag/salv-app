@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
 export class LoginService {
 
     user: User
-    userAuth: boolean = false;
     showMenuEmitter = new EventEmitter<boolean>()
 
     constructor(private http: HttpClient, private router: Router) { }
@@ -23,9 +22,13 @@ export class LoginService {
         return this.http.post<User>(`${SALV_API}/login`,
             { email: email, senha: senha }).pipe(tap(user => {
                 this.user = user
-                this.userAuth = true
                 this.showMenuEmitter.emit(true)
                 this.router.navigate(['/'])
             }))
+    }
+
+    logout() {
+        this.user = undefined
+        this.router.navigate(['/login'])
     }
 }
