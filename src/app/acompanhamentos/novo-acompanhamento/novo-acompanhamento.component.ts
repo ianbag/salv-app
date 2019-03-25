@@ -4,6 +4,7 @@ import { NovoAcompanhamentoService } from './novo-acompanhamento.service';
 import { Acompanhamento } from './../acompanhamento/acompanhamento.model';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+
 import { trigger, state, transition, style, animate } from '@angular/animations';
 
 
@@ -51,14 +52,13 @@ export class NovoAcompanhamentoComponent implements OnInit {
       })
     ]
 
-    this.funcionarios = [
+    this.funcionarios = []
     //funcionarios List
     this.NovoAcompanhamentoService.funcionarios()
       .subscribe(funcionarios => {
         this.funcionarios = funcionarios
         console.log('funcionario', funcionarios)
       })
-    ]
 
 
 
