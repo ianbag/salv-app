@@ -1,3 +1,6 @@
+import { ActivatedRoute } from '@angular/router';
+import { ConveniosService } from './../convenios.service';
+import { Convenio } from './../convenio.model';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 
@@ -18,11 +21,14 @@ import { Component, OnInit } from '@angular/core';
 export class EditarConvenioComponent implements OnInit {
 
   editarconvenioState = 'ready'
-  
 
-  constructor() { }
+  editarConvenio : Convenio
+
+  constructor(private conveniosService: ConveniosService, private route:ActivatedRoute) { }
 
   ngOnInit() {
+    this.conveniosService.conveniosById(this.route.snapshot.params['id'])
+    .subscribe(convenio => { this.editarConvenio = convenio[0], console.log(this.editarConvenio)})
   }
 
 }
