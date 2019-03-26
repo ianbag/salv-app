@@ -64,6 +64,7 @@ import { GlobalErrorHandler } from './app.global-error-handler';
 import { SnackbarComponent } from './shared/snackbar/snackbar.component';
 import { UserDetailsComponent } from './fixed-elements/header/user-details/user-details.component';
 import { NovoConvenioComponent } from './convenios/novo-convenio/novo-convenio.component';
+import { EditarConvenioComponent } from './convenios/editar-convenio/editar-convenio.component';
 
 
 
@@ -116,7 +117,8 @@ import { NovoConvenioComponent } from './convenios/novo-convenio/novo-convenio.c
     NovoAcompanhamentoComponent,
     LoginComponent,
     UserDetailsComponent,
-    NovoConvenioComponent
+    NovoConvenioComponent,
+    EditarConvenioComponent
 
   ],
   imports: [
