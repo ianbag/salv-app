@@ -22,13 +22,13 @@
         
         <div class="col-sm-3 col-xs-12">
           <br>
-          <a style="margin-top: 8px" type="submit" class="btn btn-success botao" href="convenioInexist3.html">+</a>
+          <button style="margin-top: 8px" type="submit" class="btn btn-success botao" [routerLink]="['/novo-convenio']">+</button>
         </div>
 
         
         <div class="col-sm-4 col-xs-12">
           <label for="exampleInputPassword1">Nº de inscrição </label>
-          <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nº de inscrição do convênio">
+          <input type="text" class="form-control" formControlName="numeroInscricao" placeholder="Nº de inscrição do convênio" autocomplete="off">
         </div>
         <div class="col-sm-12 col-xs-12">
           <br>
