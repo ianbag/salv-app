@@ -1,6 +1,6 @@
 import { NovoAcompanhamentoService } from './novo-acompanhamento.service';
 import { Acompanhamento } from './../acompanhamento/acompanhamento.model';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 import { trigger, state, transition, style, animate } from '@angular/animations';
@@ -20,6 +20,9 @@ import { trigger, state, transition, style, animate } from '@angular/animations'
   ]
 })
 export class NovoAcompanhamentoComponent implements OnInit {
+
+
+  
 
   novoacompanhamentoState = 'ready'
 
@@ -50,18 +53,17 @@ export class NovoAcompanhamentoComponent implements OnInit {
 
     })
 
-
+  
     //Residentes List         
-    this.residentes = []
-
     
+
          this.NovoAcompanhamentoService.residentes()
         .subscribe(residentes => {
           this.residentes = residentes
           console.log('residente', residentes)
         })
              
-
+        this.residentes = this.residentes
 
 
     this.funcionarios = []

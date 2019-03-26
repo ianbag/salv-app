@@ -4,9 +4,9 @@
     <h1 align="center">Realizar acompanhamento</h1>
     <hr>
 
-    <form role="form" >
+    <form [formGroup]="novoAcompanhamentoForm" role="form" >
       <div class="box-body">
-        <div class="form-group">
+        <div class="form-group" >
 
 
           <div class="col-sm-8 col-xs-12">
@@ -41,7 +41,7 @@
             <label>Funcionários que realizaram a atividade </label><br>
             <ng-multiselect-dropdown name="funcionarios"
             [placeholder]="'Selecione os funcionários'" [data]="funcionarios"
-            formControlName="myForm"
+            formControlName="funcionario"
             [disabled]="disabled"
             [settings]="dropdownSettings"
             (onSelect)="onFuncioanrioSelect($event)">
