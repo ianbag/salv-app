@@ -1,5 +1,3 @@
-
-import { ActivatedRoute } from '@angular/router';
 import { NovoAcompanhamentoService } from './novo-acompanhamento.service';
 import { Acompanhamento } from './../acompanhamento/acompanhamento.model';
 import { FormGroup, FormBuilder } from '@angular/forms';
@@ -30,27 +28,41 @@ export class NovoAcompanhamentoComponent implements OnInit {
   disabled = false;
   ShowFilter = false;
   limitSelection = false;
-
-  selectedResidentes: any = []
-  dropdownSettings: any = []
-  novoAcompanhamentoForm: FormGroup;
   residentes: any = []
   funcionarios: any = []
+  selectedResidentes: any = []
+  dropdownSettings: any = []
 
-  constructor(private formBuilder: FormBuilder, private NovoAcompanhamentoService: NovoAcompanhamentoService, private route: ActivatedRoute) { }
+
+  novoAcompanhamentoForm: FormGroup;
+
+
+  constructor(private formBuilder: FormBuilder, private NovoAcompanhamentoService: NovoAcompanhamentoService, ) { }
 
   ngOnInit() {
 
+    this.novoAcompanhamentoForm = this.formBuilder.group({
+      residente: this.formBuilder.control('', []),
+      data: this.formBuilder.control('', []),
+      atividade: this.formBuilder.control('', []),
+      funcionario: this.formBuilder.control('', [])
+
+
+    })
+
 
     //Residentes List         
+    this.residentes = []
+
     
-    this.residentes = [
-    this.NovoAcompanhamentoService.residentes()
-      .subscribe(residentes => {
-        this.residentes = residentes
-        console.log('residente', residentes)
-      })
-    ]
+         this.NovoAcompanhamentoService.residentes()
+        .subscribe(residentes => {
+          this.residentes = residentes
+          console.log('residente', residentes)
+        })
+             
+
+
 
     this.funcionarios = []
     //funcionarios List
@@ -64,16 +76,11 @@ export class NovoAcompanhamentoComponent implements OnInit {
 
     //Formulário Novo Acompanhamento
 
-    this.novoAcompanhamentoForm = this.formBuilder.group({
-      residente: this.formBuilder.control('', []),
-      data: this.formBuilder.control('', []),
-      atividade: this.formBuilder.control('', []),
-      funcionario: this.formBuilder.control('', [])
 
-
-    })
 
     this.dropdownSettings = {
+      enableSearch: true,
+      displayAllSelectedText: true,
       singleSelection: false,
       idField: 'residente_id',
       textField: 'residente_text',
@@ -82,6 +89,7 @@ export class NovoAcompanhamentoComponent implements OnInit {
       residentesShowLimit: 10,
       allowSearchFilter: this.ShowFilter
     }
+
 
     this.myForm = this.formBuilder.group({
       residente: [this.selectedResidentes]

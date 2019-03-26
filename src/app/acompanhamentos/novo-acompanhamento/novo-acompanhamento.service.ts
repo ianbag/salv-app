@@ -14,10 +14,10 @@ export class NovoAcompanhamentoService {
     constructor(private http: HttpClient) { }
 
     residentes(): Observable<Residente[]> {
-        return this.http.get<Residente[]>(`${SALV_API}/residente`)
+        return this.http.get<Residente[]>(`${SALV_API}/residenteNome`)
     }
 
     funcionarios(): Observable<Funcionario[]> {
-        return this.http.get<Funcionario[]>(`${SALV_API}/pessoa`)
+        return this.http.get<Funcionario[]>(`${SALV_API}/funcionarioNome`)
     }
 }
