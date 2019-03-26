@@ -1,3 +1,4 @@
+import { EditarConvenioComponent } from './convenios/editar-convenio/editar-convenio.component';
 import { NovoConvenioComponent } from './convenios/novo-convenio/novo-convenio.component';
 import { NovoAcompanhamentoComponent } from './acompanhamentos/novo-acompanhamento/novo-acompanhamento.component';
 
@@ -32,6 +33,7 @@ export const ROUTES: Routes = [
     { path: 'convenios', component: ConveniosComponent, canActivate: [AuthGuard] },
     { path: 'convenio/:id', component: ConvenioComponent, canActivate: [AuthGuard] },
     { path: 'novo-convenio', component: NovoConvenioComponent, canActivate: [AuthGuard] },
+    { path: 'editar-convenio', component: EditarConvenioComponent, canActivate: [AuthGuard] },
     { path: 'funcionarios', component: FuncionariosComponent, canActivate: [AuthGuard] },
     { path: 'funcionario/:id', component: FuncionarioComponent, canActivate: [AuthGuard] },
     { path: 'novo-funcionario', component: NovoFuncionarioComponent, canActivate: [AuthGuard] },

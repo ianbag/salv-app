@@ -27,6 +27,7 @@ export class ConvenioComponent implements OnInit {
   ngOnInit() {
     this.conveniosService.conveniosById(this.route.snapshot.params['id'])
     .subscribe(convenio => { this.convenio = convenio[0], console.log(this.convenio)})
+    
   }
 
 
