@@ -33,7 +33,7 @@ export const ROUTES: Routes = [
     { path: 'convenios', component: ConveniosComponent, canActivate: [AuthGuard] },
     { path: 'convenio/:id', component: ConvenioComponent, canActivate: [AuthGuard] },
     { path: 'novo-convenio', component: NovoConvenioComponent, canActivate: [AuthGuard] },
-    { path: 'editar-convenio', component: EditarConvenioComponent, canActivate: [AuthGuard] },
+    { path: 'editar-convenio/:id', component: EditarConvenioComponent, canActivate: [AuthGuard] },
     { path: 'funcionarios', component: FuncionariosComponent, canActivate: [AuthGuard] },
     { path: 'funcionario/:id', component: FuncionarioComponent, canActivate: [AuthGuard] },
     { path: 'novo-funcionario', component: NovoFuncionarioComponent, canActivate: [AuthGuard] },
