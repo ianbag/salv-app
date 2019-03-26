@@ -1,4 +1,5 @@
-<!-- Conteudo NATHAN -->
+<section class="content">
+
 <div class="box" [@convenio-residenteAppeared]="convenioresidenteState">
   <h1>Adicionar convênio</h1>
   <hr>
@@ -8,30 +9,23 @@
 
       <div class="form-group">
         <div class="col-sm-12 col-xs-12">
-          <h4><strong>Convênios</strong></h4>
+          <h4><strong>Informações do convênio</strong></h4>
         </div>
 
-        <div class="col-sm-4 col-xs-12">
-          <select class="form-control select2 select2-hidden-accessible" tabindex="-1" aria-hidden="true">
-            <option>Santa Casa</option>
-            <option>Unimed</option>
-            <option>Trilago</option>
-            <option>Delaware</option>
-            <option>Mais Atendimento</option>
-            <option>Bom Estar</option>
-          </select><span class="select2 select2-container select2-container--default select2-container--below" dir="ltr"
-            style="width: 100%;"><span class="selection"><span class="select2-selection__rendered" id="select2-1o66-container"></span><span
-                class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span
-            class="dropdown-wrapper" aria-hidden="true"></span>
+        <div class="col-sm-4 col-sm-12">
+          <label>Nome</label>
+          <select class="form-control" formControlName="estadoCivil">
+            <option value="" label="Nome do convênio" disabled selected="selected"></option>
+            <option *ngFor="let nome of nomes" [value]="nome.value">{{nome.option}}</option>
+          </select>
         </div>
-        <div class="col-sm-1 col-xs-12">
-          <a type="submit" class="btn btn-success botao" href="convenioInexist3.html">+</a>
-        </div>
-
-        <div class="col-sm-8 col-xs-12">
+        
+        <div class="col-sm-3 col-xs-12">
           <br>
+          <a style="margin-top: 8px" type="submit" class="btn btn-success botao" href="convenioInexist3.html">+</a>
         </div>
 
+        
         <div class="col-sm-4 col-xs-12">
           <label for="exampleInputPassword1">Nº de inscrição </label>
           <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nº de inscrição do convênio">
@@ -68,12 +62,11 @@
       <!--form group-->
 
       <div class="col-sm-12 col-xs-12">
-        <a style="margin-left: 10px" type="submit" class="btn btn-success botao pull-right" href="home.html">Finalizar
-          cadastro</a>
-        <a type="submit" class="btn btn-default botao pull-right" href="addResidenteFamiliar.html">Voltar</a>
+        <button (click)="convenioResidente(convenioResidenteForm.value)" style="margin-left: 10px" class="btn btn-success botao pull-right" [routerLink]="['/residentes']">Finalizar
+          cadastro</button>
+        <button type="submit" class="btn btn-default botao pull-right" [routerLink]="['/familiar-residente']">Voltar</button>
       </div>
     </div>
   </form>
 </div>
-
-<!-- Fim conteudo NATHAN -->
+</section>

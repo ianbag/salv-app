@@ -1,3 +1,4 @@
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, transition, style, animate } from '@angular/animations'
 
@@ -18,9 +19,26 @@ export class ConvenioResidenteComponent implements OnInit {
 
   convenioresidenteState = 'ready'
 
-  constructor() { }
+  nomes = [
+    { option: "teste" },
+    { option: "teste1" },
+    { option: "teste2" },
+    { option: "teste3" }
+  ];
+
+  convenioResidenteForm: FormGroup;
+
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-  }
+
+    this.convenioResidenteForm = this.formBuilder.group({
+      nome: this.formBuilder.control('', []),
+      numeroInscricao: this.formBuilder.control('', []),
+      titularConvenio: this.formBuilder.control('', [])
+    })
+    
+    
+    }
 
 }

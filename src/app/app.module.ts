@@ -63,6 +63,7 @@ import { AuthGuardService } from './auth/auth-guard.service';
 import { GlobalErrorHandler } from './app.global-error-handler';
 import { SnackbarComponent } from './shared/snackbar/snackbar.component';
 import { UserDetailsComponent } from './fixed-elements/header/user-details/user-details.component';
+import { NovoConvenioComponent } from './convenios/novo-convenio/novo-convenio.component';
 
 
 
@@ -114,7 +115,8 @@ import { UserDetailsComponent } from './fixed-elements/header/user-details/user-
     ConvenioResidenteComponent,
     NovoAcompanhamentoComponent,
     LoginComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    NovoConvenioComponent
 
   ],
   imports: [
