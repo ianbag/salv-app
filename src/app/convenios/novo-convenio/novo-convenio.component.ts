@@ -1,7 +1,7 @@
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { transition, style, trigger, state, animate } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import { Convenio } from 'src/app/residentes/residente/infos-convenio/convenio.model';
+import { Convenio } from 'src/app/convenios/convenio.model';;
 
 @Component({
   selector: 'salv-novo-convenio',
