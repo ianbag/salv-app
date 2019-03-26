@@ -17,7 +17,7 @@
                     <td>{{convenio.DDD}} {{convenio.TELEFONE}}</td>
                     <td>
                         <button type="submit" class="btn btn-danger botao" (click)="deleteConvenio(convenio.CODIGO); $event.stopPropagation()">Apagar</button>
-                        <a type="submit" class="btn btn-warning botao botao-espaço" href="#">Editar</a>
+                        <a type="submit" class="btn btn-warning botao botao-espaço" [routerLink]="['/editar-convenio', convenio.CODIGO]">Editar</a>
                         <a type="submit" class="btn btn-success botao" [routerLink]="['/convenio',convenio.CODIGO]">+ Informações</a>
                     </td>
                 </tr>

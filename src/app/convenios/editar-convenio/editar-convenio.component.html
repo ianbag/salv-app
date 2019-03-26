@@ -1,3 +1,94 @@
-<p>
-  editar-convenio works!
-</p>
+<section class="content">
+
+    <div class="box" [@novo-convenioAppeared]="novoconvenioState">
+      <h1>Editar convênio</h1>
+      <hr>
+  
+      <form [formGroup]="novoConvenioForm" novalidate>
+        <div class="box-body">
+          <div>
+            <div class="form-group">
+              <div class="col-sm-12 col-sm-12" id="formTitle">
+                <h4><strong>Informações do convênio</strong></h4>
+              </div>
+              <div class="row">
+                <div class="col-sm-6 col-sm-12" id="inputValidator">
+                  <salv-input-container errorMessage="Campo Obrigatório" label="Nome">
+                    <input {{convenio?.NOME}} type="text" class="form-control" formControlName="nome" placeholder="Nome">
+                  </salv-input-container>
+                </div>
+                <div class="col-sm-6 col-sm-12" id="inputValidator">
+                  <salv-input-container errorMessage="Campo Obrigatório" label="Tipo do convênio">
+                    <input type="text" class="form-control" formControlName="tipoConvenio" placeholder="Tipo do convênio">
+                  </salv-input-container>
+                </div>
+              </div>
+              <br />
+              <div class="row">
+                <div class="col-sm-4 col-sm-12" id="inputValidator">
+                  <salv-input-container errorMessage="Campo Obrigatório" label="Rua">
+                    <input type="text" class="form-control" formControlName="rua" placeholder="Rua">
+                  </salv-input-container>
+                </div>
+                <div class="col-sm-2 col-sm-12" id="inputValidator">
+                  <salv-input-container errorMessage="Campo Obrigatório" label="Número">
+                    <input type="text" class="form-control" formControlName="numero" placeholder="Número">
+                  </salv-input-container>
+                </div>
+                <div class="col-sm-2 col-sm-12" id="inputValidator">
+                  <salv-input-container errorMessage="Campo Obrigatório" label="Bairro">
+                    <input type="text" class="form-control" formControlName="bairro" placeholder="Bairro">
+                  </salv-input-container>
+                </div>
+                <div class="col-sm-2 col-sm-12" id="inputValidator">
+                  <salv-input-container errorMessage="Campo Obrigatório" label="Cidade">
+                    <input type="text" class="form-control" formControlName="cidade" placeholder="Cidade">
+                  </salv-input-container>
+                </div>
+                <div class="col-sm-2 col-sm-12" id="inputValidator">
+                  <salv-input-container errorMessage="Campo Obrigatório" label="Estado">
+                    <select class="form-control" formControlName="estado">
+                      <option value="" label="Selecione" disabled selected="selected"></option>
+                      <option *ngFor="let estado of estados">{{estado}}</option>
+                    </select>
+                  </salv-input-container>
+                </div>
+              </div>
+              <br />
+              <div class="row">
+                <div class="col-sm-3 col-sm-12" id="inputValidator">
+                  <salv-input-container errorMessage="Campo Obrigatório" label="CEP">
+                    <input type="text" mask="00.000-000" class="form-control" formControlName="cep" placeholder="CEP">
+                  </salv-input-container>
+                </div>
+                <div class="col-sm-3 col-sm-12">
+                  <label for="exampleInputPassword1">Complemento </label>
+                  <input type="text" class="form-control" formControlName="complemento" placeholder="Complemento">
+  
+                </div>
+                <div class="col-sm-6 col-sm-12">
+                  <label for="exampleInputPassword1">Referência </label>
+                  <input type="text" class="form-control" formControlName="referencia" placeholder="Referência">
+                  <br>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-2 col-sm-12">
+                  <label for="exampleInputPassword1">Número telefone </label>
+                  <input type="text" mask="(00) 00000-0000" class="form-control" formControlName="telefone" placeholder="Número telefone">
+                </div>
+                <div class="col-sm-2 col-sm-12" style="margin-top: 27px; margin-left: -25px">
+                  <a type="submit" class="btn btn-success botao"><i class="fa fa-plus"></i></a>
+                </div>
+              </div>
+  
+              <div class="col-sm-12 col-sm-12">
+                <a style="margin-left: 10px" (click)="novoConvenio(novoConvenioForm.value)" class="btn btn-success botao pull-right" [routerLink]="['/convenio-residente']">Salvar</a>
+                <a type="submit" class="btn btn-default botao pull-right" [routerLink]="['/convenio-residente']">Voltar</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
