@@ -1,3 +1,4 @@
+import { UserDetailsComponent } from './fixed-elements/header/user-details/user-details.component';
 import { NotificationService } from './shared/notification.service';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
@@ -62,9 +63,13 @@ import { LoginService } from './auth/login/login.service';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { GlobalErrorHandler } from './app.global-error-handler';
 import { SnackbarComponent } from './shared/snackbar/snackbar.component';
+<<<<<<< HEAD
 import { UserDetailsComponent } from './fixed-elements/header/user-details/user-details.component';
 import { NovoConvenioComponent } from './convenios/novo-convenio/novo-convenio.component';
 import { EditarConvenioComponent } from './convenios/editar-convenio/editar-convenio.component';
+=======
+import { NovoAcompanhamentoService } from './acompanhamentos/novo-acompanhamento/novo-acompanhamento.service';
+>>>>>>> upstream/master
 
 
 
@@ -116,9 +121,14 @@ import { EditarConvenioComponent } from './convenios/editar-convenio/editar-conv
     ConvenioResidenteComponent,
     NovoAcompanhamentoComponent,
     LoginComponent,
+<<<<<<< HEAD
     UserDetailsComponent,
     NovoConvenioComponent,
     EditarConvenioComponent
+=======
+    UserDetailsComponent
+    
+>>>>>>> upstream/master
 
   ],
   imports: [
@@ -143,6 +153,7 @@ import { EditarConvenioComponent } from './convenios/editar-convenio/editar-conv
     LoginService,
     AuthGuardService,
     NotificationService,
+    NovoAcompanhamentoService,
     { provide: ErrorHandler, useClass: GlobalErrorHandler }
   ],
   bootstrap: [AppComponent]

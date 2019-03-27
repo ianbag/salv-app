@@ -12,7 +12,6 @@ export class AppComponent {
   showMenu: boolean = false
 
   constructor(private loginService: LoginService) {
-
   }
 
   ngOnInit() {

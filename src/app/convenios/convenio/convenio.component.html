@@ -1,31 +1,33 @@
 <section class="content">
-  <div>
-          
-      <!-- Conteudo KAUE -->
-      <div class="box box-default" [@convenioAppeared]="convenioState">
-          <h1>Convênio</h1>
-          <hr>
-          <br>
-          <div>
-              <div class="box box-default box-solid">
-                  <div class="box-header with-border">
-                      <h3 class="box-title">Informações do convênio</h3>
-                      <div class="box-tools pull-right">
-                          <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                              <i class="fa fa-minus"></i>
-                          </button>
-                      </div>
-                  </div>
-                  <div class="box-body" style>
-                      <salv-infos-convenio [convenio]='convenio'></salv-infos-convenio>
-                  </div>
-              </div>
-              <div class="botao">
-                  <a type="submit" class="btn btn-default botao" [routerLink]="['/convenios']">Voltar</a>
-              </div>
-          </div>
-      </div>
-      <!-- Fim conteudo KAUE -->
-  </div>
-  <!-- /.row -->
+    <button (click)="downloadPDF()" class="btn btn-success" id="printReport"><i class="fa fa-print"></i></button>
+    <div id="content" #reportConvenio>
+        <div>
+            <!-- Conteudo KAUE -->
+            <div class="box box-default" [@convenioAppeared]="convenioState">
+                <h1>Detalhes do Convênio</h1>
+                <hr>
+                <br>
+                <div>
+                    <div class="box box-default box-solid">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Informações do convênio</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="box-body" style>
+                            <salv-infos-convenio [convenio]='convenio'></salv-infos-convenio>
+                        </div>
+                    </div>
+                    <div class="botao">
+                        <a type="submit" class="btn btn-default botao" [routerLink]="['/convenios']">Voltar</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Fim conteudo KAUE -->
+        </div>
+    </div>
+    <!-- /.row -->
 </section>
