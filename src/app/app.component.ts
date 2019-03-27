@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { LoginService } from './auth/login/login.service';
+import html2canvas from 'html2canvas'
+import * as jspdf from 'jspdf'
 
 @Component({
   selector: 'salv-root',
@@ -12,7 +14,6 @@ export class AppComponent {
   showMenu: boolean = false
 
   constructor(private loginService: LoginService) {
-
   }
 
   ngOnInit() {
