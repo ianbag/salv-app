@@ -1,5 +1,5 @@
-import { Residente } from './../residente/residente.model';
-import { Component, OnInit } from '@angular/core';
+import { Residente, Pessoa } from './../residente/residente.model';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { ResidentesService } from '../residentes.service';
@@ -65,14 +65,16 @@ export class NovoResidenteComponent implements OnInit {
   ]
 
   novoResidenteForm: FormGroup;
-  pessoa
+  pessoa: Pessoa
+  residente: Residente
 
-  constructor(private formBuilder: FormBuilder, private residentesService: ResidentesService) { }
+  constructor(private formBuilder: FormBuilder, private residentesService: ResidentesService) {}
 
   ngOnInit() {
+    this.pessoa = this.residentesService.pessoa
+    this.residente = this.residentesService.residente
 
     this.novoResidenteForm = this.formBuilder.group({
-
       // INFORMAÇÕES PESSOAIS INICIO
       PESSOA: this.formBuilder.group({
         NOME: this.formBuilder.control(null, [Validators.required]),
@@ -123,22 +125,9 @@ export class NovoResidenteComponent implements OnInit {
   }
 
   novoResidente(residente: Residente) {
-
-    console.log('RESIDENTE CADASTRAR', residente)
-    /*
-    this.residentesService.createPessoa(residente.PESSOA)
-    .subscribe(pessoaCadastrada => {
-      delete residente.PESSOA // REMOVE OBJETO PESSOA DO MODELO RESIDENTE
-      residente.PESSOA_CODIGO = pessoaCadastrada.CODIGO
-      this.residentesService.createResidente(residente)
-      .subscribe(residenteCadastrado => {
-        console.log('RESIDENTE', residenteCadastrado)
-      })
-      console.log('PESSOA', pessoaCadastrada)
-    })
-
-    */
-    
+    this.residentesService.pessoa = residente.PESSOA
+    delete residente.PESSOA
+    this.residentesService.residente = residente
   }
 
 }
