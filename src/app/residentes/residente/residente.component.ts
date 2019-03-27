@@ -29,7 +29,7 @@ export class ResidenteComponent implements OnInit {
   familiares: Familiar[]
   convenios: Convenio[]
 
-  @ViewChild('contentReport') contentReport: ElementRef
+  @ViewChild('reportResidente') reportResidente: ElementRef
 
   constructor(private residentesService: ResidentesService, private route: ActivatedRoute) { }
 
@@ -60,13 +60,12 @@ export class ResidenteComponent implements OnInit {
         return true
       }
     }
-    let content = this.contentReport.nativeElement
+    let content = this.reportResidente.nativeElement
 
     doc.fromHTML(content.innerHTML, 15, 15, {
       'width': 190,
       'elementHandlers': specialElementsHandlers
     })
-    doc.save('reportTeste.pdf')
+    doc.save('Relatório de Residente.pdf')
   }
-
 }
