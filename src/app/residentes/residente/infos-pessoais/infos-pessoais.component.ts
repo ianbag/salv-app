@@ -8,10 +8,8 @@ import { Residente } from '../residente.model';
 export class InfosPessoaisComponent implements OnInit {
 
   @Input() residente: Residente
-
   constructor() { }
 
   ngOnInit() {
   }
-
 }
