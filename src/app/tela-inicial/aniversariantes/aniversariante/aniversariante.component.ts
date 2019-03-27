@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TelaInicialService } from '../../tela-inicial.service';
+import { Aniversariante } from './aniversariante.model';
 
 @Component({
   selector: 'salv-aniversariante',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AniversarianteComponent implements OnInit {
 
-  constructor() { }
+  aniversariantes: Aniversariante[]
+
+  constructor(private telaInicialService: TelaInicialService) { }
 
   ngOnInit() {
+    this.telaInicialService.aniversariante()
+    .subscribe(data => {
+      this.aniversariantes = data
+      //console.log(data)
+    })
   }
 
 }

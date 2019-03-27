@@ -1,5 +1,5 @@
 export interface Aniversariante{
-
-    nomeResidente: string,
-    dataAniversario: string
+    NOME: string,
+    SOBRENOME: string,
+    DATA_NASCIMENTO: string
 }
