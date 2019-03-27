@@ -12,7 +12,6 @@ export class InfosConvenioComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log('TESTE NAO PASSOU CONVENIO PIPE CHANGE')
   }
 
 }
