@@ -58,7 +58,7 @@
           <button (click)="novoAcompanhamento(novoAcompanhamentoForm.value)" style="margin-left: 10px" class="btn btn-success botao pull-right"
             [routerLink]="['/acompanhamentos']">Salvar</button>
 
-          <button type="submit" class="btn btn-default botao pull-right" [routerLink]="['/acompanhamentos']">Voltar</button>
+          <button type="submit" (click)="myForm()" class="btn btn-default botao pull-right" [routerLink]="['/acompanhamentos']">Voltar</button>
         </div>
         <!--Fim botão-->
 

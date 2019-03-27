@@ -20,4 +20,6 @@ export class NovoAcompanhamentoService {
     funcionarios(): Observable<Funcionario[]> {
         return this.http.get<Funcionario[]>(`${SALV_API}/funcionarioNome`)
     }
+
+    novoAcompanhamento():
 }
