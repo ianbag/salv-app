@@ -1,6 +1,7 @@
 import { LoginService } from './login.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { NotificationService } from './../../shared/notification.service';
 
 @Component({
   selector: 'salv-login',
@@ -11,7 +12,10 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup
 
-  constructor(private fb: FormBuilder, private loginService: LoginService) { }
+  constructor(private fb: FormBuilder, private ls: LoginService, private ns: NotificationService) {
+    this.ls.logout()
+    this.ls.showMenuEmitter.emit(false)
+   }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -21,8 +25,9 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    console.log(this.loginForm.value.email, this.loginForm.value.senha)
-    this.loginService.login(this.loginForm.value.email, this.loginForm.value.senha).subscribe(user => console.log(user))
+    this.ls.login(this.loginForm.value.email, this.loginForm.value.senha)
+      .subscribe(user => this.ns.notify(`Bem vindo, ${user.login}`),
+        response => this.ns.notify(response.error.message))
   }
 
 }

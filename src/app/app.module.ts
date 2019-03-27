@@ -1,3 +1,4 @@
+import { UserDetailsComponent } from './fixed-elements/header/user-details/user-details.component';
 import { NotificationService } from './shared/notification.service';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
@@ -64,6 +65,8 @@ import { AuthGuardService } from './auth/auth-guard.service';
 import { GlobalErrorHandler } from './app.global-error-handler';
 import { SnackbarComponent } from './shared/snackbar/snackbar.component';
 import { TelaInicialService } from './tela-inicial/tela-inicial.service';
+import { NovoAcompanhamentoService } from './acompanhamentos/novo-acompanhamento/novo-acompanhamento.service';
+
 
 @NgModule({
   declarations: [
@@ -110,7 +113,9 @@ import { TelaInicialService } from './tela-inicial/tela-inicial.service';
     FamiliarResidenteComponent,
     ConvenioResidenteComponent,
     NovoAcompanhamentoComponent,
-    LoginComponent
+    LoginComponent,
+    UserDetailsComponent
+    
 
   ],
   imports: [
@@ -124,6 +129,9 @@ import { TelaInicialService } from './tela-inicial/tela-inicial.service';
     NgxMaskModule.forRoot(),
     NgMultiSelectDropDownModule.forRoot()
   ],
+  
+
+  
   providers: [
     ResidentesService,
     ConveniosService,
@@ -134,6 +142,7 @@ import { TelaInicialService } from './tela-inicial/tela-inicial.service';
     AuthGuardService,
     NotificationService,
     TelaInicialService,
+    NovoAcompanhamentoService,
     { provide: ErrorHandler, useClass: GlobalErrorHandler }
   ],
   bootstrap: [AppComponent]

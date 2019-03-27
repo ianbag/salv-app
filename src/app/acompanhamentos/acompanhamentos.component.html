@@ -1,32 +1,35 @@
 <section class="content">
+  <button (click)="downloadPDF()" class="btn btn-success" id="printReport"><i class="fa fa-print"></i></button>
+  <div id="content" #reportAcompanhamentos>
+    <div class="form-group">
+      <a type="submit" class="btn btn-primary" [routerLink]="['/novo-acompanhamento']">Novo acompanhamento</a>
+    </div>
 
-  <div class="form-group">
-    <a type="submit" class="btn btn-primary" [routerLink]="['/novo-acompanhamento']">Novo acompanhamento</a>
-  </div>
 
+    <div class="box box-default table-responsive no-padding" [@acompanhamentosAppeared]="acompanhamentosState">
+      <h1>Visualização geral dos acompanhamentos</h1>
+      <br>
+      <table class="table table-hover">
+        <tr>
+          <th>Atividade realizada</th>
+          <th>Data</th>
+          <th>Funcionário</th>
+          <th>Ações</th>
+        </tr>
+        <tr *ngFor="let acompanhamento of acompanhamentos">
+          <td>{{acompanhamento.ATIVIDADE}}</td>
+          <td>{{acompanhamento.DATA_ACOMPANHAMENTO}}</td>
+          <td>{{acompanhamento.FUNCIONARIO_NOME}} {{acompanhamento.FUNCIONARIO_SOBRENOME}}</td>
+          <td>
 
-  <div class="box box-default table-responsive no-padding" [@acompanhamentosAppeared]="acompanhamentosState">
-    <h1>Visualização geral dos acompanhamentos</h1> 
-    <br>
-    <table class="table table-hover">
-      <tr>
-        <th>Atividade realizada</th>
-        <th>Data</th>
-        <th>Funcionário</th>
-        <th>Ações</th>
-      </tr>
-      <tr *ngFor="let acompanhamento of acompanhamentos">
-        <td>{{acompanhamento.ATIVIDADE}}</td>
-        <td>{{acompanhamento.DATA_ACOMPANHAMENTO}}</td>
-        <td>{{acompanhamento.FUNCIONARIO_NOME}} {{acompanhamento.FUNCIONARIO_SOBRENOME}}</td>
-        <td>
+            <a type="submit" class="btn btn-warning botao" href="#">Editar</a>
+            <a type="submit" class="btn btn-success botao" [routerLink]="['/acompanhamento', acompanhamento.CODIGO]">+
+              Informações</a>
+          </td>
+        </tr>
 
-          <a type="submit" class="btn btn-warning botao" href="#">Editar</a>
-          <a type="submit" class="btn btn-success botao" [routerLink]="['/acompanhamento', acompanhamento.CODIGO]">+ Informações</a>
-        </td>
-      </tr>
-
-    </table>
-    <!-- Fim da tabela  -->
+      </table>
+      <!-- Fim da tabela  -->
+    </div>
   </div>
 </section>

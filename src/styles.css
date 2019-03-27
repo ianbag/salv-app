@@ -1,16 +1,11 @@
-/*.login-box-body{
-  background-color: #009954;
-  color: #ffffff
-}*/
-
-/*#login{
-  background-color: #00A65A
-}*/
-
 #remindMyPassword{
     color: #009954;
     text-decoration: underline;
     line-height: 1cm;
+  }
+
+  #printReport{
+    margin-bottom: 5px;
   }
   
   .label{
@@ -25,6 +20,7 @@
   
   a{
     color: #ffffff;
+    cursor: pointer;
   }
   
   .form-group {
@@ -51,4 +47,26 @@
   #inputValidator{
     margin-top: -10px;
     margin-left: -10px;
+  }
+
+  .user-menu>span {
+    /**/
+    position: relative;
+    display: block;
+    padding: 15px 15px;
+    color: #fff
+  }
+
+  .user-menu>a {
+    color: #fff;
+    cursor: pointer;
+  }
+
+  @media (max-width: 991px) {
+    .navbar-custom-menu {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 40px;
+    }
   }

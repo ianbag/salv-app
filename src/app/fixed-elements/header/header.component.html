@@ -1,24 +1,13 @@
 <header class="main-header">
 
   <a [routerLink]="['/']" class="logo">
-    <span class="logo-mini"><b>Sal</b>V</span>
-    <span class="logo-lg"><b>Gestão de </b>Lares</span>
+    <span class="logo-lg">Doutor <b>Vida</b></span>
   </a>
 
   <nav class="navbar navbar-static-top">
-    <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+    <a class="sidebar-toggle" data-toggle="push-menu" role="button">
       <span class="sr-only">Toggle navigation</span>
     </a>
-    <div class="navbar-custom-menu">
-      <ul class="nav navbar-nav">
-
-        <li class="dropdown user user-menu">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <span class="hidden-xs">{{usuario}}</span>
-
-          </a>
-        </li>
-      </ul>
-    </div>
+    <salv-user-details></salv-user-details>
   </nav>
 </header>

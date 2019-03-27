@@ -1,73 +1,76 @@
 <section class="content">
-    <div>
-        <!-- Conteudo KAUE -->
-        <div class="box box-default" [@funcionarioAppeared]="funcionarioState">
-            <h1>Funcionário</h1>
-            <hr>
-            <br>
-            <div>
-                <div class="box box-default box-solid">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Informações pessoais</h3>
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                                <i class="fa fa-minus"></i>
-                            </button>
+    <button (click)="downloadPDF()" class="btn btn-success" id="printReport"><i class="fa fa-print"></i></button>
+    <div id="content" #reportFuncionario>
+        <div>
+            <!-- Conteudo KAUE -->
+            <div class="box box-default" [@funcionarioAppeared]="funcionarioState">
+                <h1>Funcionário</h1>
+                <hr>
+                <br>
+                <div>
+                    <div class="box box-default box-solid">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Informações pessoais</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="box-body" style>
+                            <strong>Nome:</strong> {{funcionario?.nome}}
+                            <br>
+                            <strong>Sobrenome:</strong> {{funcionario?.sobrenome}}
+                            <br>
+                            <strong>CPF:</strong> {{funcionario?.cpf}}
+                            <br>
+                            <strong>RG:</strong> {{funcionario?.rg}}
+                            <br>
+                            <strong>Estado civil:</strong> {{funcionario?.estado_civil}}
+                            <br>
+                            <strong>Sexo:</strong> {{funcionario?.sexo}}
+                            <br>
+                            <strong>Religião:</strong> {{funcionario?.religiao}}
+                            <br>
+                            <strong>Escolaridade:</strong> {{funcionario?.escolaridade}}
+                            <br>
+                            <strong>Rua:</strong> {{funcionario?.rua}}
+                            <br>
+                            <strong>Número:</strong> {{funcionario?.numero}}
+                            <br>
+                            <strong>Bairro:</strong> {{funcionario?.bairro}}
+                            <br>
+                            <strong>Cidade:</strong> {{funcionario?.cidade}}
+                            <br>
+                            <strong>Estado:</strong> {{funcionario?.estado}}
+                            <br>
+                            <strong>CEP:</strong> {{funcionario?.cep}}
+                            <br>
+                            <strong>Complemento:</strong> {{funcionario?.cep}}
+                            <br>
+                            <strong>Telefone:</strong> {{funcionario?.telefone}}
+                            <br>
+                            <strong>Referência:</strong> {{funcionario?.referencia}}
+                            <br>
+                            <strong>Data de nascimento:</strong> {{funcionario?.data_nascimento}}
+                            <br>
                         </div>
                     </div>
-                    <div class="box-body" style>
-                        <strong>Nome:</strong> {{funcionario?.nome}}
-                        <br>
-                        <strong>Sobrenome:</strong> {{funcionario?.sobrenome}}
-                        <br>
-                        <strong>CPF:</strong> {{funcionario?.cpf}}
-                        <br>
-                        <strong>RG:</strong> {{funcionario?.rg}}
-                        <br>
-                        <strong>Estado civil:</strong> {{funcionario?.estado_civil}}
-                        <br>
-                        <strong>Sexo:</strong> {{funcionario?.sexo}}
-                        <br>
-                        <strong>Religião:</strong> {{funcionario?.religiao}}
-                        <br>
-                        <strong>Escolaridade:</strong> {{funcionario?.escolaridade}}
-                        <br>
-                        <strong>Rua:</strong> {{funcionario?.rua}}
-                        <br>
-                        <strong>Número:</strong> {{funcionario?.numero}}
-                        <br>
-                        <strong>Bairro:</strong> {{funcionario?.bairro}}
-                        <br>
-                        <strong>Cidade:</strong> {{funcionario?.cidade}}
-                        <br>
-                        <strong>Estado:</strong> {{funcionario?.estado}}
-                        <br>
-                        <strong>CEP:</strong> {{funcionario?.cep}}
-                        <br>
-                        <strong>Complemento:</strong> {{funcionario?.cep}}
-                        <br>
-                        <strong>Telefone:</strong> {{funcionario?.telefone}}
-                        <br>
-                        <strong>Referência:</strong> {{funcionario?.referencia}}
-                        <br>
-                        <strong>Data de nascimento:</strong> {{funcionario?.data_nascimento}}
-                        <br>
+                    <div class="box box-default box-solid">
+                        <salv-infos-funcionais></salv-infos-funcionais>
+                    </div>
+                    <div class="box box-default box-solid">
+
+                        <salv-infos-dependente></salv-infos-dependente>
+
+                    </div>
+                    <div class="botao">
+                        <a type="submit" class="btn btn-default botao" [routerLink]="['/funcionarios']">Voltar</a>
                     </div>
                 </div>
-                <div class="box box-default box-solid">
-                    <salv-infos-funcionais></salv-infos-funcionais>
-                </div>
-                <div class="box box-default box-solid">
-
-                    <salv-infos-dependente></salv-infos-dependente>
-
-                </div>
-                <div class="botao">
-                    <a type="submit" class="btn btn-default botao" [routerLink]="['/funcionarios']">Voltar</a>
-                </div>
             </div>
+            <!-- Fim conteudo KAUE -->
         </div>
-        <!-- Fim conteudo KAUE -->
+        <!-- /.row -->
     </div>
-    <!-- /.row -->
 </section>

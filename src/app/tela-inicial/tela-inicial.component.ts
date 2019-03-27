@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NotificationService } from '../shared/notification.service';
 
 @Component({
   selector: 'salv-tela-inicial',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TelaInicialComponent implements OnInit {
 
-  constructor() { }
+  constructor(private ns:NotificationService) { }
 
   ngOnInit() {
   }
-
+     testaNotificacao(){
+       console.log(`CLIQUEI NO BOTAO`)
+       this.ns.notify(`TESTANDO NOTICAÇÃO`)
+     }
 }
