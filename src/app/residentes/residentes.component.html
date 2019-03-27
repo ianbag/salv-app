@@ -1,41 +1,45 @@
 <!-- Main content -->
 <section class="content">
-  <div>
+  <button (click)="downloadPDF()" class="btn btn-success" id="printReport"><i class="fa fa-print"></i></button>
+  <div id="content" #reportResidentes>
+    <div>
 
-    <div class="form-group">
-      <a type="submit" class="btn btn-primary" [routerLink]="['/novo-residente']">Novo Residente</a>
+      <div class="form-group">
+        <a type="submit" class="btn btn-primary" [routerLink]="['/novo-residente']">Novo Residente</a>
+      </div>
+
+
+      <div class="box box-default table-responsive no-padding" [@residentesAppeared]="residentesState">
+        <h1>Visualização geral dos residentes</h1>
+        <br>
+        <table class="table table-hover">
+          <tr>
+            <th>Nome</th>
+            <th>Apelido</th>
+            <th>CPF</th>
+            <th>RG</th>
+            <th>Ações</th>
+          </tr>
+          <tr *ngFor="let residente of residentes">
+            <td>{{residente.PESSOA.NOME}}</td>
+            <td>{{residente.APELIDO}}</td>
+            <td>{{residente.PESSOA.CPF | cpf}}</td>
+            <td>{{residente.PESSOA.RG | rg}}</td>
+
+            <td>
+              <button type="submit" class="btn btn-danger botao"
+                (click)="deleteResidente(residente.CODIGO_RESIDENTE); $event.stopPropagation()">Apagar</button>
+              <a type="submit" class="btn btn-warning botao" href="#">Editar</a>
+              <a type="submit" class="btn btn-success botao" [routerLink]="['/residente', residente.CODIGO_RESIDENTE]">+
+                Informações</a>
+            </td>
+          </tr>
+
+        </table>
+        <!-- Fim da tabela  -->
+      </div>
+
     </div>
-
-
-    <div class="box box-default table-responsive no-padding" [@residentesAppeared]="residentesState">
-      <h1>Visualização geral dos residentes</h1>
-      <br>
-      <table class="table table-hover">
-        <tr>
-          <th>Nome</th>
-          <th>Apelido</th>
-          <th>CPF</th>
-          <th>RG</th>
-          <th>Ações</th>
-        </tr>
-        <tr *ngFor="let residente of residentes">
-          <td>{{residente.PESSOA.NOME}}</td>
-          <td>{{residente.APELIDO}}</td>
-          <td>{{residente.PESSOA.CPF | cpf}}</td>
-          <td>{{residente.PESSOA.RG | rg}}</td>
-
-          <td>
-            <button type="submit" class="btn btn-danger botao" (click)="deleteResidente(residente.CODIGO_RESIDENTE); $event.stopPropagation()">Apagar</button>
-            <a type="submit" class="btn btn-warning botao" href="#">Editar</a>
-            <a type="submit" class="btn btn-success botao" [routerLink]="['/residente', residente.CODIGO_RESIDENTE]">+
-              Informações</a>
-          </td>
-        </tr>
-
-      </table>
-      <!-- Fim da tabela  -->
-    </div>
-
   </div>
   <!-- /.row -->
 </section>
