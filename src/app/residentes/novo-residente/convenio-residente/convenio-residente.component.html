@@ -3,7 +3,7 @@
   <h1>Adicionar convênio</h1>
   <hr>
 
-  <form role="form">
+  <form role="form" [formGroup]="convenioResidenteForm">
     <div class="box-body">
 
       <div class="form-group">
@@ -68,9 +68,9 @@
       <!--form group-->
 
       <div class="col-sm-12 col-xs-12">
-        <a style="margin-left: 10px" type="submit" class="btn btn-success botao pull-right" href="home.html">Finalizar
+        <a style="margin-left: 10px" type="submit" (click)="convenioResidente(convenioResidenteForm.value)" class="btn btn-success botao pull-right">Finalizar
           cadastro</a>
-        <a type="submit" class="btn btn-default botao pull-right" href="addResidenteFamiliar.html">Voltar</a>
+        <a type="submit" class="btn btn-default botao pull-right" [routerLink]="['/familiar-residente']">Voltar</a>
       </div>
     </div>
   </form>
