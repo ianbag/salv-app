@@ -63,6 +63,7 @@ import { LoginService } from './auth/login/login.service';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { GlobalErrorHandler } from './app.global-error-handler';
 import { SnackbarComponent } from './shared/snackbar/snackbar.component';
+import { TelaInicialService } from './tela-inicial/tela-inicial.service';
 
 @NgModule({
   declarations: [
@@ -132,6 +133,7 @@ import { SnackbarComponent } from './shared/snackbar/snackbar.component';
     LoginService,
     AuthGuardService,
     NotificationService,
+    TelaInicialService,
     { provide: ErrorHandler, useClass: GlobalErrorHandler }
   ],
   bootstrap: [AppComponent]
