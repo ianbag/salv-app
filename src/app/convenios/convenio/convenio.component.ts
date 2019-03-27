@@ -33,10 +33,10 @@ export class ConvenioComponent implements OnInit {
       .subscribe(convenio => { this.convenio = convenio[0], console.log(this.convenio) })
   }
 
-  public downloadPDF(){
+  public downloadPDF() {
     let doc = new jspdf()
-    let specialElementsHandlers ={
-      '#editor': function(element, renderer){
+    let specialElementsHandlers = {
+      '#editor': function (element, renderer) {
         return true
       }
     }
