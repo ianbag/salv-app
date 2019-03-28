@@ -88,6 +88,9 @@ export class NovoAcompanhamentoComponent implements OnInit {
 
     this.selectedResidentes = []
     this.selectedFuncionarios = []
+
+
+    
     
           
       this.dropdownSettings = {
@@ -106,6 +109,7 @@ export class NovoAcompanhamentoComponent implements OnInit {
       this.myForm = this.formBuilder.group({
       residente: [this.selectedResidentes],
       funcionario: [this.selectedFuncionarios]
+
     })
 
   }
