@@ -1,4 +1,3 @@
-import { UserDetailsComponent } from './fixed-elements/header/user-details/user-details.component';
 import { NotificationService } from './shared/notification.service';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
@@ -69,8 +68,6 @@ import { NovoConvenioComponent } from './convenios/novo-convenio/novo-convenio.c
 import { EditarConvenioComponent } from './convenios/editar-convenio/editar-convenio.component';
 import { NovoAcompanhamentoService } from './acompanhamentos/novo-acompanhamento/novo-acompanhamento.service';
 import { TelaInicialService } from './tela-inicial/tela-inicial.service';
-import { NovoAcompanhamentoService } from './acompanhamentos/novo-acompanhamento/novo-acompanhamento.service';
-
 
 
 @NgModule({

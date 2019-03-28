@@ -1,10 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-
 import { FuncionariosService } from './funcionarios.service';
 import { Funcionario } from './funcionario.model';
 import { DialogConfirmService } from '../residentes/dialog-confirm.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import * as jspdf from 'jspdf';6
+import * as jspdf from 'jspdf';
 
 @Component({
   selector: 'salv-funcionarios',
@@ -30,8 +29,6 @@ export class FuncionariosComponent implements OnInit {
   funcionariosState = 'ready'
 
   @ViewChild('reportFuncionarios') reportFuncionarios: ElementRef
-
-  constructor() { }
 
   ngOnInit() {
     this.funcionariosService.funcionarios()
@@ -68,21 +65,4 @@ export class FuncionariosComponent implements OnInit {
     })
     doc.save('Relatório de Funcionários.pdf')
   }
-
-  public downloadPDF() {
-    let doc = new jspdf()
-    let specialElementsHandlers = {
-      '#editor': function (element, renderer) {
-        return true
-      }
-    }
-    let content = this.reportFuncionarios.nativeElement
-
-    doc.fromHTML(content.innerHTML, 15, 15, {
-      'width': 190,
-      'elementHandlers': specialElementsHandlers
-    })
-    doc.save('Relatório de Funcionários.pdf')
-  }
-
 }
