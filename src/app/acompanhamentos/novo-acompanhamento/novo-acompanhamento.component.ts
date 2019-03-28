@@ -36,7 +36,7 @@ export class NovoAcompanhamentoComponent implements OnInit {
   selectedResidentes: any = []
   selectedFuncionarios: any = []
   dropdownSettings: any = []
-  dropdownSettingsF: any = []
+  dropdownSettings2: any = []
 
 
   novoAcompanhamentoForm: FormGroup;
@@ -45,85 +45,83 @@ export class NovoAcompanhamentoComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private NovoAcompanhamentoService: NovoAcompanhamentoService, ) { }
 
   ngOnInit() {
-
-    //Formulário Novo Acompanhamento
-    this.novoAcompanhamentoForm = this.formBuilder.group({
-      residente: this.formBuilder.control('', []),
-      data: this.formBuilder.control('', []),
-      atividade: this.formBuilder.control('', []),
-      funcionario: this.formBuilder.control('', [])
-    })
+//Formulário Novo Acompanhamento
+this.novoAcompanhamentoForm = this.formBuilder.group({
+  data: this.formBuilder.control('', []),
+  atividade: this.formBuilder.control('', [])
+})
 
 
-    //Residentes List         
+//Residentes List         
 
 
-    
-    this.NovoAcompanhamentoService.residentes()
-      .subscribe(residentes => {
-        this.residentes = residentes
-        console.log('residente', residentes)
-        
-        this.residentes =[
-          
-          {id: this.residentes[1].CODIGO_RESIDENTE, text: JSON.stringify(this.residentes[1].NOME) }
-         
-        ]
-      })
-    
-    //funcionarios List
-    this.NovoAcompanhamentoService.funcionarios()
-      .subscribe(funcionarios => {
-        this.funcionarios = funcionarios
-        console.log('funcionario', funcionarios)
 
-        this.funcionarios = [
+this.NovoAcompanhamentoService.residentes()
+  .subscribe(residentes => {
+    this.residentes = residentes
+    console.log('residentes', residentes)
+  })
 
-          {id: this.funcionarios[1].CODIGO_FUNCIONARIO, text: JSON.stringify(this.funcionarios[1].NOME) }      
-        ]
-      })
+//funcionarios List
+this.NovoAcompanhamentoService.funcionarios()
+  .subscribe(funcionarios => {
+    this.funcionarios = funcionarios
+    console.log('funcionario', funcionarios)
+  })
 
 
 
 
-    this.selectedResidentes = []
-    this.selectedFuncionarios = []
+this.selectedResidentes = []
+this.selectedFuncionarios = []
 
 
-    
-    
-          
-      this.dropdownSettings = {
-      enableSearch: true,
-      displayAllSelectedText: true,
-      singleSelection: false,
-      idField: 'id',
-      textField: 'text',
-      selectAllText: 'Marcar todos',
-      unSelectAlltext: 'Desmarcar todos',
-      residentesShowLimit: 10,
-      allowSearchFilter: this.ShowFilter
-    }
 
 
-      this.myForm = this.formBuilder.group({
-      residente: [this.selectedResidentes],
-      funcionario: [this.selectedFuncionarios]
 
-    })
+this.dropdownSettings = {
+  enableSearch: true,
+  displayAllSelectedText: true,
+  singleSelection: false,
+  idField: 'CODIGO_RESIDENTE',
+  textField: 'NOME',
+  selectAllText: 'Marcar todos',
+  unSelectAlltext: 'Desmarcar todos',
+  itemsShowLimit: 5,
+  allowSearchFilter: this.ShowFilter
+}
 
-  }
+this.dropdownSettings2 = {
+  enableSearch: true,
+  displayAllSelectedText: true,
+  singleSelection: false,
+  idField: 'CODIGO_FUNCIONARIO',
+  textField: 'NOME',
+  selectAllText: 'Marcar todos',
+  unSelectAlltext: 'Desmarcar todos',
+  itemsShowLimit: 5,
+  allowSearchFilter: this.ShowFilter
+}
 
-  novoAcompanhamento(acompanhamento: Acompanhamento) {
-    console.log(acompanhamento)
-  }
 
-  onResidenteSelect(residente: any) {
-    console.log('onResidenteSelect', residente)
-  }
+this.myForm = this.formBuilder.group({
+  residente: [this.selectedResidentes],
+  funcionario: [this.selectedFuncionarios]
 
-  onFuncioanrioSelect(funcionarios: any) {
-    console.log('onFuncioanrioSelect', funcionarios)
-  }
+})
+
+}
+
+novoAcompanhamento(acompanhamento: Acompanhamento) {
+console.log(acompanhamento)
+}
+
+onResidenteSelect(residente: any) {
+console.log('onResidenteSelect', residente)
+}
+
+onFuncioanrioSelect(funcionarios: any) {
+console.log('onFuncioanrioSelect', funcionarios)
+}
 
 }
