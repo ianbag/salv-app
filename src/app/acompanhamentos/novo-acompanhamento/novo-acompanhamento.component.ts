@@ -22,7 +22,7 @@ import { trigger, state, transition, style, animate } from '@angular/animations'
 export class NovoAcompanhamentoComponent implements OnInit {
 
 
-  
+
 
   novoacompanhamentoState = 'ready'
 
@@ -34,7 +34,9 @@ export class NovoAcompanhamentoComponent implements OnInit {
   residentes: any = []
   funcionarios: any = []
   selectedResidentes: any = []
+  selectedFuncionarios: any = []
   dropdownSettings: any = []
+  dropdownSettingsF: any = []
 
 
   novoAcompanhamentoForm: FormGroup;
@@ -44,48 +46,59 @@ export class NovoAcompanhamentoComponent implements OnInit {
 
   ngOnInit() {
 
+    //Formulário Novo Acompanhamento
     this.novoAcompanhamentoForm = this.formBuilder.group({
       residente: this.formBuilder.control('', []),
       data: this.formBuilder.control('', []),
       atividade: this.formBuilder.control('', []),
       funcionario: this.formBuilder.control('', [])
-
-
     })
 
-  
+
     //Residentes List         
+
+
     
-
-         this.NovoAcompanhamentoService.residentes()
-        .subscribe(residentes => {
-          this.residentes = residentes
-          console.log('residente', residentes)
-        })
-             
-        this.residentes = this.residentes
-
-
-    this.funcionarios = []
+    this.NovoAcompanhamentoService.residentes()
+      .subscribe(residentes => {
+        this.residentes = residentes
+        console.log('residente', residentes)
+        
+        this.residentes =[
+          
+          {id: this.residentes[1].CODIGO_RESIDENTE, text: JSON.stringify(this.residentes[1].NOME) }
+         
+        ]
+      })
+    
     //funcionarios List
     this.NovoAcompanhamentoService.funcionarios()
       .subscribe(funcionarios => {
         this.funcionarios = funcionarios
         console.log('funcionario', funcionarios)
+
+        this.funcionarios = [
+
+          {id: this.funcionarios[1].CODIGO_FUNCIONARIO, text: JSON.stringify(this.funcionarios[1].NOME) }      
+        ]
       })
 
 
 
-    //Formulário Novo Acompanhamento
+
+    this.selectedResidentes = []
+    this.selectedFuncionarios = []
 
 
-
-    this.dropdownSettings = {
+    
+    
+          
+      this.dropdownSettings = {
       enableSearch: true,
       displayAllSelectedText: true,
       singleSelection: false,
-      idField: 'residente_id',
-      textField: 'residente_text',
+      idField: 'id',
+      textField: 'text',
       selectAllText: 'Marcar todos',
       unSelectAlltext: 'Desmarcar todos',
       residentesShowLimit: 10,
@@ -93,8 +106,10 @@ export class NovoAcompanhamentoComponent implements OnInit {
     }
 
 
-    this.myForm = this.formBuilder.group({
-      residente: [this.selectedResidentes]
+      this.myForm = this.formBuilder.group({
+      residente: [this.selectedResidentes],
+      funcionario: [this.selectedFuncionarios]
+
     })
 
   }
