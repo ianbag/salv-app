@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 import { trigger, state, transition, style, animate } from '@angular/animations';
+import { Residente } from 'src/app/residentes/residente/residente.model';
 
 
 @Component({
@@ -48,39 +49,24 @@ export class NovoAcompanhamentoComponent implements OnInit {
 
     //Formulário Novo Acompanhamento
     this.novoAcompanhamentoForm = this.formBuilder.group({
-      residente: this.formBuilder.control('', []),
       data: this.formBuilder.control('', []),
-      atividade: this.formBuilder.control('', []),
-      funcionario: this.formBuilder.control('', [])
+      atividade: this.formBuilder.control('', [])
     })
 
 
     //Residentes List         
 
 
-    
+
     this.NovoAcompanhamentoService.residentes()
       .subscribe(residentes => {
         this.residentes = residentes
-        console.log('residente', residentes)
-        
-        this.residentes =[
-          
-          {id: this.residentes[1].CODIGO_RESIDENTE, text: JSON.stringify(this.residentes[1].NOME) }
-         
-        ]
       })
-    
+
     //funcionarios List
     this.NovoAcompanhamentoService.funcionarios()
       .subscribe(funcionarios => {
         this.funcionarios = funcionarios
-        console.log('funcionario', funcionarios)
-
-        this.funcionarios = [
-
-          {id: this.funcionarios[1].CODIGO_FUNCIONARIO, text: JSON.stringify(this.funcionarios[1].NOME) }      
-        ]
       })
 
 
@@ -90,23 +76,23 @@ export class NovoAcompanhamentoComponent implements OnInit {
     this.selectedFuncionarios = []
 
 
-    
-    
-          
-      this.dropdownSettings = {
+
+
+
+    this.dropdownSettings = {
       enableSearch: true,
       displayAllSelectedText: true,
       singleSelection: false,
       idField: 'id',
-      textField: 'text',
+      textField: 'NOME',
       selectAllText: 'Marcar todos',
       unSelectAlltext: 'Desmarcar todos',
-      residentesShowLimit: 10,
+      itemsShowLimit: 5,
       allowSearchFilter: this.ShowFilter
     }
 
 
-      this.myForm = this.formBuilder.group({
+    this.myForm = this.formBuilder.group({
       residente: [this.selectedResidentes],
       funcionario: [this.selectedFuncionarios]
 
