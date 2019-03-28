@@ -24,6 +24,7 @@ export interface Residente {
     MOTIVO_DESACOLHIMENTO: string,
     PESSOA_CODIGO: number,
     PESSOA: {
+        CODIGO: number,
         NOME: string,
         SOBRENOME: string,
         RG: string,
@@ -34,4 +35,17 @@ export interface Residente {
         RELIGIAO: string,
         ESCOLARIDADE: string
     }
+}
+
+export interface Pessoa {
+    CODIGO: number,
+    NOME: string,
+    SOBRENOME: string,
+    RG: string,
+    CPF: string,
+    SEXO: string,
+    ESTADO_CIVIL: string
+    DATA_NASCIMENTO: string
+    RELIGIAO: string,
+    ESCOLARIDADE: string
 }

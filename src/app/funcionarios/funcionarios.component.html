@@ -17,20 +17,19 @@
                         <th>Dependentes</th>
                         <th style="width: 350px">Ações</th>
                     </tr>
-                    <tr>
-                        <td>Lucia Maria</td>
-                        <td>456.894.423-55</td>
-                        <td>54.235.896-4</td>
-                        <td>Não</td>
-                        <td>
-                            <a type="submit" class="btn btn-danger botao">Apagar</a>
-                            <a type="submit" class="btn btn-warning botao" href="funcionarios-alterar.html">Editar</a>
-                            <a type="submit" class="btn btn-success botao" [routerLink]="['/funcionario/:id']">+
-                                Informações</a>
-                        </td>
-                    </tr>
-
-
+                    <tr *ngFor="let funcionario of funcionarios">
+                            <td>{{funcionario.FUNCIONARIO_NOME}} {{funcionario.FUNCIONARIO_SOBRENOME}}</td>
+                            <td>{{funcionario.CPF | cpf}}</td>
+                            <td>{{funcionario.RG | rg}}</td>
+                            <td>{{funcionario.DEPENDENTE_NOME}} {{funcionario.DEPENDENTE_SOBRENOME}}</td>
+                            <td>
+                                <button type="submit" class="btn btn-danger botao"
+                                    (click)="deleteFuncionario(funcionario.CODIGO); $event.stopPropagation()">Apagar</button>
+                                <a type="submit" class="btn btn-warning botao" href="#">Editar</a>
+                                <a type="submit" class="btn btn-success botao"
+                                    [routerLink]="['/funcionario',funcionario.CODIGO]">+ Informações</a>
+                            </td>
+                        </tr>
                 </table>
                 <!-- Fim da tabela  -->
             </div>

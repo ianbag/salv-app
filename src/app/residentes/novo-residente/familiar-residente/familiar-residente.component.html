@@ -14,40 +14,45 @@
             <div class="row">
               <div class="col-sm-6 col-sm-12" id="inputValidator">
                 <salv-input-container errorMessage="Campo Obrigatório" label="Nome">
-                  <input type="text" class="form-control" formControlName="nome" placeholder="Nome">
+                  <input type="text" class="form-control" formControlName="NOME" placeholder="Nome">
+                </salv-input-container>
+              </div>
+              <div class="col-sm-6 col-sm-12" id="inputValidator">
+                <salv-input-container errorMessage="Campo Obrigatório" label="Sobrenome">
+                  <input type="text" class="form-control" formControlName="SOBRENOME" placeholder="Sobrenome">
                 </salv-input-container>
               </div>
               <div class="col-sm-6 col-sm-12" id="inputValidator">
                 <salv-input-container errorMessage="Campo Obrigatório" label="Parentesco">
-                  <input type="text" class="form-control" formControlName="parentesco" placeholder="Parentesco">
+                  <input type="text" class="form-control" formControlName="PARENTESCO" placeholder="Parentesco">
                 </salv-input-container>
               </div>
             </div>
             <br />
             <div class="row">
-              <div class="col-sm-4 col-sm-12" id="inputValidator">
+              <div class="col-sm-4 col-sm-12" id="inputValidator" formGroupName="ENDERECO">
                 <salv-input-container errorMessage="Campo Obrigatório" label="Rua">
-                  <input type="text" class="form-control" formControlName="rua" placeholder="Rua">
+                  <input type="text" class="form-control" formControlName="RUA" placeholder="Rua">
                 </salv-input-container>
               </div>
-              <div class="col-sm-2 col-sm-12" id="inputValidator">
+              <div class="col-sm-2 col-sm-12" id="inputValidator" formGroupName="ENDERECO">
                 <salv-input-container errorMessage="Campo Obrigatório" label="Número">
-                  <input type="text" class="form-control" formControlName="numero" placeholder="Número">
+                  <input type="text" class="form-control" formControlName="NUMERO" placeholder="Número">
                 </salv-input-container>
               </div>
-              <div class="col-sm-2 col-sm-12" id="inputValidator">
+              <div class="col-sm-2 col-sm-12" id="inputValidator" formGroupName="ENDERECO">
                 <salv-input-container errorMessage="Campo Obrigatório" label="Bairro">
-                  <input type="text" class="form-control" formControlName="bairro" placeholder="Bairro">
+                  <input type="text" class="form-control" formControlName="BAIRRO" placeholder="Bairro">
                 </salv-input-container>
               </div>
-              <div class="col-sm-2 col-sm-12" id="inputValidator">
+              <div class="col-sm-2 col-sm-12" id="inputValidator" formGroupName="ENDERECO">
                 <salv-input-container errorMessage="Campo Obrigatório" label="Cidade">
-                  <input type="text" class="form-control" formControlName="cidade" placeholder="Cidade">
+                  <input type="text" class="form-control" formControlName="CIDADE" placeholder="Cidade">
                 </salv-input-container>
               </div>
-              <div class="col-sm-2 col-sm-12" id="inputValidator">
+              <div class="col-sm-2 col-sm-12" id="inputValidator" formGroupName="ENDERECO">
                 <salv-input-container errorMessage="Campo Obrigatório" label="Estado">
-                  <select class="form-control" formControlName="estado">
+                  <select class="form-control" formControlName="ESTADO">
                     <option value="" label="Selecione" disabled selected="selected"></option>
                     <option *ngFor="let estado of estados">{{estado}}</option>
                   </select>
@@ -56,26 +61,26 @@
             </div>
             <br />
             <div class="row">
-              <div class="col-sm-3 col-sm-12" id="inputValidator">
+              <div class="col-sm-3 col-sm-12" id="inputValidator" formGroupName="ENDERECO">
                 <salv-input-container errorMessage="Campo Obrigatório" label="CEP">
-                  <input type="text" mask="00.000-000" class="form-control" formControlName="cep" placeholder="CEP">
+                  <input type="text" mask="00.000-000" class="form-control" formControlName="CEP" placeholder="CEP">
                 </salv-input-container>
               </div>
-              <div class="col-sm-3 col-sm-12">
-                <label for="exampleInputPassword1">Complemento </label>
-                <input type="text" class="form-control" formControlName="complemento" placeholder="Complemento">
+              <div class="col-sm-3 col-sm-12" formGroupName="ENDERECO">
+                <label>Complemento </label>
+                <input type="text" class="form-control" formControlName="COMPLEMENTO" placeholder="Complemento">
 
               </div>
-              <div class="col-sm-6 col-sm-12">
-                <label for="exampleInputPassword1">Referência </label>
-                <input type="text" class="form-control" formControlName="referencia" placeholder="Referência">
+              <div class="col-sm-6 col-sm-12" formGroupName="ENDERECO">
+                <label>Referência </label>
+                <input type="text" class="form-control" formControlName="REFERENCIA" placeholder="Referência">
                 <br>
               </div>
             </div>
             <div class="row">
-              <div class="col-sm-2 col-sm-12">
-                <label for="exampleInputPassword1">Número telefone </label>
-                <input type="text" mask="(00) 00000-0000" class="form-control" formControlName="telefone" placeholder="Número telefone">
+              <div class="col-sm-2 col-sm-12" formGroupName="TELEFONE">
+                <label>Número telefone </label>
+                <input type="text" mask="(00) 00000-0000" class="form-control" formControlName="TELEFONE" placeholder="Número telefone">
               </div>
               <div class="col-sm-2 col-sm-12" style="margin-top: 27px; margin-left: -25px">
                 <a type="submit" class="btn btn-success botao"><i class="fa fa-plus"></i></a>

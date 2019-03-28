@@ -1,6 +1,8 @@
-import { Residente } from './../residente/residente.model';
-import { Component, OnInit } from '@angular/core';
+import { Residente, Pessoa } from './../residente/residente.model';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { ResidentesService } from '../residentes.service';
 import { trigger, state, style, transition, animate } from '@angular/animations'
 
 @Component({
@@ -63,60 +65,69 @@ export class NovoResidenteComponent implements OnInit {
   ]
 
   novoResidenteForm: FormGroup;
+  pessoa: Pessoa
+  residente: Residente
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private residentesService: ResidentesService) {}
 
   ngOnInit() {
+    this.pessoa = this.residentesService.pessoa
+    this.residente = this.residentesService.residente
 
     this.novoResidenteForm = this.formBuilder.group({
       // INFORMAÇÕES PESSOAIS INICIO
-      nome: this.formBuilder.control('', [Validators.required]),
-      apelido: this.formBuilder.control('', []),
-      profissao: this.formBuilder.control('', []),
-      cpf: this.formBuilder.control('',[Validators.minLength(11)]),
-      rg: this.formBuilder.control('',[Validators.minLength(9)]),
-      estadoCivil: this.formBuilder.control('', []),
-      sexo: this.formBuilder.control('', [Validators.required]),
-      genero: this.formBuilder.control('', []),
-      religiao: this.formBuilder.control('', []),
-      escolaridade: this.formBuilder.control('', []),
-      dataNascimento: this.formBuilder.control('', []),
-      // INFORMAÇÕES PESSOAIS FINAL
+      PESSOA: this.formBuilder.group({
+        NOME: this.formBuilder.control(null, [Validators.required]),
+        SOBRENOME: this.formBuilder.control(null, [Validators.required]),
+        CPF: this.formBuilder.control(null, [Validators.minLength(11)]),
+        RG: this.formBuilder.control(null, [Validators.minLength(9)]),
+        ESTADO_CIVIL: this.formBuilder.control(null, []),
+        SEXO: this.formBuilder.control(null, [Validators.required]),
+        GENERO: this.formBuilder.control(null, []),
+        RELIGIAO: this.formBuilder.control(null, []),
+        ESCOLARIDADE: this.formBuilder.control(null, []),
+        DATA_NASCIMENTO: this.formBuilder.control(null, []),
 
+      }),
+      // INFORMAÇÕES PESSOAIS FINAL
+      APELIDO: this.formBuilder.control(null, []),
+      PROFISSAO: this.formBuilder.control(null, []),
       // CERTIDAO NASCIMENTO INICIO
-      numeroCertidaoNascimento: this.formBuilder.control('', []),
-      folhaCertidaoNascimento: this.formBuilder.control('', []),
-      livroCertidaoNascimento: this.formBuilder.control('', []),
-      cidadeCertidaoNascimento: this.formBuilder.control('', []),
-      estadoCertidaoNascimento: this.formBuilder.control('', []),
+      NUMERO_CERTIDAO_NASCIMENTO: this.formBuilder.control(null, []),
+      FOLHA_CERTIDAO_NASCIMENTO: this.formBuilder.control(null, []),
+      LIVRO_CERTIDAO_NASCIMENTO: this.formBuilder.control(null, []),
+      CIDADE_CERTIDAO_NASCIMENTO: this.formBuilder.control(null, []),
+      ESTADO_CERTIDAO_NASCIMENTO: this.formBuilder.control(null, []),
       //CERTIDAO NASCIMENTO FINAL
 
       //ELEITORAL INICIO
-      tituloEleitoral: this.formBuilder.control('', []),
-      zonaEleitoral: this.formBuilder.control('', []),
-      secaoEleitoral: this.formBuilder.control('', []),
+      TITULO_ELEITORAL: this.formBuilder.control(null, []),
+      ZONA_ELEITORAL: this.formBuilder.control(null, []),
+      SECAO_ELEITORAL: this.formBuilder.control(null, []),
       //ELEITORAL FINAL
 
       //INSS INICIO
-      numeroInss: this.formBuilder.control('', []),
-      bancoInss: this.formBuilder.control('', []),
-      agenciaInss: this.formBuilder.control('', []),
-      contaInss: this.formBuilder.control('', []),
-      situacaoInss: this.formBuilder.control('', []),
-      valorInss: this.formBuilder.control('', []),
-      provaVidaInss: this.formBuilder.control('', []),
+      NUMERO_INSS: this.formBuilder.control(null, []),
+      BANCO_INSS: this.formBuilder.control(null, []),
+      AGENCIA_INSS: this.formBuilder.control(null, []),
+      CONTA_INSS: this.formBuilder.control(null, []),
+      SITUACAO_INSS: this.formBuilder.control(null, []),
+      VALOR_INSS: this.formBuilder.control(null, []),
+      PROVA_VIDA_INSS: this.formBuilder.control(null, []),
       //INSS FINAL
 
       //OUTROS INICIO
-      cartaoSams: this.formBuilder.control('', []),
-      cartaoSus: this.formBuilder.control('', []),
-      dataAcolhimento: this.formBuilder.control('', [Validators.required])
+      CARTAO_SAMS: this.formBuilder.control(null, []),
+      CARTAO_SUS: this.formBuilder.control(null, []),
+      DATA_ACOLHIMENTO: this.formBuilder.control(null, [Validators.required])
       //OUTROS FINAL
     })
   }
 
   novoResidente(residente: Residente) {
-    console.log(residente)
+    this.residentesService.pessoa = residente.PESSOA
+    delete residente.PESSOA
+    this.residentesService.residente = residente
   }
 
 }

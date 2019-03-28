@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { TelaInicialService } from '../tela-inicial.service';
+import { ProvaDeVida } from './prova-de-vida.model';
 
 @Component({
   selector: 'salv-prova-de-vida',
@@ -19,9 +21,15 @@ export class ProvaDeVidaComponent implements OnInit {
 
   provadevidaState = 'ready'
 
-  constructor() { }
+  provaDeVidas: ProvaDeVida[]
+
+  constructor(private telaInicialService: TelaInicialService) { }
 
   ngOnInit() {
+   this.telaInicialService.provaDeVida()
+   .subscribe(data => {
+    this.provaDeVidas = data
+   })
   }
 
 }
