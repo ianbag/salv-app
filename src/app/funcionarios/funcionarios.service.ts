@@ -21,7 +21,7 @@ export class FuncionariosService {
     }
 
     dependenteById(id: string): Observable<Dependente[]> {
-        return this.http.get<Dependente[]>(`${SALV_API}/dependente/${id}/dependente`)
+        return this.http.get<Dependente[]>(`${SALV_API}/dependente/${id}`)
     }
 
     deleteFuncionario(id: string): Observable<any> {

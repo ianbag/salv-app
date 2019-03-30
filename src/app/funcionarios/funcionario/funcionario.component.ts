@@ -1,3 +1,4 @@
+import { Dependente } from './infos-dependente/dependente.model';
 import { Funcionario } from './../funcionario.model';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations'
@@ -23,6 +24,7 @@ export class FuncionarioComponent implements OnInit {
   funcionarioState = 'ready'
 
   funcionario: Funcionario
+  dependentes: Dependente[]
 
   @ViewChild('reportFuncionario') reportFuncionario: ElementRef
 
@@ -32,6 +34,11 @@ export class FuncionarioComponent implements OnInit {
     this.fs.funcionarioById(this.route.snapshot.params['id']).subscribe(funcionario => {
       this.funcionario = funcionario
       console.log('funcionario by id',funcionario.FILHOS_MENOR_14)
+    })
+
+    this.fs.dependenteById(this.route.snapshot.params['id']).subscribe(dependente => {
+      this.dependentes = dependente
+      console.log(dependente)
     })
   }
 
