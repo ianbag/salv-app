@@ -16,6 +16,12 @@ export interface Funcionario {
         DATA_NASCIMENTO: string,
         RELIGIAO: string,
         ESCOLARIDADE: string
+    },
+    USUARIO: {
+        CODIGO_FUNCIONARIO: number,
+        EMAIL: string,
+        LOGIN: string,
+        SENHA: string
     }
 }
 
@@ -30,4 +36,11 @@ export interface Pessoa {
     DATA_NASCIMENTO: string,
     RELIGIAO: string,
     ESCOLARIDADE: string
+}
+
+export interface Usuario {
+    CODIGO_FUNCIONARIO: number,
+    EMAIL: string,
+    LOGIN: string,
+    SENHA: string
 }
