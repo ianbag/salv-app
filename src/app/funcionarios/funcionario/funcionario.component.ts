@@ -31,7 +31,7 @@ export class FuncionarioComponent implements OnInit {
   ngOnInit() {
     this.fs.funcionarioById(this.route.snapshot.params['id']).subscribe(funcionario => {
       this.funcionario = funcionario
-      console.log('funcionario by id', funcionario.CODIGO_FUNCIONARIO, funcionario.CARGO)
+      console.log('funcionario by id',funcionario.FILHOS_MENOR_14)
     })
   }
 

@@ -1,3 +1,4 @@
+import { Dependente } from './funcionario/infos-dependente/dependente.model';
 import { SALV_API } from './../app.api';
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
@@ -19,9 +20,9 @@ export class FuncionariosService {
         return this.http.get<Funcionario>(`${SALV_API}/funcionario/${id}`)
     }
 
-    //dependenteById(id: string): Observable<Dependente[]> {
-    //    return this.http.get<Dependente[]>(`${SALV_API}/dependente/${id}/dependente`)
-    //}
+    dependenteById(id: string): Observable<Dependente[]> {
+        return this.http.get<Dependente[]>(`${SALV_API}/dependente/${id}/dependente`)
+    }
 
     deleteFuncionario(id: string): Observable<any> {
         return this.http.delete<any>(`${SALV_API}/funcionario/${id}`)
