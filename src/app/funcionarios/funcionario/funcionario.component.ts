@@ -1,6 +1,9 @@
+import { Funcionario } from './../funcionario.model';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations'
 import * as jspdf from 'jspdf'
+import { FuncionariosService } from '../funcionarios.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'salv-funcionario',
@@ -19,11 +22,17 @@ export class FuncionarioComponent implements OnInit {
 
   funcionarioState = 'ready'
 
+  funcionario: Funcionario
+
   @ViewChild('reportFuncionario') reportFuncionario: ElementRef
 
-  constructor() { }
+  constructor(private fs: FuncionariosService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.fs.funcionarioById(this.route.snapshot.params['id']).subscribe(funcionario => {
+      this.funcionario = funcionario
+      console.log('funcionario by id', funcionario.CODIGO_FUNCIONARIO, funcionario.CARGO)
+    })
   }
 
   public downloadPDF() {

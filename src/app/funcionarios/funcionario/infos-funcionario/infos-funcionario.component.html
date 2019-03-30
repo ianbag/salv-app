@@ -1,3 +1,51 @@
-<p>
-  infos-funcionario works!
-</p>
+<div class="box box-default box-solid">
+  <div class="box-header with-border">
+    <h3 class="box-title">Informações do Funcionário</h3>
+    <div class="box-tools pull-right">
+      <button type="button" class="btn tbn-box-tool" data-widget="collapse">
+        <i class="fa fa-minus"></i>
+      </button>
+    </div>
+  </div>
+  <div class="box-body">
+    <div class="row col-md-12">
+      <div class="col-md-12">
+        <div class="col-sm-12 col-xs-12">
+          <h4><strong>Informações pessoais</strong></h4>
+        </div>
+        <div class="col-xs-4 col-xs-12">
+          <strong>Nome: </strong> {{funcionario?.PESSOA.NOME}} {{funcionario?.PESSOA.SOBRENOME}}
+          <br>
+        </div>
+        <div class="col-xs-4 col-xs-12">
+          <strong>CPF: </strong> {{funcionario?.PESSOA.CPF | cpf}}
+          <br>
+        </div>
+        <div class="col-xs-4 col-xs-12">
+          <strong>RG: </strong> {{funcionario?.PESSOA.RG | rg}}
+          <br>
+        </div>
+        <div class="col-xs-4 col-xs-12">
+          <strong>Sexo: </strong> {{funcionario?.PESSOA.SEXO | sexo}}
+          <br>
+        </div>
+        <div class="col-xs-4 col-xs-12">
+          <strong>Estado Civil: </strong> {{funcionario?.PESSOA.ESTADO_CIVIL | estadoCivil}}
+          <br>
+        </div>
+        <div class="col-xs-4 col-xs-12">
+          <strong>Data de Nascimento: </strong> {{funcionario?.PESSOA.DATA_NASCIMENTO | date: 'dd/MM/yyy'}}
+          <br>
+        </div>
+        <div class="col-xs-4 col-xs-12">
+          <strong>Religião: </strong> {{funcionario?.PESSOA.RELIGIAO | religiao}}
+          <br>
+        </div>
+        <div class="col-xs-4 col-xs-12">
+          <strong>Escolaridade: </strong> {{funcionario?.PESSOA.ESCOLARIDADE | escolaridade}}
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
