@@ -39,11 +39,6 @@ import { InfosConvenioComponent } from './residentes/residente/infos-convenio/in
 import { NotFoundComponent } from './not-found/not-found.component';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 import { FuncionarioComponent } from './funcionarios/funcionario/funcionario.component';
-import { InfosDependenteComponent } from './funcionarios/funcionario/infos-dependente/infos-dependente.component';
-import { InfosFuncionaisComponent } from './funcionarios/funcionario/infos-funcionais/infos-funcionais.component';
-import { NovoFuncionarioComponent } from './funcionarios/funcionario/novo-funcionario/novo-funcionario.component';
-import { NovoDependenteComponent } from './funcionarios/funcionario/novo-funcionario/novo-dependente/novo-dependente.component';
-import { NovaInfoFuncionalComponent } from './funcionarios/funcionario/novo-funcionario/nova-info-funcional/nova-info-funcional.component';
 import { ConvenioComponent } from './convenios/convenio/convenio.component';
 import { DialogConfirmService } from './residentes/dialog-confirm.service';
 import { AcompanhamentosComponent } from './acompanhamentos/acompanhamentos.component';
@@ -96,11 +91,6 @@ import { TelaInicialService } from './tela-inicial/tela-inicial.service';
     FuncionariosComponent,
     SnackbarComponent,
     FuncionarioComponent,
-    InfosDependenteComponent,
-    InfosFuncionaisComponent,
-    NovoFuncionarioComponent,
-    NovoDependenteComponent,
-    NovaInfoFuncionalComponent,
     InfosConvenioComponent,
     NotFoundComponent,
     ConvenioComponent,

@@ -10,8 +10,6 @@ import { ResidenteComponent } from "./residentes/residente/residente.component";
 import { TelaInicialComponent } from './tela-inicial/tela-inicial.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
-import { NovoFuncionarioComponent } from './funcionarios/funcionario/novo-funcionario/novo-funcionario.component';
-import { NovoDependenteComponent } from './funcionarios/funcionario/novo-funcionario/novo-dependente/novo-dependente.component';
 import { NovoResidenteComponent } from './residentes/novo-residente/novo-residente.component';
 import { AcompanhamentosComponent } from './acompanhamentos/acompanhamentos.component';
 import { AcompanhamentoComponent } from './acompanhamentos/acompanhamento/acompanhamento.component';
@@ -36,8 +34,6 @@ export const ROUTES: Routes = [
     { path: 'editar-convenio/:id', component: EditarConvenioComponent, canActivate: [AuthGuard] },
     { path: 'funcionarios', component: FuncionariosComponent, canActivate: [AuthGuard] },
     { path: 'funcionario/:id', component: FuncionarioComponent, canActivate: [AuthGuard] },
-    { path: 'novo-funcionario', component: NovoFuncionarioComponent, canActivate: [AuthGuard] },
-    { path: 'novo-dependente', component: NovoDependenteComponent, canActivate: [AuthGuard] },
     { path: 'acompanhamentos', component: AcompanhamentosComponent, canActivate: [AuthGuard] },
     { path: 'acompanhamento/:id', component: AcompanhamentoComponent, canActivate: [AuthGuard] },
     { path: 'novo-acompanhamento', component: NovoAcompanhamentoComponent, canActivate: [AuthGuard] },
