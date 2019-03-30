@@ -1,4 +1,4 @@
-import { Funcionario } from './../funcionarios/funcionario/funcionario.model';
+import { Funcionario } from './../funcionarios/funcionario.model';
 import { Acompanhamento } from './acompanhamento/acompanhamento.model';
 import { SALV_API } from './../app.api';
 import { Injectable } from "@angular/core";

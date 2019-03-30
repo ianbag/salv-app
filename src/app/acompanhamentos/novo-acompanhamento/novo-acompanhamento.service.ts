@@ -1,6 +1,6 @@
 import { Residente } from './../../residentes/residente/residente.model';
 import { Acompanhamento } from './../acompanhamento/acompanhamento.model';
-import { Funcionario } from './../../funcionarios/funcionario/funcionario.model';
+import { Funcionario } from './../../funcionarios/funcionario.model';
 
 import { SALV_API } from './../../app.api';
 import { Observable } from 'rxjs';

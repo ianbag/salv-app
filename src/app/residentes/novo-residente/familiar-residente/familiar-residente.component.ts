@@ -1,7 +1,8 @@
 import { Familiar } from './../../residente/infos-familiar/familiar.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { trigger, state, transition, style, animate } from '@angular/animations'
+import { ResidentesService } from '../../residentes.service';
 
 @Component({
   selector: 'salv-familiar-residente',
@@ -26,26 +27,38 @@ export class FamiliarResidenteComponent implements OnInit {
 
   familiarResidenteForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  familiar: Familiar
+
+  constructor(private formBuilder: FormBuilder, private residentesService: ResidentesService) { }
 
   ngOnInit() {
+    
     this.familiarResidenteForm = this.formBuilder.group({
-      nome: this.formBuilder.control('', [Validators.required]),
-      parentesco: this.formBuilder.control('', [Validators.required]),
-      rua: this.formBuilder.control('', [Validators.required]),
-      numero: this.formBuilder.control('', [Validators.required]),
-      bairro: this.formBuilder.control('', [Validators.required]),
-      cidade: this.formBuilder.control('', [Validators.required]),
-      estado: this.formBuilder.control('', [Validators.required]),
-      cep: this.formBuilder.control('', [Validators.required]),
-      complemento: this.formBuilder.control('', [Validators.required]),
-      referencia: this.formBuilder.control('', [Validators.required]),
-      telefone: this.formBuilder.control('', [Validators.required]),
+      NOME: this.formBuilder.control(null, [Validators.required]),
+      SOBRENOME: this.formBuilder.control(null, [Validators.required]),
+      PARENTESCO: this.formBuilder.control(null, []),
+      ENDERECO: this.formBuilder.group({
+        RUA: this.formBuilder.control(null, []),
+        NUMERO: this.formBuilder.control(null, []),
+        BAIRRO: this.formBuilder.control(null, []),
+        CIDADE: this.formBuilder.control(null, []),
+        ESTADO: this.formBuilder.control(null, []),
+        CEP: this.formBuilder.control(null, []),
+        COMPLEMENTO: this.formBuilder.control(null, []),
+        REFERENCIA: this.formBuilder.control(null, []),
+      }),
+      TELEFONE: this.formBuilder.group({
+        TELEFONE: this.formBuilder.control(null, []),
+      })
     })
   }
 
   familiarResidente(familiar: Familiar) {
-    console.log(familiar)
+    this.residentesService.endereco = familiar.ENDERECO
+    this.residentesService.telefone = familiar.TELEFONE
+    delete familiar.ENDERECO
+    delete familiar.TELEFONE
+    this.residentesService.familiar = familiar
   }
 
 }

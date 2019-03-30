@@ -1,7 +1,24 @@
-<li class="item" *ngFor="let aniversariante of aniversariantes">
-    <div>
-      <i class="fa fa-birthday-cake" style="margin-right: 10px;"></i>
-      <a> {{aniversariante.nomeResidente}}
-        <span class="label label-success pull-right">{{aniversariante.dataAniversario}}</span></a>
-    </div>
-  </li>
+<div class="table-responsive">
+  <table class="table no-margin">
+    <thead>
+      <tr>
+        <th>Residente</th>
+        <th>Data Nascimento</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let aniversariante of aniversariantes">
+        <td>
+          <i class="fa fa-birthday-cake" style="margin-right: 10px;"></i>
+          {{aniversariante.NOME}} {{aniversariante.SOBRENOME}}
+        </td>
+
+        <td>
+          <span class="label label-success">
+            {{aniversariante.DATA_NASCIMENTO}}
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

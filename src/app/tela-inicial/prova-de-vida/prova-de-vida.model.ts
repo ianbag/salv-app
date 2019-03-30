@@ -1,6 +1,6 @@
 export interface ProvaDeVida{
-
-nomeResidente: string ,    
-data: string ,
-nomeBeneficio: string
+NOME_BENEFICIO: string,    
+PROVA_VIDA_BENEFICIO: string,
+NOME: string,
+SOBRENOME: string,
 }
