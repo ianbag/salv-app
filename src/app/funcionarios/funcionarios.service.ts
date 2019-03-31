@@ -37,7 +37,7 @@ export class FuncionariosService {
     }
 
     funcionarioQuery(id: string): Observable<FuncionarioQuery[]>{
-        return this.http.get<FuncionarioQuery[]>(`${SALV_API}/funcionarioo/${id}`)
+        return this.http.get<FuncionarioQuery[]>(`${SALV_API}/funcionario-full/${id}`)
     }
 
     createNewEmployee(pessoa: Pessoa, telefone: Telefone, endereco: Endereco, funcionario: Funcionario) {
