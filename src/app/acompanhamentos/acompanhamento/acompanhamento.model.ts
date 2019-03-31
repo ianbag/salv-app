@@ -1,7 +1,19 @@
+
 export interface Acompanhamento { 
-    atividade: string,
-    data: string,
-    funcionario: string,
-    residente: string,
-    id: string
+    CODIGO: number,
+    DATA_ACOMPANHAMENTO: string,
+    ATIVIDADE: string
+    
+}
+
+export interface Acompanhamento_Funcionario{
+
+    FUNCIONARIO_CODIGO: number,
+    ACOMPANHAMENTO_CODIGO:number
+}
+
+export interface Acompanhamento_Residente{
+
+    RESIDENTE_CODIGO: number,
+    ACOMPANHAMENTO_CODIGO:number
 }

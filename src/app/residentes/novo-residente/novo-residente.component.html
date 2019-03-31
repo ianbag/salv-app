@@ -21,12 +21,14 @@
               </div>
               <div class="col-sm-3 col-sm-12" id="inputValidator" formGroupName="PESSOA">
                 <salv-input-container errorMessage="Campo Obrigatório" label="Sobrenome">
-                  <input type="text" class="form-control" formControlName="SOBRENOME" placeholder="Sobrenome" autocomplete="off">
+                  <input type="text" class="form-control" formControlName="SOBRENOME" placeholder="Sobrenome"
+                    autocomplete="off">
                 </salv-input-container>
               </div>
               <div class="col-sm-3 col-sm-12">
                 <label>Apelido </label>
-                <input type="text" class="form-control" formControlName="APELIDO" placeholder="Apelido" autocomplete="off">
+                <input type="text" class="form-control" formControlName="APELIDO" placeholder="Apelido"
+                  autocomplete="off">
               </div>
               <div class="col-sm-3 col-sm-12">
                 <label for="exampleInputPassword1">Profissão </label>
@@ -38,19 +40,22 @@
             <div class="row">
               <div class="col-sm-3 col-sm-12" id="inputValidator" formGroupName="PESSOA">
                 <salv-input-container errorMessage="Minimo 11 caracteres" label="CPF">
-                  <input type="text" mask="000.000.000-00" class="form-control" formControlName="CPF" placeholder="CPF" autocomplete="off">
+                  <input type="text" mask="000.000.000-00" class="form-control" formControlName="CPF" placeholder="CPF"
+                    autocomplete="off">
                 </salv-input-container>
               </div>
               <div class="col-sm-3 col-sm-12" id="inputValidator" formGroupName="PESSOA">
                 <salv-input-container errorMessage="Minimo 9 caracteres" label="RG">
-                  <input type="text" mask="00.000.000-0" class="form-control" formControlName="RG" placeholder="RG" autocomplete="off">
+                  <input type="text" mask="00.000.000-0" class="form-control" formControlName="RG" placeholder="RG"
+                    autocomplete="off">
                 </salv-input-container>
               </div>
               <div class="col-sm-3 col-sm-12" formGroupName="PESSOA">
                 <label>Estado Civil </label>
                 <select class="form-control" formControlName="ESTADO_CIVIL">
                   <option value="" label="Selecione" disabled selected="selected"></option>
-                  <option *ngFor="let estadoCivil of estadosCivil" [value]="estadoCivil.value">{{estadoCivil.option}}</option>
+                  <option *ngFor="let estadoCivil of estadosCivil" [value]="estadoCivil.value">{{estadoCivil.option}}
+                  </option>
                 </select>
               </div>
               <div class="col-sm-3 col-sm-12" id="inputValidator" formGroupName="PESSOA">
@@ -84,7 +89,8 @@
                 <label>Escolaridade </label>
                 <select class="form-control" formControlName="ESCOLARIDADE">
                   <option value="" label="Selecione" disabled selected="selected"></option>
-                  <option *ngFor="let escolaridade of escolaridades" [value]="escolaridade.value">{{escolaridade.option}}</option>
+                  <option *ngFor="let escolaridade of escolaridades" [value]="escolaridade.value">
+                    {{escolaridade.option}}</option>
                 </select>
               </div>
               <div class="col-sm-3 col-sm-12" formGroupName="PESSOA">
@@ -106,8 +112,8 @@
             <div class="row">
               <div class="col-sm-4 col-sm-12">
                 <label>Número </label>
-                <input type="text" class="form-control" formControlName="NUMERO_CERTIDAO_NASCIMENTO" placeholder="Número"
-                  autocomplete="off">
+                <input type="text" class="form-control" formControlName="NUMERO_CERTIDAO_NASCIMENTO"
+                  placeholder="Número" autocomplete="off">
               </div>
               <div class="col-sm-4 col-sm-12">
                 <label>Folha </label>
@@ -124,8 +130,8 @@
             <div class="row">
               <div class="col-sm-3 col-sm-12">
                 <label>Cidade </label>
-                <input type="text" class="form-control" formControlName="CIDADE_CERTIDAO_NASCIMENTO" placeholder="Cidade"
-                  autocomplete="off">
+                <input type="text" class="form-control" formControlName="CIDADE_CERTIDAO_NASCIMENTO"
+                  placeholder="Cidade" autocomplete="off">
               </div>
               <div class="col-sm-2 col-sm-12">
                 <label>Estado </label>
@@ -151,7 +157,8 @@
               </div>
               <div class="col-sm-4 col-sm-12">
                 <label for="exampleInputPassword1">Zona </label>
-                <input type="text" class="form-control" formControlName="ZONA_ELEITORAL" placeholder="Zona" autocomplete="off">
+                <input type="text" class="form-control" formControlName="ZONA_ELEITORAL" placeholder="Zona"
+                  autocomplete="off">
               </div>
               <div class="col-sm-4 col-sm-12">
                 <label for="exampleInputPassword1">Seção </label>
@@ -170,11 +177,13 @@
             <div class="row">
               <div class="col-sm-4 col-sm-12">
                 <label for="exampleInputPassword1">Número </label>
-                <input type="text" class="form-control" formControlName="NUMERO_INSS" placeholder="Número" autocomplete="off">
+                <input type="text" class="form-control" formControlName="NUMERO_INSS" placeholder="Número"
+                  autocomplete="off">
               </div>
               <div class="col-sm-3 col-sm-12">
                 <label for="exampleInputPassword1">Banco </label>
-                <input type="text" class="form-control" formControlName="BANCO_INSS" placeholder="Banco" autocomplete="off">
+                <input type="text" class="form-control" formControlName="BANCO_INSS" placeholder="Banco"
+                  autocomplete="off">
               </div>
               <div class="col-sm-2 col-smm-12">
                 <label for="exampleInputPassword1">Agência </label>
@@ -183,7 +192,8 @@
               </div>
               <div class="col-sm-3 col-sm-12">
                 <label for="exampleInputPassword1">Conta </label>
-                <input type="text" class="form-control" formControlName="CONTA_INSS" placeholder="Conta" autocomplete="off">
+                <input type="text" class="form-control" formControlName="CONTA_INSS" placeholder="Conta"
+                  autocomplete="off">
               </div>
             </div>
             <br />
@@ -197,7 +207,8 @@
               </div>
               <div class="col-sm-3 col-sm-12">
                 <label for="exampleInputPassword1">Valor </label>
-                <input type="text" class="form-control" formControlName="VALOR_INSS" placeholder="Valor" autocomplete="off">
+                <input type="text" class="form-control" formControlName="VALOR_INSS" placeholder="Valor"
+                  autocomplete="off">
               </div>
               <div class="col-sm-3 col-sm-12">
                 <label>Prova de vida </label>
@@ -217,7 +228,8 @@
             <div class="row">
               <div class="col-sm-4 col-sm-12">
                 <label for="exampleInputPassword1">Cartão SAMS </label>
-                <input type="text" class="form-control" formControlName="CARTAO_SAMS" placeholder="Número do Cartão SAMS">
+                <input type="text" class="form-control" formControlName="CARTAO_SAMS"
+                  placeholder="Número do Cartão SAMS">
               </div>
               <div class="col-sm-4 col-sm-12">
                 <label for="exampleInputPassword1">Cartão SUS </label>
@@ -226,22 +238,24 @@
               <div class="col-sm-3 col-sm-12" id="inputValidator">
                 <salv-input-container errorMessage="Campo Obrigatório" label="Data de Acolhimento">
                   <div class="input-group date">
-                    <input type="date" class="form-control pull-right" id="datepicker" formControlName="DATA_ACOLHIMENTO">
+                    <input type="date" class="form-control pull-right" id="datepicker"
+                      formControlName="DATA_ACOLHIMENTO">
+                  </div>
+                </salv-input-container>
+                <br>
               </div>
-            </salv-input-container>
-              <br>
             </div>
           </div>
-        </div>
-        <!--OUTROS FINAL-->
+          <!--OUTROS FINAL-->
 
-        <!--BOTÃO-->
-        <div class="col-sm-12 col-sm-12">
-          <button (click)="novoResidente(novoResidenteForm.value)" style="margin-left: 10px" class="btn btn-success botao pull-right" [routerLink]="['/familiar-residente']">Próximo</button>
+          <!--BOTÃO-->
+          <div class="col-sm-12 col-sm-12">
+            <button (click)="novoResidente(novoResidenteForm.value)" style="margin-left: 10px"
+              class="btn btn-success botao pull-right" [routerLink]="['/familiar-residente']">Próximo</button>
+          </div>
         </div>
       </div>
-  </div>
-  </form>
+    </form>
   </div>
 
 </section>

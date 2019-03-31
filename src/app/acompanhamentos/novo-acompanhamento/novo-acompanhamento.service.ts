@@ -1,5 +1,5 @@
 import { Residente } from './../../residentes/residente/residente.model';
-import { Acompanhamento } from './../acompanhamento/acompanhamento.model';
+import { Acompanhamento, Acompanhamento_Funcionario, Acompanhamento_Residente } from './../acompanhamento/acompanhamento.model';
 import { Funcionario } from './../../funcionarios/funcionario.model';
 
 import { SALV_API } from './../../app.api';
@@ -24,9 +24,19 @@ export class NovoAcompanhamentoService {
     funcionarios(): Observable<Funcionario[]> {
         return this.http.get<Funcionario[]>(`${SALV_API}/funcionarioNome`)
     }
-    createAcompanhamento(acompanhamento: Acompanhamento): Observable<Acompanhamento>{
-        return this.http.post<Acompanhamento>(`${SALV_API}/residente`, acompanhamento)
-    }
+    createAcompanhamento(acompanhamento: Acompanhamento ){
+        return this.http.post<Acompanhamento>(`${SALV_API}/acompanhamento`, acompanhamento)
+        
+        }
 
-    
-}
+  createAcompanhamentoFuncionario(acompanhamento_funcionario: Acompanhamento_Funcionario){
+            return this.http.post<Acompanhamento_Funcionario>(`${SALV_API}/acompanhamento_funcionario`, acompanhamento_funcionario)
+            
+            }
+
+   createAcompanhamentoResidente(acompanhamento_residente: Acompanhamento_Residente){
+          return this.http.post<Acompanhamento_Residente>(`${SALV_API}/acompanhamento_residente`, acompanhamento_residente)
+                
+            }         
+    }       
+           

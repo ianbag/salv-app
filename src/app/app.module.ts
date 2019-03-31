@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 
 
 
+
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
@@ -41,11 +42,6 @@ import { InfosConvenioComponent } from './residentes/residente/infos-convenio/in
 import { NotFoundComponent } from './not-found/not-found.component';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 import { FuncionarioComponent } from './funcionarios/funcionario/funcionario.component';
-import { InfosDependenteComponent } from './funcionarios/funcionario/infos-dependente/infos-dependente.component';
-import { InfosFuncionaisComponent } from './funcionarios/funcionario/infos-funcionais/infos-funcionais.component';
-import { NovoFuncionarioComponent } from './funcionarios/funcionario/novo-funcionario/novo-funcionario.component';
-import { NovoDependenteComponent } from './funcionarios/funcionario/novo-funcionario/novo-dependente/novo-dependente.component';
-import { NovaInfoFuncionalComponent } from './funcionarios/funcionario/novo-funcionario/nova-info-funcional/nova-info-funcional.component';
 import { ConvenioComponent } from './convenios/convenio/convenio.component';
 import { DialogConfirmService } from './residentes/dialog-confirm.service';
 import { AcompanhamentosComponent } from './acompanhamentos/acompanhamentos.component';
@@ -69,6 +65,9 @@ import { SnackbarComponent } from './shared/snackbar/snackbar.component';
 import { NovoConvenioComponent } from './convenios/novo-convenio/novo-convenio.component';
 import { EditarConvenioComponent } from './convenios/editar-convenio/editar-convenio.component';
 import { TelaInicialService } from './tela-inicial/tela-inicial.service';
+import { InfosFuncionarioComponent } from './funcionarios/funcionario/infos-funcionario/infos-funcionario.component';
+import { InfosDependenteComponent } from './funcionarios/funcionario/infos-dependente/infos-dependente.component';
+import { NovoFuncionarioComponent } from './funcionarios/novo-funcionario/novo-funcionario.component';
 
 
 
@@ -100,11 +99,6 @@ import { TelaInicialService } from './tela-inicial/tela-inicial.service';
     FuncionariosComponent,
     SnackbarComponent,
     FuncionarioComponent,
-    InfosDependenteComponent,
-    InfosFuncionaisComponent,
-    NovoFuncionarioComponent,
-    NovoDependenteComponent,
-    NovaInfoFuncionalComponent,
     InfosConvenioComponent,
     NotFoundComponent,
     ConvenioComponent,
@@ -122,7 +116,11 @@ import { TelaInicialService } from './tela-inicial/tela-inicial.service';
     LoginComponent,
     UserDetailsComponent,
     NovoConvenioComponent,
-    EditarConvenioComponent
+    EditarConvenioComponent,
+    NovoFuncionarioComponent,
+    InfosFuncionarioComponent,
+    InfosDependenteComponent
+
 
   ],
   imports: [
