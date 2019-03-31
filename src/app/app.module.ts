@@ -65,6 +65,7 @@ import { NovoAcompanhamentoService } from './acompanhamentos/novo-acompanhamento
 import { TelaInicialService } from './tela-inicial/tela-inicial.service';
 import { InfosFuncionarioComponent } from './funcionarios/funcionario/infos-funcionario/infos-funcionario.component';
 import { InfosDependenteComponent } from './funcionarios/funcionario/infos-dependente/infos-dependente.component';
+import { NovoFuncionarioComponent } from './funcionarios/novo-funcionario/novo-funcionario.component';
 
 
 @NgModule({
@@ -113,7 +114,8 @@ import { InfosDependenteComponent } from './funcionarios/funcionario/infos-depen
     EditarConvenioComponent,
     UserDetailsComponent,
     InfosFuncionarioComponent,
-    InfosDependenteComponent
+    InfosDependenteComponent,
+    NovoFuncionarioComponent
   ],
   imports: [
     BrowserModule,

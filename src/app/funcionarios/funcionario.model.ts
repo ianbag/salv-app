@@ -1,6 +1,5 @@
 export interface Funcionario {
     CODIGO_FUNCIONARIO: number,
-    FILHOS_MENOR_14: string,
     CARGO: string,
     DATA_ADMISSAO: string,
     DATA_DEMISSAO: string,
