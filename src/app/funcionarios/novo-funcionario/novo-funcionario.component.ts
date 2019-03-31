@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
-import { Pessoa, Funcionario, Telefone } from './../funcionario.model'
+import { Funcionario } from './../funcionario.model'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { trigger, state, style, transition, animate } from '@angular/animations'
 import { FuncionariosService } from './../funcionarios.service'

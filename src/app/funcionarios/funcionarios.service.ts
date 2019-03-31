@@ -4,7 +4,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import 'rxjs/add/observable/forkJoin'
-import { Funcionario, Pessoa, Telefone, Telefone_Pessoa, Endereco, Endereco_Pessoa } from './funcionario.model';
+import { Funcionario, Pessoa, Telefone, Telefone_Pessoa, Endereco, Endereco_Pessoa, FuncionarioQuery } from './funcionario.model';
 
 
 @Injectable()
@@ -34,6 +34,10 @@ export class FuncionariosService {
 
     deleteFuncionario(id: string): Observable<any> {
         return this.http.delete<any>(`${SALV_API}/funcionario/${id}`)
+    }
+
+    funcionarioQuery(id: string): Observable<FuncionarioQuery[]>{
+        return this.http.get<FuncionarioQuery[]>(`${SALV_API}/funcionarioo/${id}`)
     }
 
     createNewEmployee(pessoa: Pessoa, telefone: Telefone, endereco: Endereco, funcionario: Funcionario) {
