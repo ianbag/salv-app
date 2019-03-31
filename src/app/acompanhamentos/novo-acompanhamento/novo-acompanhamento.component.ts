@@ -4,7 +4,7 @@ import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 import { trigger, state, transition, style, animate } from '@angular/animations';
-import { Residente } from 'src/app/residentes/residente/residente.model';
+
 
 
 @Component({
@@ -53,25 +53,13 @@ this.novoAcompanhamentoForm = this.formBuilder.group({
 })
 
 
-<<<<<<< HEAD
-//Residentes List         
-=======
-    //Formulário Novo Acompanhamento
-    this.novoAcompanhamentoForm = this.formBuilder.group({
-      data: this.formBuilder.control('', []),
-      atividade: this.formBuilder.control('', [])
-    })
->>>>>>> upstream/master
-
-
-
+//Residentes List    
 this.NovoAcompanhamentoService.residentes()
   .subscribe(residentes => {
     this.residentes = residentes
     console.log('residentes', residentes)
   })
 
-<<<<<<< HEAD
 //funcionarios List
 this.NovoAcompanhamentoService.funcionarios()
   .subscribe(funcionarios => {
@@ -80,44 +68,8 @@ this.NovoAcompanhamentoService.funcionarios()
   })
 
 
-=======
-
-    this.NovoAcompanhamentoService.residentes()
-      .subscribe(residentes => {
-        this.residentes = residentes
-      })
-
-    //funcionarios List
-    this.NovoAcompanhamentoService.funcionarios()
-      .subscribe(funcionarios => {
-        this.funcionarios = funcionarios
-      })
->>>>>>> upstream/master
-
-
 this.selectedResidentes = []
 this.selectedFuncionarios = []
-
-
-
-
-<<<<<<< HEAD
-=======
-
-
-
-    this.dropdownSettings = {
-      enableSearch: true,
-      displayAllSelectedText: true,
-      singleSelection: false,
-      idField: 'id',
-      textField: 'NOME',
-      selectAllText: 'Marcar todos',
-      unSelectAlltext: 'Desmarcar todos',
-      itemsShowLimit: 5,
-      allowSearchFilter: this.ShowFilter
-    }
->>>>>>> upstream/master
 
 this.dropdownSettings = {
   enableSearch: true,
@@ -143,12 +95,6 @@ this.dropdownSettings2 = {
   allowSearchFilter: this.ShowFilter
 }
 
-<<<<<<< HEAD
-=======
-    this.myForm = this.formBuilder.group({
-      residente: [this.selectedResidentes],
-      funcionario: [this.selectedFuncionarios]
->>>>>>> upstream/master
 
 this.myForm = this.formBuilder.group({
   residente: [this.selectedResidentes],
