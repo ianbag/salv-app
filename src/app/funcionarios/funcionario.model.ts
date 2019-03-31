@@ -26,6 +26,17 @@ export interface Funcionario {
         CODIGO: number,
         DDD: string,
         NUMERO: string
+    },
+    ENDERECO: {
+        CODIGO: number,
+        ENDERECO: string,
+        NUMERO: string,
+        BAIRRO: string,
+        COMPLEMENTO: string,
+        CIDADE: string,
+        ESTADO: string,
+        CEP: string,
+        REFERENCIA: string
     }
 }
 
@@ -58,4 +69,21 @@ export interface Telefone {
 export interface Telefone_Pessoa {
     PESSOA_CODIGO: number,
     TELEFONE_CODIGO: number
+}
+
+export interface Endereco {
+    CODIGO: number,
+    ENDERECO: string,
+    NUMERO: string,
+    BAIRRO: string,
+    COMPLEMENTO: string,
+    CIDADE: string,
+    ESTADO: string,
+    CEP: string,
+    REFERENCIA: string
+}
+
+export interface Endereco_Pessoa {
+    PESSOA_CODIGO: number,
+    ENDERECO_CODIGO: number
 }

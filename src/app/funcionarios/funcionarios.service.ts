@@ -3,17 +3,14 @@ import { SALV_API } from './../app.api';
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { Funcionario, Pessoa, Telefone, Telefone_Pessoa } from './funcionario.model';
+import 'rxjs/add/observable/forkJoin'
+import { Funcionario, Pessoa, Telefone, Telefone_Pessoa, Endereco, Endereco_Pessoa } from './funcionario.model';
 
 
 @Injectable()
 export class FuncionariosService {
 
-    _ref_cod_pessoa: number
-    _ref_cod_telefone: number
-
     constructor(private http: HttpClient) { }
-
 
     funcionarios(): Observable<Funcionario[]> {
         return this.http.get<Funcionario[]>(`${SALV_API}/funcionario`)
@@ -31,26 +28,29 @@ export class FuncionariosService {
         return this.http.delete<any>(`${SALV_API}/funcionario/${id}`)
     }
 
-    createNewEmployee(pessoa: Pessoa, telefone: Telefone, funcionario: Funcionario) {
+    createNewEmployee(pessoa: Pessoa, telefone: Telefone, endereco: Endereco, funcionario: Funcionario) {
         return this.http.post<Pessoa>(`${SALV_API}/pessoa`, pessoa).switchMap(resPessoa => {
-            this._ref_cod_pessoa = resPessoa.CODIGO
             delete funcionario.PESSOA
             return this.http.post<Telefone>(`${SALV_API}/telefone`, telefone).switchMap(resTelefone => {
-                this._ref_cod_telefone = resTelefone.CODIGO
-
-                const _ref_tel_pessoa = {
-                    PESSOA_CODIGO: this._ref_cod_pessoa,
-                    TELEFONE_CODIGO: this._ref_cod_telefone
+                delete funcionario.TELEFONE
+                let _rel_tel_pes = {
+                    PESSOA_CODIGO: resPessoa.CODIGO,
+                    TELEFONE_CODIGO: resTelefone.CODIGO
                 }
-
-                return this.http.post<Telefone_Pessoa>(`${SALV_API}/telefone_pessoa`, _ref_tel_pessoa)
+                return this.http.post<Telefone_Pessoa>(`${SALV_API}/telefone_pessoa`, _rel_tel_pes).switchMap(resTP => {
+                    return this.http.post<Endereco>(`${SALV_API}/endereco`, endereco).switchMap(resEndereco => {
+                        delete funcionario.ENDERECO
+                        let _rel_end_pes = {
+                            PESSOA_CODIGO: resPessoa.CODIGO,
+                            ENDERECO_CODIGO: resEndereco.CODIGO
+                        }
+                        return this.http.post<Endereco_Pessoa>(`${SALV_API}/endereco_pessoa`, _rel_end_pes).switchMap(resEP => {
+                            funcionario.PESSOA_CODIGO = resPessoa.CODIGO
+                            return this.http.post<Funcionario>(`${SALV_API}/funcionario`, funcionario)
+                        })
+                    })
+                })
             })
         })
     }
 }
-
-
-// funcionario.PESSOA_CODIGO = res.CODIGO
-//                 delete funcionario.PESSOA
-
-//                 return this.http.post<Funcionario>(`${SALV_API}/funcionario`, funcionario)

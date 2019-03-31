@@ -60,7 +60,7 @@ export class NovoFuncionarioComponent implements OnInit {
   constructor(private fb: FormBuilder, private fs: FuncionariosService, private router: Router, private ns: NotificationService) { }
 
   ngOnInit() {
-    
+
     this.novoFuncionarioForm = this.fb.group({
       //PESSOA
       PESSOA: this.fb.group({
@@ -78,13 +78,23 @@ export class NovoFuncionarioComponent implements OnInit {
         DDD: this.fb.control(null, [Validators.required, Validators.minLength(2), Validators.maxLength(3)]),
         NUMERO: this.fb.control(null, [Validators.required, Validators.minLength(8), Validators.maxLength(9)])
       }),
+      ENDERECO: this.fb.group({
+        ENDERECO: this.fb.control(null, [Validators.required]),
+        NUMERO: this.fb.control(null, [Validators.required]),
+        BAIRRO: this.fb.control(null, [Validators.required]),
+        COMPLEMENTO: this.fb.control(null),
+        CIDADE: this.fb.control(null, [Validators.required]),
+        ESTADO: this.fb.control(null, [Validators.required]),
+        CEP: this.fb.control(null, [Validators.required, Validators.minLength(8), Validators.maxLength(8)]),
+        REFERENCIA: this.fb.control(null),
+      }),
       CARGO: this.fb.control(null, [Validators.required]),
       DATA_ADMISSAO: this.fb.control(null, [Validators.required])
     })
   }
 
   novoFuncionario(funcionario: Funcionario) {
-    this.fs.createNewEmployee(funcionario.PESSOA, funcionario.TELEFONE, funcionario)
+    this.fs.createNewEmployee(funcionario.PESSOA, funcionario.TELEFONE, funcionario.ENDERECO, funcionario)
       .subscribe(res => {
         this.router.navigate(['/funcionarios'])
         this.ns.notify(`Funcionário inserido com sucesso!`)
