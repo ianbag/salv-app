@@ -90,9 +90,28 @@
             </div>
           </div>
           <!--PESSOA FIM-->
-          <hr>
+          <hr class="col-md-12">
+          <!--TELEFONE-->
+          <div class="col-sm-12 col-sm-12" id="formTitle">
+            <h4><strong>Telefone</strong></h4>
+          </div>
+          <div class="row">
+            <div class="col-sm-2 col-sm-12" id="inputValidator" formGroupName="TELEFONE">
+              <salv-input-container errorMessage="Campo Obrigatório" label="DDD">
+                <input type="text" class="form-control" formControlName="DDD" placeholder="DDD" autocomplete="off">
+              </salv-input-container>
+            </div>
+            <div class="col-sm-3 col-sm-12" id="inputValidator" formGroupName="TELEFONE">
+              <salv-input-container errorMessage="Campo Obrigatório" label="Telefone">
+                <input type="text" class="form-control" formControlName="NUMERO" placeholder="Telefone"
+                  autocomplete="off">
+              </salv-input-container>
+            </div>
+          </div>
+          <!--TELEFONE FIM-->
           <div class="col-sm-12 col-sm-12">
-            <button (click)="novoFuncionario(novoFuncionarioForm.value)" style="margin-left: 10px" class="btn btn-success botao pull-right">Finalizar</button>
+            <button (click)="novoFuncionario(novoFuncionarioForm.value)" style="margin-left: 10px"
+              class="btn btn-success botao pull-right">Finalizar</button>
           </div>
         </div>
       </div>

@@ -21,6 +21,11 @@ export interface Funcionario {
         EMAIL: string,
         LOGIN: string,
         SENHA: string
+    },
+    TELEFONE: {
+        CODIGO: number,
+        DDD: string,
+        NUMERO: string
     }
 }
 
@@ -42,4 +47,15 @@ export interface Usuario {
     EMAIL: string,
     LOGIN: string,
     SENHA: string
+}
+
+export interface Telefone {
+    CODIGO: number,
+    DDD: string,
+    NUMERO: string
+}
+
+export interface Telefone_Pessoa {
+    PESSOA_CODIGO: number,
+    TELEFONE_CODIGO: number
 }

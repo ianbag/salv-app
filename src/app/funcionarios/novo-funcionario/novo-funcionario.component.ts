@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
-import { Pessoa, Funcionario } from './../funcionario.model'
+import { Pessoa, Funcionario, Telefone } from './../funcionario.model'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { trigger, state, style, transition, animate } from '@angular/animations'
 import { FuncionariosService } from './../funcionarios.service'
@@ -55,27 +55,28 @@ export class NovoFuncionarioComponent implements OnInit {
   ];
 
   novoFuncionarioForm: FormGroup
-  pessoa: Pessoa
   funcionario: Funcionario
 
   constructor(private fb: FormBuilder, private fs: FuncionariosService, private router: Router, private ns: NotificationService) { }
 
   ngOnInit() {
-    this.pessoa = this.fs.pessoa
-    this.funcionario = this.fs.funcionario
-
+    
     this.novoFuncionarioForm = this.fb.group({
       //PESSOA
       PESSOA: this.fb.group({
         NOME: this.fb.control(null, [Validators.required]),
         SOBRENOME: this.fb.control(null, [Validators.required]),
-        CPF: this.fb.control(null, [Validators.minLength(11)]),
-        RG: this.fb.control(null, [Validators.minLength(9)]),
+        CPF: this.fb.control(null, [Validators.required, Validators.minLength(11)]),
+        RG: this.fb.control(null, [Validators.required, Validators.minLength(9)]),
         ESTADO_CIVIL: this.fb.control(null, []),
         SEXO: this.fb.control(null, [Validators.required]),
         RELIGIAO: this.fb.control(null, []),
         ESCOLARIDADE: this.fb.control(null, []),
         DATA_NASCIMENTO: this.fb.control(null, []),
+      }),
+      TELEFONE: this.fb.group({
+        DDD: this.fb.control(null, [Validators.required, Validators.minLength(2), Validators.maxLength(3)]),
+        NUMERO: this.fb.control(null, [Validators.required, Validators.minLength(8), Validators.maxLength(9)])
       }),
       CARGO: this.fb.control(null, [Validators.required]),
       DATA_ADMISSAO: this.fb.control(null, [Validators.required])
@@ -83,7 +84,7 @@ export class NovoFuncionarioComponent implements OnInit {
   }
 
   novoFuncionario(funcionario: Funcionario) {
-    this.fs.createNewEmployee(funcionario.PESSOA, funcionario)
+    this.fs.createNewEmployee(funcionario.PESSOA, funcionario.TELEFONE, funcionario)
       .subscribe(res => {
         this.router.navigate(['/funcionarios'])
         this.ns.notify(`Funcionário inserido com sucesso!`)
