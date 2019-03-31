@@ -66,6 +66,7 @@ import { TelaInicialService } from './tela-inicial/tela-inicial.service';
 import { InfosFuncionarioComponent } from './funcionarios/funcionario/infos-funcionario/infos-funcionario.component';
 import { InfosDependenteComponent } from './funcionarios/funcionario/infos-dependente/infos-dependente.component';
 import { NovoFuncionarioComponent } from './funcionarios/novo-funcionario/novo-funcionario.component';
+import { EditarFuncionarioComponent } from './funcionarios/editar-funcionario/editar-funcionario.component';
 
 @NgModule({
   declarations: [
@@ -114,7 +115,8 @@ import { NovoFuncionarioComponent } from './funcionarios/novo-funcionario/novo-f
     UserDetailsComponent,
     InfosFuncionarioComponent,
     InfosDependenteComponent,
-    NovoFuncionarioComponent
+    NovoFuncionarioComponent,
+    EditarFuncionarioComponent
   ],
   imports: [
     BrowserModule,
