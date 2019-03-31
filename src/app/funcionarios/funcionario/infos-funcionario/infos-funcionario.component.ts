@@ -1,4 +1,4 @@
-import { Funcionario, Telefone } from './../../funcionario.model';
+import { Funcionario, Telefone, Endereco } from './../../funcionario.model';
 import { Component, OnInit, Input } from '@angular/core';
 import { FuncionariosService } from '../../funcionarios.service';
 
@@ -10,6 +10,7 @@ export class InfosFuncionarioComponent implements OnInit {
 
   @Input() funcionario: Funcionario
   @Input() telefones: Telefone[]
+  @Input() enderecos: Endereco[]
 
   constructor(private fs: FuncionariosService) { }
 

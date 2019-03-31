@@ -28,6 +28,10 @@ export class FuncionariosService {
         return this.http.get<Telefone[]>(`${SALV_API}/telefone_pessoa/${id}`)
     }
 
+    enderecoById(id: string): Observable<Endereco[]>{
+        return this.http.get<Endereco[]>(`${SALV_API}/endereco_pessoa/${id}`)
+    }
+
     deleteFuncionario(id: string): Observable<any> {
         return this.http.delete<any>(`${SALV_API}/funcionario/${id}`)
     }

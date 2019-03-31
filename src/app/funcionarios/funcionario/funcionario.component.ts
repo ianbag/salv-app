@@ -1,5 +1,5 @@
 import { Dependente } from './infos-dependente/dependente.model';
-import { Funcionario, Telefone } from './../funcionario.model';
+import { Funcionario, Telefone, Endereco } from './../funcionario.model';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations'
 import { FuncionariosService } from '../funcionarios.service';
@@ -26,6 +26,7 @@ export class FuncionarioComponent implements OnInit {
   funcionario: Funcionario
   dependentes: Dependente[]
   telefones: Telefone[]
+  enderecos: Endereco[]
 
   @ViewChild('reportFuncionario') reportFuncionario: ElementRef
 
@@ -41,11 +42,15 @@ export class FuncionarioComponent implements OnInit {
     })
 
     setTimeout(() => {
-      this.fs.telefoneById(this.funcionario.PESSOA_CODIGO.toString()).subscribe(telefone => {
-        this.telefones = telefone
-        console.log(telefone)
+      this.fs.telefoneById(this.funcionario.PESSOA_CODIGO.toString()).subscribe(resT => {
+        this.fs.enderecoById(this.funcionario.PESSOA_CODIGO.toString()).subscribe(resE => {
+          this.telefones = resT
+          this.enderecos = resE
+          console.log(resT, resE)
+        })
       })
-    }, 150)
+    }, 1000)
+
   }
 
   public downloadPDF() {
