@@ -31,7 +31,7 @@ export class FuncionariosService {
         return this.http.delete<any>(`${SALV_API}/funcionario/${id}`)
     }
 
-    createNew(pessoa: Pessoa, funcionario: Funcionario){
+    createNewEmployee(pessoa: Pessoa, funcionario: Funcionario){
         return this.http.post<Pessoa>(`${SALV_API}/pessoa`, pessoa).switchMap(res => {
             funcionario.PESSOA_CODIGO = res.CODIGO
             delete funcionario.PESSOA

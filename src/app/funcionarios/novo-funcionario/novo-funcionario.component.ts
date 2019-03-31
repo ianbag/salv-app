@@ -83,7 +83,7 @@ export class NovoFuncionarioComponent implements OnInit {
   }
 
   novoFuncionario(funcionario: Funcionario) {
-    this.fs.createNew(funcionario.PESSOA, funcionario)
+    this.fs.createNewEmployee(funcionario.PESSOA, funcionario)
       .subscribe(res => {
         this.router.navigate(['/funcionarios'])
         this.ns.notify(`Funcionário inserido com sucesso!`)
