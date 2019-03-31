@@ -1,5 +1,6 @@
-import { Funcionario } from './../../funcionario.model';
+import { Funcionario, Telefone } from './../../funcionario.model';
 import { Component, OnInit, Input } from '@angular/core';
+import { FuncionariosService } from '../../funcionarios.service';
 
 @Component({
   selector: 'salv-infos-funcionario',
@@ -8,10 +9,11 @@ import { Component, OnInit, Input } from '@angular/core';
 export class InfosFuncionarioComponent implements OnInit {
 
   @Input() funcionario: Funcionario
+  @Input() telefones: Telefone[]
 
-  constructor() { }
+  constructor(private fs: FuncionariosService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
 }

@@ -24,6 +24,10 @@ export class FuncionariosService {
         return this.http.get<Dependente[]>(`${SALV_API}/dependente/${id}`)
     }
 
+    telefoneById(id: string): Observable<Telefone[]> {
+        return this.http.get<Telefone[]>(`${SALV_API}/telefone_pessoa/${id}`)
+    }
+
     deleteFuncionario(id: string): Observable<any> {
         return this.http.delete<any>(`${SALV_API}/funcionario/${id}`)
     }

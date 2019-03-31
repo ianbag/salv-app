@@ -67,7 +67,6 @@ import { InfosFuncionarioComponent } from './funcionarios/funcionario/infos-func
 import { InfosDependenteComponent } from './funcionarios/funcionario/infos-dependente/infos-dependente.component';
 import { NovoFuncionarioComponent } from './funcionarios/novo-funcionario/novo-funcionario.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -128,9 +127,6 @@ import { NovoFuncionarioComponent } from './funcionarios/novo-funcionario/novo-f
     NgxMaskModule.forRoot(),
     NgMultiSelectDropDownModule.forRoot()
   ],
-  
-
-  
   providers: [
     ResidentesService,
     ConveniosService,
