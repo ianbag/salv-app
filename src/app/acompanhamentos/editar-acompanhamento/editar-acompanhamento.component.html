@@ -1,0 +1,75 @@
+{{editarAcompanhamentoForm.value | json }}
+<section class="content">
+  <!-- Conteudo NATHAN -->
+  <div class="box" >
+    <h1 align="center">Realizar acompanhamento</h1>
+    <hr>
+
+    <form [formGroup]="editarAcompanhamentoForm" role="form" >
+      <div class="box-body">
+        <div class="form-group" >
+
+
+          <div class="col-sm-8 col-xs-12">
+            <label>Residentes que participaram da atividade </label><br>
+            <ng-multiselect-dropdown [placeholder]="'Selecione os residentes'" [data]="residentes"
+            formControlName="residentes"
+              [disabled]="disabled" [settings]="dropdownSettings" (onSelect)="onResidenteSelect($event)">
+              
+            </ng-multiselect-dropdown>
+          </div>
+
+
+          <div class="col-sm-3 col-xs-12">
+            <label for="exampleInputPassword1"> <i class="fa fa-calendar"></i> Data
+              da
+              atividade</label>
+            <div class="input-group date">
+              <input type="date" class="form-control pull-right" id="datepicker" formControlName="DATA_ACOMPANHAMENTO">
+            </div>
+            <br>
+          </div>
+
+          <div class="col-sm-10 col-xs-12">
+            <label>Atividade realizada</label>
+            <textarea class="form-control" rows="3" formControlName="ATIVIDADE" 
+            placeholder="Descrição da atividade realizada"
+              auatocomplete="off"></textarea>
+             
+            <br>
+          </div>
+
+          <div class="col-sm-8 col-xs-12">
+            <label>Funcionários que realizaram a atividade </label><br>
+            <ng-multiselect-dropdown name="funcionarios"
+            [placeholder]="'Selecione os funcionários'" [data]="funcionarios"
+            formControlName="funcionarios"
+            [disabled]="disabled"
+            [settings]="dropdownSettings2"
+            (onSelect)="onFuncioanrioSelect($event)">
+            </ng-multiselect-dropdown>
+          </div>
+
+
+        </div>
+        <!--form group-->
+
+        <!--Botão-->
+        <div class="col-sm-12 col-xs-12">
+          <br>
+          <button (click)="novoAcompanhamento(novoAcompanhamentoForm.value); NovoAcompanhamentoFuncionario(novoAcompanhamentoForm.value.funcionarios); NovoAcompanhamentoResidente(novoAcompanhamentoForm.value.residentes)" style="margin-left: 10px" class="btn btn-success botao pull-right"
+            [routerLink]="['/acompanhamentos']">Salvar</button>
+
+          <button type="submit" (click)="novoAcompanhamentoForm()" class="btn btn-default botao pull-right" [routerLink]="['/acompanhamentos']">Voltar</button>
+        </div>
+        <!--Fim botão-->
+
+      </div>
+
+    </form>
+  </div>
+  <!-- Fim conteudo NATHAN -->
+  <!-- /.row -->
+</section>
+
+<script src="script.js"></script>

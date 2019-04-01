@@ -24,6 +24,7 @@ export class NovoAcompanhamentoService {
     funcionarios(): Observable<Funcionario[]> {
         return this.http.get<Funcionario[]>(`${SALV_API}/funcionarioNome`)
     }
+    
     createAcompanhamento(acompanhamento: Acompanhamento ){
         return this.http.post<Acompanhamento>(`${SALV_API}/acompanhamento`, acompanhamento)
         

@@ -102,13 +102,9 @@ this.dropdownSettings2 = {
   unSelectAlltext: 'Desmarcar todos',
   itemsShowLimit: 5,
   allowSearchFilter: this.ShowFilter
-}
-
-
-
+   }
 
 }
-
 
 novoAcompanhamento(acompanhamento: Acompanhamento) {
   this.NovoAcompanhamentoService.createAcompanhamento(acompanhamento).subscribe(res=> {
