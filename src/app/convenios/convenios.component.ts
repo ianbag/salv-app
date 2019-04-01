@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ConveniosService } from 'src/app/convenios/convenios.service';
-import { Convenio } from 'src/app/residentes/residente/infos-convenio/convenio.model';
+import { Convenio } from './convenio.model';
 import { DialogConfirmService } from '../residentes/dialog-confirm.service';
 import { trigger, state, transition, style, animate } from '@angular/animations';
 import * as jspdf from 'jspdf'
@@ -29,7 +29,11 @@ export class ConveniosComponent implements OnInit {
   @ViewChild('reportConvenios') reportConvenios: ElementRef
 
   ngOnInit() {
-    this.conveniosService.convenios().subscribe(convenios => this.convenios = convenios)
+    this.conveniosService.convenios()
+      .subscribe(convenios => {
+        this.convenios = convenios
+        console.log('CONVENIOS', convenios)
+      })
   }
 
   deleteConvenio(id: string): void {
