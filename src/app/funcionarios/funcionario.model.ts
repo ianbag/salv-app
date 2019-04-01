@@ -89,7 +89,7 @@ export interface Endereco_Pessoa {
 }
 
 export interface FuncionarioQuery {
-    CODIGO: number,
+    COD_PES: number,
     NOME: string,
     SOBRENOME: string,
     RG: string,
@@ -99,8 +99,10 @@ export interface FuncionarioQuery {
     DATA_NASCIMENTO: string,
     RELIGIAO: string,
     ESCOLARIDADE: string,
+    COD_TEL: number,
     DDD: string,
     NUM_TEL: string,
+    COD_END: number,
     ENDERECO: string,
     NUMERO: string,
     BAIRRO: string,
@@ -109,6 +111,7 @@ export interface FuncionarioQuery {
     ESTADO: string,
     CEP: string,
     REFERENCIA: string,
+    COD_FUN: number,
     CARGO: string,
     DATA_ADMISSAO: string
 }

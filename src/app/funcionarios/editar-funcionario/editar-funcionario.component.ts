@@ -45,15 +45,23 @@ export class EditarFuncionarioComponent implements OnInit {
   ];
 
   editarFuncionarioForm: FormGroup
-  _data_funcionario: FuncionarioQuery[] = []
+  funcionario: FuncionarioQuery[] = []
+  _cod_pes: number
+  _cod_tel: number
+  _cod_end: number
+  _cod_fun: number
 
   constructor(private fb: FormBuilder, private fs: FuncionariosService, private router: Router, private ar: ActivatedRoute, private ns: NotificationService) { }
 
   ngOnInit() {
 
     this.fs.funcionarioQuery(this.ar.snapshot.params['id']).subscribe(data => {
-      this._data_funcionario = data
-      console.log(this._data_funcionario[0])
+      this.funcionario = data
+      this._cod_pes = this.funcionario[0].COD_PES
+      this._cod_tel = this.funcionario[0].COD_TEL
+      this._cod_end = this.funcionario[0].COD_END
+      this._cod_fun = this.funcionario[0].COD_FUN
+      console.log(this.funcionario[0])
     })
 
     this.editarFuncionarioForm = this.fb.group({
@@ -90,34 +98,42 @@ export class EditarFuncionarioComponent implements OnInit {
     setTimeout(() => {
       this.editarFuncionarioForm.patchValue({
         PESSOA: {
-          NOME: this._data_funcionario[0].NOME,
-          SOBRENOME: this._data_funcionario[0].SOBRENOME,
-          RG: this._data_funcionario[0].RG,
-          CPF: this._data_funcionario[0].CPF,
-          SEXO: this._data_funcionario[0].SEXO.toUpperCase(),
-          ESTADO_CIVIL: this._data_funcionario[0].ESTADO_CIVIL.toUpperCase(),
-          DATA_NASCIMENTO: this._data_funcionario[0].DATA_NASCIMENTO,
-          RELIGIAO: this._data_funcionario[0].RELIGIAO.toUpperCase(),
-          ESCOLARIDADE: this._data_funcionario[0].ESCOLARIDADE.toUpperCase()
+          COD_PES: this.funcionario[0].COD_PES,
+          NOME: this.funcionario[0].NOME,
+          SOBRENOME: this.funcionario[0].SOBRENOME,
+          RG: this.funcionario[0].RG,
+          CPF: this.funcionario[0].CPF,
+          SEXO: this.funcionario[0].SEXO.toUpperCase(),
+          ESTADO_CIVIL: this.funcionario[0].ESTADO_CIVIL.toUpperCase(),
+          DATA_NASCIMENTO: this.funcionario[0].DATA_NASCIMENTO,
+          RELIGIAO: this.funcionario[0].RELIGIAO.toUpperCase(),
+          ESCOLARIDADE: this.funcionario[0].ESCOLARIDADE.toUpperCase()
         },
         ENDERECO: {
-          ENDERECO: this._data_funcionario[0].ENDERECO,
-          NUMERO: this._data_funcionario[0].NUMERO,
-          BAIRRO: this._data_funcionario[0].BAIRRO,
-          COMPLEMENTO: this._data_funcionario[0].COMPLEMENTO,
-          CIDADE: this._data_funcionario[0].CIDADE,
-          ESTADO: this._data_funcionario[0].ESTADO.toUpperCase(),
-          CEP: this._data_funcionario[0].CEP,
-          REFERENCIA: this._data_funcionario[0].REFERENCIA
+          ENDERECO: this.funcionario[0].ENDERECO,
+          NUMERO: this.funcionario[0].NUMERO,
+          BAIRRO: this.funcionario[0].BAIRRO,
+          COMPLEMENTO: this.funcionario[0].COMPLEMENTO,
+          CIDADE: this.funcionario[0].CIDADE,
+          ESTADO: this.funcionario[0].ESTADO.toUpperCase(),
+          CEP: this.funcionario[0].CEP,
+          REFERENCIA: this.funcionario[0].REFERENCIA
         },
         TELEFONE: {
-          DDD: this._data_funcionario[0].DDD,
-          NUMERO: this._data_funcionario[0].NUM_TEL
+          DDD: this.funcionario[0].DDD,
+          NUMERO: this.funcionario[0].NUM_TEL
         },
-        CARGO: this._data_funcionario[0].CARGO,
-        DATA_ADMISSAO: this._data_funcionario[0].DATA_ADMISSAO
+        CARGO: this.funcionario[0].CARGO,
+        DATA_ADMISSAO: this.funcionario[0].DATA_ADMISSAO
       })
     }, 1000)
+  }
+
+  editarFuncionario(editFuncionario: Funcionario) {
+    this.fs.updateEmployee(this._cod_pes, this._cod_tel, this._cod_end, this._cod_fun, editFuncionario.PESSOA, editFuncionario.TELEFONE, editFuncionario.ENDERECO, editFuncionario).subscribe(res => {
+      this.router.navigate([`/funcionario/${this._cod_fun}`])
+      this.ns.notify('Funcionário atualizado com sucesso!')
+    })
   }
 
 }
