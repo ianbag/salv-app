@@ -1,10 +1,11 @@
+{{editarAcompanhamentoForm.value | json }}
 <section class="content">
   <!-- Conteudo NATHAN -->
-  <div class="box" [@novo-acompanhamentoAppeared]="novoacompanhamentoState">
+  <div class="box" >
     <h1 align="center">Realizar acompanhamento</h1>
     <hr>
 
-    <form [formGroup]="novoAcompanhamentoForm" role="form" >
+    <form [formGroup]="editarAcompanhamentoForm" role="form" >
       <div class="box-body">
         <div class="form-group" >
 
