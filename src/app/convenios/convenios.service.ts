@@ -2,7 +2,7 @@ import { SALV_API } from './../app.api';
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { Convenio } from "./convenio.model";
+import { Convenio, Telefone } from "./convenio.model";
 
 
 @Injectable()
@@ -16,6 +16,10 @@ export class ConveniosService {
 
     conveniosById(id: number): Observable<Convenio>{
         return this.http.get<Convenio>(`${SALV_API}/convenio/${id}`)
+    }
+
+    telefoneById(id: string): Observable<Telefone[]>{
+        
     }
 
     deleteConvenio(id: string): Observable<any>{
