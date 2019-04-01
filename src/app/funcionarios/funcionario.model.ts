@@ -30,7 +30,7 @@ export interface Funcionario {
     ENDERECO: {
         CODIGO: number,
         ENDERECO: string,
-        NUMERO: string,
+        NUMERO: number,
         BAIRRO: string,
         COMPLEMENTO: string,
         CIDADE: string,
@@ -74,7 +74,7 @@ export interface Telefone_Pessoa {
 export interface Endereco {
     CODIGO: number,
     ENDERECO: string,
-    NUMERO: string,
+    NUMERO: number,
     BAIRRO: string,
     COMPLEMENTO: string,
     CIDADE: string,
@@ -86,4 +86,32 @@ export interface Endereco {
 export interface Endereco_Pessoa {
     PESSOA_CODIGO: number,
     ENDERECO_CODIGO: number
+}
+
+export interface FuncionarioQuery {
+    COD_PES: number,
+    NOME: string,
+    SOBRENOME: string,
+    RG: string,
+    CPF: string,
+    SEXO: string,
+    ESTADO_CIVIL: string,
+    DATA_NASCIMENTO: string,
+    RELIGIAO: string,
+    ESCOLARIDADE: string,
+    COD_TEL: number,
+    DDD: string,
+    NUM_TEL: string,
+    COD_END: number,
+    ENDERECO: string,
+    NUMERO: string,
+    BAIRRO: string,
+    COMPLEMENTO: string,
+    CIDADE: string,
+    ESTADO: string,
+    CEP: string,
+    REFERENCIA: string,
+    COD_FUN: number,
+    CARGO: string,
+    DATA_ADMISSAO: string
 }

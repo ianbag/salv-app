@@ -69,10 +69,7 @@ import { InfosFuncionarioComponent } from './funcionarios/funcionario/infos-func
 import { InfosDependenteComponent } from './funcionarios/funcionario/infos-dependente/infos-dependente.component';
 import { NovoFuncionarioComponent } from './funcionarios/novo-funcionario/novo-funcionario.component';
 import { EditarAcompanhamentoComponent } from './acompanhamentos/editar-acompanhamento/editar-acompanhamento.component';
-
-
-
-
+import { EditarFuncionarioComponent } from './funcionarios/editar-funcionario/editar-funcionario.component';
 
 @NgModule({
   declarations: [
@@ -121,9 +118,9 @@ import { EditarAcompanhamentoComponent } from './acompanhamentos/editar-acompanh
     NovoFuncionarioComponent,
     InfosFuncionarioComponent,
     InfosDependenteComponent,
-    EditarAcompanhamentoComponent
-
-
+    EditarAcompanhamentoComponent,
+    NovoFuncionarioComponent,
+    EditarFuncionarioComponent
   ],
   imports: [
     BrowserModule,
@@ -136,9 +133,6 @@ import { EditarAcompanhamentoComponent } from './acompanhamentos/editar-acompanh
     NgxMaskModule.forRoot(),
     NgMultiSelectDropDownModule.forRoot()
   ],
-  
-
-  
   providers: [
     ResidentesService,
     ConveniosService,

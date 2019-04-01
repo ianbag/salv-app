@@ -49,6 +49,47 @@
       <hr class="col-md-12">
       <div class="col-md-12">
         <div class="col-sm-12 col-xs-12">
+          <h4><strong>Telefones</strong></h4>
+        </div>
+        <div class="col-xs-4 col-xs-12" *ngFor="let telefone of telefones">
+          <strong>Telefone: </strong> ({{telefone?.TELEFONE.DDD}}) {{telefone?.TELEFONE.NUMERO}}
+        </div>
+      </div>
+      <hr class="col-md-12">
+      <div class="col-md-12">
+        <div class="col-sm-12 col-xs-12">
+          <h4><strong>Endereços</strong></h4>
+        </div>
+        <div *ngFor="let endereco of enderecos">
+          <div class="col-xs-4 col-xs-12">
+            <strong>Endereço: </strong> {{endereco?.ENDERECO.ENDERECO}}
+          </div>
+          <div class="col-xs-4 col-xs-12">
+            <strong>Número: </strong> {{endereco?.ENDERECO.NUMERO}}
+          </div>
+          <div class="col-xs-4 col-xs-12">
+            <strong>Bairro: </strong> {{endereco?.ENDERECO.BAIRRO}}
+          </div>
+          <div class="col-xs-4 col-xs-12" *ngIf="endereco.ENDERECO.COMPLEMENTO">
+            <strong>Complemento: </strong> {{endereco?.ENDERECO.COMPLEMENTO}}
+          </div>
+          <div class="col-xs-4 col-xs-12">
+            <strong>Cidade: </strong> {{endereco?.ENDERECO.CIDADE}}
+          </div>
+          <div class="col-xs-4 col-xs-12">
+            <strong>Estado: </strong> {{endereco?.ENDERECO.ESTADO}}
+          </div>
+          <div class="col-xs-4 col-xs-12">
+            <strong>CEP: </strong> {{endereco?.ENDERECO.CEP}}
+          </div>
+          <div class="col-xs-4 col-xs-12" *ngIf="endereco.ENDERECO.REFERENCIA">
+            <strong>Referência: </strong> {{endereco?.ENDERECO.REFERENCIA}}
+          </div>
+        </div>
+      </div>
+      <hr class="col-md-12">
+      <div class="col-md-12">
+        <div class="col-sm-12 col-xs-12">
           <h4><strong>Informações funcionais</strong></h4>
         </div>
         <div class="col-xs-4 col-xs-12">

@@ -4,7 +4,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import 'rxjs/add/observable/forkJoin'
-import { Funcionario, Pessoa, Telefone, Telefone_Pessoa, Endereco, Endereco_Pessoa } from './funcionario.model';
+import { Funcionario, Pessoa, Telefone, Telefone_Pessoa, Endereco, Endereco_Pessoa, FuncionarioQuery } from './funcionario.model';
 
 
 @Injectable()
@@ -24,8 +24,20 @@ export class FuncionariosService {
         return this.http.get<Dependente[]>(`${SALV_API}/dependente/${id}`)
     }
 
+    telefoneById(id: string): Observable<Telefone[]> {
+        return this.http.get<Telefone[]>(`${SALV_API}/telefone_pessoa/${id}`)
+    }
+
+    enderecoById(id: string): Observable<Endereco[]> {
+        return this.http.get<Endereco[]>(`${SALV_API}/endereco_pessoa/${id}`)
+    }
+
     deleteFuncionario(id: string): Observable<any> {
         return this.http.delete<any>(`${SALV_API}/funcionario/${id}`)
+    }
+
+    funcionarioQuery(id: string): Observable<FuncionarioQuery[]> {
+        return this.http.get<FuncionarioQuery[]>(`${SALV_API}/funcionario-full/${id}`)
     }
 
     createNewEmployee(pessoa: Pessoa, telefone: Telefone, endereco: Endereco, funcionario: Funcionario) {
@@ -49,6 +61,19 @@ export class FuncionariosService {
                             return this.http.post<Funcionario>(`${SALV_API}/funcionario`, funcionario)
                         })
                     })
+                })
+            })
+        })
+    }
+
+    updateEmployee(cod_pes: number, cod_tel: number, cod_end: number, cod_fun: number, pessoa: Pessoa, telefone: Telefone, endereco: Endereco, funcionario: Funcionario) {
+        return this.http.put<Pessoa>(`${SALV_API}/pessoa/${cod_pes}`, pessoa).switchMap(resP => {
+            delete funcionario.PESSOA
+            return this.http.put<Telefone>(`${SALV_API}/telefone/${cod_tel}`, telefone).switchMap(resT => {
+                delete funcionario.TELEFONE
+                return this.http.put<Endereco>(`${SALV_API}/endereco/${cod_end}`, endereco).switchMap(resE => {
+                    delete funcionario.ENDERECO
+                    return this.http.put<Funcionario>(`${SALV_API}/funcionario/${cod_fun}`, funcionario)
                 })
             })
         })

@@ -1,10 +1,10 @@
 import { Dependente } from './infos-dependente/dependente.model';
-import { Funcionario } from './../funcionario.model';
+import { Funcionario, Telefone, Endereco } from './../funcionario.model';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations'
-import * as jspdf from 'jspdf'
 import { FuncionariosService } from '../funcionarios.service';
 import { ActivatedRoute } from '@angular/router';
+import * as jspdf from 'jspdf'
 
 @Component({
   selector: 'salv-funcionario',
@@ -25,6 +25,8 @@ export class FuncionarioComponent implements OnInit {
 
   funcionario: Funcionario
   dependentes: Dependente[]
+  telefones: Telefone[]
+  enderecos: Endereco[]
 
   @ViewChild('reportFuncionario') reportFuncionario: ElementRef
 
@@ -38,6 +40,17 @@ export class FuncionarioComponent implements OnInit {
     this.fs.dependenteById(this.route.snapshot.params['id']).subscribe(dependente => {
       this.dependentes = dependente
     })
+
+    setTimeout(() => {
+      this.fs.telefoneById(this.funcionario.PESSOA_CODIGO.toString()).subscribe(resT => {
+        this.fs.enderecoById(this.funcionario.PESSOA_CODIGO.toString()).subscribe(resE => {
+          this.telefones = resT
+          this.enderecos = resE
+          console.log(resT, resE)
+        })
+      })
+    }, 1000)
+
   }
 
   public downloadPDF() {
