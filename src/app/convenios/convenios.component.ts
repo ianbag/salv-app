@@ -37,11 +37,11 @@ export class ConveniosComponent implements OnInit {
   }
 
   deleteConvenio(id: string): void {
-    this.dialogConfirmService.confirm(`Deseja excluir o residente?`)
+    this.dialogConfirmService.confirm(`Deseja excluir o convênio?`)
       .then((isTrue) => {
         if (isTrue) {
           this.conveniosService.deleteConvenio(id)
-            .subscribe(result => this.conveniosService.convenios()
+            .subscribe(() => this.conveniosService.convenios()
               .subscribe(convenios => this.convenios = convenios))
         }
       })

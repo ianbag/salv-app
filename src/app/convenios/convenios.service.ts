@@ -53,7 +53,7 @@ export class ConveniosService {
         })   
     }
 
-    updateEmployee(cod_tel: number, cod_end: number, cod_conv: number, telefone: Telefone, endereco: Endereco, convenio: Convenio) {
+    updateConvenio(cod_tel: number, cod_end: number, cod_conv: number, telefone: Telefone, endereco: Endereco, convenio: Convenio) {
             return this.http.put<Telefone>(`${SALV_API}/telefone/${cod_tel}`, telefone).switchMap(resT => {
                 delete convenio.TELEFONE
                 return this.http.put<Endereco>(`${SALV_API}/endereco/${cod_end}`, endereco).switchMap(resE => {

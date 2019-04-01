@@ -2,11 +2,6 @@ export interface Convenio {
     CODIGO_CONVENIO: number,
     NOME_CONVENIO: string,
     TIPO_CONVENIO: string,
-        TELEFONE: {
-            CODIGO: number,
-            DDD: string,
-            NUMERO: string
-        },
         ENDERECO: {
             CODIGO: number,
             ENDERECO: string,
@@ -17,18 +12,12 @@ export interface Convenio {
             ESTADO: string,
             CEP: string,
             REFERENCIA: string
+        },
+        TELEFONE: {
+            CODIGO: number,
+            DDD: string,
+            NUMERO: string
         }
-}
-
-export interface Telefone {
-    CODIGO: number,
-    DDD: string,
-    NUMERO: string
-}
-
-export interface Telefone_Convenio {
-    CONVENIO_CODIGO: number,
-    TELEFONE_CODIGO: number
 }
 
 export interface Endereco {
@@ -49,11 +38,9 @@ export interface Endereco_Convenio {
 }
 
 export interface ConvenioQuery{
+    COD_CONV: number,
     NOME_CONVENIO: string, 
     TIPO_CONVENIO: string,
-    COD_TEL: number,
-    DDD: string, 
-    NUM_TEL: string,
     COD_END: number,
     ENDERECO: string, 
     NUMERO: string,
@@ -62,5 +49,19 @@ export interface ConvenioQuery{
     CIDADE: string,
     ESTADO: string,
     CEP: string,
-    REFERENCIA: string
+    REFERENCIA: string,
+    COD_TEL: number,
+    DDD: string, 
+    NUM_TEL: string
+}
+
+export interface Telefone {
+    CODIGO: number,
+    DDD: string,
+    NUMERO: string
+}
+
+export interface Telefone_Convenio {
+    CONVENIO_CODIGO: number,
+    TELEFONE_CODIGO: number
 }
