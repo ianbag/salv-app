@@ -22,7 +22,7 @@
           <td>{{acompanhamento.FUNCIONARIO_NOME}} {{acompanhamento.FUNCIONARIO_SOBRENOME}}</td>
           <td>
 
-            <a type="submit" class="btn btn-warning botao" href="#">Editar</a>
+            <a type="submit" class="btn btn-warning botao" [routerLink]="['/editar-acompanhamento', acompanhamento.CODIGO]">Editar</a>
             <a type="submit" class="btn btn-success botao" [routerLink]="['/acompanhamento', acompanhamento.CODIGO]">+
               Informações</a>
           </td>

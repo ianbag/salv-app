@@ -1,3 +1,4 @@
+import { NovoAcompanhamentoService } from './acompanhamentos/novo-acompanhamento/novo-acompanhamento.service';
 import { UserDetailsComponent } from './fixed-elements/header/user-details/user-details.component';
 import { NotificationService } from './shared/notification.service';
 import { HttpModule } from '@angular/http';
@@ -6,6 +7,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
+
 
 
 
@@ -40,11 +42,6 @@ import { InfosConvenioComponent } from './residentes/residente/infos-convenio/in
 import { NotFoundComponent } from './not-found/not-found.component';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 import { FuncionarioComponent } from './funcionarios/funcionario/funcionario.component';
-import { InfosDependenteComponent } from './funcionarios/funcionario/infos-dependente/infos-dependente.component';
-import { InfosFuncionaisComponent } from './funcionarios/funcionario/infos-funcionais/infos-funcionais.component';
-import { NovoFuncionarioComponent } from './funcionarios/funcionario/novo-funcionario/novo-funcionario.component';
-import { NovoDependenteComponent } from './funcionarios/funcionario/novo-funcionario/novo-dependente/novo-dependente.component';
-import { NovaInfoFuncionalComponent } from './funcionarios/funcionario/novo-funcionario/nova-info-funcional/nova-info-funcional.component';
 import { ConvenioComponent } from './convenios/convenio/convenio.component';
 import { DialogConfirmService } from './residentes/dialog-confirm.service';
 import { AcompanhamentosComponent } from './acompanhamentos/acompanhamentos.component';
@@ -64,14 +61,15 @@ import { LoginService } from './auth/login/login.service';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { GlobalErrorHandler } from './app.global-error-handler';
 import { SnackbarComponent } from './shared/snackbar/snackbar.component';
-import { UserDetailsComponent } from './fixed-elements/header/user-details/user-details.component';
+;
 import { NovoConvenioComponent } from './convenios/novo-convenio/novo-convenio.component';
 import { EditarConvenioComponent } from './convenios/editar-convenio/editar-convenio.component';
-import { NovoAcompanhamentoService } from './acompanhamentos/novo-acompanhamento/novo-acompanhamento.service';
 import { TelaInicialService } from './tela-inicial/tela-inicial.service';
-import { NovoAcompanhamentoService } from './acompanhamentos/novo-acompanhamento/novo-acompanhamento.service';
-
-
+import { InfosFuncionarioComponent } from './funcionarios/funcionario/infos-funcionario/infos-funcionario.component';
+import { InfosDependenteComponent } from './funcionarios/funcionario/infos-dependente/infos-dependente.component';
+import { NovoFuncionarioComponent } from './funcionarios/novo-funcionario/novo-funcionario.component';
+import { EditarAcompanhamentoComponent } from './acompanhamentos/editar-acompanhamento/editar-acompanhamento.component';
+import { EditarFuncionarioComponent } from './funcionarios/editar-funcionario/editar-funcionario.component';
 
 @NgModule({
   declarations: [
@@ -99,11 +97,6 @@ import { NovoAcompanhamentoService } from './acompanhamentos/novo-acompanhamento
     FuncionariosComponent,
     SnackbarComponent,
     FuncionarioComponent,
-    InfosDependenteComponent,
-    InfosFuncionaisComponent,
-    NovoFuncionarioComponent,
-    NovoDependenteComponent,
-    NovaInfoFuncionalComponent,
     InfosConvenioComponent,
     NotFoundComponent,
     ConvenioComponent,
@@ -122,8 +115,12 @@ import { NovoAcompanhamentoService } from './acompanhamentos/novo-acompanhamento
     UserDetailsComponent,
     NovoConvenioComponent,
     EditarConvenioComponent,
-    UserDetailsComponent
-
+    NovoFuncionarioComponent,
+    InfosFuncionarioComponent,
+    InfosDependenteComponent,
+    EditarAcompanhamentoComponent,
+    NovoFuncionarioComponent,
+    EditarFuncionarioComponent
   ],
   imports: [
     BrowserModule,
@@ -136,9 +133,6 @@ import { NovoAcompanhamentoService } from './acompanhamentos/novo-acompanhamento
     NgxMaskModule.forRoot(),
     NgMultiSelectDropDownModule.forRoot()
   ],
-  
-
-  
   providers: [
     ResidentesService,
     ConveniosService,

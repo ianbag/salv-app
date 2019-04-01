@@ -1,6 +1,5 @@
 <!-- Main content -->
 <section class="content">
-<<<<<<< HEAD
     <div>
         <!-- Conteudo KAUE -->
         <div class="box box-default table-responsive no-padding" [@conveniosAppeared]="conveniosState">
@@ -23,40 +22,11 @@
                     </td>
                 </tr>
             </table>
-=======
-    <button (click)="downloadPDF()" class="btn btn-success" id="printReport"><i class="fa fa-print"></i></button>
-    <div id="content" #reportConvenios>
-        <div>
-            <!-- Conteudo KAUE -->
-            <div class="box box-default table-responsive no-padding" [@conveniosAppeared]="conveniosState">
-                <h1>Visualização geral dos convênios</h1>
-                <br>
-                <!-- /.box-header -->
-                <table class="table table-hover">
-                    <tr>
-                        <th>Nome</th>
-                        <th>Telefone</th>
-                        <th style="width: 350px">Ações</th>
-                    </tr>
-                    <tr *ngFor="let convenio of convenios">
-                        <td>{{convenio.NOME_CONVENIO}}</td>
-                        <td>{{convenio.DDD}} {{convenio.TELEFONE}}</td>
-                        <td>
-                            <button type="submit" class="btn btn-danger botao"
-                                (click)="deleteConvenio(convenio.CODIGO); $event.stopPropagation()">Apagar</button>
-                            <a type="submit" class="btn btn-warning botao botao-espaço" href="#">Editar</a>
-                            <a type="submit" class="btn btn-success botao"
-                                [routerLink]="['/convenio',convenio.CODIGO]">+
-                                Informações</a>
-                        </td>
-                    </tr>
-                </table>
->>>>>>> upstream/master
 
                 <!-- /.box -->
             </div>
             <!-- Fim conteudo KAUE -->
         </div>
         <!-- /.row -->
-    </div>
+    
 </section>

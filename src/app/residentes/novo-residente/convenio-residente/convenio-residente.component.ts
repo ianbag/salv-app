@@ -1,4 +1,3 @@
-import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, transition, style, animate } from '@angular/animations'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -40,11 +39,6 @@ export class ConvenioResidenteComponent implements OnInit {
     { option: "teste3" }
   ];
 
-  convenioResidenteForm: FormGroup;
-
-  constructor(private formBuilder: FormBuilder) { }
-
-
   ngOnInit() {
 
     this.convenioResidenteForm = this.formBuilder.group({
@@ -52,14 +46,6 @@ export class ConvenioResidenteComponent implements OnInit {
       NOME: this.formBuilder.control(null, [Validators.required]),
     })
   }
-
-      nome: this.formBuilder.control('', []),
-      numeroInscricao: this.formBuilder.control('', []),
-      titularConvenio: this.formBuilder.control('', [])
-    })
-    
-    
-    }
 
   convenioResidente(convenio: Convenio) {
     this.residentesService.createPessoa(this.residentesService.pessoa)

@@ -14,22 +14,21 @@
                         <th>Nome</th>
                         <th>CPF</th>
                         <th>RG</th>
-                        <th>Dependentes</th>
                         <th style="width: 350px">Ações</th>
                     </tr>
                     <tr *ngFor="let funcionario of funcionarios">
-                            <td>{{funcionario.FUNCIONARIO_NOME}} {{funcionario.FUNCIONARIO_SOBRENOME}}</td>
-                            <td>{{funcionario.CPF | cpf}}</td>
-                            <td>{{funcionario.RG | rg}}</td>
-                            <td>{{funcionario.DEPENDENTE_NOME}} {{funcionario.DEPENDENTE_SOBRENOME}}</td>
-                            <td>
-                                <button type="submit" class="btn btn-danger botao"
-                                    (click)="deleteFuncionario(funcionario.CODIGO); $event.stopPropagation()">Apagar</button>
-                                <a type="submit" class="btn btn-warning botao" href="#">Editar</a>
-                                <a type="submit" class="btn btn-success botao"
-                                    [routerLink]="['/funcionario',funcionario.CODIGO]">+ Informações</a>
-                            </td>
-                        </tr>
+                        <td>{{funcionario.FUNCIONARIO_NOME}} {{funcionario.FUNCIONARIO_SOBRENOME}}</td>
+                        <td>{{funcionario.CPF | cpf}}</td>
+                        <td>{{funcionario.RG | rg}}</td>
+                        <td>
+                            <button type="submit" class="btn btn-danger botao"
+                                (click)="deleteFuncionario(funcionario.CODIGO); $event.stopPropagation()">Demitir</button>
+                            <a type="submit" class="btn btn-warning botao"
+                                [routerLink]="['/editar-funcionario', funcionario.CODIGO]">Editar</a>
+                            <a type="submit" class="btn btn-success botao"
+                                [routerLink]="['/funcionario',funcionario.CODIGO]">+ Informações</a>
+                        </td>
+                    </tr>
                 </table>
                 <!-- Fim da tabela  -->
             </div>
