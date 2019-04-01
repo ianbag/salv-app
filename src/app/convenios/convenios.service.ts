@@ -61,7 +61,6 @@ export class ConveniosService {
                     return this.http.put<Convenio>(`${SALV_API}/convenio/${cod_conv}`, convenio)
                 })
             })
-        })
-    }
-
+        }
+ 
 }

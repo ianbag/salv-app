@@ -1,7 +1,11 @@
+import { Component, OnInit } from '@angular/core';
+import { Convenio } from './../convenio.model';;
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { transition, style, trigger, state, animate } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
-import { Convenio } from 'src/app/convenios/convenio.model';;
+import { ConveniosService } from '../convenios.service';
+import { Router } from '@angular/router';
+import { NotificationService } from 'src/app/shared/notification.service';
+
 
 @Component({
   selector: 'salv-novo-convenio',
@@ -25,28 +29,38 @@ export class NovoConvenioComponent implements OnInit {
   ];
 
   novoConvenioForm: FormGroup;
+  convenio: Convenio
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private fb: FormBuilder, private cs: ConveniosService, private router: Router, private ns: NotificationService) { }
 
   ngOnInit() {
 
-    this.novoConvenioForm = this.formBuilder.group({
-      nome: this.formBuilder.control('', [Validators.required]),
-      tipoConvenio: this.formBuilder.control('', [Validators.required]),
-      rua: this.formBuilder.control('', [Validators.required]),
-      numero: this.formBuilder.control('', [Validators.required]),
-      bairro: this.formBuilder.control('', [Validators.required]),
-      cidade: this.formBuilder.control('', [Validators.required]),
-      estado: this.formBuilder.control('', [Validators.required]),
-      cep: this.formBuilder.control('', [Validators.required]),
-      complemento: this.formBuilder.control('', []),
-      referencia: this.formBuilder.control('', []),
-      telefone: this.formBuilder.control('', [Validators.required])
+    this.novoConvenioForm = this.fb.group({
+      NOME_CONVENIO: this.fb.control('', [Validators.required]),
+      TIPO_CONVENIO: this.fb.control('', [Validators.required]),
+      TELEFONE: this.fb.group({
+        DDD: this.fb.control(null, [Validators.required, Validators.minLength(2), Validators.maxLength(3)]),
+        NUMERO: this.fb.control(null, [Validators.required, Validators.minLength(8), Validators.maxLength(9)])
+      }),
+      ENDERECO: this.fb.group({
+        ENDERECO: this.fb.control(null, [Validators.required]),
+        NUMERO: this.fb.control(null, [Validators.required]),
+        BAIRRO: this.fb.control(null, [Validators.required]),
+        COMPLEMENTO: this.fb.control(null),
+        CIDADE: this.fb.control(null, [Validators.required]),
+        ESTADO: this.fb.control(null, [Validators.required]),
+        CEP: this.fb.control(null, [Validators.required, Validators.minLength(8), Validators.maxLength(8)]),
+        REFERENCIA: this.fb.control(null),
+      })
     })
   }
 
   novoConvenio(convenio: Convenio){
-    console.log(convenio)
+    this.cs.createNewConvenio(convenio.TELEFONE, convenio.ENDERECO, convenio)
+      .subscribe(res => {
+        this.router.navigate(['/convenios'])
+        this.ns.notify(`Convênio inserido com sucessos!`)
+      })  
   }
 
 }

@@ -4,8 +4,8 @@ export interface Convenio {
     TIPO_CONVENIO: string,
         TELEFONE: {
             CODIGO: number,
-            DDD: number,
-            TELEFONE: number
+            DDD: string,
+            NUMERO: string
         },
         ENDERECO: {
             CODIGO: number,
