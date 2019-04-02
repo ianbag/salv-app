@@ -48,7 +48,7 @@
       </div>
       <hr class="col-md-12">
       <div class="col-md-12">
-        <!--DIV MODAL-->
+        <!--DIV MODAL INICIO-->
         <div class="col-sm-12 col-xs-12">
           <!-- Button trigger modal -->
           <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modalTelefone">
@@ -93,7 +93,7 @@
           <!--FIM MODAL-->
           <h4><strong>Telefones</strong></h4>
         </div>
-        <!--DIV MODAL-->
+        <!--FIM DIV MODAL-->
         <div class="col-xs-4 col-xs-12" *ngFor="let telefone of telefones">
           <strong>Telefone: </strong> ({{telefone?.TELEFONE.DDD}}) {{telefone?.TELEFONE.NUMERO}}
         </div>
@@ -229,7 +229,7 @@
         </div>
       </div>
       <hr class="col-md-12">
-      <div class="col-md-12">
+      <div class="col-md-12" *ngIf="haveLogin(); else notLogin">
         <div class="col-sm-12 col-xs-12">
           <h4><strong>Informações de login</strong></h4>
         </div>
@@ -241,6 +241,60 @@
           <strong>Login: </strong> {{funcionario?.USUARIO.LOGIN}}
         </div>
       </div>
+      <ng-template #notLogin>
+        <p>Você não possui usuário cadastrado</p>
+        <!--DIV MODAL INICIO-->
+        <div class="col-sm-12 col-xs-12">
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalUsuario">
+            Adicionar usuário
+          </button>
+          <!-- Modal -->
+          <div class="modal fade" id="modalUsuario" tabindex="-1" role="dialog" aria-labelledby="modalUsuario"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <form [formGroup]="novoUsuarioForm" novalidate>
+                    <div class="box-body">
+                      <div>
+                        <div class="col-sm-12 col-sm-12" id="formTitle">
+                          <h4><strong>Adicionar usuário</strong></h4>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-4 col-sm-12">
+                            <label>E-mail</label>
+                            <input type="text" class="form-control" formControlName="EMAIL" placeholder="E-mail"
+                              autocomplete="off">
+                          </div>
+                          <div class="col-sm-4 col-sm-12">
+                            <label>Login</label>
+                            <input type="text" class="form-control" formControlName="LOGIN" placeholder="Login"
+                              autocomplete="off">
+                          </div>
+                          <div class="col-sm-4 col-sm-12">
+                            <label>Senha</label>
+                            <input type="password" class="form-control" formControlName="SENHA" placeholder="Senha"
+                              autocomplete="off">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                  <button type="button" class="btn btn-success" (click)="novoUsuario(this.novoUsuarioForm.value)"
+                    data-dismiss="modal">Salvar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--FIM MODAL-->
+        </div>
+        <!--FIM DIV MODAL-->
+      </ng-template>
+
     </div>
   </div>
 </div>

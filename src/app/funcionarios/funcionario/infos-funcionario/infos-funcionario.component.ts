@@ -1,5 +1,5 @@
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Funcionario, Telefone, Endereco } from './../../funcionario.model';
+import { Funcionario, Telefone, Endereco, Usuario } from './../../funcionario.model';
 import { Component, OnInit, Input } from '@angular/core';
 import { FuncionariosService } from '../../funcionarios.service';
 import { NotificationService } from 'src/app/shared/notification.service';
@@ -14,6 +14,7 @@ export class InfosFuncionarioComponent implements OnInit {
   @Input() enderecos: Endereco[]
   novoTelefoneForm: FormGroup
   novoEnderecoForm: FormGroup
+  novoUsuarioForm: FormGroup
   estados = [
     "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"
   ];
@@ -35,6 +36,11 @@ export class InfosFuncionarioComponent implements OnInit {
       CEP: this.fb.control(null, []),
       REFERENCIA: this.fb.control(null, []),
     })
+    this.novoUsuarioForm = this.fb.group({
+      EMAIL: this.fb.control(null, []),
+      LOGIN: this.fb.control(null, []),
+      SENHA: this.fb.control(null, [])
+    })
   }
 
   novoTelefone(telefone: Telefone) {
@@ -55,6 +61,22 @@ export class InfosFuncionarioComponent implements OnInit {
         this.ns.notify('Endereço inserido com sucesso!')
       })
     })
+  }
+
+  novoUsuario(usuario: Usuario) {
+    this.fs.novoUsuario(this.funcionario.CODIGO_FUNCIONARIO, usuario).subscribe(res => {
+      this.funcionario.USUARIO = res
+      this.novoUsuarioForm.reset()
+      this.ns.notify('Usuário inserido com sucesso!')
+    })
+  }
+
+  haveLogin() {
+    if (this.funcionario.USUARIO) {
+      return true
+    } else {
+      return false
+    }
   }
 
 }

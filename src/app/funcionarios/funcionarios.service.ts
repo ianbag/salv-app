@@ -4,7 +4,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import 'rxjs/add/observable/forkJoin'
-import { Funcionario, Pessoa, Telefone, Telefone_Pessoa, Endereco, Endereco_Pessoa, FuncionarioQuery } from './funcionario.model';
+import { Funcionario, Pessoa, Telefone, Telefone_Pessoa, Endereco, Endereco_Pessoa, FuncionarioQuery, Usuario } from './funcionario.model';
 
 
 @Injectable()
@@ -97,5 +97,15 @@ export class FuncionariosService {
             }
             return this.http.post<Endereco_Pessoa>(`${SALV_API}/endereco_pessoa`, _rel_end_pes)
         })
+    }
+
+    novoUsuario(_cod_fun: number, usuario: Usuario) {
+        let _newUser = {
+            CODIGO_FUNCIONARIO: _cod_fun,
+            EMAIL: usuario.EMAIL,
+            LOGIN: usuario.LOGIN,
+            SENHA: usuario.SENHA
+        }
+        return this.http.post<Usuario>(`${SALV_API}/usuario`, _newUser)
     }
 }
