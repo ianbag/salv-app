@@ -1,5 +1,5 @@
 export interface Convenio {
-    CODIGO_CONVENIO: number,
+    CODIGO: number,
     NOME_CONVENIO: string,
     TIPO_CONVENIO: string,
         ENDERECO: {

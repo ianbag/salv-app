@@ -15,7 +15,7 @@ export class ConveniosService {
 
     conveniosById(id: number): Observable<Convenio> {
         return this.http.get<Convenio>(`${SALV_API}/convenio/${id}`)
-    }
+    } 
 
     telefoneById(id: string): Observable<Telefone[]> {
         return this.http.get<Telefone[]>(`${SALV_API}/telefone_convenio/${id}`)
@@ -34,23 +34,28 @@ export class ConveniosService {
     }
 
     createNewConvenio(telefone: Telefone, endereco: Endereco, convenio: Convenio) {
-        return this.http.post<Endereco>(`${SALV_API}/endereco`, endereco).switchMap(resEndereco => {
-             delete convenio.ENDERECO
+        return this.http.post<Convenio>(`${SALV_API}/convenio`, convenio).switchMap(resConvenio => {
+            return this.http.post<Endereco>(`${SALV_API}/endereco`, endereco).switchMap(resEndereco => {
+                delete convenio.ENDERECO
                 let _rel_end_conv = {
-                        ENDERECO_CODIGO: resEndereco.CODIGO
-                    }
-                    return this.http.post<Endereco_Convenio>(`${SALV_API}/endereco_convenio`, _rel_end_conv).switchMap(resEC => {
-                        return this.http.post<Telefone>(`${SALV_API}/telefone`, telefone).switchMap(resTelefone => {
-                            delete convenio.TELEFONE
-                            let _rel_tel_conv = {
-                                TELEFONE_CODIGO: resTelefone.CODIGO
-                            }
-                            return this.http.post<Telefone_Convenio>(`${SALV_API}/telefone_convenio`, _rel_tel_conv).switchMap(resTC => {
-                                return this.http.post<Convenio>(`${SALV_API}/convenio`, convenio)
+                    CONVENIO_CODIGO: resConvenio.CODIGO,
+                    ENDERECO_CODIGO: resEndereco.CODIGO 
+                }
+                return this.http.post<Endereco_Convenio>(`${SALV_API}/endereco_convenio`, _rel_end_conv).switchMap(resEndC =>{
+                    return this.http.post<Telefone>(`${SALV_API}/telefone`, telefone).switchMap(resTelefone => {
+                        delete convenio.TELEFONE
+                        let _rel_tel_conv = {
+                            CONVENIO_CODIGO: resConvenio.CODIGO_CONVENIO,
+                            TELEFONE_CODIGO: resTelefone.CODIGO
+                        }
+                        return this.http.post<Telefone_Convenio>(`${SALV_API}/telefone_convenio`, _rel_tel_conv)
+                        
                     })
                 })
             })
-        })   
+        })
+        
+
     }
 
     updateConvenio(cod_tel: number, cod_end: number, cod_conv: number, telefone: Telefone, endereco: Endereco, convenio: Convenio) {
