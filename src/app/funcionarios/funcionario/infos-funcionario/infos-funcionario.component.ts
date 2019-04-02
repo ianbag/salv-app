@@ -47,4 +47,14 @@ export class InfosFuncionarioComponent implements OnInit {
     })
   }
 
+  novoEndereco(endereco: Endereco) {
+    this.fs.novoEndereco(this.funcionario.PESSOA_CODIGO, endereco).subscribe(res => {
+      this.fs.enderecoById(this.funcionario.PESSOA_CODIGO.toString()).subscribe(res => {
+        this.enderecos = res
+        this.novoEnderecoForm.reset()
+        this.ns.notify('Endereço inserido com sucesso!')
+      })
+    })
+  }
+
 }
