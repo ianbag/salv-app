@@ -4,7 +4,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import 'rxjs/add/observable/forkJoin'
-import { Funcionario, Pessoa, Telefone, Telefone_Pessoa, Endereco, Endereco_Pessoa, FuncionarioQuery } from './funcionario.model';
+import { Funcionario, Pessoa, Telefone, Telefone_Pessoa, Endereco, Endereco_Pessoa, FuncionarioQuery, Usuario } from './funcionario.model';
 
 
 @Injectable()
@@ -77,5 +77,35 @@ export class FuncionariosService {
                 })
             })
         })
+    }
+
+    novoTelefone(_cod_pes: number, telefone: Telefone) {
+        return this.http.post<Telefone>(`${SALV_API}/telefone`, telefone).switchMap(resT => {
+            let _rel_tel_pes = {
+                PESSOA_CODIGO: _cod_pes,
+                TELEFONE_CODIGO: resT.CODIGO
+            }
+            return this.http.post<Telefone_Pessoa>(`${SALV_API}/telefone_pessoa`, _rel_tel_pes)
+        })
+    }
+
+    novoEndereco(_cod_pes: number, endereco: Endereco) {
+        return this.http.post<Endereco>(`${SALV_API}/endereco`, endereco).switchMap(resE => {
+            let _rel_end_pes = {
+                PESSOA_CODIGO: _cod_pes,
+                ENDERECO_CODIGO: resE.CODIGO
+            }
+            return this.http.post<Endereco_Pessoa>(`${SALV_API}/endereco_pessoa`, _rel_end_pes)
+        })
+    }
+
+    novoUsuario(_cod_fun: number, usuario: Usuario) {
+        let _newUser = {
+            CODIGO_FUNCIONARIO: _cod_fun,
+            EMAIL: usuario.EMAIL,
+            LOGIN: usuario.LOGIN,
+            SENHA: usuario.SENHA
+        }
+        return this.http.post<Usuario>(`${SALV_API}/usuario`, _newUser)
     }
 }

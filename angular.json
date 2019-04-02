@@ -24,7 +24,7 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.css",
               "./node_modules/font-awesome/css/font-awesome.css",
               "./node_modules/jvectormap/jquery-jvectormap.css",
               "./node_modules/admin-lte/dist/css/AdminLTE.min.css",
@@ -33,7 +33,7 @@
               "src/styles.css"
             ],
             "scripts": [
-              "./node_modules/jquery/dist/jquery.min.js",
+              "./node_modules/jquery/dist/jquery.js",
               "./node_modules/admin-lte/dist/js/adminlte.min.js",
               "./node_modules/bootstrap/dist/js/bootstrap.min.js",
               "./node_modules/fastclick/lib/fastclick.js",
