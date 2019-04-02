@@ -34,19 +34,19 @@ export class ConveniosService {
     }
 
     createNewConvenio(telefone: Telefone, endereco: Endereco, convenio: Convenio) {
-        return this.http.post<Telefone>(`${SALV_API}/telefone`, telefone).switchMap(resTelefone => {
-            delete convenio.TELEFONE
-            let _rel_tel_conv = {
-                TELEFONE_CODIGO: resTelefone.CODIGO
-            }
-            return this.http.post<Telefone_Convenio>(`${SALV_API}/telefone_convenio`, _rel_tel_conv).switchMap(resTC => {
-                return this.http.post<Endereco>(`${SALV_API}/endereco`, endereco).switchMap(resEndereco => {
-                    delete convenio.ENDERECO
-                    let _rel_end_conv = {
+        return this.http.post<Endereco>(`${SALV_API}/endereco`, endereco).switchMap(resEndereco => {
+             delete convenio.ENDERECO
+                let _rel_end_conv = {
                         ENDERECO_CODIGO: resEndereco.CODIGO
                     }
                     return this.http.post<Endereco_Convenio>(`${SALV_API}/endereco_convenio`, _rel_end_conv).switchMap(resEC => {
-                        return this.http.post<Convenio>(`${SALV_API}/convenio`, convenio)
+                        return this.http.post<Telefone>(`${SALV_API}/telefone`, telefone).switchMap(resTelefone => {
+                            delete convenio.TELEFONE
+                            let _rel_tel_conv = {
+                                TELEFONE_CODIGO: resTelefone.CODIGO
+                            }
+                            return this.http.post<Telefone_Convenio>(`${SALV_API}/telefone_convenio`, _rel_tel_conv).switchMap(resTC => {
+                                return this.http.post<Convenio>(`${SALV_API}/convenio`, convenio)
                     })
                 })
             })
