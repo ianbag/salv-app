@@ -88,4 +88,14 @@ export class FuncionariosService {
             return this.http.post<Telefone_Pessoa>(`${SALV_API}/telefone_pessoa`, _rel_tel_pes)
         })
     }
+
+    novoEndereco(_cod_pes: number, endereco: Endereco) {
+        return this.http.post<Endereco>(`${SALV_API}/endereco`, endereco).switchMap(resE => {
+            let _rel_end_pes = {
+                PESSOA_CODIGO: _cod_pes,
+                ENDERECO_CODIGO: resE.CODIGO
+            }
+            return this.http.post<Endereco_Pessoa>(`${SALV_API}/telefone_endereco`, _rel_end_pes)
+        })
+    }
 }
