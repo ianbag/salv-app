@@ -78,4 +78,14 @@ export class FuncionariosService {
             })
         })
     }
+
+    novoTelefone(_cod_pes: number, telefone: Telefone) {
+        return this.http.post<Telefone>(`${SALV_API}/telefone`, telefone).switchMap(resT => {
+            let _rel_tel_pes = {
+                PESSOA_CODIGO: _cod_pes,
+                TELEFONE_CODIGO: resT.CODIGO
+            }
+            return this.http.post<Telefone_Pessoa>(`${SALV_API}/telefone_pessoa`, _rel_tel_pes)
+        })
+    }
 }
