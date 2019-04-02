@@ -35,7 +35,6 @@ export class ConveniosService {
 
     createNewConvenio(telefone: Telefone, endereco: Endereco, convenio: Convenio) {
         return this.http.post<Convenio>(`${SALV_API}/convenio`, convenio).switchMap(resConvenio => {
-            console.log(convenio.CODIGO)
             return this.http.post<Endereco>(`${SALV_API}/endereco`, endereco).switchMap(resEndereco => {
                 delete convenio.ENDERECO
                 let _rel_end_conv = {
