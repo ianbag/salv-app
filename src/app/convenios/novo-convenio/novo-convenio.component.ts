@@ -38,10 +38,6 @@ export class NovoConvenioComponent implements OnInit {
     this.novoConvenioForm = this.fb.group({
       NOME_CONVENIO: this.fb.control('', [Validators.required]),
       TIPO_CONVENIO: this.fb.control('', [Validators.required]),
-      TELEFONE: this.fb.group({
-        DDD: this.fb.control(null, [Validators.required, Validators.minLength(2), Validators.maxLength(3)]),
-        NUMERO: this.fb.control(null, [Validators.required, Validators.minLength(8), Validators.maxLength(9)])
-      }),
       ENDERECO: this.fb.group({
         ENDERECO: this.fb.control(null, [Validators.required]),
         NUMERO: this.fb.control(null, [Validators.required]),
@@ -51,6 +47,10 @@ export class NovoConvenioComponent implements OnInit {
         ESTADO: this.fb.control(null, [Validators.required]),
         CEP: this.fb.control(null, [Validators.required, Validators.minLength(8), Validators.maxLength(8)]),
         REFERENCIA: this.fb.control(null),
+      }),
+      TELEFONE: this.fb.group({
+        DDD: this.fb.control(null, [Validators.required, Validators.minLength(2), Validators.maxLength(3)]),
+        NUMERO: this.fb.control(null, [Validators.required, Validators.minLength(8), Validators.maxLength(9)])
       })
     })
   }
@@ -63,4 +63,4 @@ export class NovoConvenioComponent implements OnInit {
       })  
   }
 
-}
+} 
