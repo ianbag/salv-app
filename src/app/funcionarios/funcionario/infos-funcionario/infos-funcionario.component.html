@@ -48,6 +48,7 @@
       </div>
       <hr class="col-md-12">
       <div class="col-md-12">
+        <!--DIV MODAL-->
         <div class="col-sm-12 col-xs-12">
           <!-- Button trigger modal -->
           <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modalTelefone">
@@ -92,13 +93,93 @@
           <!--FIM MODAL-->
           <h4><strong>Telefones</strong></h4>
         </div>
+        <!--DIV MODAL-->
         <div class="col-xs-4 col-xs-12" *ngFor="let telefone of telefones">
           <strong>Telefone: </strong> ({{telefone?.TELEFONE.DDD}}) {{telefone?.TELEFONE.NUMERO}}
         </div>
       </div>
       <hr class="col-md-12">
       <div class="col-md-12">
+        <!--DIV MODAL-->
         <div class="col-sm-12 col-xs-12">
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modalEndereco">
+            <i class="fa fa-plus"></i>
+          </button>
+          <!-- Modal -->
+          <div class="modal fade" id="modalEndereco" tabindex="-1" role="dialog" aria-labelledby="modalEndereco"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <form [formGroup]="novoEnderecoForm" novalidate>
+                    <div class="box-body">
+                      <div>
+                        <div class="col-sm-12 col-sm-12" id="formTitle">
+                          <h4><strong>Adicionar novo endereço</strong></h4>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-3 col-sm-12">
+                            <label>Endereço</label>
+                            <input type="text" class="form-control" formControlName="ENDERECO" placeholder="Endereço"
+                              autocomplete="off">
+                          </div>
+                          <div class="col-sm-3 col-sm-12">
+                            <label>Número</label>
+                            <input type="text" class="form-control" formControlName="NUMERO" placeholder="Número"
+                              autocomplete="off">
+                          </div>
+                          <div class="col-sm-3 col-sm-12">
+                            <label>Bairro</label>
+                            <input type="text" class="form-control" formControlName="BAIRRO" placeholder="Bairro"
+                              autocomplete="off">
+                          </div>
+                          <div class="col-sm-3 col-sm-12">
+                            <label>Complemento</label>
+                            <input type="text" class="form-control" formControlName="COMPLEMENTO"
+                              placeholder="Complemento" autocomplete="off">
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-3 col-sm-12">
+                            <label>Cidade</label>
+                            <input type="text" class="form-control" formControlName="CIDADE" placeholder="Cidade"
+                              autocomplete="off">
+                          </div>
+                          <div class="col-sm-3 col-sm-12">
+                            <label>Estado</label>
+                            <select class="form-control" formControlName="ESTADO">
+                              <option value="" label="Selecione" disabled selected="true"></option>
+                              <option *ngFor="let estado of estados">{{estado}}</option>
+                            </select>
+                          </div>
+                          <div class="col-sm-3 col-sm-12">
+                            <label>CEP</label>
+                            <input type="text" class="form-control" formControlName="CEP" placeholder="CEP"
+                              autocomplete="off">
+                          </div>
+                          <div class="col-sm-3 col-sm-12">
+                            <label>Referência</label>
+                            <input type="text" class="form-control" formControlName="REFERENCIA"
+                              placeholder="Referência" autocomplete="off">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                  <button type="button" class="btn btn-primary" (click)="novoEndereco(this.novoEnderecoForm.value)"
+                    data-dismiss="modal">Salvar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--FIM MODAL-->
+        </div>
+        <!--DIV MODAL-->
+        <div class="col-xs-12 col-xs-12">
           <h4><strong>Endereços</strong></h4>
         </div>
         <div *ngFor="let endereco of enderecos">

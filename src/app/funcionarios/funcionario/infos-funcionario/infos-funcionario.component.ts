@@ -13,6 +13,10 @@ export class InfosFuncionarioComponent implements OnInit {
   @Input() telefones: Telefone[]
   @Input() enderecos: Endereco[]
   novoTelefoneForm: FormGroup
+  novoEnderecoForm: FormGroup
+  estados = [
+    "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"
+  ];
 
   constructor(private fs: FuncionariosService, private fb: FormBuilder, private ns: NotificationService) { }
 
@@ -20,6 +24,16 @@ export class InfosFuncionarioComponent implements OnInit {
     this.novoTelefoneForm = this.fb.group({
       DDD: this.fb.control(null, []),
       NUMERO: this.fb.control(null, [])
+    })
+    this.novoEnderecoForm = this.fb.group({
+      ENDERECO: this.fb.control(null, []),
+      NUMERO: this.fb.control(null, []),
+      BAIRRO: this.fb.control(null, []),
+      COMPLEMENTO: this.fb.control(null, []),
+      CIDADE: this.fb.control(null, []),
+      ESTADO: this.fb.control('Selecione', []),
+      CEP: this.fb.control(null, []),
+      REFERENCIA: this.fb.control(null, []),
     })
   }
 
