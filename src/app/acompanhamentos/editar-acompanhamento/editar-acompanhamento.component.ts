@@ -76,9 +76,13 @@ this.NovoAcompanhamentoService.funcionarios()
   })
 
 
-  this.selectedResidentes = []
-  this.selectedFuncionarios = []
+  this.selectedResidentes = [{
+    NOME: this.residentes.RESIDENTE_NOME,
+    CODIGO_RESIDENTE: this.residentes.CODIGO_RESIDENTE
 
+  }]
+  this.selectedFuncionarios = []
+console.log('residentesSelecionados: ', this.selectedResidentes)
 this.dropdownSettings = {
   allowSearchFilter: true,
   searchPlaceholderText: 'Buscar por nome',
@@ -88,20 +92,20 @@ this.dropdownSettings = {
   idField: 'CODIGO_RESIDENTE',
   textField: 'NOME',
   selectAllText: 'Marcar todos',
-  unSelectAlltext: 'Desmarcar todos',
+  unSelectAllText: 'Desmarcar todos',
   itemsShowLimit: 5
   
 }
 
 this.dropdownSettings2 = {
   searchPlaceholderText: 'Buscar por nome',
+  selectAllText: 'Marcar todos',
+  unSelectAllText: 'Desmarcar todos',
   enableSearch: true,
   displayAllSelectedText: true,
   singleSelection: false,
   idField: 'CODIGO_FUNCIONARIO',
-  textField: 'NOME',
-  selectAllText: 'Marcar todos',
-  unSelectAlltext: 'Desmarcar todos',
+  textField: 'NOME', 
   itemsShowLimit: 5,
   allowSearchFilter: true
    }

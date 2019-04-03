@@ -100,7 +100,7 @@ export class NovoAcompanhamentoComponent implements OnInit {
       idField: 'CODIGO_RESIDENTE',
       textField: 'NOME',
       selectAllText: 'Marcar todos',
-      unSelectAlltext: 'Desmarcar todos',
+      unSelectAllText: 'Desmarcar todos',
       itemsShowLimit: 5,
       allowSearchFilter: true,
       searchPlaceholderText: 'Buscar por nome',
@@ -114,7 +114,7 @@ export class NovoAcompanhamentoComponent implements OnInit {
       idField: 'CODIGO_FUNCIONARIO',
       textField: 'NOME',
       selectAllText: 'Marcar todos',
-      unSelectAlltext: 'Desmarcar todos',
+      unSelectAllText: 'Desmarcar todos',
       itemsShowLimit: 5,
       allowSearchFilter: true,
       searchPlaceholderText: 'Buscar por nome',
@@ -151,9 +151,9 @@ export class NovoAcompanhamentoComponent implements OnInit {
       acompanhamento_residente = [Object.assign(this.novoAcompanhamentoForm.value.residentes[index], this.ACOMPANHAMENTO_CODIGO[0])]
       this.NovoAcompanhamentoService.createAcompanhamentoResidente(acompanhamento_residente).subscribe(res => {
         
-
+        console.log('acompanhamento residente', acompanhamento_residente)
       })
-      console.log('acompanhamento residente', acompanhamento_residente)
+      
   }
      
 
