@@ -95,7 +95,9 @@
         </div>
         <!--FIM DIV MODAL-->
         <div class="col-xs-4 col-xs-12" *ngFor="let telefone of telefones">
-          <strong>Telefone: </strong> ({{telefone?.TELEFONE.DDD}}) {{telefone?.TELEFONE.NUMERO}}
+          <strong>Telefone: </strong> ({{telefone?.TELEFONE.DDD}}) {{telefone?.TELEFONE.NUMERO}} <a><span
+              (click)="deleteTelefone(funcionario.PESSOA.CODIGO, telefone.TELEFONE.CODIGO); $event.stopPropagation()"><i
+                class="fa fa-close"></i></span></a>
         </div>
       </div>
       <hr class="col-md-12">

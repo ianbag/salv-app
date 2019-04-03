@@ -3,6 +3,7 @@ import { Funcionario, Telefone, Endereco, Usuario } from './../../funcionario.mo
 import { Component, OnInit, Input } from '@angular/core';
 import { FuncionariosService } from '../../funcionarios.service';
 import { NotificationService } from 'src/app/shared/notification.service';
+import { DialogConfirmService } from 'src/app/residentes/dialog-confirm.service';
 @Component({
   selector: 'salv-infos-funcionario',
   templateUrl: './infos-funcionario.component.html'
@@ -19,7 +20,7 @@ export class InfosFuncionarioComponent implements OnInit {
     "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"
   ];
 
-  constructor(private fs: FuncionariosService, private fb: FormBuilder, private ns: NotificationService) { }
+  constructor(private fs: FuncionariosService, private fb: FormBuilder, private ns: NotificationService, private dcs: DialogConfirmService) { }
 
   ngOnInit(): void {
     this.novoTelefoneForm = this.fb.group({
@@ -77,6 +78,19 @@ export class InfosFuncionarioComponent implements OnInit {
     } else {
       return false
     }
+  }
+
+  deleteTelefone(_cod_pes: number, _cod_tel: number): void {
+    this.dcs.confirm(`Deseja excluir o telefone?`).then((isTrue) => {
+      if (isTrue) {
+        this.fs.deleteTelefone(_cod_pes, _cod_tel).subscribe(() => {
+          this.fs.telefoneById(this.funcionario.PESSOA.CODIGO.toString()).subscribe(response => {
+            this.telefones = response
+            this.ns.notify('Telefone excluído com sucesso!')
+          })
+        })
+      }
+    })
   }
 
 }

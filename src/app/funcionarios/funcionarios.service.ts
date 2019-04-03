@@ -125,4 +125,10 @@ export class FuncionariosService {
         }
         return this.http.post<Dependente>(`${SALV_API}/dependente`, _newDependente)
     }
+
+    deleteTelefone(_cod_pes: number, _cod_tel: number) {
+        return this.http.delete<Telefone_Pessoa>(`${SALV_API}/telefone_pessoa/${_cod_pes}/${_cod_tel}`).switchMap(response => {
+            return this.http.delete<Telefone>(`${SALV_API}/telefone/${_cod_tel}`)
+        })
+    }
 }
