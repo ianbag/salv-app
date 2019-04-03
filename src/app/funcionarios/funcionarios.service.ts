@@ -108,4 +108,21 @@ export class FuncionariosService {
         }
         return this.http.post<Usuario>(`${SALV_API}/usuario`, _newUser)
     }
+
+    novoDependente(_cod_fun: number, dependente: Dependente) {
+        let _newDependente = {
+            CODIGO_FUNCIONARIO: _cod_fun,
+            NOME: dependente.NOME,
+            SOBRENOME: dependente.SOBRENOME,
+            DATA_NASCIMENTO: dependente.DATA_NASCIMENTO,
+            RG: dependente.RG,
+            CPF: dependente.CPF,
+            NUMERO_CERTIDAO_NASCIMENTO: dependente.NUMERO_CERTIDAO_NASCIMENTO,
+            FOLHA_CERTIDAO_NASCIMENTO: dependente.FOLHA_CERTIDAO_NASCIMENTO,
+            LIVRO_CERTIDAO_NASCIMENTO: dependente.LIVRO_CERTIDAO_NASCIMENTO,
+            CIDADE_CERTIDAO_NASCIMENTO: dependente.CIDADE_CERTIDAO_NASCIMENTO,
+            ESTADO_CERTIDAO_NASCIMENTO: dependente.ESTADO_CERTIDAO_NASCIMENTO
+        }
+        return this.http.post<Dependente>(`${SALV_API}/dependente`, _newDependente)
+    }
 }

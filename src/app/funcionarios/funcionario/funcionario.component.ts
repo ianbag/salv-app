@@ -6,6 +6,7 @@ import { FuncionariosService } from '../funcionarios.service';
 import { ActivatedRoute } from '@angular/router';
 import * as jspdf from 'jspdf'
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { NotificationService } from 'src/app/shared/notification.service';
 
 @Component({
   selector: 'salv-funcionario',
@@ -36,7 +37,7 @@ export class FuncionarioComponent implements OnInit {
 
   @ViewChild('reportFuncionario') reportFuncionario: ElementRef
 
-  constructor(private fs: FuncionariosService, private route: ActivatedRoute, private fb: FormBuilder) { }
+  constructor(private fs: FuncionariosService, private route: ActivatedRoute, private fb: FormBuilder, private ns: NotificationService) { }
 
   ngOnInit() {
     this.fs.funcionarioById(this.route.snapshot.params['id']).subscribe(funcionario => {
@@ -79,8 +80,14 @@ export class FuncionarioComponent implements OnInit {
     return false
   }
 
-  novoDependente(value) {
-    console.log(value)
+  novoDependente(dependente: Dependente) {
+    this.fs.novoDependente(this.funcionario.CODIGO_FUNCIONARIO, dependente).subscribe(res => {
+      this.novoDependenteForm.reset()
+      this.ns.notify('Dependente inserido com sucesso!')
+      this.fs.dependenteById(this.route.snapshot.params['id']).subscribe(dependente => {
+        this.dependentes = dependente
+      }).unsubscribe
+    })
   }
 
   public downloadPDF() {
