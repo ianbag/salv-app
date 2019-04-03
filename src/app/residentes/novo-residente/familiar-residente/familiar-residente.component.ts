@@ -1,5 +1,5 @@
 import { Familiar } from './../../residente/infos-familiar/familiar.model';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
 import { Component, OnInit, Input } from '@angular/core';
 import { trigger, state, transition, style, animate } from '@angular/animations'
 import { ResidentesService } from '../../residentes.service';
@@ -37,8 +37,8 @@ export class FamiliarResidenteComponent implements OnInit {
       NOME: this.formBuilder.control(null, [Validators.required]),
       SOBRENOME: this.formBuilder.control(null, [Validators.required]),
       PARENTESCO: this.formBuilder.control(null, []),
-      ENDERECO: this.formBuilder.group({
-        RUA: this.formBuilder.control(null, []),
+      ENDERECOS: this.formBuilder.group({
+        ENDERECO: this.formBuilder.control(null, []),
         NUMERO: this.formBuilder.control(null, []),
         BAIRRO: this.formBuilder.control(null, []),
         CIDADE: this.formBuilder.control(null, []),
@@ -47,18 +47,25 @@ export class FamiliarResidenteComponent implements OnInit {
         COMPLEMENTO: this.formBuilder.control(null, []),
         REFERENCIA: this.formBuilder.control(null, []),
       }),
-      TELEFONE: this.formBuilder.group({
-        TELEFONE: this.formBuilder.control(null, []),
-      })
+      TELEFONES: this.formBuilder.array([])
     })
   }
 
+  get telefones(){
+    return this.familiarResidenteForm.get('TELEFONES') as FormArray
+  }
+
+  addTelefones(){
+    this.telefones.push(new FormControl(''))
+  }
+
   familiarResidente(familiar: Familiar) {
-    this.residentesService.endereco = familiar.ENDERECO
-    this.residentesService.telefone = familiar.TELEFONE
-    delete familiar.ENDERECO
+    this.residentesService.endereco = familiar.ENDERECOS
+    this.residentesService.telefones = this.telefones.value
+    delete familiar.ENDERECOS
     delete familiar.TELEFONE
     this.residentesService.familiar = familiar
+    console.log("TELEFONES>: ", this.residentesService.telefones)
   }
 
 }
