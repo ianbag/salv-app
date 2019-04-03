@@ -90,8 +90,7 @@ export class NovoAcompanhamentoComponent implements OnInit {
     })
 
 
-    this.selectedResidentes = ['RESIDENTE_CODIGO']
-    this.selectedFuncionarios = ['FUNCIONARIO_CODIGO']
+    
 
     this.dropdownSettings = {
 
@@ -103,7 +102,8 @@ export class NovoAcompanhamentoComponent implements OnInit {
       selectAllText: 'Marcar todos',
       unSelectAlltext: 'Desmarcar todos',
       itemsShowLimit: 5,
-      allowSearchFilter: this.ShowFilter
+      allowSearchFilter: true,
+      searchPlaceholderText: 'Buscar por nome',
     }
 
     this.dropdownSettings2 = {
@@ -116,7 +116,8 @@ export class NovoAcompanhamentoComponent implements OnInit {
       selectAllText: 'Marcar todos',
       unSelectAlltext: 'Desmarcar todos',
       itemsShowLimit: 5,
-      allowSearchFilter: this.ShowFilter
+      allowSearchFilter: true,
+      searchPlaceholderText: 'Buscar por nome',
     }
 
   }

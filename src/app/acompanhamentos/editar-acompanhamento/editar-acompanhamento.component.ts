@@ -36,8 +36,8 @@ export class EditarAcompanhamentoComponent implements OnInit {
    this.editarAcompanhamentoForm = this.formBuilder.group({
     DATA_ACOMPANHAMENTO: this.formBuilder.control(null, [Validators.required]),
     ATIVIDADE: this.formBuilder.control(null, [Validators.required]),
-    residentes: this.formBuilder.control('', []),
-    funcionarios: this.formBuilder.control('', [])
+    residentes: this.formBuilder.control(null, [Validators.required]),
+    funcionarios: this.formBuilder.control(null, [Validators.required])
 
     })
 
@@ -45,7 +45,7 @@ export class EditarAcompanhamentoComponent implements OnInit {
     this.acompanhamentoService.AcompanhamentoQuery
     (this.activatedRoute.snapshot.params['id']).subscribe(acompanhamento => {
       this.acompanhamento = acompanhamento
-      console.log(this.acompanhamento)
+      console.log('dados',this.acompanhamento)
     })
 
     setTimeout(() => {
@@ -54,8 +54,7 @@ export class EditarAcompanhamentoComponent implements OnInit {
 
         DATA_ACOMPANHAMENTO: this.acompanhamento[0].DATA_ACOMPANHAMENTO,
         ATIVIDADE:  this.acompanhamento[0].ATIVIDADE,
-        residentes:  this.acompanhamento[0].CODIGO_RESIDENTE,
-        funcionarios: this.acompanhamento[0].CODIGO_RESIDENTE
+       
 
       })
   }, 1000)
@@ -77,10 +76,12 @@ this.NovoAcompanhamentoService.funcionarios()
   })
 
 
-this.selectedResidentes = []
-this.selectedFuncionarios = []
+  this.selectedResidentes = []
+  this.selectedFuncionarios = []
 
 this.dropdownSettings = {
+  allowSearchFilter: true,
+  searchPlaceholderText: 'Buscar por nome',
   enableSearch: true,
   displayAllSelectedText: true,
   singleSelection: false,
@@ -88,11 +89,12 @@ this.dropdownSettings = {
   textField: 'NOME',
   selectAllText: 'Marcar todos',
   unSelectAlltext: 'Desmarcar todos',
-  itemsShowLimit: 5,
-  allowSearchFilter: this.ShowFilter
+  itemsShowLimit: 5
+  
 }
 
 this.dropdownSettings2 = {
+  searchPlaceholderText: 'Buscar por nome',
   enableSearch: true,
   displayAllSelectedText: true,
   singleSelection: false,
@@ -101,9 +103,16 @@ this.dropdownSettings2 = {
   selectAllText: 'Marcar todos',
   unSelectAlltext: 'Desmarcar todos',
   itemsShowLimit: 5,
-  allowSearchFilter: this.ShowFilter
+  allowSearchFilter: true
    }
+
  } 
 
+ onResidenteSelect(residente: any) {
+  console.log('onResidenteSelect', residente['CODIGO_RESIDENTE'] + this.selectedResidentes)
+}
 
+onFuncionarioSelect(funcionarios: any) {
+  console.log('onFuncionarioSelect', funcionarios['CODIGO_FUNCIONARIO'])
+}
 }

@@ -23,5 +23,7 @@ export interface AcompanhamentoQuery {
     DATA_ACOMPANHAMENTO: string,
     ATIVIDADE: string,
     CODIGO_FUNCIONARIO: number,
+    RESIDENTE_NOME: string,
+    FUNCIONARIO_NOME: string,
     CODIGO_RESIDENTE: number
 }

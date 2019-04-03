@@ -13,6 +13,7 @@
           <div class="col-sm-8 col-xs-12">
             <label>Residentes que participaram da atividade </label><br>
             <ng-multiselect-dropdown [placeholder]="'Selecione os residentes'" [data]="residentes"
+            [(ngModel)]="selectedResidentes" 
             formControlName="residentes"
               [disabled]="disabled" [settings]="dropdownSettings" (onSelect)="onResidenteSelect($event)">
               
@@ -42,7 +43,8 @@
           <div class="col-sm-8 col-xs-12">
             <label>Funcionários que realizaram a atividade </label><br>
             <ng-multiselect-dropdown name="funcionarios"
-            [placeholder]="'Selecione os funcionários'" [data]="funcionarios"
+            [placeholder]="'Selecione os funcionários'" [data]="funcionarios"        
+            [(ngModel)]="selectedFuncionarios" 
             formControlName="funcionarios"
             [disabled]="disabled"
             [settings]="dropdownSettings2"
