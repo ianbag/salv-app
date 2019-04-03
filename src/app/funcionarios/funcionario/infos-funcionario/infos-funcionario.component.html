@@ -186,6 +186,9 @@
         </div>
         <div *ngFor="let endereco of enderecos">
           <div class="col-xs-4 col-xs-12">
+            <a><span
+                (click)="deleteEndereco(funcionario.PESSOA.CODIGO, endereco.ENDERECO.CODIGO); $event.stopPropagation()"><i
+                  class="fa fa-close"></i></span></a>
             <strong>Endereço: </strong> {{endereco?.ENDERECO.ENDERECO}}
           </div>
           <div class="col-xs-4 col-xs-12">

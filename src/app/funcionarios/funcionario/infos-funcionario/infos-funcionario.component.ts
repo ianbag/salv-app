@@ -93,4 +93,17 @@ export class InfosFuncionarioComponent implements OnInit {
     })
   }
 
+  deleteEndereco(_cod_pes: number, _cod_end: number): void {
+    this.dcs.confirm(`Deseja exluir o endereço?`).then((isTrue) => {
+      if (isTrue) {
+        this.fs.deleteEndereco(_cod_pes, _cod_end).subscribe(() => {
+          this.fs.enderecoById(this.funcionario.PESSOA.CODIGO.toString()).subscribe(response => {
+            this.enderecos = response
+            this.ns.notify('Endereço excluído com sucesso!')
+          })
+        })
+      }
+    })
+  }
+
 }

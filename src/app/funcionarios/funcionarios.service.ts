@@ -131,4 +131,10 @@ export class FuncionariosService {
             return this.http.delete<Telefone>(`${SALV_API}/telefone/${_cod_tel}`)
         })
     }
+
+    deleteEndereco(_cod_pes: number, _cod_end: number) {
+        return this.http.delete<Endereco_Pessoa>(`${SALV_API}/endereco_pessoa/${_cod_pes}/${_cod_end}`).switchMap(response => {
+            return this.http.delete<Endereco>(`${SALV_API}/endereco/${_cod_end}`)
+        })
+    }
 }
