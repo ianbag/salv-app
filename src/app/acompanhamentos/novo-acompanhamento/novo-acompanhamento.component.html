@@ -12,7 +12,7 @@
           <div class="col-sm-8 col-xs-12">
             <label>Residentes que participaram da atividade </label><br>
             <ng-multiselect-dropdown [placeholder]="'Selecione os residentes'" [data]="residentes"
-            formControlName="residentes"
+            formControlName="residentes"            
               [disabled]="disabled" [settings]="dropdownSettings" (onSelect)="onResidenteSelect($event)">
               
             </ng-multiselect-dropdown>
@@ -45,7 +45,7 @@
             formControlName="funcionarios"
             [disabled]="disabled"
             [settings]="dropdownSettings2"
-            (onSelect)="onFuncioanrioSelect($event)">
+            (onSelect)="onFuncionarioSelect($event)">
             </ng-multiselect-dropdown>
           </div>
 
@@ -56,7 +56,7 @@
         <!--Botão-->
         <div class="col-sm-12 col-xs-12">
           <br>
-          <button (click)="novoAcompanhamento(novoAcompanhamentoForm.value); NovoAcompanhamentoFuncionario(novoAcompanhamentoForm.value.funcionarios); NovoAcompanhamentoResidente(novoAcompanhamentoForm.value.residentes)" style="margin-left: 10px" class="btn btn-success botao pull-right"
+          <button (click)="novoAcompanhamento(novoAcompanhamentoForm.value); NovoAcompanhamentoResidente(); NovoAcompanhamentoFuncionario()" style="margin-left: 10px" class="btn btn-success botao pull-right"
             [routerLink]="['/acompanhamentos']">Salvar</button>
 
           <button type="submit" (click)="novoAcompanhamentoForm()" class="btn btn-default botao pull-right" [routerLink]="['/acompanhamentos']">Voltar</button>

@@ -7,9 +7,10 @@ import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/shared/notification.service';
 
 import { trigger, state, transition, style, animate } from '@angular/animations';
+import { THIS_EXPR, variable } from '@angular/compiler/src/output/output_ast';
 
 
-
+declare var $: any;
 @Component({
   selector: 'salv-novo-acompanhamento',
   templateUrl: './novo-acompanhamento.component.html',
@@ -23,9 +24,10 @@ import { trigger, state, transition, style, animate } from '@angular/animations'
     ])
   ]
 })
+
 export class NovoAcompanhamentoComponent implements OnInit {
 
-
+  ACOMPANHAMENTO_CODIGO
 
 
   novoacompanhamentoState = 'ready'
@@ -43,93 +45,126 @@ export class NovoAcompanhamentoComponent implements OnInit {
   dropdownSettings2: any = []
 
 
-  novoAcompanhamentoForm: FormGroup;
-  
-  
+  novoAcompanhamentoForm: FormGroup
+
+
 
 
   constructor(private formBuilder: FormBuilder, private NovoAcompanhamentoService: NovoAcompanhamentoService, private router: Router, private ns: NotificationService) { }
 
   ngOnInit() {
-//Formulário Novo Acompanhamento
-this.novoAcompanhamentoForm = this.formBuilder.group({
-  DATA_ACOMPANHAMENTO: this.formBuilder.control(null, [Validators.required]),
-  ATIVIDADE: this.formBuilder.control(null, [Validators.required]),
-  residentes: this.formBuilder.control('', []),
-  funcionarios: this.formBuilder.control('', [])
-
- 
-})
+    //Formulário Novo Acompanhamento
+    this.novoAcompanhamentoForm = this.formBuilder.group({
+      DATA_ACOMPANHAMENTO: this.formBuilder.control(null, [Validators.required]),
+      ATIVIDADE: this.formBuilder.control(null, [Validators.required]),
+      residentes: this.formBuilder.control(null, [Validators.required]),
+      funcionarios: this.formBuilder.control(null, [Validators.required])
 
 
-//Residentes List    
-this.NovoAcompanhamentoService.residentes()
-  .subscribe(residentes => {
-    this.residentes = residentes
-    console.log('residentes', residentes)
-  })
 
-//funcionarios List
-this.NovoAcompanhamentoService.funcionarios()
-  .subscribe(funcionarios => {
-    this.funcionarios = funcionarios
-    console.log('funcionario', funcionarios)
-  })
+    })
 
 
-this.selectedResidentes = []
-this.selectedFuncionarios = []
 
-this.dropdownSettings = {
-  enableSearch: true,
-  displayAllSelectedText: true,
-  singleSelection: false,
-  idField: 'CODIGO_RESIDENTE',
-  textField: 'NOME',
-  selectAllText: 'Marcar todos',
-  unSelectAlltext: 'Desmarcar todos',
-  itemsShowLimit: 5,
-  allowSearchFilter: this.ShowFilter
-}
+    //Residentes List    
+    this.NovoAcompanhamentoService.residentes()
+      .subscribe(residentes => {
+        this.residentes = residentes
+        console.log('residentes', residentes)
+      })
 
-this.dropdownSettings2 = {
-  enableSearch: true,
-  displayAllSelectedText: true,
-  singleSelection: false,
-  idField: 'CODIGO_FUNCIONARIO',
-  textField: 'NOME',
-  selectAllText: 'Marcar todos',
-  unSelectAlltext: 'Desmarcar todos',
-  itemsShowLimit: 5,
-  allowSearchFilter: this.ShowFilter
-   }
-
-}
-
-novoAcompanhamento(acompanhamento: Acompanhamento) {
-  this.NovoAcompanhamentoService.createAcompanhamento(acompanhamento).subscribe(res=> {
-    this.ns.notify(`Acompanhamento inserido com sucesso!`)
-  })
-   console.log('acompanhamento',acompanhamento)
-}
-
-NovoAcompanhamentoFuncionario(acompanhamento_funcionario:  Acompanhamento_Funcionario){
-  this.NovoAcompanhamentoService.createAcompanhamentoFuncionario(acompanhamento_funcionario).subscribe()
-  console.log('acompanhamento funcionario', acompanhamento_funcionario)
-}
-
-NovoAcompanhamentoResidente(acompanhamento_residente:  Acompanhamento_Residente){
-  this.NovoAcompanhamentoService.createAcompanhamentoResidente(acompanhamento_residente).subscribe()
-  console.log('acompanhamento residente', acompanhamento_residente)
-}
+    //funcionarios List
+    this.NovoAcompanhamentoService.funcionarios()
+      .subscribe(funcionarios => {
+        this.funcionarios = funcionarios
+        console.log('funcionario', funcionarios)
+      })
 
 
-onResidenteSelect(residente: any) {
-console.log('onResidenteSelect', residente)
-}
 
-onFuncioanrioSelect(funcionarios: any) {
-console.log('onFuncioanrioSelect', funcionarios)
-}
+
+    this.NovoAcompanhamentoService.codigoAcompanhamento().subscribe(codigo => {
+      this.ACOMPANHAMENTO_CODIGO = codigo
+
+      console.log('Codigo acompanhamento', this.ACOMPANHAMENTO_CODIGO)
+    })
+
+
+    this.selectedResidentes = ['RESIDENTE_CODIGO']
+    this.selectedFuncionarios = ['FUNCIONARIO_CODIGO']
+
+    this.dropdownSettings = {
+
+      enableSearch: true,
+      displayAllSelectedText: true,
+      singleSelection: false,
+      idField: 'CODIGO_RESIDENTE',
+      textField: 'NOME',
+      selectAllText: 'Marcar todos',
+      unSelectAlltext: 'Desmarcar todos',
+      itemsShowLimit: 5,
+      allowSearchFilter: this.ShowFilter
+    }
+
+    this.dropdownSettings2 = {
+
+      enableSearch: true,
+      displayAllSelectedText: true,
+      singleSelection: false,
+      idField: 'CODIGO_FUNCIONARIO',
+      textField: 'NOME',
+      selectAllText: 'Marcar todos',
+      unSelectAlltext: 'Desmarcar todos',
+      itemsShowLimit: 5,
+      allowSearchFilter: this.ShowFilter
+    }
+
+  }
+
+
+
+
+  novoAcompanhamento(acompanhamento: Acompanhamento) {
+
+    this.NovoAcompanhamentoService.createAcompanhamento(acompanhamento).subscribe(res => {
+      this.ns.notify(`Acompanhamento inserido com sucesso!`)
+    })
+    console.log('acompanhamento', acompanhamento)
+  }
+
+  NovoAcompanhamentoFuncionario(acompanhamento_funcionario:  Acompanhamento_Funcionario[]) {
+    for (let index = 0; index < this.novoAcompanhamentoForm.value.funcionarios.length; index++) {
+
+      acompanhamento_funcionario = [Object.assign(this.novoAcompanhamentoForm.value.funcionarios[index], this.ACOMPANHAMENTO_CODIGO[0])]
+      this.NovoAcompanhamentoService.createAcompanhamentoFuncionario(acompanhamento_funcionario).subscribe(res => {
+
+        console.log('acompanhamento funcionario', acompanhamento_funcionario)
+       })
+      
+      }
+     
+    }
+   NovoAcompanhamentoResidente(acompanhamento_residente: Acompanhamento_Residente[]) {
+    for (let index = 0; index < this.novoAcompanhamentoForm.value.residentes.length; index++) {
+
+      acompanhamento_residente = [Object.assign(this.novoAcompanhamentoForm.value.residentes[index], this.ACOMPANHAMENTO_CODIGO[0])]
+      this.NovoAcompanhamentoService.createAcompanhamentoResidente(acompanhamento_residente).subscribe(res => {
+        
+
+      })
+      console.log('acompanhamento residente', acompanhamento_residente)
+  }
+     
+
+  }
+    
+
+  onResidenteSelect(residente: any) {
+    console.log('onResidenteSelect', residente['CODIGO_RESIDENTE'])
+  }
+
+  onFuncionarioSelect(funcionarios: any) {
+    console.log('onFuncionarioSelect', funcionarios['CODIGO_FUNCIONARIO'])
+  }
 
 }

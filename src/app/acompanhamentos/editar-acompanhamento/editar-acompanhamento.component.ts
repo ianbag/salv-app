@@ -54,8 +54,8 @@ export class EditarAcompanhamentoComponent implements OnInit {
 
         DATA_ACOMPANHAMENTO: this.acompanhamento[0].DATA_ACOMPANHAMENTO,
         ATIVIDADE:  this.acompanhamento[0].ATIVIDADE,
-        residentes:  this.acompanhamento[0].RESIDENTE_CODIGO,
-        funcionarios: this.acompanhamento[0].FUNCIONARIO_CODIGO
+        residentes:  this.acompanhamento[0].CODIGO_RESIDENTE,
+        funcionarios: this.acompanhamento[0].CODIGO_RESIDENTE
 
       })
   }, 1000)
