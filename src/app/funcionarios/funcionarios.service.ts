@@ -137,4 +137,8 @@ export class FuncionariosService {
             return this.http.delete<Endereco>(`${SALV_API}/endereco/${_cod_end}`)
         })
     }
+
+    deleteDependente(_dep_nome: string, _dep_sobrenome: string){
+        return this.http.delete<Dependente>(`${SALV_API}/dependente/${_dep_nome}/${_dep_sobrenome}`)
+    }
 }

@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import * as jspdf from 'jspdf'
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NotificationService } from 'src/app/shared/notification.service';
+import { DialogConfirmService } from 'src/app/residentes/dialog-confirm.service';
 
 @Component({
   selector: 'salv-funcionario',
@@ -37,7 +38,7 @@ export class FuncionarioComponent implements OnInit {
 
   @ViewChild('reportFuncionario') reportFuncionario: ElementRef
 
-  constructor(private fs: FuncionariosService, private route: ActivatedRoute, private fb: FormBuilder, private ns: NotificationService) { }
+  constructor(private fs: FuncionariosService, private route: ActivatedRoute, private fb: FormBuilder, private ns: NotificationService, private dcs: DialogConfirmService) { }
 
   ngOnInit() {
     this.fs.funcionarioById(this.route.snapshot.params['id']).subscribe(funcionario => {
@@ -87,6 +88,12 @@ export class FuncionarioComponent implements OnInit {
       this.fs.dependenteById(this.route.snapshot.params['id']).subscribe(dependente => {
         this.dependentes = dependente
       }).unsubscribe
+    })
+  }
+
+  updateDependentes(value) {
+    this.fs.dependenteById(this.route.snapshot.params['id']).subscribe(response => {
+      this.dependentes = response
     })
   }
 
