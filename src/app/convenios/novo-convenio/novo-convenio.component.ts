@@ -59,7 +59,7 @@ export class NovoConvenioComponent implements OnInit {
     this.cs.createNewConvenio(convenio.TELEFONE, convenio.ENDERECO, convenio)
       .subscribe(res => {
         this.router.navigate(['/convenios'])
-        this.ns.notify(`Convênio inserido com sucessos!`)
+        this.ns.notify(`Convênio inserido com sucesso!`)
       })  
   }
 

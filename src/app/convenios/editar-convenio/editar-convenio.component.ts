@@ -43,15 +43,12 @@ export class EditarConvenioComponent implements OnInit {
       this._cod_conv = this.convenio[0].COD_CONV
       this._cod_end = this.convenio[0].COD_END
       this._cod_tel = this.convenio[0].COD_TEL
+      console.log(this.convenio[0])
     })
 
     this.editarConvenioForm = this.fb.group({
       NOME_CONVENIO: this.fb.control(null, [Validators.required]),
       TIPO_CONVENIO: this.fb.control('', [Validators.required]),
-      TELEFONE: this.fb.group({
-        DDD: this.fb.control(null, [Validators.required, Validators.minLength(2), Validators.maxLength(3)]),
-        NUMERO: this.fb.control(null, [Validators.required, Validators.minLength(8), Validators.maxLength(9)])
-      }),
       ENDERECO: this.fb.group({
         ENDERECO: this.fb.control(null, [Validators.required]),
         NUMERO: this.fb.control(null, [Validators.required]),
@@ -61,13 +58,18 @@ export class EditarConvenioComponent implements OnInit {
         ESTADO: this.fb.control(null, [Validators.required]),
         CEP: this.fb.control(null, [Validators.required, Validators.minLength(8), Validators.maxLength(8)]),
         REFERENCIA: this.fb.control(null),
+      }),
+      TELEFONE: this.fb.group({
+        DDD: this.fb.control(null, [Validators.required, Validators.minLength(2), Validators.maxLength(3)]),
+        NUMERO: this.fb.control(null, [Validators.required, Validators.minLength(8), Validators.maxLength(9)])
       })
     })
 
     setTimeout(() => {
       this.editarConvenioForm.patchValue({
-        NOME_CONVENIO: this.fb.control(null, [Validators.required]),
-        TIPO_CONVENIO: this.fb.control('', [Validators.required]),
+        COD_CONV: this.convenio[0].COD_CONV,
+        NOME_CONVENIO: this.convenio[0].NOME_CONVENIO,
+        TIPO_CONVENIO: this.convenio[0].TIPO_CONVENIO,
         ENDERECO: {
           ENDERECO: this.convenio[0].ENDERECO,
           NUMERO: this.convenio[0].NUMERO,
@@ -87,11 +89,12 @@ export class EditarConvenioComponent implements OnInit {
   
   }
 
-    //editarConvenio(editConvenio: Convenio){
-      //this.cs.updateConvenio(this._cod_conv, this._cod_end, this._cod_tel, editConvenio.ENDERECO, editConvenio.TELEFONE, editConvenio).subscribe(res => {
-        //this.router.navigate([`/convenio/${this._cod_conv}`])
-        //this.ns.notify('Convênio atualizado com sucesso!')
-      //})
-    //}
+  editarConvenio(editConvenio: Convenio) {
+    this.cs.updateConvenio(this._cod_conv, this._cod_end, this._cod_tel, editConvenio.TELEFONE, editConvenio.ENDERECO, editConvenio).subscribe(res => {
+      this.router.navigate([`/convenio/${this._cod_conv}`])
+      this.ns.notify('Convênio atualizado com sucesso!')
+    })
+  }
+
 
 }

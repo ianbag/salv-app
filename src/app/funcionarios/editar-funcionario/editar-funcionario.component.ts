@@ -6,7 +6,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FuncionariosService } from '../funcionarios.service';
 import { NotificationService } from 'src/app/shared/notification.service';
-import { ReadyState } from '@angular/http';
 
 @Component({
   selector: 'salv-editar-funcionario',
