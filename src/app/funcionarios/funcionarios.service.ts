@@ -108,4 +108,37 @@ export class FuncionariosService {
         }
         return this.http.post<Usuario>(`${SALV_API}/usuario`, _newUser)
     }
+
+    novoDependente(_cod_fun: number, dependente: Dependente) {
+        let _newDependente = {
+            CODIGO_FUNCIONARIO: _cod_fun,
+            NOME: dependente.NOME,
+            SOBRENOME: dependente.SOBRENOME,
+            DATA_NASCIMENTO: dependente.DATA_NASCIMENTO,
+            RG: dependente.RG,
+            CPF: dependente.CPF,
+            NUMERO_CERTIDAO_NASCIMENTO: dependente.NUMERO_CERTIDAO_NASCIMENTO,
+            FOLHA_CERTIDAO_NASCIMENTO: dependente.FOLHA_CERTIDAO_NASCIMENTO,
+            LIVRO_CERTIDAO_NASCIMENTO: dependente.LIVRO_CERTIDAO_NASCIMENTO,
+            CIDADE_CERTIDAO_NASCIMENTO: dependente.CIDADE_CERTIDAO_NASCIMENTO,
+            ESTADO_CERTIDAO_NASCIMENTO: dependente.ESTADO_CERTIDAO_NASCIMENTO
+        }
+        return this.http.post<Dependente>(`${SALV_API}/dependente`, _newDependente)
+    }
+
+    deleteTelefone(_cod_pes: number, _cod_tel: number) {
+        return this.http.delete<Telefone_Pessoa>(`${SALV_API}/telefone_pessoa/${_cod_pes}/${_cod_tel}`).switchMap(response => {
+            return this.http.delete<Telefone>(`${SALV_API}/telefone/${_cod_tel}`)
+        })
+    }
+
+    deleteEndereco(_cod_pes: number, _cod_end: number) {
+        return this.http.delete<Endereco_Pessoa>(`${SALV_API}/endereco_pessoa/${_cod_pes}/${_cod_end}`).switchMap(response => {
+            return this.http.delete<Endereco>(`${SALV_API}/endereco/${_cod_end}`)
+        })
+    }
+
+    deleteDependente(_dep_nome: string, _dep_sobrenome: string){
+        return this.http.delete<Dependente>(`${SALV_API}/dependente/${_dep_nome}/${_dep_sobrenome}`)
+    }
 }

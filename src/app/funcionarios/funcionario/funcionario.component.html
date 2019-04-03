@@ -12,19 +12,135 @@
 
                     <h3 class="box-title">Dependentes</h3>
                     <div class="box-tools pull-right">
-                        <a type="submit" class="btn btn-success" style="margin-right: 50px; color: white">Adicionar</a>
-
+                        <button type="button" class="btn btn-success" *ngIf="countDependentes()" data-toggle="modal"
+                            data-target="#modalDependente">Adicionar</button>
                         <button type="button" class="btn btn-box-tool" data-widget="collapse">
                             <i class="fa fa-minus"></i>
                         </button>
                     </div>
                 </div>
                 <div class="box-body">
-                    <salv-infos-dependente *ngFor="let dependente of dependentes" [dependente]="dependente">
-                    </salv-infos-dependente>
+                    <div *ngIf="countDependentes(); else notDependentes">
+                        <salv-infos-dependente *ngFor="let dependente of dependentes" [dependente]="dependente"
+                            (_dependentes)="updateDependentes($event)">
+                        </salv-infos-dependente>
+                    </div>
+                    <ng-template #notDependentes>
+                        <p>Você não possui dependentes cadastrados</p>
+                        <!--DIV MODAL INICIO-->
+                        <div class="col-sm-12 col-xs-12">
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                data-target="#modalDependente">
+                                Adicionar dependente
+                            </button>
+                        </div>
+                        <!--FIM DIV MODAL-->
+                    </ng-template>
                 </div>
             </div>
-            
+
+            <div class="col-sm-12 col-xs-12">
+                <!-- Modal -->
+                <div class="modal fade" id="modalDependente" tabindex="-1" role="dialog"
+                    aria-labelledby="modalDependente" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <form [formGroup]="novoDependenteForm" novalidate>
+                                    <div class="box-body">
+                                        <div>
+                                            <div class="col-sm-12 col-sm-12" id="formTitle">
+                                                <h4><strong>Adicionar dependente</strong></h4>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6 col-sm-12">
+                                                    <label>Nome</label>
+                                                    <input type="text" class="form-control" formControlName="NOME"
+                                                        placeholder="Nome" autocomplete="off">
+                                                </div>
+                                                <div class="col-sm-6 col-sm-12">
+                                                    <label>Sobrenome</label>
+                                                    <input type="text" class="form-control" formControlName="SOBRENOME"
+                                                        placeholder="Sobrenome" autocomplete="off">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-4 col-sm-12">
+                                                    <label>Data de Nascimento</label>
+                                                    <input type="date" class="form-control"
+                                                        formControlName="DATA_NASCIMENTO"
+                                                        placeholder="Data de Nascimento" id="datepicker"
+                                                        autocomplete="off">
+                                                </div>
+                                                <div class="col-sm-4 col-sm-12">
+                                                    <label>RG</label>
+                                                    <input type="text" class="form-control" formControlName="RG"
+                                                        placeholder="RG" autocomplete="off" mask="00.000.000-0">
+                                                </div>
+                                                <div class="col-sm-4 col-sm-12">
+                                                    <label>CPF</label>
+                                                    <input type="text" class="form-control" formControlName="CPF"
+                                                        placeholder="CPF" autocomplete="off" mask="000.000.000-00">
+                                                </div>
+                                            </div>
+                                            <hr class="col-md-11">
+                                            <div class="row">
+                                                <h6><strong>Certidão de Nascimento</strong></h6>
+                                                <div class="col-sm-4 col-sm-12">
+                                                    <label>Número</label>
+                                                    <input type="text" class="form-control"
+                                                        formControlName="NUMERO_CERTIDAO_NASCIMENTO"
+                                                        placeholder="Número" autocomplete="off">
+                                                </div>
+                                                <div class="col-sm-4 col-sm-12">
+                                                    <label>Folha</label>
+                                                    <input type="text" class="form-control"
+                                                        formControlName="FOLHA_CERTIDAO_NASCIMENTO" placeholder="Folha"
+                                                        autocomplete="off">
+                                                </div>
+                                                <div class="col-sm-4 col-sm-12">
+                                                    <label>Livro</label>
+                                                    <input type="text" class="form-control"
+                                                        formControlName="LIVRO_CERTIDAO_NASCIMENTO" placeholder="Livro"
+                                                        autocomplete="off">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6 col-sm-12">
+                                                    <label>Cidade</label>
+                                                    <input type="text" class="form-control"
+                                                        formControlName="CIDADE_CERTIDAO_NASCIMENTO"
+                                                        placeholder="Cidade" autocomplete="off">
+                                                </div>
+                                                <div class="col-sm-6 col-sm-12">
+                                                    <label>Estado</label>
+                                                    <select class="form-control"
+                                                        formControlName="ESTADO_CERTIDAO_NASCIMENTO">
+                                                        <option value="" label="Selecione" disabled selected="selected">
+                                                        </option>
+                                                        <option *ngFor="let estado of estados">
+                                                            {{estado}}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-success"
+                                    (click)="novoDependente(this.novoDependenteForm.value)"
+                                    data-dismiss="modal">Salvar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--FIM MODAL-->
+            </div>
+
         </div>
     </div>
 </section>

@@ -5,6 +5,9 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { FuncionariosService } from '../funcionarios.service';
 import { ActivatedRoute } from '@angular/router';
 import * as jspdf from 'jspdf'
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { NotificationService } from 'src/app/shared/notification.service';
+import { DialogConfirmService } from 'src/app/residentes/dialog-confirm.service';
 
 @Component({
   selector: 'salv-funcionario',
@@ -27,10 +30,15 @@ export class FuncionarioComponent implements OnInit {
   dependentes: Dependente[]
   telefones: Telefone[]
   enderecos: Endereco[]
+  n_dependentes: number
+  estados = [
+    "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"
+  ];
+  novoDependenteForm: FormGroup
 
   @ViewChild('reportFuncionario') reportFuncionario: ElementRef
 
-  constructor(private fs: FuncionariosService, private route: ActivatedRoute) { }
+  constructor(private fs: FuncionariosService, private route: ActivatedRoute, private fb: FormBuilder, private ns: NotificationService, private dcs: DialogConfirmService) { }
 
   ngOnInit() {
     this.fs.funcionarioById(this.route.snapshot.params['id']).subscribe(funcionario => {
@@ -39,6 +47,7 @@ export class FuncionarioComponent implements OnInit {
 
     this.fs.dependenteById(this.route.snapshot.params['id']).subscribe(dependente => {
       this.dependentes = dependente
+      this.n_dependentes = this.dependentes.length
     })
 
     setTimeout(() => {
@@ -50,6 +59,42 @@ export class FuncionarioComponent implements OnInit {
       })
     }, 1000)
 
+    this.novoDependenteForm = this.fb.group({
+      NOME: this.fb.control(null, []),
+      SOBRENOME: this.fb.control(null, []),
+      DATA_NASCIMENTO: this.fb.control(null, []),
+      RG: this.fb.control(null, []),
+      CPF: this.fb.control(null, []),
+      NUMERO_CERTIDAO_NASCIMENTO: this.fb.control(null, []),
+      FOLHA_CERTIDAO_NASCIMENTO: this.fb.control(null, []),
+      LIVRO_CERTIDAO_NASCIMENTO: this.fb.control(null, []),
+      CIDADE_CERTIDAO_NASCIMENTO: this.fb.control(null, []),
+      ESTADO_CERTIDAO_NASCIMENTO: this.fb.control(null, [])
+    })
+
+  }
+
+  countDependentes() {
+    if (this.n_dependentes > 0) {
+      return true
+    }
+    return false
+  }
+
+  novoDependente(dependente: Dependente) {
+    this.fs.novoDependente(this.funcionario.CODIGO_FUNCIONARIO, dependente).subscribe(res => {
+      this.novoDependenteForm.reset()
+      this.ns.notify('Dependente inserido com sucesso!')
+      this.fs.dependenteById(this.route.snapshot.params['id']).subscribe(dependente => {
+        this.dependentes = dependente
+      }).unsubscribe
+    })
+  }
+
+  updateDependentes(value) {
+    this.fs.dependenteById(this.route.snapshot.params['id']).subscribe(response => {
+      this.dependentes = response
+    })
   }
 
   public downloadPDF() {
