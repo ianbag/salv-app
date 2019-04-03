@@ -1,4 +1,4 @@
-import { Convenio, ConvenioQuery, Telefone } from './../convenio.model';
+import { Convenio, ConvenioQuery } from './../convenio.model';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -95,6 +95,7 @@ export class EditarConvenioComponent implements OnInit {
       this.ns.notify('Convênio atualizado com sucesso!')
     })
   }
+
 
 
 }
