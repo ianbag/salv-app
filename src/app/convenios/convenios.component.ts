@@ -28,7 +28,7 @@ export class ConveniosComponent implements OnInit {
 
   @ViewChild('reportConvenios') reportConvenios: ElementRef
 
-  ngOnInit() { 
+  ngOnInit() {  
     this.conveniosService.convenios()
       .subscribe(convenios => {
         this.convenios = convenios
