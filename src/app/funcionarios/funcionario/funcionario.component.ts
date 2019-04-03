@@ -46,7 +46,6 @@ export class FuncionarioComponent implements OnInit {
         this.fs.enderecoById(this.funcionario.PESSOA_CODIGO.toString()).subscribe(resE => {
           this.telefones = resT
           this.enderecos = resE
-          console.log(resT, resE)
         })
       })
     }, 1000)
@@ -68,5 +67,4 @@ export class FuncionarioComponent implements OnInit {
     })
     doc.save('Relatório de Funcionário.pdf')
   }
-
 }

@@ -10,7 +10,6 @@ import { AppComponent } from './app.component';
 
 
 
-
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";

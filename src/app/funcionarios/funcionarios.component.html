@@ -22,7 +22,7 @@
                         <td>{{funcionario.RG | rg}}</td>
                         <td>
                             <button type="submit" class="btn btn-danger botao"
-                                (click)="deleteFuncionario(funcionario.CODIGO); $event.stopPropagation()">Demitir</button>
+                                (click)="deleteFuncionario(funcionario.CODIGO); $event.stopPropagation()">Inativar</button>
                             <a type="submit" class="btn btn-warning botao"
                                 [routerLink]="['/editar-funcionario', funcionario.CODIGO]">Editar</a>
                             <a type="submit" class="btn btn-success botao"
