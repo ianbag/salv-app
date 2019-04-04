@@ -14,40 +14,44 @@
               <div class="row">
                 <div class="col-sm-6 col-sm-12" id="inputValidator">
                   <salv-input-container errorMessage="Campo Obrigatório" label="Nome">
-                    <input type="text" class="form-control" formControlName="nome" placeholder="Nome">
+                    <input type="text" class="form-control" formControlName="NOME_CONVENIO" placeholder="Nome" autocomplete="off">
                   </salv-input-container>
                 </div>
                 <div class="col-sm-6 col-sm-12" id="inputValidator">
                   <salv-input-container errorMessage="Campo Obrigatório" label="Tipo do convênio">
-                    <input type="text" class="form-control" formControlName="tipoConvenio" placeholder="Tipo do convênio">
+                    <input type="text" class="form-control" formControlName="TIPO_CONVENIO" placeholder="Tipo do convênio">
                   </salv-input-container>
                 </div>
               </div>
               <br />
               <div class="row">
-                <div class="col-sm-4 col-sm-12" id="inputValidator">
-                  <salv-input-container errorMessage="Campo Obrigatório" label="Rua">
-                    <input type="text" class="form-control" formControlName="rua" placeholder="Rua">
+                <div class="col-sm-4 col-sm-12" id="inputValidator" formGroupName="ENDERECO">
+                  <salv-input-container errorMessage="Campo Obrigatório" label="Endereço">
+                    <input type="text" class="form-control" formControlName="ENDERECO" placeholder="Endereço" autocomplete="off">
                   </salv-input-container>
                 </div>
-                <div class="col-sm-2 col-sm-12" id="inputValidator">
+                <div class="col-sm-2 col-sm-12" id="inputValidator" formGroupName="ENDERECO">
                   <salv-input-container errorMessage="Campo Obrigatório" label="Número">
-                    <input type="text" class="form-control" formControlName="numero" placeholder="Número">
+                    <input type="text" class="form-control" formControlName="NUMERO" placeholder="Número" autocomplete="off">
                   </salv-input-container>
                 </div>
-                <div class="col-sm-2 col-sm-12" id="inputValidator">
+                <div class="col-sm-2 col-sm-12" id="inputValidator" formGroupName="ENDERECO">
                   <salv-input-container errorMessage="Campo Obrigatório" label="Bairro">
-                    <input type="text" class="form-control" formControlName="bairro" placeholder="Bairro">
+                    <input type="text" class="form-control" formControlName="BAIRRO" placeholder="Bairro" autocomplete="off">
                   </salv-input-container>
                 </div>
-                <div class="col-sm-2 col-sm-12" id="inputValidator">
+                <div class="col-sm-3 col-sm-12" formGroupName="ENDERECO">
+                  <label>Complemento</label>
+                  <input type="text" class="form-control" formControlName="COMPLEMENTO" placeholder="Complemento" autocomplete="off">
+                </div>
+                <div class="col-sm-2 col-sm-12" id="inputValidator" formGroupName="ENDERECO">
                   <salv-input-container errorMessage="Campo Obrigatório" label="Cidade">
-                    <input type="text" class="form-control" formControlName="cidade" placeholder="Cidade">
+                    <input type="text" class="form-control" formControlName="CIDADE" placeholder="Cidade" autocomplete="off">
                   </salv-input-container>
                 </div>
-                <div class="col-sm-2 col-sm-12" id="inputValidator">
+                <div class="col-sm-2 col-sm-12" id="inputValidator" formGroupName="ENDERECO">
                   <salv-input-container errorMessage="Campo Obrigatório" label="Estado">
-                    <select class="form-control" formControlName="estado">
+                    <select class="form-control" formControlName="ESTADO">
                       <option value="" label="Selecione" disabled selected="selected"></option>
                       <option *ngFor="let estado of estados">{{estado}}</option>
                     </select>
@@ -56,34 +60,44 @@
               </div>
               <br />
               <div class="row">
-                <div class="col-sm-3 col-sm-12" id="inputValidator">
+                <div class="col-sm-3 col-sm-12" id="inputValidator" formGroupName="ENDERECO">
                   <salv-input-container errorMessage="Campo Obrigatório" label="CEP">
-                    <input type="text" mask="00.000-000" class="form-control" formControlName="cep" placeholder="CEP">
+                    <input type="text" mask="00.000-000" class="form-control" formControlName="CEP" placeholder="CEP" autocomplete="off">
                   </salv-input-container>
                 </div>
-                <div class="col-sm-3 col-sm-12">
-                  <label for="exampleInputPassword1">Complemento </label>
-                  <input type="text" class="form-control" formControlName="complemento" placeholder="Complemento">
-  
-                </div>
-                <div class="col-sm-6 col-sm-12">
-                  <label for="exampleInputPassword1">Referência </label>
-                  <input type="text" class="form-control" formControlName="referencia" placeholder="Referência">
-                  <br>
+                <div class="col-sm-3 col-sm-12" formGroupName="ENDERECO">
+                  <label>Referência</label>
+                  <input type="text" class="form-control" formControlName="REFERENCIA" placeholder="Referência" autocomplete="off">
+                    <br>
                 </div>
               </div>
               <div class="row">
-                <div class="col-sm-2 col-sm-12">
+
+                <div class="col-sm-2 col-sm-12" id="inputValidator" formGroupName="TELEFONE">
+                  <salv-input-container errorMessage="Campo Obrigatório" label="DDD">
+                  <input type="text" class="form-control" formControlName="DDD" placeholder="DDD" autocomplete="off">
+                  </salv-input-container>
+                </div>
+                <div class="col-sm-3 col-sm-12" id="inputValidator" formGroupName="TELEFONE">
+                  <salv-input-container errorMessage="Campo Obrigatório" label="Telefone">
+                  <input type="text" class="form-control" formControlName="NUMERO" placeholder="Telefone" autocomplete="off">
+                  </salv-input-container>
+                </div>
+
+               <!-- <div class="col-sm-2 col-sm-12">
                   <label for="exampleInputPassword1">Número telefone </label>
                   <input type="text" mask="(00) 00000-0000" class="form-control" formControlName="telefone" placeholder="Número telefone">
                 </div>
+
                 <div class="col-sm-2 col-sm-12" style="margin-top: 27px; margin-left: -25px">
                   <a type="submit" class="btn btn-success botao"><i class="fa fa-plus"></i></a>
-                </div>
-              </div>
+                </div> 
+              -->
+
+              </div> <!--fim da row--> 
   
               <div class="col-sm-12 col-sm-12">
-                <a style="margin-left: 10px" (click)="novoConvenio(novoConvenioForm.value)" class="btn btn-success botao pull-right" [routerLink]="['/convenio-residente']">Salvar</a>
+                <a style="margin-left: 10px" (click)="novoConvenio(novoConvenioForm.value)" class="btn btn-success botao pull-right">Salvar</a>
                 <a type="submit" class="btn btn-default botao pull-right" [routerLink]="['/convenio-residente']">Voltar</a>
               </div>
             </div>
