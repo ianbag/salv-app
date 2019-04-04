@@ -32,10 +32,7 @@ export class ResidentesComponent implements OnInit {
 
   ngOnInit() {
     this.residentesService.residentes()
-      .subscribe(residentes => {
-        this.residentes = residentes
-        console.log('residente', residentes)
-      })
+      .subscribe(residentes => this.residentes = residentes)
   }
 
 

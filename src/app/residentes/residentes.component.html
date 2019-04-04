@@ -21,7 +21,7 @@
             <th>Ações</th>
           </tr>
           <tr *ngFor="let residente of residentes">
-            <td>{{residente.PESSOA.NOME}}</td>
+            <td>{{residente.PESSOA.NOME}} {{residente.PESSOA.SOBRENOME}}</td>
             <td>{{residente.APELIDO}}</td>
             <td>{{residente.PESSOA.CPF | cpf}}</td>
             <td>{{residente.PESSOA.RG | rg}}</td>

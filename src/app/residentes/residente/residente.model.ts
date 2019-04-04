@@ -49,3 +49,11 @@ export interface Pessoa {
     RELIGIAO: string,
     ESCOLARIDADE: string
 }
+
+export interface Residente_Convenio {
+    NUMERO_CONVENIO: number,
+    RESIDENTE_CODIGO: number,
+    TITULAR_CONVENIO: string,
+    PARENTESCO_TITULAR: string,
+    CONVENIO_CODIGO: number
+}
