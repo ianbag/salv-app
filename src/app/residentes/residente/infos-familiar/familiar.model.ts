@@ -3,7 +3,7 @@ export interface Familiar{
     NOME: string,
     SOBRENOME: string,
     PARENTESCO: string,
-    ENDERECO: {
+    ENDERECOS: {
         CODIGO: number,
         ENDERECO: string,
         NUMERO: number,
@@ -35,5 +35,5 @@ export interface Endereco {
 export interface Telefone {
     CODIGO: number,
     DDD: number,
-    TELEFONE: number
+    NUMERO: number
 }

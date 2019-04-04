@@ -14,9 +14,9 @@
 
         <div class="col-sm-4 col-sm-12">
           <label>Nome</label>
-          <select class="form-control" formControlName="estadoCivil">
+          <select class="form-control" formControlName="CONVENIO_CODIGO">
             <option value="" label="Nome do convênio" disabled selected="selected"></option>
-            <option *ngFor="let nome of nomes" [value]="nome.value">{{nome.option}}</option>
+            <option *ngFor="let convenio of convenios" [value]="convenio.CODIGO">{{convenio.NOME_CONVENIO}}</option>
           </select>
         </div>
         
@@ -27,8 +27,8 @@
 
         
         <div class="col-sm-4 col-xs-12">
-          <label for="exampleInputPassword1">Nº de inscrição </label>
-          <input type="text" class="form-control" formControlName="numeroInscricao" placeholder="Nº de inscrição do convênio" autocomplete="off">
+          <label>Nº de inscrição </label>
+          <input type="text" class="form-control" formControlName="NUMERO_CONVENIO" placeholder="Nº de inscrição do convênio" autocomplete="off">
         </div>
         <div class="col-sm-12 col-xs-12">
           <br>
@@ -36,25 +36,21 @@
 
         <div class="col-sm-12 col-xs-12">
           <label>Titular do convênio</label>
-          <div class="checkbox" style="margin-left: 13px;">
+          <!-- <div class="checkbox" style="margin-left: 13px;">
             <label>
               <input type="checkbox">
               Residente
             </label>
-          </div>
+          </div> -->
         </div>
 
         <div class="col-sm-4 col-xs-12">
-          <div class="input-group">
-            <span class="input-group-addon">
-              <input type="checkbox">
-            </span>
-            <input type="text" class="form-control" placeholder="Nome titular">
-          </div>
+          <label>Titular do convênio</label>
+          <input type="text" class="form-control" formControlName="TITULAR_CONVENIO" placeholder="Nome do Titular" autocomplete="off">
         </div>
-        <div class="col-sm-3 col-xs-12">
-          <input type="text" class="form-control" placeholder="Tipo parentesco">
-          <br>
+        <div class="col-sm-4 col-xs-12">
+          <label>Parentesco Titular</label>
+          <input type="text" class="form-control" formControlName="PARENTESCO_TITULAR" placeholder="Parentesco Titular" autocomplete="off">
         </div>
 
 
