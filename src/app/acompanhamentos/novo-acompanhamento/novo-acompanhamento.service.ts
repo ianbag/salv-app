@@ -6,6 +6,7 @@ import { SALV_API } from './../../app.api';
 import { Observable } from 'rxjs';
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { TouchSequence } from 'selenium-webdriver';
 
 
 
@@ -24,19 +25,24 @@ export class NovoAcompanhamentoService {
     funcionarios(): Observable<Funcionario[]> {
         return this.http.get<Funcionario[]>(`${SALV_API}/funcionarioNome`)
     }
+
+    codigoAcompanhamento(): Observable<Acompanhamento[]>{
+        return this.http.get<Acompanhamento[]>(`${SALV_API}/acompanhamento-codigo`)
+        
+    }
     
     createAcompanhamento(acompanhamento: Acompanhamento ){
         return this.http.post<Acompanhamento>(`${SALV_API}/acompanhamento`, acompanhamento)
         
         }
 
-  createAcompanhamentoFuncionario(acompanhamento_funcionario: Acompanhamento_Funcionario){
-            return this.http.post<Acompanhamento_Funcionario>(`${SALV_API}/acompanhamento_funcionario`, acompanhamento_funcionario)
+  createAcompanhamentoFuncionario(acompanhamento_funcionario: Acompanhamento_Funcionario[]){
+            return this.http.post<Acompanhamento_Funcionario[]>(`${SALV_API}/acompanhamento_funcionario`, acompanhamento_funcionario)
             
             }
 
-   createAcompanhamentoResidente(acompanhamento_residente: Acompanhamento_Residente){
-          return this.http.post<Acompanhamento_Residente>(`${SALV_API}/acompanhamento_residente`, acompanhamento_residente)
+   createAcompanhamentoResidente(acompanhamento_residente: Acompanhamento_Residente[]){
+          return this.http.post<Acompanhamento_Residente[]>(`${SALV_API}/acompanhamento_residente`, acompanhamento_residente)
                 
             }         
     }       
