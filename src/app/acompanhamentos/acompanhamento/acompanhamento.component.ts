@@ -20,6 +20,8 @@ import * as jspdf from 'jspdf'
 })
 export class AcompanhamentoComponent implements OnInit {
 
+    
+  residentes = []    
   acompanhamentoState = 'ready'
 
   acompanhamento: Acompanhamento
@@ -29,9 +31,14 @@ export class AcompanhamentoComponent implements OnInit {
   constructor(private acompanhamentosService: AcompanhamentosService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+
+    
     this.acompanhamentosService.acompanhamentoById(this.route.snapshot.params['id'])
       .subscribe(acompanhamento => { this.acompanhamento = acompanhamento[0]; console.log(acompanhamento) })
+      
   }
+
+  
 
   public downloadPDF() {
     let doc = new jspdf()

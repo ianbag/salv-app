@@ -1,3 +1,4 @@
+import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Endereco } from './../../residentes/residente/infos-familiar/familiar.model';
 import { Funcionario, Telefone, FuncionarioQuery } from './../funcionario.model';
 import { Component, OnInit } from '@angular/core';
@@ -8,9 +9,20 @@ import { NotificationService } from 'src/app/shared/notification.service';
 
 @Component({
   selector: 'salv-editar-funcionario',
-  templateUrl: './editar-funcionario.component.html'
+  templateUrl: './editar-funcionario.component.html',
+  animations: [
+    trigger('editar-funcionarioAppeared', [
+      state('ready', style({ opacity: 1 })),
+      transition('void => ready', [
+        style({ opacity: 0, transform: 'translate(-30px, -10px)' }),
+        animate('500ms 0s ease-in-out')
+      ])
+    ])
+  ]
 })
 export class EditarFuncionarioComponent implements OnInit {
+
+  editarfuncionarioState = 'ready';
 
   estados = [
     "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"
@@ -131,6 +143,7 @@ export class EditarFuncionarioComponent implements OnInit {
 
   editarFuncionario(editFuncionario: Funcionario) {
     this.fs.updateEmployee(this._cod_pes, this._cod_tel, this._cod_end, this._cod_fun, editFuncionario.PESSOA, editFuncionario.TELEFONE, editFuncionario.ENDERECO, editFuncionario).subscribe(res => {
+      console.log(editFuncionario.ENDERECO)
       this.router.navigate([`/funcionario/${this._cod_fun}`])
       this.ns.notify('Funcionário atualizado com sucesso!')
     })

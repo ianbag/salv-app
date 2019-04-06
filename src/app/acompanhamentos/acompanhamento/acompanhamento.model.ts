@@ -8,13 +8,13 @@ export interface Acompanhamento {
 
 export interface Acompanhamento_Funcionario{
 
-    FUNCIONARIO_CODIGO: number,
+    CODIGO_FUNCIONARIO: number,
     ACOMPANHAMENTO_CODIGO:number
 }
 
 export interface Acompanhamento_Residente{
 
-    RESIDENTE_CODIGO: number,
+    CODIGO_RESIDENTE: number,
     ACOMPANHAMENTO_CODIGO:number
 }
 
@@ -22,6 +22,8 @@ export interface AcompanhamentoQuery {
     CODIGO: number,
     DATA_ACOMPANHAMENTO: string,
     ATIVIDADE: string,
-    FUNCIONARIO_CODIGO: number,
-    RESIDENTE_CODIGO: number
+    CODIGO_FUNCIONARIO: number,
+    RESIDENTE_NOME: string,
+    FUNCIONARIO_NOME: string,
+    CODIGO_RESIDENTE: number
 }

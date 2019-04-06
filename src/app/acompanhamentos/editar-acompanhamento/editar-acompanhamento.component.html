@@ -1,18 +1,19 @@
-{{editarAcompanhamentoForm.value | json }}
+
 <section class="content">
   <!-- Conteudo NATHAN -->
   <div class="box" >
     <h1 align="center">Realizar acompanhamento</h1>
     <hr>
 
-    <form [formGroup]="editarAcompanhamentoForm" role="form" >
+    <form [formGroup]="editarAcompanhamentoForm" novalidate >
       <div class="box-body">
         <div class="form-group" >
 
 
-          <div class="col-sm-8 col-xs-12">
+          <div class="col-sm-8 col-xs-12" id="inputValidator">
             <label>Residentes que participaram da atividade </label><br>
             <ng-multiselect-dropdown [placeholder]="'Selecione os residentes'" [data]="residentes"
+            [(ngModel)]="selectedResidentes" 
             formControlName="residentes"
               [disabled]="disabled" [settings]="dropdownSettings" (onSelect)="onResidenteSelect($event)">
               
@@ -20,7 +21,7 @@
           </div>
 
 
-          <div class="col-sm-3 col-xs-12">
+          <div class="col-sm-3 col-xs-12" id="inputValidator">
             <label for="exampleInputPassword1"> <i class="fa fa-calendar"></i> Data
               da
               atividade</label>
@@ -30,7 +31,7 @@
             <br>
           </div>
 
-          <div class="col-sm-10 col-xs-12">
+          <div class="col-sm-10 col-xs-12" id="inputValidator">
             <label>Atividade realizada</label>
             <textarea class="form-control" rows="3" formControlName="ATIVIDADE" 
             placeholder="Descrição da atividade realizada"
@@ -39,14 +40,15 @@
             <br>
           </div>
 
-          <div class="col-sm-8 col-xs-12">
+          <div class="col-sm-8 col-xs-12" id="inputValidator">
             <label>Funcionários que realizaram a atividade </label><br>
             <ng-multiselect-dropdown name="funcionarios"
-            [placeholder]="'Selecione os funcionários'" [data]="funcionarios"
+            [placeholder]="'Selecione os funcionários'" [data]="funcionarios"        
+            [(ngModel)]="selectedFuncionarios" 
             formControlName="funcionarios"
             [disabled]="disabled"
             [settings]="dropdownSettings2"
-            (onSelect)="onFuncioanrioSelect($event)">
+            (onSelect)="onFuncionarioSelect($event)">
             </ng-multiselect-dropdown>
           </div>
 
