@@ -39,8 +39,8 @@ export class ResidentesService {
         return this.http.delete<any>(`${SALV_API}/residente/${id}`)
     }
 
-    convenios() : Observable<Convenio[]>{
-        return this.http.get<Convenio[]>(`${SALV_API}/convenio`)
+    convenios() : Observable<Residente_Convenio[]>{
+        return this.http.get<Residente_Convenio[]>(`${SALV_API}/convenio`)
     }
 
     createPessoa(pessoa: Pessoa): Observable<Pessoa> {
