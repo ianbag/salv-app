@@ -1,18 +1,19 @@
 import { Residente, Pessoa } from './../residente/residente.model';
 import { Component, OnInit, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl, FormControl } from '@angular/forms';
 
 import { ResidentesService } from '../residentes.service';
 import { trigger, state, style, transition, animate } from '@angular/animations'
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'salv-novo-residente',
   templateUrl: './novo-residente.component.html',
   animations: [
     trigger('novo-residenteAppeared', [
-      state('ready', style({opacity: 1})),
+      state('ready', style({ opacity: 1 })),
       transition('void => ready', [
-        style({opacity: 0, transform: 'translate(-30px, -10px)'}),
+        style({ opacity: 0, transform: 'translate(-30px, -10px)' }),
         animate('500ms 0s ease-in-out')
       ])
     ])
@@ -68,7 +69,20 @@ export class NovoResidenteComponent implements OnInit {
   pessoa: Pessoa
   residente: Residente
 
-  constructor(private formBuilder: FormBuilder, private residentesService: ResidentesService) {}
+  constructor(private formBuilder: FormBuilder, private residentesService: ResidentesService, private router: Router) { }
+
+  markAllDirty(control: AbstractControl) {
+    if (control.hasOwnProperty('controls')) {
+      control.markAsDirty() // mark group
+      let ctrl = <any>control;
+      for (let inner in ctrl.controls) {
+        this.markAllDirty(ctrl.controls[inner] as AbstractControl);
+      }
+    }
+    else {
+      (<FormControl>(control)).markAsDirty();
+    }
+  }
 
   ngOnInit() {
     this.pessoa = this.residentesService.pessoa
@@ -83,7 +97,6 @@ export class NovoResidenteComponent implements OnInit {
         RG: this.formBuilder.control(null, [Validators.minLength(9)]),
         ESTADO_CIVIL: this.formBuilder.control(null, []),
         SEXO: this.formBuilder.control(null, [Validators.required]),
-        GENERO: this.formBuilder.control(null, []),
         RELIGIAO: this.formBuilder.control(null, []),
         ESCOLARIDADE: this.formBuilder.control(null, []),
         DATA_NASCIMENTO: this.formBuilder.control(null, []),
@@ -122,12 +135,23 @@ export class NovoResidenteComponent implements OnInit {
       DATA_ACOLHIMENTO: this.formBuilder.control(null, [Validators.required])
       //OUTROS FINAL
     })
+
+    if (this.pessoa != undefined)
+      this.novoResidenteForm.controls['PESSOA'].setValue(this.pessoa)
+    if (this.residente != undefined)
+      this.novoResidenteForm.patchValue(this.residente)
   }
 
   novoResidente(residente: Residente) {
     this.residentesService.pessoa = residente.PESSOA
-    delete residente.PESSOA
     this.residentesService.residente = residente
+
+    if (this.novoResidenteForm.valid == true)
+      this.router.navigate(['/familiar-residente'])
+    else {
+      this.markAllDirty(this.novoResidenteForm)
+      console.log(this.novoResidenteForm.controls)
+    }
   }
 
 }
