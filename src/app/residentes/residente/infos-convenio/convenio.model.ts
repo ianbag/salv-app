@@ -5,6 +5,7 @@ export interface Convenio {
     DDD: string,
     TELEFONE: string,
     ENDERECO: string,
+    NUMERO: string,
     BAIRRO: string,
     COMPLEMENTO: string,
     CIDADE: string,
