@@ -30,7 +30,7 @@ export class ConvenioResidenteComponent implements OnInit {
 
   residente: Residente
   familiar: Familiar
-  convenios: Convenio[]
+  convenios: Residente_Convenio[]
 
   constructor(private formBuilder: FormBuilder, private residentesService: ResidentesService, private router: Router, private notificationService: NotificationService) { }
 
