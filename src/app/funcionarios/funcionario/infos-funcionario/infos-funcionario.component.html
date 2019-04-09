@@ -98,14 +98,14 @@
           <strong>Telefone: </strong> ({{telefone?.TELEFONE.DDD}}) {{telefone?.TELEFONE.NUMERO}} <a><span
               (click)="deleteTelefone(funcionario.PESSOA.CODIGO, telefone.TELEFONE.CODIGO); $event.stopPropagation()"><i
                 class="fa fa-close"></i></span></a>
-                <a data-toggle="modal" data-target="#modalUpdateTelefone" (click)="buscaTelefone(telefone.TELEFONE.CODIGO)"><span><i class="fa fa-pencil"></i></span></a>
+          <a data-toggle="modal" data-target="#modalUpdateTelefone"
+            (click)="buscaTelefone(telefone.TELEFONE.CODIGO)"><span><i class="fa fa-pencil"></i></span></a>
         </div>
-
         <!--DIV MODAL INICIO-->
         <div class="col-sm-12 col-xs-12">
           <!-- Modal -->
-          <div class="modal fade" id="modalUpdateTelefone" tabindex="-1" role="dialog" aria-labelledby="modalUpdateTelefone"
-            aria-hidden="true">
+          <div class="modal fade" id="modalUpdateTelefone" tabindex="-1" role="dialog"
+            aria-labelledby="modalUpdateTelefone" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-body">
@@ -140,7 +140,6 @@
             </div>
           </div>
           <!--FIM MODAL-->
-
         </div>
         <hr class="col-md-12">
         <div class="col-md-12">
@@ -231,6 +230,8 @@
               <a><span
                   (click)="deleteEndereco(funcionario.PESSOA.CODIGO, endereco.ENDERECO.CODIGO); $event.stopPropagation()"><i
                     class="fa fa-close"></i></span></a>
+              <a data-toggle="modal" data-target="#modalUpdateEndereco"
+                (click)="buscaEndereco(endereco.ENDERECO.CODIGO)"><span><i class="fa fa-pencil"></i></span></a>
               <strong>Endereço: </strong> {{endereco?.ENDERECO.ENDERECO}}
             </div>
             <div class="col-xs-4 col-xs-12">
@@ -256,6 +257,87 @@
             </div>
             <hr class="col-md-10">
           </div>
+
+          <!--DIV MODAL-->
+          <div class="col-sm-12 col-xs-12">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modalUpdateEndereco">
+              <i class="fa fa-plus"></i>
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="modalUpdateEndereco" tabindex="-1" role="dialog"
+              aria-labelledby="modalUpdateEndereco" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-body">
+                    <form [formGroup]="updateEnderecoForm" novalidate>
+                      <div class="box-body">
+                        <div>
+                          <div class="col-sm-12 col-sm-12" id="formTitle">
+                            <h4><strong>Adicionar novo endereço</strong></h4>
+                          </div>
+                          <div class="row">
+                            <div class="col-sm-3 col-sm-12">
+                              <label>Endereço</label>
+                              <input type="text" class="form-control" formControlName="ENDERECO" placeholder="Endereço"
+                                autocomplete="off">
+                            </div>
+                            <div class="col-sm-3 col-sm-12">
+                              <label>Número</label>
+                              <input type="text" class="form-control" formControlName="NUMERO" placeholder="Número"
+                                autocomplete="off">
+                            </div>
+                            <div class="col-sm-3 col-sm-12">
+                              <label>Bairro</label>
+                              <input type="text" class="form-control" formControlName="BAIRRO" placeholder="Bairro"
+                                autocomplete="off">
+                            </div>
+                            <div class="col-sm-3 col-sm-12">
+                              <label>Complemento</label>
+                              <input type="text" class="form-control" formControlName="COMPLEMENTO"
+                                placeholder="Complemento" autocomplete="off">
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-sm-3 col-sm-12">
+                              <label>Cidade</label>
+                              <input type="text" class="form-control" formControlName="CIDADE" placeholder="Cidade"
+                                autocomplete="off">
+                            </div>
+                            <div class="col-sm-3 col-sm-12">
+                              <label>Estado</label>
+                              <select class="form-control" formControlName="ESTADO">
+                                <option value="" label="Selecione" disabled selected="true"></option>
+                                <option *ngFor="let estado of estados">{{estado}}</option>
+                              </select>
+                            </div>
+                            <div class="col-sm-3 col-sm-12">
+                              <label>CEP</label>
+                              <input type="text" class="form-control" formControlName="CEP" placeholder="CEP"
+                                autocomplete="off">
+                            </div>
+                            <div class="col-sm-3 col-sm-12">
+                              <label>Referência</label>
+                              <input type="text" class="form-control" formControlName="REFERENCIA"
+                                placeholder="Referência" autocomplete="off">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-success"
+                      (click)="updateEndereco(this.updateEnderecoForm.value)" data-dismiss="modal">Salvar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--FIM MODAL-->
+          </div>
+          <!--DIV MODAL-->
+
         </div>
         <hr class="col-md-12">
         <div class="col-md-12">
