@@ -63,7 +63,7 @@ export class InfosFuncionarioComponent implements OnInit {
         })
         this.updateUsuarioForm = this.fb.group({
             EMAIL: this.fb.control(null, []),
-            USUARIO: this.fb.control(null, [])
+            LOGIN: this.fb.control(null, [])
         })
     }
 
@@ -178,8 +178,8 @@ export class InfosFuncionarioComponent implements OnInit {
     buscaUsuario() {
         this.fs.usuarioId(this.funcionario.CODIGO_FUNCIONARIO.toString()).subscribe(usuario => {
             this.updateUsuarioForm.patchValue({
-                EMAIL: usuario.EMAIL,
-                LOGIN: usuario.LOGIN
+                EMAIL: usuario[0].EMAIL,
+                LOGIN: usuario[0].LOGIN
             })
         })
     }
@@ -187,7 +187,7 @@ export class InfosFuncionarioComponent implements OnInit {
     updateUsuario(usuarioAtualizado) {
         this.fs.updateUsuario(this.funcionario.CODIGO_FUNCIONARIO.toString(), usuarioAtualizado).subscribe(() => {
             this.fs.usuarioId(this.funcionario.CODIGO_FUNCIONARIO.toString()).subscribe(response => {
-                this.funcionario.USUARIO = res
+                this.funcionario.USUARIO = response[0]
                 this.updateUsuarioForm.reset()
                 this.ns.notify('Usuário atualizado com sucesso')
             })
