@@ -50,7 +50,6 @@ export class ConveniosService {
                         }
                         return this.http.post<Telefone_Convenio>(`${SALV_API}/telefone_convenio`, _rel_tel_conv)
 
-                        
                     })
                 })
             })
@@ -60,13 +59,11 @@ export class ConveniosService {
     }
 
     updateConvenio(cod_tel: number, cod_end: number, cod_conv: number, telefone: Telefone, endereco: Endereco, convenio: Convenio) {
-        return this.http.put<Endereco>(`${SALV_API}/endereco/${cod_end}`, endereco).switchMap(resEnd => {
-            delete convenio.ENDERECO
-            return this.http.put<Telefone>(`${SALV_API}/telefone/${cod_tel}`, telefone).switchMap(resTel => {
-                delete convenio.TELEFONE
-                return this.http.put<Convenio>(`${SALV_API}/convenio/${cod_conv}`, convenio)
+        return this.http.put<Convenio>(`${SALV_API}/convenio/${cod_conv}`, convenio).switchMap(resConv =>{
+            return this.http.put<Endereco>(`${SALV_API}/endereco/${cod_end}`, endereco).switchMap(resEnd => {
+                return this.http.put<Telefone>(`${SALV_API}/telefone/${cod_conv}`, telefone)
+                })
             })
-        })
         }
- 
+       
 }
