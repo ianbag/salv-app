@@ -18,6 +18,7 @@ export class InfosFuncionarioComponent implements OnInit {
     novoUsuarioForm: FormGroup
     updateTelefoneForm: FormGroup
     updateEnderecoForm: FormGroup
+    updateUsuarioForm: FormGroup
     codigoTelefone: number
     codigoEndereco: number
     estados = [
@@ -59,6 +60,10 @@ export class InfosFuncionarioComponent implements OnInit {
             ESTADO: this.fb.control(null, []),
             CEP: this.fb.control(null, []),
             REFERENCIA: this.fb.control(null, [])
+        })
+        this.updateUsuarioForm = this.fb.group({
+            EMAIL: this.fb.control(null, []),
+            USUARIO: this.fb.control(null, [])
         })
     }
 
@@ -166,6 +171,25 @@ export class InfosFuncionarioComponent implements OnInit {
                 this.enderecos = response
                 this.updateEnderecoForm.reset()
                 this.ns.notify('Endereço atualizado com sucesso!')
+            })
+        })
+    }
+
+    buscaUsuario() {
+        this.fs.usuarioId(this.funcionario.CODIGO_FUNCIONARIO.toString()).subscribe(usuario => {
+            this.updateUsuarioForm.patchValue({
+                EMAIL: usuario.EMAIL,
+                LOGIN: usuario.LOGIN
+            })
+        })
+    }
+
+    updateUsuario(usuarioAtualizado) {
+        this.fs.updateUsuario(this.funcionario.CODIGO_FUNCIONARIO.toString(), usuarioAtualizado).subscribe(() => {
+            this.fs.usuarioId(this.funcionario.CODIGO_FUNCIONARIO.toString()).subscribe(response => {
+                this.funcionario.USUARIO = res
+                this.updateUsuarioForm.reset()
+                this.ns.notify('Usuário atualizado com sucesso')
             })
         })
     }
