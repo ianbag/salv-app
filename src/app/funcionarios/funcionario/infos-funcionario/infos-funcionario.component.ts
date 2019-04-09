@@ -1,9 +1,10 @@
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Funcionario, Telefone, Endereco, Usuario } from './../../funcionario.model';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { FuncionariosService } from '../../funcionarios.service';
 import { NotificationService } from 'src/app/shared/notification.service';
 import { DialogConfirmService } from 'src/app/residentes/dialog-confirm.service';
+import { EventEmitter } from 'events';
 @Component({
   selector: 'salv-infos-funcionario',
   templateUrl: './infos-funcionario.component.html'
@@ -13,9 +14,12 @@ export class InfosFuncionarioComponent implements OnInit {
   @Input() funcionario: Funcionario
   @Input() telefones: Telefone[]
   @Input() enderecos: Endereco[]
+  @Output() _telefones = new EventEmitter()
   novoTelefoneForm: FormGroup
   novoEnderecoForm: FormGroup
   novoUsuarioForm: FormGroup
+  updateTelefoneForm: FormGroup
+  codigoTelefone: number
   estados = [
     "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"
   ];
@@ -42,10 +46,14 @@ export class InfosFuncionarioComponent implements OnInit {
       LOGIN: this.fb.control(null, []),
       SENHA: this.fb.control(null, [])
     })
+    this.updateTelefoneForm = this.fb.group({
+      DDD: this.fb.control(null, []),
+      NUMERO: this.fb.control(null, [])
+    })
   }
 
   novoTelefone(telefone: Telefone) {
-    this.fs.novoTelefone(this.funcionario.PESSOA_CODIGO, telefone).subscribe(res => {
+    this.fs.novoTelefone(this.funcionario.PESSOA_CODIGO, telefone).subscribe((res) => {
       this.fs.telefoneById(this.funcionario.PESSOA_CODIGO.toString()).subscribe(res => {
         this.telefones = res
         this.novoTelefoneForm.reset()
@@ -103,6 +111,26 @@ export class InfosFuncionarioComponent implements OnInit {
           })
         })
       }
+    })
+  }
+
+  buscaTelefone(codTelefone) {
+    this.fs.telefoneId(codTelefone).subscribe(telefone => {
+      this.codigoTelefone = telefone.CODIGO
+      this.updateTelefoneForm.patchValue({
+        DDD: telefone.DDD,
+        NUMERO: telefone.NUMERO
+      })
+    })
+  }
+
+  updateTelefone(telefoneAtualizado) {
+    this.fs.updateTelefone(this.codigoTelefone, telefoneAtualizado).subscribe(() => {
+      this.fs.telefoneById(this.funcionario.PESSOA_CODIGO.toString()).subscribe(response => {
+        this.telefones = response
+        this.updateTelefoneForm.reset()
+        this.ns.notify('Telefone atualizado com sucesso!')
+      })
     })
   }
 

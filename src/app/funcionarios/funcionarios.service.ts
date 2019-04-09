@@ -138,7 +138,15 @@ export class FuncionariosService {
         })
     }
 
-    deleteDependente(_dep_nome: string, _dep_sobrenome: string){
+    deleteDependente(_dep_nome: string, _dep_sobrenome: string) {
         return this.http.delete<Dependente>(`${SALV_API}/dependente/${_dep_nome}/${_dep_sobrenome}`)
+    }
+
+    telefoneId(id): Observable<Telefone>{
+        return this.http.get<Telefone>(`${SALV_API}/telefone/${id}`)
+    }
+
+    updateTelefone(id, telefone: Telefone) {
+        return this.http.put<Telefone>(`${SALV_API}/telefone/${id}`, telefone)
     }
 }
