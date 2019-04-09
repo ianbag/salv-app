@@ -142,11 +142,19 @@ export class FuncionariosService {
         return this.http.delete<Dependente>(`${SALV_API}/dependente/${_dep_nome}/${_dep_sobrenome}`)
     }
 
-    telefoneId(id): Observable<Telefone>{
+    telefoneId(id): Observable<Telefone> {
         return this.http.get<Telefone>(`${SALV_API}/telefone/${id}`)
     }
 
     updateTelefone(id, telefone: Telefone) {
         return this.http.put<Telefone>(`${SALV_API}/telefone/${id}`, telefone)
+    }
+
+    enderecoId(id): Observable<Endereco> {
+        return this.http.get<Endereco>(`${SALV_API}/endereco/${id}`)
+    }
+
+    updateEndereco(id, endereco: Endereco) {
+        return this.http.put<Endereco>(`${SALV_API}/endereco/${id}`, endereco)
     }
 }
