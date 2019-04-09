@@ -165,4 +165,12 @@ export class FuncionariosService {
     updateUsuario(id, usuario: Usuario) {
         return this.http.put<Usuario>(`${SALV_API}/usuario/${id}`, usuario)
     }
+
+    dependenteId(id, nome, sobrenome): Observable<Dependente> {
+        return this.http.get<Dependente>(`${SALV_API}/dependente/${id}/${nome}/${sobrenome}`)
+    }
+
+    updateDependente(id, nome, sobrenome, dependente: Dependente) {
+        return this.http.put<Dependente>(`${SALV_API}/dependente/${id}/${nome}/${sobrenome}`, dependente)
+    }
 }
