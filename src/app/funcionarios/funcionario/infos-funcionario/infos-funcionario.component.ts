@@ -50,6 +50,16 @@ export class InfosFuncionarioComponent implements OnInit {
             DDD: this.fb.control(null, []),
             NUMERO: this.fb.control(null, [])
         })
+        this.updateEnderecoForm = this.fb.group({
+            ENDERECO: this.fb.control(null, []),
+            NUMERO: this.fb.control(null, []),
+            BAIRRO: this.fb.control(null, []),
+            COMPLEMENTO: this.fb.control(null, []),
+            CIDADE: this.fb.control(null, []),
+            ESTADO: this.fb.control(null, []),
+            CEP: this.fb.control(null, []),
+            REFERENCIA: this.fb.control(null, [])
+        })
     }
 
     novoTelefone(telefone: Telefone) {
