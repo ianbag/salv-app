@@ -17,7 +17,9 @@ export class InfosFuncionarioComponent implements OnInit {
     novoEnderecoForm: FormGroup
     novoUsuarioForm: FormGroup
     updateTelefoneForm: FormGroup
+    updateEnderecoForm: FormGroup
     codigoTelefone: number
+    codigoEndereco: number
     estados = [
         "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"
     ];
@@ -128,6 +130,32 @@ export class InfosFuncionarioComponent implements OnInit {
                 this.telefones = response
                 this.updateTelefoneForm.reset()
                 this.ns.notify('Telefone atualizado com sucesso!')
+            })
+        })
+    }
+
+    buscaEndereco(codEndereco) {
+        this.fs.enderecoId(codEndereco).subscribe(endereco => {
+            this.codigoEndereco = endereco.CODIGO
+            this.updateEnderecoForm.patchValue({
+                ENDERECO: endereco.ENDERECO,
+                NUMERO: endereco.NUMERO,
+                BAIRRO: endereco.BAIRRO,
+                COMPLEMENTO: endereco.COMPLEMENTO,
+                CIDADE: endereco.CIDADE,
+                ESTADO: endereco.ESTADO,
+                CEP: endereco.CEP,
+                REFERENCIA: endereco.REFERENCIA
+            })
+        })
+    }
+
+    updateEndereco(enderecoAtualizado) {
+        this.fs.updateEndereco(this.codigoEndereco, enderecoAtualizado).subscribe(() => {
+            this.fs.enderecoById(this.funcionario.PESSOA_CODIGO.toString()).subscribe(response => {
+                this.enderecos = response
+                this.updateEnderecoForm.reset()
+                this.ns.notify('Endereço atualizado com sucesso!')
             })
         })
     }
