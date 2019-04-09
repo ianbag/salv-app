@@ -157,4 +157,12 @@ export class FuncionariosService {
     updateEndereco(id, endereco: Endereco) {
         return this.http.put<Endereco>(`${SALV_API}/endereco/${id}`, endereco)
     }
+
+    usuarioId(id): Observable<Usuario> {
+        return this.http.get<Usuario>(`${SALV_API}/usuario/${id}`)
+    }
+
+    updateUsuario(id, usuario: Usuario) {
+        return this.http.put<Usuario>(`${SALV_API}/usuario/${id}`, usuario)
+    }
 }
