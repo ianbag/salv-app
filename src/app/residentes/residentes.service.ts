@@ -14,10 +14,19 @@ export class ResidentesService {
     familiar: Familiar
     endereco: Endereco
     telefones: Telefone[]
-    convenio: Residente_Convenio
+    residenteConvenio: Residente_Convenio
 
 
     constructor(private http: HttpClient) { }
+
+    clearDataResidente(){
+        this.residente = null
+        this.pessoa = null
+        this.familiar = null
+        this.endereco = null
+        this.telefones = null
+        this.residenteConvenio = null
+    }
 
     residentes(): Observable<Residente[]> {
         return this.http.get<Residente[]>(`${SALV_API}/residente`)
@@ -41,30 +50,6 @@ export class ResidentesService {
 
     convenios() : Observable<Residente_Convenio[]>{
         return this.http.get<Residente_Convenio[]>(`${SALV_API}/convenio`)
-    }
-
-    createPessoa(pessoa: Pessoa): Observable<Pessoa> {
-        return this.http.post<Pessoa>(`${SALV_API}/pessoa`, pessoa)
-    }
-
-    createResidente(residente: Residente): Observable<Residente> {
-        return this.http.post<Residente>(`${SALV_API}/residente`, residente)
-    }
-
-    createFamiliar(familiar: Familiar): Observable<Familiar> {
-        return this.http.post<Familiar>(`${SALV_API}/familiar`, familiar)
-    }
-
-    createResidenteFamiliar(residenteFamiliar): Observable<any> {
-        return this.http.post<Familiar>(`${SALV_API}/residente_familiar`, residenteFamiliar)
-    }
-
-    createEndereco(endereco: Endereco): Observable<Endereco> {
-        return this.http.post<Endereco>(`${SALV_API}/endereco`, endereco)
-    }
-
-    createEnderecoFamiliar(enderecoFamiliar): Observable<any> {
-        return this.http.post<Familiar>(`${SALV_API}/endereco_familiar`, enderecoFamiliar)
     }
 
     createNewResidente() {
@@ -100,9 +85,9 @@ export class ResidentesService {
                                 }
                                 console.log("TELEFONESFAMILIARES", TELEFONES_FAMILIARES)
                                 return this.http.post<any>(`${SALV_API}/telefones`, TELEFONES_FAMILIARES).switchMap(resTelefonesFamiliares => {
-                                    console.log("CONVENIO", this.convenio)
-                                    this.convenio.RESIDENTE_CODIGO = resResidente.CODIGO_RESIDENTE
-                                    return this.http.post<any>(`${SALV_API}/residente_convenio`, this.convenio)
+                                    console.log("CONVENIO", this.residenteConvenio)
+                                    this.residenteConvenio.RESIDENTE_CODIGO = resResidente.CODIGO_RESIDENTE
+                                    return this.http.post<any>(`${SALV_API}/residente_convenio`, this.residenteConvenio)
                                 })
                             })
                         })
