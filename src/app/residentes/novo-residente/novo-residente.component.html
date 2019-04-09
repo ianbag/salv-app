@@ -91,7 +91,7 @@
               <div class="col-sm-4 col-sm-12" formGroupName="PESSOA">
                 <label>Data de Nascimento </label>
                 <div class="input-group date">
-                  <input type="date" class="form-control pull-right" id="datepicker" formControlName="DATA_NASCIMENTO" maxlength="8">
+                  <input type="date" class="form-control pull-right" id="datepicker" formControlName="DATA_NASCIMENTO">
                 </div>
                 <br>
               </div>
@@ -243,7 +243,6 @@
             </div>
           </div>
           <!--OUTROS FINAL-->
-          {{novoResidenteForm.valid}}
           <!--BOTÃO-->
           <div class="col-sm-12 col-sm-12">
             <button (click)="novoResidente(novoResidenteForm.value)" style="margin-left: 10px"
