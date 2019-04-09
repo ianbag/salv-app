@@ -8,14 +8,14 @@ import { Convenio, Telefone, Endereco, ConvenioQuery, Telefone_Convenio, Enderec
 export class ConveniosService {
 
     constructor(private http: HttpClient) { }
-    
+
     convenios(): Observable<Convenio[]> {
         return this.http.get<Convenio[]>(`${SALV_API}/convenio`)
     }
 
     conveniosById(id: number): Observable<Convenio> {
         return this.http.get<Convenio>(`${SALV_API}/convenio/${id}`)
-    } 
+    }
 
     telefoneById(id: string): Observable<Telefone[]> {
         return this.http.get<Telefone[]>(`${SALV_API}/telefone_convenio/${id}`)
@@ -39,9 +39,9 @@ export class ConveniosService {
                 delete convenio.ENDERECO
                 let _rel_end_conv = {
                     CONVENIO_CODIGO: resConvenio.CODIGO,
-                    ENDERECO_CODIGO: resEndereco.CODIGO 
+                    ENDERECO_CODIGO: resEndereco.CODIGO
                 }
-                return this.http.post<Endereco_Convenio>(`${SALV_API}/endereco_convenio`, _rel_end_conv).switchMap(resEndC =>{
+                return this.http.post<Endereco_Convenio>(`${SALV_API}/endereco_convenio`, _rel_end_conv).switchMap(resEndC => {
                     return this.http.post<Telefone>(`${SALV_API}/telefone`, telefone).switchMap(resTelefone => {
                         delete convenio.TELEFONE
                         let _rel_tel_conv = {
@@ -54,16 +54,17 @@ export class ConveniosService {
                 })
             })
         })
-        
+
 
     }
 
-    updateConvenio(cod_tel: number, cod_end: number, cod_conv: number, telefone: Telefone, endereco: Endereco, convenio: Convenio) {
-        return this.http.put<Convenio>(`${SALV_API}/convenio/${cod_conv}`, convenio).switchMap(resConv =>{
+    updateConvenio(cod_conv, cod_end, cod_tel, telefone, endereco, convenio) {
+        console.log(convenio)
+        return this.http.put<Convenio>(`${SALV_API}/convenio/${cod_conv}`, convenio).switchMap(resConv => {
             return this.http.put<Endereco>(`${SALV_API}/endereco/${cod_end}`, endereco).switchMap(resEnd => {
-                return this.http.put<Telefone>(`${SALV_API}/telefone/${cod_conv}`, telefone)
-                })
+                return this.http.put<Telefone>(`${SALV_API}/telefone/${cod_tel}`, telefone)
             })
-        }
-       
+        })
+    }
+
 }
