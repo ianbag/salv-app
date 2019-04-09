@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators, AbstractControl, FormControl } from
 import { ResidentesService } from '../residentes.service';
 import { trigger, state, style, transition, animate } from '@angular/animations'
 import { Route, Router } from '@angular/router';
+import { NotificationService } from 'src/app/shared/notification.service';
 
 @Component({
   selector: 'salv-novo-residente',
@@ -69,7 +70,12 @@ export class NovoResidenteComponent implements OnInit {
   pessoa: Pessoa
   residente: Residente
 
-  constructor(private formBuilder: FormBuilder, private residentesService: ResidentesService, private router: Router) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private residentesService: ResidentesService,
+    private router: Router,
+    private notificationService: NotificationService
+  ) { }
 
   markAllDirty(control: AbstractControl) {
     if (control.hasOwnProperty('controls')) {
@@ -151,6 +157,7 @@ export class NovoResidenteComponent implements OnInit {
     else {
       this.markAllDirty(this.novoResidenteForm)
       console.log(this.novoResidenteForm.controls)
+      this.notificationService.notify(`Preencha os campos obrigatórios!`)
     }
   }
 
