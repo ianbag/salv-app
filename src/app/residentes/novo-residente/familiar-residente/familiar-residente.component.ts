@@ -25,7 +25,9 @@ export class FamiliarResidenteComponent implements OnInit {
   familiarresidenteState = 'ready'
 
   estados = [
-    "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"
+    "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT",
+    "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO",
+    "RR", "SC", "SP", "SE", "TO"
   ];
 
   familiarResidenteForm: FormGroup;
@@ -50,7 +52,7 @@ export class FamiliarResidenteComponent implements OnInit {
       for (let inner in ctrl.controls)
         this.markAllDirty(ctrl.controls[inner] as AbstractControl);
     }
-    else 
+    else
       (<FormControl>(control)).markAsDirty();
   }
 
@@ -78,12 +80,10 @@ export class FamiliarResidenteComponent implements OnInit {
 
     if (this.endereco != undefined)
       this.familiarResidenteForm.controls['ENDERECOS'].setValue(this.endereco)
-    //this.familiarResidenteForm.controls['TELEFONES'].setValue(this.telefone)
+
     if (this.telefone != undefined)
-      this.telefone.forEach(element => {
-        this.addTelefones()
-        console.log("ELEMENTOS TELEFONE: ", element)
-      })
+      this.telefone.forEach(() => this.addTelefones())
+
     if (this.familiar != undefined)
       this.familiarResidenteForm.patchValue(this.familiar)
   }
@@ -105,8 +105,7 @@ export class FamiliarResidenteComponent implements OnInit {
   }
 
   removeTelefone(index) {
-    console.log('index;>: ', index);
-    if (this.telefonesArray.length != 1){
+    if (this.telefonesArray.length != 1) {
       this.telefonesArray = this.familiarResidenteForm.get('TELEFONES') as FormArray;
       this.telefonesArray.removeAt(index)
     }
@@ -125,7 +124,7 @@ export class FamiliarResidenteComponent implements OnInit {
     }
     else {
       this.markAllDirty(this.familiarResidenteForm)
-      console.log(this.familiarResidenteForm.controls)
+      //console.log(this.familiarResidenteForm.controls)
       this.notificationService.notify(`Preencha os campos obrigatórios!`)
     }
   }

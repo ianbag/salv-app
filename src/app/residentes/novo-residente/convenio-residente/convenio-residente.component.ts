@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, transition, style, animate } from '@angular/animations'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl, FormControl } from '@angular/forms';
 import { ResidentesService } from '../../residentes.service';
 import { Convenio } from 'src/app/convenios/convenio.model';
 import { Residente, Residente_Convenio } from '../../residente/residente.model';
@@ -31,29 +31,63 @@ export class ConvenioResidenteComponent implements OnInit {
   residente: Residente
   familiar: Familiar
   convenios: Residente_Convenio[]
+  residenteConvenio: Residente_Convenio
 
-  constructor(private formBuilder: FormBuilder, private residentesService: ResidentesService, private router: Router, private notificationService: NotificationService) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private residentesService: ResidentesService,
+    private router: Router,
+    private notificationService: NotificationService
+  ) { }
+
+  markAllDirty(control: AbstractControl) {
+    if (control.hasOwnProperty('controls')) {
+      control.markAsDirty()
+      let ctrl = <any>control;
+      for (let inner in ctrl.controls)
+        this.markAllDirty(ctrl.controls[inner] as AbstractControl);
+    }
+    else
+      (<FormControl>(control)).markAsDirty();
+  }
 
   ngOnInit() {
+    this.residenteConvenio = this.residentesService.residenteConvenio
+
     this.residentesService.convenios()
-    .subscribe(convenio => this.convenios = convenio)
+      .subscribe(convenio => this.convenios = convenio)
 
     this.convenioResidenteForm = this.formBuilder.group({
       NUMERO_CONVENIO: this.formBuilder.control(null, [Validators.required]),
-      TITULAR_CONVENIO: this.formBuilder.control(null, []),
+      TITULAR_CONVENIO: this.formBuilder.control(null, [Validators.required]),
       PARENTESCO_TITULAR: this.formBuilder.control(null, []),
       CONVENIO_CODIGO: this.formBuilder.control(null, [Validators.required]),
     })
+
+    if (this.residenteConvenio != undefined)
+      this.convenioResidenteForm.patchValue(this.residenteConvenio)
   }
 
-  convenioResidente(convenio: Residente_Convenio) {
-    this.residentesService.convenio = convenio
-    this.residentesService.createNewResidente()
-      .subscribe(res => {
-        console.log("RESPONSE CADASTRO RESIDENTE: ", res)
-        this.router.navigate(['/residentes'])
-        this.notificationService.notify(`Residente inserido com sucesso!`)
-      })
+  voltarFamiliar(residenteConvenio: Residente_Convenio) {
+    this.residentesService.residenteConvenio = residenteConvenio
+  }
+
+  convenioResidente(residenteConvenio: Residente_Convenio) {
+    if (this.convenioResidenteForm.valid == true) {
+      this.residentesService.residenteConvenio = residenteConvenio
+      this.residentesService.createNewResidente()
+        .subscribe(res => {
+          console.log("CREATE NEW RESIDENTE: ", res)
+          this.router.navigate(['/residentes'])
+          this.notificationService.notify(`Residente inserido com sucesso!`)
+          this.residentesService.clearDataResidente()
+        })
+    }
+    else {
+      this.markAllDirty(this.convenioResidenteForm)
+      //console.log(this.convenioResidenteForm.controls)
+      this.notificationService.notify(`Preencha os campos obrigatórios!`)
+    }
   }
 }
 
