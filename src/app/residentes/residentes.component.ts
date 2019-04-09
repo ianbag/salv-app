@@ -34,6 +34,9 @@ export class ResidentesComponent implements OnInit {
   ngOnInit() {
     this.residentesService.residentes()
       .subscribe(residentes => this.residentes = residentes)
+
+    // limpar os dados armazenados no services toda vez que for inicializado
+    this.residentesService.clearDataResidente() 
   }
 
 
