@@ -92,12 +92,12 @@ export class EditarResidenteComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.residentesService.residenteById(this.route.snapshot.params['id'])
-      .subscribe(res => {
-        this.residentesService.residente = res
-        this.residentesService.pessoa = res.PESSOA
-      })
-
+    if((this.residentesService.residente == undefined) && (this.residentesService.pessoa == undefined))
+      this.residentesService.residenteById(this.route.snapshot.params['id'])
+        .subscribe(res => {
+          this.residentesService.residente = res
+          this.residentesService.pessoa = res.PESSOA
+        })
 
     this.novoResidenteForm = this.formBuilder.group({
       // INFORMAÇÕES PESSOAIS INICIO
