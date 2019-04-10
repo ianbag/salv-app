@@ -40,6 +40,10 @@ export class ResidentesService {
         return this.http.get<Familiar[]>(`${SALV_API}/residente_familiar/${id}`)
     }
 
+    telefoneFamiliarByID(id: number): Observable<Telefone[]>{
+        return this.http.get<Telefone[]>(`${SALV_API}/telefone_familiar/${id}`)
+    }
+
     convenioById(id: string): Observable<Convenio[]> {
         return this.http.get<Convenio[]>(`${SALV_API}/residente_convenio/${id}`)
     }
@@ -96,6 +100,42 @@ export class ResidentesService {
                 })
             })
         })
+    }
+
+    updateResidente(dataForm: Residente, idResidente, idPessoa){
+        return this.http.put<Residente>(`${SALV_API}/residente/${idResidente}`,dataForm).switchMap(res => {
+            return this.http.put<Pessoa>(`${SALV_API}/pessoa/${idPessoa}`, dataForm.PESSOA)
+        })
+    }
+
+    createNewFamiliar(familiar: Familiar, codigoResidente){
+        return this.http.post<Familiar>(`${SALV_API}/familiar`, familiar).switchMap(resFamiliar => {
+            let RESIDENTE_FAMILIAR = {
+                FAMILIAR_CODIGO: resFamiliar.CODIGO,
+                RESIDENTE_CODIGO: codigoResidente
+            }
+            return this.http.post<any>(`${SALV_API}/residente_familiar`, RESIDENTE_FAMILIAR).switchMap(resResidenteFamiliar => {
+                return this.http.post<Endereco>(`${SALV_API}/endereco`, familiar.ENDERECOS).switchMap(resEndereco => {
+                    let ENDERECO_FAMILIAR = {
+                        FAMILIAR_CODIGO: resFamiliar.CODIGO,
+                        ENDERECO_CODIGO: resEndereco.CODIGO
+                    }
+                    return this.http.post<any>(`${SALV_API}/endereco_familiar`, ENDERECO_FAMILIAR).switchMap(resEnderecoFamiliar => {
+                        let TELEFONES_FAMILIARES = {
+                            familiar: resFamiliar.CODIGO,
+                            telefones: familiar['TELEFONES']
+                        }
+                        return this.http.post<any>(`${SALV_API}/telefones`, TELEFONES_FAMILIARES)
+                    })
+                })
+            })
+            
+        })
+    }
+
+    createNewConvenio(residenteConvenio: Residente_Convenio, codigoResidente){
+        residenteConvenio.RESIDENTE_CODIGO = codigoResidente
+        return this.http.post<any>(`${SALV_API}/residente_convenio`, residenteConvenio)
     }
 
 }
