@@ -14,12 +14,12 @@
               <div class="row">
                 <div class="col-sm-6 col-sm-12" id="inputValidator">
                   <salv-input-container errorMessage="Campo Obrigatório" label="Nome">
-                    <input type="text" class="form-control" formControlName="NOME_CONVENIO" placeholder="Nome" autocomplete="off">
+                    <input type="text" class="form-control" formControlName="NOME_CONVENIO" placeholder="Nome" autocomplete="off" maxlength="100">
                   </salv-input-container>
                 </div>
                 <div class="col-sm-6 col-sm-12" id="inputValidator">
                   <salv-input-container errorMessage="Campo Obrigatório" label="Tipo do convênio">
-                    <input type="text" class="form-control" formControlName="TIPO_CONVENIO" placeholder="Tipo do convênio">
+                    <input type="text" class="form-control" formControlName="TIPO_CONVENIO" placeholder="Tipo do convênio" autocomplete="off" maxlength="100">
                   </salv-input-container>
                 </div>
               </div>
@@ -27,26 +27,26 @@
               <div class="row">
                 <div class="col-sm-4 col-sm-12" id="inputValidator" formGroupName="ENDERECO">
                   <salv-input-container errorMessage="Campo Obrigatório" label="Endereço">
-                    <input type="text" class="form-control" formControlName="ENDERECO" placeholder="Endereço" autocomplete="off">
+                    <input type="text" class="form-control" formControlName="ENDERECO" placeholder="Endereço" autocomplete="off" maxlength="100">
                   </salv-input-container>
                 </div>
                 <div class="col-sm-2 col-sm-12" id="inputValidator" formGroupName="ENDERECO">
                   <salv-input-container errorMessage="Campo Obrigatório" label="Número">
-                    <input type="text" class="form-control" formControlName="NUMERO" placeholder="Número" autocomplete="off">
+                    <input type="text" class="form-control" formControlName="NUMERO" placeholder="Número" autocomplete="off" maxlength="5">
                   </salv-input-container>
                 </div>
                 <div class="col-sm-2 col-sm-12" id="inputValidator" formGroupName="ENDERECO">
                   <salv-input-container errorMessage="Campo Obrigatório" label="Bairro">
-                    <input type="text" class="form-control" formControlName="BAIRRO" placeholder="Bairro" autocomplete="off">
+                    <input type="text" class="form-control" formControlName="BAIRRO" placeholder="Bairro" autocomplete="off" maxlength="50">
                   </salv-input-container>
                 </div>
                 <div class="col-sm-3 col-sm-12" formGroupName="ENDERECO">
                   <label>Complemento</label>
-                  <input type="text" class="form-control" formControlName="COMPLEMENTO" placeholder="Complemento" autocomplete="off">
+                  <input type="text" class="form-control" formControlName="COMPLEMENTO" placeholder="Complemento" autocomplete="off" maxlength="50">
                 </div>
                 <div class="col-sm-2 col-sm-12" id="inputValidator" formGroupName="ENDERECO">
                   <salv-input-container errorMessage="Campo Obrigatório" label="Cidade">
-                    <input type="text" class="form-control" formControlName="CIDADE" placeholder="Cidade" autocomplete="off">
+                    <input type="text" class="form-control" formControlName="CIDADE" placeholder="Cidade" autocomplete="off" maxlength="50">
                   </salv-input-container>
                 </div>
                 <div class="col-sm-2 col-sm-12" id="inputValidator" formGroupName="ENDERECO">
@@ -62,12 +62,12 @@
               <div class="row">
                 <div class="col-sm-3 col-sm-12" id="inputValidator" formGroupName="ENDERECO">
                   <salv-input-container errorMessage="Campo Obrigatório" label="CEP">
-                    <input type="text" mask="00.000-000" class="form-control" formControlName="CEP" placeholder="CEP" autocomplete="off">
+                    <input type="text" mask="00.000-000" class="form-control" formControlName="CEP" placeholder="CEP" autocomplete="off" maxlength="10">
                   </salv-input-container>
                 </div>
                 <div class="col-sm-3 col-sm-12" formGroupName="ENDERECO">
                   <label>Referência</label>
-                  <input type="text" class="form-control" formControlName="REFERENCIA" placeholder="Referência" autocomplete="off">
+                  <input type="text" class="form-control" formControlName="REFERENCIA" placeholder="Referência" autocomplete="off" maxlength="100">
                     <br>
                 </div>
               </div>
@@ -75,12 +75,12 @@
 
                 <div class="col-sm-2 col-sm-12" id="inputValidator" formGroupName="TELEFONE">
                   <salv-input-container errorMessage="Campo Obrigatório" label="DDD">
-                  <input type="text" class="form-control" formControlName="DDD" placeholder="DDD" autocomplete="off">
+                  <input type="text" class="form-control" formControlName="DDD" placeholder="DDD" autocomplete="off" maxlength="3">
                   </salv-input-container>
                 </div>
                 <div class="col-sm-3 col-sm-12" id="inputValidator" formGroupName="TELEFONE">
                   <salv-input-container errorMessage="Campo Obrigatório" label="Telefone">
-                  <input type="text" class="form-control" formControlName="NUMERO" placeholder="Telefone" autocomplete="off">
+                  <input type="text" class="form-control" formControlName="NUMERO" placeholder="Telefone" autocomplete="off" maxlength="9">
                   </salv-input-container>
                 </div>
 
@@ -98,7 +98,7 @@
   
               <div class="col-sm-12 col-sm-12">
                 <a style="margin-left: 10px" (click)="novoConvenio(novoConvenioForm.value)" class="btn btn-success botao pull-right">Salvar</a>
-                <a type="submit" class="btn btn-default botao pull-right" [routerLink]="['/convenio-residente']">Voltar</a>
+                <a type="submit" class="btn btn-default botao pull-right" [routerLink]="['/convenios']">Voltar</a>
               </div>
             </div>
           </div>
