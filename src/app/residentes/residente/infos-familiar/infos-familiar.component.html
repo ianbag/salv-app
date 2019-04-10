@@ -1,6 +1,6 @@
 <div class="col-md-12">
   <div class="col-sm-12 col-xs-12">
-    <h4><strong>Informações pessoais</strong></h4>
+    <h4><strong>Informações de {{familiar?.NOME}}</strong></h4>
   </div>
 
   <div class="col-xs-6 col-xs-12">
@@ -12,7 +12,10 @@
   </div>
 
   <div class="col-xs-12 col-xs-12">
-    <strong>Telefone: </strong> {{familiar?.DDD}} {{familiar?.TELEFONE}}
+    <strong>Telefones: </strong>
+    <span *ngFor="let telefone of telefones">
+      ({{telefone.TELEFONE.DDD}}) {{telefone.TELEFONE.NUMERO}}
+    </span>
   </div>
 
   <div class="col-xs-4 col-xs-12">

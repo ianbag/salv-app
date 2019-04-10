@@ -1,5 +1,6 @@
-import { Familiar } from './familiar.model';
+import { Familiar, Telefone } from './familiar.model';
 import { Component, OnInit, Input } from '@angular/core';
+import { ResidentesService } from '../../residentes.service';
 
 @Component({
   selector: 'salv-infos-familiar',
@@ -9,10 +10,15 @@ export class InfosFamiliarComponent implements OnInit {
 
   @Input() familiar: Familiar
 
-  constructor() { }
+  telefones: Telefone[]
+
+  constructor(private residenteService: ResidentesService) { }
 
   ngOnInit() {
-    console.log('infos familiar')
+    this.residenteService.telefoneFamiliarByID(this.familiar.CODIGO)
+    .subscribe(telefone => {
+      this.telefones = telefone
+    })
   }
 
 
