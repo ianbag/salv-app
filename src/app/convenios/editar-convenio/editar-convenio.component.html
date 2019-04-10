@@ -14,12 +14,12 @@
               <div class="row">
                   <div class="col-sm-6 col-sm-12">
                       <salv-input-container errorMessage="Campo Obrigatório" label="Nome">
-                        <input type="text" class="form-control" formControlName="NOME_CONVENIO" placeholder="Nome" autocomplete="off">
+                        <input type="text" class="form-control" formControlName="NOME_CONVENIO" placeholder="Nome" autocomplete="off" maxlength="100">
                       </salv-input-container>
                     </div>
                     <div class="col-sm-6 col-sm-12">
                         <salv-input-container errorMessage="Campo Obrigatório" label="Tipo do convênio">
-                          <input type="text" class="form-control" formControlName="TIPO_CONVENIO" placeholder="Tipo" autocomplete="off">
+                          <input type="text" class="form-control" formControlName="TIPO_CONVENIO" placeholder="Tipo" autocomplete="off" maxlength="100">
                         </salv-input-container>
                     </div>
 
@@ -27,25 +27,25 @@
                         <div class="col-sm-3 col-sm-12" id="inputValidator" formGroupName="ENDERECO">
                           <salv-input-container errorMessage="Campo Obrigatório" label="Endereço">
                             <input type="text" class="form-control" formControlName="ENDERECO" placeholder="Endereço"
-                              autocomplete="off">
+                              autocomplete="off" maxlength="100">
                           </salv-input-container>
                         </div>
                         <div class="col-sm-3 col-sm-12" id="inputValidator" formGroupName="ENDERECO">
                           <salv-input-container errorMessage="Campo Obrigatório" label="Número">
                             <input type="text" class="form-control" formControlName="NUMERO" placeholder="Número"
-                              autocomplete="off">
+                              autocomplete="off" maxlength="5">
                           </salv-input-container>
                         </div>
                         <div class="col-sm-3 col-sm-12" id="inputValidator" formGroupName="ENDERECO">
                           <salv-input-container errorMessage="Campo Obrigatório" label="Bairro">
                             <input type="text" class="form-control" formControlName="BAIRRO" placeholder="Bairro"
-                              autocomplete="off">
+                              autocomplete="off" maxlength="50">
                           </salv-input-container>
                         </div>
                         <div class="col-sm-3 col-sm-12" formGroupName="ENDERECO">
                           <label>Complemento</label>
                           <input type="text" class="form-control" formControlName="COMPLEMENTO" placeholder="Complemento"
-                            autocomplete="off">
+                            autocomplete="off" maxlength="50">
                         </div>
                       </div>
 
@@ -53,7 +53,7 @@
                           <div class="col-sm-3 col-sm-12" formGroupName="ENDERECO">
                             <salv-input-container errorMessage="Campo Obrigatório" label="Cidade">
                               <input type="text" class="form-control" formControlName="CIDADE" placeholder="Cidade"
-                                autocomplete="off">
+                                autocomplete="off" maxlength="50">
                             </salv-input-container>
                           </div>
                           <div class="col-sm-3 col-sm-12" formGroupName="ENDERECO">
@@ -68,13 +68,13 @@
                           </div>
                           <div class="col-sm-3 col-sm-12" formGroupName="ENDERECO">
                             <salv-input-container errorMessage="Campo Obrigatório" label="CEP">
-                              <input type="text" class="form-control" formControlName="CEP" placeholder="CEP" autocomplete="off">
+                              <input type="text" class="form-control" formControlName="CEP" placeholder="CEP" autocomplete="off" maxlength="10">
                             </salv-input-container>
                           </div>
                           <div class="col-sm-3 col-sm-12" formGroupName="ENDERECO">
                             <label>Referência</label>
                             <input type="text" class="form-control" formControlName="REFERENCIA" placeholder="Referência"
-                              autocomplete="off">
+                              autocomplete="off" maxlength="100">
                           </div>
                         </div>
                       
@@ -82,13 +82,13 @@
                         <div class="row">
                             <div class="col-sm-2 col-sm-12" id="inputValidator" formGroupName="TELEFONE">
                               <salv-input-container errorMessage="Campo Obrigatório" label="DDD">
-                                <input type="text" class="form-control" formControlName="DDD" placeholder="DDD" autocomplete="off">
+                                <input type="text" class="form-control" formControlName="DDD" placeholder="DDD" autocomplete="off" maxlength="3">
                               </salv-input-container>
                             </div>
                             <div class="col-sm-3 col-sm-12" id="inputValidator" formGroupName="TELEFONE">
                               <salv-input-container errorMessage="Campo Obrigatório" label="Telefone">
                                 <input type="text" class="form-control" formControlName="NUMERO" placeholder="Telefone"
-                                  autocomplete="off">
+                                  autocomplete="off" maxlength="9">
                               </salv-input-container>
                             </div>
                           </div>
