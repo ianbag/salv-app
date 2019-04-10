@@ -7,12 +7,24 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute} from '@angular/router';
 
 import { NotificationService } from 'src/app/shared/notification.service';
+import { trigger, state, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'salv-editar-acompanhamento',
-  templateUrl: './editar-acompanhamento.component.html'
+  templateUrl: './editar-acompanhamento.component.html',
+  animations: [
+    trigger('editar-acompanhamentoAppeared', [
+      state('ready', style({opacity: 1})),
+      transition('void => ready', [
+        style({opacity: 0, transform: 'translate(-30px, -10px)'}),
+        animate('500ms 0s ease-in-out')
+      ])
+    ])
+  ] 
 })
 export class EditarAcompanhamentoComponent implements OnInit {
+
+  editaracompanhamentoState = 'ready'
 
 
   editarAcompanhamentoForm: FormGroup
