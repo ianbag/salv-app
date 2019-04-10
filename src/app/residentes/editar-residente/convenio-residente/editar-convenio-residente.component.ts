@@ -4,15 +4,15 @@ import { FormBuilder, FormGroup, Validators, AbstractControl, FormControl } from
 import { ResidentesService } from '../../residentes.service';
 import { Convenio } from 'src/app/convenios/convenio.model';
 import { Residente, Residente_Convenio } from '../../residente/residente.model';
-import { Route, Router } from '@angular/router';
+import { Route, Router, ActivatedRoute } from '@angular/router';
 import { Familiar } from '../../residente/infos-familiar/familiar.model';
 import { NotificationService } from 'src/app/shared/notification.service';
 
 @Component({
   selector: 'salv-convenio-residente',
-  templateUrl: './convenio-residente.component.html',
+  templateUrl: './editar-convenio-residente.component.html',
   animations: [
-    trigger('convenio-residenteAppeared', [
+    trigger('editar-convenio-residenteAppeared', [
       state('ready', style({ opacity: 1 })),
       transition('void => ready', [
         style({ opacity: 0, transform: 'translate(-30px, -10px)' }),
@@ -21,7 +21,7 @@ import { NotificationService } from 'src/app/shared/notification.service';
     ])
   ]
 })
-export class ConvenioResidenteComponent implements OnInit {
+export class EditarConvenioResidenteComponent implements OnInit {
 
   convenioresidenteState = 'ready'
 
@@ -33,11 +33,14 @@ export class ConvenioResidenteComponent implements OnInit {
   convenios: Residente_Convenio[]
   residenteConvenio: Residente_Convenio
 
+  id: any
+
   constructor(
     private formBuilder: FormBuilder,
     private residentesService: ResidentesService,
     private router: Router,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private route: ActivatedRoute
   ) { }
 
   markAllDirty(control: AbstractControl) {
@@ -52,10 +55,11 @@ export class ConvenioResidenteComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.id = this.route.snapshot.params['id']
     this.residenteConvenio = this.residentesService.residenteConvenio
 
     this.residentesService.convenios()
-    .subscribe(convenio => this.convenios = convenio)
+      .subscribe(convenio => this.convenios = convenio)
 
     this.convenioResidenteForm = this.formBuilder.group({
       NUMERO_CONVENIO: this.formBuilder.control(null, [Validators.required]),
@@ -78,7 +82,7 @@ export class ConvenioResidenteComponent implements OnInit {
       this.residentesService.createNewResidente()
         .subscribe(res => {
           console.log("CREATE NEW RESIDENTE: ", res)
-          this.router.navigate(['/residentes'])
+          this.router.navigate(['/residentes', this.id])
           this.notificationService.notify(`Residente inserido com sucesso!`)
           this.residentesService.clearDataResidente()
         })

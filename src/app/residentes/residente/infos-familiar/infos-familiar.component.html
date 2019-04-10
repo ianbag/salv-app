@@ -1,6 +1,7 @@
 <div class="col-md-12">
   <div class="col-sm-12 col-xs-12">
-    <h4><strong>Informações pessoais</strong></h4>
+    <h4><strong>Informações de {{familiar?.NOME}}</strong>
+      <button class="btn btn-warning botao" style="margin-left: 5px;" (click)="editarFamiliar(familiar)" data-toggle="modal" attr.data-target="#modalEditarFamiliar{{familiar?.CODIGO}}"><i class="fa fa-pencil"></i> Editar</button></h4>
   </div>
 
   <div class="col-xs-6 col-xs-12">
@@ -12,7 +13,10 @@
   </div>
 
   <div class="col-xs-12 col-xs-12">
-    <strong>Telefone: </strong> {{familiar?.DDD}} {{familiar?.TELEFONE}}
+    <strong>Telefones: </strong>
+    <span *ngFor="let tel of telefone">
+      ({{tel.TELEFONE.DDD}}) {{tel.TELEFONE.NUMERO}}
+    </span>
   </div>
 
   <div class="col-xs-4 col-xs-12">
@@ -47,4 +51,154 @@
     <strong>Referência: </strong> {{familiar?.REFERENCIA}}
   </div>
   <hr class="col-md-12">
+
+  <!-- INICIO MODAL EDITAR FAMILIAR -->
+<div class="modal fade" id="modalEditarFamiliar{{familiar?.CODIGO}}" tabindex="-1" role="dialog" attr.aria-labelledby="modalEditarFamiliar{{familiar?.CODIGO}}"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-body">
+
+      <div>
+        <div class="col-sm-12 col-sm-12" id="formTitle">
+          <h4 class="text-center"><strong>Editar Familiar {{familiar?.NOME}}</strong></h4>
+        </div>
+      </div>
+
+      <form [formGroup]="familiarResidenteForm" novalidate>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-sm-4 col-sm-12" id="inputValidator">
+              <salv-input-container errorMessage="Campo Obrigatório" label="Nome">
+                <span class="text-danger">*</span>
+                <input type="text" class="form-control" formControlName="NOME" placeholder="Nome"
+                  maxlength="100">
+              </salv-input-container>
+            </div>
+            <div class="col-sm-4 col-sm-12" id="inputValidator">
+              <salv-input-container errorMessage="Campo Obrigatório" label="Sobrenome">
+                <span class="text-danger">*</span>
+                <input type="text" class="form-control" formControlName="SOBRENOME" placeholder="Sobrenome"
+                  maxlength="100">
+              </salv-input-container>
+            </div>
+            <div class="col-sm-4 col-sm-12" id="inputValidator">
+              <salv-input-container errorMessage="Campo Obrigatório" label="Parentesco">
+                <span class="text-danger">*</span>
+                <input type="text" class="form-control" formControlName="PARENTESCO" placeholder="Parentesco"
+                  maxlength="50">
+              </salv-input-container>
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="col-sm-4 col-sm-12" id="inputValidator" formGroupName="ENDERECOS">
+              <salv-input-container errorMessage="Campo Obrigatório" label="Rua">
+                <span class="text-danger">*</span>
+                <input type="text" class="form-control" formControlName="ENDERECO" placeholder="Rua"
+                  maxlength="100">
+              </salv-input-container>
+            </div>
+            <div class="col-sm-4 col-sm-12" id="inputValidator" formGroupName="ENDERECOS">
+              <salv-input-container errorMessage="Campo Obrigatório" label="Número">
+                <span class="text-danger">*</span>
+                <input type="text" mask="0*" class="form-control" formControlName="NUMERO"
+                  placeholder="Número" maxlength="5">
+              </salv-input-container>
+            </div>
+            <div class="col-sm-4 col-sm-12" id="inputValidator" formGroupName="ENDERECOS">
+              <salv-input-container errorMessage="Campo Obrigatório" label="Bairro">
+                <span class="text-danger">*</span>
+                <input type="text" class="form-control" formControlName="BAIRRO" placeholder="Bairro"
+                  maxlength="50">
+              </salv-input-container>
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="col-sm-4 col-sm-12" id="inputValidator" formGroupName="ENDERECOS">
+              <salv-input-container errorMessage="Campo Obrigatório" label="Cidade">
+                <span class="text-danger">*</span>
+                <input type="text" class="form-control" formControlName="CIDADE" placeholder="Cidade"
+                  maxlength="50">
+              </salv-input-container>
+            </div>
+            <div class="col-sm-4 col-sm-12" id="inputValidator" formGroupName="ENDERECOS">
+              <salv-input-container errorMessage="Campo Obrigatório" label="Estado">
+                <span class="text-danger">*</span>
+                <select class="form-control" formControlName="ESTADO">
+                  <option value="" label="Selecione" disabled selected="selected"></option>
+                  <option *ngFor="let estado of estados">{{estado}}</option>
+                </select>
+              </salv-input-container>
+            </div>
+            <div class="col-sm-4 col-sm-12" id="inputValidator" formGroupName="ENDERECOS">
+              <salv-input-container errorMessage="Campo Obrigatório" label="CEP">
+                <span class="text-danger">*</span>
+                <input type="text" mask="00.000-000" class="form-control" formControlName="CEP"
+                  placeholder="CEP">
+              </salv-input-container>
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="col-sm-4 col-sm-12" formGroupName="ENDERECOS">
+              <label>Complemento </label>
+              <input type="text" class="form-control" formControlName="COMPLEMENTO" placeholder="Complemento">
+
+            </div>
+            <div class="col-sm-4 col-sm-12" formGroupName="ENDERECOS">
+              <label>Referência </label>
+              <input type="text" class="form-control" formControlName="REFERENCIA" placeholder="Referência"
+                maxlength="100">
+              <br>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 col-sm-12">
+              <label>Telefone <a type="submit" class="btn btn-success botao" (click)="addTelefones()"><i
+                    class="fa fa-plus"></i> Adicionar
+                  Telefone</a></label>
+            </div>
+
+            <div class="col-sm-12">
+              <div formArrayName="TELEFONES"
+                *ngFor="let telefone of familiarResidenteForm.get('TELEFONES').controls as tamanho; let i = index">
+                <div class="col-sm-12" [formGroupName]="i">
+                  <div class=" col-sm-4">
+                    <salv-input-container errorMessage="Campo Obrigatório" label="DDD {{i+1}}">
+                      <span class="text-danger">*</span>
+                      <input style="margin-top:5px; margin-bottom:5px;" type="text" mask="(000)"
+                        class="form-control" formControlName="DDD" placeholder="DDD">
+                    </salv-input-container>
+                  </div>
+
+                  <div class="col-sm-6">
+                    <salv-input-container errorMessage="Campo Obrigatório" label="Número {{i+1}}">
+                      <span class="text-danger">*</span>
+                      <input style="margin-top:5px; margin-bottom:5px;" type="text" mask="00000-0000"
+                        class="form-control" formControlName="NUMERO" placeholder="Número">
+                    </salv-input-container>
+                  </div>
+                  <div class="col-sm-2" style="margin-top:40px;">
+                    <button class="btn btn-danger botao" (click)="removeTelefone(i)"
+                      [disabled]="tamanho.length == 1"><i class="fa fa-minus"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+      <button type="button" class="btn btn-success" data-dismiss="modal"
+        (click)="familiarResidente(familiarResidenteForm.value)"
+        [disabled]="!familiarResidenteForm.valid">Salvar</button>
+    </div>
+  </div>
+</div>
+</div>
+<!-- FIM MODAL EDITAR FAMILIAR -->
 </div>

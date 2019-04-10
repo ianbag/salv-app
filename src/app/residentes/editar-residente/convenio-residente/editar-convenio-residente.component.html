@@ -1,7 +1,7 @@
 <section class="content">
 
-  <div class="box" [@convenio-residenteAppeared]="convenioresidenteState">
-    <h1>Adicionar convênio</h1>
+  <div class="box" [@editar-convenio-residenteAppeared]="convenioresidenteState">
+    <h1>Editar convênio</h1>
     <hr>
 
     <form role="form" [formGroup]="convenioResidenteForm">
@@ -66,7 +66,7 @@
             class="btn btn-success botao pull-right">Finalizar
             cadastro</button>
           <button type="submit" class="btn btn-default botao pull-right"
-            (click)="voltarFamiliar(convenioResidenteForm.value)" [routerLink]="['/familiar-residente']">Voltar</button>
+            (click)="voltarFamiliar(convenioResidenteForm.value)" [routerLink]="['/editar-familiar-residente', id]">Voltar</button>
         </div>
       </div>
     </form>

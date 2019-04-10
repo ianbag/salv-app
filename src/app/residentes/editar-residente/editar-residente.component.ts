@@ -4,14 +4,14 @@ import { FormBuilder, FormGroup, Validators, AbstractControl, FormControl } from
 
 import { ResidentesService } from '../residentes.service';
 import { trigger, state, style, transition, animate } from '@angular/animations'
-import { Route, Router } from '@angular/router';
+import { Route, Router, ActivatedRoute } from '@angular/router';
 import { NotificationService } from 'src/app/shared/notification.service';
 
 @Component({
-  selector: 'salv-novo-residente',
-  templateUrl: './novo-residente.component.html',
+  selector: 'salv-editar-residente',
+  templateUrl: './editar-residente.component.html',
   animations: [
-    trigger('novo-residenteAppeared', [
+    trigger('editar-residenteAppeared', [
       state('ready', style({ opacity: 1 })),
       transition('void => ready', [
         style({ opacity: 0, transform: 'translate(-30px, -10px)' }),
@@ -20,7 +20,7 @@ import { NotificationService } from 'src/app/shared/notification.service';
     ])
   ]
 })
-export class NovoResidenteComponent implements OnInit {
+export class EditarResidenteComponent implements OnInit {
 
   novoresidenteState = 'ready'
 
@@ -70,11 +70,14 @@ export class NovoResidenteComponent implements OnInit {
   pessoa: Pessoa
   residente: Residente
 
+  PESSOA_CODIGO: number
+
   constructor(
     private formBuilder: FormBuilder,
     private residentesService: ResidentesService,
     private router: Router,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private route: ActivatedRoute
   ) { }
 
   markAllDirty(control: AbstractControl) {
@@ -91,8 +94,13 @@ export class NovoResidenteComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.pessoa = this.residentesService.pessoa
-    this.residente = this.residentesService.residente
+    if((this.residentesService.residente == undefined) && (this.residentesService.pessoa == undefined))
+      this.residentesService.residenteById(this.route.snapshot.params['id'])
+        .subscribe(res => {
+          this.residentesService.residente = res
+          this.residentesService.pessoa = res.PESSOA
+          this.PESSOA_CODIGO = res.PESSOA_CODIGO
+        })
 
     this.novoResidenteForm = this.formBuilder.group({
       // INFORMAÇÕES PESSOAIS INICIO
@@ -142,19 +150,29 @@ export class NovoResidenteComponent implements OnInit {
       //OUTROS FINAL
     })
 
-    if (this.pessoa != undefined)
-      this.novoResidenteForm.controls['PESSOA'].setValue(this.pessoa)
-    if (this.residente != undefined)
-      this.novoResidenteForm.patchValue(this.residente)
+    setTimeout(() => {
+      this.pessoa = this.residentesService.pessoa
+      this.residente = this.residentesService.residente
+      delete this.pessoa.CODIGO // REMOVE CODIGO PARA INSERCAO NO FORM
+      delete this.pessoa['STATUS'] // REMOVE STATUS NAO EXISTENTE NO MODEL
+      if (this.pessoa != undefined)
+        this.novoResidenteForm.controls['PESSOA'].setValue(this.pessoa)
+      if (this.residente != undefined)
+        this.novoResidenteForm.patchValue(this.residente)
+    }, 1000)
   }
 
   novoResidente(residente: Residente) {
     this.residentesService.pessoa = residente.PESSOA
     this.residentesService.residente = residente
 
-    if (this.novoResidenteForm.valid == true)
-      this.router.navigate(['/familiar-residente'])
-    else {
+    if (this.novoResidenteForm.valid == true) {
+      this.residentesService.updateResidente(residente, this.route.snapshot.params['id'], this.PESSOA_CODIGO)
+      .subscribe(res => {
+        this.router.navigate(['/residentes'])
+        this.notificationService.notify(`Residente atualizado com sucesso!`)
+      })
+    } else {
       this.markAllDirty(this.novoResidenteForm)
       console.log(this.novoResidenteForm.controls)
       this.notificationService.notify(`Preencha os campos obrigatórios!`)

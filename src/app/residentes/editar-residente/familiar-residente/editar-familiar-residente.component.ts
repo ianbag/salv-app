@@ -4,14 +4,14 @@ import { Component, OnInit, Input } from '@angular/core';
 import { trigger, state, transition, style, animate } from '@angular/animations'
 import { ResidentesService } from '../../residentes.service';
 import { Endereco } from 'src/app/funcionarios/funcionario.model';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { NotificationService } from 'src/app/shared/notification.service';
 
 @Component({
   selector: 'salv-familiar-residente',
-  templateUrl: './familiar-residente.component.html',
+  templateUrl: './editar-familiar-residente.component.html',
   animations: [
-    trigger('familiar-residenteAppeared', [
+    trigger('editar-familiar-residenteAppeared', [
       state('ready', style({ opacity: 1 })),
       transition('void => ready', [
         style({ opacity: 0, transform: 'translate(-30px, -10px)' }),
@@ -20,7 +20,7 @@ import { NotificationService } from 'src/app/shared/notification.service';
     ])
   ]
 })
-export class FamiliarResidenteComponent implements OnInit {
+export class EditarFamiliarResidenteComponent implements OnInit {
 
   familiarresidenteState = 'ready'
 
@@ -37,12 +37,14 @@ export class FamiliarResidenteComponent implements OnInit {
   telefone: Telefone[]
 
   telefonesArray: FormArray
+  id: any
 
   constructor(
     private formBuilder: FormBuilder,
     private residentesService: ResidentesService,
     private router: Router,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private route: ActivatedRoute
   ) { }
 
   markAllDirty(control: AbstractControl) {
@@ -57,6 +59,8 @@ export class FamiliarResidenteComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.id = this.route.snapshot.params['id']
+
     this.endereco = this.residentesService.endereco
     this.telefone = this.residentesService.telefones
     this.familiar = this.residentesService.familiar
@@ -120,7 +124,7 @@ export class FamiliarResidenteComponent implements OnInit {
   familiarResidente(familiar: Familiar) {
     if (this.familiarResidenteForm.valid == true) {
       this.addDataServiceFamiliar(familiar)
-      this.router.navigate(['/convenio-residente'])
+      this.router.navigate(['/editar-convenio-residente', this.id])
     }
     else {
       this.markAllDirty(this.familiarResidenteForm)

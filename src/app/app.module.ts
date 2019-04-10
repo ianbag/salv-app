@@ -69,6 +69,9 @@ import { InfosDependenteComponent } from './funcionarios/funcionario/infos-depen
 import { NovoFuncionarioComponent } from './funcionarios/novo-funcionario/novo-funcionario.component';
 import { EditarAcompanhamentoComponent } from './acompanhamentos/editar-acompanhamento/editar-acompanhamento.component';
 import { EditarFuncionarioComponent } from './funcionarios/editar-funcionario/editar-funcionario.component';
+import { EditarConvenioResidenteComponent } from './residentes/editar-residente/convenio-residente/editar-convenio-residente.component';
+import { EditarFamiliarResidenteComponent } from './residentes/editar-residente/familiar-residente/editar-familiar-residente.component';
+import { EditarResidenteComponent } from './residentes/editar-residente/editar-residente.component';
 
 @NgModule({
   declarations: [
@@ -119,7 +122,10 @@ import { EditarFuncionarioComponent } from './funcionarios/editar-funcionario/ed
     InfosDependenteComponent,
     EditarAcompanhamentoComponent,
     NovoFuncionarioComponent,
-    EditarFuncionarioComponent
+    EditarFuncionarioComponent,
+    EditarConvenioResidenteComponent,
+    EditarFamiliarResidenteComponent,
+    EditarResidenteComponent
   ],
   imports: [
     BrowserModule,

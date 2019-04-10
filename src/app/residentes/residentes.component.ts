@@ -5,6 +5,7 @@ import { ResidentesService } from './residentes.service';
 import { Residente } from './residente/residente.model';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import * as jspdf from 'jspdf'
+import { NotificationService } from '../shared/notification.service';
 
 
 @Component({
@@ -28,11 +29,14 @@ export class ResidentesComponent implements OnInit {
 
   @ViewChild('reportResidentes') reportResidentes: ElementRef
 
-  constructor(private residentesService: ResidentesService, private dialogConfirmService: DialogConfirmService) { }
+  constructor(private residentesService: ResidentesService, private dialogConfirmService: DialogConfirmService, private notificationService: NotificationService) { }
 
   ngOnInit() {
     this.residentesService.residentes()
       .subscribe(residentes => this.residentes = residentes)
+
+    // limpar os dados armazenados no services toda vez que for inicializado
+    this.residentesService.clearDataResidente() 
   }
 
 
@@ -41,8 +45,11 @@ export class ResidentesComponent implements OnInit {
       .then((isTrue) => {
         if (isTrue) {
           this.residentesService.deleteResidente(id)
-            .subscribe(result => this.residentesService.residentes()
-              .subscribe(residentes => this.residentes = residentes))
+            .subscribe(result => {
+              this.residentesService.residentes()
+              .subscribe(residentes => this.residentes = residentes)
+              this.notificationService.notify(`Residente excluido com sucesso!`)
+            })
         }
       })
   }
