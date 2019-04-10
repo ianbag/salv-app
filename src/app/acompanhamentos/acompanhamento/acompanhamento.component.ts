@@ -1,3 +1,5 @@
+import { Funcionario, FuncionarioQuery } from './../../funcionarios/funcionario.model';
+import { Residente } from './../../residentes/residente/residente.model';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { AcompanhamentosService } from '../acompanhamentos.service';
@@ -21,10 +23,13 @@ import * as jspdf from 'jspdf'
 export class AcompanhamentoComponent implements OnInit {
 
     
-  residentes = []    
+    
   acompanhamentoState = 'ready'
 
-  acompanhamento: Acompanhamento
+  acompanhamento: Acompanhamento []
+  funcionarios: any[]
+  residentes: any[]
+
 
   @ViewChild('reportAcompanhamento') reportAcompanhamento: ElementRef
 
@@ -35,6 +40,21 @@ export class AcompanhamentoComponent implements OnInit {
     
     this.acompanhamentosService.acompanhamentoById(this.route.snapshot.params['id'])
       .subscribe(acompanhamento => { this.acompanhamento = acompanhamento[0]; console.log(acompanhamento) })
+
+      this.acompanhamentosService.AcompanhamentoFuncionarioQuery(this.route.snapshot.params['id']).subscribe(acompanhamento_funcionario => {
+
+       this.funcionarios = acompanhamento_funcionario
+
+        console.log('funcionario', this.funcionarios)
+      })
+
+      this.acompanhamentosService.AcompanhamentoResidenteQuery(this.route.snapshot.params['id']).subscribe(acompanhamento_residente => {
+
+        this.residentes = acompanhamento_residente
+ 
+         console.log('residente', this.residentes)
+       })
+       
       
   }
 

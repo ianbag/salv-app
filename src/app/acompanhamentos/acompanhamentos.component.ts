@@ -4,6 +4,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AcompanhamentosService } from './acompanhamentos.service';
 import { trigger, state, transition, style, animate } from '@angular/animations';
 import * as jspdf from 'jspdf'
+import { checkAndUpdateQuery } from '@angular/core/src/view/query';
 
 @Component({
   selector: 'salv-acompanhamentos',
@@ -29,10 +30,19 @@ export class AcompanhamentosComponent implements OnInit {
   constructor(private acompanhamentosService: AcompanhamentosService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    var counter
     this.acompanhamentosService.acompanhamentos()
-      .subscribe(acompanhamentos => this.acompanhamentos = acompanhamentos)
-  }
-
+      .subscribe(
+       
+        acompanhamentos => {
+          this.acompanhamentos = acompanhamentos
+          console.log('acompanahmentos', this.acompanhamentos)
+          
+         
+        
+           } )
+       
+      }      
   public downloadPDF() {
     let doc = new jspdf()
     let specialElementsHandlers = {

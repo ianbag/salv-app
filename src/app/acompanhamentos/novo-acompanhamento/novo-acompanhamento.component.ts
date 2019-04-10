@@ -112,7 +112,7 @@ export class NovoAcompanhamentoComponent implements OnInit {
       displayAllSelectedText: true,
       singleSelection: false,
       idField: 'CODIGO_FUNCIONARIO',
-      textField: 'NOME',
+      textField: 'FNOME',
       selectAllText: 'Marcar todos',
       unSelectAllText: 'Desmarcar todos',
       itemsShowLimit: 5,
@@ -129,6 +129,7 @@ export class NovoAcompanhamentoComponent implements OnInit {
 
     this.NovoAcompanhamentoService.createAcompanhamento(acompanhamento).subscribe(res => {
       this.ns.notify(`Acompanhamento inserido com sucesso!`)
+      this.router.navigate(['/acompanhamentos'])
     })
     console.log('acompanhamento', acompanhamento)
   }
