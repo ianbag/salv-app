@@ -154,6 +154,7 @@ export class EditarAcompanhamentoComponent implements OnInit {
 
     this.acompanhamentoService.updateAcompanhamento(editarAcomp, this.codigo_acompanhamento).subscribe(res => {
       this.ns.notify(`Acompanhamento atualizado com sucesso!`)
+      this.router.navigate(['/acompanhamentos'])
     })
     console.log('Edição acompanhamento', editarAcomp)
   }
