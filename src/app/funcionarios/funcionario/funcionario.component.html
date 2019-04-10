@@ -57,12 +57,12 @@
                                                 <div class="col-sm-6 col-sm-12">
                                                     <label>Nome</label>
                                                     <input type="text" class="form-control" formControlName="NOME"
-                                                        placeholder="Nome" autocomplete="off">
+                                                        placeholder="Nome" autocomplete="off" maxlength="50">
                                                 </div>
                                                 <div class="col-sm-6 col-sm-12">
                                                     <label>Sobrenome</label>
                                                     <input type="text" class="form-control" formControlName="SOBRENOME"
-                                                        placeholder="Sobrenome" autocomplete="off">
+                                                        placeholder="Sobrenome" autocomplete="off" maxlength="50">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -71,17 +71,17 @@
                                                     <input type="date" class="form-control"
                                                         formControlName="DATA_NASCIMENTO"
                                                         placeholder="Data de Nascimento" id="datepicker"
-                                                        autocomplete="off">
+                                                        autocomplete="off" max="2999-12-31">
                                                 </div>
                                                 <div class="col-sm-4 col-sm-12">
                                                     <label>RG</label>
                                                     <input type="text" class="form-control" formControlName="RG"
-                                                        placeholder="RG" autocomplete="off" mask="00.000.000-0">
+                                                        placeholder="RG" autocomplete="off" mask="00.000.000-A" maxlength="12">
                                                 </div>
                                                 <div class="col-sm-4 col-sm-12">
                                                     <label>CPF</label>
                                                     <input type="text" class="form-control" formControlName="CPF"
-                                                        placeholder="CPF" autocomplete="off" mask="000.000.000-00">
+                                                        placeholder="CPF" autocomplete="off" mask="000.000.000-00" maxlength="14">
                                                 </div>
                                             </div>
                                             <hr class="col-md-11">
@@ -91,19 +91,19 @@
                                                     <label>Número</label>
                                                     <input type="text" class="form-control"
                                                         formControlName="NUMERO_CERTIDAO_NASCIMENTO"
-                                                        placeholder="Número" autocomplete="off">
+                                                        placeholder="Número" autocomplete="off" maxlength="5">
                                                 </div>
                                                 <div class="col-sm-4 col-sm-12">
                                                     <label>Folha</label>
                                                     <input type="text" class="form-control"
                                                         formControlName="FOLHA_CERTIDAO_NASCIMENTO" placeholder="Folha"
-                                                        autocomplete="off">
+                                                        autocomplete="off" maxlength="5">
                                                 </div>
                                                 <div class="col-sm-4 col-sm-12">
                                                     <label>Livro</label>
                                                     <input type="text" class="form-control"
                                                         formControlName="LIVRO_CERTIDAO_NASCIMENTO" placeholder="Livro"
-                                                        autocomplete="off">
+                                                        autocomplete="off" maxlength="3">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -111,7 +111,7 @@
                                                     <label>Cidade</label>
                                                     <input type="text" class="form-control"
                                                         formControlName="CIDADE_CERTIDAO_NASCIMENTO"
-                                                        placeholder="Cidade" autocomplete="off">
+                                                        placeholder="Cidade" autocomplete="off" maxlength="50">
                                                 </div>
                                                 <div class="col-sm-6 col-sm-12">
                                                     <label>Estado</label>
