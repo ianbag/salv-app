@@ -37,6 +37,7 @@ export class EditarFamiliarResidenteComponent implements OnInit {
   telefone: Telefone[]
 
   telefonesArray: FormArray
+  id: any
 
   constructor(
     private formBuilder: FormBuilder,
@@ -58,6 +59,8 @@ export class EditarFamiliarResidenteComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.id = this.route.snapshot.params['id']
+
     this.endereco = this.residentesService.endereco
     this.telefone = this.residentesService.telefones
     this.familiar = this.residentesService.familiar
@@ -121,7 +124,7 @@ export class EditarFamiliarResidenteComponent implements OnInit {
   familiarResidente(familiar: Familiar) {
     if (this.familiarResidenteForm.valid == true) {
       this.addDataServiceFamiliar(familiar)
-      this.router.navigate(['/editar-convenio-residente', this.route.snapshot.params['id']])
+      this.router.navigate(['/editar-convenio-residente', this.id])
     }
     else {
       this.markAllDirty(this.familiarResidenteForm)

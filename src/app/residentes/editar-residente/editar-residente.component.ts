@@ -70,6 +70,8 @@ export class EditarResidenteComponent implements OnInit {
   pessoa: Pessoa
   residente: Residente
 
+  PESSOA_CODIGO: number
+
   constructor(
     private formBuilder: FormBuilder,
     private residentesService: ResidentesService,
@@ -97,6 +99,7 @@ export class EditarResidenteComponent implements OnInit {
         .subscribe(res => {
           this.residentesService.residente = res
           this.residentesService.pessoa = res.PESSOA
+          this.PESSOA_CODIGO = res.PESSOA_CODIGO
         })
 
     this.novoResidenteForm = this.formBuilder.group({
@@ -163,9 +166,13 @@ export class EditarResidenteComponent implements OnInit {
     this.residentesService.pessoa = residente.PESSOA
     this.residentesService.residente = residente
 
-    if (this.novoResidenteForm.valid == true)
-      this.router.navigate(['/editar-familiar-residente', this.route.snapshot.params['id']])
-    else {
+    if (this.novoResidenteForm.valid == true) {
+      this.residentesService.updateResidente(residente, this.route.snapshot.params['id'], this.PESSOA_CODIGO)
+      .subscribe(res => {
+        this.router.navigate(['/residentes'])
+        this.notificationService.notify(`Residente atualizado com sucesso!`)
+      })
+    } else {
       this.markAllDirty(this.novoResidenteForm)
       console.log(this.novoResidenteForm.controls)
       this.notificationService.notify(`Preencha os campos obrigatórios!`)

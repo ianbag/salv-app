@@ -33,6 +33,8 @@ export class EditarConvenioResidenteComponent implements OnInit {
   convenios: Residente_Convenio[]
   residenteConvenio: Residente_Convenio
 
+  id: any
+
   constructor(
     private formBuilder: FormBuilder,
     private residentesService: ResidentesService,
@@ -53,6 +55,7 @@ export class EditarConvenioResidenteComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.id = this.route.snapshot.params['id']
     this.residenteConvenio = this.residentesService.residenteConvenio
 
     this.residentesService.convenios()
@@ -79,7 +82,7 @@ export class EditarConvenioResidenteComponent implements OnInit {
       this.residentesService.createNewResidente()
         .subscribe(res => {
           console.log("CREATE NEW RESIDENTE: ", res)
-          this.router.navigate(['/residentes', this.route.snapshot.params['id']])
+          this.router.navigate(['/residentes', this.id])
           this.notificationService.notify(`Residente inserido com sucesso!`)
           this.residentesService.clearDataResidente()
         })
