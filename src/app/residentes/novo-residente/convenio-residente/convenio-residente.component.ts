@@ -35,8 +35,8 @@ export class ConvenioResidenteComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private residentesService: ResidentesService, private router: Router, private notificationService: NotificationService) { }
 
   ngOnInit() {
-   // this.residentesService.convenios()
-   // .subscribe(convenio => this.convenios = convenio)
+    this.residentesService.convenios()
+    .subscribe(convenio => this.convenios = convenio)
 
     this.convenioResidenteForm = this.formBuilder.group({
       NUMERO_CONVENIO: this.formBuilder.control(null, [Validators.required]),

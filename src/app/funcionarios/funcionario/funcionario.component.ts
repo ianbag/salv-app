@@ -91,7 +91,7 @@ export class FuncionarioComponent implements OnInit {
     })
   }
 
-  updateDependentes(value) {
+  updateDependentes() {
     this.fs.dependenteById(this.route.snapshot.params['id']).subscribe(response => {
       this.dependentes = response
     })
