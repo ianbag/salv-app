@@ -46,7 +46,7 @@ export const ROUTES: Routes = [
     { path: 'funcionario/:id', component: FuncionarioComponent, canActivate: [AuthGuard] },
     { path: 'editar-funcionario/:id', component: EditarFuncionarioComponent, canActivate: [AuthGuard] },
     { path: 'acompanhamentos', component: AcompanhamentosComponent, canActivate: [AuthGuard] },
-    { path: 'editar-acompanhamento/:id', component: EditarAcompanhamentoComponent },
+    { path: 'editar-acompanhamento/:id', component: EditarAcompanhamentoComponent, canActivate: [AuthGuard] },
     { path: 'acompanhamento/:id', component: AcompanhamentoComponent, canActivate: [AuthGuard] },
     { path: 'novo-acompanhamento', component: NovoAcompanhamentoComponent, canActivate: [AuthGuard] },
     { path: '', component: TelaInicialComponent, canActivate: [AuthGuard] },
