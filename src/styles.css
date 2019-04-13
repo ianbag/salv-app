@@ -11,9 +11,13 @@
   top: 20px !important;
 }
   #printReport{
-    margin-bottom: 5px;
+    margin-top: 10px;
+    float: right;
   }
-  
+
+  .box-editar{
+    margin-top: 55px;
+  }
   .label{
     font-size: 100% !important;
   }
