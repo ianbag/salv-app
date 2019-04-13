@@ -5,6 +5,7 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { AcompanhamentosService } from '../acompanhamentos.service';
 import { Acompanhamento } from './acompanhamento.model';
 import { trigger, state, transition, style, animate } from '@angular/animations';
+import { NgxSpinnerService } from 'ngx-spinner';
 import * as jspdf from 'jspdf'
 
 @Component({
@@ -33,23 +34,24 @@ export class AcompanhamentoComponent implements OnInit {
 
   @ViewChild('reportAcompanhamento') reportAcompanhamento: ElementRef
 
-  constructor(private acompanhamentosService: AcompanhamentosService, private route: ActivatedRoute) { }
+  constructor(private acompanhamentosService: AcompanhamentosService, private route: ActivatedRoute, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
 
-    
+    this.spinner.show();
     this.acompanhamentosService.acompanhamentoById(this.route.snapshot.params['id'])
-      .subscribe(acompanhamento => { this.acompanhamento = acompanhamento[0]; console.log(acompanhamento) })
+      .subscribe(acompanhamento => { this.spinner.hide() 
+      this.acompanhamento = acompanhamento[0]; console.log(acompanhamento) })
 
       this.acompanhamentosService.AcompanhamentoFuncionarioQuery(this.route.snapshot.params['id']).subscribe(acompanhamento_funcionario => {
-
+      this.spinner.hide() 
        this.funcionarios = acompanhamento_funcionario
 
         console.log('funcionario', this.funcionarios)
       })
 
       this.acompanhamentosService.AcompanhamentoResidenteQuery(this.route.snapshot.params['id']).subscribe(acompanhamento_residente => {
-
+        this.spinner.hide() 
         this.residentes = acompanhamento_residente
  
          console.log('residente', this.residentes)

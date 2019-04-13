@@ -37,6 +37,7 @@ import { ConveniosService } from './convenios/convenios.service';
 import { AniversariantesComponent } from './tela-inicial/aniversariantes/aniversariantes.component';
 import { ProvaDeVidaComponent } from './tela-inicial/prova-de-vida/prova-de-vida.component';
 import { AniversarianteComponent } from './tela-inicial/aniversariantes/aniversariante/aniversariante.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { InfosConvenioComponent } from './residentes/residente/infos-convenio/infos-convenio.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
@@ -126,6 +127,7 @@ import { EditarResidenteComponent } from './residentes/editar-residente/editar-r
     EditarConvenioResidenteComponent,
     EditarFamiliarResidenteComponent,
     EditarResidenteComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -133,6 +135,7 @@ import { EditarResidenteComponent } from './residentes/editar-residente/editar-r
     HttpModule,
     BrowserAnimationsModule,
     FormsModule,
+    NgxSpinnerModule,
     ReactiveFormsModule,
     RouterModule.forRoot(ROUTES),
     NgxMaskModule.forRoot(),

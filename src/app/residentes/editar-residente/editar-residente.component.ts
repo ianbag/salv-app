@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators, AbstractControl, FormControl } from
 import { ResidentesService } from '../residentes.service';
 import { trigger, state, style, transition, animate } from '@angular/animations'
 import { Route, Router, ActivatedRoute } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { NotificationService } from 'src/app/shared/notification.service';
 
 @Component({
@@ -77,7 +78,8 @@ export class EditarResidenteComponent implements OnInit {
     private residentesService: ResidentesService,
     private router: Router,
     private notificationService: NotificationService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private spinner: NgxSpinnerService
   ) { }
 
   markAllDirty(control: AbstractControl) {
@@ -94,9 +96,11 @@ export class EditarResidenteComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.spinner.show()
     if((this.residentesService.residente == undefined) && (this.residentesService.pessoa == undefined))
       this.residentesService.residenteById(this.route.snapshot.params['id'])
         .subscribe(res => {
+          this.spinner.hide()
           this.residentesService.residente = res
           this.residentesService.pessoa = res.PESSOA
           this.PESSOA_CODIGO = res.PESSOA_CODIGO

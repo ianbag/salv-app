@@ -3,6 +3,7 @@ import { ConveniosService } from 'src/app/convenios/convenios.service';
 import { Convenio } from './convenio.model';
 import { DialogConfirmService } from '../residentes/dialog-confirm.service';
 import { trigger, state, transition, style, animate } from '@angular/animations';
+import { NgxSpinnerService } from 'ngx-spinner';
 import * as jspdf from 'jspdf'
 
 @Component({
@@ -22,15 +23,17 @@ export class ConveniosComponent implements OnInit {
 
   conveniosState = 'ready'
 
-  constructor(private conveniosService: ConveniosService, private dialogConfirmService: DialogConfirmService) { }
+  constructor(private conveniosService: ConveniosService, private dialogConfirmService: DialogConfirmService, private spinner: NgxSpinnerService) { }
 
   convenios: Convenio[]
 
   @ViewChild('reportConvenios') reportConvenios: ElementRef
 
   ngOnInit() {  
+    this.spinner.show()
     this.conveniosService.convenios()
       .subscribe(convenios => {
+        this.spinner.hide();
         this.convenios = convenios
         console.log('CONVENIOS', convenios)
       })
