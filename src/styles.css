@@ -3,7 +3,9 @@
     text-decoration: underline;
     line-height: 1cm;
   }
-
+.esq-sen-log {
+  text-align: center;
+}
   #printReport{
     margin-bottom: 5px;
   }
