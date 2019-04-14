@@ -74,6 +74,7 @@ import { EditarConvenioResidenteComponent } from './residentes/editar-residente/
 import { EditarFamiliarResidenteComponent } from './residentes/editar-residente/familiar-residente/editar-familiar-residente.component';
 import { EditarResidenteComponent } from './residentes/editar-residente/editar-residente.component';
 import { ForgetPasswordComponent } from './auth/forget-password/forget-password.component';
+import { ForgetService } from './auth/forget-password/forget.service';
 
 @NgModule({
   declarations: [
@@ -154,6 +155,7 @@ import { ForgetPasswordComponent } from './auth/forget-password/forget-password.
     NotificationService,
     TelaInicialService,
     NovoAcompanhamentoService,
+    ForgetService,
     { provide: ErrorHandler, useClass: GlobalErrorHandler }
   ],
   bootstrap: [AppComponent]
