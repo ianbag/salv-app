@@ -1,3 +1,4 @@
+import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
 import { EditarAcompanhamentoComponent } from './acompanhamentos/editar-acompanhamento/editar-acompanhamento.component';
 import { EditarConvenioComponent } from './convenios/editar-convenio/editar-convenio.component';
 import { NovoConvenioComponent } from './convenios/novo-convenio/novo-convenio.component';
@@ -51,6 +52,7 @@ export const ROUTES: Routes = [
     { path: 'acompanhamento/:id', component: AcompanhamentoComponent, canActivate: [AuthGuard] },
     { path: 'novo-acompanhamento', component: NovoAcompanhamentoComponent, canActivate: [AuthGuard] },
     { path: 'esqueci-a-senha', component: ForgetPasswordComponent },
+    { path: 'esqueci-a-senha/:token', component: ResetPasswordComponent },
     { path: '', component: TelaInicialComponent, canActivate: [AuthGuard] },
     { path: '**', component: NotFoundComponent }
 

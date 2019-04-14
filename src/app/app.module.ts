@@ -75,6 +75,7 @@ import { EditarFamiliarResidenteComponent } from './residentes/editar-residente/
 import { EditarResidenteComponent } from './residentes/editar-residente/editar-residente.component';
 import { ForgetPasswordComponent } from './auth/forget-password/forget-password.component';
 import { ForgetService } from './auth/forget-password/forget.service';
+import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -129,7 +130,8 @@ import { ForgetService } from './auth/forget-password/forget.service';
     EditarConvenioResidenteComponent,
     EditarFamiliarResidenteComponent,
     EditarResidenteComponent,
-    ForgetPasswordComponent
+    ForgetPasswordComponent,
+    ResetPasswordComponent
     
   ],
   imports: [
