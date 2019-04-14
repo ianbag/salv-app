@@ -28,7 +28,7 @@ export class ConveniosComponent implements OnInit {
   convenios: Convenio[]
 
   @ViewChild('reportConvenios') reportConvenios: ElementRef
-
+  paginaAtual : number = 1;
   ngOnInit() {  
     this.spinner.show()
     this.conveniosService.convenios()

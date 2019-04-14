@@ -31,7 +31,7 @@ export class ResidentesComponent implements OnInit {
   @ViewChild('reportResidentes') reportResidentes: ElementRef
 
   constructor(private residentesService: ResidentesService, private dialogConfirmService: DialogConfirmService, private notificationService: NotificationService, private spinner: NgxSpinnerService) { }
-
+  paginaAtual : number = 1;
   ngOnInit() {
     this.spinner.show()
     this.residentesService.residentes()

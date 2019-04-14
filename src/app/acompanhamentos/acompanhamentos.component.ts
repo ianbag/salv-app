@@ -20,6 +20,7 @@ import { throwError } from 'rxjs';
       ])
     ])
   ]
+  
 })
 export class AcompanhamentosComponent implements OnInit {
 
@@ -31,6 +32,7 @@ export class AcompanhamentosComponent implements OnInit {
 
   constructor(private acompanhamentosService: AcompanhamentosService, private route: ActivatedRoute, private spinner: NgxSpinnerService) { }
 
+  paginaAtual : number = 1;
   ngOnInit() {
     
     this.spinner.show();

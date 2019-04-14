@@ -30,7 +30,7 @@ export class FuncionariosComponent implements OnInit {
   funcionariosState = 'ready'
 
   @ViewChild('reportFuncionarios') reportFuncionarios: ElementRef
-
+  paginaAtual : number = 1;
   ngOnInit() {
     this.spinner.show()
     this.funcionariosService.funcionarios()

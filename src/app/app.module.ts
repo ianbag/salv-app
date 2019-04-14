@@ -73,7 +73,7 @@ import { EditarFuncionarioComponent } from './funcionarios/editar-funcionario/ed
 import { EditarConvenioResidenteComponent } from './residentes/editar-residente/convenio-residente/editar-convenio-residente.component';
 import { EditarFamiliarResidenteComponent } from './residentes/editar-residente/familiar-residente/editar-familiar-residente.component';
 import { EditarResidenteComponent } from './residentes/editar-residente/editar-residente.component';
-
+import {NgxPaginationModule} from 'ngx-pagination';
 @NgModule({
   declarations: [
     AppComponent,
@@ -130,6 +130,7 @@ import { EditarResidenteComponent } from './residentes/editar-residente/editar-r
     
   ],
   imports: [
+    NgxPaginationModule,
     BrowserModule,
     HttpClientModule,
     HttpModule,
