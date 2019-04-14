@@ -76,6 +76,7 @@ import { EditarResidenteComponent } from './residentes/editar-residente/editar-r
 import { ForgetPasswordComponent } from './auth/forget-password/forget-password.component';
 import { ForgetService } from './auth/forget-password/forget.service';
 import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
+import { ResetService } from './auth/reset-password/reset.service';
 
 @NgModule({
   declarations: [
@@ -158,6 +159,7 @@ import { ResetPasswordComponent } from './auth/reset-password/reset-password.com
     TelaInicialService,
     NovoAcompanhamentoService,
     ForgetService,
+    ResetService,
     { provide: ErrorHandler, useClass: GlobalErrorHandler }
   ],
   bootstrap: [AppComponent]

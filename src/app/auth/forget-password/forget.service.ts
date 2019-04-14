@@ -1,4 +1,3 @@
-import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SALV_API } from './../../app.api';
@@ -6,8 +5,6 @@ import { Usuario } from './forget.model';
 
 @Injectable()
 export class ForgetService {
-
-    mailUser: string
 
     constructor(private http: HttpClient) { }
 
