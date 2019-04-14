@@ -29,7 +29,7 @@
 
             <td>
               <button type="submit" class="btn btn-danger botao"
-                (click)="deleteResidente(residente.CODIGO_RESIDENTE); $event.stopPropagation()">Apagar</button>
+                (click)="deleteResidente(residente.CODIGO_RESIDENTE); $event.stopPropagation()">Inativar</button>
               <a type="submit" class="btn btn-warning botao" [routerLink]="['/editar-residente', residente.CODIGO_RESIDENTE]">Editar</a>
               <a type="submit" class="btn btn-success botao" [routerLink]="['/residente', residente.CODIGO_RESIDENTE]">+
                 Informações</a>

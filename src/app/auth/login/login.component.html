@@ -8,16 +8,16 @@
     <form [formGroup]="loginForm">
       <salv-input-container [showTip]=false>
         <input type="text" formControlName="email" class="form-control" placeholder="E-mail">
-        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        <span class="glyphicon glyphicon-user form-control-feedback icon-log-input"></span>
       </salv-input-container>
 
       <salv-input-container [showTip]=false>
         <input type="password" formControlName="senha" class="form-control" placeholder="Senha">
-        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        <span class="glyphicon glyphicon-lock form-control-feedback icon-log-input"></span>
       </salv-input-container>
 
       <div class="row">
-        <div class="col-xs-12">
+        <div class="col-xs-12 esq-sen-log">
           <a href="remind-my-pass.html" id="remindMyPassword"> Esqueceu sua senha?</a>
         </div>
         <!-- /.col -->
