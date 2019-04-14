@@ -73,6 +73,7 @@ import { EditarFuncionarioComponent } from './funcionarios/editar-funcionario/ed
 import { EditarConvenioResidenteComponent } from './residentes/editar-residente/convenio-residente/editar-convenio-residente.component';
 import { EditarFamiliarResidenteComponent } from './residentes/editar-residente/familiar-residente/editar-familiar-residente.component';
 import { EditarResidenteComponent } from './residentes/editar-residente/editar-residente.component';
+import { ForgetPasswordComponent } from './auth/forget-password/forget-password.component';
 
 @NgModule({
   declarations: [
@@ -126,7 +127,8 @@ import { EditarResidenteComponent } from './residentes/editar-residente/editar-r
     EditarFuncionarioComponent,
     EditarConvenioResidenteComponent,
     EditarFamiliarResidenteComponent,
-    EditarResidenteComponent
+    EditarResidenteComponent,
+    ForgetPasswordComponent
     
   ],
   imports: [

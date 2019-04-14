@@ -25,6 +25,7 @@ import { EditarFuncionarioComponent } from './funcionarios/editar-funcionario/ed
 import { EditarResidenteComponent } from './residentes/editar-residente/editar-residente.component';
 import { EditarFamiliarResidenteComponent } from './residentes/editar-residente/familiar-residente/editar-familiar-residente.component';
 import { EditarConvenioResidenteComponent } from './residentes/editar-residente/convenio-residente/editar-convenio-residente.component';
+import { ForgetPasswordComponent } from './auth/forget-password/forget-password.component';
 
 export const ROUTES: Routes = [
     //ROTAS VÃO AQUI
@@ -49,6 +50,7 @@ export const ROUTES: Routes = [
     { path: 'editar-acompanhamento/:id', component: EditarAcompanhamentoComponent, canActivate: [AuthGuard] },
     { path: 'acompanhamento/:id', component: AcompanhamentoComponent, canActivate: [AuthGuard] },
     { path: 'novo-acompanhamento', component: NovoAcompanhamentoComponent, canActivate: [AuthGuard] },
+    { path: 'esqueci-a-senha', component: ForgetPasswordComponent },
     { path: '', component: TelaInicialComponent, canActivate: [AuthGuard] },
     { path: '**', component: NotFoundComponent }
 
