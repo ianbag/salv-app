@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { transition, style, trigger, state, animate } from '@angular/animations';
 import { ConveniosService } from '../convenios.service';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { NotificationService } from 'src/app/shared/notification.service';
 
 
@@ -31,11 +32,12 @@ export class NovoConvenioComponent implements OnInit {
   novoConvenioForm: FormGroup;
   convenio: Convenio
 
-  constructor(private fb: FormBuilder, private cs: ConveniosService, private router: Router, private ns: NotificationService) { }
+  constructor(private fb: FormBuilder, private cs: ConveniosService, private router: Router, private ns: NotificationService, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
-
+    this.spinner.show()
     this.novoConvenioForm = this.fb.group({
+      
       NOME_CONVENIO: this.fb.control('', [Validators.required]),
       TIPO_CONVENIO: this.fb.control('', [Validators.required]),
       ENDERECO: this.fb.group({
@@ -53,11 +55,13 @@ export class NovoConvenioComponent implements OnInit {
         NUMERO: this.fb.control(null, [Validators.required, Validators.minLength(8), Validators.maxLength(9)])
       })
     })
+    this.spinner.hide();
   }
 
   novoConvenio(convenio: Convenio){
     this.cs.createNewConvenio(convenio.TELEFONE, convenio.ENDERECO, convenio)
       .subscribe(res => {
+        
         this.router.navigate(['/convenios'])
         this.ns.notify(`Convênio inserido com sucesso!`)
       })  

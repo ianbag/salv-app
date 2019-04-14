@@ -12,8 +12,5 @@ export class TelaInicialComponent implements OnInit {
 
   ngOnInit() {
   }
-     testaNotificacao(){
-       console.log(`CLIQUEI NO BOTAO`)
-       this.ns.notify(`TESTANDO NOTICAÇÃO`)
-     }
+     
 }

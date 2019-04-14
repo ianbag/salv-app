@@ -3,6 +3,7 @@ import { FuncionariosService } from './funcionarios.service';
 import { Funcionario } from './funcionario.model';
 import { DialogConfirmService } from '../residentes/dialog-confirm.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { NgxSpinnerService } from 'ngx-spinner';
 import * as jspdf from 'jspdf';
 
 @Component({
@@ -24,15 +25,17 @@ export class FuncionariosComponent implements OnInit {
 
   funcionarios: Funcionario[]
 
-  constructor(private funcionariosService: FuncionariosService, private dialogConfirmService: DialogConfirmService) { }
+  constructor(private funcionariosService: FuncionariosService, private dialogConfirmService: DialogConfirmService, private spinner: NgxSpinnerService) { }
 
   funcionariosState = 'ready'
 
   @ViewChild('reportFuncionarios') reportFuncionarios: ElementRef
 
   ngOnInit() {
+    this.spinner.show()
     this.funcionariosService.funcionarios()
       .subscribe(funcionarios => {
+        this.spinner.hide()
         this.funcionarios = funcionarios
         console.log('FUNCIONARIOS', funcionarios)
       })

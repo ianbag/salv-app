@@ -3,8 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AcompanhamentosService } from './acompanhamentos.service';
 import { trigger, state, transition, style, animate } from '@angular/animations';
+import { NgxSpinnerService } from 'ngx-spinner';
 import * as jspdf from 'jspdf'
 import { checkAndUpdateQuery } from '@angular/core/src/view/query';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'salv-acompanhamentos',
@@ -27,20 +29,19 @@ export class AcompanhamentosComponent implements OnInit {
 
   @ViewChild('reportAcompanhamentos') reportAcompanhamentos: ElementRef
 
-  constructor(private acompanhamentosService: AcompanhamentosService, private route: ActivatedRoute) { }
+  constructor(private acompanhamentosService: AcompanhamentosService, private route: ActivatedRoute, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
-    var counter
+    
+    this.spinner.show();
     this.acompanhamentosService.acompanhamentos()
-      .subscribe(
-       
+      .subscribe(       
         acompanhamentos => {
-          this.acompanhamentos = acompanhamentos
+           this.spinner.hide()          
+           this.acompanhamentos = acompanhamentos
           console.log('acompanahmentos', this.acompanhamentos)
-          
-         
-        
-           } )
+           } )          
+    
        
       }      
   public downloadPDF() {

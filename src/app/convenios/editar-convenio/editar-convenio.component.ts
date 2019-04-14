@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConveniosService } from './../convenios.service';
 import { NotificationService } from './../../shared/notification.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -34,11 +35,12 @@ export class EditarConvenioComponent implements OnInit {
   _cod_tel: number
   _cod_conv: number
 
-  constructor(private fb: FormBuilder, private cs: ConveniosService, private router: Router, private ar: ActivatedRoute, private ns: NotificationService) { }
+  constructor(private fb: FormBuilder, private cs: ConveniosService, private router: Router, private ar: ActivatedRoute, private ns: NotificationService, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
-
+    this.spinner.show()
     this.cs.convenioQuery(this.ar.snapshot.params['id']).subscribe(data => {
+      this.spinner.hide();
       this.convenio = data
       this._cod_conv = this.convenio[0].COD_CONV
       this._cod_end = this.convenio[0].COD_END
