@@ -40,12 +40,14 @@ export class EditarConvenioComponent implements OnInit {
   ngOnInit() {
     this.spinner.show()
     this.cs.convenioQuery(this.ar.snapshot.params['id']).subscribe(data => {
-      this.spinner.hide();
+      
       this.convenio = data
       this._cod_conv = this.convenio[0].COD_CONV
       this._cod_end = this.convenio[0].COD_END
       this._cod_tel = this.convenio[0].COD_TEL
+      
       console.log(this.convenio[0])
+      
     })
 
     this.editarConvenioForm = this.fb.group({
@@ -68,7 +70,9 @@ export class EditarConvenioComponent implements OnInit {
     })
 
     setTimeout(() => {
+      
       this.editarConvenioForm.patchValue({
+        
         COD_CONV: this.convenio[0].COD_CONV,
         NOME_CONVENIO: this.convenio[0].NOME_CONVENIO,
         TIPO_CONVENIO: this.convenio[0].TIPO_CONVENIO,
@@ -86,8 +90,11 @@ export class EditarConvenioComponent implements OnInit {
           DDD: this.convenio[0].DDD,
           NUMERO: this.convenio[0].NUM_TEL
         }
-      })
-    }, 1000)
+        
+      }
+      )
+      this.spinner.hide()}, 2250)
+
   
   }
 

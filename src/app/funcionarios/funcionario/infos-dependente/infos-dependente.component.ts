@@ -38,6 +38,7 @@ export class InfosDependenteComponent implements OnInit {
       ESTADO_CERTIDAO_NASCIMENTO: this.fb.control(null, [])
       
     })
+
   }
 
   deleteDependente(_dep_nome: string, _dep_sobrenome: string): void {

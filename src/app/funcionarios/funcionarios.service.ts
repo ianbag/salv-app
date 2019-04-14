@@ -18,6 +18,7 @@ export class FuncionariosService {
 
     funcionarioById(id: string): Observable<Funcionario> {
         return this.http.get<Funcionario>(`${SALV_API}/funcionario/${id}`)
+        
     }
 
     dependenteById(id: string): Observable<Dependente[]> {

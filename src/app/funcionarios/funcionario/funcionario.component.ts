@@ -42,18 +42,20 @@ export class FuncionarioComponent implements OnInit {
   constructor(private fs: FuncionariosService, private route: ActivatedRoute, private fb: FormBuilder, private ns: NotificationService, private dcs: DialogConfirmService, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
-    this.spinner.show();
+    this.spinner.show()
     this.fs.funcionarioById(this.route.snapshot.params['id']).subscribe(funcionario => {
-      this.spinner.hide()
+      
       this.funcionario = funcionario
     })
 
     this.fs.dependenteById(this.route.snapshot.params['id']).subscribe(dependente => {
-      this.spinner.hide()
+     
       this.dependentes = dependente
       this.n_dependentes = this.dependentes.length
+      
     })
-
+    
+   
     setTimeout(() => {
       this.fs.telefoneById(this.funcionario.PESSOA_CODIGO.toString()).subscribe(resT => {
         this.fs.enderecoById(this.funcionario.PESSOA_CODIGO.toString()).subscribe(resE => {
@@ -61,7 +63,8 @@ export class FuncionarioComponent implements OnInit {
           this.enderecos = resE
         })
       })
-    }, 1000)
+      this.spinner.hide()
+    }, 2300)
 
     this.novoDependenteForm = this.fb.group({
       NOME: this.fb.control(null, []),
@@ -75,7 +78,7 @@ export class FuncionarioComponent implements OnInit {
       CIDADE_CERTIDAO_NASCIMENTO: this.fb.control(null, []),
       ESTADO_CERTIDAO_NASCIMENTO: this.fb.control(null, [])
     })
-
+ 
   }
 
   countDependentes() {

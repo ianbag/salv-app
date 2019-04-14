@@ -70,7 +70,7 @@ export class NovoAcompanhamentoComponent implements OnInit {
     this.spinner.show();
     this.NovoAcompanhamentoService.residentes()
       .subscribe(residentes => {
-        this.spinner.hide();
+       
         this.residentes = residentes
         console.log('residentes', residentes)
       })
@@ -135,7 +135,7 @@ export class NovoAcompanhamentoComponent implements OnInit {
   novoAcompanhamento(acompanhamento: Acompanhamento) {
 
     this.NovoAcompanhamentoService.createAcompanhamento(acompanhamento).subscribe(res => {
-      this.spinner.show()
+      
       this.ns.notify(`Acompanhamento inserido com sucesso!`)
       this.router.navigate(['/acompanhamentos'])
     })
