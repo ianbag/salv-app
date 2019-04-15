@@ -6,6 +6,7 @@ import { ResidentesService } from '../../residentes.service';
 import { Endereco } from 'src/app/funcionarios/funcionario.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NotificationService } from 'src/app/shared/notification.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'salv-familiar-residente',
@@ -44,7 +45,8 @@ export class EditarFamiliarResidenteComponent implements OnInit {
     private residentesService: ResidentesService,
     private router: Router,
     private notificationService: NotificationService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private spinner: NgxSpinnerService
   ) { }
 
   markAllDirty(control: AbstractControl) {
@@ -81,6 +83,8 @@ export class EditarFamiliarResidenteComponent implements OnInit {
       }),
       TELEFONES: this.formBuilder.array([this.createTelefones()])
     })
+      
+        
 
     if (this.endereco != undefined)
       this.familiarResidenteForm.controls['ENDERECOS'].setValue(this.endereco)

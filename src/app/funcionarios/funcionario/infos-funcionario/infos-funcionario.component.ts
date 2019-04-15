@@ -4,6 +4,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FuncionariosService } from '../../funcionarios.service';
 import { NotificationService } from 'src/app/shared/notification.service';
 import { DialogConfirmService } from 'src/app/residentes/dialog-confirm.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
     selector: 'salv-infos-funcionario',
     templateUrl: './infos-funcionario.component.html'
@@ -25,9 +26,10 @@ export class InfosFuncionarioComponent implements OnInit {
         "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"
     ];
 
-    constructor(private fs: FuncionariosService, private fb: FormBuilder, private ns: NotificationService, private dcs: DialogConfirmService) { }
+    constructor(private fs: FuncionariosService, private fb: FormBuilder, private ns: NotificationService, private dcs: DialogConfirmService, private spinner: NgxSpinnerService) { }
 
     ngOnInit(): void {
+          
         this.novoTelefoneForm = this.fb.group({
             DDD: this.fb.control(null, []),
             NUMERO: this.fb.control(null, [])
@@ -65,6 +67,7 @@ export class InfosFuncionarioComponent implements OnInit {
             EMAIL: this.fb.control(null, []),
             LOGIN: this.fb.control(null, [])
         })
+    
     }
 
     novoTelefone(telefone: Telefone) {

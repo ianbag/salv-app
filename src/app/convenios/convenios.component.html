@@ -1,4 +1,12 @@
 <ngx-spinner></ngx-spinner>
+<style>
+    .my-pagination /deep/ .ngx-pagination .current {
+      background: 	#00AE5D;
+     
+      
+    }
+  </style>
+   
 <!-- Main content -->
 <section class="content">
     <div>
@@ -16,7 +24,7 @@
                     <th>Telefone</th>
                     <th style="width: 350px">Ações</th>
                 </tr>
-                <tr *ngFor="let convenio of convenios">
+                <tr *ngFor="let convenio of convenios | paginate: { itemsPerPage: 10, currentPage: paginaAtual}">
                     <td>{{convenio.NOME_CONVENIO}}</td>
                     <td>{{convenio.DDD}} {{convenio.TELEFONE}}</td>
                     <td>
@@ -26,6 +34,15 @@
                     </td>
                 </tr>
             </table>
+            <pagination-controls  class="my-pagination "(pageChange)= "paginaAtual = $event"
+                      
+            previousLabel="Anterior"
+            nextLabel="Próximo"
+            screenReaderPaginationLabel="Paginação"
+            screenReaderPageLabel="Página"
+            screenReaderCurrentLabel="Voce esta na página"
+
+            ></pagination-controls>
 
                 <!-- /.box -->
             </div>

@@ -95,12 +95,16 @@ export class EditarResidenteComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
-    this.spinner.show()
+  ngOnInit() 
+  {
+    
+
     if((this.residentesService.residente == undefined) && (this.residentesService.pessoa == undefined))
-      this.residentesService.residenteById(this.route.snapshot.params['id'])
+      
+      this.residentesService.residenteById(this.route.snapshot.params['id'] )
         .subscribe(res => {
-          this.spinner.hide()
+          
+       
           this.residentesService.residente = res
           this.residentesService.pessoa = res.PESSOA
           this.PESSOA_CODIGO = res.PESSOA_CODIGO
@@ -153,7 +157,7 @@ export class EditarResidenteComponent implements OnInit {
       DATA_ACOLHIMENTO: this.formBuilder.control(null, [Validators.required])
       //OUTROS FINAL
     })
-
+    this.spinner.show()
     setTimeout(() => {
       this.pessoa = this.residentesService.pessoa
       this.residente = this.residentesService.residente
@@ -161,10 +165,14 @@ export class EditarResidenteComponent implements OnInit {
       delete this.pessoa['STATUS'] // REMOVE STATUS NAO EXISTENTE NO MODEL
       if (this.pessoa != undefined)
         this.novoResidenteForm.controls['PESSOA'].setValue(this.pessoa)
-      if (this.residente != undefined)
+      if (this.residente != undefined){
         this.novoResidenteForm.patchValue(this.residente)
-    }, 1000)
+      }
+        this.spinner.hide()
+    }, 2250)
+    
   }
+ 
 
   novoResidente(residente: Residente) {
     this.residentesService.pessoa = residente.PESSOA

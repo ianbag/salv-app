@@ -7,6 +7,7 @@ import { Residente, Residente_Convenio } from '../../residente/residente.model';
 import { Route, Router, ActivatedRoute } from '@angular/router';
 import { Familiar } from '../../residente/infos-familiar/familiar.model';
 import { NotificationService } from 'src/app/shared/notification.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'salv-convenio-residente',
@@ -40,7 +41,8 @@ export class EditarConvenioResidenteComponent implements OnInit {
     private residentesService: ResidentesService,
     private router: Router,
     private notificationService: NotificationService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private spinner: NgxSpinnerService
   ) { }
 
   markAllDirty(control: AbstractControl) {
@@ -55,11 +57,14 @@ export class EditarConvenioResidenteComponent implements OnInit {
   }
 
   ngOnInit() {
+  
     this.id = this.route.snapshot.params['id']
     this.residenteConvenio = this.residentesService.residenteConvenio
 
     this.residentesService.convenios()
-      .subscribe(convenio => this.convenios = convenio)
+      .subscribe(convenio => {
+        
+        this.convenios = convenio})
 
     this.convenioResidenteForm = this.formBuilder.group({
       NUMERO_CONVENIO: this.formBuilder.control(null, [Validators.required]),
