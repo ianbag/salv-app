@@ -61,7 +61,7 @@ import { LoginService } from './auth/login/login.service';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { GlobalErrorHandler } from './app.global-error-handler';
 import { SnackbarComponent } from './shared/snackbar/snackbar.component';
-;
+
 import { NovoConvenioComponent } from './convenios/novo-convenio/novo-convenio.component';
 import { EditarConvenioComponent } from './convenios/editar-convenio/editar-convenio.component';
 import { TelaInicialService } from './tela-inicial/tela-inicial.service';
@@ -73,7 +73,12 @@ import { EditarFuncionarioComponent } from './funcionarios/editar-funcionario/ed
 import { EditarConvenioResidenteComponent } from './residentes/editar-residente/convenio-residente/editar-convenio-residente.component';
 import { EditarFamiliarResidenteComponent } from './residentes/editar-residente/familiar-residente/editar-familiar-residente.component';
 import { EditarResidenteComponent } from './residentes/editar-residente/editar-residente.component';
-import {NgxPaginationModule} from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { ForgetPasswordComponent } from './auth/forget-password/forget-password.component';
+import { ForgetService } from './auth/forget-password/forget.service';
+import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
+import { ResetService } from './auth/reset-password/reset.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -126,7 +131,9 @@ import {NgxPaginationModule} from 'ngx-pagination';
     EditarFuncionarioComponent,
     EditarConvenioResidenteComponent,
     EditarFamiliarResidenteComponent,
-    EditarResidenteComponent
+    EditarResidenteComponent,
+    ForgetPasswordComponent,
+    ResetPasswordComponent
     
   ],
   imports: [
@@ -153,6 +160,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     NotificationService,
     TelaInicialService,
     NovoAcompanhamentoService,
+    ForgetService,
+    ResetService,
     { provide: ErrorHandler, useClass: GlobalErrorHandler }
   ],
   bootstrap: [AppComponent]
