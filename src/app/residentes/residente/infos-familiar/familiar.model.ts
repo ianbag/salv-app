@@ -17,7 +17,7 @@ export interface Familiar{
     TELEFONE: {
         CODIGO: number,
         DDD: number,
-        TELEFONE: number
+        NUMERO: number
     }
 }
 

@@ -34,7 +34,7 @@ export class FamiliarResidenteComponent implements OnInit {
 
   familiar: Familiar
   endereco: Endereco
-  telefone: Telefone[]
+  telefone: Telefone
 
   telefonesArray: FormArray
 
@@ -75,45 +75,25 @@ export class FamiliarResidenteComponent implements OnInit {
         COMPLEMENTO: this.formBuilder.control(null, []),
         REFERENCIA: this.formBuilder.control(null, []),
       }),
-      TELEFONES: this.formBuilder.array([this.createTelefones()])
+      TELEFONE: this.formBuilder.group({
+        DDD: this.formBuilder.control(null, [Validators.required, Validators.minLength(2), Validators.maxLength(3)]),
+        NUMERO: this.formBuilder.control(null, [Validators.required, Validators.minLength(8), Validators.maxLength(9)])
+      })
     })
 
     if (this.endereco != undefined)
       this.familiarResidenteForm.controls['ENDERECOS'].setValue(this.endereco)
 
     if (this.telefone != undefined)
-      this.telefone.forEach(() => this.addTelefones())
+      this.familiarResidenteForm.controls['TELEFONE'].setValue(this.telefone)
 
     if (this.familiar != undefined)
       this.familiarResidenteForm.patchValue(this.familiar)
   }
 
-  createTelefones(): FormGroup {
-    return this.formBuilder.group({
-      DDD: this.formBuilder.control(null, [Validators.required, Validators.minLength(3)]),
-      NUMERO: this.formBuilder.control(null, [Validators.required, Validators.minLength(9)])
-    });
-  }
-
-  get telefones() {
-    return this.familiarResidenteForm.get('TELEFONES') as FormArray
-  }
-
-  addTelefones() {
-    this.telefonesArray = this.familiarResidenteForm.get('TELEFONES') as FormArray;
-    this.telefonesArray.push(this.createTelefones());
-  }
-
-  removeTelefone(index) {
-    if (this.telefonesArray.length != 1) {
-      this.telefonesArray = this.familiarResidenteForm.get('TELEFONES') as FormArray;
-      this.telefonesArray.removeAt(index)
-    }
-  }
-
   addDataServiceFamiliar(familiar: Familiar) {
     this.residentesService.endereco = familiar.ENDERECOS
-    this.residentesService.telefones = this.telefones.value
+    this.residentesService.telefones = familiar.TELEFONE
     this.residentesService.familiar = familiar
   }
 

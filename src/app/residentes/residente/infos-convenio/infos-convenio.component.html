@@ -1,6 +1,22 @@
-<div class="col-md-12">
+<div class="col-md-12" *ngIf="convenio">
   <div class="col-sm-12 col-xs-12">
-    <h4><strong>{{convenio?.NOME_CONVENIO}}</strong></h4>
+    <h4><strong>{{convenio?.NOME_CONVENIO}}</strong>
+      <a (click)="deletarConvenio(convenio?.NUMERO_CONVENIO)"><i class="fa fa-close"></i></a>
+      <a data-toggle="modal" (click)="setValuesConvenioForm(convenio)"
+        attr.data-target="#modalEditarConvenio{{convenio?.NUMERO_CONVENIO}}"><i class="fa fa-pencil"></i></a>
+    </h4>
+  </div>
+
+  <div class="col-xs-3 col-xs-12">
+    <strong>Número Convenio: </strong> {{convenio?.NUMERO_CONVENIO}}
+  </div>
+
+  <div class="col-xs-3 col-xs-12">
+    <strong>Titular Convenio: </strong> {{convenio?.TITULAR_CONVENIO}}
+  </div>
+
+  <div class="col-xs-3 col-xs-12">
+    <strong>Parentesco Titular: </strong> {{convenio?.PARENTESCO_TITULAR}}
   </div>
 
   <div class="col-xs-6 col-xs-12">
@@ -44,4 +60,71 @@
   </div>
   <hr class="col-md-12">
 
+  <!-- INICIO MODAL NOVO CONVENIO -->
+  <div class="modal fade" id="modalEditarConvenio{{convenio?.NUMERO_CONVENIO}}" tabindex="-1" role="dialog"
+    attr.aria-labelledby="modalEditarConvenio{{convenio?.NUMERO_CONVENIO}}" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="col-sm-12 col-sm-12" id="formTitle">
+            <h4 class="text-center"><strong>Editar Convenio</strong></h4>
+          </div>
+
+          <form role="form" [formGroup]="convenioResidenteForm">
+            <div class="box-body">
+
+              <div class="form-group">
+                <div class="col-sm-6 col-sm-12">
+                  <salv-input-container errorMessage="Campo Obrigatório" label="Nome">
+                    <span class="text-danger">*</span>
+                    <select class="form-control" formControlName="CONVENIO_CODIGO">
+                      <option value="" label="Nome do convênio" disabled selected="selected"></option>
+                      <option *ngFor="let conv of residenteConvenios" [value]="conv.CODIGO">
+                        {{conv.NOME_CONVENIO}}</option>
+                    </select>
+                  </salv-input-container>
+                </div>
+
+                <div class="col-sm-6 col-xs-12">
+                  <salv-input-container errorMessage="Campo Obrigatório" label="Número do Convênio">
+                    <span class="text-danger">*</span>
+                    <input type="text" class="form-control" formControlName="NUMERO_CONVENIO"
+                      placeholder="Nº de inscrição do convênio" autocomplete="off" maxlength="11">
+                  </salv-input-container>
+                </div>
+                <div class="col-sm-12 col-xs-12">
+                  <br>
+                </div>
+
+                <div class="col-sm-12 col-xs-12">
+                  <label>Titular do convênio</label>
+                </div>
+
+                <div class="col-sm-6 col-xs-12">
+                  <salv-input-container errorMessage="Campo Obrigatório" label="Titular do Convênio">
+                    <span class="text-danger">*</span>
+                    <input type="text" class="form-control" formControlName="TITULAR_CONVENIO"
+                      placeholder="Nome do Titular" autocomplete="off" maxlength="100">
+                  </salv-input-container>
+                </div>
+                <div class="col-sm-6 col-xs-12">
+                  <label>Parentesco Titular</label>
+                  <input type="text" class="form-control" formControlName="PARENTESCO_TITULAR"
+                    placeholder="Parentesco Titular" autocomplete="off" maxlength="100">
+                </div>
+
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal"
+            (click)="editarConvenio(convenioResidenteForm.value)"
+            [disabled]="!convenioResidenteForm.valid">Salvar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIM MODAL NOVO CONVENIO -->
 </div>

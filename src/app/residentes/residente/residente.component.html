@@ -132,38 +132,22 @@
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-sm-6 col-sm-12">
-                        <label>Telefone <a type="submit" class="btn btn-success botao" (click)="addTelefones()"><i
-                              class="fa fa-plus"></i> Adicionar
-                            Telefone</a></label>
-                      </div>
-
-                      <div class="col-sm-12">
-                        <div formArrayName="TELEFONES"
-                          *ngFor="let telefone of familiarResidenteForm.get('TELEFONES').controls as tamanho; let i = index">
-                          <div class="col-sm-12" [formGroupName]="i">
-                            <div class=" col-sm-4">
-                              <salv-input-container errorMessage="Campo Obrigatório" label="DDD {{i+1}}">
-                                <span class="text-danger">*</span>
-                                <input style="margin-top:5px; margin-bottom:5px;" type="text" mask="(000)"
-                                  class="form-control" formControlName="DDD" placeholder="DDD">
-                              </salv-input-container>
-                            </div>
-
-                            <div class="col-sm-6">
-                              <salv-input-container errorMessage="Campo Obrigatório" label="Número {{i+1}}">
-                                <span class="text-danger">*</span>
-                                <input style="margin-top:5px; margin-bottom:5px;" type="text" mask="00000-0000"
-                                  class="form-control" formControlName="NUMERO" placeholder="Número">
-                              </salv-input-container>
-                            </div>
-                            <div class="col-sm-2" style="margin-top:40px;">
-                              <button class="btn btn-danger botao" (click)="removeTelefone(i)"
-                                [disabled]="tamanho.length == 1"><i class="fa fa-minus"></i></button>
-                            </div>
-                          </div>
+                      <div class="row">
+                        <div class="col-sm-3 col-sm-12" formGroupName="TELEFONE">
+                          <salv-input-container errorMessage="Campo Obrigatório" label="DDD">
+                            <input type="text" class="form-control" formControlName="DDD" placeholder="DDD"
+                              maxlength="3">
+                          </salv-input-container>
+                        </div>
+                        <div class="col-sm-5 col-sm-12" formGroupName="TELEFONE">
+                          <salv-input-container errorMessage="Campo Obrigatório" label="Telefone">
+                            <input type="text" class="form-control" formControlName="NUMERO" mask="00000-0000"
+                              placeholder="Número Telefone">
+                          </salv-input-container>
                         </div>
                       </div>
+
+
                     </div>
                   </div>
                 </form>
@@ -270,7 +254,7 @@
         </div>
         <!-- FIM MODAL NOVO CONVENIO -->
       </div>
-      
+
     </div>
   </div>
   <!-- /.row -->
