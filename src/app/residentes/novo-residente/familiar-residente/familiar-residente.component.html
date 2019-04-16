@@ -94,19 +94,19 @@
               <div class="col-sm-12">
                 <div formArrayName="TELEFONES"
                   *ngFor="let telefone of familiarResidenteForm.get('TELEFONES').controls as tamanho; let i = index">
-                  <div class="col-sm-6" [formGroupName]="i">
+                  <div class="col-sm-6" style="margin-left: -35px;" [formGroupName]="i">
                     <div class=" col-sm-4">
                       <salv-input-container errorMessage="Campo Obrigatório" label="DDD {{i+1}}">
                         <span class="text-danger">*</span>
-                        <input style="margin-top:5px; margin-bottom:5px;" type="text" mask="(000)" class="form-control"
+                        <input style="margin-top:5px; margin-bottom:5px;" type="text" mask="(00)" class="form-control"
                           formControlName="DDD" placeholder="DDD">
                       </salv-input-container>
                     </div>
 
-                    <div class="col-sm-6">
+                    <div class="col-sm-5">
                       <salv-input-container errorMessage="Campo Obrigatório" label="Número {{i+1}}">
                         <span class="text-danger">*</span>
-                        <input style="margin-top:5px; margin-bottom:5px;" type="text" mask="00000-0000"
+                        <input style="margin-top:5px; margin-bottom:5px;" type="text" maxlength="9"
                           class="form-control" formControlName="NUMERO" placeholder="Número">
                       </salv-input-container>
                     </div>

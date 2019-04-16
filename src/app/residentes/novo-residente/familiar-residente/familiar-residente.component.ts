@@ -90,8 +90,8 @@ export class FamiliarResidenteComponent implements OnInit {
 
   createTelefones(): FormGroup {
     return this.formBuilder.group({
-      DDD: this.formBuilder.control(null, [Validators.required, Validators.minLength(3)]),
-      NUMERO: this.formBuilder.control(null, [Validators.required, Validators.minLength(9)])
+      DDD: this.formBuilder.control(null, [Validators.required, Validators.minLength(2)]),
+      NUMERO: this.formBuilder.control(null, [Validators.required, Validators.minLength(8)])
     });
   }
 
