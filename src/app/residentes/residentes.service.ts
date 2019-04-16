@@ -13,13 +13,13 @@ export class ResidentesService {
     pessoa: Pessoa
     familiar: Familiar
     endereco: Endereco
-    telefones: Telefone[]
+    telefones: Telefone
     residenteConvenio: Residente_Convenio
 
 
     constructor(private http: HttpClient) { }
 
-    clearDataResidente(){
+    clearDataResidente() {
         this.residente = null
         this.pessoa = null
         this.familiar = null
@@ -38,21 +38,49 @@ export class ResidentesService {
 
     familiarById(id: string): Observable<Familiar[]> {
         return this.http.get<Familiar[]>(`${SALV_API}/residente_familiar/${id}`)
-    }
+    } // remover
 
-    telefoneFamiliarByID(id: number): Observable<Telefone[]>{
+    telefoneFamiliarByID(id: number): Observable<Telefone[]> {
         return this.http.get<Telefone[]>(`${SALV_API}/telefone_familiar/${id}`)
     }
 
     convenioById(id: string): Observable<Convenio[]> {
         return this.http.get<Convenio[]>(`${SALV_API}/residente_convenio/${id}`)
+    } // remover
+
+    convenioOneByID(id: number): Observable<Residente_Convenio> {
+        return this.http.get<Residente_Convenio>(`${SALV_API}/residente_convenio/one/${id}`)
+    }
+
+    familiarByID(id: number): Observable<Familiar> {
+        return this.http.get<Familiar>(`${SALV_API}/familiar/${id}`)
+    }
+
+    telefoneById(id: number): Observable<Telefone>{
+        return this.http.get<Telefone>(`${SALV_API}/telefone/${id}`)
+    }
+
+    enderecoByID(id: number): Observable<Endereco> {
+        return this.http.get<Endereco>(`${SALV_API}/endereco/${id}`)
+    }
+
+    deleteTelefoneFamiliar(idTelefone: number, idFamiliar: number):Observable<any> {
+        return this.http.delete<any>(`${SALV_API}/telefone_familiar/${idTelefone}/${idFamiliar}`)
+    }
+
+    deleteFamiliar(idResidente: number, idFamiliar: number):Observable<any> {
+        return this.http.delete<any>(`${SALV_API}/residente_familiar/${idResidente}/${idFamiliar}`)
+    }
+
+    deleteResidenteConvenio(numeroConvenio:number):Observable<any> {
+        return this.http.delete<any>(`${SALV_API}/residente_convenio/${numeroConvenio}`)
     }
 
     deleteResidente(id: string): Observable<any> {
         return this.http.delete<any>(`${SALV_API}/residente/${id}`)
     }
 
-    convenios() : Observable<Residente_Convenio[]>{
+    convenios(): Observable<Residente_Convenio[]> {
         return this.http.get<Residente_Convenio[]>(`${SALV_API}/convenio`)
     }
 
@@ -83,32 +111,35 @@ export class ResidentesService {
                             }
                             console.log("ENDERECO_FAMILIAR", ENDERECO_FAMILIAR)
                             return this.http.post<any>(`${SALV_API}/endereco_familiar`, ENDERECO_FAMILIAR).switchMap(resEnderecoFamiliar => {
-                                let TELEFONES_FAMILIARES = {
-                                    familiar: resFamiliar.CODIGO,
-                                    telefones: this.telefones
-                                }
-                                console.log("TELEFONESFAMILIARES", TELEFONES_FAMILIARES)
-                                return this.http.post<any>(`${SALV_API}/telefones`, TELEFONES_FAMILIARES).switchMap(resTelefonesFamiliares => {
-                                    console.log("CONVENIO", this.residenteConvenio)
-                                    this.residenteConvenio.RESIDENTE_CODIGO = resResidente.CODIGO_RESIDENTE
-                                    return this.http.post<any>(`${SALV_API}/residente_convenio`, this.residenteConvenio)
+                                return this.http.post<any>(`${SALV_API}/telefone`, this.telefones).switchMap(resTelefone => {
+                                    console.log("TELEFONE", resTelefone);
+                                    let TELEFONES_FAMILIARES = {
+                                        FAMILIAR_CODIGO: resFamiliar.CODIGO,
+                                        TELEFONE_CODIGO: resTelefone.CODIGO
+                                    }
+                                    console.log("TELEFONESFAMILIARES", TELEFONES_FAMILIARES)
+                                    return this.http.post<any>(`${SALV_API}/telefone_familiar`, TELEFONES_FAMILIARES).switchMap(resTelefonesFamiliares => {
+                                        console.log("CONVENIO", this.residenteConvenio)
+                                        this.residenteConvenio.RESIDENTE_CODIGO = resResidente.CODIGO_RESIDENTE
+                                        return this.http.post<any>(`${SALV_API}/residente_convenio`, this.residenteConvenio)
+                                    })
                                 })
                             })
                         })
                     })
-                    
+
                 })
             })
         })
     }
 
-    updateResidente(dataForm: Residente, idResidente, idPessoa){
-        return this.http.put<Residente>(`${SALV_API}/residente/${idResidente}`,dataForm).switchMap(res => {
+    updateResidente(dataForm: Residente, idResidente, idPessoa) {
+        return this.http.put<Residente>(`${SALV_API}/residente/${idResidente}`, dataForm).switchMap(res => {
             return this.http.put<Pessoa>(`${SALV_API}/pessoa/${idPessoa}`, dataForm.PESSOA)
         })
     }
 
-    createNewFamiliar(familiar: Familiar, codigoResidente){
+    createNewFamiliar(familiar: Familiar, codigoResidente) {
         return this.http.post<Familiar>(`${SALV_API}/familiar`, familiar).switchMap(resFamiliar => {
             let RESIDENTE_FAMILIAR = {
                 FAMILIAR_CODIGO: resFamiliar.CODIGO,
@@ -121,21 +152,50 @@ export class ResidentesService {
                         ENDERECO_CODIGO: resEndereco.CODIGO
                     }
                     return this.http.post<any>(`${SALV_API}/endereco_familiar`, ENDERECO_FAMILIAR).switchMap(resEnderecoFamiliar => {
-                        let TELEFONES_FAMILIARES = {
-                            familiar: resFamiliar.CODIGO,
-                            telefones: familiar['TELEFONES']
-                        }
-                        return this.http.post<any>(`${SALV_API}/telefones`, TELEFONES_FAMILIARES)
+                        return this.http.post<any>(`${SALV_API}/telefone`, familiar.TELEFONE).switchMap(resTelefone => {
+                            let TELEFONES_FAMILIARES = {
+                                FAMILIAR_CODIGO: resFamiliar.CODIGO,
+                                TELEFONE_CODIGO: resTelefone.CODIGO
+                            }
+                            return this.http.post<any>(`${SALV_API}/telefone_familiar`, TELEFONES_FAMILIARES)
+                        })
                     })
                 })
             })
-            
         })
     }
 
-    createNewConvenio(residenteConvenio: Residente_Convenio, codigoResidente){
+    updateFamiliar(dataForm: Familiar, CODIGO_FAMILIAR, ENDERECO_CODIGO){
+        return this.http.put<Endereco>(`${SALV_API}/endereco/${ENDERECO_CODIGO}`, dataForm.ENDERECOS).switchMap(res => {
+            delete dataForm.ENDERECOS
+            delete dataForm.TELEFONE
+            return this.http.put<Familiar>(`${SALV_API}/familiar/${CODIGO_FAMILIAR}`, dataForm)
+        }) 
+    }
+
+    createNewConvenio(residenteConvenio: Residente_Convenio, codigoResidente) {
         residenteConvenio.RESIDENTE_CODIGO = codigoResidente
         return this.http.post<any>(`${SALV_API}/residente_convenio`, residenteConvenio)
     }
+
+    updateConvenio(residenteConvenio: Residente_Convenio){
+        console.log("residenteConvenio Dataform", residenteConvenio)
+        return this.http.put<Residente_Convenio>(`${SALV_API}/residente_convenio/${residenteConvenio.NUMERO_CONVENIO}`, residenteConvenio)
+    }
+
+    createNewTelefoneFamiliar(telefone: Telefone, CODIGO_FAMILIAR){
+        return this.http.post<any>(`${SALV_API}/telefone`, telefone).switchMap(resTelefone => {
+            let TELEFONES_FAMILIARES = {
+                FAMILIAR_CODIGO: CODIGO_FAMILIAR,
+                TELEFONE_CODIGO: resTelefone.CODIGO
+            }
+            return this.http.post<any>(`${SALV_API}/telefone_familiar`, TELEFONES_FAMILIARES)
+        })
+    }
+
+    updateTelefone(telefone: Telefone, codigoTelefone){
+        return this.http.put<Telefone>(`${SALV_API}/telefone/${codigoTelefone}`, telefone)
+    }
+
 
 }
