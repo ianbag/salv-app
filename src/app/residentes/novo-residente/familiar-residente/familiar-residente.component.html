@@ -35,48 +35,44 @@
             </div>
             <br />
             <div class="row">
-              <div class="col-sm-4 col-sm-12" id="inputValidator" formGroupName="ENDERECOS">
-                <salv-input-container errorMessage="Campo Obrigatório" label="Rua">
-                  <span class="text-danger">*</span>
+              <div class="col-sm-4 col-sm-12"  formGroupName="ENDERECOS">
+                <label>Rua</label>
+                  
                   <input type="text" class="form-control" formControlName="ENDERECO" placeholder="Rua" maxlength="100">
-                </salv-input-container>
+                
               </div>
-              <div class="col-sm-2 col-sm-12" id="inputValidator" formGroupName="ENDERECOS">
-                <salv-input-container errorMessage="Campo Obrigatório" label="Número">
-                  <span class="text-danger">*</span>
+              <div class="col-sm-2 col-sm-12"  formGroupName="ENDERECOS">
+                
+                  <label>Número</label>
                   <input type="text" mask="0*" class="form-control" formControlName="NUMERO" placeholder="Número"
                     maxlength="5">
-                </salv-input-container>
+                
               </div>
-              <div class="col-sm-2 col-sm-12" id="inputValidator" formGroupName="ENDERECOS">
-                <salv-input-container errorMessage="Campo Obrigatório" label="Bairro">
-                  <span class="text-danger">*</span>
+              <div class="col-sm-2 col-sm-12"  formGroupName="ENDERECOS">
+               <label>Bairro</label>
                   <input type="text" class="form-control" formControlName="BAIRRO" placeholder="Bairro" maxlength="50">
-                </salv-input-container>
+                
               </div>
-              <div class="col-sm-2 col-sm-12" id="inputValidator" formGroupName="ENDERECOS">
-                <salv-input-container errorMessage="Campo Obrigatório" label="Cidade">
-                  <span class="text-danger">*</span>
+              <div class="col-sm-2 col-sm-12"  formGroupName="ENDERECOS">
+                <label>Cidade</label>
                   <input type="text" class="form-control" formControlName="CIDADE" placeholder="Cidade" maxlength="50">
-                </salv-input-container>
+                
               </div>
-              <div class="col-sm-2 col-sm-12" id="inputValidator" formGroupName="ENDERECOS">
-                <salv-input-container errorMessage="Campo Obrigatório" label="Estado">
-                  <span class="text-danger">*</span>
+              <div class="col-sm-2 col-sm-12"  formGroupName="ENDERECOS">
+               <label>Estado</label>
                   <select class="form-control" formControlName="ESTADO">
                     <option value="" label="Selecione" disabled selected="selected"></option>
                     <option *ngFor="let estado of estados">{{estado}}</option>
                   </select>
-                </salv-input-container>
+                
               </div>
             </div>
             <br />
             <div class="row">
-              <div class="col-sm-3 col-sm-12" id="inputValidator" formGroupName="ENDERECOS">
-                <salv-input-container errorMessage="Campo Obrigatório" label="CEP">
-                  <span class="text-danger">*</span>
+              <div class="col-sm-3 col-sm-12"  formGroupName="ENDERECOS">
+                <label>CEP</label>
                   <input type="text" mask="00.000-000" class="form-control" formControlName="CEP" placeholder="CEP">
-                </salv-input-container>
+                
               </div>
               <div class="col-sm-3 col-sm-12" formGroupName="ENDERECOS">
                 <label>Complemento </label>
@@ -92,8 +88,7 @@
             </div>
             <div class="row">
               <div class="col-sm-6 col-sm-12">
-                <label>Telefone <a type="submit" class="btn btn-success botao" (click)="addTelefones()"><i
-                      class="fa fa-plus"></i> Adicionar Telefone</a></label>
+                <label>Telefone <span class="btn btn-success botao" (click)="addTelefones()"> Adicionar Telefone</span></label>
               </div>
 
               <div class="col-sm-12">
