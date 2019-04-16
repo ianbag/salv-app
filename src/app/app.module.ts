@@ -70,8 +70,6 @@ import { InfosDependenteComponent } from './funcionarios/funcionario/infos-depen
 import { NovoFuncionarioComponent } from './funcionarios/novo-funcionario/novo-funcionario.component';
 import { EditarAcompanhamentoComponent } from './acompanhamentos/editar-acompanhamento/editar-acompanhamento.component';
 import { EditarFuncionarioComponent } from './funcionarios/editar-funcionario/editar-funcionario.component';
-import { EditarConvenioResidenteComponent } from './residentes/editar-residente/convenio-residente/editar-convenio-residente.component';
-import { EditarFamiliarResidenteComponent } from './residentes/editar-residente/familiar-residente/editar-familiar-residente.component';
 import { EditarResidenteComponent } from './residentes/editar-residente/editar-residente.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ForgetPasswordComponent } from './auth/forget-password/forget-password.component';
@@ -129,12 +127,10 @@ import { ResetService } from './auth/reset-password/reset.service';
     EditarAcompanhamentoComponent,
     NovoFuncionarioComponent,
     EditarFuncionarioComponent,
-    EditarConvenioResidenteComponent,
-    EditarFamiliarResidenteComponent,
     EditarResidenteComponent,
     ForgetPasswordComponent,
     ResetPasswordComponent
-    
+
   ],
   imports: [
     NgxPaginationModule,
