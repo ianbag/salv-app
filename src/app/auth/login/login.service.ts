@@ -25,6 +25,7 @@ export class LoginService {
                 this.showMenuEmitter.emit(true)
                 this.router.navigate(['/'])
             }))
+           
     }
 
     logout() {

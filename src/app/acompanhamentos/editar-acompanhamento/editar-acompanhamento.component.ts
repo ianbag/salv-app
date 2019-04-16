@@ -3,7 +3,7 @@ import { NovoAcompanhamentoService } from './../novo-acompanhamento/novo-acompan
 
 import { AcompanhamentosService } from './../acompanhamentos.service';
 import { Acompanhamento, AcompanhamentoQuery, Acompanhamento_Funcionario, Acompanhamento_Residente } from './../acompanhamento/acompanhamento.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Output, EventEmitter} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -29,6 +29,9 @@ import { TouchSequence } from 'selenium-webdriver';
 })
 
 export class EditarAcompanhamentoComponent implements OnInit {
+
+
+ 
 
   editaracompanhamentoState = 'ready'
 
@@ -207,9 +210,12 @@ export class EditarAcompanhamentoComponent implements OnInit {
     this.dialogConfirmService.confirm(`Deseja excluir o residente do acompanhamento?`)
       .then((isTrue) => {
         if (isTrue) {
-          this.acompanhamentoService.deleteResidenteAcompanhamento(id, idAcomp)           
+          this.acompanhamentoService.deleteResidenteAcompanhamento(id, idAcomp).subscribe(() => {
+            
+            this.ns.notify('Dependente excluído com sucesso!')
+          })           
         }
-        
+        console.log("residente excluido: ", id)
       })
   }
 
@@ -236,7 +242,7 @@ export class EditarAcompanhamentoComponent implements OnInit {
   }
 
   onDeResidenteSelect(residente: any) {
-  this.deleteResidente( residente.CODIGO_RESIDENTE,  this.codigo_acompanhamento)
+  this.deleteResidente(residente.CODIGO_RESIDENTE,  this.codigo_acompanhamento)
     
     console.log('onDeresidenteSelect',  residente.CODIGO_RESIDENTE, this.codigo_acompanhamento)
   
