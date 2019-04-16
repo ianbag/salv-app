@@ -118,7 +118,7 @@ export class EditarResidenteComponent implements OnInit {
         CPF: this.formBuilder.control(null, [Validators.minLength(11)]),
         RG: this.formBuilder.control(null, [Validators.minLength(9)]),
         ESTADO_CIVIL: this.formBuilder.control(null, []),
-        SEXO: this.formBuilder.control(null, [Validators.required]),
+        SEXO: this.formBuilder.control(null, []),
         RELIGIAO: this.formBuilder.control(null, []),
         ESCOLARIDADE: this.formBuilder.control(null, []),
         DATA_NASCIMENTO: this.formBuilder.control(null, []),
