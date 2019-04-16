@@ -13,13 +13,13 @@
         <tr>
           <th>Atividade realizada</th>
           <th>Data</th>
-          <th>Funcionário</th>
+          
           <th>Ações</th>
         </tr>
         <tr *ngFor="let acompanhamento of acompanhamentos">
           <td>{{acompanhamento.ATIVIDADE}}</td>
           <td>{{acompanhamento.DATA_ACOMPANHAMENTO}}</td>
-          <td>{{acompanhamento.FUNCIONARIO_NOME}} {{acompanhamento.FUNCIONARIO_SOBRENOME}}</td>
+         
           <td>
 
             <a type="submit" class="btn btn-warning botao" [routerLink]="['/editar-acompanhamento', acompanhamento.CODIGO]">Editar</a>

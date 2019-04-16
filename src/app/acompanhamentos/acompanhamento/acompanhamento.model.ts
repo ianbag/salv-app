@@ -27,3 +27,18 @@ export interface AcompanhamentoQuery {
     FUNCIONARIO_NOME: string,
     CODIGO_RESIDENTE: number
 }
+
+export interface AcompanhamentoFuncionarioQuery {
+ 
+    CODIGO_FUNCIONARIO: number,    
+    FUNCIONARIO_NOME: string
+
+}
+
+
+export interface AcompanhamentoResidenteQuery {
+ 
+    CODIGO_RESIDENTE: number,    
+    RESIDENTE_NOME: string
+
+}

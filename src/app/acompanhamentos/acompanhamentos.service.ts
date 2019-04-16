@@ -1,6 +1,6 @@
 import { Residente } from './../residentes/residente/residente.model';
 import { Funcionario } from './../funcionarios/funcionario.model';
-import { Acompanhamento, AcompanhamentoQuery } from './acompanhamento/acompanhamento.model';
+import { Acompanhamento, AcompanhamentoQuery, Acompanhamento_Residente, Acompanhamento_Funcionario, AcompanhamentoFuncionarioQuery, AcompanhamentoResidenteQuery } from './acompanhamento/acompanhamento.model';
 import { SALV_API } from './../app.api';
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
@@ -26,5 +26,37 @@ export class AcompanhamentosService {
     }
     AcompanhamentoQuery(id: string): Observable<AcompanhamentoQuery[]>{
         return this.http.get<AcompanhamentoQuery[]>(`${SALV_API}/acompanhamento/${id}`)
-    }
+         
+   }
+   AcompanhamentoFuncionarioQuery(id: string): Observable<AcompanhamentoFuncionarioQuery[]>{
+    return this.http.get<AcompanhamentoFuncionarioQuery[]>(`${SALV_API}/acompanhamento-funcionario/${id}`)
+     
+}
+AcompanhamentoResidenteQuery(id: string): Observable<AcompanhamentoResidenteQuery[]>{
+    return this.http.get<AcompanhamentoResidenteQuery[]>(`${SALV_API}/acompanhamento-residente/${id}`)
+     
+}
+    
+   updateAcompanhamento(acompanhamento: Acompanhamento, id: number ){
+        return this.http.put<Acompanhamento>(`${SALV_API}/acompanhamento-editar/${id}`, acompanhamento)
+        
+        }
+
+  createAcompanhamentoFuncionario(acompanhamento_funcionario: Acompanhamento_Funcionario[]){
+            return this.http.post<Acompanhamento_Funcionario[]>(`${SALV_API}/acompanhamento_funcionario`, acompanhamento_funcionario)
+            
+            }
+
+   createAcompanhamentoResidente(acompanhamento_residente: Acompanhamento_Residente[]){
+          return this.http.post<Acompanhamento_Residente[]>(`${SALV_API}/acompanhamento_residente`, acompanhamento_residente)
+                
+            }      
+            
+    deleteFuncionarioAcompanhamento(id: string, idAcomp:number): Observable<any> {
+                return this.http.delete<any>(`${SALV_API}/acompanhamento_funcionario/${id}`)
+       } 
+       
+   deleteResidenteAcompanhamento(id: string, idAcomp:number): Observable<any> {
+        return this.http.delete<any>(`${SALV_API}/acompanhamento_residente/${id}`)
+ }
 }
