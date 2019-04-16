@@ -120,7 +120,7 @@ export class NovoResidenteComponent implements OnInit {
       //CERTIDAO NASCIMENTO FINAL
 
       //ELEITORAL INICIO
-      TITULO_ELEITORAL: this.formBuilder.control(null, []),
+      TITULO_ELEITOR: this.formBuilder.control(null, []),
       ZONA_ELEITORAL: this.formBuilder.control(null, []),
       SECAO_ELEITORAL: this.formBuilder.control(null, []),
       //ELEITORAL FINAL
