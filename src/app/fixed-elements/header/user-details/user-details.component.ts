@@ -20,7 +20,7 @@ export class UserDetailsComponent implements OnInit {
   }
 
   isLoggedIn(): boolean {
-    return this.ls.isLoggedIn()
+    return (this.ls.isLoggedIn())
   }
 
   logout() {
