@@ -2,7 +2,7 @@ import { NovoAcompanhamentoService } from './acompanhamentos/novo-acompanhamento
 import { UserDetailsComponent } from './fixed-elements/header/user-details/user-details.component';
 import { NotificationService } from './shared/notification.service';
 import { HttpModule } from '@angular/http';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -78,6 +78,7 @@ import { ForgetPasswordComponent } from './auth/forget-password/forget-password.
 import { ForgetService } from './auth/forget-password/forget.service';
 import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
 import { ResetService } from './auth/reset-password/reset.service';
+import { AuthInterceptor } from './auth/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -134,7 +135,7 @@ import { ResetService } from './auth/reset-password/reset.service';
     EditarResidenteComponent,
     ForgetPasswordComponent,
     ResetPasswordComponent
-    
+
   ],
   imports: [
     NgxPaginationModule,
@@ -162,6 +163,7 @@ import { ResetService } from './auth/reset-password/reset.service';
     NovoAcompanhamentoService,
     ForgetService,
     ResetService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: ErrorHandler, useClass: GlobalErrorHandler }
   ],
   bootstrap: [AppComponent]
