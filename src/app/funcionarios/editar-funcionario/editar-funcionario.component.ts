@@ -6,6 +6,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FuncionariosService } from '../funcionarios.service';
 import { NotificationService } from 'src/app/shared/notification.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'salv-editar-funcionario',
@@ -63,17 +64,19 @@ export class EditarFuncionarioComponent implements OnInit {
   _cod_end: number
   _cod_fun: number
 
-  constructor(private fb: FormBuilder, private fs: FuncionariosService, private router: Router, private ar: ActivatedRoute, private ns: NotificationService) { }
+  constructor(private fb: FormBuilder, private fs: FuncionariosService, private router: Router, private ar: ActivatedRoute, private ns: NotificationService, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
-
+   this.spinner.show()
     this.fs.funcionarioQuery(this.ar.snapshot.params['id']).subscribe(data => {
+      
       this.funcionario = data
       this._cod_pes = this.funcionario[0].COD_PES
       this._cod_tel = this.funcionario[0].COD_TEL
       this._cod_end = this.funcionario[0].COD_END
       this._cod_fun = this.funcionario[0].COD_FUN
       console.log(this.funcionario[0])
+      
     })
 
     this.editarFuncionarioForm = this.fb.group({
@@ -138,7 +141,8 @@ export class EditarFuncionarioComponent implements OnInit {
         CARGO: this.funcionario[0].CARGO,
         DATA_ADMISSAO: this.funcionario[0].DATA_ADMISSAO
       })
-    }, 1000)
+      this.spinner.hide()
+    }, 2250)
   }
 
   editarFuncionario(editFuncionario: Funcionario) {
@@ -147,6 +151,7 @@ export class EditarFuncionarioComponent implements OnInit {
       this.router.navigate([`/funcionario/${this._cod_fun}`])
       this.ns.notify('Funcionário atualizado com sucesso!')
     })
+  
   }
-
+ 
 }

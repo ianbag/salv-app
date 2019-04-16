@@ -5,6 +5,7 @@ import { FuncionariosService } from '../../funcionarios.service';
 import { DialogConfirmService } from 'src/app/residentes/dialog-confirm.service';
 import { NotificationService } from 'src/app/shared/notification.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'salv-infos-dependente',
@@ -20,9 +21,10 @@ export class InfosDependenteComponent implements OnInit {
     "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"
   ];
 
-  constructor(private dcs: DialogConfirmService, private fs: FuncionariosService, private ns: NotificationService, private fb: FormBuilder) { }
+  constructor(private dcs: DialogConfirmService, private fs: FuncionariosService, private ns: NotificationService, private fb: FormBuilder, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
+  
     this.updateDependenteForm = this.fb.group({
       NOME: this.fb.control(null, []),
       SOBRENOME: this.fb.control(null, []),
@@ -34,7 +36,9 @@ export class InfosDependenteComponent implements OnInit {
       LIVRO_CERTIDAO_NASCIMENTO: this.fb.control(null, []),
       CIDADE_CERTIDAO_NASCIMENTO: this.fb.control(null, []),
       ESTADO_CERTIDAO_NASCIMENTO: this.fb.control(null, [])
+      
     })
+
   }
 
   deleteDependente(_dep_nome: string, _dep_sobrenome: string): void {

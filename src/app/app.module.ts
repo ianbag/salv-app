@@ -37,6 +37,7 @@ import { ConveniosService } from './convenios/convenios.service';
 import { AniversariantesComponent } from './tela-inicial/aniversariantes/aniversariantes.component';
 import { ProvaDeVidaComponent } from './tela-inicial/prova-de-vida/prova-de-vida.component';
 import { AniversarianteComponent } from './tela-inicial/aniversariantes/aniversariante/aniversariante.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { InfosConvenioComponent } from './residentes/residente/infos-convenio/infos-convenio.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
@@ -60,7 +61,7 @@ import { LoginService } from './auth/login/login.service';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { GlobalErrorHandler } from './app.global-error-handler';
 import { SnackbarComponent } from './shared/snackbar/snackbar.component';
-;
+
 import { NovoConvenioComponent } from './convenios/novo-convenio/novo-convenio.component';
 import { EditarConvenioComponent } from './convenios/editar-convenio/editar-convenio.component';
 import { TelaInicialService } from './tela-inicial/tela-inicial.service';
@@ -70,6 +71,11 @@ import { NovoFuncionarioComponent } from './funcionarios/novo-funcionario/novo-f
 import { EditarAcompanhamentoComponent } from './acompanhamentos/editar-acompanhamento/editar-acompanhamento.component';
 import { EditarFuncionarioComponent } from './funcionarios/editar-funcionario/editar-funcionario.component';
 import { EditarResidenteComponent } from './residentes/editar-residente/editar-residente.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { ForgetPasswordComponent } from './auth/forget-password/forget-password.component';
+import { ForgetService } from './auth/forget-password/forget.service';
+import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
+import { ResetService } from './auth/reset-password/reset.service';
 
 @NgModule({
   declarations: [
@@ -121,14 +127,19 @@ import { EditarResidenteComponent } from './residentes/editar-residente/editar-r
     EditarAcompanhamentoComponent,
     NovoFuncionarioComponent,
     EditarFuncionarioComponent,
-    EditarResidenteComponent
+    EditarResidenteComponent,
+    ForgetPasswordComponent,
+    ResetPasswordComponent
+
   ],
   imports: [
+    NgxPaginationModule,
     BrowserModule,
     HttpClientModule,
     HttpModule,
     BrowserAnimationsModule,
     FormsModule,
+    NgxSpinnerModule,
     ReactiveFormsModule,
     RouterModule.forRoot(ROUTES),
     NgxMaskModule.forRoot(),
@@ -145,6 +156,8 @@ import { EditarResidenteComponent } from './residentes/editar-residente/editar-r
     NotificationService,
     TelaInicialService,
     NovoAcompanhamentoService,
+    ForgetService,
+    ResetService,
     { provide: ErrorHandler, useClass: GlobalErrorHandler }
   ],
   bootstrap: [AppComponent]

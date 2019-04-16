@@ -1,3 +1,4 @@
+import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
 import { EditarAcompanhamentoComponent } from './acompanhamentos/editar-acompanhamento/editar-acompanhamento.component';
 import { EditarConvenioComponent } from './convenios/editar-convenio/editar-convenio.component';
 import { NovoConvenioComponent } from './convenios/novo-convenio/novo-convenio.component';
@@ -23,6 +24,7 @@ import { AuthGuardService as AuthGuard } from './auth/auth-guard.service'
 import { NovoFuncionarioComponent } from './funcionarios/novo-funcionario/novo-funcionario.component';
 import { EditarFuncionarioComponent } from './funcionarios/editar-funcionario/editar-funcionario.component';
 import { EditarResidenteComponent } from './residentes/editar-residente/editar-residente.component';
+import { ForgetPasswordComponent } from './auth/forget-password/forget-password.component';
 
 export const ROUTES: Routes = [
     //ROTAS VÃO AQUI
@@ -42,9 +44,11 @@ export const ROUTES: Routes = [
     { path: 'funcionario/:id', component: FuncionarioComponent, canActivate: [AuthGuard] },
     { path: 'editar-funcionario/:id', component: EditarFuncionarioComponent, canActivate: [AuthGuard] },
     { path: 'acompanhamentos', component: AcompanhamentosComponent, canActivate: [AuthGuard] },
-    { path: 'editar-acompanhamento/:id', component: EditarAcompanhamentoComponent },
+    { path: 'editar-acompanhamento/:id', component: EditarAcompanhamentoComponent, canActivate: [AuthGuard] },
     { path: 'acompanhamento/:id', component: AcompanhamentoComponent, canActivate: [AuthGuard] },
     { path: 'novo-acompanhamento', component: NovoAcompanhamentoComponent, canActivate: [AuthGuard] },
+    { path: 'esqueci-a-senha', component: ForgetPasswordComponent },
+    { path: 'esqueci-a-senha/:token', component: ResetPasswordComponent },
     { path: '', component: TelaInicialComponent, canActivate: [AuthGuard] },
     { path: '**', component: NotFoundComponent }
 

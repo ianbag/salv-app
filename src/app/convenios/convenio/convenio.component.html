@@ -1,9 +1,10 @@
+<ngx-spinner></ngx-spinner>
 <section class="content">
     <button (click)="downloadPDF()" class="btn btn-success" id="printReport"><i class="fa fa-print"></i></button>
     <div id="content" #reportConvenio>
         <div>
             <!-- Conteudo KAUE -->
-            <div class="box box-default" [@convenioAppeared]="convenioState">
+            <div class="box box-default box-editar" [@convenioAppeared]="convenioState">
                 <h1>Detalhes do Convênio</h1>
                 <hr>
                 <br>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { TelaInicialService } from '../tela-inicial.service';
 import { ProvaDeVida } from './prova-de-vida.model';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'salv-prova-de-vida',
@@ -23,12 +24,13 @@ export class ProvaDeVidaComponent implements OnInit {
 
   provaDeVidas: ProvaDeVida[]
 
-  constructor(private telaInicialService: TelaInicialService) { }
+  constructor(private telaInicialService: TelaInicialService, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
    this.telaInicialService.provaDeVida()
    .subscribe(data => {
     this.provaDeVidas = data
+    this.spinner.hide()
    })
   }
 

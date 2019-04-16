@@ -1,5 +1,7 @@
+<ngx-spinner></ngx-spinner>
 <section class="content">
-    <div class="box" [@funcionarioAppeared]="funcionarioState">
+        <button (click)="downloadPDF()" class="btn btn-success" id="printReport"><i class="fa fa-print"></i></button>
+    <div class="box box-editar" [@funcionarioAppeared]="funcionarioState">
         <h1>Detalhes do Funcionário</h1>
         <hr><br>
 

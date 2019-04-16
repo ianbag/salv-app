@@ -10,6 +10,7 @@ import * as jspdf from 'jspdf'
 import { Telefone_Pessoa } from 'src/app/funcionarios/funcionario.model';
 import { FormArray, Validators, FormGroup, AbstractControl, FormControl, FormBuilder } from '@angular/forms';
 import { NotificationService } from 'src/app/shared/notification.service';
+import { NgxSpinnerService } from 'ngx-spinner'
 
 @Component({
   selector: 'salv-residente',
@@ -51,14 +52,20 @@ export class ResidenteComponent implements OnInit {
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private notificationService: NotificationService,
+    private spinner: NgxSpinnerService
   ) { }
 
   ngOnInit() {
+    this.spinner.show()
     this.residentesService.residenteById(this.route.snapshot.params['id'])
-      .subscribe(residente => this.residente = residente)
+      .subscribe(residente => {
+       
+        this.residente = residente})
 
     this.residentesService.convenios()
-      .subscribe(convenio => this.residenteConvenios = convenio)
+      .subscribe(convenio =>{
+        this.spinner.hide()
+        this.residenteConvenios = convenio})
 
     this.getFamiliar()
 
@@ -91,7 +98,7 @@ export class ResidenteComponent implements OnInit {
       PARENTESCO_TITULAR: this.formBuilder.control(null, []),
       CONVENIO_CODIGO: this.formBuilder.control(null, [Validators.required]),
     })
-
+    
   }
 
   getFamiliar() {

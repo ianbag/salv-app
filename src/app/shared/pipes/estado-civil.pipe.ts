@@ -9,7 +9,7 @@ export class EstadoCivilPipe implements PipeTransform {
     let estadoCivil
 
     switch (value) {
-      case 's':
+      case 's' || 'S':
         estadoCivil = 'Solteiro'
         break;
       case 'c':

@@ -6,6 +6,7 @@ import { Residente } from './residente/residente.model';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import * as jspdf from 'jspdf'
 import { NotificationService } from '../shared/notification.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -29,11 +30,14 @@ export class ResidentesComponent implements OnInit {
 
   @ViewChild('reportResidentes') reportResidentes: ElementRef
 
-  constructor(private residentesService: ResidentesService, private dialogConfirmService: DialogConfirmService, private notificationService: NotificationService) { }
-
+  constructor(private residentesService: ResidentesService, private dialogConfirmService: DialogConfirmService, private notificationService: NotificationService, private spinner: NgxSpinnerService) { }
+  paginaAtual : number = 1;
   ngOnInit() {
+    this.spinner.show()
     this.residentesService.residentes()
-      .subscribe(residentes => this.residentes = residentes)
+      .subscribe(residentes => {
+        this.spinner.hide()
+        this.residentes = residentes})
 
     // limpar os dados armazenados no services toda vez que for inicializado
     this.residentesService.clearDataResidente() 

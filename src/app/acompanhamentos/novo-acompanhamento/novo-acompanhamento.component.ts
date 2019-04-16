@@ -5,7 +5,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/shared/notification.service';
-
+import { NgxSpinnerService } from 'ngx-spinner';
 import { trigger, state, transition, style, animate } from '@angular/animations';
 import { THIS_EXPR, variable } from '@angular/compiler/src/output/output_ast';
 
@@ -50,7 +50,7 @@ export class NovoAcompanhamentoComponent implements OnInit {
 
 
 
-  constructor(private formBuilder: FormBuilder, private NovoAcompanhamentoService: NovoAcompanhamentoService, private router: Router, private ns: NotificationService) { }
+  constructor(private formBuilder: FormBuilder, private NovoAcompanhamentoService: NovoAcompanhamentoService, private router: Router, private ns: NotificationService, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
     //Formulário Novo Acompanhamento
@@ -67,8 +67,10 @@ export class NovoAcompanhamentoComponent implements OnInit {
 
 
     //Residentes List    
+    this.spinner.show();
     this.NovoAcompanhamentoService.residentes()
       .subscribe(residentes => {
+       
         this.residentes = residentes
         console.log('residentes', residentes)
       })
@@ -76,10 +78,15 @@ export class NovoAcompanhamentoComponent implements OnInit {
     //funcionarios List
     this.NovoAcompanhamentoService.funcionarios()
       .subscribe(funcionarios => {
+        this.spinner.hide();
         this.funcionarios = funcionarios
         console.log('funcionario', funcionarios)
       })
 
+      
+
+      
+      
 
 
 
@@ -128,6 +135,7 @@ export class NovoAcompanhamentoComponent implements OnInit {
   novoAcompanhamento(acompanhamento: Acompanhamento) {
 
     this.NovoAcompanhamentoService.createAcompanhamento(acompanhamento).subscribe(res => {
+      
       this.ns.notify(`Acompanhamento inserido com sucesso!`)
       this.router.navigate(['/acompanhamentos'])
     })

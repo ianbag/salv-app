@@ -1,3 +1,12 @@
+<ngx-spinner></ngx-spinner>
+<style>
+  .my-pagination /deep/ .ngx-pagination .current {
+    background: 	#00AE5D;
+   
+    
+  }
+</style>
+ 
 <section class="content">
   <button (click)="downloadPDF()" class="btn btn-success" id="printReport"><i class="fa fa-print"></i></button>
   <div id="content" #reportAcompanhamentos>
@@ -16,7 +25,7 @@
           
           <th>Ações</th>
         </tr>
-        <tr *ngFor="let acompanhamento of acompanhamentos">
+        <tr *ngFor="let acompanhamento of acompanhamentos | paginate: { itemsPerPage: 10, currentPage: paginaAtual}">
           <td>{{acompanhamento.ATIVIDADE}}</td>
           <td>{{acompanhamento.DATA_ACOMPANHAMENTO}}</td>
          
@@ -29,6 +38,15 @@
         </tr>
 
       </table>
+      <pagination-controls  class="my-pagination "(pageChange)= "paginaAtual = $event"
+                      
+                      previousLabel="Anterior"
+                      nextLabel="Próximo"
+                      screenReaderPaginationLabel="Paginação"
+                      screenReaderPageLabel="Página"
+                      screenReaderCurrentLabel="Voce esta na página"
+      
+      ></pagination-controls>
       <!-- Fim da tabela  -->
     </div>
   </div>

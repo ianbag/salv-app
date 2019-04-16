@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConveniosService } from './../convenios.service';
 import { NotificationService } from './../../shared/notification.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -34,16 +35,19 @@ export class EditarConvenioComponent implements OnInit {
   _cod_tel: number
   _cod_conv: number
 
-  constructor(private fb: FormBuilder, private cs: ConveniosService, private router: Router, private ar: ActivatedRoute, private ns: NotificationService) { }
+  constructor(private fb: FormBuilder, private cs: ConveniosService, private router: Router, private ar: ActivatedRoute, private ns: NotificationService, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
-
+    this.spinner.show()
     this.cs.convenioQuery(this.ar.snapshot.params['id']).subscribe(data => {
+      
       this.convenio = data
       this._cod_conv = this.convenio[0].COD_CONV
       this._cod_end = this.convenio[0].COD_END
       this._cod_tel = this.convenio[0].COD_TEL
+      
       console.log(this.convenio[0])
+      
     })
 
     this.editarConvenioForm = this.fb.group({
@@ -66,7 +70,9 @@ export class EditarConvenioComponent implements OnInit {
     })
 
     setTimeout(() => {
+      
       this.editarConvenioForm.patchValue({
+        
         COD_CONV: this.convenio[0].COD_CONV,
         NOME_CONVENIO: this.convenio[0].NOME_CONVENIO,
         TIPO_CONVENIO: this.convenio[0].TIPO_CONVENIO,
@@ -84,8 +90,11 @@ export class EditarConvenioComponent implements OnInit {
           DDD: this.convenio[0].DDD,
           NUMERO: this.convenio[0].NUM_TEL
         }
-      })
-    }, 1000)
+        
+      }
+      )
+      this.spinner.hide()}, 2250)
+
   
   }
 

@@ -6,6 +6,7 @@ import { ResidentesService } from '../residentes.service';
 import { trigger, state, style, transition, animate } from '@angular/animations'
 import { Route, Router } from '@angular/router';
 import { NotificationService } from 'src/app/shared/notification.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'salv-novo-residente',
@@ -74,7 +75,8 @@ export class NovoResidenteComponent implements OnInit {
     private formBuilder: FormBuilder,
     private residentesService: ResidentesService,
     private router: Router,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private spinner: NgxSpinnerService
   ) { }
 
   markAllDirty(control: AbstractControl) {
@@ -91,6 +93,7 @@ export class NovoResidenteComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.spinner.show()
     this.pessoa = this.residentesService.pessoa
     this.residente = this.residentesService.residente
 
@@ -144,6 +147,7 @@ export class NovoResidenteComponent implements OnInit {
 
     if (this.pessoa != undefined)
       this.novoResidenteForm.controls['PESSOA'].setValue(this.pessoa)
+      this.spinner.hide()
     if (this.residente != undefined)
       this.novoResidenteForm.patchValue(this.residente)
   }

@@ -6,7 +6,7 @@ import { Acompanhamento, AcompanhamentoQuery, Acompanhamento_Funcionario, Acompa
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-
+import { NgxSpinnerService } from 'ngx-spinner';
 import { NotificationService } from 'src/app/shared/notification.service';
 import { trigger, state, transition, style, animate } from '@angular/animations';
 
@@ -51,14 +51,14 @@ export class EditarAcompanhamentoComponent implements OnInit {
   dropdownSettings2: any = []
 
 
-  constructor(private formBuilder: FormBuilder, private acompanhamentoService: AcompanhamentosService, private NovoAcompanhamentoService: NovoAcompanhamentoService, private router: Router, private activatedRoute: ActivatedRoute, private ns: NotificationService, private dialogConfirmService: DialogConfirmService) { }
+  constructor(private formBuilder: FormBuilder, private acompanhamentoService: AcompanhamentosService, private NovoAcompanhamentoService: NovoAcompanhamentoService, private router: Router, private activatedRoute: ActivatedRoute, private ns: NotificationService, private dialogConfirmService: DialogConfirmService, private spinner: NgxSpinnerService) { }
 
 
 
   ngOnInit() {
 
 
-
+    this.spinner.show();
     this.editarAcompanhamentoForm = this.formBuilder.group({
       DATA_ACOMPANHAMENTO: this.formBuilder.control(null, [Validators.required]),
       ATIVIDADE: this.formBuilder.control(null, [Validators.required]),
@@ -70,16 +70,17 @@ export class EditarAcompanhamentoComponent implements OnInit {
 
     this.acompanhamentoService.AcompanhamentoQuery
       (this.activatedRoute.snapshot.params['id']).subscribe(acompanhamento => {
-
+        
         this.acompanhamento = acompanhamento
         this.codigo_acompanhamento = this.acompanhamento[0].CODIGO
         console.log('dados', this.acompanhamento, 'residentes')
+        
       })
 
 
     this.acompanhamentoService.AcompanhamentoFuncionarioQuery
       (this.activatedRoute.snapshot.params['id']).subscribe(acompanhamento_funcionario => {
-
+        
         this.selectedFuncionarios = acompanhamento_funcionario
 
         console.log('funcionario', this.selectedFuncionarios)
@@ -87,8 +88,8 @@ export class EditarAcompanhamentoComponent implements OnInit {
 
     this.acompanhamentoService.AcompanhamentoResidenteQuery
       (this.activatedRoute.snapshot.params['id']).subscribe(acompanhamento_residente => {
-
-        this.selectedResidentes = acompanhamento_residente
+        
+          this.selectedResidentes = acompanhamento_residente
 
         console.log('residentes', this.selectedResidentes)
       })
@@ -101,16 +102,17 @@ export class EditarAcompanhamentoComponent implements OnInit {
 
         DATA_ACOMPANHAMENTO: this.acompanhamento[0].DATA_ACOMPANHAMENTO,
         ATIVIDADE: this.acompanhamento[0].ATIVIDADE,
-
+        
 
       })
-    }, 1000)
+      this.spinner.hide()
+    }, 2250)
 
-
-
+    
     //Residentes List    
     this.NovoAcompanhamentoService.residentes()
       .subscribe(residentes => {
+        this.spinner.hide() 
         this.residentes = residentes
         console.log('residentes', residentes)
 
@@ -122,9 +124,10 @@ export class EditarAcompanhamentoComponent implements OnInit {
     //funcionarios List
     this.NovoAcompanhamentoService.funcionarios()
       .subscribe(funcionarios => {
+        this.spinner.hide() 
         this.funcionarios = funcionarios
         console.log('funcionario', funcionarios)
-
+        this.spinner.hide()
       })
 
 
@@ -165,6 +168,7 @@ export class EditarAcompanhamentoComponent implements OnInit {
   editarAcompanhamento(editarAcomp: Acompanhamento) {
 
     this.acompanhamentoService.updateAcompanhamento(editarAcomp, this.codigo_acompanhamento).subscribe(res => {
+      
       this.ns.notify(`Acompanhamento atualizado com sucesso!`)
       this.router.navigate(['/acompanhamentos'])
     })

@@ -1,3 +1,11 @@
+<ngx-spinner></ngx-spinner>
+<style>
+  .my-pagination /deep/ .ngx-pagination .current {
+    background: 	#00AE5D;
+   
+    
+  }
+  </style>
 <!-- Main content -->
 <section class="content">
   <button (click)="downloadPDF()" class="btn btn-success" id="printReport"><i class="fa fa-print"></i></button>
@@ -20,7 +28,7 @@
             <th>RG</th>
             <th>Ações</th>
           </tr>
-          <tr *ngFor="let residente of residentes">
+          <tr *ngFor="let residente of residentes | paginate: { itemsPerPage: 10, currentPage: paginaAtual}">
             <td>{{residente.PESSOA.NOME}} {{residente.PESSOA.SOBRENOME}}</td>
             <td>{{residente.APELIDO}}</td>
             <td>{{residente.PESSOA.CPF | cpf}}</td>
@@ -28,7 +36,7 @@
 
             <td>
               <button type="submit" class="btn btn-danger botao"
-                (click)="deleteResidente(residente.CODIGO_RESIDENTE); $event.stopPropagation()">Apagar</button>
+                (click)="deleteResidente(residente.CODIGO_RESIDENTE); $event.stopPropagation()">Inativar</button>
               <a type="submit" class="btn btn-warning botao" [routerLink]="['/editar-residente', residente.CODIGO_RESIDENTE]">Editar</a>
               <a type="submit" class="btn btn-success botao" [routerLink]="['/residente', residente.CODIGO_RESIDENTE]">+
                 Informações</a>
@@ -36,6 +44,15 @@
           </tr>
 
         </table>
+        <pagination-controls  class="my-pagination "(pageChange)= "paginaAtual = $event"
+                      
+                      previousLabel="Anterior"
+                      nextLabel="Próximo"
+                      screenReaderPaginationLabel="Paginação"
+                      screenReaderPageLabel="Página"
+                      screenReaderCurrentLabel="Voce esta na página"
+      
+      ></pagination-controls>
         <!-- Fim da tabela  -->
       </div>
 
