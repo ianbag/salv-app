@@ -23,8 +23,6 @@ import { AuthGuardService as AuthGuard } from './auth/auth-guard.service'
 import { NovoFuncionarioComponent } from './funcionarios/novo-funcionario/novo-funcionario.component';
 import { EditarFuncionarioComponent } from './funcionarios/editar-funcionario/editar-funcionario.component';
 import { EditarResidenteComponent } from './residentes/editar-residente/editar-residente.component';
-import { EditarFamiliarResidenteComponent } from './residentes/editar-residente/familiar-residente/editar-familiar-residente.component';
-import { EditarConvenioResidenteComponent } from './residentes/editar-residente/convenio-residente/editar-convenio-residente.component';
 
 export const ROUTES: Routes = [
     //ROTAS VÃO AQUI
@@ -35,8 +33,6 @@ export const ROUTES: Routes = [
     { path: 'familiar-residente', component: FamiliarResidenteComponent, canActivate: [AuthGuard] },
     { path: 'convenio-residente', component: ConvenioResidenteComponent, canActivate: [AuthGuard] },
     { path: 'editar-residente/:id', component: EditarResidenteComponent, canActivate: [AuthGuard] },
-    { path: 'editar-familiar-residente/:id', component: EditarFamiliarResidenteComponent, canActivate: [AuthGuard] },
-    { path: 'editar-convenio-residente/:id', component: EditarConvenioResidenteComponent, canActivate: [AuthGuard] },
     { path: 'convenios', component: ConveniosComponent, canActivate: [AuthGuard] },
     { path: 'convenio/:id', component: ConvenioComponent, canActivate: [AuthGuard] },
     { path: 'novo-convenio', component: NovoConvenioComponent, canActivate: [AuthGuard] },
