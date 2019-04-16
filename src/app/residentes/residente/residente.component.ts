@@ -79,7 +79,10 @@ export class ResidenteComponent implements OnInit {
         COMPLEMENTO: this.formBuilder.control(null, []),
         REFERENCIA: this.formBuilder.control(null, []),
       }),
-      TELEFONES: this.formBuilder.array([this.createTelefones()])
+      TELEFONE: this.formBuilder.group({
+        DDD: this.formBuilder.control(null, [Validators.required, Validators.minLength(2), Validators.maxLength(3)]),
+        NUMERO: this.formBuilder.control(null, [Validators.required, Validators.minLength(8), Validators.maxLength(9)])
+      })
     })
 
     this.convenioResidenteForm = this.formBuilder.group({
@@ -101,28 +104,6 @@ export class ResidenteComponent implements OnInit {
       .subscribe(convenio => this.convenios = convenio)
   }
 
-  createTelefones(): FormGroup {
-    return this.formBuilder.group({
-      DDD: this.formBuilder.control(null, [Validators.required, Validators.minLength(3)]),
-      NUMERO: this.formBuilder.control(null, [Validators.required, Validators.minLength(9)])
-    });
-  }
-
-  get telefones() {
-    return this.familiarResidenteForm.get('TELEFONES') as FormArray
-  }
-
-  addTelefones() {
-    this.telefonesArray = this.familiarResidenteForm.get('TELEFONES') as FormArray;
-    this.telefonesArray.push(this.createTelefones());
-  }
-
-  removeTelefone(index) {
-    if (this.telefonesArray.length != 1) {
-      this.telefonesArray = this.familiarResidenteForm.get('TELEFONES') as FormArray;
-      this.telefonesArray.removeAt(index)
-    }
-  }
 
   familiarResidente(familiar: Familiar) {
     this.residentesService.createNewFamiliar(familiar, this.route.snapshot.params['id'])
