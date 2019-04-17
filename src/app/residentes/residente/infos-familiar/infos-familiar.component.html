@@ -1,268 +1,276 @@
-
 <div class="col-md-12">
+
+  <div class="col-xs-12 col-xs-12">
+    <div class="col-md-12" *ngIf="familiar">
+      <div class="col-sm-12 col-xs-12">
+        <h4>
+          <strong>Informações de {{familiar?.NOME}}</strong>
+          <a (click)="deletarFamiliar(familiar?.CODIGO)">
+            <i class="fa fa-close"></i>
+          </a>
+          <a data-toggle="modal" (click)="editarFamiliar(familiar)" attr.data-target="#modalEditarFamiliar{{familiar?.CODIGO}}">
+            <i class="fa fa-pencil"></i>
+          </a>
+        </h4>
+      </div>
+      <div class="col-sm-12">
+        <div class="col-xs-6 col-xs-12">
+          <strong>Nome: </strong> {{familiar?.NOME}} {{familiar?.SOBRENOME}}
+        </div>
   
-  <div class="col-xs-4 col-xs-12">
-<div class="col-md-12" *ngIf="familiar">
-  <div class="col-sm-12 col-xs-12">
-    <h4><strong>Informações de {{familiar?.NOME}}</strong>
-      <a (click)="deletarFamiliar(familiar?.CODIGO)"><i class="fa fa-close"></i></a>
-      <a data-toggle="modal" (click)="editarFamiliar(familiar)"
-        attr.data-target="#modalEditarFamiliar{{familiar?.CODIGO}}"><i class="fa fa-pencil"></i></a>
-    </h4>
-  </div>
+        <div class="col-xs-6 col-xs-12">
+          <strong>Parentesco: </strong> {{familiar?.PARENTESCO}}
+        </div>
+      </div>
 
-  <div class="col-xs-6 col-xs-12">
-    <strong>Nome: </strong> {{familiar?.NOME}} {{familiar?.SOBRENOME}}<br>
-  </div>
+      <div class="col-xs-12 col-xs-12">
+        <h4>
+          <strong>Endereço</strong>
+        </h4>
+      </div>
+      <div class="col-xs-12 col-xs-12">
 
-  <div class="col-xs-4 col-xs-12">
-    <strong>Parentesco: </strong> {{familiar?.PARENTESCO}}<br>
-  </div>
+       
+        <div class="col-xs-4 col-xs-12">
+          <strong>Endereço: </strong> {{familiar?.ENDERECO}}
+        </div>
 
-  <div class="col-xs-4 col-xs-12">
-    <strong>Telefones: </strong>
-    <span *ngFor="let tel of telefone">
-      ({{tel.TELEFONE.DDD}}) {{tel.TELEFONE.NUMERO}}
-    </span>
-  <div class="col-sm-12 col-xs-12">
-    <h4><strong>Telefones </strong>
-      <button type="button" class="btn btn-default btn-xs" data-toggle="modal"
-        attr.data-target="#modalNovoTelefone{{familiar?.CODIGO}}">
-        <i class="fa fa-plus"></i>
-      </button></h4>
-  </div>
+        <div class="col-xs-4 col-xs-12">
+          <strong>Nº: </strong> {{familiar?.NUMERO}}
+        </div>
 
-  <div class="col-sm-12">
-    <div class="col-xs-4 col-xs-12" *ngFor="let tel of telefone">
-      <strong>Telefone: </strong> ({{tel?.TELEFONE.DDD}}) {{tel?.TELEFONE.NUMERO}}
-      <a (click)="deletarTelefoneFamiliar(tel.TELEFONE.CODIGO, familiar?.CODIGO)"><span><i class="fa fa-close"></i></span></a>
-      <a data-toggle="modal" (click)="buscarTelefone(tel.TELEFONE.CODIGO)"
-        attr.data-target="#modalEditarTelefone{{familiar?.CODIGO}}"><span><i class="fa fa-pencil"></i></span></a>
-    </div>
-  </div>
-  <br class="col-sm-12"/>
-  <div class="col-xs-4 col-xs-12">
-    <strong>Endereço: </strong> {{familiar?.ENDERECO}}
-  </div>
+        <div class="col-xs-4 col-xs-12">
+          <strong>Bairro: </strong> {{familiar?.BAIRRO}}
+        </div>
 
-  <div class="col-xs-4 col-xs-12">
-    <strong>Nº: </strong> {{familiar?.NUMERO}}
-  </div>
+        <div class="col-xs-4 col-xs-12">
+          <strong>Complemento: </strong> {{familiar?.COMPLEMENTO}}
+        </div>
 
-  <div class="col-xs-4 col-xs-12">
-    <strong>Bairro: </strong> {{familiar?.BAIRRO}}
-  </div>
+        <div class="col-xs-4 col-xs-12">
+          <strong>Cidade: </strong> {{familiar?.CIDADE}}
+        </div>
 
-  <div class="col-xs-4 col-xs-12">
-    <strong>Complemento: </strong> {{familiar?.COMPLEMENTO}}
-  </div>
+        <div class="col-xs-4 col-xs-12">
+          <strong>Estado: </strong> {{familiar?.ESTADO}}
+        </div>
 
-  <div class="col-xs-4 col-xs-12">
-    <strong>Cidade: </strong> {{familiar?.CIDADE}}
-  </div>
+        <div class="col-xs-4 col-xs-12">
+          <strong>CEP: </strong> {{familiar?.CEP}}
+        </div>
 
-  <div class="col-xs-4 col-xs-12">
-    <strong>Estado: </strong> {{familiar?.ESTADO}}
-  </div>
-
-  <div class="col-xs-4 col-xs-12">
-    <strong>CEP: </strong> {{familiar?.CEP}}
-  </div>
-
-  <div class="col-xs-4 col-xs-12">
-    <strong>Referência: </strong> {{familiar?.REFERENCIA}}
-  </div>
-  <hr class="col-md-12">
+        <div class="col-xs-4 col-xs-12">
+          <strong>Referência: </strong> {{familiar?.REFERENCIA}}
+        </div>
+        <hr class="col-md-12">
 
 
-  <!-- INICIO MODAL EDITAR FAMILIAR -->
-  <div class="modal fade" id="modalEditarFamiliar{{familiar?.CODIGO}}" tabindex="-1" role="dialog"
-    attr.aria-labelledby="modalEditarFamiliar{{familiar?.CODIGO}}" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-body">
+        <!-- INICIO MODAL EDITAR FAMILIAR -->
+        <div class="modal fade" id="modalEditarFamiliar{{familiar?.CODIGO}}" tabindex="-1" role="dialog" attr.aria-labelledby="modalEditarFamiliar{{familiar?.CODIGO}}"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
 
-          <div>
-            <div class="col-sm-12 col-sm-12" id="formTitle">
-              <h4 class="text-center"><strong>Editar Familiar {{familiar?.NOME}}</strong></h4>
+                <div>
+                  <div class="col-sm-12 col-sm-12" id="formTitle">
+                    <h4 class="text-center">
+                      <strong>Editar Familiar {{familiar?.NOME}}</strong>
+                    </h4>
+                  </div>
+                </div>
+
+                <form [formGroup]="familiarResidenteForm" novalidate>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-sm-4 col-sm-12" id="inputValidator">
+                        <salv-input-container errorMessage="Campo Obrigatório" label="Nome">
+                          <span class="text-danger">*</span>
+                          <input type="text" class="form-control" formControlName="NOME" placeholder="Nome" maxlength="100">
+                        </salv-input-container>
+                      </div>
+                      <div class="col-sm-4 col-sm-12" id="inputValidator">
+                        <salv-input-container errorMessage="Campo Obrigatório" label="Sobrenome">
+                          <span class="text-danger">*</span>
+                          <input type="text" class="form-control" formControlName="SOBRENOME" placeholder="Sobrenome" maxlength="100">
+                        </salv-input-container>
+                      </div>
+                      <div class="col-sm-4 col-sm-12" id="inputValidator">
+                        <salv-input-container errorMessage="Campo Obrigatório" label="Parentesco">
+                          <span class="text-danger">*</span>
+                          <input type="text" class="form-control" formControlName="PARENTESCO" placeholder="Parentesco" maxlength="50">
+                        </salv-input-container>
+                      </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                      <div class="col-sm-4 col-sm-12" id="inputValidator" formGroupName="ENDERECOS">
+                        <salv-input-container errorMessage="Campo Obrigatório" label="Rua">
+                          <span class="text-danger">*</span>
+                          <input type="text" class="form-control" formControlName="ENDERECO" placeholder="Rua" maxlength="100">
+                        </salv-input-container>
+                      </div>
+                      <div class="col-sm-4 col-sm-12" id="inputValidator" formGroupName="ENDERECOS">
+                        <salv-input-container errorMessage="Campo Obrigatório" label="Número">
+                          <span class="text-danger">*</span>
+                          <input type="text" mask="0*" class="form-control" formControlName="NUMERO" placeholder="Número" maxlength="5">
+                        </salv-input-container>
+                      </div>
+                      <div class="col-sm-4 col-sm-12" id="inputValidator" formGroupName="ENDERECOS">
+                        <salv-input-container errorMessage="Campo Obrigatório" label="Bairro">
+                          <span class="text-danger">*</span>
+                          <input type="text" class="form-control" formControlName="BAIRRO" placeholder="Bairro" maxlength="50">
+                        </salv-input-container>
+                      </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                      <div class="col-sm-4 col-sm-12" id="inputValidator" formGroupName="ENDERECOS">
+                        <salv-input-container errorMessage="Campo Obrigatório" label="Cidade">
+                          <span class="text-danger">*</span>
+                          <input type="text" class="form-control" formControlName="CIDADE" placeholder="Cidade" maxlength="50">
+                        </salv-input-container>
+                      </div>
+                      <div class="col-sm-4 col-sm-12" id="inputValidator" formGroupName="ENDERECOS">
+                        <salv-input-container errorMessage="Campo Obrigatório" label="Estado">
+                          <span class="text-danger">*</span>
+                          <select class="form-control" formControlName="ESTADO">
+                            <option value="" label="Selecione" disabled selected="selected"></option>
+                            <option *ngFor="let estado of estados">{{estado}}</option>
+                          </select>
+                        </salv-input-container>
+                      </div>
+                      <div class="col-sm-4 col-sm-12" id="inputValidator" formGroupName="ENDERECOS">
+                        <salv-input-container errorMessage="Campo Obrigatório" label="CEP">
+                          <span class="text-danger">*</span>
+                          <input type="text" mask="00.000-000" class="form-control" formControlName="CEP" placeholder="CEP">
+                        </salv-input-container>
+                      </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                      <div class="col-sm-4 col-sm-12" formGroupName="ENDERECOS">
+                        <label>Complemento </label>
+                        <input type="text" class="form-control" formControlName="COMPLEMENTO" placeholder="Complemento">
+
+                      </div>
+                      <div class="col-sm-4 col-sm-12" formGroupName="ENDERECOS">
+                        <label>Referência </label>
+                        <input type="text" class="form-control" formControlName="REFERENCIA" placeholder="Referência" maxlength="100">
+                        <br>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal" (click)="familiarResidente(familiarResidenteForm.value)"
+                  [disabled]="!familiarResidenteForm.valid">Salvar</button>
+              </div>
             </div>
           </div>
+        </div>
+        <!-- FIM MODAL EDITAR FAMILIAR -->
 
-          <form [formGroup]="familiarResidenteForm" novalidate>
-            <div class="form-group">
-              <div class="row">
-                <div class="col-sm-4 col-sm-12" id="inputValidator">
-                  <salv-input-container errorMessage="Campo Obrigatório" label="Nome">
-                    <span class="text-danger">*</span>
-                    <input type="text" class="form-control" formControlName="NOME" placeholder="Nome" maxlength="100">
-                  </salv-input-container>
-                </div>
-                <div class="col-sm-4 col-sm-12" id="inputValidator">
-                  <salv-input-container errorMessage="Campo Obrigatório" label="Sobrenome">
-                    <span class="text-danger">*</span>
-                    <input type="text" class="form-control" formControlName="SOBRENOME" placeholder="Sobrenome"
-                      maxlength="100">
-                  </salv-input-container>
-                </div>
-                <div class="col-sm-4 col-sm-12" id="inputValidator">
-                  <salv-input-container errorMessage="Campo Obrigatório" label="Parentesco">
-                    <span class="text-danger">*</span>
-                    <input type="text" class="form-control" formControlName="PARENTESCO" placeholder="Parentesco"
-                      maxlength="50">
-                  </salv-input-container>
-                </div>
+        <!-- MODAL NOVO TELEFONE -->
+        <div class="modal fade" id="modalNovoTelefone{{familiar?.CODIGO}}" tabindex="-1" role="dialog" attr.aria-labelledby="modalNovoTelefone{{familiar?.CODIGO}}"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                <form [formGroup]="novoTelefoneForm" novalidate>
+                  <div class="box-body">
+                    <div>
+                      <div class="col-sm-12 col-sm-12">
+                        <h4>
+                          <strong>Adicionar novo telefone</strong>
+                        </h4>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-3 col-sm-12">
+                          <label>DDD</label>
+                          <input type="text" class="form-control" formControlName="DDD" placeholder="DDD" autocomplete="off" mask="000">
+                        </div>
+                        <div class="col-sm-3 col-sm-12">
+                          <label>Número</label>
+                          <input type="text" class="form-control" formControlName="NUMERO" placeholder="Número" mask="00000-0000" autocomplete="off">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
               </div>
-              <br />
-              <div class="row">
-                <div class="col-sm-4 col-sm-12" id="inputValidator" formGroupName="ENDERECOS">
-                  <salv-input-container errorMessage="Campo Obrigatório" label="Rua">
-                    <span class="text-danger">*</span>
-                    <input type="text" class="form-control" formControlName="ENDERECO" placeholder="Rua"
-                      maxlength="100">
-                  </salv-input-container>
-                </div>
-                <div class="col-sm-4 col-sm-12" id="inputValidator" formGroupName="ENDERECOS">
-                  <salv-input-container errorMessage="Campo Obrigatório" label="Número">
-                    <span class="text-danger">*</span>
-                    <input type="text" mask="0*" class="form-control" formControlName="NUMERO" placeholder="Número"
-                      maxlength="5">
-                  </salv-input-container>
-                </div>
-                <div class="col-sm-4 col-sm-12" id="inputValidator" formGroupName="ENDERECOS">
-                  <salv-input-container errorMessage="Campo Obrigatório" label="Bairro">
-                    <span class="text-danger">*</span>
-                    <input type="text" class="form-control" formControlName="BAIRRO" placeholder="Bairro"
-                      maxlength="50">
-                  </salv-input-container>
-                </div>
-              </div>
-              <br />
-              <div class="row">
-                <div class="col-sm-4 col-sm-12" id="inputValidator" formGroupName="ENDERECOS">
-                  <salv-input-container errorMessage="Campo Obrigatório" label="Cidade">
-                    <span class="text-danger">*</span>
-                    <input type="text" class="form-control" formControlName="CIDADE" placeholder="Cidade"
-                      maxlength="50">
-                  </salv-input-container>
-                </div>
-                <div class="col-sm-4 col-sm-12" id="inputValidator" formGroupName="ENDERECOS">
-                  <salv-input-container errorMessage="Campo Obrigatório" label="Estado">
-                    <span class="text-danger">*</span>
-                    <select class="form-control" formControlName="ESTADO">
-                      <option value="" label="Selecione" disabled selected="selected"></option>
-                      <option *ngFor="let estado of estados">{{estado}}</option>
-                    </select>
-                  </salv-input-container>
-                </div>
-                <div class="col-sm-4 col-sm-12" id="inputValidator" formGroupName="ENDERECOS">
-                  <salv-input-container errorMessage="Campo Obrigatório" label="CEP">
-                    <span class="text-danger">*</span>
-                    <input type="text" mask="00.000-000" class="form-control" formControlName="CEP" placeholder="CEP">
-                  </salv-input-container>
-                </div>
-              </div>
-              <br />
-              <div class="row">
-                <div class="col-sm-4 col-sm-12" formGroupName="ENDERECOS">
-                  <label>Complemento </label>
-                  <input type="text" class="form-control" formControlName="COMPLEMENTO" placeholder="Complemento">
-
-                </div>
-                <div class="col-sm-4 col-sm-12" formGroupName="ENDERECOS">
-                  <label>Referência </label>
-                  <input type="text" class="form-control" formControlName="REFERENCIA" placeholder="Referência"
-                    maxlength="100">
-                  <br>
-                </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-success" (click)="novoTelefone(this.novoTelefoneForm.value, familiar?.CODIGO)" data-dismiss="modal">Salvar</button>
               </div>
             </div>
-          </form>
+          </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-success" data-dismiss="modal"
-            (click)="familiarResidente(familiarResidenteForm.value)"
-            [disabled]="!familiarResidenteForm.valid">Salvar</button>
+        <!-- FIM MODAL NOVO TELEFONE -->
+
+        <!-- MODAL EDITAR TELEFONE -->
+        <div class="modal fade" id="modalEditarTelefone{{familiar?.CODIGO}}" tabindex="-1" role="dialog" attr.aria-labelledby="modalEditarTelefone{{familiar?.CODIGO}}"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                <form [formGroup]="novoTelefoneForm" novalidate>
+                  <div class="box-body">
+                    <div>
+                      <div class="col-sm-12 col-sm-12">
+                        <h4>
+                          <strong>Editar telefone</strong>
+                        </h4>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-3 col-sm-12">
+                          <label>DDD</label>
+                          <input type="text" class="form-control" formControlName="DDD" placeholder="DDD" autocomplete="off" mask="000">
+                        </div>
+                        <div class="col-sm-3 col-sm-12">
+                          <label>Número</label>
+                          <input type="text" class="form-control" formControlName="NUMERO" placeholder="Número" mask="00000-0000" autocomplete="off">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-success" (click)="editarTelefone(this.novoTelefoneForm.value)" data-dismiss="modal">Salvar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- FIM MODAL EDITAR TELEFONE -->
+
+      </div>
+      <div class="col-sm-12 col-xs-12">
+        <h4>
+          <strong>Telefones </strong>
+          <button type="button" class="btn btn-default btn-xs" data-toggle="modal" attr.data-target="#modalNovoTelefone{{familiar?.CODIGO}}">
+            <i class="fa fa-plus"></i>
+          </button>
+        </h4>
+      </div>
+      <div class="col-sm-12">
+        <div class="col-xs-4 col-xs-12" *ngFor="let tel of telefone">
+          <strong>Telefone: </strong> ({{tel?.TELEFONE.DDD}}) {{tel?.TELEFONE.NUMERO}}
+          <a (click)="deletarTelefoneFamiliar(tel.TELEFONE.CODIGO, familiar?.CODIGO)">
+            <span>
+              <i class="fa fa-close"></i>
+            </span>
+          </a>
+          <a data-toggle="modal" (click)="buscarTelefone(tel.TELEFONE.CODIGO)" attr.data-target="#modalEditarTelefone{{familiar?.CODIGO}}">
+            <span>
+              <i class="fa fa-pencil"></i>
+            </span>
+          </a>
         </div>
       </div>
     </div>
   </div>
-  <!-- FIM MODAL EDITAR FAMILIAR -->
-
-  <!-- MODAL NOVO TELEFONE -->
-  <div class="modal fade" id="modalNovoTelefone{{familiar?.CODIGO}}" tabindex="-1" role="dialog"
-    attr.aria-labelledby="modalNovoTelefone{{familiar?.CODIGO}}" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-body">
-          <form [formGroup]="novoTelefoneForm" novalidate>
-            <div class="box-body">
-              <div>
-                <div class="col-sm-12 col-sm-12">
-                  <h4><strong>Adicionar novo telefone</strong></h4>
-                </div>
-                <div class="row">
-                  <div class="col-sm-3 col-sm-12">
-                    <label>DDD</label>
-                    <input type="text" class="form-control" formControlName="DDD" placeholder="DDD" autocomplete="off"
-                      mask="000">
-                  </div>
-                  <div class="col-sm-3 col-sm-12">
-                    <label>Número</label>
-                    <input type="text" class="form-control" formControlName="NUMERO" placeholder="Número"
-                      mask="00000-0000" autocomplete="off">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-success"
-            (click)="novoTelefone(this.novoTelefoneForm.value, familiar?.CODIGO)" data-dismiss="modal">Salvar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- FIM MODAL NOVO TELEFONE -->
-
-  <!-- MODAL EDITAR TELEFONE -->
-  <div class="modal fade" id="modalEditarTelefone{{familiar?.CODIGO}}" tabindex="-1" role="dialog"
-    attr.aria-labelledby="modalEditarTelefone{{familiar?.CODIGO}}" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-body">
-          <form [formGroup]="novoTelefoneForm" novalidate>
-            <div class="box-body">
-              <div>
-                <div class="col-sm-12 col-sm-12">
-                  <h4><strong>Editar telefone</strong></h4>
-                </div>
-                <div class="row">
-                  <div class="col-sm-3 col-sm-12">
-                    <label>DDD</label>
-                    <input type="text" class="form-control" formControlName="DDD" placeholder="DDD" autocomplete="off"
-                      mask="000">
-                  </div>
-                  <div class="col-sm-3 col-sm-12">
-                    <label>Número</label>
-                    <input type="text" class="form-control" formControlName="NUMERO" placeholder="Número"
-                      mask="00000-0000" autocomplete="off">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-success" (click)="editarTelefone(this.novoTelefoneForm.value)"
-            data-dismiss="modal">Salvar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- FIM MODAL EDITAR TELEFONE -->
-
 </div>
