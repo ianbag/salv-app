@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
     this.spinner.show()
     this.ls.login(this.loginForm.value.email, this.loginForm.value.senha)
       .subscribe(user => this.ns.notify(`Bem vindo, ${user.login}`),
-        response => (this.ns.notify(response.error.message), this.spinner.hide()),     
+        response => (this.ns.notify(response), this.spinner.hide()),     
         )    
         
     

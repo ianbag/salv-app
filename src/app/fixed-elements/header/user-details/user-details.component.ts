@@ -25,6 +25,7 @@ export class UserDetailsComponent implements OnInit {
 
   logout() {
     this.ns.notify(`Até logo, ${this.user().login}`)
+    localStorage.clear()
     return this.ls.logout()
   }
 

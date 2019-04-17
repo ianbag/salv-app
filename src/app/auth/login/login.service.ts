@@ -14,9 +14,10 @@ export class LoginService {
 
     constructor(private http: HttpClient, private router: Router) { }
 
-    // returnUser() {
-    //     return this.user
-    // }
+    returnUser() {
+        var jsonAux = JSON.stringify(this.user)
+        localStorage.setItem('userSession', jsonAux)
+    }
 
     isLoggedIn(): boolean {
         if (!this.user) {
@@ -29,6 +30,8 @@ export class LoginService {
         return this.http.post<User>(`${SALV_API}/login`,
             { email: email, senha: senha }).pipe(tap(user => {
                 this.user = user
+                this.returnUser()
+                // localStorage.setItem('session', user.accessToken)
                 this.router.navigate(['/'])
             }))
     }
