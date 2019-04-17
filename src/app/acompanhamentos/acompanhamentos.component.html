@@ -20,10 +20,9 @@
       <br>
       <table class="table table-hover">
         <tr>
-          <th>Atividade realizada</th>
-          <th>Data</th>
-          
-          <th>Ações</th>
+          <th class="col-sm-4">Atividade realizada</th>
+          <th class="col-sm-4">Data</th>
+          <th class="col-sm-4">Ações</th>
         </tr>
         <tr *ngFor="let acompanhamento of acompanhamentos | paginate: { itemsPerPage: 10, currentPage: paginaAtual}">
           <td>{{acompanhamento.ATIVIDADE}}</td>

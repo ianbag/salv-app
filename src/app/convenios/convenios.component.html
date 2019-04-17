@@ -21,9 +21,9 @@
             <!-- /.box-header -->
             <table class="table table-hover">
                 <tr>
-                    <th>Nome</th>
-                    <th>Telefone</th>
-                    <th style="width: 350px">Ações</th>
+                    <th class="col-sm-4">Nome</th>
+                    <th class="col-sm-4">Telefone</th>
+                    <th class="col-sm-4">Ações</th>
                 </tr>
                 <tr *ngFor="let convenio of convenios | paginate: { itemsPerPage: 10, currentPage: paginaAtual}">
                     <td>{{convenio.NOME_CONVENIO}}</td>

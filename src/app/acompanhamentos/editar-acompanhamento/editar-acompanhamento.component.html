@@ -2,7 +2,7 @@
 <section class="content">
   <!-- Conteudo NATHAN -->
   <div class="box" [@editar-acompanhamentoAppeared]="editaracompanhamentoState">
-    <h1 align="center">Realizar acompanhamento</h1>
+    <h1 align="center">Atualizar acompanhamento</h1>
     <hr>
 
     <form [formGroup]="editarAcompanhamentoForm" novalidate >
@@ -71,7 +71,7 @@
         <div class="col-sm-12 col-xs-12">
           <br>
           <button (click)="editarAcompanhamento(editarAcompanhamentoForm.value); updateAcompanhamentoFuncionario();  updateAcompanhamentoResidente()" style="margin-left: 10px" class="btn btn-success botao pull-right"
-            >Salvar</button>
+            >Finalizar atualização</button>
 
           <button type="submit" (click)="novoAcompanhamentoForm()" class="btn btn-default botao pull-right" >Voltar</button>
         </div>
