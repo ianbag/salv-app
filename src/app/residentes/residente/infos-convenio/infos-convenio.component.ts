@@ -45,11 +45,17 @@ export class InfosConvenioComponent implements OnInit {
   editarConvenio(convenio: Residente_Convenio) {
     this.residentesService.updateConvenio(convenio)
       .subscribe(res => {
-        this.residentesService.convenioOneByID(convenio.NUMERO_CONVENIO)
-          .subscribe(res => {
-            this.convenio = res[0]
-            this.notificationService.notify(`Convenio atualizado com sucesso!`)
+        if (res['errors']) {
+          res['errors'].forEach(error => {
+            this.notificationService.notify(`Houve um erro! ${error.message}`)
           })
+        } else {
+          this.residentesService.convenioOneByID(convenio.NUMERO_CONVENIO)
+            .subscribe(res => {
+              this.convenio = res[0]
+              this.notificationService.notify(`Convenio atualizado com sucesso!`)
+            })
+        }
       })
   }
 
