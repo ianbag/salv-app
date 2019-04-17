@@ -134,8 +134,10 @@ export class ResidentesService {
     }
 
     updateResidente(dataForm: Residente, idResidente, idPessoa) {
-        return this.http.put<Residente>(`${SALV_API}/residente/${idResidente}`, dataForm).switchMap(res => {
-            return this.http.put<Pessoa>(`${SALV_API}/pessoa/${idPessoa}`, dataForm.PESSOA)
+        console.log("DATAFORM EDIT", dataForm)
+        return this.http.put<Pessoa>(`${SALV_API}/pessoa/${idPessoa}`, dataForm.PESSOA).switchMap(res => {
+            delete dataForm.PESSOA
+            return this.http.put<Residente>(`${SALV_API}/residente/${idResidente}`, dataForm)
         })
     }
 
