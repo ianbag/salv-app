@@ -13,13 +13,13 @@ import { NgxSpinnerService } from 'ngx-spinner';
   templateUrl: './editar-convenio.component.html',
   animations: [
     trigger('editar-convenioAppeared', [
-      state('ready', style({opacity: 1})),
+      state('ready', style({ opacity: 1 })),
       transition('void => ready', [
-        style({opacity: 0, transform: 'translate(-30px, -10px)'}),
+        style({ opacity: 0, transform: 'translate(-30px, -10px)' }),
         animate('500ms 0s ease-in-out')
       ])
     ])
-  ] 
+  ]
 })
 export class EditarConvenioComponent implements OnInit {
 
@@ -40,14 +40,14 @@ export class EditarConvenioComponent implements OnInit {
   ngOnInit() {
     this.spinner.show()
     this.cs.convenioQuery(this.ar.snapshot.params['id']).subscribe(data => {
-      
+
       this.convenio = data
       this._cod_conv = this.convenio[0].COD_CONV
       this._cod_end = this.convenio[0].COD_END
       this._cod_tel = this.convenio[0].COD_TEL
-      
+
       console.log(this.convenio[0])
-      
+
     })
 
     this.editarConvenioForm = this.fb.group({
@@ -70,9 +70,9 @@ export class EditarConvenioComponent implements OnInit {
     })
 
     setTimeout(() => {
-      
+
       this.editarConvenioForm.patchValue({
-        
+
         COD_CONV: this.convenio[0].COD_CONV,
         NOME_CONVENIO: this.convenio[0].NOME_CONVENIO,
         TIPO_CONVENIO: this.convenio[0].TIPO_CONVENIO,
@@ -90,19 +90,27 @@ export class EditarConvenioComponent implements OnInit {
           DDD: this.convenio[0].DDD,
           NUMERO: this.convenio[0].NUM_TEL
         }
-        
+
       }
       )
-      this.spinner.hide()}, 2250)
+      this.spinner.hide()
+    }, 2250)
 
-  
+
   }
 
   editarConvenio(editConvenio: Convenio) {
     this.cs.updateConvenio(this._cod_conv, this._cod_end, this._cod_tel, editConvenio.TELEFONE, editConvenio.ENDERECO, editConvenio).subscribe(res => {
       console.log(editConvenio)
-      this.router.navigate([`/convenio/${this._cod_conv}`])
-      this.ns.notify('Convênio atualizado com sucesso!')
+      if (res['errors']) {
+        res['errors'].forEach(error => {
+          console.log('Houve um erro!', error)
+          this.ns.notify(`Houve um erro! ${error.message}`)
+        })
+      } else {
+        this.router.navigate([`/convenio/${this._cod_conv}`])
+        this.ns.notify('Convênio atualizado com sucesso!')
+      }
     })
   }
 
