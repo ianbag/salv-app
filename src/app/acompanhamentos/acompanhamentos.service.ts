@@ -52,11 +52,11 @@ AcompanhamentoResidenteQuery(id: string): Observable<AcompanhamentoResidenteQuer
                 
             }      
             
-    deleteFuncionarioAcompanhamento(id: string, idAcomp:number): Observable<any> {
-                return this.http.delete<any>(`${SALV_API}/acompanhamento_funcionario/${id}`)
+    deleteFuncionarioAcompanhamento(idFuncionario: number, idAcomp:number): Observable<any> {
+                return this.http.delete<any>(`${SALV_API}/acompanhamento_funcionario/${idFuncionario}/${idAcomp}`)
        } 
        
-   deleteResidenteAcompanhamento(idResidente: string, idAcomp:number): Observable<any> {
-        return this.http.delete<any>(`${SALV_API}/acompanhamento_residente/${idResidente}/${idAcomp}`)
+   deleteResidenteAcompanhamento(idResidente: number, idAcompanhamento:number): Observable<any> {
+        return this.http.delete<any>(`${SALV_API}/acompanhamento_residente/${idResidente}/${idAcompanhamento}`)
  }
 }

@@ -4,7 +4,7 @@ import { NovoAcompanhamentoService } from './../novo-acompanhamento/novo-acompan
 import { AcompanhamentosService } from './../acompanhamentos.service';
 import { Acompanhamento, AcompanhamentoQuery, Acompanhamento_Funcionario, Acompanhamento_Residente } from './../acompanhamento/acompanhamento.model';
 import { Component, OnInit ,Output, EventEmitter} from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl, FormControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { NotificationService } from 'src/app/shared/notification.service';
@@ -56,17 +56,29 @@ export class EditarAcompanhamentoComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private acompanhamentoService: AcompanhamentosService, private NovoAcompanhamentoService: NovoAcompanhamentoService, private router: Router, private activatedRoute: ActivatedRoute, private ns: NotificationService, private dialogConfirmService: DialogConfirmService, private spinner: NgxSpinnerService) { }
 
+  markAllDirty(control: AbstractControl) {
+    if (control.hasOwnProperty('controls')) {
+      control.markAsDirty() // mark group
+      let ctrl = <any>control;
+      for (let inner in ctrl.controls) {
+        this.markAllDirty(ctrl.controls[inner] as AbstractControl);
+      }
+    }
+    else {
+      (<FormControl>(control)).markAsDirty();
+    }
+  }
 
 
   ngOnInit() {
-
-
     this.spinner.show();
+
+    
     this.editarAcompanhamentoForm = this.formBuilder.group({
       DATA_ACOMPANHAMENTO: this.formBuilder.control(null, [Validators.required]),
       ATIVIDADE: this.formBuilder.control(null, [Validators.required]),
-      residentes: this.formBuilder.control([Validators.required]),
-      funcionarios: this.formBuilder.control([Validators.required])
+      residentes: this.formBuilder.control(null,[Validators.required]),
+      funcionarios: this.formBuilder.control(null,[Validators.required])
 
     })
 
@@ -99,6 +111,7 @@ export class EditarAcompanhamentoComponent implements OnInit {
 
 
 
+
     setTimeout(() => {
 
       this.editarAcompanhamentoForm.patchValue({
@@ -108,7 +121,9 @@ export class EditarAcompanhamentoComponent implements OnInit {
 
 
       })
-      this.spinner.hide()
+      if(this.editarAcompanhamentoForm != null){
+          this.spinner.hide()
+      }
     }, 2250)
 
 
@@ -171,6 +186,7 @@ export class EditarAcompanhamentoComponent implements OnInit {
   editarAcompanhamento(editarAcomp: Acompanhamento) {
 
     this.acompanhamentoService.updateAcompanhamento(editarAcomp, this.codigo_acompanhamento).subscribe(res => {
+
       if (res['errors']) {
         res['errors'].forEach(error => {
           console.log('Houve um erro!', error)
@@ -179,6 +195,16 @@ export class EditarAcompanhamentoComponent implements OnInit {
       } else {
         this.ns.notify(`Acompanhamento atualizado com sucesso!`)
         this.router.navigate(['/acompanhamentos'])
+      
+      if (this.editarAcompanhamentoForm.valid == true && this.selectedFuncionarios != null && this.selectedResidentes != null){
+        this.ns.notify(`Acompanhamento inserido com sucesso!`)
+        this.router.navigate(['/acompanhamentos'])
+      
+        }else {
+        this.markAllDirty(this.editarAcompanhamentoForm)
+        console.log(this.editarAcompanhamentoForm.controls)
+        this.ns.notify(`Preencha os campos obrigatórios!`)
+
       }
     })
     console.log('Edição acompanhamento', editarAcomp)
@@ -212,33 +238,34 @@ export class EditarAcompanhamentoComponent implements OnInit {
 
   }
 
-  deleteResidente(id: string, idAcomp: number) {
+
+  deleteResidente(idResidente: number, idAcompanhamento:number)  {
     this.dialogConfirmService.confirm(`Deseja excluir o residente do acompanhamento?`)
       .then((isTrue) => {
         if (isTrue) {
-          this.acompanhamentoService.deleteResidenteAcompanhamento(id, idAcomp).subscribe(() => {
+          this.acompanhamentoService.deleteResidenteAcompanhamento(idResidente, idAcompanhamento).subscribe(() => {
             
             this.ns.notify('Dependente excluído com sucesso!')
           })           
         }
-        console.log("residente excluido: ", id)
+        console.log("residente excluido: ", idResidente)
       })
   }
 
-  deleteFuncionario(id: string, idAcomp: number) {
+
+  deleteFuncionario(idFunc: number, idAcomp:number)  {
     this.dialogConfirmService.confirm(`Deseja excluir o funcionário do acompanhamento?`)
       .then((isTrue) => {
         if (isTrue) {
-          this.acompanhamentoService.deleteFuncionarioAcompanhamento(id, idAcomp)
+          this.acompanhamentoService.deleteFuncionarioAcompanhamento(idFunc, idAcomp)
+          .subscribe(() => {
+            
+            this.ns.notify('Funcionario excluído com sucesso!')
+          })           
         }
-
+        console.log("funcionario excluido: ", idFunc)
       })
   }
-
-
-
-
-
 
 
   onResidenteSelect(residente: any) {
@@ -262,6 +289,9 @@ export class EditarAcompanhamentoComponent implements OnInit {
   onDeFuncionarioSelect(funcionarios: any) {
     this.deleteResidente(funcionarios.CODIGO_FUNCIONARIO, this.codigo_acompanhamento)
     console.log('onDeFuncionarioSelect', funcionarios.CODIGO_RESIDENTE, this.codigo_acompanhamento)
+    this.deleteFuncionario( funcionarios.CODIGO_FUNCIONARIO,  this.codigo_acompanhamento)
+    console.log('onDeFuncionarioSelect',  funcionarios.CODIGO_RESIDENTE, this.codigo_acompanhamento)
+
   }
 
 

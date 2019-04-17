@@ -1,7 +1,7 @@
 import { Funcionario } from './../../funcionarios/funcionario.model';
 import { NovoAcompanhamentoService } from './novo-acompanhamento.service';
 import { Acompanhamento, Acompanhamento_Funcionario, Acompanhamento_Residente } from './../acompanhamento/acompanhamento.model';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, AbstractControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/shared/notification.service';
@@ -51,6 +51,19 @@ export class NovoAcompanhamentoComponent implements OnInit {
 
 
   constructor(private formBuilder: FormBuilder, private NovoAcompanhamentoService: NovoAcompanhamentoService, private router: Router, private ns: NotificationService, private spinner: NgxSpinnerService) { }
+
+  markAllDirty(control: AbstractControl) {
+    if (control.hasOwnProperty('controls')) {
+      control.markAsDirty() // mark group
+      let ctrl = <any>control;
+      for (let inner in ctrl.controls) {
+        this.markAllDirty(ctrl.controls[inner] as AbstractControl);
+      }
+    }
+    else {
+      (<FormControl>(control)).markAsDirty();
+    }
+  }
 
   ngOnInit() {
     //Formulário Novo Acompanhamento
@@ -143,7 +156,16 @@ export class NovoAcompanhamentoComponent implements OnInit {
       } else {
         this.ns.notify(`Acompanhamento inserido com sucesso!`)
         this.router.navigate(['/acompanhamentos'])
-      }
+      }      
+      if (this.novoAcompanhamentoForm.valid == true){
+      this.ns.notify(`Acompanhamento inserido com sucesso!`)
+      this.router.navigate(['/acompanhamentos'])
+    
+      }else {
+      this.markAllDirty(this.novoAcompanhamentoForm)
+      console.log(this.novoAcompanhamentoForm.controls)
+      this.ns.notify(`Preencha os campos obrigatórios!`)
+    }
     })
     console.log('acompanhamento', acompanhamento)
   }

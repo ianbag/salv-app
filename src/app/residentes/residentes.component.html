@@ -22,11 +22,11 @@
         <br>
         <table class="table table-hover">
           <tr>
-            <th>Nome</th>
-            <th>Apelido</th>
-            <th>CPF</th>
-            <th>RG</th>
-            <th>Ações</th>
+            <th >Nome</th>
+            <th >Apelido</th>
+            <th >CPF</th>
+            <th >RG</th>
+            <th class="col-sm-4">Ações</th>
           </tr>
           <tr *ngFor="let residente of residentes | paginate: { itemsPerPage: 10, currentPage: paginaAtual}">
             <td>{{residente.PESSOA.NOME}} {{residente.PESSOA.SOBRENOME}}</td>

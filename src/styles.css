@@ -81,3 +81,12 @@
       right: 40px;
     }
   }
+
+  .ngx-pagination{
+    float: right;
+    margin-right: 100px;
+  }
+
+  .box.box-solid.box-default>.box-header a, .box.box-solid.box-default>.box-header .btn{
+    color: white;
+  }

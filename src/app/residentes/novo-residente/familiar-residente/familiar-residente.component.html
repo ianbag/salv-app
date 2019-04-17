@@ -1,7 +1,7 @@
 <section class="content">
 
   <div class="box" [@familiar-residenteAppeared]="familiarresidenteState">
-    <h1>Adicionar familiar</h1>
+    <h1>Adicionar novo familiar</h1>
     <hr>
 
     <form [formGroup]="familiarResidenteForm" novalidate>
@@ -117,7 +117,7 @@
                     </div>
                   </div>
                 </div>
-
+              </div>
               <div class="col-sm-2 col-sm-12" formGroupName="TELEFONE">
                 <salv-input-container errorMessage="Campo Obrigatório" label="DDD">
                   <input type="text" class="form-control" formControlName="DDD" placeholder="DDD" mask="000" maxlength="3">
