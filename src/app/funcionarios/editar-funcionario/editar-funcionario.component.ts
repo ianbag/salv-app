@@ -141,8 +141,11 @@ export class EditarFuncionarioComponent implements OnInit {
         CARGO: this.funcionario[0].CARGO,
         DATA_ADMISSAO: this.funcionario[0].DATA_ADMISSAO
       })
-      this.spinner.hide()
-    }, 2250)
+      if(this.editarFuncionarioForm.value!= null){
+        this.spinner.hide()
+      }
+    }, 2250 )
+   
   }
 
   editarFuncionario(editFuncionario: Funcionario) {
