@@ -66,12 +66,12 @@ export class FamiliarResidenteComponent implements OnInit {
       SOBRENOME: this.formBuilder.control(null, [Validators.required]),
       PARENTESCO: this.formBuilder.control(null, [Validators.required]),
       ENDERECOS: this.formBuilder.group({
-        ENDERECO: this.formBuilder.control(null, [Validators.required]),
-        NUMERO: this.formBuilder.control(null, [Validators.required]),
-        BAIRRO: this.formBuilder.control(null, [Validators.required]),
-        CIDADE: this.formBuilder.control(null, [Validators.required]),
-        ESTADO: this.formBuilder.control(null, [Validators.required]),
-        CEP: this.formBuilder.control(null, [Validators.required]),
+        ENDERECO: this.formBuilder.control(null, []),
+        NUMERO: this.formBuilder.control(null, []),
+        BAIRRO: this.formBuilder.control(null, []),
+        CIDADE: this.formBuilder.control(null, []),
+        ESTADO: this.formBuilder.control(null, []),
+        CEP: this.formBuilder.control(null, []),
         COMPLEMENTO: this.formBuilder.control(null, []),
         REFERENCIA: this.formBuilder.control(null, []),
       }),
@@ -90,6 +90,31 @@ export class FamiliarResidenteComponent implements OnInit {
     if (this.familiar != undefined)
       this.familiarResidenteForm.patchValue(this.familiar)
   }
+
+
+  createTelefones(): FormGroup {
+    return this.formBuilder.group({
+      DDD: this.formBuilder.control(null, [Validators.required, Validators.minLength(2)]),
+      NUMERO: this.formBuilder.control(null, [Validators.required, Validators.minLength(8)])
+    });
+  }
+
+  get telefones() {
+    return this.familiarResidenteForm.get('TELEFONES') as FormArray
+  }
+
+  addTelefones() {
+    this.telefonesArray = this.familiarResidenteForm.get('TELEFONES') as FormArray;
+    this.telefonesArray.push(this.createTelefones());
+  }
+
+  removeTelefone(index) {
+    if (this.telefonesArray.length != 1) {
+      this.telefonesArray = this.familiarResidenteForm.get('TELEFONES') as FormArray;
+      this.telefonesArray.removeAt(index)
+    }
+  }
+
 
   addDataServiceFamiliar(familiar: Familiar) {
     this.residentesService.endereco = familiar.ENDERECOS
