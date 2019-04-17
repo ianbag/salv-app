@@ -2,6 +2,9 @@ export interface Convenio {
     CODIGO: number,
     NOME_CONVENIO: string,
     TIPO_CONVENIO: string,
+    NUMERO_CONVENIO: number,
+    TITULAR_CONVENIO: string,
+    PARENTESCO_TITULAR: string,
         ENDERECO: {
             CODIGO: number,
             ENDERECO: string,

@@ -87,6 +87,7 @@
               </div>
             </div>
             <div class="row">
+
               <div class="col-sm-6 col-sm-12">
                 <label>Telefone <span class="btn btn-success botao" (click)="addTelefones()"> Adicionar Telefone</span></label>
               </div>
@@ -116,6 +117,18 @@
                     </div>
                   </div>
                 </div>
+
+              <div class="col-sm-2 col-sm-12" formGroupName="TELEFONE">
+                <salv-input-container errorMessage="Campo Obrigatório" label="DDD">
+                  <input type="text" class="form-control" formControlName="DDD" placeholder="DDD" mask="000" maxlength="3">
+                </salv-input-container>
+              </div>
+              <div class="col-sm-4 col-sm-12" formGroupName="TELEFONE">
+                <salv-input-container errorMessage="Campo Obrigatório" label="Telefone">
+                  <input type="text" class="form-control" formControlName="NUMERO" mask="00000-0000"
+                    placeholder="Número Telefone">
+                </salv-input-container>
+
               </div>
             </div>
 

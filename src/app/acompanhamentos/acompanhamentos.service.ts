@@ -56,7 +56,7 @@ AcompanhamentoResidenteQuery(id: string): Observable<AcompanhamentoResidenteQuer
                 return this.http.delete<any>(`${SALV_API}/acompanhamento_funcionario/${id}`)
        } 
        
-   deleteResidenteAcompanhamento(id: string, idAcomp:number): Observable<any> {
-        return this.http.delete<any>(`${SALV_API}/acompanhamento_residente/${id}`)
+   deleteResidenteAcompanhamento(idResidente: string, idAcomp:number): Observable<any> {
+        return this.http.delete<any>(`${SALV_API}/acompanhamento_residente/${idResidente}/${idAcomp}`)
  }
 }
