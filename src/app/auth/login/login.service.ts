@@ -14,24 +14,15 @@ export class LoginService {
 
     constructor(private http: HttpClient, private router: Router) { }
 
-    returnUser() {
-        var jsonAux = JSON.stringify(this.user)
-        localStorage.setItem('userSession', jsonAux)
-    }
-
     isLoggedIn(): boolean {
-        if (!this.user) {
-            return false
-        }
-        return true
+        return this.user !== undefined
     }
 
     login(email: string, senha: string): Observable<User> {
         return this.http.post<User>(`${SALV_API}/login`,
             { email: email, senha: senha }).pipe(tap(user => {
                 this.user = user
-                this.returnUser()
-                // localStorage.setItem('session', user.accessToken)
+                this.showMenuEmitter.emit(true)
                 this.router.navigate(['/'])
             }))
     }

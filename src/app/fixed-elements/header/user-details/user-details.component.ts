@@ -20,12 +20,11 @@ export class UserDetailsComponent implements OnInit {
   }
 
   isLoggedIn(): boolean {
-    return (this.ls.isLoggedIn())
+    return this.ls.isLoggedIn()
   }
 
   logout() {
     this.ns.notify(`Até logo, ${this.user().login}`)
-    localStorage.clear()
     return this.ls.logout()
   }
 
