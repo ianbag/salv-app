@@ -81,3 +81,8 @@
       right: 40px;
     }
   }
+
+  .ngx-pagination{
+    float: right;
+    margin-right: 100px;
+  }
