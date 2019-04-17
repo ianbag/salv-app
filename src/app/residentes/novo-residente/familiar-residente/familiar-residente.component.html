@@ -35,48 +35,44 @@
             </div>
             <br />
             <div class="row">
-              <div class="col-sm-4 col-sm-12" id="inputValidator" formGroupName="ENDERECOS">
-                <salv-input-container errorMessage="Campo Obrigatório" label="Rua">
-                  <span class="text-danger">*</span>
+              <div class="col-sm-4 col-sm-12"  formGroupName="ENDERECOS">
+                <label>Rua</label>
+                  
                   <input type="text" class="form-control" formControlName="ENDERECO" placeholder="Rua" maxlength="100">
-                </salv-input-container>
+                
               </div>
-              <div class="col-sm-2 col-sm-12" id="inputValidator" formGroupName="ENDERECOS">
-                <salv-input-container errorMessage="Campo Obrigatório" label="Número">
-                  <span class="text-danger">*</span>
+              <div class="col-sm-2 col-sm-12"  formGroupName="ENDERECOS">
+                
+                  <label>Número</label>
                   <input type="text" mask="0*" class="form-control" formControlName="NUMERO" placeholder="Número"
                     maxlength="5">
-                </salv-input-container>
+                
               </div>
-              <div class="col-sm-2 col-sm-12" id="inputValidator" formGroupName="ENDERECOS">
-                <salv-input-container errorMessage="Campo Obrigatório" label="Bairro">
-                  <span class="text-danger">*</span>
+              <div class="col-sm-2 col-sm-12"  formGroupName="ENDERECOS">
+               <label>Bairro</label>
                   <input type="text" class="form-control" formControlName="BAIRRO" placeholder="Bairro" maxlength="50">
-                </salv-input-container>
+                
               </div>
-              <div class="col-sm-2 col-sm-12" id="inputValidator" formGroupName="ENDERECOS">
-                <salv-input-container errorMessage="Campo Obrigatório" label="Cidade">
-                  <span class="text-danger">*</span>
+              <div class="col-sm-2 col-sm-12"  formGroupName="ENDERECOS">
+                <label>Cidade</label>
                   <input type="text" class="form-control" formControlName="CIDADE" placeholder="Cidade" maxlength="50">
-                </salv-input-container>
+                
               </div>
-              <div class="col-sm-2 col-sm-12" id="inputValidator" formGroupName="ENDERECOS">
-                <salv-input-container errorMessage="Campo Obrigatório" label="Estado">
-                  <span class="text-danger">*</span>
+              <div class="col-sm-2 col-sm-12"  formGroupName="ENDERECOS">
+               <label>Estado</label>
                   <select class="form-control" formControlName="ESTADO">
                     <option value="" label="Selecione" disabled selected="selected"></option>
                     <option *ngFor="let estado of estados">{{estado}}</option>
                   </select>
-                </salv-input-container>
+                
               </div>
             </div>
             <br />
             <div class="row">
-              <div class="col-sm-3 col-sm-12" id="inputValidator" formGroupName="ENDERECOS">
-                <salv-input-container errorMessage="Campo Obrigatório" label="CEP">
-                  <span class="text-danger">*</span>
+              <div class="col-sm-3 col-sm-12"  formGroupName="ENDERECOS">
+                <label>CEP</label>
                   <input type="text" mask="00.000-000" class="form-control" formControlName="CEP" placeholder="CEP">
-                </salv-input-container>
+                
               </div>
               <div class="col-sm-3 col-sm-12" formGroupName="ENDERECOS">
                 <label>Complemento </label>
@@ -91,6 +87,37 @@
               </div>
             </div>
             <div class="row">
+
+              <div class="col-sm-6 col-sm-12">
+                <label>Telefone <span class="btn btn-success botao" (click)="addTelefones()"> Adicionar Telefone</span></label>
+              </div>
+
+              <div class="col-sm-12">
+                <div formArrayName="TELEFONES"
+                  *ngFor="let telefone of familiarResidenteForm.get('TELEFONES').controls as tamanho; let i = index">
+                  <div class="col-sm-6" style="margin-left: -35px;" [formGroupName]="i">
+                    <div class=" col-sm-4">
+                      <salv-input-container errorMessage="Campo Obrigatório" label="DDD {{i+1}}">
+                        <span class="text-danger">*</span>
+                        <input style="margin-top:5px; margin-bottom:5px;" type="text" mask="(00)" class="form-control"
+                          formControlName="DDD" placeholder="DDD">
+                      </salv-input-container>
+                    </div>
+
+                    <div class="col-sm-5">
+                      <salv-input-container errorMessage="Campo Obrigatório" label="Número {{i+1}}">
+                        <span class="text-danger">*</span>
+                        <input style="margin-top:5px; margin-bottom:5px;" type="text" maxlength="9"
+                          class="form-control" formControlName="NUMERO" placeholder="Número">
+                      </salv-input-container>
+                    </div>
+                    <div class="col-sm-2" style="margin-top:40px;">
+                      <button class="btn btn-danger botao" (click)="removeTelefone(i)"
+                        [disabled]="tamanho.length == 1"><i class="fa fa-minus"></i></button>
+                    </div>
+                  </div>
+                </div>
+
               <div class="col-sm-2 col-sm-12" formGroupName="TELEFONE">
                 <salv-input-container errorMessage="Campo Obrigatório" label="DDD">
                   <input type="text" class="form-control" formControlName="DDD" placeholder="DDD" mask="000" maxlength="3">
@@ -101,6 +128,7 @@
                   <input type="text" class="form-control" formControlName="NUMERO" mask="00000-0000"
                     placeholder="Número Telefone">
                 </salv-input-container>
+
               </div>
             </div>
 

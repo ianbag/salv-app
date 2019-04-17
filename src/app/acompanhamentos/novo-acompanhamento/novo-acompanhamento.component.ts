@@ -67,7 +67,7 @@ export class NovoAcompanhamentoComponent implements OnInit {
 
 
     //Residentes List    
-    this.spinner.show();
+   
     this.NovoAcompanhamentoService.residentes()
       .subscribe(residentes => {
 

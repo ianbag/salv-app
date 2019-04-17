@@ -1,3 +1,7 @@
+
+<div class="col-md-12">
+  
+  <div class="col-xs-4 col-xs-12">
 <div class="col-md-12" *ngIf="familiar">
   <div class="col-sm-12 col-xs-12">
     <h4><strong>Informações de {{familiar?.NOME}}</strong>
@@ -11,9 +15,15 @@
     <strong>Nome: </strong> {{familiar?.NOME}} {{familiar?.SOBRENOME}}<br>
   </div>
 
-  <div class="col-xs-6 col-xs-12">
+  <div class="col-xs-4 col-xs-12">
     <strong>Parentesco: </strong> {{familiar?.PARENTESCO}}<br>
   </div>
+
+  <div class="col-xs-4 col-xs-12">
+    <strong>Telefones: </strong>
+    <span *ngFor="let tel of telefone">
+      ({{tel.TELEFONE.DDD}}) {{tel.TELEFONE.NUMERO}}
+    </span>
   <div class="col-sm-12 col-xs-12">
     <h4><strong>Telefones </strong>
       <button type="button" class="btn btn-default btn-xs" data-toggle="modal"
@@ -35,31 +45,31 @@
     <strong>Endereço: </strong> {{familiar?.ENDERECO}}
   </div>
 
-  <div class="col-xs-2 col-xs-12">
+  <div class="col-xs-4 col-xs-12">
     <strong>Nº: </strong> {{familiar?.NUMERO}}
   </div>
 
-  <div class="col-xs-3 col-xs-12">
+  <div class="col-xs-4 col-xs-12">
     <strong>Bairro: </strong> {{familiar?.BAIRRO}}
   </div>
 
-  <div class="col-xs-3 col-xs-12">
+  <div class="col-xs-4 col-xs-12">
     <strong>Complemento: </strong> {{familiar?.COMPLEMENTO}}
   </div>
 
-  <div class="col-xs-3 col-xs-12">
+  <div class="col-xs-4 col-xs-12">
     <strong>Cidade: </strong> {{familiar?.CIDADE}}
   </div>
 
-  <div class="col-xs-3 col-xs-12">
+  <div class="col-xs-4 col-xs-12">
     <strong>Estado: </strong> {{familiar?.ESTADO}}
   </div>
 
-  <div class="col-xs-3 col-xs-12">
+  <div class="col-xs-4 col-xs-12">
     <strong>CEP: </strong> {{familiar?.CEP}}
   </div>
 
-  <div class="col-xs-3 col-xs-12">
+  <div class="col-xs-4 col-xs-12">
     <strong>Referência: </strong> {{familiar?.REFERENCIA}}
   </div>
   <hr class="col-md-12">
