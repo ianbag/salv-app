@@ -59,13 +59,15 @@ export class ResidenteComponent implements OnInit {
     this.spinner.show()
     this.residentesService.residenteById(this.route.snapshot.params['id'])
       .subscribe(residente => {
-       
-        this.residente = residente})
+
+        this.residente = residente
+      })
 
     this.residentesService.convenios()
-      .subscribe(convenio =>{
+      .subscribe(convenio => {
         this.spinner.hide()
-        this.residenteConvenios = convenio})
+        this.residenteConvenios = convenio
+      })
 
     this.getFamiliar()
 
@@ -98,7 +100,7 @@ export class ResidenteComponent implements OnInit {
       PARENTESCO_TITULAR: this.formBuilder.control(null, []),
       CONVENIO_CODIGO: this.formBuilder.control(null, [Validators.required]),
     })
-    
+
   }
 
   getFamiliar() {
@@ -115,18 +117,30 @@ export class ResidenteComponent implements OnInit {
   familiarResidente(familiar: Familiar) {
     this.residentesService.createNewFamiliar(familiar, this.route.snapshot.params['id'])
       .subscribe(res => {
-        this.notificationService.notify(`Familiar adicionado com sucesso!`)
-        this.familiarResidenteForm.reset()
-        this.getFamiliar()
+        if (res['errors']) {
+          res['errors'].forEach(error => {
+            this.notificationService.notify(`Houve um erro! ${error.message}`)
+          })
+        } else {
+          this.notificationService.notify(`Familiar adicionado com sucesso!`)
+          this.familiarResidenteForm.reset()
+          this.getFamiliar()
+        }
       })
   }
   convenioResidente(residenteConvenio: Residente_Convenio) {
     this.residentesService.createNewConvenio(residenteConvenio, this.route.snapshot.params['id'])
-    .subscribe(res => {
-      this.notificationService.notify(`Convenio adicionado com sucesso!`)
-      this.convenioResidenteForm.reset()
-      this.getConvenio()
-    })
+      .subscribe(res => {
+        if (res['errors']) {
+          res['errors'].forEach(error => {
+            this.notificationService.notify(`Houve um erro! ${error.message}`)
+          })
+        } else {
+          this.notificationService.notify(`Convenio adicionado com sucesso!`)
+          this.convenioResidenteForm.reset()
+          this.getConvenio()
+        }
+      })
   }
 
   public downloadPDF() {

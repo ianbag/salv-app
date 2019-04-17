@@ -29,7 +29,7 @@ export class InfosFuncionarioComponent implements OnInit {
     constructor(private fs: FuncionariosService, private fb: FormBuilder, private ns: NotificationService, private dcs: DialogConfirmService, private spinner: NgxSpinnerService) { }
 
     ngOnInit(): void {
-          
+
         this.novoTelefoneForm = this.fb.group({
             DDD: this.fb.control(null, []),
             NUMERO: this.fb.control(null, [])
@@ -67,34 +67,55 @@ export class InfosFuncionarioComponent implements OnInit {
             EMAIL: this.fb.control(null, []),
             LOGIN: this.fb.control(null, [])
         })
-    
+
     }
 
     novoTelefone(telefone: Telefone) {
         this.fs.novoTelefone(this.funcionario.PESSOA_CODIGO, telefone).subscribe((res) => {
-            this.fs.telefoneById(this.funcionario.PESSOA_CODIGO.toString()).subscribe(res => {
-                this.telefones = res
-                this.novoTelefoneForm.reset()
-                this.ns.notify('Telefone inserido com sucesso!')
-            })
+            if (res['errors']) {
+                res['errors'].forEach(error => {
+                    console.log('Houve um erro!', error)
+                    this.ns.notify(`Houve um erro! ${error.message}`)
+                })
+            } else {
+                this.fs.telefoneById(this.funcionario.PESSOA_CODIGO.toString()).subscribe(res => {
+                    this.telefones = res
+                    this.novoTelefoneForm.reset()
+                    this.ns.notify('Telefone inserido com sucesso!')
+                })
+            }
         })
     }
 
     novoEndereco(endereco: Endereco) {
         this.fs.novoEndereco(this.funcionario.PESSOA_CODIGO, endereco).subscribe(res => {
-            this.fs.enderecoById(this.funcionario.PESSOA_CODIGO.toString()).subscribe(res => {
-                this.enderecos = res
-                this.novoEnderecoForm.reset()
-                this.ns.notify('Endereço inserido com sucesso!')
-            })
+            if (res['errors']) {
+                res['errors'].forEach(error => {
+                    console.log('Houve um erro!', error)
+                    this.ns.notify(`Houve um erro! ${error.message}`)
+                })
+            } else {
+                this.fs.enderecoById(this.funcionario.PESSOA_CODIGO.toString()).subscribe(res => {
+                    this.enderecos = res
+                    this.novoEnderecoForm.reset()
+                    this.ns.notify('Endereço inserido com sucesso!')
+                })
+            }
         })
     }
 
     novoUsuario(usuario: Usuario) {
         this.fs.novoUsuario(this.funcionario.CODIGO_FUNCIONARIO, usuario).subscribe(res => {
-            this.funcionario.USUARIO = res
-            this.novoUsuarioForm.reset()
-            this.ns.notify('Usuário inserido com sucesso!')
+            if (res['errors']) {
+                res['errors'].forEach(error => {
+                    console.log('Houve um erro!', error)
+                    this.ns.notify(`Houve um erro! ${error.message}`)
+                })
+            } else {
+                this.funcionario.USUARIO = res
+                this.novoUsuarioForm.reset()
+                this.ns.notify('Usuário inserido com sucesso!')
+            }
         })
     }
 
@@ -143,12 +164,19 @@ export class InfosFuncionarioComponent implements OnInit {
     }
 
     updateTelefone(telefoneAtualizado) {
-        this.fs.updateTelefone(this.codigoTelefone, telefoneAtualizado).subscribe(() => {
-            this.fs.telefoneById(this.funcionario.PESSOA_CODIGO.toString()).subscribe(response => {
-                this.telefones = response
-                this.updateTelefoneForm.reset()
-                this.ns.notify('Telefone atualizado com sucesso!')
-            })
+        this.fs.updateTelefone(this.codigoTelefone, telefoneAtualizado).subscribe(res => {
+            if (res['errors']) {
+                res['errors'].forEach(error => {
+                    console.log('Houve um erro!', error)
+                    this.ns.notify(`Houve um erro! ${error.message}`)
+                })
+            } else {
+                this.fs.telefoneById(this.funcionario.PESSOA_CODIGO.toString()).subscribe(response => {
+                    this.telefones = response
+                    this.updateTelefoneForm.reset()
+                    this.ns.notify('Telefone atualizado com sucesso!')
+                })
+            }
         })
     }
 
@@ -169,12 +197,19 @@ export class InfosFuncionarioComponent implements OnInit {
     }
 
     updateEndereco(enderecoAtualizado) {
-        this.fs.updateEndereco(this.codigoEndereco, enderecoAtualizado).subscribe(() => {
-            this.fs.enderecoById(this.funcionario.PESSOA_CODIGO.toString()).subscribe(response => {
-                this.enderecos = response
-                this.updateEnderecoForm.reset()
-                this.ns.notify('Endereço atualizado com sucesso!')
-            })
+        this.fs.updateEndereco(this.codigoEndereco, enderecoAtualizado).subscribe(res => {
+            if (res['errors']) {
+                res['errors'].forEach(error => {
+                    console.log('Houve um erro!', error)
+                    this.ns.notify(`Houve um erro! ${error.message}`)
+                })
+            } else {
+                this.fs.enderecoById(this.funcionario.PESSOA_CODIGO.toString()).subscribe(response => {
+                    this.enderecos = response
+                    this.updateEnderecoForm.reset()
+                    this.ns.notify('Endereço atualizado com sucesso!')
+                })
+            }
         })
     }
 
@@ -188,12 +223,19 @@ export class InfosFuncionarioComponent implements OnInit {
     }
 
     updateUsuario(usuarioAtualizado) {
-        this.fs.updateUsuario(this.funcionario.CODIGO_FUNCIONARIO.toString(), usuarioAtualizado).subscribe(() => {
-            this.fs.usuarioId(this.funcionario.CODIGO_FUNCIONARIO.toString()).subscribe(response => {
-                this.funcionario.USUARIO = response[0]
-                this.updateUsuarioForm.reset()
-                this.ns.notify('Usuário atualizado com sucesso')
-            })
+        this.fs.updateUsuario(this.funcionario.CODIGO_FUNCIONARIO.toString(), usuarioAtualizado).subscribe(res => {
+            if (res['errors']) {
+                res['errors'].forEach(error => {
+                    console.log('Houve um erro!', error)
+                    this.ns.notify(`Houve um erro! ${error.message}`)
+                })
+            } else {
+                this.fs.usuarioId(this.funcionario.CODIGO_FUNCIONARIO.toString()).subscribe(response => {
+                    this.funcionario.USUARIO = response[0]
+                    this.updateUsuarioForm.reset()
+                    this.ns.notify('Usuário atualizado com sucesso')
+                })
+            }
         })
     }
 

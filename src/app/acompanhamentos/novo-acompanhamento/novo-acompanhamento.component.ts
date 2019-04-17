@@ -1,7 +1,7 @@
 import { Funcionario } from './../../funcionarios/funcionario.model';
 import { NovoAcompanhamentoService } from './novo-acompanhamento.service';
 import { Acompanhamento, Acompanhamento_Funcionario, Acompanhamento_Residente } from './../acompanhamento/acompanhamento.model';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, AbstractControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/shared/notification.service';
@@ -52,6 +52,19 @@ export class NovoAcompanhamentoComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private NovoAcompanhamentoService: NovoAcompanhamentoService, private router: Router, private ns: NotificationService, private spinner: NgxSpinnerService) { }
 
+  markAllDirty(control: AbstractControl) {
+    if (control.hasOwnProperty('controls')) {
+      control.markAsDirty() // mark group
+      let ctrl = <any>control;
+      for (let inner in ctrl.controls) {
+        this.markAllDirty(ctrl.controls[inner] as AbstractControl);
+      }
+    }
+    else {
+      (<FormControl>(control)).markAsDirty();
+    }
+  }
+
   ngOnInit() {
     //Formulário Novo Acompanhamento
     this.novoAcompanhamentoForm = this.formBuilder.group({
@@ -70,7 +83,7 @@ export class NovoAcompanhamentoComponent implements OnInit {
    
     this.NovoAcompanhamentoService.residentes()
       .subscribe(residentes => {
-       
+
         this.residentes = residentes
         console.log('residentes', residentes)
       })
@@ -83,10 +96,10 @@ export class NovoAcompanhamentoComponent implements OnInit {
         console.log('funcionario', funcionarios)
       })
 
-      
 
-      
-      
+
+
+
 
 
 
@@ -97,7 +110,7 @@ export class NovoAcompanhamentoComponent implements OnInit {
     })
 
 
-    
+
 
     this.dropdownSettings = {
 
@@ -135,39 +148,54 @@ export class NovoAcompanhamentoComponent implements OnInit {
   novoAcompanhamento(acompanhamento: Acompanhamento) {
 
     this.NovoAcompanhamentoService.createAcompanhamento(acompanhamento).subscribe(res => {
-      
+      if (res['errors']) {
+        res['errors'].forEach(error => {
+          console.log('Houve um erro!', error)
+          this.ns.notify(`Houve um erro! ${error.message}`)
+        })
+      } else {
+        this.ns.notify(`Acompanhamento inserido com sucesso!`)
+        this.router.navigate(['/acompanhamentos'])
+      }      
+      if (this.novoAcompanhamentoForm.valid == true){
       this.ns.notify(`Acompanhamento inserido com sucesso!`)
       this.router.navigate(['/acompanhamentos'])
+    
+      }else {
+      this.markAllDirty(this.novoAcompanhamentoForm)
+      console.log(this.novoAcompanhamentoForm.controls)
+      this.ns.notify(`Preencha os campos obrigatórios!`)
+    }
     })
     console.log('acompanhamento', acompanhamento)
   }
 
-  NovoAcompanhamentoFuncionario(acompanhamento_funcionario:  Acompanhamento_Funcionario[]) {
+  NovoAcompanhamentoFuncionario(acompanhamento_funcionario: Acompanhamento_Funcionario[]) {
     for (let index = 0; index < this.novoAcompanhamentoForm.value.funcionarios.length; index++) {
 
       acompanhamento_funcionario = [Object.assign(this.novoAcompanhamentoForm.value.funcionarios[index], this.ACOMPANHAMENTO_CODIGO[0])]
       this.NovoAcompanhamentoService.createAcompanhamentoFuncionario(acompanhamento_funcionario).subscribe(res => {
 
         console.log('acompanhamento funcionario', acompanhamento_funcionario)
-       })
-      
-      }
-     
+      })
+
     }
-   NovoAcompanhamentoResidente(acompanhamento_residente: Acompanhamento_Residente[]) {
+
+  }
+  NovoAcompanhamentoResidente(acompanhamento_residente: Acompanhamento_Residente[]) {
     for (let index = 0; index < this.novoAcompanhamentoForm.value.residentes.length; index++) {
 
       acompanhamento_residente = [Object.assign(this.novoAcompanhamentoForm.value.residentes[index], this.ACOMPANHAMENTO_CODIGO[0])]
       this.NovoAcompanhamentoService.createAcompanhamentoResidente(acompanhamento_residente).subscribe(res => {
-        
+
         console.log('acompanhamento residente', acompanhamento_residente)
       })
-      
-  }
-     
+
+    }
+
 
   }
-    
+
 
   onResidenteSelect(residente: any) {
     console.log('onResidenteSelect', residente['CODIGO_RESIDENTE'])

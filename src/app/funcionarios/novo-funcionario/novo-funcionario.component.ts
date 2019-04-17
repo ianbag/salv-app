@@ -96,8 +96,15 @@ export class NovoFuncionarioComponent implements OnInit {
   novoFuncionario(funcionario: Funcionario) {
     this.fs.createNewEmployee(funcionario.PESSOA, funcionario.TELEFONE, funcionario.ENDERECO, funcionario)
       .subscribe(res => {
-        this.router.navigate(['/funcionarios'])
-        this.ns.notify(`Funcionário inserido com sucesso!`)
+        if (res['errors']) {
+          res['errors'].forEach(error => {
+            console.log('Houve um erro!', error)
+            this.ns.notify(`Houve um erro! ${error.message}`)
+          })
+        } else {
+          this.router.navigate(['/funcionarios'])
+          this.ns.notify(`Funcionário inserido com sucesso!`)
+        }
       })
   }
 }

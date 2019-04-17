@@ -84,26 +84,32 @@ export class InfosFamiliarComponent implements OnInit {
   familiarResidente(familiar: Familiar) {
     this.residenteService.updateFamiliar(familiar, this.familiar.CODIGO, this.familiar['ENDERECO_CODIGO'])
       .subscribe(res => {
-        this.notificationService.notify(`Familiar atualizado com sucesso!`)
-        this.familiarResidenteForm.reset()
-        this.residenteService.familiarByID(this.familiar.CODIGO)
-          .subscribe(resFamiliar => {
-            delete resFamiliar.ENDERECOS
-            this.residenteService.enderecoByID(this.familiar['ENDERECO_CODIGO'])
-              .subscribe(resEndereco => {
-                this.familiar.NOME = resFamiliar.NOME
-                this.familiar.SOBRENOME = resFamiliar.SOBRENOME
-                this.familiar.PARENTESCO = resFamiliar.PARENTESCO
-                this.familiar['ENDERECO'] = resEndereco.ENDERECO
-                this.familiar['NUMERO'] = resEndereco.NUMERO
-                this.familiar['BAIRRO'] = resEndereco.BAIRRO
-                this.familiar['CIDADE'] = resEndereco.CIDADE
-                this.familiar['ESTADO'] = resEndereco.ESTADO
-                this.familiar['CEP'] = resEndereco.CEP
-                this.familiar['COMPLEMENTO'] = resEndereco.COMPLEMENTO
-                this.familiar['REFERENCIA'] = resEndereco.REFERENCIA
-              })
+        if (res['errors']) {
+          res['errors'].forEach(error => {
+            this.notificationService.notify(`Houve um erro! ${error.message}`)
           })
+        } else {
+          this.notificationService.notify(`Familiar atualizado com sucesso!`)
+          this.familiarResidenteForm.reset()
+          this.residenteService.familiarByID(this.familiar.CODIGO)
+            .subscribe(resFamiliar => {
+              delete resFamiliar.ENDERECOS
+              this.residenteService.enderecoByID(this.familiar['ENDERECO_CODIGO'])
+                .subscribe(resEndereco => {
+                  this.familiar.NOME = resFamiliar.NOME
+                  this.familiar.SOBRENOME = resFamiliar.SOBRENOME
+                  this.familiar.PARENTESCO = resFamiliar.PARENTESCO
+                  this.familiar['ENDERECO'] = resEndereco.ENDERECO
+                  this.familiar['NUMERO'] = resEndereco.NUMERO
+                  this.familiar['BAIRRO'] = resEndereco.BAIRRO
+                  this.familiar['CIDADE'] = resEndereco.CIDADE
+                  this.familiar['ESTADO'] = resEndereco.ESTADO
+                  this.familiar['CEP'] = resEndereco.CEP
+                  this.familiar['COMPLEMENTO'] = resEndereco.COMPLEMENTO
+                  this.familiar['REFERENCIA'] = resEndereco.REFERENCIA
+                })
+            })
+        }
       })
   }
 
@@ -130,9 +136,15 @@ export class InfosFamiliarComponent implements OnInit {
   novoTelefone(telefone: Telefone, familiarCodigo) {
     this.residenteService.createNewTelefoneFamiliar(telefone, familiarCodigo).
       subscribe(res => {
-        this.getTelefones()
-        this.novoTelefoneForm.reset()
-        this.notificationService.notify(`Telefone adicionado com sucesso!`)
+        if (res['errors']) {
+          res['errors'].forEach(error => {
+            this.notificationService.notify(`Houve um erro! ${error.message}`)
+          })
+        } else {
+          this.getTelefones()
+          this.novoTelefoneForm.reset()
+          this.notificationService.notify(`Telefone adicionado com sucesso!`)
+        }
       })
   }
 
@@ -149,9 +161,15 @@ export class InfosFamiliarComponent implements OnInit {
   editarTelefone(telefone: Telefone) {
     this.residenteService.updateTelefone(telefone, this.codigoTelefone)
       .subscribe(res => {
-        this.getTelefones()
-        this.novoTelefoneForm.reset()
-        this.notificationService.notify(`Telefone atualizado com sucesso!`)
+        if (res['errors']) {
+          res['errors'].forEach(error => {
+            this.notificationService.notify(`Houve um erro! ${error.message}`)
+          })
+        } else {
+          this.getTelefones()
+          this.novoTelefoneForm.reset()
+          this.notificationService.notify(`Telefone atualizado com sucesso!`)
+        }
       })
   }
 
