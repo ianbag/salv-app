@@ -13,6 +13,7 @@ export class AuthInterceptor implements HttpInterceptor {
         const ls = this.injector.get(LoginService)
 
         if (ls.isLoggedIn()) {
+            ls.showMenuEmitter.emit(true)
             const authRequest = request.clone({
                 setHeaders: {
                     'Authorization': `Bearer ${ls.user.accessToken}`
