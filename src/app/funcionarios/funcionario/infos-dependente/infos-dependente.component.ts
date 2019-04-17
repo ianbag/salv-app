@@ -24,7 +24,7 @@ export class InfosDependenteComponent implements OnInit {
   constructor(private dcs: DialogConfirmService, private fs: FuncionariosService, private ns: NotificationService, private fb: FormBuilder, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
-  
+
     this.updateDependenteForm = this.fb.group({
       NOME: this.fb.control(null, []),
       SOBRENOME: this.fb.control(null, []),
@@ -36,7 +36,7 @@ export class InfosDependenteComponent implements OnInit {
       LIVRO_CERTIDAO_NASCIMENTO: this.fb.control(null, []),
       CIDADE_CERTIDAO_NASCIMENTO: this.fb.control(null, []),
       ESTADO_CERTIDAO_NASCIMENTO: this.fb.control(null, [])
-      
+
     })
 
   }
@@ -71,8 +71,15 @@ export class InfosDependenteComponent implements OnInit {
 
   updateDependente(id_, nome_, sobrenome_, dependente) {
     this.fs.updateDependente(id_, nome_, sobrenome_, dependente).subscribe(res => {
-      this._dependentes.emit(true)
-      this.ns.notify('Dependente alterado com sucesso!')
+      if (res['errors']) {
+        res['errors'].forEach(error => {
+          console.log('Houve um erro!', error)
+          this.ns.notify(`Houve um erro! ${error.message}`)
+        })
+      } else {
+        this._dependentes.emit(true)
+        this.ns.notify('Dependente alterado com sucesso!')
+      }
     })
   }
 

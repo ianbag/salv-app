@@ -55,7 +55,7 @@ export class ConvenioResidenteComponent implements OnInit {
     this.residenteConvenio = this.residentesService.residenteConvenio
 
     this.residentesService.convenios()
-    .subscribe(convenio => this.convenios = convenio)
+      .subscribe(convenio => this.convenios = convenio)
 
     this.convenioResidenteForm = this.formBuilder.group({
       NUMERO_CONVENIO: this.formBuilder.control(null, [Validators.required]),
@@ -77,10 +77,15 @@ export class ConvenioResidenteComponent implements OnInit {
       this.residentesService.residenteConvenio = residenteConvenio
       this.residentesService.createNewResidente()
         .subscribe(res => {
-          console.log("CREATE NEW RESIDENTE: ", res)
-          this.router.navigate(['/residentes'])
-          this.notificationService.notify(`Residente inserido com sucesso!`)
-          this.residentesService.clearDataResidente()
+          if (res.errors) {
+            res.errors.forEach(error => {
+              this.notificationService.notify(`Houve um erro! ${error.message}`)
+            })
+          } else {
+            this.router.navigate(['/residentes'])
+            this.notificationService.notify(`Residente inserido com sucesso!`)
+            this.residentesService.clearDataResidente()
+          }
         })
     }
     else {

@@ -13,9 +13,9 @@ import { NotificationService } from 'src/app/shared/notification.service';
   templateUrl: './novo-convenio.component.html',
   animations: [
     trigger('novo-convenioAppeared', [
-      state('ready', style({opacity: 1})),
+      state('ready', style({ opacity: 1 })),
       transition('void => ready', [
-        style({opacity: 0, transform: 'translate(-30px, -10px)'}),
+        style({ opacity: 0, transform: 'translate(-30px, -10px)' }),
         animate('500ms 0s ease-in-out')
       ])
     ])
@@ -37,7 +37,7 @@ export class NovoConvenioComponent implements OnInit {
   ngOnInit() {
     this.spinner.show()
     this.novoConvenioForm = this.fb.group({
-      
+
       NOME_CONVENIO: this.fb.control('', [Validators.required]),
       TIPO_CONVENIO: this.fb.control('', [Validators.required]),
       ENDERECO: this.fb.group({
@@ -58,13 +58,19 @@ export class NovoConvenioComponent implements OnInit {
     this.spinner.hide();
   }
 
-  novoConvenio(convenio: Convenio){
+  novoConvenio(convenio: Convenio) {
     this.cs.createNewConvenio(convenio.TELEFONE, convenio.ENDERECO, convenio)
       .subscribe(res => {
-        
-        this.router.navigate(['/convenios'])
-        this.ns.notify(`Convênio inserido com sucesso!`)
-      })  
+        if (res['errors']) {
+          res['errors'].forEach(error => {
+            console.log('Houve um erro!', error)
+            this.ns.notify(`Houve um erro! ${error.message}`)
+          })
+        } else {
+          this.router.navigate(['/convenios'])
+          this.ns.notify(`Convênio inserido com sucesso!`)
+        }
+      })
   }
 
 }  

@@ -67,16 +67,16 @@ export class EditarFuncionarioComponent implements OnInit {
   constructor(private fb: FormBuilder, private fs: FuncionariosService, private router: Router, private ar: ActivatedRoute, private ns: NotificationService, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
-   this.spinner.show()
+    this.spinner.show()
     this.fs.funcionarioQuery(this.ar.snapshot.params['id']).subscribe(data => {
-      
+
       this.funcionario = data
       this._cod_pes = this.funcionario[0].COD_PES
       this._cod_tel = this.funcionario[0].COD_TEL
       this._cod_end = this.funcionario[0].COD_END
       this._cod_fun = this.funcionario[0].COD_FUN
       console.log(this.funcionario[0])
-      
+
     })
 
     this.editarFuncionarioForm = this.fb.group({
@@ -151,10 +151,17 @@ export class EditarFuncionarioComponent implements OnInit {
   editarFuncionario(editFuncionario: Funcionario) {
     this.fs.updateEmployee(this._cod_pes, this._cod_tel, this._cod_end, this._cod_fun, editFuncionario.PESSOA, editFuncionario.TELEFONE, editFuncionario.ENDERECO, editFuncionario).subscribe(res => {
       console.log(editFuncionario.ENDERECO)
-      this.router.navigate([`/funcionario/${this._cod_fun}`])
-      this.ns.notify('Funcionário atualizado com sucesso!')
+      if (res['errors']) {
+        res['errors'].forEach(error => {
+          console.log('Houve um erro!', error)
+          this.ns.notify(`Houve um erro! ${error.message}`)
+        })
+      } else {
+        this.router.navigate([`/funcionario/${this._cod_fun}`])
+        this.ns.notify('Funcionário atualizado com sucesso!')
+      }
     })
-  
+
   }
- 
+
 }
