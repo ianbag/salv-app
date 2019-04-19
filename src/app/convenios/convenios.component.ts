@@ -5,6 +5,7 @@ import { DialogConfirmService } from '../residentes/dialog-confirm.service';
 import { trigger, state, transition, style, animate } from '@angular/animations';
 import { NgxSpinnerService } from 'ngx-spinner';
 import * as jspdf from 'jspdf'
+import 'jspdf-autotable'
 
 @Component({
   selector: 'salv-convenios',
@@ -49,4 +50,7 @@ export class ConveniosComponent implements OnInit {
         }
       })
   }
+
+  public downloadPDF() { }
+
 }
