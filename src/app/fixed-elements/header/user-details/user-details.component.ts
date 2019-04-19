@@ -11,7 +11,7 @@ import { DialogConfirmService } from 'src/app/residentes/dialog-confirm.service'
 })
 export class UserDetailsComponent implements OnInit {
 
-  user = localStorage.getItem('login')
+  user = sessionStorage.getItem('login')
 
   constructor(private ls: LoginService, private ns: NotificationService, private router: Router, private dcs: DialogConfirmService) { }
 
@@ -19,7 +19,7 @@ export class UserDetailsComponent implements OnInit {
   }
 
   isLoggedIn(): boolean {
-    if (localStorage.getItem('isLoggedIn') == "true") {
+    if (sessionStorage.getItem('isLoggedIn') == "true") {
       return true
     }
     return false

@@ -31,9 +31,9 @@ export class LoginComponent implements OnInit {
   login() {
     this.spinner.show()
     this.ls.login(this.loginForm.value).subscribe(success => {
-      localStorage.setItem('isLoggedIn', "true")
-      localStorage.setItem('login', success.login)
-      localStorage.setItem('token', success.accessToken)
+      sessionStorage.setItem('isLoggedIn', "true")
+      sessionStorage.setItem('login', success.login)
+      sessionStorage.setItem('token', success.accessToken)
       this.router.navigate([this.returnUrl])
     },
     err => {
