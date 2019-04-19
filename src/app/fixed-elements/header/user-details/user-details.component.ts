@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router"
+import { Router } from "@angular/router"
 import { LoginService } from 'src/app/auth/login/login.service';
 import { NotificationService } from 'src/app/shared/notification.service';
 

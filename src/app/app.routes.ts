@@ -25,33 +25,31 @@ import { EditarFuncionarioComponent } from './funcionarios/editar-funcionario/ed
 import { EditarResidenteComponent } from './residentes/editar-residente/editar-residente.component';
 import { ForgetPasswordComponent } from './auth/forget-password/forget-password.component';
 
-// import { AuthGuardService as AuthGuard } from './auth/auth-guard.service'
+import { AuthGuardService as AuthGuard } from './auth/auth-guard.service'
 
 export const ROUTES: Routes = [
     //ROTAS VÃO AQUI
     { path: 'login', component: LoginComponent },
-    { path: 'residentes', component: ResidentesComponent/*, canActivate: [AuthGuard]*/ },
-    { path: 'residente/:id', component: ResidenteComponent/*, canActivate: [AuthGuard]*/ },
-    { path: 'novo-residente', component: NovoResidenteComponent/*, canActivate: [AuthGuard]*/ },
-    { path: 'familiar-residente', component: FamiliarResidenteComponent/*, canActivate: [AuthGuard]*/ },
-    { path: 'convenio-residente', component: ConvenioResidenteComponent/*, canActivate: [AuthGuard]*/ },
-    { path: 'editar-residente/:id', component: EditarResidenteComponent/*, canActivate: [AuthGuard]*/ },
-    { path: 'convenios', component: ConveniosComponent/*, canActivate: [AuthGuard]*/ },
-    { path: 'convenio/:id', component: ConvenioComponent/*, canActivate: [AuthGuard]*/ },
-    { path: 'novo-convenio', component: NovoConvenioComponent/*, canActivate: [AuthGuard]*/ },
-    { path: 'editar-convenio/:id', component: EditarConvenioComponent/*, canActivate: [AuthGuard]*/ },
-    { path: 'funcionarios', component: FuncionariosComponent/*, canActivate: [AuthGuard]*/ },
-    { path: 'novo-funcionario', component: NovoFuncionarioComponent/*, canActivate: [AuthGuard]*/ },
-    { path: 'funcionario/:id', component: FuncionarioComponent/*, canActivate: [AuthGuard]*/ },
-    { path: 'editar-funcionario/:id', component: EditarFuncionarioComponent/*, canActivate: [AuthGuard]*/ },
-    { path: 'acompanhamentos', component: AcompanhamentosComponent/*, canActivate: [AuthGuard]*/ },
-    { path: 'editar-acompanhamento/:id', component: EditarAcompanhamentoComponent/*, canActivate: [AuthGuard]*/ },
-    { path: 'acompanhamento/:id', component: AcompanhamentoComponent/*, canActivate: [AuthGuard]*/ },
-    { path: 'novo-acompanhamento', component: NovoAcompanhamentoComponent/*, canActivate: [AuthGuard]*/ },
+    { path: 'residentes', component: ResidentesComponent, canActivate: [AuthGuard] },
+    { path: 'residente/:id', component: ResidenteComponent, canActivate: [AuthGuard] },
+    { path: 'novo-residente', component: NovoResidenteComponent, canActivate: [AuthGuard] },
+    { path: 'familiar-residente', component: FamiliarResidenteComponent, canActivate: [AuthGuard] },
+    { path: 'convenio-residente', component: ConvenioResidenteComponent, canActivate: [AuthGuard] },
+    { path: 'editar-residente/:id', component: EditarResidenteComponent, canActivate: [AuthGuard] },
+    { path: 'convenios', component: ConveniosComponent, canActivate: [AuthGuard] },
+    { path: 'convenio/:id', component: ConvenioComponent, canActivate: [AuthGuard] },
+    { path: 'novo-convenio', component: NovoConvenioComponent, canActivate: [AuthGuard] },
+    { path: 'editar-convenio/:id', component: EditarConvenioComponent, canActivate: [AuthGuard] },
+    { path: 'funcionarios', component: FuncionariosComponent, canActivate: [AuthGuard] },
+    { path: 'novo-funcionario', component: NovoFuncionarioComponent, canActivate: [AuthGuard] },
+    { path: 'funcionario/:id', component: FuncionarioComponent, canActivate: [AuthGuard] },
+    { path: 'editar-funcionario/:id', component: EditarFuncionarioComponent, canActivate: [AuthGuard] },
+    { path: 'acompanhamentos', component: AcompanhamentosComponent, canActivate: [AuthGuard] },
+    { path: 'editar-acompanhamento/:id', component: EditarAcompanhamentoComponent, canActivate: [AuthGuard] },
+    { path: 'acompanhamento/:id', component: AcompanhamentoComponent, canActivate: [AuthGuard] },
+    { path: 'novo-acompanhamento', component: NovoAcompanhamentoComponent, canActivate: [AuthGuard] },
     { path: 'esqueci-a-senha', component: ForgetPasswordComponent },
     { path: 'esqueci-a-senha/:token', component: ResetPasswordComponent },
-    { path: '', component: TelaInicialComponent/*, canActivate: [AuthGuard]*/ },
+    { path: '', component: TelaInicialComponent, canActivate: [AuthGuard] },
     { path: '**', component: NotFoundComponent }
-
-
 ]

@@ -22,4 +22,8 @@ export class LoginService {
         localStorage.clear()
         this.showMenuEmitter.emit(false)
     }
+
+    showMenuSession() {
+        this.showMenuEmitter.emit(true)
+    }
 }

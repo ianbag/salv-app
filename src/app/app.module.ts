@@ -76,7 +76,7 @@ import { ForgetService } from './auth/forget-password/forget.service';
 import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
 import { ResetService } from './auth/reset-password/reset.service';
 
-// import { AuthGuardService } from './auth/auth-guard.service';
+import { AuthGuardService } from './auth/auth-guard.service';
 // import { AuthInterceptor } from './auth/auth-interceptor.service';
 
 @NgModule({
@@ -154,7 +154,7 @@ import { ResetService } from './auth/reset-password/reset.service';
     AcompanhamentosService,
     FuncionariosService,
     LoginService,
-    // AuthGuardService,
+    AuthGuardService,
     NotificationService,
     TelaInicialService,
     NovoAcompanhamentoService,
