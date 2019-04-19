@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { LoginService } from './auth/login/login.service';
 import { delay } from 'rxjs/operators'
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'salv-root',
@@ -8,14 +9,14 @@ import { delay } from 'rxjs/operators'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'salv-app';
-
+  
   showMenu: boolean = false
 
-  constructor(private ls: LoginService) {
+  constructor(private ls: LoginService, private spinner: NgxSpinnerService) {
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
 
   ngAfterViewInit() {
     this.ls.showMenuEmitter.pipe(
@@ -23,6 +24,9 @@ export class AppComponent {
     ).subscribe(
       show => this.showMenu = show
     )
+    if (this.showMenu) {
+      this.spinner.hide()
+    }
   }
 
 }
