@@ -28,8 +28,8 @@ export class ConveniosComponent implements OnInit {
   convenios: Convenio[]
 
   @ViewChild('reportConvenios') reportConvenios: ElementRef
-  paginaAtual : number = 1;
-  ngOnInit() {  
+  paginaAtual: number = 1;
+  ngOnInit() {
     this.spinner.show()
     this.conveniosService.convenios()
       .subscribe(convenios => {
@@ -49,21 +49,4 @@ export class ConveniosComponent implements OnInit {
         }
       })
   }
-
-  public downloadPDF() {
-    let doc = new jspdf()
-    let specialElementsHandlers = {
-      '#editor': function (element, renderer) {
-        return true
-      }
-    }
-    let content = this.reportConvenios.nativeElement
-
-    doc.fromHTML(content.innerHTML, 15, 15, {
-      'width': 190,
-      'elementsHandlers': specialElementsHandlers
-    })
-    doc.save('Relatório de Convênios.pdf')
-  }
-
 }

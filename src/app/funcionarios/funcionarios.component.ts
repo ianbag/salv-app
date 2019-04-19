@@ -30,7 +30,7 @@ export class FuncionariosComponent implements OnInit {
   funcionariosState = 'ready'
 
   @ViewChild('reportFuncionarios') reportFuncionarios: ElementRef
-  paginaAtual : number = 1;
+  paginaAtual: number = 1;
   ngOnInit() {
     this.spinner.show()
     this.funcionariosService.funcionarios()
@@ -53,19 +53,4 @@ export class FuncionariosComponent implements OnInit {
       })
   }
 
-  public downloadPDF() {
-    let doc = new jspdf()
-    let specialElementsHandlers = {
-      '#editor': function (element, renderer) {
-        return true
-      }
-    }
-    let content = this.reportFuncionarios.nativeElement
-
-    doc.fromHTML(content.innerHTML, 15, 15, {
-      'width': 190,
-      'elementHandlers': specialElementsHandlers
-    })
-    doc.save('Relatório de Funcionários.pdf')
-  }
 }

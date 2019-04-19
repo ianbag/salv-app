@@ -143,19 +143,4 @@ export class ResidenteComponent implements OnInit {
       })
   }
 
-  public downloadPDF() {
-    let doc = new jspdf()
-    let specialElementsHandlers = {
-      '#editor': function (element, renderer) {
-        return true
-      }
-    }
-    let content = this.reportResidente.nativeElement
-
-    doc.fromHTML(content.innerHTML, 15, 15, {
-      'width': 190,
-      'elementHandlers': specialElementsHandlers
-    })
-    doc.save('Relatório de Residente.pdf')
-  }
 }

@@ -32,26 +32,10 @@ export class ConvenioComponent implements OnInit {
   ngOnInit() {
     this.spinner.show();
     this.conveniosService.conveniosById(this.route.snapshot.params['id'])
-    .subscribe(convenio => { 
-      this.spinner.hide();
-      this.convenio = convenio[0], console.log(this.convenio)})
-    
+      .subscribe(convenio => {
+        this.spinner.hide();
+        this.convenio = convenio[0], console.log(this.convenio)
+      })
+
   }
-
-  public downloadPDF() {
-    let doc = new jspdf()
-    let specialElementsHandlers = {
-      '#editor': function (element, renderer) {
-        return true
-      }
-    }
-    let content = this.reportConvenio.nativeElement
-
-    doc.fromHTML(content.innerHTML, 15, 15, {
-      'width': 190,
-      'elementHandlers': specialElementsHandlers
-    })
-    doc.save('Relatório de Convênio.pdf')
-  }
-
 }

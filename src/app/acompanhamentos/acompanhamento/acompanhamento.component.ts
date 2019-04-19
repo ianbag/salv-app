@@ -23,11 +23,11 @@ import * as jspdf from 'jspdf'
 })
 export class AcompanhamentoComponent implements OnInit {
 
-    
-    
+
+
   acompanhamentoState = 'ready'
 
-  acompanhamento: Acompanhamento []
+  acompanhamento: Acompanhamento[]
   funcionarios: any[]
   residentes: any[]
 
@@ -40,41 +40,23 @@ export class AcompanhamentoComponent implements OnInit {
 
     this.spinner.show();
     this.acompanhamentosService.acompanhamentoById(this.route.snapshot.params['id'])
-      .subscribe(acompanhamento => { this.spinner.hide() 
-      this.acompanhamento = acompanhamento[0]; console.log(acompanhamento) })
-
-      this.acompanhamentosService.AcompanhamentoFuncionarioQuery(this.route.snapshot.params['id']).subscribe(acompanhamento_funcionario => {
-      this.spinner.hide() 
-       this.funcionarios = acompanhamento_funcionario
-
-        console.log('funcionario', this.funcionarios)
+      .subscribe(acompanhamento => {
+        this.spinner.hide()
+        this.acompanhamento = acompanhamento[0]; console.log(acompanhamento)
       })
 
-      this.acompanhamentosService.AcompanhamentoResidenteQuery(this.route.snapshot.params['id']).subscribe(acompanhamento_residente => {
-        this.spinner.hide() 
-        this.residentes = acompanhamento_residente
- 
-         console.log('residente', this.residentes)
-       })
-       
-      
-  }
+    this.acompanhamentosService.AcompanhamentoFuncionarioQuery(this.route.snapshot.params['id']).subscribe(acompanhamento_funcionario => {
+      this.spinner.hide()
+      this.funcionarios = acompanhamento_funcionario
 
-  
-
-  public downloadPDF() {
-    let doc = new jspdf()
-    let specialElementsHandlers = {
-      '#editor': function (element, renderer) {
-        return true
-      }
-    }
-    let content = this.reportAcompanhamento.nativeElement
-
-    doc.fromHTML(content.innerHTML, 15, 15, {
-      'width': 190,
-      'elementHandlers': specialElementsHandlers
+      console.log('funcionario', this.funcionarios)
     })
-    doc.save('Relatório de Acompanhamento.pdf')
+
+    this.acompanhamentosService.AcompanhamentoResidenteQuery(this.route.snapshot.params['id']).subscribe(acompanhamento_residente => {
+      this.spinner.hide()
+      this.residentes = acompanhamento_residente
+
+      console.log('residente', this.residentes)
+    })
   }
 }
