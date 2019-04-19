@@ -3,6 +3,7 @@ import { Router } from "@angular/router"
 import { LoginService } from 'src/app/auth/login/login.service';
 import { NotificationService } from 'src/app/shared/notification.service';
 import { DialogConfirmService } from 'src/app/residentes/dialog-confirm.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'salv-user-details',
@@ -11,15 +12,16 @@ import { DialogConfirmService } from 'src/app/residentes/dialog-confirm.service'
 })
 export class UserDetailsComponent implements OnInit {
 
-  user = sessionStorage.getItem('login')
+  user: string
 
-  constructor(private ls: LoginService, private ns: NotificationService, private router: Router, private dcs: DialogConfirmService) { }
+  constructor(private ls: LoginService, private ns: NotificationService, private router: Router, private dcs: DialogConfirmService, private cs: CookieService) { }
 
   ngOnInit() {
+    this.user = this.cs.get('login')
   }
 
   isLoggedIn(): boolean {
-    if (sessionStorage.getItem('isLoggedIn') == "true") {
+    if (this.cs.get('isLoggedIn') == "true") {
       return true
     }
     return false

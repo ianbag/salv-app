@@ -77,6 +77,7 @@ import { ResetPasswordComponent } from './auth/reset-password/reset-password.com
 import { ResetService } from './auth/reset-password/reset.service';
 
 import { AuthGuardService } from './auth/auth-guard.service';
+import {CookieService} from 'ngx-cookie-service'
 // import { AuthInterceptor } from './auth/auth-interceptor.service';
 
 @NgModule({
@@ -148,6 +149,7 @@ import { AuthGuardService } from './auth/auth-guard.service';
     NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [
+    CookieService,
     ResidentesService,
     ConveniosService,
     DialogConfirmService,
