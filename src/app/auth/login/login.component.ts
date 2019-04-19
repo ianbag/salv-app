@@ -15,7 +15,6 @@ import { CookieService } from 'ngx-cookie-service'
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup
-  message: string
   returnUrl: string
 
   constructor(private fb: FormBuilder, private router: Router, private ls: LoginService, private spinner: NgxSpinnerService, private ns: NotificationService, private cs: CookieService) { }
