@@ -13,17 +13,17 @@ export class AppComponent {
 
   showMenu: boolean = false
 
-  constructor(private loginService: LoginService, private spinner: NgxSpinnerService) {
+  constructor(private ls: LoginService, private spinner: NgxSpinnerService) {
   }
 
   ngOnInit() { }
 
-  // ngAfterViewInit() {
-  //   this.loginService.showMenuEmitter.pipe(
-  //     delay(0)
-  //   ).subscribe(
-  //     show => this.showMenu = show
-  //   )
-  // }
+  ngAfterViewInit() {
+    this.ls.showMenuEmitter.pipe(
+      delay(0)
+    ).subscribe(
+      show => this.showMenu = show
+    )
+  }
 
 }
