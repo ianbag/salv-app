@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http'
 import { SALV_API } from './../../app.api';
 import { User } from './user.model';
 import { tap } from 'rxjs/operators'
-import { NgxSpinnerService } from 'ngx-spinner';
 
 @Injectable()
 export class LoginService {

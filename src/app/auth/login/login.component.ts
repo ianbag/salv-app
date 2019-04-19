@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms"
 import { Router } from "@angular/router"
 import { LoginService } from './login.service';
 import { NgxSpinnerService } from 'ngx-spinner';
-import 'rxjs/add/operator/catch'
 import { NotificationService } from 'src/app/shared/notification.service';
 
 @Component({
@@ -23,7 +22,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.loginForm = this.fb.group({
       email: this.fb.control(null, [Validators.required, Validators.email]),
-      senha: this.fb.control(null, [Validators.required, Validators.maxLength(10)])
+      senha: this.fb.control(null, [Validators.required, Validators.minLength(4), Validators.maxLength(100)])
     })
     this.returnUrl = '/'
   }
