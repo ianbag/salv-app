@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { LoginService } from './auth/login/login.service';
-import { NgxSpinnerService } from 'ngx-spinner';
 import { delay } from 'rxjs/operators'
 
 @Component({
@@ -13,7 +12,7 @@ export class AppComponent {
 
   showMenu: boolean = false
 
-  constructor(private ls: LoginService, private spinner: NgxSpinnerService) {
+  constructor(private ls: LoginService) {
   }
 
   ngOnInit() { }

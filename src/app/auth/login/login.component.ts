@@ -23,12 +23,10 @@ export class LoginComponent implements OnInit {
       senha: this.fb.control(null, [Validators.required, Validators.maxLength(10)])
     })
     this.returnUrl = '/'
-    //this.authService.logout()
   }
 
   login() {
     this.ls.login(this.loginForm.value).subscribe(success => {
-      console.log('logado')
       localStorage.setItem('isLoggedIn', "true")
       localStorage.setItem('login', success.login)
       localStorage.setItem('token', success.accessToken)

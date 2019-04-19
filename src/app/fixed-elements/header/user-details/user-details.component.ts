@@ -1,4 +1,3 @@
-import { User } from './../../../auth/login/user.model';
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router"
 import { LoginService } from 'src/app/auth/login/login.service';
@@ -11,7 +10,6 @@ import { NotificationService } from 'src/app/shared/notification.service';
 })
 export class UserDetailsComponent implements OnInit {
 
-  value = localStorage.getItem('isLoggedIn')
   user = localStorage.getItem('login')
 
   constructor(private ls: LoginService, private ns: NotificationService, private router: Router) { }
