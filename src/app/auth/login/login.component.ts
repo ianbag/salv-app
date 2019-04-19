@@ -13,11 +13,11 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup
-  errorResponse: HttpErrorResponse | any 
+  // errorResponse: HttpErrorResponse | any 
 
   constructor(private fb: FormBuilder, private ls: LoginService, private ns: NotificationService, private spinner: NgxSpinnerService, private zone: NgZone) {
-    this.ls.logout()
-    this.ls.showMenuEmitter.emit(false)
+    // this.ls.logout()
+    // this.ls.showMenuEmitter.emit(false)
   }
 
   ngOnInit() {
@@ -27,25 +27,15 @@ export class LoginComponent implements OnInit {
       senha: this.fb.control('', [Validators.required])
     })
 
-    
+
   }
 
-  login() {
-    
-    
-    this.spinner.show()
-    this.ls.login(this.loginForm.value.email, this.loginForm.value.senha)
-      .subscribe(user => this.ns.notify(`Bem vindo, ${user.login}`),
-        response => (this.ns.notify(response), this.spinner.hide()),     
-        )    
-        
-    
-    
-  }
- 
-    
- 
-
-  
+  // login() {
+  //   this.spinner.show()
+  //   this.ls.login(this.loginForm.value.email, this.loginForm.value.senha)
+  //     .subscribe(user => this.ns.notify(`Bem vindo, ${user.login}`),
+  //       response => (this.ns.notify(response), this.spinner.hide()),
+  //     )
+  // }
 
 }

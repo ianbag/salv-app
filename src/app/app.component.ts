@@ -18,12 +18,12 @@ export class AppComponent {
 
   ngOnInit() { }
 
-  ngAfterViewInit() {
-    this.loginService.showMenuEmitter.pipe(
-      delay(0)
-    ).subscribe(
-      show => this.showMenu = show
-    )
-  }
+  // ngAfterViewInit() {
+  //   this.loginService.showMenuEmitter.pipe(
+  //     delay(0)
+  //   ).subscribe(
+  //     show => this.showMenu = show
+  //   )
+  // }
 
 }

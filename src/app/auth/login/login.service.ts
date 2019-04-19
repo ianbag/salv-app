@@ -9,26 +9,27 @@ import { Router } from '@angular/router';
 @Injectable()
 export class LoginService {
 
-    user: User
-    showMenuEmitter = new EventEmitter<boolean>()
+    // user: User
+    // showMenuEmitter = new EventEmitter<boolean>()
 
     constructor(private http: HttpClient, private router: Router) { }
 
-    isLoggedIn(): boolean {
-        return this.user !== undefined
-    }
+    // isLoggedIn(): boolean {
+    //     return this.user !== undefined
+    // }
 
-    login(email: string, senha: string): Observable<User> {
-        return this.http.post<User>(`${SALV_API}/login`,
-            { email: email, senha: senha }).pipe(tap(user => {
-                this.user = user
-                this.showMenuEmitter.emit(true)
-                this.router.navigate(['/'])
-            }))
-    }
+    // login(email: string, senha: string): Observable<User> {
+    //     return this.http.post<User>(`${SALV_API}/login`,
+    //         { email: email, senha: senha }).pipe(tap(user => {
+    //             this.user = user
+    //             this.showMenuEmitter.emit(true)
+    //             this.router.navigate(['/'])
+    //         }))
+    // }
 
-    logout() {
-        this.user = undefined
-        this.router.navigate(['/login'])
-    }
+    // logout() {
+    //     this.user = undefined
+    //     this.router.navigate(['/login'])
+    // }
+    
 }

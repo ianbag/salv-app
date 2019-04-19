@@ -58,7 +58,6 @@ import { FuncionariosService } from './funcionarios/funcionarios.service';
 
 import { LoginComponent } from './auth/login/login.component';
 import { LoginService } from './auth/login/login.service';
-import { AuthGuardService } from './auth/auth-guard.service';
 import { GlobalErrorHandler } from './app.global-error-handler';
 import { SnackbarComponent } from './shared/snackbar/snackbar.component';
 
@@ -76,7 +75,9 @@ import { ForgetPasswordComponent } from './auth/forget-password/forget-password.
 import { ForgetService } from './auth/forget-password/forget.service';
 import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
 import { ResetService } from './auth/reset-password/reset.service';
-import { AuthInterceptor } from './auth/auth-interceptor.service';
+
+// import { AuthGuardService } from './auth/auth-guard.service';
+// import { AuthInterceptor } from './auth/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -153,13 +154,13 @@ import { AuthInterceptor } from './auth/auth-interceptor.service';
     AcompanhamentosService,
     FuncionariosService,
     LoginService,
-    AuthGuardService,
+    // AuthGuardService,
     NotificationService,
     TelaInicialService,
     NovoAcompanhamentoService,
     ForgetService,
     ResetService,
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: ErrorHandler, useClass: GlobalErrorHandler }
   ],
   bootstrap: [AppComponent]
