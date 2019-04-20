@@ -29,7 +29,7 @@
                     <th class="col-sm-4">Telefone</th>
                     <th class="col-sm-4">Ações</th>
                 </tr>
-                <tr *ngFor="let convenio of convenios | paginate: { itemsPerPage: 10, currentPage: paginaAtual}">
+                <tr *ngFor="let convenio of convenios | paginate: { itemsPerPage: 10, currentPage: paginaAtual} | filter:searchText">
                     <td>{{convenio.NOME_CONVENIO}}</td>
                     <td>{{convenio.DDD}} {{convenio.TELEFONE}}</td>
                     <td>

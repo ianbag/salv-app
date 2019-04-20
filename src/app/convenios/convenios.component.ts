@@ -25,6 +25,7 @@ export class ConveniosComponent implements OnInit {
 
   constructor(private conveniosService: ConveniosService, private dialogConfirmService: DialogConfirmService, private spinner: NgxSpinnerService) { }
 
+  searchText;
   convenios: Convenio[]
 
   @ViewChild('reportConvenios') reportConvenios: ElementRef
@@ -49,4 +50,5 @@ export class ConveniosComponent implements OnInit {
         }
       })
   }
+
 }
