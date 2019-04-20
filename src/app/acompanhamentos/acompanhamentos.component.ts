@@ -26,6 +26,7 @@ export class AcompanhamentosComponent implements OnInit {
 
   acompanhamentosState = 'ready'
 
+  searchText;
   acompanhamentos: Acompanhamento[]
 
   @ViewChild('reportAcompanhamentos') reportAcompanhamentos: ElementRef

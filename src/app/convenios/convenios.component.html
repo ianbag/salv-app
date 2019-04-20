@@ -9,15 +9,16 @@
    
 <!-- Main content -->
 <section class="content">
-        
-     <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Pesquisar">
-              
+                 
 
         <button (click)="downloadPDF()" class="btn btn-success" id="printReport"><i class="fa fa-print"></i></button>
     <div>
          <div class="form-group">
           <a type="submit" class="btn btn-primary" [routerLink]="['/novo-convenio']">Novo convênio</a>
+          <br>
          </div>
+         <input class="form-control" style="max-width: 500px" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Pesquisar">
+         <br>
         <!-- Conteudo KAUE -->
         <div class="box box-default table-responsive no-padding" [@conveniosAppeared]="conveniosState">
             <h1>Visualização geral dos convênios</h1>

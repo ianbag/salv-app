@@ -13,6 +13,8 @@
     <div class="form-group">
       <a type="submit" class="btn btn-primary" [routerLink]="['/novo-acompanhamento']">Novo acompanhamento</a>
     </div>
+    <input class="form-control" style="max-width: 500px" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Pesquisar">
+    <br>
 
 
     <div class="box box-default table-responsive no-padding" [@acompanhamentosAppeared]="acompanhamentosState">
@@ -24,7 +26,7 @@
           <th class="col-sm-4">Data</th>
           <th class="col-sm-4">Ações</th>
         </tr>
-        <tr *ngFor="let acompanhamento of acompanhamentos | paginate: { itemsPerPage: 10, currentPage: paginaAtual}">
+        <tr *ngFor="let acompanhamento of acompanhamentos | paginate: { itemsPerPage: 10, currentPage: paginaAtual } | filter:searchText">
           <td>{{acompanhamento.ATIVIDADE}}</td>
           <td>{{acompanhamento.DATA_ACOMPANHAMENTO}}</td>
          

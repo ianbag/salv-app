@@ -22,7 +22,7 @@ import * as jspdf from 'jspdf';
 })
 export class FuncionariosComponent implements OnInit {
 
-
+  searchText;
   funcionarios: Funcionario[]
 
   constructor(private funcionariosService: FuncionariosService, private dialogConfirmService: DialogConfirmService, private spinner: NgxSpinnerService) { }
