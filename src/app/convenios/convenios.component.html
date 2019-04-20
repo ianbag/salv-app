@@ -9,6 +9,10 @@
    
 <!-- Main content -->
 <section class="content">
+        
+     <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Pesquisar">
+              
+
         <button (click)="downloadPDF()" class="btn btn-success" id="printReport"><i class="fa fa-print"></i></button>
     <div>
          <div class="form-group">

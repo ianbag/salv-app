@@ -28,6 +28,7 @@
     "jspdf": "^1.5.3",
     "ng-multiselect-dropdown": "^0.2.3",
     "ng-select2-component": "^6.0.3",
+    "ng2-search-filter": "^0.4.7",
     "ngx-mask": "^7.0.1",
     "ngx-pagination": "^3.2.1",
     "ngx-spinner": "^7.1.4",

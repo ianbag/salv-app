@@ -1,3 +1,4 @@
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NovoAcompanhamentoService } from './acompanhamentos/novo-acompanhamento/novo-acompanhamento.service';
 import { UserDetailsComponent } from './fixed-elements/header/user-details/user-details.component';
 import { NotificationService } from './shared/notification.service';
@@ -79,6 +80,7 @@ import { ResetService } from './auth/reset-password/reset.service';
 import { AuthGuardService } from './auth/auth-guard.service';
 // import { AuthInterceptor } from './auth/auth-interceptor.service';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -145,7 +147,8 @@ import { AuthGuardService } from './auth/auth-guard.service';
     ReactiveFormsModule,
     RouterModule.forRoot(ROUTES),
     NgxMaskModule.forRoot(),
-    NgMultiSelectDropDownModule.forRoot()
+    NgMultiSelectDropDownModule.forRoot(),
+    Ng2SearchPipeModule
   ],
   providers: [
     ResidentesService,
