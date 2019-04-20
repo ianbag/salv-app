@@ -25,7 +25,8 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class ResidentesComponent implements OnInit {
 
   residentesState = 'ready'
-
+  
+  searchText;
   residentes: Residente[]
 
   @ViewChild('reportResidentes') reportResidentes: ElementRef
