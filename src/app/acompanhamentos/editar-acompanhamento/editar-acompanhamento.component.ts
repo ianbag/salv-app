@@ -19,13 +19,13 @@ import { TouchSequence } from 'selenium-webdriver';
   templateUrl: './editar-acompanhamento.component.html',
   animations: [
     trigger('editar-acompanhamentoAppeared', [
-      state('ready', style({ opacity: 1 })),
+      state('ready', style({opacity: 1})),
       transition('void => ready', [
-        style({ opacity: 0, transform: 'translate(-30px, -10px)' }),
+        style({opacity: 0, transform: 'translate(-30px, -10px)'}),
         animate('500ms 0s ease-in-out')
       ])
     ])
-  ]
+  ] 
 })
 
 export class EditarAcompanhamentoComponent implements OnInit {
@@ -85,17 +85,17 @@ export class EditarAcompanhamentoComponent implements OnInit {
 
     this.acompanhamentoService.AcompanhamentoQuery
       (this.activatedRoute.snapshot.params['id']).subscribe(acompanhamento => {
-
+        
         this.acompanhamento = acompanhamento
         this.codigo_acompanhamento = this.acompanhamento[0].CODIGO
         console.log('dados', this.acompanhamento, 'residentes')
-
+        
       })
 
 
     this.acompanhamentoService.AcompanhamentoFuncionarioQuery
       (this.activatedRoute.snapshot.params['id']).subscribe(acompanhamento_funcionario => {
-
+        
         this.selectedFuncionarios = acompanhamento_funcionario
 
         console.log('funcionario', this.selectedFuncionarios)
@@ -103,8 +103,8 @@ export class EditarAcompanhamentoComponent implements OnInit {
 
     this.acompanhamentoService.AcompanhamentoResidenteQuery
       (this.activatedRoute.snapshot.params['id']).subscribe(acompanhamento_residente => {
-
-        this.selectedResidentes = acompanhamento_residente
+        
+          this.selectedResidentes = acompanhamento_residente
 
         console.log('residentes', this.selectedResidentes)
       })
@@ -118,7 +118,7 @@ export class EditarAcompanhamentoComponent implements OnInit {
 
         DATA_ACOMPANHAMENTO: this.acompanhamento[0].DATA_ACOMPANHAMENTO,
         ATIVIDADE: this.acompanhamento[0].ATIVIDADE,
-
+        
 
       })
       if(this.editarAcompanhamentoForm != null){
@@ -126,11 +126,11 @@ export class EditarAcompanhamentoComponent implements OnInit {
       }
     }, 2250)
 
-
+    
     //Residentes List    
     this.NovoAcompanhamentoService.residentes()
       .subscribe(residentes => {
-        this.spinner.hide()
+        this.spinner.hide() 
         this.residentes = residentes
         console.log('residentes', residentes)
 
@@ -142,7 +142,7 @@ export class EditarAcompanhamentoComponent implements OnInit {
     //funcionarios List
     this.NovoAcompanhamentoService.funcionarios()
       .subscribe(funcionarios => {
-        this.spinner.hide()
+        this.spinner.hide() 
         this.funcionarios = funcionarios
         console.log('funcionario', funcionarios)
         this.spinner.hide()
@@ -186,15 +186,6 @@ export class EditarAcompanhamentoComponent implements OnInit {
   editarAcompanhamento(editarAcomp: Acompanhamento) {
 
     this.acompanhamentoService.updateAcompanhamento(editarAcomp, this.codigo_acompanhamento).subscribe(res => {
-
-      if (res['errors']) {
-        res['errors'].forEach(error => {
-          console.log('Houve um erro!', error)
-          this.ns.notify(`Houve um erro! ${error.message}`)
-        })
-      } else {
-        this.ns.notify(`Acompanhamento atualizado com sucesso!`)
-        this.router.navigate(['/acompanhamentos'])
       
       if (this.editarAcompanhamentoForm.valid == true && this.selectedFuncionarios != null && this.selectedResidentes != null){
         this.ns.notify(`Acompanhamento inserido com sucesso!`)
@@ -204,7 +195,6 @@ export class EditarAcompanhamentoComponent implements OnInit {
         this.markAllDirty(this.editarAcompanhamentoForm)
         console.log(this.editarAcompanhamentoForm.controls)
         this.ns.notify(`Preencha os campos obrigatórios!`)
-
       }
     })
     console.log('Edição acompanhamento', editarAcomp)
@@ -238,7 +228,6 @@ export class EditarAcompanhamentoComponent implements OnInit {
 
   }
 
-
   deleteResidente(idResidente: number, idAcompanhamento:number)  {
     this.dialogConfirmService.confirm(`Deseja excluir o residente do acompanhamento?`)
       .then((isTrue) => {
@@ -251,7 +240,6 @@ export class EditarAcompanhamentoComponent implements OnInit {
         console.log("residente excluido: ", idResidente)
       })
   }
-
 
   deleteFuncionario(idFunc: number, idAcomp:number)  {
     this.dialogConfirmService.confirm(`Deseja excluir o funcionário do acompanhamento?`)
@@ -267,10 +255,16 @@ export class EditarAcompanhamentoComponent implements OnInit {
       })
   }
 
+        
+
+
+
+
+
 
   onResidenteSelect(residente: any) {
     console.log('onResidenteSelect', residente['CODIGO_RESIDENTE'])
-
+    
 
   }
 
@@ -287,11 +281,8 @@ export class EditarAcompanhamentoComponent implements OnInit {
   }
 
   onDeFuncionarioSelect(funcionarios: any) {
-    this.deleteResidente(funcionarios.CODIGO_FUNCIONARIO, this.codigo_acompanhamento)
-    console.log('onDeFuncionarioSelect', funcionarios.CODIGO_RESIDENTE, this.codigo_acompanhamento)
     this.deleteFuncionario( funcionarios.CODIGO_FUNCIONARIO,  this.codigo_acompanhamento)
     console.log('onDeFuncionarioSelect',  funcionarios.CODIGO_RESIDENTE, this.codigo_acompanhamento)
-
   }
 
 
