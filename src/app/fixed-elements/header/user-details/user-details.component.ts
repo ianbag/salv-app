@@ -1,7 +1,9 @@
-import { User } from './../../../auth/login/user.model';
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router"
 import { LoginService } from 'src/app/auth/login/login.service';
 import { NotificationService } from 'src/app/shared/notification.service';
+import { DialogConfirmService } from 'src/app/residentes/dialog-confirm.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'salv-user-details',
@@ -10,22 +12,30 @@ import { NotificationService } from 'src/app/shared/notification.service';
 })
 export class UserDetailsComponent implements OnInit {
 
-  constructor(private ls: LoginService, private ns: NotificationService) { }
+  user: string
+
+  constructor(private ls: LoginService, private ns: NotificationService, private router: Router, private dcs: DialogConfirmService, private cs: CookieService) { }
 
   ngOnInit() {
-  }
-
-  user(): User {
-    return this.ls.user
+    this.user = this.cs.get('login')
   }
 
   isLoggedIn(): boolean {
-    return this.ls.isLoggedIn()
+    if (this.cs.get('isLoggedIn') == "true") {
+      return true
+    }
+    return false
   }
 
   logout() {
-    this.ns.notify(`Até logo, ${this.user().login}`)
-    return this.ls.logout()
+    this.dcs.confirm(`Deseja sair?`)
+      .then((isTrue) => {
+        if (isTrue) {
+          this.ls.logout()
+          this.router.navigate(['/login'])
+          this.ns.notify('Até logo!')
+        }
+      })
   }
 
 }

@@ -1,58 +1,50 @@
 <ngx-spinner></ngx-spinner>
 <style>
     .my-pagination /deep/ .ngx-pagination .current {
-      background: 	#00AE5D;
-     
-      
+        background: #00AE5D;
+
+
     }
-  </style>
-   
+</style>
+
 <!-- Main content -->
 <section class="content">
-    <button (click)="downloadPDF()" class="btn btn-success" id="printReport"><i class="fa fa-print"></i></button>
-    <div id="content" #reportFuncionarios>
-        <div>
-            <div class="form-group">
-                <a type="submit" class="btn btn-primary" [routerLink]="['/novo-funcionario']">Novo funcionário</a>
-            </div>
-            <div class="box box-default table-responsive no-padding" [@funcionariosAppeared]="funcionariosState">
-                <h1 align="center">Visualização geral dos funcionários</h1>
-                <br>
-                <table class="table table-hover">
-                    <tr>
-                        <th>Nome</th>
-                        <th>CPF</th>
-                        <th>RG</th>
-                        <th class="col-sm-4">Ações</th>
-                    </tr>
-                    <tr *ngFor="let funcionario of funcionarios | paginate: { itemsPerPage: 10, currentPage: paginaAtual}">
-                        <td>{{funcionario.FUNCIONARIO_NOME}} {{funcionario.FUNCIONARIO_SOBRENOME}}</td>
-                        <td>{{funcionario.CPF | cpf}}</td>
-                        <td>{{funcionario.RG | rg}}</td>
-                        <td>
-                            <button type="submit" class="btn btn-danger botao"
-                                (click)="deleteFuncionario(funcionario.CODIGO); $event.stopPropagation()">Inativar</button>
-                            <a type="submit" class="btn btn-warning botao"
-                                [routerLink]="['/editar-funcionario', funcionario.CODIGO]">Editar</a>
-                            <a type="submit" class="btn btn-success botao"
-                                [routerLink]="['/funcionario',funcionario.CODIGO]">+ Informações</a>
-                        </td>
-                    </tr>
-                </table>
-                <pagination-controls  class="my-pagination "(pageChange)= "paginaAtual = $event"
-                      
-                      previousLabel="Anterior"
-                      nextLabel="Próximo"
-                      screenReaderPaginationLabel="Paginação"
-                      screenReaderPageLabel="Página"
-                      screenReaderCurrentLabel="Voce esta na página"
-      
-      ></pagination-controls>
-                <!-- Fim da tabela  -->
-            </div>
-
+    <button class="btn btn-success" id="printReport"><i class="fa fa-print"></i></button>
+    <div>
+        <div class="form-group">
+            <a type="submit" class="btn btn-primary" [routerLink]="['/novo-funcionario']">Novo funcionário</a>
         </div>
-        <!-- /.row -->
+        <div class="box box-default table-responsive no-padding" [@funcionariosAppeared]="funcionariosState">
+            <h1 align="center">Visualização geral dos funcionários</h1>
+            <br>
+            <table class="table table-hover">
+                <tr>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>RG</th>
+                    <th class="col-sm-4">Ações</th>
+                </tr>
+                <tr *ngFor="let funcionario of funcionarios | paginate: { itemsPerPage: 10, currentPage: paginaAtual}">
+                    <td>{{funcionario.FUNCIONARIO_NOME}} {{funcionario.FUNCIONARIO_SOBRENOME}}</td>
+                    <td>{{funcionario.CPF | cpf}}</td>
+                    <td>{{funcionario.RG | rg}}</td>
+                    <td>
+                        <button type="submit" class="btn btn-danger botao"
+                            (click)="deleteFuncionario(funcionario.CODIGO); $event.stopPropagation()">Inativar</button>
+                        <!-- <a type="submit" class="btn btn-warning botao"
+                            [routerLink]="['/editar-funcionario', funcionario.CODIGO]">Editar</a> -->
+                        <a type="submit" class="btn btn-success botao"
+                            [routerLink]="['/funcionario',funcionario.CODIGO]">+ Opções</a>
+                    </td>
+                </tr>
+            </table>
+            <pagination-controls class="my-pagination " (pageChange)="paginaAtual = $event" previousLabel="Anterior"
+                nextLabel="Próximo" screenReaderPaginationLabel="Paginação" screenReaderPageLabel="Página"
+                screenReaderCurrentLabel="Voce esta na página"></pagination-controls>
+            <!-- Fim da tabela  -->
+        </div>
+
     </div>
+    <!-- /.row -->
 </section>
 <!-- /.content -->

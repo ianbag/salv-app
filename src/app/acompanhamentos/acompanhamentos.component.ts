@@ -20,7 +20,7 @@ import { throwError } from 'rxjs';
       ])
     ])
   ]
-  
+
 })
 export class AcompanhamentosComponent implements OnInit {
 
@@ -32,34 +32,17 @@ export class AcompanhamentosComponent implements OnInit {
 
   constructor(private acompanhamentosService: AcompanhamentosService, private route: ActivatedRoute, private spinner: NgxSpinnerService) { }
 
-  paginaAtual : number = 1;
+  paginaAtual: number = 1;
   ngOnInit() {
-    
+
     this.spinner.show();
     this.acompanhamentosService.acompanhamentos()
-      .subscribe(       
+      .subscribe(
         acompanhamentos => {
-           this.spinner.hide()          
-           this.acompanhamentos = acompanhamentos
+          this.spinner.hide()
+          this.acompanhamentos = acompanhamentos
           console.log('acompanahmentos', this.acompanhamentos)
-           } )          
-    
-       
-      }      
-  public downloadPDF() {
-    let doc = new jspdf()
-    let specialElementsHandlers = {
-      '#editor': function (elements, renderer) {
-        return true
-      }
-    }
-    let content = this.reportAcompanhamentos.nativeElement
-
-    doc.fromHTML(content.innerHTML, 15, 15, {
-      'width': 190,
-      'elementHandlers': specialElementsHandlers
-    })
-
-    doc.save('Relatório de Acompanhamentos.pdf')
+        })
   }
+
 }

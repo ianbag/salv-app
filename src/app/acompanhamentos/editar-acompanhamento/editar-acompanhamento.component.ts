@@ -206,9 +206,9 @@ export class EditarAcompanhamentoComponent implements OnInit {
         this.ns.notify(`Preencha os campos obrigatórios!`)
 
       }
-    })
-    console.log('Edição acompanhamento', editarAcomp)
-  }
+    }
+  })}
+
 
 
 

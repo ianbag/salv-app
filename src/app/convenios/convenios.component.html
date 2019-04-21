@@ -1,19 +1,19 @@
 <ngx-spinner></ngx-spinner>
 <style>
     .my-pagination /deep/ .ngx-pagination .current {
-      background: 	#00AE5D;
-     
-      
+        background: #00AE5D;
+
+
     }
-  </style>
-   
+</style>
+
 <!-- Main content -->
 <section class="content">
-        <button (click)="downloadPDF()" class="btn btn-success" id="printReport"><i class="fa fa-print"></i></button>
+    <button class="btn btn-success" id="printReport"><i class="fa fa-print"></i></button>
     <div>
-         <div class="form-group">
-          <a type="submit" class="btn btn-primary" [routerLink]="['/novo-convenio']">Novo convênio</a>
-         </div>
+        <div class="form-group">
+            <a type="submit" class="btn btn-primary" [routerLink]="['/novo-convenio']">Novo convênio</a>
+        </div>
         <!-- Conteudo KAUE -->
         <div class="box box-default table-responsive no-padding" [@conveniosAppeared]="conveniosState">
             <h1>Visualização geral dos convênios</h1>
@@ -29,26 +29,23 @@
                     <td>{{convenio.NOME_CONVENIO}}</td>
                     <td>{{convenio.DDD}} {{convenio.TELEFONE}}</td>
                     <td>
-                        <button type="submit" class="btn btn-danger botao" (click)="deleteConvenio(convenio.CODIGO); $event.stopPropagation()">Inativar</button>
-                        <a type="submit" class="btn btn-warning botao botao-espaço" [routerLink]="['/editar-convenio',convenio.CODIGO]">Editar</a>
-                        <a type="submit" class="btn btn-success botao" [routerLink]="['/convenio',convenio.CODIGO]">+ Informações</a>
+                        <button type="submit" class="btn btn-danger botao"
+                            (click)="deleteConvenio(convenio.CODIGO); $event.stopPropagation()">Inativar</button>
+                        <a type="submit" class="btn btn-warning botao botao-espaço"
+                            [routerLink]="['/editar-convenio',convenio.CODIGO]">Editar</a>
+                        <a type="submit" class="btn btn-success botao" [routerLink]="['/convenio',convenio.CODIGO]">+
+                            Informações</a>
                     </td>
                 </tr>
             </table>
-            <pagination-controls  class="my-pagination "(pageChange)= "paginaAtual = $event"
-                      
-            previousLabel="Anterior"
-            nextLabel="Próximo"
-            screenReaderPaginationLabel="Paginação"
-            screenReaderPageLabel="Página"
-            screenReaderCurrentLabel="Voce esta na página"
+            <pagination-controls class="my-pagination " (pageChange)="paginaAtual = $event" previousLabel="Anterior"
+                nextLabel="Próximo" screenReaderPaginationLabel="Paginação" screenReaderPageLabel="Página"
+                screenReaderCurrentLabel="Voce esta na página"></pagination-controls>
 
-            ></pagination-controls>
-
-                <!-- /.box -->
-            </div>
-            <!-- Fim conteudo KAUE -->
+            <!-- /.box -->
         </div>
-        <!-- /.row -->
-    
+        <!-- Fim conteudo KAUE -->
+    </div>
+    <!-- /.row -->
+
 </section>
