@@ -4,7 +4,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FuncionariosService } from '../../funcionarios.service';
 import { NotificationService } from 'src/app/shared/notification.service';
 import { DialogConfirmService } from 'src/app/residentes/dialog-confirm.service';
-import { NgxSpinnerService } from 'ngx-spinner';
+import { ActivatedRoute } from '@angular/router';
 @Component({
     selector: 'salv-infos-funcionario',
     templateUrl: './infos-funcionario.component.html'
@@ -23,11 +23,40 @@ export class InfosFuncionarioComponent implements OnInit {
     updateFuncionarioForm: FormGroup
     codigoTelefone: number
     codigoEndereco: number
+
     estados = [
         "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"
     ];
+    estadosCivil = [
+        { value: "S", option: "Solteiro" },
+        { value: "C", option: "Casado" },
+        { value: "D", option: "Divorciado" },
+        { value: "V", option: "Viúvo" }
+    ];
+    sexos = [
+        { value: "M", option: "Masculino" },
+        { value: "F", option: "Feminino" }
+    ];
+    religioes = [
+        { value: "CAT", option: "Católico" },
+        { value: "EVG", option: "Evangélico" },
+        { value: "ESP", option: "Espírita" },
+        { value: "UBC", option: "Umbanda e Candomblé" },
+        { value: "OUT", option: "Outras religiões" },
+        { value: "SRG", option: "Sem Religião" },
+        { value: "NEC", option: "Não Especificado" },
+    ];
+    escolaridades = [
+        { value: "FI", option: "Fundamental Incompleto" },
+        { value: "FC", option: "Fundamental Completo" },
+        { value: "MI", option: "Médio Incompleto" },
+        { value: "MC", option: "Médio Completo" },
+        { value: "SI", option: "Superior Incompleto" },
+        { value: "SC", option: "Superior Completo" },
+        { value: "NE", option: "Não Especificado" },
+    ];
 
-    constructor(private fs: FuncionariosService, private fb: FormBuilder, private ns: NotificationService, private dcs: DialogConfirmService, private spinner: NgxSpinnerService) { }
+    constructor(private fs: FuncionariosService, private fb: FormBuilder, private ns: NotificationService, private dcs: DialogConfirmService, private route: ActivatedRoute) { }
 
     ngOnInit(): void {
 
@@ -279,15 +308,16 @@ export class InfosFuncionarioComponent implements OnInit {
     }
 
     updateFuncionario(funcionarioAtualizado) {
-        this.fs.updateEmployee(this.funcionario.PESSOA_CODIGO.toString(), this.funcionario.CODIGO_FUNCIONARIO.toString(), funcionarioAtualizado.PESSOA, funcionarioAtualizado).subscribe(res => {
+        this.fs.editarFuncionario(this.funcionario.PESSOA_CODIGO.toString(), this.funcionario.CODIGO_FUNCIONARIO.toString(), funcionarioAtualizado.PESSOA, funcionarioAtualizado).subscribe(res => {
             if (res['errors']) {
                 res['errors'].forEach(error => {
                     console.log('Houve um erro!' + error)
                     this.ns.notify(`Houve um erro! ${error.message}`)
                 })
             } else {
-                this.fs.funcionarioById(this.funcionario.CODIGO_FUNCIONARIO.toString()).subscribe(response => {
-                    this.funcionario = response[0]
+                this.fs.funcionarioById(this.route.snapshot.params['id']).subscribe(response => {
+                    this.funcionario = response
+                    console.log(response)
                     this.updateFuncionarioForm.reset()
                     this.ns.notify('Funcionário atualizado com sucesso!')
                 })

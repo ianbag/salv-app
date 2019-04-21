@@ -80,7 +80,9 @@ export class FuncionariosService {
     //     })
     // }
 
-    updateEmployee(cod_pes, cod_fun, pessoa: Pessoa, funcionario: Funcionario) {
+    editarFuncionario(cod_pes, cod_fun, pessoa: Pessoa, funcionario: Funcionario) {
+        delete funcionario.TELEFONE
+        delete funcionario.ENDERECO
         return this.http.put<Pessoa>(`${SALV_API}/pessoa/${cod_pes}`, pessoa).switchMap(() => {
             delete funcionario.PESSOA
             return this.http.put<Funcionario>(`${SALV_API}/funcionario/${cod_fun}`, funcionario)
