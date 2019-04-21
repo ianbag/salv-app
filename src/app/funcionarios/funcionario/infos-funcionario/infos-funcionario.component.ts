@@ -1,4 +1,4 @@
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Funcionario, Telefone, Endereco, Usuario } from './../../funcionario.model';
 import { Component, OnInit, Input } from '@angular/core';
 import { FuncionariosService } from '../../funcionarios.service';
@@ -20,6 +20,7 @@ export class InfosFuncionarioComponent implements OnInit {
     updateTelefoneForm: FormGroup
     updateEnderecoForm: FormGroup
     updateUsuarioForm: FormGroup
+    updateFuncionarioForm: FormGroup
     codigoTelefone: number
     codigoEndereco: number
     estados = [
@@ -66,6 +67,22 @@ export class InfosFuncionarioComponent implements OnInit {
         this.updateUsuarioForm = this.fb.group({
             EMAIL: this.fb.control(null, []),
             LOGIN: this.fb.control(null, [])
+        })
+        this.updateFuncionarioForm = this.fb.group({
+            //PESSOA
+            PESSOA: this.fb.group({
+                NOME: this.fb.control(null, [Validators.required]),
+                SOBRENOME: this.fb.control(null, [Validators.required]),
+                CPF: this.fb.control(null, [Validators.required, Validators.minLength(11)]),
+                RG: this.fb.control(null, [Validators.required, Validators.minLength(9)]),
+                ESTADO_CIVIL: this.fb.control(null, []),
+                SEXO: this.fb.control(null, [Validators.required]),
+                RELIGIAO: this.fb.control(null, []),
+                ESCOLARIDADE: this.fb.control(null, []),
+                DATA_NASCIMENTO: this.fb.control(null, []),
+            }),
+            CARGO: this.fb.control(null, [Validators.required]),
+            DATA_ADMISSAO: this.fb.control(null, [Validators.required])
         })
 
     }
@@ -234,6 +251,45 @@ export class InfosFuncionarioComponent implements OnInit {
                     this.funcionario.USUARIO = response[0]
                     this.updateUsuarioForm.reset()
                     this.ns.notify('Usuário atualizado com sucesso')
+                })
+            }
+        })
+    }
+
+    buscaFuncionario() {
+        this.fs.funcionarioQuery(this.funcionario.CODIGO_FUNCIONARIO.toString()).subscribe(funcionario => {
+            this.updateFuncionarioForm.patchValue({
+                PESSOA: {
+                    COD_PES: funcionario[0].COD_PES,
+                    NOME: funcionario[0].NOME,
+                    SOBRENOME: funcionario[0].SOBRENOME,
+                    RG: funcionario[0].RG,
+                    CPF: funcionario[0].CPF,
+                    SEXO: funcionario[0].SEXO,
+                    ESTADO_CIVIL: funcionario[0].ESTADO_CIVIL,
+                    DATA_NASCIMENTO: funcionario[0].DATA_NASCIMENTO,
+                    RELIGIAO: funcionario[0].RELIGIAO,
+                    ESCOLARIDADE: funcionario[0].ESCOLARIDADE,
+                },
+                CARGO: funcionario[0].CARGO,
+                DATA_ADMISSAO: funcionario[0].DATA_ADMISSAO
+            })
+            console.log(funcionario[0])
+        })
+    }
+
+    updateFuncionario(funcionarioAtualizado) {
+        this.fs.updateEmployee(this.funcionario.PESSOA_CODIGO.toString(), this.funcionario.CODIGO_FUNCIONARIO.toString(), funcionarioAtualizado.PESSOA, funcionarioAtualizado).subscribe(res => {
+            if (res['errors']) {
+                res['errors'].forEach(error => {
+                    console.log('Houve um erro!' + error)
+                    this.ns.notify(`Houve um erro! ${error.message}`)
+                })
+            } else {
+                this.fs.funcionarioById(this.funcionario.CODIGO_FUNCIONARIO.toString()).subscribe(response => {
+                    this.funcionario = response[0]
+                    this.updateFuncionarioForm.reset()
+                    this.ns.notify('Funcionário atualizado com sucesso!')
                 })
             }
         })

@@ -18,7 +18,7 @@ export class FuncionariosService {
 
     funcionarioById(id: string): Observable<Funcionario> {
         return this.http.get<Funcionario>(`${SALV_API}/funcionario/${id}`)
-        
+
     }
 
     dependenteById(id: string): Observable<Dependente[]> {
@@ -67,16 +67,23 @@ export class FuncionariosService {
         })
     }
 
-    updateEmployee(cod_pes: number, cod_tel: number, cod_end: number, cod_fun: number, pessoa: Pessoa, telefone: Telefone, endereco: Endereco, funcionario: Funcionario) {
-        return this.http.put<Pessoa>(`${SALV_API}/pessoa/${cod_pes}`, pessoa).switchMap(resP => {
+    // updateEmployee(cod_pes: number, cod_tel: number, cod_end: number, cod_fun: number, pessoa: Pessoa, telefone: Telefone, endereco: Endereco, funcionario: Funcionario) {
+    //     return this.http.put<Pessoa>(`${SALV_API}/pessoa/${cod_pes}`, pessoa).switchMap(resP => {
+    //         delete funcionario.PESSOA
+    //         return this.http.put<Telefone>(`${SALV_API}/telefone/${cod_tel}`, telefone).switchMap(resT => {
+    //             delete funcionario.TELEFONE
+    //             return this.http.put<Endereco>(`${SALV_API}/endereco/${cod_end}`, endereco).switchMap(resE => {
+    //                 delete funcionario.ENDERECO
+    //                 return this.http.put<Funcionario>(`${SALV_API}/funcionario/${cod_fun}`, funcionario)
+    //             })
+    //         })
+    //     })
+    // }
+
+    updateEmployee(cod_pes, cod_fun, pessoa: Pessoa, funcionario: Funcionario) {
+        return this.http.put<Pessoa>(`${SALV_API}/pessoa/${cod_pes}`, pessoa).switchMap(() => {
             delete funcionario.PESSOA
-            return this.http.put<Telefone>(`${SALV_API}/telefone/${cod_tel}`, telefone).switchMap(resT => {
-                delete funcionario.TELEFONE
-                return this.http.put<Endereco>(`${SALV_API}/endereco/${cod_end}`, endereco).switchMap(resE => {
-                    delete funcionario.ENDERECO
-                    return this.http.put<Funcionario>(`${SALV_API}/funcionario/${cod_fun}`, funcionario)
-                })
-            })
+            return this.http.put<Funcionario>(`${SALV_API}/funcionario/${cod_fun}`, funcionario)
         })
     }
 
