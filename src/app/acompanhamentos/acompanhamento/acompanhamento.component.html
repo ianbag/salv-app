@@ -1,49 +1,47 @@
 <ngx-spinner></ngx-spinner>
 <section class="content">
-  <button (click)="downloadPDF()" class="btn btn-success" id="printReport"><i class="fa fa-print"></i></button>
-  <div id="content" #reportAcompanhamento>
-    <div class="box box-editar" [@acompanhamentoAppeared]="acompanhamentoState">
-      <h1>Detalhes do Acompanhamento</h1>
-      <hr><br>
+  <button class="btn btn-success"><i class="fa fa-print"></i></button>
+  <div class="box box-editar" [@acompanhamentoAppeared]="acompanhamentoState">
+    <h1>Detalhes do Acompanhamento</h1>
+    <hr><br>
+
+    <div>
+      <div class="box box-default box-solid">
+        <div class="box-header with-border">
+
+          <h3 class="box-title">Informações do acompanhamento</h3>
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+              <i class="fa fa-minus">
+
+              </i>
+            </button>
+          </div>
+        </div>
+        <div class="box-body" style>
+          <strong>Atividade realizada: </strong> {{acompanhamento?.ATIVIDADE}} <br>
+          <strong>Data: </strong> {{acompanhamento?.DATA_ACOMPANHAMENTO}} <br>
+          <strong>Funcionário(s): </strong>
+          <div *ngFor="let acompanhamento_funcionario of funcionarios">
+            {{acompanhamento_funcionario?.FNOME}}
+          </div>
+          <strong>Residentes participantes: </strong>
+          <div *ngFor="let acompanhamento_residente of residentes">
+            {{acompanhamento_residente?.NOME}}
+          </div>
+          <br>
+
+        </div>
+      </div>
+
 
       <div>
-        <div class="box box-default box-solid">
-          <div class="box-header with-border">
 
-            <h3 class="box-title">Informações do acompanhamento</h3>
-            <div class="box-tools pull-right">
-              <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                <i class="fa fa-minus">
-
-                </i>
-              </button>
-            </div>
-          </div>
-          <div class="box-body" style>
-            <strong>Atividade realizada: </strong> {{acompanhamento?.ATIVIDADE}} <br>
-            <strong>Data: </strong> {{acompanhamento?.DATA_ACOMPANHAMENTO}} <br>
-            <strong >Funcionário(s):  </strong>
-            <div *ngFor="let acompanhamento_funcionario of funcionarios" >
-            {{acompanhamento_funcionario?.FNOME}}  
-            </div>
-            <strong>Residentes participantes: </strong> 
-            <div *ngFor="let acompanhamento_residente of residentes" >            
-            {{acompanhamento_residente?.NOME}}
-            </div>
-             <br>
-            
-          </div>
+        <div class="botao">
+          <a type="submit" class="btn btn-default botao" [routerLink]="['/acompanhamentos']">Voltar</a>
         </div>
-
-
-        <div>
-
-          <div class="botao">
-            <a type="submit" class="btn btn-default botao" [routerLink]="['/acompanhamentos']">Voltar</a>
-          </div>
-        </div>
-
       </div>
+
     </div>
   </div>
   <!-- /.row -->
