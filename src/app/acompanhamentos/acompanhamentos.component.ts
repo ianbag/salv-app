@@ -25,6 +25,8 @@ import { throwError } from 'rxjs';
 export class AcompanhamentosComponent implements OnInit {
 
   acompanhamentosState = 'ready'
+
+  searchText;
   public searchString: string;
   acompanhamentos: Acompanhamento[]
 

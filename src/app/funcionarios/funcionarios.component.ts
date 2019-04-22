@@ -22,6 +22,7 @@ import * as jspdf from 'jspdf';
 })
 export class FuncionariosComponent implements OnInit {
 
+  searchText;
   public searchString: string;
   funcionarios: Funcionario[]
   funcionariosInativos : Funcionario[]

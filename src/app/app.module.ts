@@ -1,5 +1,6 @@
-import { SearchPipe } from './shared/pipes/filtroData.pipe';
 
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { SearchPipe } from './shared/pipes/filtroData.pipe';
 import { NovoAcompanhamentoService } from './acompanhamentos/novo-acompanhamento/novo-acompanhamento.service';
 import { UserDetailsComponent } from './fixed-elements/header/user-details/user-details.component';
 import { NotificationService } from './shared/notification.service';
@@ -86,6 +87,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter'
 
 // import { AuthInterceptor } from './auth/auth-interceptor.service';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -155,7 +157,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter'
     ReactiveFormsModule,
     RouterModule.forRoot(ROUTES),
     NgxMaskModule.forRoot(),
-    NgMultiSelectDropDownModule.forRoot()
+    NgMultiSelectDropDownModule.forRoot(),
+    Ng2SearchPipeModule
   ],
  
 

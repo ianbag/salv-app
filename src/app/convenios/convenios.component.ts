@@ -26,6 +26,7 @@ export class ConveniosComponent implements OnInit {
 
   constructor(private conveniosService: ConveniosService, private dialogConfirmService: DialogConfirmService, private spinner: NgxSpinnerService) { }
 
+  searchText;
   public searchString: string;
   convenios: Convenio[]
   conveniosDesativados: Convenio[]
@@ -66,7 +67,4 @@ export class ConveniosComponent implements OnInit {
         }
       })
   }
-
-  public downloadPDF() { }
-
 }

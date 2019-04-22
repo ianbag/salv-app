@@ -25,9 +25,12 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class ResidentesComponent implements OnInit {
 
   residentesState = 'ready'
+  
+  searchText;
   public searchString: string;
 
   residentesInativos: Residente[]
+
   residentes: Residente[]
   
 

@@ -72,6 +72,20 @@
                 screenReaderCurrentLabel="Voce esta na página"></pagination-controls>
             </div>
 
+            <input class="form-control" style="max-width: 500px" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Pesquisar">
+            <br>
+            <div class="box box-default table-responsive no-padding" [@funcionariosAppeared]="funcionariosState">
+                <h1 align="center">Visualização geral dos funcionários</h1>
+                <br>
+                <table class="table table-hover">
+                    <tr>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>RG</th>
+                        <th class="col-sm-4">Ações</th>
+                    </tr>
+                    <tr *ngFor="let funcionario of funcionarios | paginate: { itemsPerPage: 10, currentPage: paginaAtual } | filter:searchText">
+                        <td>{{funcionario.FUNCIONARIO_NOME}} {{funcionario.FUNCIONARIO_SOBRENOME}}</td>
 
             <!--FUNCIONARIO INATIVOS-->
             <div ng [hidden]="!Desativados"> 
