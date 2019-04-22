@@ -4,15 +4,19 @@
   <div id="content" #reportAcompanhamento>
     <div class="box box-editar" [@acompanhamentoAppeared]="acompanhamentoState">
       <h1>Detalhes do Acompanhamento</h1>
-       <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#modalResidente"
-      style="margin-left: 50px; color: white">Editar</button>
-      <hr><br>
+
+      
 
     <div>
       <div class="box box-default box-solid">
         <div class="box-header with-border">
 
+         
           <h3 class="box-title">Informações do acompanhamento</h3>
+
+          <a  data-toggle="modal" data-target="#modalResidente"><span
+            style="color: red"><i class="fa fa-pencil"></i></span></a>
+            
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse">
               <i class="fa fa-minus">
@@ -48,14 +52,14 @@
       </div>
 
 
-       <!-- INICIO MODAL EDITAR RESIDENTE -->
+       <!-- INICIO MODAL EDITAR ACOMPANHAMENTO -->
        <div class="modal fade" id="modalResidente" tabindex="-1" role="dialog" aria-labelledby="modalResidente"
        aria-hidden="true">
        <div class="modal-dialog" role="document">
          <div class="modal-content">
            <div class="modal-body">
 
-              <div class="box" [@editar-acompanhamentoAppeared]="editaracompanhamentoState">
+              <div class="box">
                   <h1 align="center">Atualizar acompanhamento</h1>
                   <hr>
               
