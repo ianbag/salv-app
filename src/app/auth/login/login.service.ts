@@ -1,10 +1,9 @@
-import { Observable } from 'rxjs';
 import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { SALV_API } from './../../app.api';
 import { User } from './user.model';
 import { tap } from 'rxjs/operators'
-import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable()
 export class LoginService {
@@ -12,23 +11,21 @@ export class LoginService {
     user: User
     showMenuEmitter = new EventEmitter<boolean>()
 
-    constructor(private http: HttpClient, private router: Router) { }
+    constructor(private http: HttpClient, private cs: CookieService) { }
 
-    isLoggedIn(): boolean {
-        return this.user !== undefined
-    }
-
-    login(email: string, senha: string): Observable<User> {
-        return this.http.post<User>(`${SALV_API}/login`,
-            { email: email, senha: senha }).pipe(tap(user => {
-                this.user = user
-                this.showMenuEmitter.emit(true)
-                this.router.navigate(['/'])
-            }))
+    login(user: User) {
+        return this.http.post<User>(`${SALV_API}/login`, user).pipe(tap(res => {
+            this.showMenuEmitter.emit(true)
+        }))
     }
 
     logout() {
-        this.user = undefined
-        this.router.navigate(['/login'])
+        this.cs.deleteAll()
+        // sessionStorage.clear()
+        this.showMenuEmitter.emit(false)
+    }
+
+    showMenuSession() {
+        this.showMenuEmitter.emit(true)
     }
 }

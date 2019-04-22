@@ -8,9 +8,14 @@ import { Convenio, Telefone, Endereco, ConvenioQuery, Telefone_Convenio, Enderec
 export class ConveniosService {
 
     constructor(private http: HttpClient) { }
+    
 
     convenios(): Observable<Convenio[]> {
         return this.http.get<Convenio[]>(`${SALV_API}/convenio`)
+    }
+
+    conveniosDesativados(): Observable<Convenio[]> {
+        return this.http.get<Convenio[]>(`${SALV_API}/convenio-desativados`)
     }
 
     conveniosById(id: number): Observable<Convenio> {

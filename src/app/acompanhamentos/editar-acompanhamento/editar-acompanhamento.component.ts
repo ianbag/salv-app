@@ -187,7 +187,7 @@ export class EditarAcompanhamentoComponent implements OnInit {
 
     this.acompanhamentoService.updateAcompanhamento(editarAcomp, this.codigo_acompanhamento).subscribe(res => {
       
-      if (this.editarAcompanhamentoForm.valid == true && this.selectedFuncionarios != null && this.selectedResidentes != null){
+      if (res){
         this.ns.notify(`Acompanhamento inserido com sucesso!`)
         this.router.navigate(['/acompanhamentos'])
       
@@ -199,6 +199,7 @@ export class EditarAcompanhamentoComponent implements OnInit {
     })
     console.log('Edição acompanhamento', editarAcomp)
   }
+
 
 
 
@@ -256,10 +257,6 @@ export class EditarAcompanhamentoComponent implements OnInit {
   }
 
         
-
-
-
-
 
 
   onResidenteSelect(residente: any) {

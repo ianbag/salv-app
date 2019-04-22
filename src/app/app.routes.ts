@@ -20,11 +20,12 @@ import { FuncionarioComponent } from './funcionarios/funcionario/funcionario.com
 import { FamiliarResidenteComponent } from './residentes/novo-residente/familiar-residente/familiar-residente.component';
 import { ConvenioResidenteComponent } from './residentes/novo-residente/convenio-residente/convenio-residente.component';
 import { LoginComponent } from './auth/login/login.component'
-import { AuthGuardService as AuthGuard } from './auth/auth-guard.service'
 import { NovoFuncionarioComponent } from './funcionarios/novo-funcionario/novo-funcionario.component';
 import { EditarFuncionarioComponent } from './funcionarios/editar-funcionario/editar-funcionario.component';
 import { EditarResidenteComponent } from './residentes/editar-residente/editar-residente.component';
 import { ForgetPasswordComponent } from './auth/forget-password/forget-password.component';
+
+import { AuthGuardService as AuthGuard } from './auth/auth-guard.service'
 
 export const ROUTES: Routes = [
     //ROTAS VÃO AQUI
@@ -44,13 +45,11 @@ export const ROUTES: Routes = [
     { path: 'funcionario/:id', component: FuncionarioComponent, canActivate: [AuthGuard] },
     { path: 'editar-funcionario/:id', component: EditarFuncionarioComponent, canActivate: [AuthGuard] },
     { path: 'acompanhamentos', component: AcompanhamentosComponent, canActivate: [AuthGuard] },
-    { path: 'editar-acompanhamento/:id', component: EditarAcompanhamentoComponent, canActivate: [AuthGuard] },
+    // { path: 'editar-acompanhamento/:id', component: EditarAcompanhamentoComponent, canActivate: [AuthGuard] },
     { path: 'acompanhamento/:id', component: AcompanhamentoComponent, canActivate: [AuthGuard] },
     { path: 'novo-acompanhamento', component: NovoAcompanhamentoComponent, canActivate: [AuthGuard] },
     { path: 'esqueci-a-senha', component: ForgetPasswordComponent },
     { path: 'esqueci-a-senha/:token', component: ResetPasswordComponent },
     { path: '', component: TelaInicialComponent, canActivate: [AuthGuard] },
     { path: '**', component: NotFoundComponent }
-
-
 ]

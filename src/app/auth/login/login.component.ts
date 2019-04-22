@@ -1,51 +1,43 @@
+import { Component, OnInit } from "@angular/core"
+import { FormBuilder, FormGroup, Validators } from "@angular/forms"
+import { Router } from "@angular/router"
 import { LoginService } from './login.service';
-import { Component, OnInit, NgZone } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { NotificationService } from './../../shared/notification.service';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { HttpErrorResponse } from '@angular/common/http';
+import { NotificationService } from 'src/app/shared/notification.service';
+import { CookieService } from 'ngx-cookie-service'
 
 @Component({
   selector: 'salv-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup
-  errorResponse: HttpErrorResponse | any 
+  returnUrl: string
 
-  constructor(private fb: FormBuilder, private ls: LoginService, private ns: NotificationService, private spinner: NgxSpinnerService, private zone: NgZone) {
-    this.ls.logout()
-    this.ls.showMenuEmitter.emit(false)
-  }
+  constructor(private fb: FormBuilder, private router: Router, private ls: LoginService, private spinner: NgxSpinnerService, private ns: NotificationService, private cs: CookieService) { }
 
   ngOnInit() {
-    this.spinner.hide()
     this.loginForm = this.fb.group({
-      email: this.fb.control('', [Validators.required, Validators.email]),
-      senha: this.fb.control('', [Validators.required])
+      email: this.fb.control(null, [Validators.required, Validators.email]),
+      senha: this.fb.control(null, [Validators.required, Validators.minLength(4), Validators.maxLength(100)])
     })
-
-    
+    this.returnUrl = '/'
   }
 
   login() {
-    
-    
     this.spinner.show()
-    this.ls.login(this.loginForm.value.email, this.loginForm.value.senha)
-      .subscribe(user => this.ns.notify(`Bem vindo, ${user.login}`),
-        response => (this.ns.notify(response), this.spinner.hide()),     
-        )    
-        
-    
-    
+    this.ls.login(this.loginForm.value).subscribe(success => {
+      this.cs.set('isLoggedIn', "true", 0.0417)
+      this.cs.set('login', success.login, 0.0417)
+      this.cs.set('token', success.accessToken, 0.0417)
+      this.router.navigate([this.returnUrl])
+    },
+      err => {
+        this.spinner.hide()
+        this.ns.notify(err.error.message)
+      })
   }
- 
-    
- 
-
-  
-
 }

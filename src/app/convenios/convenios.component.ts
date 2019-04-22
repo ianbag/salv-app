@@ -5,6 +5,7 @@ import { DialogConfirmService } from '../residentes/dialog-confirm.service';
 import { trigger, state, transition, style, animate } from '@angular/animations';
 import { NgxSpinnerService } from 'ngx-spinner';
 import * as jspdf from 'jspdf'
+import 'jspdf-autotable'
 
 @Component({
   selector: 'salv-convenios',
@@ -25,11 +26,15 @@ export class ConveniosComponent implements OnInit {
 
   constructor(private conveniosService: ConveniosService, private dialogConfirmService: DialogConfirmService, private spinner: NgxSpinnerService) { }
 
+  public searchString: string;
   convenios: Convenio[]
+  conveniosDesativados: Convenio[]
 
   @ViewChild('reportConvenios') reportConvenios: ElementRef
-  paginaAtual : number = 1;
-  ngOnInit() {  
+  paginaAtual: number = 1;
+ 
+  
+  ngOnInit() {
     this.spinner.show()
     this.conveniosService.convenios()
       .subscribe(convenios => {
@@ -37,7 +42,19 @@ export class ConveniosComponent implements OnInit {
         this.convenios = convenios
         console.log('CONVENIOS', convenios)
       })
+
+      
   }
+
+  conveniosDesativadoss(){
+
+   this.conveniosService.conveniosDesativados()
+      .subscribe(conveniosDesativados => {
+        
+        this.conveniosDesativados = conveniosDesativados
+        console.log('conveniosDesativados', conveniosDesativados)
+      })
+    }
 
   deleteConvenio(id: string): void {
     this.dialogConfirmService.confirm(`Deseja excluir o convênio?`)
@@ -50,20 +67,6 @@ export class ConveniosComponent implements OnInit {
       })
   }
 
-  public downloadPDF() {
-    let doc = new jspdf()
-    let specialElementsHandlers = {
-      '#editor': function (element, renderer) {
-        return true
-      }
-    }
-    let content = this.reportConvenios.nativeElement
-
-    doc.fromHTML(content.innerHTML, 15, 15, {
-      'width': 190,
-      'elementsHandlers': specialElementsHandlers
-    })
-    doc.save('Relatório de Convênios.pdf')
-  }
+  public downloadPDF() { }
 
 }

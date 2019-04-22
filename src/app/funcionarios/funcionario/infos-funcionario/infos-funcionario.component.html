@@ -10,6 +10,8 @@
   <div class="box-body">
     <div class="row col-md-12">
       <div class="col-md-12">
+        <a (click)="buscaFuncionario()" data-toggle="modal" data-target="#modalEditarFuncionario"><span
+            style="color: red"><i class="fa fa-pencil"></i></span></a>
         <div class="col-sm-12 col-xs-12">
           <h4><strong>Informações pessoais</strong></h4>
         </div>
@@ -46,165 +48,141 @@
           <br>
         </div>
       </div>
-      <hr class="col-md-12">
-      <div class="col-md-12">
-        <!--DIV MODAL INICIO-->
-        <div class="col-sm-12 col-xs-12">
-          <!-- Button trigger modal -->
-          <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modalTelefone">
-            <i class="fa fa-plus"></i>
-          </button>
-          <!-- Modal -->
-          <div class="modal fade" id="modalTelefone" tabindex="-1" role="dialog" aria-labelledby="modalTelefone"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-body">
-                  <form [formGroup]="novoTelefoneForm" novalidate>
-                    <div class="box-body">
-                      <div>
-                        <div class="col-sm-12 col-sm-12" id="formTitle">
-                          <h4><strong>Adicionar novo telefone</strong></h4>
+
+      <!--DIV MODAL INICIO-->
+      <div class="col-sm-12 col-xs-12">
+        <!-- Modal -->
+        <div class="modal fade" id="modalEditarFuncionario" tabindex="-1" role="dialog"
+          aria-labelledby="modalEditarFuncionario" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                <form [formGroup]="updateFuncionarioForm" novalidate>
+                  <div class="box-body">
+                    <div>
+                      <div class="col-sm-12 col-sm-12" id="formTitle">
+                        <h4><strong>Editar funcionário</strong></h4>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-6 col-sm-12" id="inputValidator" formGroupName="PESSOA">
+                          <salv-input-container errorMessage="Campo Obrgatório" label="Nome">
+                            <input type="text" class="form-control" formControlName="NOME" placeholder="Nome"
+                              autocomplete="off" maxlength="50">
+                          </salv-input-container>
                         </div>
-                        <div class="row">
-                          <div class="col-sm-3 col-sm-12">
-                            <label>DDD</label>
-                            <input type="text" class="form-control" formControlName="DDD" placeholder="DDD"
-                              autocomplete="off" maxlength="3">
-                          </div>
-                          <div class="col-sm-3 col-sm-12">
-                            <label>Número</label>
-                            <input type="text" class="form-control" formControlName="NUMERO" placeholder="Número"
-                              autocomplete="off" maxlength="9">
-                          </div>
+                        <div class="col-sm-6 col-sm-12" id="inputValidator" formGroupName="PESSOA">
+                          <salv-input-container errorMessage="Campo Obrigatório" label="Sobrenome">
+                            <input type="text" class="form-control" formControlName="SOBRENOME" placeholder="Sobrenome"
+                              autocomplete="off" maxlength="50">
+                          </salv-input-container>
+                        </div>
+                        <div class="col-sm-6 col-sm-12" id="inputValidator" formGroupName="PESSOA">
+                          <salv-input-container errorMessage="Minimo 11 caracteres" label="CPF">
+                            <input type="text" mask="000.000.000-00" class="form-control" formControlName="CPF"
+                              placeholder="CPF" autocomplete="off" maxlength="15">
+                          </salv-input-container>
+                        </div>
+                        <div class="col-sm-6 col-sm-12" id="inputValidator" formGroupName="PESSOA">
+                          <salv-input-container erroMessage="Minimo 9 caracteres" label="RG">
+                            <input type="text" mask="00.000.000-A" class="form-control" formControlName="RG"
+                              placeholder="RG" autocomplete="off">
+                          </salv-input-container>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-4 col-sm-12" formGroupName="PESSOA">
+                          <salv-input-container errorMessage="Campo Obrigatório" label="Estado Civil">
+                            <select class="form-control" formControlName="ESTADO_CIVIL">
+                              <option value="" label="Selecione" disabled selected="selected"></option>
+                              <option *ngFor="let estadoCivil of estadosCivil" [value]="estadoCivil.value">
+                                {{estadoCivil.option}}
+                              </option>
+                            </select>
+                          </salv-input-container>
+                        </div>
+                        <div class="col-sm-4 col-sm-12" id="inputValidator" formGroupName="PESSOA">
+                          <salv-input-container errorMessage="Campo Obrigatório" label="Sexo">
+                            <select class="form-control" formControlName="SEXO">
+                              <option value="" label="Selecione" disabled selected="selected"></option>
+                              <option *ngFor="let sexo of sexos" [value]="sexo.value">{{sexo.option}}</option>
+                            </select>
+                          </salv-input-container>
+                        </div>
+                        <div class="col-sm-4 col-sm-12" formGroupName="PESSOA">
+                          <salv-input-container errorMessage="Campo Obrigatório" label="Religião">
+                            <select class="form-control" formControlName="RELIGIAO">
+                              <option value="" label="Selecione" disabled selected="selected"></option>
+                              <option *ngFor="let religiao of religioes" [value]="religiao.value">{{religiao.option}}
+                              </option>
+                            </select>
+                          </salv-input-container>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-6 col-sm-12" formGroupName="PESSOA">
+                          <salv-input-container erroMessage="Campo Obrigatório" label="Data de Nascimento">
+                            <input type="date" class="form-control pull-right" id="datepicker"
+                              formControlName="DATA_NASCIMENTO" max="2999-12-31">
+                          </salv-input-container>
+                        </div>
+                        <div class="col-sm-6 col-sm-12">
+                          <salv-input-container errorMessage="Campo Obrigatório" label="Cargo">
+                            <input type="text" class="form-control" formControlName="CARGO" placeholder="Cargo"
+                              autocomplete="off" maxlength="50">
+                          </salv-input-container>
+                        </div>
+                        <div class="col-sm-6 col-sm-12">
+                          <salv-input-container errorMessage="Campo Obrigatório" label="Data de Admissão">
+                            <input type="date" class="form-control pull-right" id="datepicker"
+                              formControlName="DATA_ADMISSAO" max="2999-12-31">
+                          </salv-input-container>
                         </div>
                       </div>
                     </div>
-                  </form>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                  <button type="button" class="btn btn-success" (click)="novoTelefone(this.novoTelefoneForm.value)"
-                    data-dismiss="modal">Salvar</button>
-                </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-success" (click)="updateFuncionario(this.updateFuncionarioForm.value)"
+                  data-dismiss="modal">Salvar</button>
               </div>
             </div>
           </div>
-          <!--FIM MODAL-->
-          <h4><strong>Telefones</strong></h4>
         </div>
-        <!--FIM DIV MODAL-->
-        <div class="col-xs-4 col-xs-12" *ngFor="let telefone of telefones">
-          <strong>Telefone: </strong> ({{telefone?.TELEFONE.DDD}}) {{telefone?.TELEFONE.NUMERO}} <a><span
-              (click)="deleteTelefone(funcionario.PESSOA.CODIGO, telefone.TELEFONE.CODIGO); $event.stopPropagation()"><i
-                class="fa fa-close"></i></span></a>
-          <a data-toggle="modal" data-target="#modalUpdateTelefone"
-            (click)="buscaTelefone(telefone.TELEFONE.CODIGO)"><span><i class="fa fa-pencil"></i></span></a>
-        </div>
-        <!--DIV MODAL INICIO-->
-        <div class="col-sm-12 col-xs-12">
-          <!-- Modal -->
-          <div class="modal fade" id="modalUpdateTelefone" tabindex="-1" role="dialog"
-            aria-labelledby="modalUpdateTelefone" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-body">
-                  <form [formGroup]="updateTelefoneForm" novalidate>
-                    <div class="box-body">
-                      <div>
-                        <div class="col-sm-12 col-sm-12" id="formTitle">
-                          <h4><strong>Editar telefone</strong></h4>
-                        </div>
-                        <div class="row">
-                          <div class="col-sm-3 col-sm-12">
-                            <label>DDD</label>
-                            <input type="text" class="form-control" formControlName="DDD" placeholder="DDD"
-                              autocomplete="off" maxlength="3">
-                          </div>
-                          <div class="col-sm-3 col-sm-12">
-                            <label>Número</label>
-                            <input type="text" class="form-control" formControlName="NUMERO" placeholder="Número"
-                              autocomplete="off" maxlength="9">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                  <button type="button" class="btn btn-success" (click)="updateTelefone(this.updateTelefoneForm.value)"
-                    data-dismiss="modal">Salvar</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--FIM MODAL-->
-        </div>
+        <!--FIM MODAL-->
+
+
         <hr class="col-md-12">
         <div class="col-md-12">
-          <!--DIV MODAL-->
+          <!--DIV MODAL INICIO-->
           <div class="col-sm-12 col-xs-12">
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modalEndereco">
+            <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modalTelefone">
               <i class="fa fa-plus"></i>
             </button>
             <!-- Modal -->
-            <div class="modal fade" id="modalEndereco" tabindex="-1" role="dialog" aria-labelledby="modalEndereco"
+            <div class="modal fade" id="modalTelefone" tabindex="-1" role="dialog" aria-labelledby="modalTelefone"
               aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-body">
-                    <form [formGroup]="novoEnderecoForm" novalidate>
+                    <form [formGroup]="novoTelefoneForm" novalidate>
                       <div class="box-body">
                         <div>
                           <div class="col-sm-12 col-sm-12" id="formTitle">
-                            <h4><strong>Adicionar novo endereço</strong></h4>
+                            <h4><strong>Adicionar novo telefone</strong></h4>
                           </div>
                           <div class="row">
                             <div class="col-sm-3 col-sm-12">
-                              <label>Endereço</label>
-                              <input type="text" class="form-control" formControlName="ENDERECO" placeholder="Endereço"
-                                autocomplete="off" maxlength="100">
+                              <label>DDD</label>
+                              <input type="text" class="form-control" formControlName="DDD" placeholder="DDD"
+                                autocomplete="off" maxlength="3">
                             </div>
                             <div class="col-sm-3 col-sm-12">
                               <label>Número</label>
                               <input type="text" class="form-control" formControlName="NUMERO" placeholder="Número"
-                                autocomplete="off" maxlength="5">
-                            </div>
-                            <div class="col-sm-3 col-sm-12">
-                              <label>Bairro</label>
-                              <input type="text" class="form-control" formControlName="BAIRRO" placeholder="Bairro"
-                                autocomplete="off" maxlength="50">
-                            </div>
-                            <div class="col-sm-3 col-sm-12">
-                              <label>Complemento</label>
-                              <input type="text" class="form-control" formControlName="COMPLEMENTO"
-                                placeholder="Complemento" autocomplete="off" maxlength="50">
-                            </div>
-                          </div>
-                          <div class="row">
-                            <div class="col-sm-3 col-sm-12">
-                              <label>Cidade</label>
-                              <input type="text" class="form-control" formControlName="CIDADE" placeholder="Cidade"
-                                autocomplete="off" maxlength="50">
-                            </div>
-                            <div class="col-sm-3 col-sm-12">
-                              <label>Estado</label>
-                              <select class="form-control" formControlName="ESTADO">
-                                <option value="" label="Selecione" disabled selected="true"></option>
-                                <option *ngFor="let estado of estados">{{estado}}</option>
-                              </select>
-                            </div>
-                            <div class="col-sm-3 col-sm-12">
-                              <label>CEP</label>
-                              <input type="text" class="form-control" formControlName="CEP" placeholder="CEP"
-                                autocomplete="off" maxlength="8">
-                            </div>
-                            <div class="col-sm-3 col-sm-12">
-                              <label>Referência</label>
-                              <input type="text" class="form-control" formControlName="REFERENCIA"
-                                placeholder="Referência" autocomplete="off" maxlength="100">
+                                autocomplete="off" maxlength="9">
                             </div>
                           </div>
                         </div>
@@ -213,108 +191,47 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-success" (click)="novoEndereco(this.novoEnderecoForm.value)"
+                    <button type="button" class="btn btn-success" (click)="novoTelefone(this.novoTelefoneForm.value)"
                       data-dismiss="modal">Salvar</button>
                   </div>
                 </div>
               </div>
             </div>
             <!--FIM MODAL-->
+            <h4><strong>Telefones</strong></h4>
           </div>
-          <!--DIV MODAL-->
-          <div class="col-xs-12 col-xs-12">
-            <h4><strong>Endereços</strong></h4>
+          <!--FIM DIV MODAL-->
+          <div class="col-xs-4 col-xs-12" *ngFor="let telefone of telefones">
+            <strong>Telefone: </strong> ({{telefone?.TELEFONE.DDD}}) {{telefone?.TELEFONE.NUMERO}} <a><span
+                (click)="deleteTelefone(funcionario.PESSOA.CODIGO, telefone.TELEFONE.CODIGO); $event.stopPropagation()"><i
+                  class="fa fa-close"></i></span></a>
+            <a data-toggle="modal" data-target="#modalUpdateTelefone"
+              (click)="buscaTelefone(telefone.TELEFONE.CODIGO)"><span><i class="fa fa-pencil"></i></span></a>
           </div>
-          <div *ngFor="let endereco of enderecos">
-            <div class="col-xs-4 col-xs-12">
-              <a><span
-                  (click)="deleteEndereco(funcionario.PESSOA.CODIGO, endereco.ENDERECO.CODIGO); $event.stopPropagation()"><i
-                    class="fa fa-close"></i></span></a>
-              <a data-toggle="modal" data-target="#modalUpdateEndereco"
-                (click)="buscaEndereco(endereco.ENDERECO.CODIGO)"><span><i class="fa fa-pencil"></i></span></a>
-              <strong>Endereço: </strong> {{endereco?.ENDERECO.ENDERECO}}
-            </div>
-            <div class="col-xs-4 col-xs-12">
-              <strong>Número: </strong> {{endereco?.ENDERECO.NUMERO}}
-            </div>
-            <div class="col-xs-4 col-xs-12">
-              <strong>Bairro: </strong> {{endereco?.ENDERECO.BAIRRO}}
-            </div>
-            <div class="col-xs-4 col-xs-12" *ngIf="endereco.ENDERECO.COMPLEMENTO">
-              <strong>Complemento: </strong> {{endereco?.ENDERECO.COMPLEMENTO}}
-            </div>
-            <div class="col-xs-4 col-xs-12">
-              <strong>Cidade: </strong> {{endereco?.ENDERECO.CIDADE}}
-            </div>
-            <div class="col-xs-4 col-xs-12">
-              <strong>Estado: </strong> {{endereco?.ENDERECO.ESTADO}}
-            </div>
-            <div class="col-xs-4 col-xs-12">
-              <strong>CEP: </strong> {{endereco?.ENDERECO.CEP}}
-            </div>
-            <div class="col-xs-4 col-xs-12" *ngIf="endereco.ENDERECO.REFERENCIA">
-              <strong>Referência: </strong> {{endereco?.ENDERECO.REFERENCIA}}
-            </div>
-            <hr class="col-md-10">
-          </div>
-          <!--DIV MODAL-->
+          <!--DIV MODAL INICIO-->
           <div class="col-sm-12 col-xs-12">
             <!-- Modal -->
-            <div class="modal fade" id="modalUpdateEndereco" tabindex="-1" role="dialog"
-              aria-labelledby="modalUpdateEndereco" aria-hidden="true">
+            <div class="modal fade" id="modalUpdateTelefone" tabindex="-1" role="dialog"
+              aria-labelledby="modalUpdateTelefone" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-body">
-                    <form [formGroup]="updateEnderecoForm" novalidate>
+                    <form [formGroup]="updateTelefoneForm" novalidate>
                       <div class="box-body">
                         <div>
                           <div class="col-sm-12 col-sm-12" id="formTitle">
-                            <h4><strong>Alterar endereço</strong></h4>
+                            <h4><strong>Editar telefone</strong></h4>
                           </div>
                           <div class="row">
                             <div class="col-sm-3 col-sm-12">
-                              <label>Endereço</label>
-                              <input type="text" class="form-control" formControlName="ENDERECO" placeholder="Endereço"
-                                autocomplete="off" maxlength="100">
+                              <label>DDD</label>
+                              <input type="text" class="form-control" formControlName="DDD" placeholder="DDD"
+                                autocomplete="off" maxlength="3">
                             </div>
                             <div class="col-sm-3 col-sm-12">
                               <label>Número</label>
                               <input type="text" class="form-control" formControlName="NUMERO" placeholder="Número"
-                                autocomplete="off" maxlength="5">
-                            </div>
-                            <div class="col-sm-3 col-sm-12">
-                              <label>Bairro</label>
-                              <input type="text" class="form-control" formControlName="BAIRRO" placeholder="Bairro"
-                                autocomplete="off" maxlength="50">
-                            </div>
-                            <div class="col-sm-3 col-sm-12">
-                              <label>Complemento</label>
-                              <input type="text" class="form-control" formControlName="COMPLEMENTO"
-                                placeholder="Complemento" autocomplete="off" maxlength="50">
-                            </div>
-                          </div>
-                          <div class="row">
-                            <div class="col-sm-3 col-sm-12">
-                              <label>Cidade</label>
-                              <input type="text" class="form-control" formControlName="CIDADE" placeholder="Cidade"
-                                autocomplete="off" maxlength="50">
-                            </div>
-                            <div class="col-sm-3 col-sm-12">
-                              <label>Estado</label>
-                              <select class="form-control" formControlName="ESTADO">
-                                <option value="" label="Selecione" disabled selected="true"></option>
-                                <option *ngFor="let estado of estados">{{estado}}</option>
-                              </select>
-                            </div>
-                            <div class="col-sm-3 col-sm-12">
-                              <label>CEP</label>
-                              <input type="text" class="form-control" formControlName="CEP" placeholder="CEP"
-                                autocomplete="off" maxlength="8">
-                            </div>
-                            <div class="col-sm-3 col-sm-12">
-                              <label>Referência</label>
-                              <input type="text" class="form-control" formControlName="REFERENCIA"
-                                placeholder="Referência" autocomplete="off" maxlength="100">
+                                autocomplete="off" maxlength="9">
                             </div>
                           </div>
                         </div>
@@ -324,124 +241,262 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                     <button type="button" class="btn btn-success"
-                      (click)="updateEndereco(this.updateEnderecoForm.value)" data-dismiss="modal">Salvar</button>
+                      (click)="updateTelefone(this.updateTelefoneForm.value)" data-dismiss="modal">Salvar</button>
                   </div>
                 </div>
               </div>
             </div>
             <!--FIM MODAL-->
           </div>
-          <!--DIV MODAL-->
-        </div>
-        <hr class="col-md-12">
-        <div class="col-md-12">
-          <div class="col-sm-12 col-xs-12">
-            <h4><strong>Informações funcionais</strong></h4>
-          </div>
-          <div class="col-xs-4 col-xs-12">
-            <strong>Cargo: </strong> {{funcionario?.CARGO}}
-            <br>
-          </div>
-          <div class="col-xs-4 col-xs-12">
-            <strong>Data de Admissão: </strong> {{funcionario?.DATA_ADMISSAO | date: 'dd/MM/yyy'}}
-            <br>
-          </div>
-          <div class="col-xs-4 col-xs-12" *ngIf="funcionario?.DATA_DEMISSAO">
-            <strong>Data de Demissão: </strong> {{funcionario?.DATA_DEMISSAO | date: 'dd/MM/yyy'}}
-            <br>
-          </div>
-        </div>
-        <hr class="col-md-12">
-        <div class="col-md-12" *ngIf="haveLogin(); else notLogin">
-          <div class="col-sm-12 col-xs-12">
-            <h4><strong>Informações de login</strong></h4>
-            <a data-toggle="modal" data-target="#modalUpdateUsuario" (click)="buscaUsuario()"><span><i
-                  class="fa fa-pencil"></i></span></a>
-          </div>
-          <div class="col-xs-4 col-xs-12">
-            <strong>E-mail: </strong> {{funcionario?.USUARIO.EMAIL}}
-            <br>
-          </div>
-          <div class="col-xs-4 col-xs-12">
-            <strong>Login: </strong> {{funcionario?.USUARIO.LOGIN}}
-          </div>
-        </div>
-        <!--DIV MODAL INICIO-->
-        <div class="col-sm-12 col-xs-12">
-          <!-- Modal -->
-          <div class="modal fade" id="modalUpdateUsuario" tabindex="-1" role="dialog"
-            aria-labelledby="modalUpdateUsuario" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-body">
-                  <form [formGroup]="updateUsuarioForm" novalidate>
-                    <div class="box-body">
-                      <div>
-                        <div class="col-sm-12 col-sm-12" id="formTitle">
-                          <h4><strong>Alterar usuário</strong></h4>
-                        </div>
-                        <div class="row">
-                          <div class="col-sm-6 col-sm-12">
-                            <label>E-mail</label>
-                            <input type="text" class="form-control" formControlName="EMAIL" placeholder="E-mail"
-                              autocomplete="off" maxlength="100">
+          <hr class="col-md-12">
+          <div class="col-md-12">
+            <!--DIV MODAL-->
+            <div class="col-sm-12 col-xs-12">
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modalEndereco">
+                <i class="fa fa-plus"></i>
+              </button>
+              <!-- Modal -->
+              <div class="modal fade" id="modalEndereco" tabindex="-1" role="dialog" aria-labelledby="modalEndereco"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                      <form [formGroup]="novoEnderecoForm" novalidate>
+                        <div class="box-body">
+                          <div>
+                            <div class="col-sm-12 col-sm-12" id="formTitle">
+                              <h4><strong>Adicionar novo endereço</strong></h4>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-3 col-sm-12">
+                                <label>Endereço</label>
+                                <input type="text" class="form-control" formControlName="ENDERECO"
+                                  placeholder="Endereço" autocomplete="off" maxlength="100">
+                              </div>
+                              <div class="col-sm-3 col-sm-12">
+                                <label>Número</label>
+                                <input type="text" class="form-control" formControlName="NUMERO" placeholder="Número"
+                                  autocomplete="off" maxlength="5">
+                              </div>
+                              <div class="col-sm-3 col-sm-12">
+                                <label>Bairro</label>
+                                <input type="text" class="form-control" formControlName="BAIRRO" placeholder="Bairro"
+                                  autocomplete="off" maxlength="50">
+                              </div>
+                              <div class="col-sm-3 col-sm-12">
+                                <label>Complemento</label>
+                                <input type="text" class="form-control" formControlName="COMPLEMENTO"
+                                  placeholder="Complemento" autocomplete="off" maxlength="50">
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-3 col-sm-12">
+                                <label>Cidade</label>
+                                <input type="text" class="form-control" formControlName="CIDADE" placeholder="Cidade"
+                                  autocomplete="off" maxlength="50">
+                              </div>
+                              <div class="col-sm-3 col-sm-12">
+                                <label>Estado</label>
+                                <select class="form-control" formControlName="ESTADO">
+                                  <option value="" label="Selecione" disabled selected="true"></option>
+                                  <option *ngFor="let estado of estados">{{estado}}</option>
+                                </select>
+                              </div>
+                              <div class="col-sm-3 col-sm-12">
+                                <label>CEP</label>
+                                <input type="text" class="form-control" formControlName="CEP" placeholder="CEP"
+                                  autocomplete="off" maxlength="8">
+                              </div>
+                              <div class="col-sm-3 col-sm-12">
+                                <label>Referência</label>
+                                <input type="text" class="form-control" formControlName="REFERENCIA"
+                                  placeholder="Referência" autocomplete="off" maxlength="100">
+                              </div>
+                            </div>
                           </div>
-                          <div class="col-sm-6 col-sm-12">
-                            <label>Login</label>
-                            <input type="text" class="form-control" formControlName="LOGIN" placeholder="Login"
-                              autocomplete="off" maxlength="100">
-                          </div>
                         </div>
-                      </div>
+                      </form>
                     </div>
-                  </form>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                  <button type="button" class="btn btn-success" (click)="updateUsuario(this.updateUsuarioForm.value)"
-                    data-dismiss="modal">Salvar</button>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                      <button type="button" class="btn btn-success" (click)="novoEndereco(this.novoEnderecoForm.value)"
+                        data-dismiss="modal">Salvar</button>
+                    </div>
+                  </div>
                 </div>
               </div>
+              <!--FIM MODAL-->
+            </div>
+            <!--DIV MODAL-->
+            <div class="col-xs-12 col-xs-12">
+              <h4><strong>Endereços</strong></h4>
+            </div>
+            <div *ngFor="let endereco of enderecos">
+              <div class="col-xs-4 col-xs-12">
+                <a><span
+                    (click)="deleteEndereco(funcionario.PESSOA.CODIGO, endereco.ENDERECO.CODIGO); $event.stopPropagation()"><i
+                      class="fa fa-close"></i></span></a>
+                <a data-toggle="modal" data-target="#modalUpdateEndereco"
+                  (click)="buscaEndereco(endereco.ENDERECO.CODIGO)"><span><i class="fa fa-pencil"></i></span></a>
+                <strong>Endereço: </strong> {{endereco?.ENDERECO.ENDERECO}}
+              </div>
+              <div class="col-xs-4 col-xs-12">
+                <strong>Número: </strong> {{endereco?.ENDERECO.NUMERO}}
+              </div>
+              <div class="col-xs-4 col-xs-12">
+                <strong>Bairro: </strong> {{endereco?.ENDERECO.BAIRRO}}
+              </div>
+              <div class="col-xs-4 col-xs-12" *ngIf="endereco.ENDERECO.COMPLEMENTO">
+                <strong>Complemento: </strong> {{endereco?.ENDERECO.COMPLEMENTO}}
+              </div>
+              <div class="col-xs-4 col-xs-12">
+                <strong>Cidade: </strong> {{endereco?.ENDERECO.CIDADE}}
+              </div>
+              <div class="col-xs-4 col-xs-12">
+                <strong>Estado: </strong> {{endereco?.ENDERECO.ESTADO}}
+              </div>
+              <div class="col-xs-4 col-xs-12">
+                <strong>CEP: </strong> {{endereco?.ENDERECO.CEP}}
+              </div>
+              <div class="col-xs-4 col-xs-12" *ngIf="endereco.ENDERECO.REFERENCIA">
+                <strong>Referência: </strong> {{endereco?.ENDERECO.REFERENCIA}}
+              </div>
+              <hr class="col-md-10">
+            </div>
+            <!--DIV MODAL-->
+            <div class="col-sm-12 col-xs-12">
+              <!-- Modal -->
+              <div class="modal fade" id="modalUpdateEndereco" tabindex="-1" role="dialog"
+                aria-labelledby="modalUpdateEndereco" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                      <form [formGroup]="updateEnderecoForm" novalidate>
+                        <div class="box-body">
+                          <div>
+                            <div class="col-sm-12 col-sm-12" id="formTitle">
+                              <h4><strong>Alterar endereço</strong></h4>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-3 col-sm-12">
+                                <label>Endereço</label>
+                                <input type="text" class="form-control" formControlName="ENDERECO"
+                                  placeholder="Endereço" autocomplete="off" maxlength="100">
+                              </div>
+                              <div class="col-sm-3 col-sm-12">
+                                <label>Número</label>
+                                <input type="text" class="form-control" formControlName="NUMERO" placeholder="Número"
+                                  autocomplete="off" maxlength="5">
+                              </div>
+                              <div class="col-sm-3 col-sm-12">
+                                <label>Bairro</label>
+                                <input type="text" class="form-control" formControlName="BAIRRO" placeholder="Bairro"
+                                  autocomplete="off" maxlength="50">
+                              </div>
+                              <div class="col-sm-3 col-sm-12">
+                                <label>Complemento</label>
+                                <input type="text" class="form-control" formControlName="COMPLEMENTO"
+                                  placeholder="Complemento" autocomplete="off" maxlength="50">
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-3 col-sm-12">
+                                <label>Cidade</label>
+                                <input type="text" class="form-control" formControlName="CIDADE" placeholder="Cidade"
+                                  autocomplete="off" maxlength="50">
+                              </div>
+                              <div class="col-sm-3 col-sm-12">
+                                <label>Estado</label>
+                                <select class="form-control" formControlName="ESTADO">
+                                  <option value="" label="Selecione" disabled selected="true"></option>
+                                  <option *ngFor="let estado of estados">{{estado}}</option>
+                                </select>
+                              </div>
+                              <div class="col-sm-3 col-sm-12">
+                                <label>CEP</label>
+                                <input type="text" class="form-control" formControlName="CEP" placeholder="CEP"
+                                  autocomplete="off" maxlength="8">
+                              </div>
+                              <div class="col-sm-3 col-sm-12">
+                                <label>Referência</label>
+                                <input type="text" class="form-control" formControlName="REFERENCIA"
+                                  placeholder="Referência" autocomplete="off" maxlength="100">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                      <button type="button" class="btn btn-success"
+                        (click)="updateEndereco(this.updateEnderecoForm.value)" data-dismiss="modal">Salvar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--FIM MODAL-->
+            </div>
+            <!--DIV MODAL-->
+          </div>
+          <hr class="col-md-12">
+          <div class="col-md-12">
+            <div class="col-sm-12 col-xs-12">
+              <h4><strong>Informações funcionais</strong></h4>
+            </div>
+            <div class="col-xs-4 col-xs-12">
+              <strong>Cargo: </strong> {{funcionario?.CARGO}}
+              <br>
+            </div>
+            <div class="col-xs-4 col-xs-12">
+              <strong>Data de Admissão: </strong> {{funcionario?.DATA_ADMISSAO | date: 'dd/MM/yyy'}}
+              <br>
+            </div>
+            <div class="col-xs-4 col-xs-12" *ngIf="funcionario?.DATA_DEMISSAO">
+              <strong>Data de Demissão: </strong> {{funcionario?.DATA_DEMISSAO | date: 'dd/MM/yyy'}}
+              <br>
             </div>
           </div>
-          <!--FIM MODAL-->
-        </div>
-        <!--FIM DIV MODAL-->
-        <ng-template #notLogin>
-          <p>Você não possui usuário cadastrado</p>
+          <hr class="col-md-12">
+          <div class="col-md-12" *ngIf="haveLogin(); else notLogin">
+            <div class="col-sm-12 col-xs-12">
+              <h4><strong>Informações de login</strong></h4>
+              <a data-toggle="modal" data-target="#modalUpdateUsuario" (click)="buscaUsuario()"><span><i
+                    class="fa fa-pencil"></i></span></a>
+            </div>
+            <div class="col-xs-4 col-xs-12">
+              <strong>E-mail: </strong> {{funcionario?.USUARIO.EMAIL}}
+              <br>
+            </div>
+            <div class="col-xs-4 col-xs-12">
+              <strong>Login: </strong> {{funcionario?.USUARIO.LOGIN}}
+            </div>
+          </div>
           <!--DIV MODAL INICIO-->
           <div class="col-sm-12 col-xs-12">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalUsuario">
-              Adicionar usuário
-            </button>
             <!-- Modal -->
-            <div class="modal fade" id="modalUsuario" tabindex="-1" role="dialog" aria-labelledby="modalUsuario"
-              aria-hidden="true">
+            <div class="modal fade" id="modalUpdateUsuario" tabindex="-1" role="dialog"
+              aria-labelledby="modalUpdateUsuario" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-body">
-                    <form [formGroup]="novoUsuarioForm" novalidate>
+                    <form [formGroup]="updateUsuarioForm" novalidate>
                       <div class="box-body">
                         <div>
                           <div class="col-sm-12 col-sm-12" id="formTitle">
-                            <h4><strong>Adicionar usuário</strong></h4>
+                            <h4><strong>Alterar usuário</strong></h4>
                           </div>
                           <div class="row">
-                            <div class="col-sm-4 col-sm-12">
+                            <div class="col-sm-6 col-sm-12">
                               <label>E-mail</label>
                               <input type="text" class="form-control" formControlName="EMAIL" placeholder="E-mail"
                                 autocomplete="off" maxlength="100">
                             </div>
-                            <div class="col-sm-4 col-sm-12">
+                            <div class="col-sm-6 col-sm-12">
                               <label>Login</label>
                               <input type="text" class="form-control" formControlName="LOGIN" placeholder="Login"
                                 autocomplete="off" maxlength="100">
-                            </div>
-                            <div class="col-sm-4 col-sm-12">
-                              <label>Senha</label>
-                              <input type="password" class="form-control" formControlName="SENHA" placeholder="Senha"
-                                autocomplete="off" maxlength="25">
                             </div>
                           </div>
                         </div>
@@ -450,7 +505,7 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-success" (click)="novoUsuario(this.novoUsuarioForm.value)"
+                    <button type="button" class="btn btn-success" (click)="updateUsuario(this.updateUsuarioForm.value)"
                       data-dismiss="modal">Salvar</button>
                   </div>
                 </div>
@@ -459,8 +514,60 @@
             <!--FIM MODAL-->
           </div>
           <!--FIM DIV MODAL-->
-        </ng-template>
+          <ng-template #notLogin>
+            <p>Você não possui usuário cadastrado</p>
+            <!--DIV MODAL INICIO-->
+            <div class="col-sm-12 col-xs-12">
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalUsuario">
+                Adicionar usuário
+              </button>
+              <!-- Modal -->
+              <div class="modal fade" id="modalUsuario" tabindex="-1" role="dialog" aria-labelledby="modalUsuario"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                      <form [formGroup]="novoUsuarioForm" novalidate>
+                        <div class="box-body">
+                          <div>
+                            <div class="col-sm-12 col-sm-12" id="formTitle">
+                              <h4><strong>Adicionar usuário</strong></h4>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-4 col-sm-12">
+                                <label>E-mail</label>
+                                <input type="text" class="form-control" formControlName="EMAIL" placeholder="E-mail"
+                                  autocomplete="off" maxlength="100">
+                              </div>
+                              <div class="col-sm-4 col-sm-12">
+                                <label>Login</label>
+                                <input type="text" class="form-control" formControlName="LOGIN" placeholder="Login"
+                                  autocomplete="off" maxlength="100">
+                              </div>
+                              <div class="col-sm-4 col-sm-12">
+                                <label>Senha</label>
+                                <input type="password" class="form-control" formControlName="SENHA" placeholder="Senha"
+                                  autocomplete="off" maxlength="25">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                      <button type="button" class="btn btn-success" (click)="novoUsuario(this.novoUsuarioForm.value)"
+                        data-dismiss="modal">Salvar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--FIM MODAL-->
+            </div>
+            <!--FIM DIV MODAL-->
+          </ng-template>
 
+        </div>
       </div>
     </div>
-  </div>

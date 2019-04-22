@@ -92,7 +92,7 @@ export class AcompanhamentoComponent implements OnInit {
        })
        
 
-
+     ///////////EDITAR RESIDENTE
        
        this.editarAcompanhamentoForm = this.formBuilder.group({
         DATA_ACOMPANHAMENTO: this.formBuilder.control(null, [Validators.required]),
@@ -101,7 +101,7 @@ export class AcompanhamentoComponent implements OnInit {
         funcionarios: this.formBuilder.control(null,[Validators.required])
   
       })
-
+  
 
       this.acompanhamentoService.AcompanhamentoQuery
       (this.activatedRoute.snapshot.params['id']).subscribe(acompanhamento => {
@@ -150,7 +150,7 @@ export class AcompanhamentoComponent implements OnInit {
       }, 2250)
 
     
-       
+       //Residentes List 
     this.NovoAcompanhamentoService.residentes()
       .subscribe(residentes => {
         this.spinner.hide() 

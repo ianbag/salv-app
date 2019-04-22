@@ -1,6 +1,6 @@
 import { Dependente } from './infos-dependente/dependente.model';
 import { Funcionario, Telefone, Endereco } from './../funcionario.model';
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations'
 import { FuncionariosService } from '../funcionarios.service';
 import { ActivatedRoute } from '@angular/router';
@@ -44,18 +44,16 @@ export class FuncionarioComponent implements OnInit {
   ngOnInit() {
     this.spinner.show()
     this.fs.funcionarioById(this.route.snapshot.params['id']).subscribe(funcionario => {
-      
       this.funcionario = funcionario
     })
 
     this.fs.dependenteById(this.route.snapshot.params['id']).subscribe(dependente => {
-     
       this.dependentes = dependente
       this.n_dependentes = this.dependentes.length
-      
+
     })
-    
-   
+
+
     setTimeout(() => {
       this.fs.telefoneById(this.funcionario.PESSOA_CODIGO.toString()).subscribe(resT => {
         this.fs.enderecoById(this.funcionario.PESSOA_CODIGO.toString()).subscribe(resE => {
@@ -78,7 +76,7 @@ export class FuncionarioComponent implements OnInit {
       CIDADE_CERTIDAO_NASCIMENTO: this.fb.control(null, []),
       ESTADO_CERTIDAO_NASCIMENTO: this.fb.control(null, [])
     })
- 
+
   }
 
   countDependentes() {
@@ -94,7 +92,7 @@ export class FuncionarioComponent implements OnInit {
       this.ns.notify('Dependente inserido com sucesso!')
       this.fs.dependenteById(this.route.snapshot.params['id']).subscribe(dependente => {
         this.dependentes = dependente
-      }).unsubscribe
+      })
     })
   }
 
@@ -104,19 +102,4 @@ export class FuncionarioComponent implements OnInit {
     })
   }
 
-  public downloadPDF() {
-    let doc = new jspdf()
-    let specialElementsHandlers = {
-      '#editor': function (elements, renderer) {
-        return true
-      }
-    }
-    let content = this.reportFuncionario.nativeElement
-
-    doc.fromHTML(content.innerHTML, 15, 15, {
-      'width': 190,
-      'elementsHandlers': specialElementsHandlers
-    })
-    doc.save('Relatório de Funcionário.pdf')
-  }
 }

@@ -8,19 +8,21 @@
       style="margin-left: 50px; color: white">Editar</button>
       <hr><br>
 
-      <div>
-        <div class="box box-default box-solid">
-          <div class="box-header with-border">
+    <div>
+      <div class="box box-default box-solid">
+        <div class="box-header with-border">
 
-            <h3 class="box-title">Informações do acompanhamento</h3>
-            <div class="box-tools pull-right">
-              <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                <i class="fa fa-minus">
+          <h3 class="box-title">Informações do acompanhamento</h3>
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+              <i class="fa fa-minus">
 
-                </i>
-              </button>
-            </div>
+              </i>
+            </button>
           </div>
+        </div>
+        <div class="box-body" style>
+                   
           <div class="box-body" style>
             <strong>Atividade realizada: </strong> {{acompanhamento1?.ATIVIDADE}} <br>
             <strong>Data: </strong> {{acompanhamento1?.DATA_ACOMPANHAMENTO}} <br>
@@ -31,20 +33,18 @@
             <strong>Residentes participantes: </strong> 
             <div *ngFor="let acompanhamento_residente of residentes1" >            
             {{acompanhamento_residente?.NOME}}
-            </div>
-             <br>
-            
           </div>
+          <br>
+
         </div>
+      </div>
 
 
-        <div>
+      <div>
 
-          <div class="botao">
-            <a type="submit" class="btn btn-default botao" [routerLink]="['/acompanhamentos']">Voltar</a>
-          </div>
+        <div class="botao">
+          <a type="submit" class="btn btn-default botao" [routerLink]="['/acompanhamentos']">Voltar</a>
         </div>
-
       </div>
 
 
@@ -76,30 +76,28 @@
                           </salv-input-container>
                         </div>
               
-              
                         <div class="col-sm-3 col-xs-12" id="inputValidator">
-                            <salv-input-container errorMessage="Campo Obrigatório">
-                          <label for="exampleInputPassword1"> <i class="fa fa-calendar"></i> Data
-                            da
-                            atividade</label>
-                          <div class="input-group date">
-                            <input type="date" class="form-control pull-right" id="datepicker" formControlName="DATA_ACOMPANHAMENTO">
-                          </div>
-                          <br>
-                            </salv-input-container>
+                          <salv-input-container errorMessage="Campo Obrigatório">
+                        <label> <i class="fa fa-calendar"></i> Data
+                          da
+                          atividade</label>
+                        <div class="input-group date">
+                          <input type="date" class="form-control pull-right" id="datepicker" formControlName="DATA_ACOMPANHAMENTO">
                         </div>
-              
-                        <div class="col-sm-10 col-xs-12" id="inputValidator">
-                            <salv-input-container errorMessage="Campo Obrigatório">
-                          <label>Atividade realizada</label>
-                          <textarea class="form-control" rows="3" formControlName="ATIVIDADE" 
-                          placeholder="Descrição da atividade realizada"
-                            auatocomplete="off"></textarea>
-                           
-                          <br>
+                        <br>
                           </salv-input-container>
-                        </div>
-              
+                      </div>
+            
+                      <div class="col-sm-10 col-xs-12" id="inputValidator">
+                          <salv-input-container errorMessage="Campo Obrigatório">
+                        <label>Atividade realizada</label>
+                        <textarea class="form-control" rows="3" formControlName="ATIVIDADE" 
+                        placeholder="Descrição da atividade realizada"
+                          auatocomplete="off"></textarea>
+                         
+                        <br>
+                        </salv-input-container>
+                      </div>
                         <div class="col-sm-8 col-xs-12" id="inputValidator" >
                             <salv-input-container errorMessage="Campo Obrigatório" >
                           <label>Funcionários que realizaram a atividade </label><br>
@@ -149,4 +147,6 @@
     </div>
   </div>
   <!-- /.row -->
+</div>
+</div>
 </section>
