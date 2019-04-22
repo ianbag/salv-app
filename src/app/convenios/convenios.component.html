@@ -15,6 +15,8 @@
         <div class="form-group">
             <a type="submit" class="btn btn-primary" [routerLink]="['/novo-convenio']">Novo convênio</a>
         </div>
+        <input input class="form-control" placeholder="Pesquisa" type="text" name="search" [(ngModel)]="filter">
+        <br>
         <div class="box box-default table-responsive no-padding" [@conveniosAppeared]="conveniosState">
             <h1>Visualização geral dos convênios</h1>
             <a class="dropdown btn btn-success pull-right" style="float:right; margin-right: 1cm;">
@@ -56,10 +58,8 @@
                     <td>
                         <button type="submit" class="btn btn-danger botao"
                             (click)="deleteConvenio(convenio.CODIGO); $event.stopPropagation()">Inativar</button>
-                        <a type="submit" class="btn btn-warning botao botao-espaço"
-                            [routerLink]="['/editar-convenio',convenio.CODIGO]">Editar</a>
                         <a type="submit" class="btn btn-success botao" [routerLink]="['/convenio',convenio.CODIGO]">+
-                            Informações</a>
+                            Opções</a>
                     </td>
                 </tr>
              </table>
