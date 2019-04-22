@@ -72,4 +72,28 @@ export class ConveniosService {
         })
     }
 
+    novoTelefone(_cod_conv: number, telefone: Telefone) {
+        return this.http.post<Telefone>(`${SALV_API}/telefone`, telefone).switchMap(resT => {
+            let _rel_tel_conv = {
+                CONVENIO_CODIGO: _cod_conv,
+                TELEFONE_CODIGO: resT.CODIGO
+            }
+            return this.http.post<Telefone_Convenio>(`${SALV_API}/telefone_convenio`, _rel_tel_conv)
+        })
+    }
+
+    deleteTelefone(_cod_conv: number, _cod_tel: number) {
+        return this.http.delete<Telefone_Convenio>(`${SALV_API}/telefone_convenio/${_cod_conv}/${_cod_tel}`).switchMap(response => {
+            return this.http.delete<Telefone>(`${SALV_API}/telefone/${_cod_tel}`)
+        })
+    }
+
+    telefoneId(id): Observable<Telefone> {
+        return this.http.get<Telefone>(`${SALV_API}/telefone/${id}`)
+    }
+
+    updateTelefone(id, telefone: Telefone) {
+        return this.http.put<Telefone>(`${SALV_API}/telefone/${id}`, telefone)
+    }
+
 }
