@@ -73,7 +73,7 @@
           <button (click)="editarAcompanhamento(editarAcompanhamentoForm.value); updateAcompanhamentoFuncionario();  updateAcompanhamentoResidente()" style="margin-left: 10px" class="btn btn-success botao pull-right"
             >Finalizar atualização</button>
 
-          <button type="submit" (click)="novoAcompanhamentoForm()" class="btn btn-default botao pull-right" >Voltar</button>
+          <button type="submit" (click)="novoAcompanhamentoForm()" class="btn btn-default botao pull-right" [routerLink]="['/acompanhamentos']" >Voltar</button>
         </div>
         <!--Fim botão-->
 

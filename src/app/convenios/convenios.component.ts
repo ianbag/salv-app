@@ -26,10 +26,14 @@ export class ConveniosComponent implements OnInit {
 
   constructor(private conveniosService: ConveniosService, private dialogConfirmService: DialogConfirmService, private spinner: NgxSpinnerService) { }
 
+  public searchString: string;
   convenios: Convenio[]
+  conveniosDesativados: Convenio[]
 
   @ViewChild('reportConvenios') reportConvenios: ElementRef
   paginaAtual: number = 1;
+ 
+  
   ngOnInit() {
     this.spinner.show()
     this.conveniosService.convenios()
@@ -38,7 +42,19 @@ export class ConveniosComponent implements OnInit {
         this.convenios = convenios
         console.log('CONVENIOS', convenios)
       })
+
+      
   }
+
+  conveniosDesativadoss(){
+
+   this.conveniosService.conveniosDesativados()
+      .subscribe(conveniosDesativados => {
+        
+        this.conveniosDesativados = conveniosDesativados
+        console.log('conveniosDesativados', conveniosDesativados)
+      })
+    }
 
   deleteConvenio(id: string): void {
     this.dialogConfirmService.confirm(`Deseja excluir o convênio?`)

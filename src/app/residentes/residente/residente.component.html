@@ -1,3 +1,4 @@
+<!--
 <ngx-spinner></ngx-spinner>
 <section class="content">
   <button class="btn btn-success" id="printReport"><i class="fa fa-print"></i></button>
@@ -28,7 +29,7 @@
         </div>
       </div>
 
-      <!-- INICIO MODAL NOVO FAMILIAR -->
+     
       <div class="modal fade" id="modalFamiliar" tabindex="-1" role="dialog" aria-labelledby="modalFamiliar"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -147,19 +148,19 @@
 
 
                   </div>
-                </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-              <button type="button" class="btn btn-success" data-dismiss="modal"
-                (click)="familiarResidente(familiarResidenteForm.value)"
-                [disabled]="!familiarResidenteForm.valid">Salvar</button>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"                   [disabled]="!familiarResidenteForm.valid">Cancelar</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal"
+                  (click)="familiarResidente(familiarResidenteForm.value)"
+                  [disabled]="!familiarResidenteForm.valid">Salvar</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <!-- FIM MODAL NOVO FAMILIAR -->
+    
 
       <div class="box box-default box-solid">
         <div class="box-header with-border">
@@ -184,7 +185,6 @@
         </div>
       </div>
 
-      <!-- INICIO MODAL NOVO CONVENIO -->
       <div class="modal fade" id="modalConvenio" tabindex="-1" role="dialog" aria-labelledby="modalConvenio"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -250,9 +250,10 @@
           </div>
         </div>
       </div>
-      <!-- FIM MODAL NOVO CONVENIO -->
+    
     </div>
 
   </div>
-  <!-- /.row -->
+
 </section>
+-->

@@ -25,7 +25,7 @@ import { throwError } from 'rxjs';
 export class AcompanhamentosComponent implements OnInit {
 
   acompanhamentosState = 'ready'
-
+  public searchString: string;
   acompanhamentos: Acompanhamento[]
 
   @ViewChild('reportAcompanhamentos') reportAcompanhamentos: ElementRef

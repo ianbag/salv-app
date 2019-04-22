@@ -14,18 +14,46 @@
         <div class="form-group">
             <a type="submit" class="btn btn-primary" [routerLink]="['/novo-convenio']">Novo convênio</a>
         </div>
-        <!-- Conteudo KAUE -->
+
+        
+        
+            
+        
         <div class="box box-default table-responsive no-padding" [@conveniosAppeared]="conveniosState">
             <h1>Visualização geral dos convênios</h1>
+            <a class="dropdown btn btn-success pull-right" style="float:right; margin-right: 1cm;">
+
+                <a href="#" class="dropdown-toggle pull-left" data-toggle="dropdown">Filtrar<span class="caret"></span></a>
+
+                 <!--MENU DA DROPDOWN-->
+                <ul class="dropdown-menu" role="menu" style="color:black">
+
+                     <!--FILTRO POR NOME-->
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+                                <input input class="form-control" placeholder="Pesquisa por nome" type="text" name="search" [(ngModel)]="filter">
+                            </div>
+                           
+                      <!--FILTRO INATIVOS-->
+                      <li class="divider"></li>                     
+                      <input type="checkbox" id="Desativados" [(ngModel)]="Desativados" (click)="conveniosDesativadoss()" ng-true-value = "YES" ng-false-value="NO"> Convênios Desativados  
+                      <br>
+                      
+
+                </ul>
+            </a>
             <br>
-            <!-- /.box-header -->
+
+          <!--CONVENIOS ATIVADOS -->
+            <div  ng [hidden]="Desativados" >
             <table class="table table-hover">
                 <tr>
                     <th class="col-sm-4">Nome</th>
                     <th class="col-sm-4">Telefone</th>
                     <th class="col-sm-4">Ações</th>
                 </tr>
-                <tr *ngFor="let convenio of convenios | paginate: { itemsPerPage: 10, currentPage: paginaAtual}">
+
+                <tr *ngFor="let convenio of convenios |  filter : filter : searchString | paginate: { itemsPerPage: 10, currentPage: paginaAtual} let i = index">
                     <td>{{convenio.NOME_CONVENIO}}</td>
                     <td>{{convenio.DDD}} {{convenio.TELEFONE}}</td>
                     <td>
@@ -37,11 +65,38 @@
                             Informações</a>
                     </td>
                 </tr>
-            </table>
-            <pagination-controls class="my-pagination " (pageChange)="paginaAtual = $event" previousLabel="Anterior"
+             </table>
+             <pagination-controls class="my-pagination " (pageChange)="paginaAtual = $event" previousLabel="Anterior"
                 nextLabel="Próximo" screenReaderPaginationLabel="Paginação" screenReaderPageLabel="Página"
                 screenReaderCurrentLabel="Voce esta na página"></pagination-controls>
+            </div>
 
+            
+              <!--CONVENIOS DESATIVADOS -->
+            <div ng [hidden]="!Desativados">
+                     <table class="table table-hover">
+                    <tr>
+                            <th class="col-sm-4">Nome</th>
+                            <th class="col-sm-4">Telefone</th>
+                            <th class="col-sm-4">Ações</th>
+                        </tr>
+                <tr  *ngFor="let convenio of conveniosDesativados |  filter : filter : searchString  let i = index">
+                        <td>{{convenio.NOME_CONVENIO}}</td>
+                        <td>{{convenio.DDD}} {{convenio.TELEFONE}}</td>
+
+                    <td>                        
+                        <a type="submit" class="btn btn-warning botao botao-espaço"
+                            [routerLink]="['/editar-convenio',convenio.CODIGO]">Editar</a>
+                        <a type="submit" class="btn btn-success botao" [routerLink]="['/convenio',convenio.CODIGO]">+
+                            Informações</a>
+                    </td>
+                </tr>
+            </table>
+         </div>
+            
+
+      
+    
             <!-- /.box -->
         </div>
         <!-- Fim conteudo KAUE -->

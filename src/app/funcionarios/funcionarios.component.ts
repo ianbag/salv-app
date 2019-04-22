@@ -22,8 +22,9 @@ import * as jspdf from 'jspdf';
 })
 export class FuncionariosComponent implements OnInit {
 
-
+  public searchString: string;
   funcionarios: Funcionario[]
+  funcionariosInativos : Funcionario[]
 
   constructor(private funcionariosService: FuncionariosService, private dialogConfirmService: DialogConfirmService, private spinner: NgxSpinnerService) { }
 
@@ -31,16 +32,36 @@ export class FuncionariosComponent implements OnInit {
 
   @ViewChild('reportFuncionarios') reportFuncionarios: ElementRef
   paginaAtual: number = 1;
+
   ngOnInit() {
+
     this.spinner.show()
     this.funcionariosService.funcionarios()
       .subscribe(funcionarios => {
         this.spinner.hide()
         this.funcionarios = funcionarios
         console.log('FUNCIONARIOS', funcionarios)
-      })
-  }
 
+        
+      })
+
+   
+
+
+       
+  }
+ 
+
+ 
+funcionariosInativoss(){
+  this.funcionariosService.funcionariosInativos()
+  .subscribe(funcionariosInativos => {
+    
+    this.funcionariosInativos = funcionariosInativos
+    console.log('FUNCIONARIOS', funcionariosInativos)
+  })
+
+}
 
   deleteFuncionario(id: string): void {
     this.dialogConfirmService.confirm(`Deseja excluir o funcionário?`)

@@ -16,6 +16,11 @@ export class FuncionariosService {
         return this.http.get<Funcionario[]>(`${SALV_API}/funcionario`)
     }
 
+    funcionariosInativos(): Observable<Funcionario[]> {
+        return this.http.get<Funcionario[]>(`${SALV_API}/funcionarioInativo`)
+    }
+
+
     funcionarioById(id: string): Observable<Funcionario> {
         return this.http.get<Funcionario>(`${SALV_API}/funcionario/${id}`)
 

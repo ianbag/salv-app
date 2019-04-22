@@ -1,3 +1,5 @@
+
+
 import { Funcionario } from './../../funcionarios/funcionario.model';
 import { NovoAcompanhamentoService } from './novo-acompanhamento.service';
 import { Acompanhamento, Acompanhamento_Funcionario, Acompanhamento_Residente } from './../acompanhamento/acompanhamento.model';
@@ -7,9 +9,11 @@ import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/shared/notification.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { trigger, state, transition, style, animate } from '@angular/animations';
-import { THIS_EXPR, variable } from '@angular/compiler/src/output/output_ast';
 
 
+
+
+let i
 declare var $: any;
 @Component({
   selector: 'salv-novo-acompanhamento',
@@ -143,17 +147,18 @@ export class NovoAcompanhamentoComponent implements OnInit {
   }
 
 
-
-
-  novoAcompanhamento(acompanhamento: Acompanhamento) {
-
+   novoAcompanhamento(acompanhamento: Acompanhamento, acompanhamento_funcionario: Acompanhamento_Funcionario[], acompanhamento_residente: Acompanhamento_Residente[]) {
+ 
     this.NovoAcompanhamentoService.createAcompanhamento(acompanhamento).subscribe(res => {
       if (res['errors']) {
         res['errors'].forEach(error => {
           console.log('Houve um erro!', error)
           this.ns.notify(`Houve um erro! ${error.message}`)
         })
-      } else {
+      } else {     
+      
+        i = 1
+        console.log("re", this.NovoAcompanhamentoFuncionario)
         this.ns.notify(`Acompanhamento inserido com sucesso!`)
         this.router.navigate(['/acompanhamentos'])
       }      
@@ -166,11 +171,17 @@ export class NovoAcompanhamentoComponent implements OnInit {
       console.log(this.novoAcompanhamentoForm.controls)
       this.ns.notify(`Preencha os campos obrigatórios!`)
     }
-    })
-    console.log('acompanhamento', acompanhamento)
-  }
+    
+    }) 
+  
+   
+  } 
+  
+
+
 
   NovoAcompanhamentoFuncionario(acompanhamento_funcionario: Acompanhamento_Funcionario[]) {
+    
     for (let index = 0; index < this.novoAcompanhamentoForm.value.funcionarios.length; index++) {
 
       acompanhamento_funcionario = [Object.assign(this.novoAcompanhamentoForm.value.funcionarios[index], this.ACOMPANHAMENTO_CODIGO[0])]
@@ -179,10 +190,11 @@ export class NovoAcompanhamentoComponent implements OnInit {
         console.log('acompanhamento funcionario', acompanhamento_funcionario)
       })
 
-    }
-
+    
+   }
   }
   NovoAcompanhamentoResidente(acompanhamento_residente: Acompanhamento_Residente[]) {
+    
     for (let index = 0; index < this.novoAcompanhamentoForm.value.residentes.length; index++) {
 
       acompanhamento_residente = [Object.assign(this.novoAcompanhamentoForm.value.residentes[index], this.ACOMPANHAMENTO_CODIGO[0])]
@@ -190,13 +202,14 @@ export class NovoAcompanhamentoComponent implements OnInit {
 
         console.log('acompanhamento residente', acompanhamento_residente)
       })
-
+    
     }
 
-
+     
+    
   }
 
-
+ 
   onResidenteSelect(residente: any) {
     console.log('onResidenteSelect', residente['CODIGO_RESIDENTE'])
   }
