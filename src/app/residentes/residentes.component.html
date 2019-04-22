@@ -15,9 +15,9 @@
       <a type="submit" class="btn btn-primary" [routerLink]="['/novo-residente']">Novo Residente</a>
     </div>
 
-    <input class="form-control" style="max-width: 500px" type="text" name="search" [(ngModel)]="searchText"
-      autocomplete="off" placeholder="Pesquisar">
+    <input input class="form-control" style="width: 40%" placeholder="Pesquisa" type="text" name="search" [(ngModel)]="filter">
     <br>
+    
     <div class="box box-default table-responsive no-padding" [@residentesAppeared]="residentesState">
       <h1>Visualização geral dos residentes</h1>
 

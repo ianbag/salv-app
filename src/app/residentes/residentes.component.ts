@@ -26,7 +26,6 @@ export class ResidentesComponent implements OnInit {
 
   residentesState = 'ready'
   
-  searchText;
   public searchString: string;
 
   residentesInativos: Residente[]
