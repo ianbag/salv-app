@@ -15,7 +15,7 @@
         <div class="form-group">
             <a type="submit" class="btn btn-primary" [routerLink]="['/novo-convenio']">Novo convênio</a>
         </div>
-        <input input class="form-control" placeholder="Pesquisa" type="text" name="search" [(ngModel)]="filter">
+        <input input class="form-control" style="width: 40%" placeholder="Pesquisa" type="text" name="search" [(ngModel)]="filter">
         <br>
         <div class="box box-default table-responsive no-padding" [@conveniosAppeared]="conveniosState">
             <h1>Visualização geral dos convênios</h1>
