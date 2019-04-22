@@ -5,6 +5,7 @@ import { DialogConfirmService } from '../residentes/dialog-confirm.service';
 import { trigger, state, transition, style, animate } from '@angular/animations';
 import { NgxSpinnerService } from 'ngx-spinner';
 import * as jspdf from 'jspdf'
+import 'jspdf-autotable'
 
 @Component({
   selector: 'salv-convenios',
@@ -26,10 +27,14 @@ export class ConveniosComponent implements OnInit {
   constructor(private conveniosService: ConveniosService, private dialogConfirmService: DialogConfirmService, private spinner: NgxSpinnerService) { }
 
   searchText;
+  public searchString: string;
   convenios: Convenio[]
+  conveniosDesativados: Convenio[]
 
   @ViewChild('reportConvenios') reportConvenios: ElementRef
   paginaAtual: number = 1;
+ 
+  
   ngOnInit() {
     this.spinner.show()
     this.conveniosService.convenios()
@@ -38,7 +43,19 @@ export class ConveniosComponent implements OnInit {
         this.convenios = convenios
         console.log('CONVENIOS', convenios)
       })
+
+      
   }
+
+  conveniosDesativadoss(){
+
+   this.conveniosService.conveniosDesativados()
+      .subscribe(conveniosDesativados => {
+        
+        this.conveniosDesativados = conveniosDesativados
+        console.log('conveniosDesativados', conveniosDesativados)
+      })
+    }
 
   deleteConvenio(id: string): void {
     this.dialogConfirmService.confirm(`Deseja excluir o convênio?`)
@@ -50,5 +67,4 @@ export class ConveniosComponent implements OnInit {
         }
       })
   }
-
 }

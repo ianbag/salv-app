@@ -1,6 +1,4 @@
-import { Observable } from 'rxjs';
 import { Injectable, ErrorHandler, Injector, NgZone } from '@angular/core';
-
 import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationService } from './shared/notification.service'
 
@@ -21,8 +19,6 @@ export class GlobalErrorHandler extends ErrorHandler {
       this.zone.run(() => {
 
         switch (errorResponse.status) {
-          // case 401: LOGIN
-          // break;
 
           case 403:
             this.ns.notify(message || 'Não autorizado')

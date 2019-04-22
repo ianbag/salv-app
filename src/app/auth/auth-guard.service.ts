@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, CanActivateChild, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from "@angular/router"
 import { LoginService } from './login/login.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable()
 export class AuthGuardService implements CanActivate {
 
-    constructor(private router: Router, private ls: LoginService) { }
+    constructor(private router: Router, private ls: LoginService, private cs: CookieService) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
         let url: string = state.url
@@ -24,7 +25,7 @@ export class AuthGuardService implements CanActivate {
 
     isLoggedIn(): boolean {
         let status = false
-        if (localStorage.getItem('isLoggedIn') == "true") {
+        if (this.cs.get('isLoggedIn') == "true") {
             status = true
         } else {
             status = false

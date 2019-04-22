@@ -32,6 +32,10 @@ export class ResidentesService {
         return this.http.get<Residente[]>(`${SALV_API}/residente`)
     }
 
+    residentesInativos(): Observable<Residente[]> {
+        return this.http.get<Residente[]>(`${SALV_API}/residente-inativos`)
+    }
+
     residenteById(id: string): Observable<Residente> {
         return this.http.get<Residente>(`${SALV_API}/residente/${id}`)
     }

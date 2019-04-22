@@ -148,20 +148,20 @@ export class EditarFuncionarioComponent implements OnInit {
    
   }
 
-  editarFuncionario(editFuncionario: Funcionario) {
-    this.fs.updateEmployee(this._cod_pes, this._cod_tel, this._cod_end, this._cod_fun, editFuncionario.PESSOA, editFuncionario.TELEFONE, editFuncionario.ENDERECO, editFuncionario).subscribe(res => {
-      console.log(editFuncionario.ENDERECO)
-      if (res['errors']) {
-        res['errors'].forEach(error => {
-          console.log('Houve um erro!', error)
-          this.ns.notify(`Houve um erro! ${error.message}`)
-        })
-      } else {
-        this.router.navigate([`/funcionario/${this._cod_fun}`])
-        this.ns.notify('Funcionário atualizado com sucesso!')
-      }
-    })
+  // editarFuncionario(editFuncionario: Funcionario) {
+  //   this.fs.updateEmployee(this._cod_pes, this._cod_tel, this._cod_end, this._cod_fun, editFuncionario.PESSOA, editFuncionario.TELEFONE, editFuncionario.ENDERECO, editFuncionario).subscribe(res => {
+  //     console.log(editFuncionario.ENDERECO)
+  //     if (res['errors']) {
+  //       res['errors'].forEach(error => {
+  //         console.log('Houve um erro!', error)
+  //         this.ns.notify(`Houve um erro! ${error.message}`)
+  //       })
+  //     } else {
+  //       this.router.navigate([`/funcionario/${this._cod_fun}`])
+  //       this.ns.notify('Funcionário atualizado com sucesso!')
+  //     }
+  //   })
 
-  }
+  // }
 
 }
