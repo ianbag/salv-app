@@ -104,7 +104,8 @@ export class ConvenioComponent implements OnInit {
             NUMERO: this.convenio1[0].NUM_TEL
           }
   
-        })
+        }
+        )
         this.spinner.hide()
       }, 2250)
 
@@ -112,6 +113,7 @@ export class ConvenioComponent implements OnInit {
 
   editarConvenio(editConvenio: Convenio) {
     this.cs.updateConvenio(this._cod_conv, this._cod_end, this._cod_tel, editConvenio.TELEFONE, editConvenio.ENDERECO, editConvenio).subscribe(res => {
+      console.log(editConvenio)
       if (res['errors']) {
         res['errors'].forEach(error => {
           console.log('Houve um erro!', error)
@@ -123,7 +125,6 @@ export class ConvenioComponent implements OnInit {
           console.log(response)
           this.ns.notify('Convênio atualizado com sucesso!')
         })
-        
       }
     })
   }
