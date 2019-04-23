@@ -32,6 +32,7 @@ export class FuncionarioComponent implements OnInit {
   telefones: Telefone[]
   enderecos: Endereco[]
   n_dependentes: number
+
   estados = [
     "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"
   ];
@@ -50,7 +51,6 @@ export class FuncionarioComponent implements OnInit {
     this.fs.dependenteById(this.route.snapshot.params['id']).subscribe(dependente => {
       this.dependentes = dependente
       this.n_dependentes = this.dependentes.length
-
     })
 
 
@@ -92,7 +92,7 @@ export class FuncionarioComponent implements OnInit {
       this.ns.notify('Dependente inserido com sucesso!')
       this.fs.dependenteById(this.route.snapshot.params['id']).subscribe(dependente => {
         this.dependentes = dependente
-      })
+      }).unsubscribe
     })
   }
 
