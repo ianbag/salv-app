@@ -82,7 +82,6 @@ import { ResetService } from './auth/reset-password/reset.service';
 import { AuthGuardService } from './auth/auth-guard.service';
 import {CookieService} from 'ngx-cookie-service'
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { ConvenioInfosComponent } from './convenios/convenio/convenio-infos/convenio-infos.component';
 
 // import { AuthInterceptor } from './auth/auth-interceptor.service';
 
@@ -141,8 +140,7 @@ import { ConvenioInfosComponent } from './convenios/convenio/convenio-infos/conv
     EditarFuncionarioComponent,
     EditarResidenteComponent,
     ForgetPasswordComponent,
-    ResetPasswordComponent,
-    ConvenioInfosComponent
+    ResetPasswordComponent
 
   ],
   imports: [
