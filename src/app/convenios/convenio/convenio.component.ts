@@ -111,20 +111,20 @@ export class ConvenioComponent implements OnInit {
 
   }
 
-  //editarConvenio(editConvenio: Convenio) {
-    //this.cs.updateConvenio(this._cod_conv, this._cod_end, this._cod_tel, editConvenio.TELEFONE, editConvenio.ENDERECO, //editConvenio).subscribe(res => {
-    //  console.log(editConvenio)
-      //if (res['errors']) {
-        //res['errors'].forEach(error => {
-          //console.log('Houve um erro!', error)
-          //this.ns.notify(`Houve um erro! ${error.message}`)
-       // })
-      //} else {
-        //this.router.navigate([`/convenio/${this._cod_conv}`])
-        //this.ns.notify('Convênio atualizado com sucesso!')
-      //}
-    //})
-  //}
+  editarConvenio(editConvenio: Convenio) {
+    this.cs.updateConvenio(this._cod_conv, this._cod_end, this._cod_tel, editConvenio.TELEFONE, editConvenio.ENDERECO, editConvenio).subscribe(res => {
+      console.log(editConvenio)
+      if (res['errors']) {
+        res['errors'].forEach(error => {
+          console.log('Houve um erro!', error)
+          this.ns.notify(`Houve um erro! ${error.message}`)
+        })
+      } else {
+        this.router.navigate([`/convenio/${this._cod_conv}`])
+        this.ns.notify('Convênio atualizado com sucesso!')
+      }
+    })
+  }
 
 
 

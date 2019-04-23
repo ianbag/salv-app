@@ -63,18 +63,14 @@ export class ConveniosService {
 
     }
 
-    //updateConvenio(cod_conv, cod_end, cod_tel, telefone, endereco, convenio) {
-      //  console.log(convenio)
-        //return this.http.put<Convenio>(`${SALV_API}/convenio/${cod_conv}`, convenio).switchMap(resConv => {
-          //  return this.http.put<Endereco>(`${SALV_API}/endereco/${cod_end}`, endereco).switchMap(resEnd => {
-            //    return this.http.put<Telefone>(`${SALV_API}/telefone/${cod_tel}`, telefone)
-           // })
-       // })
-   // }
-
-    updateConvenio(cod_conv, convenio: Convenio) {
-        return this.http.put<Convenio>(`${SALV_API}/convenio/${cod_conv}`, convenio)
-    }
+    updateConvenio(cod_conv, cod_end, cod_tel, telefone, endereco, convenio) {
+        console.log(convenio)
+        return this.http.put<Convenio>(`${SALV_API}/convenio/${cod_conv}`, convenio).switchMap(resConv => {
+            return this.http.put<Endereco>(`${SALV_API}/endereco/${cod_end}`, endereco).switchMap(resEnd => {
+               return this.http.put<Telefone>(`${SALV_API}/telefone/${cod_tel}`, telefone)
+           })
+       })
+   }
 
     novoTelefone(_cod_conv: number, telefone: Telefone) {
         return this.http.post<Telefone>(`${SALV_API}/telefone`, telefone).switchMap(resT => {
@@ -98,30 +94,6 @@ export class ConveniosService {
 
     updateTelefone(id, telefone: Telefone) {
         return this.http.put<Telefone>(`${SALV_API}/telefone/${id}`, telefone)
-    }
-
-    novoEndereco(_cod_conv: number, endereco: Endereco) {
-        return this.http.post<Endereco>(`${SALV_API}/endereco`, endereco).switchMap(resE => {
-            let _rel_end_conv = {
-                CONVENIO_CODIGO: _cod_conv,
-                ENDERECO_CODIGO: resE.CODIGO
-            }
-            return this.http.post<Endereco_Convenio>(`${SALV_API}/endereco_convenio`, _rel_end_conv)
-        })
-    }
-
-    deleteEndereco(_cod_conv: number, _cod_end: number) {
-        return this.http.delete<Endereco_Convenio>(`${SALV_API}/endereco_convenio/${_cod_conv}/${_cod_end}`).switchMap(response => {
-            return this.http.delete<Endereco>(`${SALV_API}/endereco/${_cod_end}`)
-        })
-    }
-
-    enderecoId(id): Observable<Endereco> {
-        return this.http.get<Endereco>(`${SALV_API}/endereco/${id}`)
-    }
-
-    updateEndereco(id, endereco: Endereco) {
-        return this.http.put<Endereco>(`${SALV_API}/endereco/${id}`, endereco)
     }
 
 
