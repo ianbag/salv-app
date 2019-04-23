@@ -111,7 +111,7 @@ export class ConvenioComponent implements OnInit {
 
   }
 
-  editarConvenio(editConvenio: Convenio) {
+  editarConvenio(editConvenio) {
     this.cs.updateConvenio(this._cod_conv, this._cod_end, this._cod_tel, editConvenio.TELEFONE, editConvenio.ENDERECO, editConvenio).subscribe(res => {
       console.log(editConvenio)
       if (res['errors']) {
@@ -121,7 +121,7 @@ export class ConvenioComponent implements OnInit {
         })
       } else {
         this.cs.conveniosById(this.ar.snapshot.params['id']).subscribe(response => {
-          this.convenio = response
+          this.convenio = response[0]
           console.log(response)
           this.ns.notify('Convênio atualizado com sucesso!')
         })
