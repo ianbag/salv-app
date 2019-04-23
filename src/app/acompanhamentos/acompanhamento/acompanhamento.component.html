@@ -82,7 +82,7 @@
               
                         <div class="col-sm-3 col-xs-12" id="inputValidator">
                           <salv-input-container errorMessage="Campo Obrigatório">
-                        <label> <i class="fa fa-calendar"></i> Data
+                        <label for="exampleInputPassword1"> <i class="fa fa-calendar"></i> Data
                           da
                           atividade</label>
                         <div class="input-group date">
@@ -135,17 +135,19 @@
                   </form>
                 </div>
 
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal"[disabled]="!editarAcompanhamentoForm.valid">Cancelar</button>
+                  <button type="button" class="btn btn-success" data-dismiss="modal" (click)="editarAcompanhamento(editarAcompanhamentoForm.value); updateAcompanhamentoFuncionario();  updateAcompanhamentoResidente()"
+                  [disabled]="!editarAcompanhamentoForm.valid" 
+                   >Salvar</button>
+                </div>
+
            </div>
-           <div class="modal-footer">
-             <button type="button" class="btn btn-secondary" data-dismiss="modal"[disabled]="!editarAcompanhamentoForm.valid">Cancelar</button>
-             <button type="button" class="btn btn-success" data-dismiss="modal" (click)="editarAcompanhamento(editarAcompanhamentoForm.value); updateAcompanhamentoFuncionario();  updateAcompanhamentoResidente()"
-             [disabled]="!editarAcompanhamentoForm.valid" 
-              >Salvar</button>
-           </div>
+          
          </div>
        </div>
      </div>
-     <!-- FIM MODAL NOVO CONVENIO -->
+     <!-- FIM MODAL ACOMPANHAMENTO -->
 
 
     </div>
