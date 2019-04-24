@@ -81,7 +81,8 @@ import { ResetService } from './auth/reset-password/reset.service';
 
 import { AuthGuardService } from './auth/auth-guard.service';
 import {CookieService} from 'ngx-cookie-service'
-import { Ng2SearchPipeModule } from 'ng2-search-filter'
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { FilterPipeModule } from 'ngx-filter-pipe';
 
 // import { AuthInterceptor } from './auth/auth-interceptor.service';
 
@@ -156,7 +157,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter'
     RouterModule.forRoot(ROUTES),
     NgxMaskModule.forRoot(),
     NgMultiSelectDropDownModule.forRoot(),
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    FilterPipeModule
   ],
  
 
