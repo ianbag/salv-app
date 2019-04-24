@@ -210,27 +210,28 @@ export class AcompanhamentoComponent implements OnInit {
 
 
   editarAcompanhamento(editarAcomp: Acompanhamento) {
-    
+
     this.acompanhamentoService.updateAcompanhamento(editarAcomp, this.codigo_acompanhamento).subscribe(res => {
-     
-      if (res){
-        
+
+      if (res) {
+
         this.ns.notify(`Acompanhamento atualizado com sucesso!`)
         window.location.reload()
-      
-        }else {
-      if (this.editarAcompanhamentoForm.valid == true && this.selectedFuncionarios != null && this.selectedResidentes != null) {
-
-        this.ns.notify(`Acompanhamento inserido com sucesso!`)
-        this.router.navigate(['/acompanhamentos'])
 
       } else {
-        this.markAllDirty(this.editarAcompanhamentoForm)
-        console.log(this.editarAcompanhamentoForm.controls)
-        this.ns.notify(`Preencha os campos obrigatórios!`)
+        if (this.editarAcompanhamentoForm.valid == true && this.selectedFuncionarios != null && this.selectedResidentes != null) {
+
+          this.ns.notify(`Acompanhamento inserido com sucesso!`)
+          this.router.navigate(['/acompanhamentos'])
+
+        } else {
+          this.markAllDirty(this.editarAcompanhamentoForm)
+          console.log(this.editarAcompanhamentoForm.controls)
+          this.ns.notify(`Preencha os campos obrigatórios!`)
+        }
       }
+      console.log('Edição acompanhamento', editarAcomp, this.codigo_acompanhamento)
     })
-    console.log('Edição acompanhamento', editarAcomp,  this.codigo_acompanhamento)
   }
 
 
