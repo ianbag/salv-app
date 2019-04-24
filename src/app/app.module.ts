@@ -77,7 +77,8 @@ import { ResetPasswordComponent } from './auth/reset-password/reset-password.com
 import { ResetService } from './auth/reset-password/reset.service';
 
 import { AuthGuardService } from './auth/auth-guard.service';
-import {CookieService} from 'ngx-cookie-service'
+import {CookieService} from 'ngx-cookie-service';
+import { ValidatorService } from './shared/validators/validator.service';
 // import { AuthInterceptor } from './auth/auth-interceptor.service';
 
 @NgModule({
@@ -132,9 +133,8 @@ import {CookieService} from 'ngx-cookie-service'
     EditarFuncionarioComponent,
     EditarResidenteComponent,
     ForgetPasswordComponent,
-    ResetPasswordComponent
-
-  ],
+    ResetPasswordComponent,
+    ],
   imports: [
     NgxPaginationModule,
     BrowserModule,
@@ -162,6 +162,7 @@ import {CookieService} from 'ngx-cookie-service'
     NovoAcompanhamentoService,
     ForgetService,
     ResetService,
+    ValidatorService,
     // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: ErrorHandler, useClass: GlobalErrorHandler }
   ],
