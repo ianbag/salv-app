@@ -7,6 +7,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import * as jspdf from 'jspdf'
 import { checkAndUpdateQuery } from '@angular/core/src/view/query';
 import { throwError } from 'rxjs';
+import { NotificationService } from '../shared/notification.service';
 
 @Component({
   selector: 'salv-acompanhamentos',
@@ -29,9 +30,7 @@ export class AcompanhamentosComponent implements OnInit {
   public searchString: string;
   acompanhamentos: Acompanhamento[]
 
-  @ViewChild('reportAcompanhamentos') reportAcompanhamentos: ElementRef
-
-  constructor(private acompanhamentosService: AcompanhamentosService, private route: ActivatedRoute, private spinner: NgxSpinnerService) { }
+  constructor(private acompanhamentosService: AcompanhamentosService, private route: ActivatedRoute, private spinner: NgxSpinnerService, private ns: NotificationService) { }
 
   paginaAtual: number = 1;
   ngOnInit() {
@@ -46,4 +45,9 @@ export class AcompanhamentosComponent implements OnInit {
         })
   }
 
+  reportAcompanhamentos() {
+    this.acompanhamentosService.reportAcompanhamentos().subscribe(res => {
+      this.ns.notify('Relatório emitido com sucesso!')
+    })
+  }
 }
