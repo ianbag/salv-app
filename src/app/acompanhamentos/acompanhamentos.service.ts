@@ -37,7 +37,7 @@ AcompanhamentoResidenteQuery(id: string): Observable<AcompanhamentoResidenteQuer
      
 }
     
-   updateAcompanhamento(acompanhamento: Acompanhamento, id: number ){
+  updateAcompanhamento(acompanhamento: Acompanhamento, id: number ){
         return this.http.put<Acompanhamento>(`${SALV_API}/acompanhamento-editar/${id}`, acompanhamento)
         
         }

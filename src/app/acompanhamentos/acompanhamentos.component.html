@@ -1,3 +1,5 @@
+
+
 <ngx-spinner></ngx-spinner>
 <style>
   .my-pagination /deep/ .ngx-pagination .current {
@@ -36,13 +38,19 @@
                         <input input class="form-control" placeholder="Atividade" type="text" name="search" [(ngModel)]="filter">
                     </div>
                     
-                
-             
-
-        </ul>
-    </a>
+                    <!--FILTRO POR DATA-->
+                   
+                    <p id="date_filter">
+                      <span id="date-label-from" class="date-label">From: </span><input class="date_range_filter date" type="text" id="datepicker_from" />
+                      <span id="date-label-to" class="date-label">To:<input class="date_range_filter date" type="text" id="datepicker_to" />
+                        </span>
+                        </p>
+                  
+</ul>
+        </a>
+      
       <br>
-      <table class="table table-hover">
+      <table class="table table-hover" id="datatable">
         <tr>
           <th class="col-sm-4">Atividade realizada</th>
           <th class="col-sm-4">Data</th>
@@ -50,11 +58,11 @@
         </tr>
         <tr *ngFor="let acompanhamento of acompanhamentos | filter : filter : searchString | paginate: { itemsPerPage: 10, currentPage: paginaAtual} let i = index">
           <td>{{acompanhamento.ATIVIDADE}}</td>
-          <td>{{acompanhamento.DATA_ACOMPANHAMENTO}}</td>
+          <td>{{acompanhamento.DATA_ACOMPANHAMENTO | date:'dd-MM-yyyy'}}</td>
          
           <td>
 
-          <!--<a type="submit" class="btn btn-warning botao" [routerLink]="['/editar-acompanhamento', acompanhamento.CODIGO]">Editar</a>-->
+         <!--<a type="submit" class="btn btn-warning botao" [routerLink]="['/editar-acompanhamento', acompanhamento.CODIGO]">Editar</a>-->
             <a type="submit" class="btn btn-success botao" [routerLink]="['/acompanhamento', acompanhamento.CODIGO]">
               + Opções</a>
           </td>

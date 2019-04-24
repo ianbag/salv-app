@@ -34,6 +34,7 @@ export class AcompanhamentoComponent implements OnInit {
   acompanhamento1: Acompanhamento[]
   funcionarios1: any[]
   residentes1: any[]
+
   editarAcompanhamentoForm: FormGroup
   codigo_acompanhamento: number
   ACOMPANHAMENTO_CODIGO: any[]
@@ -71,6 +72,7 @@ export class AcompanhamentoComponent implements OnInit {
   ngOnInit() {
 
     this.spinner.show();
+
     this.acompanhamentosService.acompanhamentoById(this.route.snapshot.params['id'])
       .subscribe(acompanhamento => {
         this.spinner.hide()
@@ -208,9 +210,15 @@ export class AcompanhamentoComponent implements OnInit {
 
 
   editarAcompanhamento(editarAcomp: Acompanhamento) {
-
+    
     this.acompanhamentoService.updateAcompanhamento(editarAcomp, this.codigo_acompanhamento).subscribe(res => {
-
+     
+      if (res){
+        
+        this.ns.notify(`Acompanhamento atualizado com sucesso!`)
+        window.location.reload()
+      
+        }else {
       if (this.editarAcompanhamentoForm.valid == true && this.selectedFuncionarios != null && this.selectedResidentes != null) {
 
         this.ns.notify(`Acompanhamento inserido com sucesso!`)
@@ -222,7 +230,7 @@ export class AcompanhamentoComponent implements OnInit {
         this.ns.notify(`Preencha os campos obrigatórios!`)
       }
     })
-    console.log('Edição acompanhamento', editarAcomp)
+    console.log('Edição acompanhamento', editarAcomp,  this.codigo_acompanhamento)
   }
 
 
