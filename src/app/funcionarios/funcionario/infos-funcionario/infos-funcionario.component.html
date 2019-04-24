@@ -144,8 +144,8 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-success" (click)="updateFuncionario(this.updateFuncionarioForm.value)"
-                  data-dismiss="modal">Salvar</button>
+                <button type="button" class="btn btn-success"
+                  (click)="updateFuncionario(this.updateFuncionarioForm.value)" data-dismiss="modal">Salvar</button>
               </div>
             </div>
           </div>
@@ -535,15 +535,17 @@
                               <h4><strong>Adicionar usuário</strong></h4>
                             </div>
                             <div class="row">
-                              <div class="col-sm-4 col-sm-12">
-                                <label>E-mail</label>
-                                <input type="text" class="form-control" formControlName="EMAIL" placeholder="E-mail"
-                                  autocomplete="off" maxlength="100">
+                              <div class="col-sm-4 col-sm-12" id="inputValidator">
+                                <salv-input-container label="Email">
+                                  <input type="text" class="form-control" formControlName="EMAIL" placeholder="E-mail"
+                                    autocomplete="off" maxlength="100">
+                                </salv-input-container>
                               </div>
-                              <div class="col-sm-4 col-sm-12">
-                                <label>Login</label>
-                                <input type="text" class="form-control" formControlName="LOGIN" placeholder="Login"
-                                  autocomplete="off" maxlength="100">
+                              <div class="col-sm-4 col-sm-12" id="inputValidator">
+                                <salv-input-container label="Login">
+                                  <input type="text" class="form-control" formControlName="LOGIN" placeholder="Login"
+                                    autocomplete="off" maxlength="100">
+                                </salv-input-container>
                               </div>
                               <div class="col-sm-4 col-sm-12">
                                 <label>Senha</label>

@@ -5,6 +5,7 @@ import { FuncionariosService } from '../../funcionarios.service';
 import { NotificationService } from 'src/app/shared/notification.service';
 import { DialogConfirmService } from 'src/app/residentes/dialog-confirm.service';
 import { ActivatedRoute } from '@angular/router';
+import { UniqueValuesValidators } from 'src/app/shared/validators/unique-values/unique-values.component';
 @Component({
     selector: 'salv-infos-funcionario',
     templateUrl: './infos-funcionario.component.html'
@@ -56,7 +57,7 @@ export class InfosFuncionarioComponent implements OnInit {
         { value: "NE", option: "Não Especificado" },
     ];
 
-    constructor(private fs: FuncionariosService, private fb: FormBuilder, private ns: NotificationService, private dcs: DialogConfirmService, private route: ActivatedRoute) { }
+    constructor(private fs: FuncionariosService, private fb: FormBuilder, private ns: NotificationService, private dcs: DialogConfirmService, private route: ActivatedRoute, private uniqueValidators: UniqueValuesValidators) { }
 
     ngOnInit(): void {
 
@@ -75,8 +76,8 @@ export class InfosFuncionarioComponent implements OnInit {
             REFERENCIA: this.fb.control(null, []),
         })
         this.novoUsuarioForm = this.fb.group({
-            EMAIL: this.fb.control(null, []),
-            LOGIN: this.fb.control(null, []),
+            EMAIL: this.fb.control(null, [], this.uniqueValidators.validateUsuarioEmail()),
+            LOGIN: this.fb.control(null, [], this.uniqueValidators.validateUsuarioLogin()),
             SENHA: this.fb.control(null, [])
         })
         this.updateTelefoneForm = this.fb.group({
@@ -102,8 +103,8 @@ export class InfosFuncionarioComponent implements OnInit {
             PESSOA: this.fb.group({
                 NOME: this.fb.control(null, [Validators.required]),
                 SOBRENOME: this.fb.control(null, [Validators.required]),
-                CPF: this.fb.control(null, [Validators.required, Validators.minLength(11)]),
-                RG: this.fb.control(null, [Validators.required, Validators.minLength(9)]),
+                CPF: this.fb.control(null, [Validators.required, Validators.minLength(11)], this.uniqueValidators.validatePessoaCpf()),
+                RG: this.fb.control(null, [Validators.required, Validators.minLength(9)], this.uniqueValidators.validatePessoaRG()),
                 ESTADO_CIVIL: this.fb.control(null, []),
                 SEXO: this.fb.control(null, [Validators.required]),
                 RELIGIAO: this.fb.control(null, []),
