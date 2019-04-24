@@ -35,4 +35,8 @@ export class InputComponent implements OnInit, AfterContentInit {
   hasError(): boolean {
     return this.input.invalid && (this.input.dirty || this.input.touched)
   }
+
+  verifyUniqueInput(): boolean {
+    return this.input.errors.unique && (this.input.dirty || this.input.touched)
+  }
 }

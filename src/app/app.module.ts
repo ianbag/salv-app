@@ -80,6 +80,8 @@ import { ResetPasswordComponent } from './auth/reset-password/reset-password.com
 import { ResetService } from './auth/reset-password/reset.service';
 
 import { AuthGuardService } from './auth/auth-guard.service';
+
+import { ValidatorService } from './shared/validators/validator.service';
 import {CookieService} from 'ngx-cookie-service'
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FilterPipeModule } from 'ngx-filter-pipe';
@@ -141,9 +143,8 @@ import { FilterPipeModule } from 'ngx-filter-pipe';
     EditarFuncionarioComponent,
     EditarResidenteComponent,
     ForgetPasswordComponent,
-    ResetPasswordComponent
-
-  ],
+    ResetPasswordComponent,
+    ],
   imports: [
     NgxPaginationModule,
     BrowserModule,
@@ -176,6 +177,7 @@ import { FilterPipeModule } from 'ngx-filter-pipe';
     NovoAcompanhamentoService,
     ForgetService,
     ResetService,
+    ValidatorService,
     // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: ErrorHandler, useClass: GlobalErrorHandler }
   ],
