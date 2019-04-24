@@ -8,7 +8,7 @@ import { Convenio, Telefone, Endereco, ConvenioQuery, Telefone_Convenio, Enderec
 export class ConveniosService {
 
     constructor(private http: HttpClient) { }
-    
+
 
     convenios(): Observable<Convenio[]> {
         return this.http.get<Convenio[]>(`${SALV_API}/convenio`)
@@ -96,6 +96,12 @@ export class ConveniosService {
         return this.http.put<Telefone>(`${SALV_API}/telefone/${id}`, telefone)
     }
 
+    reportConvenios() {
+        return this.http.get(`${SALV_API}/relatorio_convenios`)
+    }
 
+    reportConvenio(cod_conv) {
+        return this.http.get(`${SALV_API}/relatorio_convenio/${cod_conv}`)
+    }
 
 }

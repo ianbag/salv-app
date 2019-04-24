@@ -10,9 +10,9 @@
 <section class="content">
   
   
-  <button (click)="downloadPDF()" class="btn btn-success" id="printReport"><i class="fa fa-print"></i></button>
+  <button class="btn btn-success" (click)="reportAcompanhamentos()" id="printReport"><i class="fa fa-print"></i></button>
  
-  <div id="content" #reportAcompanhamentos>
+  <div id="content">
     <div class="form-group">
       <a type="submit" class="btn btn-primary" [routerLink]="['/novo-acompanhamento']">Novo acompanhamento</a>
     </div>
@@ -54,9 +54,9 @@
          
           <td>
 
-            <a type="submit" class="btn btn-warning botao" [routerLink]="['/editar-acompanhamento', acompanhamento.CODIGO]">Editar</a>
+          <!--<a type="submit" class="btn btn-warning botao" [routerLink]="['/editar-acompanhamento', acompanhamento.CODIGO]">Editar</a>-->
             <a type="submit" class="btn btn-success botao" [routerLink]="['/acompanhamento', acompanhamento.CODIGO]">
-              Informações</a>
+              + Opções</a>
           </td>
         </tr>
 
