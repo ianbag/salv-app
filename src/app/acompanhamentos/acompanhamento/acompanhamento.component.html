@@ -1,7 +1,7 @@
 <ngx-spinner></ngx-spinner>
 <section class="content">
-  <button (click)="downloadPDF()" class="btn btn-success" id="printReport"><i class="fa fa-print"></i></button>
-  <div id="content" #reportAcompanhamento>
+  <button (click)="reportAcompanhamento()" class="btn btn-success" id="printReport"><i class="fa fa-print"></i></button>
+  <div id="content">
     <div class="box box-editar" [@acompanhamentoAppeared]="acompanhamentoState">
       <h1>Detalhes do Acompanhamento</h1>
 
