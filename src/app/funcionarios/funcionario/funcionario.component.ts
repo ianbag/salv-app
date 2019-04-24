@@ -91,7 +91,7 @@ export class FuncionarioComponent implements OnInit {
       this.ns.notify('Dependente inserido com sucesso!')
       this.fs.dependenteById(this.route.snapshot.params['id']).subscribe(dependente => {
         this.dependentes = dependente
-      }).unsubscribe
+      })
     })
   }
 
