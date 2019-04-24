@@ -5,6 +5,7 @@ import { DialogConfirmService } from '../residentes/dialog-confirm.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { NgxSpinnerService } from 'ngx-spinner';
 import * as jspdf from 'jspdf';
+import { NotificationService } from '../shared/notification.service';
 
 @Component({
   selector: 'salv-funcionarios',
@@ -24,13 +25,12 @@ export class FuncionariosComponent implements OnInit {
 
   public searchString: string;
   funcionarios: Funcionario[]
-  funcionariosInativos : Funcionario[]
+  funcionariosInativos: Funcionario[]
 
-  constructor(private funcionariosService: FuncionariosService, private dialogConfirmService: DialogConfirmService, private spinner: NgxSpinnerService) { }
+  constructor(private funcionariosService: FuncionariosService, private dialogConfirmService: DialogConfirmService, private spinner: NgxSpinnerService, private ns: NotificationService) { }
 
   funcionariosState = 'ready'
 
-  @ViewChild('reportFuncionarios') reportFuncionarios: ElementRef
   paginaAtual: number = 1;
 
   ngOnInit() {
@@ -42,26 +42,26 @@ export class FuncionariosComponent implements OnInit {
         this.funcionarios = funcionarios
         console.log('FUNCIONARIOS', funcionarios)
 
-        
+
       })
 
-   
 
 
-       
+
+
   }
- 
 
- 
-funcionariosInativoss(){
-  this.funcionariosService.funcionariosInativos()
-  .subscribe(funcionariosInativos => {
-    
-    this.funcionariosInativos = funcionariosInativos
-    console.log('FUNCIONARIOS', funcionariosInativos)
-  })
 
-}
+
+  funcionariosInativoss() {
+    this.funcionariosService.funcionariosInativos()
+      .subscribe(funcionariosInativos => {
+
+        this.funcionariosInativos = funcionariosInativos
+        console.log('FUNCIONARIOS', funcionariosInativos)
+      })
+
+  }
 
   deleteFuncionario(id: string): void {
     this.dialogConfirmService.confirm(`Deseja excluir o funcionário?`)
@@ -72,6 +72,12 @@ funcionariosInativoss(){
               .subscribe(funcionarios => this.funcionarios = funcionarios))
         }
       })
+  }
+
+  reportFuncionarios() {
+    this.funcionariosService.reportFuncionarios().subscribe(res => {
+      this.ns.notify('Relatório emitido com sucesso!')
+    })
   }
 
 }

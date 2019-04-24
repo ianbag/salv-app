@@ -37,7 +37,6 @@ export class FuncionarioComponent implements OnInit {
   ];
   novoDependenteForm: FormGroup
 
-  @ViewChild('reportFuncionario') reportFuncionario: ElementRef
 
   constructor(private fs: FuncionariosService, private route: ActivatedRoute, private fb: FormBuilder, private ns: NotificationService, private dcs: DialogConfirmService, private spinner: NgxSpinnerService) { }
 
@@ -102,4 +101,9 @@ export class FuncionarioComponent implements OnInit {
     })
   }
 
+  reportFuncionario() {
+    this.fs.reportFuncionario(this.funcionario.PESSOA_CODIGO.toString(), this.funcionario.CODIGO_FUNCIONARIO.toString()).subscribe(res => {
+      this.ns.notify('Relatório emitido com sucesso!')
+    })
+  }
 }
