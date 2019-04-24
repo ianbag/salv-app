@@ -5,6 +5,7 @@ import { Residente } from './../../residentes/residente/residente.model';
 import { FormGroup, FormBuilder, Validators, AbstractControl, FormControl } from '@angular/forms';
 import { NovoAcompanhamentoService } from './../novo-acompanhamento/novo-acompanhamento.service';
 import { ActivatedRoute, Router } from '@angular/router';
+
 import { Component, OnInit, ElementRef, ViewChild, Input, EventEmitter } from '@angular/core';
 import { AcompanhamentosService } from '../acompanhamentos.service';
 import { Acompanhamento, AcompanhamentoQuery, Acompanhamento_Residente, Acompanhamento_Funcionario } from './acompanhamento.model';
