@@ -60,7 +60,7 @@ export class ResidentesService {
         return this.http.get<Familiar>(`${SALV_API}/familiar/${id}`)
     }
 
-    telefoneById(id: number): Observable<Telefone>{
+    telefoneById(id: number): Observable<Telefone> {
         return this.http.get<Telefone>(`${SALV_API}/telefone/${id}`)
     }
 
@@ -68,15 +68,15 @@ export class ResidentesService {
         return this.http.get<Endereco>(`${SALV_API}/endereco/${id}`)
     }
 
-    deleteTelefoneFamiliar(idTelefone: number, idFamiliar: number):Observable<any> {
+    deleteTelefoneFamiliar(idTelefone: number, idFamiliar: number): Observable<any> {
         return this.http.delete<any>(`${SALV_API}/telefone_familiar/${idTelefone}/${idFamiliar}`)
     }
 
-    deleteFamiliar(idResidente: number, idFamiliar: number):Observable<any> {
+    deleteFamiliar(idResidente: number, idFamiliar: number): Observable<any> {
         return this.http.delete<any>(`${SALV_API}/residente_familiar/${idResidente}/${idFamiliar}`)
     }
 
-    deleteResidenteConvenio(numeroConvenio:number):Observable<any> {
+    deleteResidenteConvenio(numeroConvenio: number): Observable<any> {
         return this.http.delete<any>(`${SALV_API}/residente_convenio/${numeroConvenio}`)
     }
 
@@ -171,12 +171,12 @@ export class ResidentesService {
         })
     }
 
-    updateFamiliar(dataForm: Familiar, CODIGO_FAMILIAR, ENDERECO_CODIGO){
+    updateFamiliar(dataForm: Familiar, CODIGO_FAMILIAR, ENDERECO_CODIGO) {
         return this.http.put<Endereco>(`${SALV_API}/endereco/${ENDERECO_CODIGO}`, dataForm.ENDERECOS).switchMap(res => {
             delete dataForm.ENDERECOS
             delete dataForm.TELEFONE
             return this.http.put<Familiar>(`${SALV_API}/familiar/${CODIGO_FAMILIAR}`, dataForm)
-        }) 
+        })
     }
 
     createNewConvenio(residenteConvenio: Residente_Convenio, codigoResidente) {
@@ -184,12 +184,12 @@ export class ResidentesService {
         return this.http.post<any>(`${SALV_API}/residente_convenio`, residenteConvenio)
     }
 
-    updateConvenio(residenteConvenio: Residente_Convenio){
+    updateConvenio(residenteConvenio: Residente_Convenio) {
         console.log("residenteConvenio Dataform", residenteConvenio)
         return this.http.put<Residente_Convenio>(`${SALV_API}/residente_convenio/${residenteConvenio.NUMERO_CONVENIO}`, residenteConvenio)
     }
 
-    createNewTelefoneFamiliar(telefone: Telefone, CODIGO_FAMILIAR){
+    createNewTelefoneFamiliar(telefone: Telefone, CODIGO_FAMILIAR) {
         return this.http.post<any>(`${SALV_API}/telefone`, telefone).switchMap(resTelefone => {
             let TELEFONES_FAMILIARES = {
                 FAMILIAR_CODIGO: CODIGO_FAMILIAR,
@@ -199,9 +199,16 @@ export class ResidentesService {
         })
     }
 
-    updateTelefone(telefone: Telefone, codigoTelefone){
+    updateTelefone(telefone: Telefone, codigoTelefone) {
         return this.http.put<Telefone>(`${SALV_API}/telefone/${codigoTelefone}`, telefone)
     }
 
+    reportResidentes() {
+        return this.http.get(`${SALV_API}/relatorio_residentes`)
+    }
+
+    reportResidente(cod_res) {
+        return this.http.get(`${SALV_API}/relatorio_residente/${cod_res}`)
+    }
 
 }

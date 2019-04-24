@@ -5,6 +5,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { FuncionariosService } from './../funcionarios.service'
 import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/shared/notification.service';
+import { UniqueValuesValidators } from 'src/app/shared/validators/unique-values/unique-values.component';
 
 @Component({
   selector: 'salv-novo-funcionario',
@@ -57,7 +58,7 @@ export class NovoFuncionarioComponent implements OnInit {
   novoFuncionarioForm: FormGroup
   funcionario: Funcionario
 
-  constructor(private fb: FormBuilder, private fs: FuncionariosService, private router: Router, private ns: NotificationService) { }
+  constructor(private fb: FormBuilder, private fs: FuncionariosService, private router: Router, private ns: NotificationService, private uniqueValidators: UniqueValuesValidators) { }
 
   ngOnInit() {
 
@@ -66,8 +67,8 @@ export class NovoFuncionarioComponent implements OnInit {
       PESSOA: this.fb.group({
         NOME: this.fb.control(null, [Validators.required]),
         SOBRENOME: this.fb.control(null, [Validators.required]),
-        CPF: this.fb.control(null, [Validators.required, Validators.minLength(11)]),
-        RG: this.fb.control(null, [Validators.required, Validators.minLength(9)]),
+        CPF: this.fb.control(null, [Validators.required, Validators.minLength(11)], this.uniqueValidators.validatePessoaCpf()),
+        RG: this.fb.control(null, [Validators.required, Validators.minLength(9)], this.uniqueValidators.validatePessoaRG()),
         ESTADO_CIVIL: this.fb.control(null, []),
         SEXO: this.fb.control(null, [Validators.required]),
         RELIGIAO: this.fb.control(null, []),

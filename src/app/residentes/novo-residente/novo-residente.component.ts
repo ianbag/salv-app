@@ -1,12 +1,14 @@
 import { Residente, Pessoa } from './../residente/residente.model';
 import { Component, OnInit, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, AbstractControl, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl, FormControl, AsyncValidatorFn } from '@angular/forms';
 
 import { ResidentesService } from '../residentes.service';
 import { trigger, state, style, transition, animate } from '@angular/animations'
 import { Route, Router } from '@angular/router';
 import { NotificationService } from 'src/app/shared/notification.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ValidatorService } from 'src/app/shared/validators/validator.service';
+import { UniqueValuesValidators } from 'src/app/shared/validators/unique-values/unique-values.component';
 
 @Component({
   selector: 'salv-novo-residente',
@@ -71,12 +73,15 @@ export class NovoResidenteComponent implements OnInit {
   pessoa: Pessoa
   residente: Residente
 
+  teste
+
   constructor(
     private formBuilder: FormBuilder,
     private residentesService: ResidentesService,
     private router: Router,
     private notificationService: NotificationService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private uniqueValidators: UniqueValuesValidators
   ) { }
 
   markAllDirty(control: AbstractControl) {
@@ -93,6 +98,7 @@ export class NovoResidenteComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.spinner.show()
     this.pessoa = this.residentesService.pessoa
     this.residente = this.residentesService.residente
@@ -102,8 +108,8 @@ export class NovoResidenteComponent implements OnInit {
       PESSOA: this.formBuilder.group({
         NOME: this.formBuilder.control(null, [Validators.required]),
         SOBRENOME: this.formBuilder.control(null, [Validators.required]),
-        CPF: this.formBuilder.control(null, [Validators.minLength(11)]),
-        RG: this.formBuilder.control(null, [Validators.minLength(9)]),
+        CPF: this.formBuilder.control(null, [Validators.minLength(11)], this.uniqueValidators.validatePessoaCpf()),
+        RG: this.formBuilder.control(null, [Validators.minLength(9)], this.uniqueValidators.validatePessoaRG()),
         ESTADO_CIVIL: this.formBuilder.control(null, []),
         SEXO: this.formBuilder.control(null, []),
         RELIGIAO: this.formBuilder.control(null, []),
@@ -115,7 +121,7 @@ export class NovoResidenteComponent implements OnInit {
       APELIDO: this.formBuilder.control(null, []),
       PROFISSAO: this.formBuilder.control(null, []),
       // CERTIDAO NASCIMENTO INICIO
-      NUMERO_CERTIDAO_NASCIMENTO: this.formBuilder.control(null, []),
+      NUMERO_CERTIDAO_NASCIMENTO: this.formBuilder.control(null, [], this.uniqueValidators.validateResidenteNumeroCertidao()),
       FOLHA_CERTIDAO_NASCIMENTO: this.formBuilder.control(null, []),
       LIVRO_CERTIDAO_NASCIMENTO: this.formBuilder.control(null, []),
       CIDADE_CERTIDAO_NASCIMENTO: this.formBuilder.control(null, []),
@@ -123,31 +129,31 @@ export class NovoResidenteComponent implements OnInit {
       //CERTIDAO NASCIMENTO FINAL
 
       //ELEITORAL INICIO
-      TITULO_ELEITOR: this.formBuilder.control(null, []),
+      TITULO_ELEITOR: this.formBuilder.control(null, [], this.uniqueValidators.validateResidenteTituloEleitor()),
       ZONA_ELEITORAL: this.formBuilder.control(null, []),
       SECAO_ELEITORAL: this.formBuilder.control(null, []),
       //ELEITORAL FINAL
 
       //INSS INICIO
-      NUMERO_INSS: this.formBuilder.control(null, []),
+      NUMERO_INSS: this.formBuilder.control(null, [], this.uniqueValidators.validateResidenteNumeroInss()),
       BANCO_INSS: this.formBuilder.control(null, []),
       AGENCIA_INSS: this.formBuilder.control(null, []),
-      CONTA_INSS: this.formBuilder.control(null, []),
+      CONTA_INSS: this.formBuilder.control(null, [], this.uniqueValidators.validateResidenteContaINSS()),
       SITUACAO_INSS: this.formBuilder.control(null, []),
       VALOR_INSS: this.formBuilder.control(null, []),
       PROVA_VIDA_INSS: this.formBuilder.control(null, []),
       //INSS FINAL
 
       //OUTROS INICIO
-      CARTAO_SAMS: this.formBuilder.control(null, []),
-      CARTAO_SUS: this.formBuilder.control(null, []),
+      CARTAO_SAMS: this.formBuilder.control(null, [], this.uniqueValidators.validateResidenteCartaoSAMS()),
+      CARTAO_SUS: this.formBuilder.control(null, [], this.uniqueValidators.validateResidenteCartaoSUS()),
       DATA_ACOLHIMENTO: this.formBuilder.control(null, [Validators.required])
       //OUTROS FINAL
     })
 
     if (this.pessoa != undefined)
       this.novoResidenteForm.controls['PESSOA'].setValue(this.pessoa)
-      this.spinner.hide()
+    this.spinner.hide()
     if (this.residente != undefined)
       this.novoResidenteForm.patchValue(this.residente)
   }
@@ -155,14 +161,17 @@ export class NovoResidenteComponent implements OnInit {
   novoResidente(residente: Residente) {
     this.residentesService.pessoa = residente.PESSOA
     this.residentesService.residente = residente
-
-    if (this.novoResidenteForm.valid == true)
+    //console.log("console verificar pessoa",)
+    if (this.novoResidenteForm.valid == true) {
+      //if(this.verificarUniqueResidente(residente))
       this.router.navigate(['/familiar-residente'])
-    else {
+    } else {
       this.markAllDirty(this.novoResidenteForm)
       console.log(this.novoResidenteForm.controls)
       this.notificationService.notify(`Preencha os campos obrigatórios!`)
     }
   }
+
+
 
 }

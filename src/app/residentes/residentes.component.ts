@@ -25,19 +25,17 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class ResidentesComponent implements OnInit {
 
   residentesState = 'ready'
-  
+
   public searchString: string;
 
   residentesInativos: Residente[]
 
   residentes: Residente[]
-  
 
-  @ViewChild('reportResidentes') reportResidentes: ElementRef
 
   constructor(private residentesService: ResidentesService, private dialogConfirmService: DialogConfirmService, private notificationService: NotificationService, private spinner: NgxSpinnerService) { }
 
-  paginaAtual : number = 1;
+  paginaAtual: number = 1;
   ngOnInit() {
     this.spinner.show()
 
@@ -47,22 +45,22 @@ export class ResidentesComponent implements OnInit {
         this.residentes = residentes
         console.log(residentes)
       })
-        
-    // limpar os dados armazenados no services toda vez que for inicializado
-    this.residentesService.clearDataResidente() 
 
-    
+    // limpar os dados armazenados no services toda vez que for inicializado
+    this.residentesService.clearDataResidente()
+
+
   }
 
-  residentesInativoss(){
+  residentesInativoss() {
     this.residentesService.residentesInativos()
       .subscribe(residentesInativos => {
-        
+
         this.residentesInativos = residentesInativos
         console.log(residentesInativos)
       })
   }
- 
+
 
   deleteResidente(id: string): void {
     this.dialogConfirmService.confirm(`Deseja excluir o residente?`)
@@ -71,11 +69,17 @@ export class ResidentesComponent implements OnInit {
           this.residentesService.deleteResidente(id)
             .subscribe(result => {
               this.residentesService.residentes()
-              .subscribe(residentes => this.residentes = residentes)
+                .subscribe(residentes => this.residentes = residentes)
               this.notificationService.notify(`Residente excluido com sucesso!`)
             })
         }
       })
+  }
+
+  reportResidentes() {
+    this.residentesService.reportResidentes().subscribe(res => {
+      this.notificationService.notify('Relatório emitido com sucesso')
+    })
   }
 
 }

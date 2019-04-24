@@ -6,6 +6,7 @@ import { DialogConfirmService } from 'src/app/residentes/dialog-confirm.service'
 import { NotificationService } from 'src/app/shared/notification.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { UniqueValuesValidators } from 'src/app/shared/validators/unique-values/unique-values.component';
 
 @Component({
     selector: 'salv-infos-dependente',
@@ -21,7 +22,7 @@ export class InfosDependenteComponent implements OnInit {
         "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"
     ];
 
-    constructor(private dcs: DialogConfirmService, private fs: FuncionariosService, private ns: NotificationService, private fb: FormBuilder, private spinner: NgxSpinnerService) { }
+    constructor(private dcs: DialogConfirmService, private fs: FuncionariosService, private ns: NotificationService, private fb: FormBuilder, private spinner: NgxSpinnerService, private uniqueValidators: UniqueValuesValidators ) { }
 
     ngOnInit() {
 
@@ -29,9 +30,9 @@ export class InfosDependenteComponent implements OnInit {
             NOME: this.fb.control(null, [Validators.required]),
             SOBRENOME: this.fb.control(null, [Validators.required]),
             DATA_NASCIMENTO: this.fb.control(null, [Validators.required]),
-            RG: this.fb.control(null, []),
-            CPF: this.fb.control(null, []),
-            NUMERO_CERTIDAO_NASCIMENTO: this.fb.control(null, []),
+            RG: this.fb.control(null, [], this.uniqueValidators.validateDependenteRG()),
+            CPF: this.fb.control(null, [], this.uniqueValidators.validateDependenteCPF()),
+            NUMERO_CERTIDAO_NASCIMENTO: this.fb.control(null, [], this.uniqueValidators.validateDependenteNumeroCertidao()),
             FOLHA_CERTIDAO_NASCIMENTO: this.fb.control(null, []),
             LIVRO_CERTIDAO_NASCIMENTO: this.fb.control(null, []),
             CIDADE_CERTIDAO_NASCIMENTO: this.fb.control(null, []),
