@@ -2,7 +2,7 @@ import { DialogConfirmService } from './dialog-confirm.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ResidentesService } from './residentes.service';
-import { Residente } from './residente/residente.model';
+import { Residente, Pessoa } from './residente/residente.model';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import * as jspdf from 'jspdf'
 import { NotificationService } from '../shared/notification.service';
@@ -26,21 +26,39 @@ export class ResidentesComponent implements OnInit {
 
   residentesState = 'ready'
 
+  public searchString: string;
+
+  residentesInativos: Residente[]
+
   residentes: Residente[]
 
-  @ViewChild('reportResidentes') reportResidentes: ElementRef
 
   constructor(private residentesService: ResidentesService, private dialogConfirmService: DialogConfirmService, private notificationService: NotificationService, private spinner: NgxSpinnerService) { }
-  paginaAtual : number = 1;
+
+  paginaAtual: number = 1;
   ngOnInit() {
     this.spinner.show()
+
     this.residentesService.residentes()
       .subscribe(residentes => {
         this.spinner.hide()
-        this.residentes = residentes})
+        this.residentes = residentes
+        console.log(residentes)
+      })
 
     // limpar os dados armazenados no services toda vez que for inicializado
-    this.residentesService.clearDataResidente() 
+    this.residentesService.clearDataResidente()
+
+
+  }
+
+  residentesInativoss() {
+    this.residentesService.residentesInativos()
+      .subscribe(residentesInativos => {
+
+        this.residentesInativos = residentesInativos
+        console.log(residentesInativos)
+      })
   }
 
 
@@ -51,11 +69,17 @@ export class ResidentesComponent implements OnInit {
           this.residentesService.deleteResidente(id)
             .subscribe(result => {
               this.residentesService.residentes()
-              .subscribe(residentes => this.residentes = residentes)
+                .subscribe(residentes => this.residentes = residentes)
               this.notificationService.notify(`Residente excluido com sucesso!`)
             })
         }
       })
+  }
+
+  reportResidentes() {
+    this.residentesService.reportResidentes().subscribe(res => {
+      this.notificationService.notify('Relatório emitido com sucesso')
+    })
   }
 
 }

@@ -8,18 +8,40 @@
 </style>
 <!-- Main content -->
 <section class="content">
-  <button class="btn btn-success" id="printReport"><i class="fa fa-print"></i></button>
+  <button class="btn btn-success" (click)="reportResidentes()" id="printReport"><i class="fa fa-print"></i></button>
   <div>
 
     <div class="form-group">
       <a type="submit" class="btn btn-primary" [routerLink]="['/novo-residente']">Novo Residente</a>
     </div>
 
-
+    <input input class="form-control" style="width: 40%" placeholder="Pesquisa" type="text" name="search" [(ngModel)]="filter">
+    <br>
+    
     <div class="box box-default table-responsive no-padding" [@residentesAppeared]="residentesState">
       <h1>Visualização geral dos residentes</h1>
+
+      <a class="dropdown btn btn-success pull-right" style="float:right; margin-right: 1cm;">
+
+        <a href="#" class="dropdown-toggle pull-left" data-toggle="dropdown">Filtrar<span class="caret"></span></a>
+
+        <!--MENU DA DROPDOWN-->
+        <ul class="dropdown-menu" role="menu" style="color:black">
+
+         
+          <!--FILTRO INATIVOS-->
+          <li class="divider"></li>
+          <input type="checkbox" id="Desativados" [(ngModel)]="Desativados" ng-true-value="YES" ng-false-value="NO"
+            (click)="residentesInativoss()"> Residentes Desativados
+          <br>
+
+
+        </ul>
+      </a>
+
       <br>
-      <table class="table table-hover">
+
+     <!-- <!--table class="table table-hover">
         <tr>
           <th>Nome</th>
           <th>Apelido</th>
@@ -44,7 +66,67 @@
       </table>
       <pagination-controls class="my-pagination " (pageChange)="paginaAtual = $event" previousLabel="Anterior"
         nextLabel="Próximo" screenReaderPaginationLabel="Paginação" screenReaderPageLabel="Página"
-        screenReaderCurrentLabel="Voce esta na página"></pagination-controls>
+        screenReaderCurrentLabel="Voce esta na página"></pagination-controls-->
+
+      <div ng [hidden]="Desativados">
+        <table class="table table-hover">
+          <tr>
+            <th>Nome</th>
+            <th>Apelido</th>
+            <th>CPF</th>
+            <th>RG</th>
+            <th class="col-sm-4">Ações</th>
+          </tr>
+          <tr
+            *ngFor="let residente of residentes | filter : filter : searchString | paginate: { itemsPerPage: 10, currentPage: paginaAtual} let i = index">
+            <td>{{residente.PESSOA.NOME}} {{residente.PESSOA.SOBRENOME}}</td>
+            <td>{{residente.APELIDO}}</td>
+            <td>{{residente.PESSOA.CPF | cpf}}</td>
+            <td>{{residente.PESSOA.RG | rg}}</td>
+
+            <td>
+              <button type="submit" class="btn btn-danger botao"
+                (click)="deleteResidente(residente.CODIGO_RESIDENTE); $event.stopPropagation()">Inativar</button>
+              <!-- <a type="submit" class="btn btn-warning botao"
+                [routerLink]="['/editar-residente', residente.CODIGO_RESIDENTE]">Editar</a> -->
+              <a type="submit" class="btn btn-success botao" [routerLink]="['/residente', residente.CODIGO_RESIDENTE]">+
+                Informações</a>
+            </td>
+          </tr>
+
+        </table>
+        <pagination-controls class="my-pagination " (pageChange)="paginaAtual = $event" previousLabel="Anterior"
+          nextLabel="Próximo" screenReaderPaginationLabel="Paginação" screenReaderPageLabel="Página"
+          screenReaderCurrentLabel="Voce esta na página"></pagination-controls>
+      </div>
+
+
+      <div ng [hidden]="!Desativados">
+        <table class="table table-hover">
+          <tr>
+            <th>Nome</th>
+            <th>Apelido</th>
+            <th>CPF</th>
+            <th>RG</th>
+            <th class="col-sm-4">Ações</th>
+          </tr>
+
+          <tr *ngFor="let residente of residentesInativos | filter : filter : searchString let i = index">
+            <td>{{residente.PESSOA.NOME}} {{residente.PESSOA.SOBRENOME}}</td>
+            <td>{{residente.APELIDO}}</td>
+            <td>{{residente.PESSOA.CPF | cpf}}</td>
+            <td>{{residente.PESSOA.RG | rg}}</td>
+
+            <td>
+              
+              <a type="submit" class="btn btn-success botao" [routerLink]="['/residente', residente.CODIGO_RESIDENTE]">+
+               +Opções</a>
+            </td>
+          </tr>
+
+        </table>
+      </div>
+
       <!-- Fim da tabela  -->
     </div>
 

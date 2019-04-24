@@ -16,6 +16,11 @@ export class FuncionariosService {
         return this.http.get<Funcionario[]>(`${SALV_API}/funcionario`)
     }
 
+    funcionariosInativos(): Observable<Funcionario[]> {
+        return this.http.get<Funcionario[]>(`${SALV_API}/funcionarioInativo`)
+    }
+
+
     funcionarioById(id: string): Observable<Funcionario> {
         return this.http.get<Funcionario>(`${SALV_API}/funcionario/${id}`)
 
@@ -182,5 +187,13 @@ export class FuncionariosService {
 
     updateDependente(id, nome, sobrenome, dependente: Dependente) {
         return this.http.put<Dependente>(`${SALV_API}/dependente/${id}/${nome}/${sobrenome}`, dependente)
+    }
+
+    reportFuncionarios() {
+        return this.http.get(`${SALV_API}/relatorio_funcionarios`)
+    }
+
+    reportFuncionario(cod_pes, cod_func) {
+        return this.http.get(`${SALV_API}/relatorio_funcionario/${cod_pes}/${cod_func}`)
     }
 }

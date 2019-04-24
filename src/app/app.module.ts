@@ -1,3 +1,4 @@
+import { SearchPipe } from './shared/pipes/filtroData.pipe';
 import { NovoAcompanhamentoService } from './acompanhamentos/novo-acompanhamento/novo-acompanhamento.service';
 import { UserDetailsComponent } from './fixed-elements/header/user-details/user-details.component';
 import { NotificationService } from './shared/notification.service';
@@ -28,6 +29,7 @@ import { InfosPessoaisComponent } from './residentes/residente/infos-pessoais/in
 import { SexoPipe } from './shared/pipes/sexo.pipe';
 import { EscolaridadePipe } from './shared/pipes/escolaridade.pipe';
 import { EstadoCivilPipe } from './shared/pipes/estado-civil.pipe';
+
 import { ReligiaoPipe } from './shared/pipes/religiao.pipe';
 import { CpfPipe } from './shared/pipes/cpf.pipe';
 import { RgPipe } from './shared/pipes/rg.pipe';
@@ -50,6 +52,7 @@ import { AcompanhamentosService } from './acompanhamentos/acompanhamentos.servic
 import { NovoResidenteComponent } from './residentes/novo-residente/novo-residente.component';
 import { InputComponent } from './shared/input/input.component';
 import { FamiliarResidenteComponent } from './residentes/novo-residente/familiar-residente/familiar-residente.component';
+
 import { ConvenioResidenteComponent } from './residentes/novo-residente/convenio-residente/convenio-residente.component';
 import { NovoAcompanhamentoComponent } from './acompanhamentos/novo-acompanhamento/novo-acompanhamento.component';
 
@@ -77,9 +80,14 @@ import { ResetPasswordComponent } from './auth/reset-password/reset-password.com
 import { ResetService } from './auth/reset-password/reset.service';
 
 import { AuthGuardService } from './auth/auth-guard.service';
-import {CookieService} from 'ngx-cookie-service';
+
 import { ValidatorService } from './shared/validators/validator.service';
+import {CookieService} from 'ngx-cookie-service'
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { FilterPipeModule } from 'ngx-filter-pipe';
+
 // import { AuthInterceptor } from './auth/auth-interceptor.service';
+
 
 @NgModule({
   declarations: [
@@ -91,8 +99,10 @@ import { ValidatorService } from './shared/validators/validator.service';
     ResidentesComponent,
     ResidenteComponent,
     InfosPessoaisComponent,
+
     SexoPipe,
     EscolaridadePipe,
+    SearchPipe,
     EstadoCivilPipe,
     ReligiaoPipe,
     CpfPipe,
@@ -143,11 +153,16 @@ import { ValidatorService } from './shared/validators/validator.service';
     BrowserAnimationsModule,
     FormsModule,
     NgxSpinnerModule,
+    Ng2SearchPipeModule,
     ReactiveFormsModule,
     RouterModule.forRoot(ROUTES),
     NgxMaskModule.forRoot(),
-    NgMultiSelectDropDownModule.forRoot()
+    NgMultiSelectDropDownModule.forRoot(),
+    Ng2SearchPipeModule,
+    FilterPipeModule
   ],
+ 
+
   providers: [
     CookieService,
     ResidentesService,

@@ -45,8 +45,6 @@ export class ResidenteComponent implements OnInit {
 
   telefonesArray: FormArray
 
-  @ViewChild('reportResidente') reportResidente: ElementRef
-
   constructor(
     private residentesService: ResidentesService,
     private route: ActivatedRoute,
@@ -141,6 +139,12 @@ export class ResidenteComponent implements OnInit {
           this.getConvenio()
         }
       })
+  }
+
+  reportResidente() {
+    this.residentesService.reportResidente(this.residente.CODIGO_RESIDENTE.toString()).subscribe(res => {
+      this.notificationService.notify('Relatório emitido com sucesso!')
+    })
   }
 
 }

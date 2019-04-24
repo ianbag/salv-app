@@ -4,6 +4,7 @@ export interface Acompanhamento {
     DATA_ACOMPANHAMENTO: string,
     ATIVIDADE: string
     
+    
 }
 
 export interface Acompanhamento_Funcionario{

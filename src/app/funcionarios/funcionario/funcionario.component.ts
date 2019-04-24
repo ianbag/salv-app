@@ -32,12 +32,12 @@ export class FuncionarioComponent implements OnInit {
   telefones: Telefone[]
   enderecos: Endereco[]
   n_dependentes: number
+
   estados = [
     "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"
   ];
   novoDependenteForm: FormGroup
 
-  @ViewChild('reportFuncionario') reportFuncionario: ElementRef
 
   constructor(private fs: FuncionariosService, private route: ActivatedRoute, private fb: FormBuilder, private ns: NotificationService, private dcs: DialogConfirmService, private spinner: NgxSpinnerService) { }
 
@@ -50,7 +50,6 @@ export class FuncionarioComponent implements OnInit {
     this.fs.dependenteById(this.route.snapshot.params['id']).subscribe(dependente => {
       this.dependentes = dependente
       this.n_dependentes = this.dependentes.length
-
     })
 
 
@@ -102,4 +101,9 @@ export class FuncionarioComponent implements OnInit {
     })
   }
 
+  reportFuncionario() {
+    this.fs.reportFuncionario(this.funcionario.PESSOA_CODIGO.toString(), this.funcionario.CODIGO_FUNCIONARIO.toString()).subscribe(res => {
+      this.ns.notify('Relatório emitido com sucesso!')
+    })
+  }
 }

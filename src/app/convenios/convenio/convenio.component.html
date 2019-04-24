@@ -1,32 +1,208 @@
 <ngx-spinner></ngx-spinner>
 <section class="content">
-    <button class="btn btn-success" id="printReport"><i class="fa fa-print"></i></button>
-    <div>
-        <!-- Conteudo KAUE -->
-        <div class="box box-default box-editar" [@convenioAppeared]="convenioState">
-            <h1>Detalhes do Convênio</h1>
-            <hr>
-            <br>
-            <div>
-                <div class="box box-default box-solid">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Informações do convênio</h3>
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                                <i class="fa fa-minus"></i>
-                            </button>
+    <button (click)="reportConvenio()" class="btn btn-success" id="printReport"><i class="fa fa-print"></i></button>
+    <div id="content">
+        <div>
+            
+            <div class="box box-default box-editar" [@convenioAppeared]="convenioState">
+                <h1>Detalhes do Convênio</h1>
+                <hr>
+                <br>
+                <div>
+                    <div class="box box-default box-solid">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Informações do convênio
+                                <a data-toggle="modal" data-target="#modalConvenio"><span style="color: red"><i class="fa fa-pencil"></i></span></a>
+                            </h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                            </div>
                         </div>
+
+                            <!--MODAL-->
+                            <div class="modal fade" id="modalConvenio" tabindex="-1" role="dialog"
+                                aria-labelledby="modalConvenio" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <form [formGroup]="editarConvenioForm" novalidate>
+                                                <div class="box-body">
+                                                    <div>
+                                                        <div class="col-sm-12 col-xs-12" id="FormTitle">
+                                                            <h4><strong>Editar convênio</strong></h4>
+                                                        </div>
+
+                                                        <div class="col-sm-6 col-xs-12">
+                                                            <label>Nome</label>
+                                                            <input type="text" class="form-control"
+                                                                formControlName="NOME_CONVENIO" placeholder="Nome"
+                                                                autocomplete="off" maxlength="100">
+                                                        <br>
+                                                        </div>
+                                                        
+                                                        <div class="col-sm-6 col-xs-12">
+                                                            <label>Tipo do convênio</label>
+                                                            <input type="text" class="form-control"
+                                                                formControlName="TIPO_CONVENIO" placeholder="Tipo"
+                                                                autocomplete="off" maxlength="100">
+                                                        <br>
+                                                        </div>
+                                        
+                                                        <div class="col-sm-9 col-xs-12" id="inputValidator"
+                                                            formGroupName="ENDERECO" style="padding-left: 25px">
+                                                            <label>Endereço</label>
+                                                            <input type="text" class="form-control"
+                                                                formControlName="ENDERECO" placeholder="Endereço"
+                                                                autocomplete="off" maxlength="100">
+                                                        </div>
+                                                        
+                                                        <div class="col-sm-3 col-xs-12" id="inputValidator"
+                                                            formGroupName="ENDERECO">
+                                                            <label>Número</label>
+                                                            <input type="text" class="form-control"
+                                                                formControlName="NUMERO" placeholder="Número"
+                                                                autocomplete="off" maxlength="5">
+                                                        </div>
+                                                        
+                                                        <div class="col-sm-6 col-xs-12" id="inputValidator"
+                                                            formGroupName="ENDERECO" style="padding-left: 25px">
+                                                            <br>
+                                                            <label>Bairro</label>
+                                                            <input type="text" class="form-control"
+                                                                formControlName="BAIRRO" placeholder="Bairro"
+                                                                autocomplete="off" maxlength="50"> 
+                                                        </div>
+                                                        
+                                                        <div class="col-sm-6 col-xs-12" formGroupName="ENDERECO" style="margin-top: 10.3px">
+                                                            <label>Complemento</label>
+                                                            <input type="text" class="form-control"
+                                                                formControlName="COMPLEMENTO" placeholder="Complemento"
+                                                                autocomplete="off" maxlength="50">
+                                                        </div>
+                                                        
+                                                        <div class="col-sm-6 col-xs-12" formGroupName="ENDERECO" style="margin-top: 10.3px">
+                                                            <label>Cidade</label>
+                                                                <input type="text" class="form-control"
+                                                                    formControlName="CIDADE" placeholder="Cidade"
+                                                                    autocomplete="off" maxlength="50">           
+                                                        </div>
+                                                        
+                                                        <div class="col-sm-3 col-xs-12" formGroupName="ENDERECO" style="margin-top: 10.3px">
+                                                            <label>Estado</label>
+                                                                <select class="form-control" formControlName="ESTADO">
+                                                                    <option value="" label="Selecione" disabled
+                                                                        selected="selected"></option>
+                                                                    <option *ngFor="let estado of estados">
+                                                                        {{estado}}
+                                                                    </option>
+                                                                </select>
+                                                        </div>
+                                                        
+                                                        <div class="col-sm-5 col-xs-12" formGroupName="ENDERECO" style="margin-top: 10.3px">
+                                                            <label>CEP</label>
+                                                                <input type="text" mask="00.000-000"
+                                                                    class="form-control" formControlName="CEP"
+                                                                    placeholder="CEP" autocomplete="off" maxlength="10">                     
+                                                        </div>
+                                                        
+                                                        <div class="col-sm-7 col-xs-12" formGroupName="ENDERECO" style="margin-top: 10.3px">
+                                                            <label>Referência</label>
+                                                            <input type="text" class="form-control"
+                                                                formControlName="REFERENCIA" placeholder="Referência"
+                                                                autocomplete="off" maxlength="100"> 
+                                                        </div>
+                                                        
+                                                        <div class="col-sm-3 col-xs-12" id="inputValidator"
+                                                                formGroupName="TELEFONE" style="padding-left: 25px; margin-top: 10.3px">
+                                                                <label>DDD</label>
+                                                                    <input type="text" class="form-control"
+                                                                        formControlName="DDD" placeholder="DDD"
+                                                                        autocomplete="off" maxlength="3">
+                                                        </div>
+                                
+                                                        <div class="col-sm-6 col-xs-12" id="inputValidator"
+                                                                formGroupName="TELEFONE" style="margin-top: 10.3px">
+                                                                <label>Telefone</label>
+                                                                    <input type="text" class="form-control"
+                                                                        formControlName="NUMERO" placeholder="Telefone"
+                                                                        autocomplete="off" maxlength="9">
+                                                        <br>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                            <button type="button" class="btn btn-success" (click)="editarConvenio(editarConvenioForm.value)" data-dismiss="modal">Finalizar atualização</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--FIM MODAL-->
+
+
+                            
+                                <div class="col-sm-12 col-xs-12">
+                                  <h4><strong>{{convenio?.NOME_CONVENIO}}</strong></h4>
+                                </div>
+                              
+                                <div class="col-xs-4 col-xs-12">
+                                  <strong>Tipo: </strong> {{convenio?.TIPO_CONVENIO}}<br>
+                                </div>
+                              
+                                <div class="col-xs-4 col-xs-12">
+                                  <strong>Telefone: </strong> ({{convenio?.DDD}}) {{convenio?.TELEFONE}}
+                                </div>
+                              
+                                <div class="col-xs-4 col-xs-12">
+                                  <strong>Endereço: </strong> {{convenio?.ENDERECO}}
+                                </div>
+                              
+                                <div class="col-xs-4 col-xs-12">
+                                  <strong>Nº: </strong> {{convenio?.NUMERO}}
+                                </div>
+                              
+                                <div class="col-xs-4 col-xs-12">
+                                  <strong>Bairro: </strong> {{convenio?.BAIRRO}}
+                                </div>
+                              
+                                <div class="col-xs-4 col-xs-12">
+                                  <strong>Complemento: </strong> {{convenio?.COMPLEMENTO}}
+                                </div>
+                              
+                                <div class="col-xs-4 col-xs-12">
+                                  <strong>Cidade: </strong> {{convenio?.CIDADE}}
+                                </div>
+                              
+                                <div class="col-xs-4 col-xs-12">
+                                  <strong>Estado: </strong> {{convenio?.ESTADO}}
+                                </div>
+                              
+                                <div class="col-xs-4 col-xs-12">
+                                  <strong>CEP: </strong> {{convenio?.CEP}}
+                                </div>
+                              
+                                <div class="col-xs-4 col-xs-12">
+                                  <strong>Referência: </strong> {{convenio?.REFERENCIA}}
+                                </div>
+
+
+
                     </div>
-                    <div class="box-body" style>
-                        <salv-infos-convenio [convenio]='convenio'></salv-infos-convenio>
-                    </div>
+
+                    
+                    
                 </div>
                 <div class="botao">
                     <a type="submit" class="btn btn-default botao" [routerLink]="['/convenios']">Voltar</a>
                 </div>
             </div>
         </div>
-        <!-- Fim conteudo KAUE -->
+        
     </div>
     <!-- /.row -->
 </section>

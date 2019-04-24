@@ -1,11 +1,11 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ConveniosService } from 'src/app/convenios/convenios.service';
 import { Convenio } from './convenio.model';
 import { DialogConfirmService } from '../residentes/dialog-confirm.service';
 import { trigger, state, transition, style, animate } from '@angular/animations';
 import { NgxSpinnerService } from 'ngx-spinner';
-import * as jspdf from 'jspdf'
 import 'jspdf-autotable'
+import { NotificationService } from '../shared/notification.service';
 
 @Component({
   selector: 'salv-convenios',
@@ -24,12 +24,15 @@ export class ConveniosComponent implements OnInit {
 
   conveniosState = 'ready'
 
-  constructor(private conveniosService: ConveniosService, private dialogConfirmService: DialogConfirmService, private spinner: NgxSpinnerService) { }
+  constructor(private conveniosService: ConveniosService, private dialogConfirmService: DialogConfirmService, private spinner: NgxSpinnerService, private ns: NotificationService) { }
 
+  public searchString: string;
   convenios: Convenio[]
+  conveniosDesativados: Convenio[]
 
-  @ViewChild('reportConvenios') reportConvenios: ElementRef
   paginaAtual: number = 1;
+
+
   ngOnInit() {
     this.spinner.show()
     this.conveniosService.convenios()
@@ -37,6 +40,17 @@ export class ConveniosComponent implements OnInit {
         this.spinner.hide();
         this.convenios = convenios
         console.log('CONVENIOS', convenios)
+      })
+
+
+  }
+
+  conveniosDesativadoss() {
+    this.conveniosService.conveniosDesativados()
+      .subscribe(conveniosDesativados => {
+
+        this.conveniosDesativados = conveniosDesativados
+        console.log('conveniosDesativados', conveniosDesativados)
       })
   }
 
@@ -51,6 +65,9 @@ export class ConveniosComponent implements OnInit {
       })
   }
 
-  public downloadPDF() { }
-
+  reportConvenios() {
+    this.conveniosService.reportConvenios().subscribe(res => {
+      this.ns.notify('Relatório emitido com sucesso!')
+    })
+  }
 }
