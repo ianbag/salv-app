@@ -112,8 +112,8 @@
             <!--fim da row-->
 
             <div class="col-sm-12 col-sm-12">
-              <a style="margin-left: 10px" (click)="novoConvenio(novoConvenioForm.value)" class="btn btn-success botao pull-right">Finalizar cadastro</a>
-              <a type="submit" class="btn btn-default botao pull-right" [routerLink]="['/convenios']">Voltar</a>
+              <button style="margin-left: 10px" (click)="novoConvenio(novoConvenioForm.value)" class="btn btn-success botao pull-right" [disabled]="!novoConvenioForm.valid">Finalizar cadastro</button>
+              <button type="submit" class="btn btn-default botao pull-right" [routerLink]="['/convenios']">Voltar</button>
             </div>
           </div>
         </div>
