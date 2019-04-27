@@ -154,10 +154,6 @@
         <div class="col-md-12">
           <!--DIV MODAL INICIO-->
           <div class="col-sm-12 col-xs-12">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modalTelefone">
-              <i class="fa fa-plus"></i>
-            </button>
             <!-- Modal -->
             <div class="modal fade" id="modalTelefone" tabindex="-1" role="dialog" aria-labelledby="modalTelefone"
               aria-hidden="true">
@@ -195,7 +191,10 @@
               </div>
             </div>
             <!--FIM MODAL-->
-            <h4><strong>Telefones</strong></h4>
+            <!-- Button trigger modal -->
+            <h4><strong>Telefones <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modalTelefone">
+                <i class="fa fa-plus"></i>
+              </button></strong></h4>
           </div>
           <!--FIM DIV MODAL-->
           <div class="col-xs-4 col-xs-12" *ngFor="let telefone of telefones">
@@ -249,10 +248,6 @@
           <div class="col-md-12">
             <!--DIV MODAL-->
             <div class="col-sm-12 col-xs-12">
-              <!-- Button trigger modal -->
-              <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modalEndereco">
-                <i class="fa fa-plus"></i>
-              </button>
               <!-- Modal -->
               <div class="modal fade" id="modalEndereco" tabindex="-1" role="dialog" aria-labelledby="modalEndereco"
                 aria-hidden="true">
@@ -302,8 +297,8 @@
                               </div>
                               <div class="col-sm-3 col-sm-12">
                                 <label>CEP</label>
-                                <input type="text" class="form-control" formControlName="CEP" placeholder="CEP"
-                                  autocomplete="off" maxlength="8">
+                                <input type="text" mask="00.000-000" class="form-control" formControlName="CEP" placeholder="CEP"
+                                  autocomplete="off" maxlength="10">
                               </div>
                               <div class="col-sm-3 col-sm-12">
                                 <label>Referência</label>
@@ -327,7 +322,10 @@
             </div>
             <!--DIV MODAL-->
             <div class="col-xs-12 col-xs-12">
-              <h4><strong>Endereços</strong></h4>
+              <!-- Button trigger modal -->
+              <h4><strong>Endereços <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modalEndereco">
+                  <i class="fa fa-plus"></i>
+                </button></strong></h4>
             </div>
             <div *ngFor="let endereco of enderecos">
               <div class="col-xs-4 col-xs-12">
