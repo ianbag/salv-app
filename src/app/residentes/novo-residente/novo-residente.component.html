@@ -255,7 +255,7 @@
           <!--BOTÃO-->
           <div class="col-sm-12 col-sm-12">
             <button (click)="novoResidente(novoResidenteForm.value)" style="margin-left: 10px"
-              class="btn btn-success botao pull-right">Próximo</button>
+              class="btn btn-success botao pull-right" [disabled]="!novoResidenteForm.valid">Próximo</button>
           </div>
         </div>
       </div>
@@ -263,3 +263,14 @@
   </div>
 
 </section>
+
+
+<!-- 
+
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal"
+            (click)="editarConvenio(convenioResidenteForm.value)"
+            [disabled]="!convenioResidenteForm.valid">Salvar</button>
+        <
+
+-->
