@@ -262,7 +262,7 @@
                     <label>Data de Nascimento </label>
                     <div class="input-group date">
                       <input type="date" class="form-control pull-right" id="datepicker"
-                        formControlName="DATA_NASCIMENTO">
+                        formControlName="DATA_NASCIMENTO" max="2999-12-31">
                     </div>
                     <br>
                   </div>
@@ -408,7 +408,7 @@
                     <salv-input-container errorMessage="Campo Obrigatório" label="Data de Acolhimento">
                       <span class="text-danger">*</span>
                       <div class="input-group date">
-                        <input type="date" class="form-control pull-right" id="datepicker"
+                        <input type="date" max="2999-12-31" class="form-control pull-right" id="datepicker"
                           formControlName="DATA_ACOLHIMENTO">
                       </div>
                     </salv-input-container>
