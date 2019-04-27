@@ -16,9 +16,6 @@
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-success" *ngIf="countDependentes()" data-toggle="modal"
                             data-target="#modalDependente">Adicionar</button>
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                        </button>
-                    </div>
                 </div>
                 <div class="box-body">
                     <div *ngIf="countDependentes(); else notDependentes">
