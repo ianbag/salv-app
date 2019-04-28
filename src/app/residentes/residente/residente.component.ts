@@ -11,6 +11,7 @@ import { Telefone_Pessoa } from 'src/app/funcionarios/funcionario.model';
 import { FormArray, Validators, FormGroup, AbstractControl, FormControl, FormBuilder } from '@angular/forms';
 import { NotificationService } from 'src/app/shared/notification.service';
 import { NgxSpinnerService } from 'ngx-spinner'
+import { Beneficio } from './infos-beneficios/beneficio.model';
 
 @Component({
   selector: 'salv-residente',
@@ -38,6 +39,7 @@ export class ResidenteComponent implements OnInit {
   residente: Residente
   familiares: Familiar[]
   convenios: Convenio[]
+  beneficios: Beneficio[]
   residenteConvenios: Residente_Convenio[]
 
   familiarResidenteForm: FormGroup
@@ -70,6 +72,8 @@ export class ResidenteComponent implements OnInit {
     this.getFamiliar()
 
     this.getConvenio()
+
+    this.getBeneficio()
 
 
     this.familiarResidenteForm = this.formBuilder.group({
@@ -109,6 +113,11 @@ export class ResidenteComponent implements OnInit {
   getConvenio() {
     this.residentesService.convenioById(this.route.snapshot.params['id'])
       .subscribe(convenio => this.convenios = convenio)
+  }
+
+  getBeneficio(){
+    this.residentesService.beneficiosById(this.route.snapshot.params['id'])
+    .subscribe(beneficio => this.beneficios = beneficio)
   }
 
 
