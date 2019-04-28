@@ -17,37 +17,44 @@
   <div id="content">
     <div class="form-group">
       <a type="submit" class="btn btn-primary" [routerLink]="['/novo-acompanhamento']">Novo acompanhamento</a>
-    </div>
 
-    <input input class="form-control" style="width: 40%" placeholder="Pesquisa" type="text" name="search" [(ngModel)]="filter">
-    <br>
-
-    <div class="box box-default table-responsive no-padding" [@acompanhamentosAppeared]="acompanhamentosState">
-      <h1>Visualização geral dos acompanhamentos</h1>
-
+      <!-- FILTRO -->
       <a class="dropdown btn btn-success pull-right" style="float:right; margin-right: 1cm;">
 
         <a href="#" class="dropdown-toggle pull-left" data-toggle="dropdown">Filtrar<span class="caret"></span></a>
 
          <!--MENU DA DROPDOWN-->
-        <ul class="dropdown-menu" role="menu" style="color:black">
+        <ul class="dropdown-menu" role="menu" style="color:black"> 
+          
+          <!--FILTRO POR DATA-->         
+          <p id="date_filter">
+            <span id="date-label-from" class="date-label" style="margin: 5px">De: </span><input class="date_range_filter date" type="text" id="datepicker_from" />
+            <span id="date-label-to" class="date-label" style="margin: 5px">Até: <input class="date_range_filter date" type="text" id="datepicker_to"/></span>
+          </p>      
+              
+        </ul>
+    </a>
+    <!-- FIM DO FILTRO -->
+    
+        <!-- PESQUISA -->
+            <a class="dropdown btn btn-success pull-right" style="float:right; margin-right: 1cm;">
 
-             <!--FILTRO POR NOME-->
-                    <div class="input-group">
-                        <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
-                        <input input class="form-control" placeholder="Atividade" type="text" name="search" [(ngModel)]="filter">
-                    </div>
-                    
-                    <!--FILTRO POR DATA-->
-                   
-                    <p id="date_filter">
-                      <span id="date-label-from" class="date-label">From: </span><input class="date_range_filter date" type="text" id="datepicker_from" />
-                      <span id="date-label-to" class="date-label">To:<input class="date_range_filter date" type="text" id="datepicker_to" />
-                        </span>
-                        </p>
-                  
-</ul>
-        </a>
+            <a href="#" class="dropdown-toggle pull-left" data-toggle="dropdown">Pesquisar<span class="caret"></span></a>
+
+             
+             <ul class="dropdown-menu" role="menu" style="color:black">
+
+            <div class="input-group" style="margin: 5px">
+                <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+                <input input class="form-control" placeholder="Pesquisar" type="text" name="search" [(ngModel)]="filter" style="height: 40px; width: 250px">
+            </div>
+           </ul>
+       </a>
+       <!-- FIM PESQUISA-->
+    </div>
+
+    <div class="box box-default table-responsive no-padding" [@acompanhamentosAppeared]="acompanhamentosState">
+      <h1>Visualização geral dos acompanhamentos</h1>
       
       <br>
       <table class="table table-hover" id="datatable">
