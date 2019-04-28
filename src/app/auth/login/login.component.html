@@ -1,33 +1,33 @@
 <!-- INÍCIO DO CONTEÚDO -->
-<div class="row">
-  <div class="login-logo">
-    <img src="./../../../assets/img/dr.vida.png" Login>
-  </div>
-  <div class="col-xs-12 col-sm-offset-3 col-sm-6 login-box-body">
-    <p class="login-box-msg">Por favor, efetue o login para continuar</p>
-    <form [formGroup]="loginForm">
-      <salv-input-container [showTip]=false>
-        <input type="text" formControlName="email" class="form-control" placeholder="E-mail">
-        <span class="glyphicon glyphicon-user form-control-feedback icon-log-input"></span>
-      </salv-input-container>
+  <div class="row">
+    <div class="login-logo">
+      <img src="./../../../assets/img/dr.vida.png" Login>
+    </div>
+    <div class="col-xs-12 col-sm-offset-3 col-sm-6 login-box-body">
+      <p class="login-box-msg">Por favor, efetue o login para continuar</p>
+      <form [formGroup]="loginForm">
+        <salv-input-container [showTip]=false>
+          <input type="text" formControlName="email" class="form-control" placeholder="E-mail">
+          <span class="glyphicon glyphicon-user form-control-feedback icon-log-input"></span>
+        </salv-input-container>
 
-      <salv-input-container [showTip]=false>
-        <input type="password" formControlName="senha" class="form-control" placeholder="Senha">
-        <span class="glyphicon glyphicon-lock form-control-feedback icon-log-input"></span>
-      </salv-input-container>
+        <salv-input-container [showTip]=false>
+          <input type="password" formControlName="senha" class="form-control" placeholder="Senha">
+          <span class="glyphicon glyphicon-lock form-control-feedback icon-log-input"></span>
+        </salv-input-container>
 
-      <div class="row">
-        <div class="col-xs-12 esq-sen-log">
-          <a [routerLink]="['/esqueci-a-senha']" id="remindMyPassword"> Esqueceu sua senha?</a>
+        <div class="row">
+          <div class="col-xs-12 esq-sen-log">
+            <a [routerLink]="['/esqueci-a-senha']" id="remindMyPassword"> Esqueceu sua senha?</a>
+          </div>
+          <!-- /.col -->
+          <div class=" col-xs-12">
+            <button type="submit" (click)="login()" [disabled]="loginForm.invalid"
+              class="btn btn-success btn-block btn-flat">Entrar</button>
+          </div>
+          <!-- /.col -->
         </div>
-        <!-- /.col -->
-        <div class=" col-xs-12">
-          <button type="submit" (click)="login()" [disabled]="loginForm.invalid"
-            class="btn btn-success btn-block btn-flat">Entrar</button>
-        </div>
-        <!-- /.col -->
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
-</div>
-<!-- FIM DO CONTEÚDO -->
+  <!-- FIM DO CONTEÚDO -->

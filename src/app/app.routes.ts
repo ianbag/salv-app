@@ -50,6 +50,7 @@ export const ROUTES: Routes = [
     { path: 'novo-acompanhamento', component: NovoAcompanhamentoComponent, canActivate: [AuthGuard] },
     { path: 'esqueci-a-senha', component: ForgetPasswordComponent },
     { path: 'esqueci-a-senha/:token', component: ResetPasswordComponent },
-    { path: '', component: TelaInicialComponent, canActivate: [AuthGuard] },
+    { path: 'home', component: TelaInicialComponent, canActivate: [AuthGuard] },
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: '**', component: NotFoundComponent }
 ]

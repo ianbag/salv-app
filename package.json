@@ -20,6 +20,7 @@
     "@angular/platform-browser": "~7.2.9",
     "@angular/platform-browser-dynamic": "~7.2.9",
     "@angular/router": "~7.2.9",
+    "@types/jquery": "^3.3.29",
     "admin-lte": "^2.4.10",
     "core-js": "^2.6.5",
     "html2canvas": "^1.0.0-alpha.12",
