@@ -262,9 +262,15 @@ export class AcompanhamentoComponent implements OnInit {
       acompanhamento_funcionario = [Object.assign(this.editarAcompanhamentoForm.value.funcionarios[index], { "ACOMPANHAMENTO_CODIGO": this.codigo_acompanhamento })]
       this.acompanhamentoService.createAcompanhamentoFuncionario(acompanhamento_funcionario).subscribe(res => {
         if (res) {
+<<<<<<< HEAD
 
           this.acompanhamentoService.AcompanhamentoFuncionarioQuery(this.route.snapshot.params['id']).subscribe(res => {
 
+=======
+
+          this.acompanhamentoService.AcompanhamentoFuncionarioQuery(this.route.snapshot.params['id']).subscribe(res => {
+
+>>>>>>> upstream/master
             this.funcionarios1 = res
           })
         }
