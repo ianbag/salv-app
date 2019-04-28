@@ -208,6 +208,11 @@ export class ResidentesService {
         return this.http.put<Telefone>(`${SALV_API}/telefone/${codigoTelefone}`, telefone)
     }
 
+    createNewBeneficio(beneficio: Beneficio, codigoResidente){
+        beneficio.CODIGO_RESIDENTE = codigoResidente
+        return this.http.post<any>(`${SALV_API}/beneficio`, beneficio)
+    }
+
     reportResidentes() {
         return this.http.get(`${SALV_API}/relatorio_residentes`)
     }
