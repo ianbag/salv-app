@@ -3,7 +3,7 @@
   <button (click)="reportAcompanhamento()" class="btn btn-success" id="printReport"><i class="fa fa-print"></i></button>
   <div id="content">
     <div class="box box-editar" [@acompanhamentoAppeared]="acompanhamentoState">
-      <h1>Detalhes do Acompanhamento</h1>
+      <h1>Detalhes do acompanhamento</h1>
 
       
 
@@ -18,11 +18,6 @@
             style="color: red"><i class="fa fa-pencil"></i></span></a>
             
           <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse">
-              <i class="fa fa-minus">
-
-              </i>
-            </button>
           </div>
         </div>
         <div class="box-body" style>
@@ -38,7 +33,7 @@
             <div *ngFor="let acompanhamento_residente of residentes1" >            
             {{acompanhamento_residente?.NOME}}
           </div>
-          <br>
+          
 
         </div>
       </div>
@@ -86,7 +81,7 @@
                           da
                           atividade</label>
                         <div class="input-group date">
-                          <input type="date" class="form-control pull-right" id="datepicker" formControlName="DATA_ACOMPANHAMENTO">
+                          <input type="date" class="form-control pull-right" id="datepicker" formControlName="DATA_ACOMPANHAMENTO" max="2999-12-31">
                         </div>
                         <br>
                           </salv-input-container>

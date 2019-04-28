@@ -22,33 +22,38 @@
             </salv-input-container>
           </div>
 
-          <div class="col-sm-1 col-xs-12">
-            <br>z
-            <button style="margin-top: 17px" type="submit" class="btn btn-success botao"
-              [routerLink]="['/novo-convenio']">+</button>
+          <div class="col-sm-4 col-xs-12">
+            <br>
+            <button style="margin-top: 17px" type="submit" class="btn btn-default botao"
+              [routerLink]="['/novo-convenio']">Não encontrou o convênio que desejava? Cadaste um agora</button>
+              <br>
           </div>
 
 
-          <div class="col-sm-3 col-xs-12">
+          <div class="col-sm-4 col-xs-12">
             <salv-input-container errorMessage="Campo Obrigatório" label="Número do Convênio">
               <span class="text-danger">*</span>
               <input type="text" class="form-control" formControlName="NUMERO_CONVENIO"
                 placeholder="Nº de inscrição do convênio" autocomplete="off" maxlength="11">
             </salv-input-container>
           </div>
+
+          <div class="col-sm-4 col-xs-12" style="margin-top:10px">
+              <salv-input-container errorMessage="Campo Obrigatório" label="Titular do Convênio">
+                <span class="text-danger">*</span>
+                <input type="text" class="form-control" formControlName="TITULAR_CONVENIO" placeholder="Nome do Titular"
+                  autocomplete="off" maxlength="100">
+              </salv-input-container>
+            </div>
+
+            <div class="col-sm-4 col-xs-12" style="margin-left: 11px">
+              <br>
+              <label>Parentesco Titular</label>
+              <input type="text" class="form-control" formControlName="PARENTESCO_TITULAR"
+                placeholder="Parentesco Titular" autocomplete="off" maxlength="100">
+            </div>
           
-          <div class="col-sm-4 col-xs-12">
-            <salv-input-container errorMessage="Campo Obrigatório" label="Titular do Convênio">
-              <span class="text-danger">*</span>
-              <input type="text" class="form-control" formControlName="TITULAR_CONVENIO" placeholder="Nome do Titular"
-                autocomplete="off" maxlength="100">
-            </salv-input-container>
-          </div>
-          <div class="col-sm-4 col-xs-12">
-            <label>Parentesco Titular</label>
-            <input type="text" class="form-control" formControlName="PARENTESCO_TITULAR"
-              placeholder="Parentesco Titular" autocomplete="off" maxlength="100">
-          </div>
+          
 
 
         </div>
@@ -56,7 +61,7 @@
 
         <div class="col-sm-12 col-xs-12">
           <button (click)="convenioResidente(convenioResidenteForm.value)" style="margin-left: 10px"
-            class="btn btn-success botao pull-right">Finalizar
+            class="btn btn-success botao pull-right" [disabled]="!convenioResidenteForm.valid">Finalizar
             cadastro</button>
           <button type="submit" class="btn btn-default botao pull-right"
             (click)="voltarFamiliar(convenioResidenteForm.value)" [routerLink]="['/familiar-residente']">Voltar</button>

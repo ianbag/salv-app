@@ -13,13 +13,8 @@
                 <div class="box-header with-border">
 
                     <h3 class="box-title">Dependentes</h3>
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-success" *ngIf="countDependentes()" data-toggle="modal"
-                            data-target="#modalDependente">Adicionar</button>
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                            <i class="fa fa-minus"></i>
-                        </button>
-                    </div>
+                    
+                        <button type="button" class="btn btn-success" *ngIf="countDependentes()" data-toggle="modal" data-target="#modalDependente">Adicionar</button>
                 </div>
                 <div class="box-body">
                     <div *ngIf="countDependentes(); else notDependentes">
@@ -39,6 +34,10 @@
                         </div>
                         <!--FIM DIV MODAL-->
                     </ng-template>
+
+                    <div class="botao">
+                            <a type="submit" class="btn btn-default botao" [routerLink]="['/funcionarios']">Voltar</a>
+                        </div>
                 </div>
             </div>
 
@@ -147,4 +146,6 @@
 
         </div>
     </div>
+
+    
 </section>
