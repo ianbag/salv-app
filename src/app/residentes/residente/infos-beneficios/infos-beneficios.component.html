@@ -1,0 +1,34 @@
+<div class="col-md-12" *ngIf="beneficio">
+  <div class="col-sm-12 col-xs-12">
+    <h4><strong>{{beneficio?.NOME_BENEFICIO}}</strong>
+      <a ><i class="fa fa-close"></i></a>
+      <a data-toggle="modal"
+        attr.data-target="#modalEditarBeneficio{{beneficio?.NOME_BENEFICIO}}"><i class="fa fa-pencil"></i></a>
+    </h4>
+  </div>
+
+
+  <hr class="col-md-12">
+
+  <!-- INICIO EDITAR BENEFICIO -->
+  <div class="modal fade" id="modalEditarBeneficio{{beneficio?.NOME_BENEFICIO}}" tabindex="-1" role="dialog"
+    attr.aria-labelledby="modalEditarBeneficio{{beneficio?.NOME_BENEFICIO}}" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="col-sm-12 col-sm-12" id="formTitle">
+            <h4 class="text-center"><strong>Editar Beneficio</strong></h4>
+          </div>
+
+   
+              
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal">Salvar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIM MODAL EDITAR BENEFICIO -->
+</div>
