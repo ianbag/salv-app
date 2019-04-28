@@ -199,11 +199,11 @@
           </div>
           <!--FIM DIV MODAL-->
           <div class="col-xs-4 col-xs-12" *ngFor="let telefone of telefones">
-            <strong>Telefone: </strong> ({{telefone?.TELEFONE.DDD}}) {{telefone?.TELEFONE.NUMERO}} <a><span
+            <strong>Telefone: </strong> ({{telefone?.TELEFONE.DDD}}) {{telefone?.TELEFONE.NUMERO}} <a><span id="iconesForm"
                 (click)="deleteTelefone(funcionario.PESSOA.CODIGO, telefone.TELEFONE.CODIGO); $event.stopPropagation()"><i
                   class="fa fa-close"></i></span></a>
             <a data-toggle="modal" data-target="#modalUpdateTelefone"
-              (click)="buscaTelefone(telefone.TELEFONE.CODIGO)"><span><i class="fa fa-pencil"></i></span></a>
+              (click)="buscaTelefone(telefone.TELEFONE.CODIGO)"><span id="iconesForm"><i class="fa fa-pencil"></i></span></a>
           </div>
           <!--DIV MODAL INICIO-->
           <div class="col-sm-12 col-xs-12">
@@ -330,11 +330,11 @@
             </div>
             <div *ngFor="let endereco of enderecos">
               <div class="col-xs-4 col-xs-12">
-                <a><span
+                <a><span id="iconesForm"
                     (click)="deleteEndereco(funcionario.PESSOA.CODIGO, endereco.ENDERECO.CODIGO); $event.stopPropagation()"><i
                       class="fa fa-close"></i></span></a>
                 <a data-toggle="modal" data-target="#modalUpdateEndereco"
-                  (click)="buscaEndereco(endereco.ENDERECO.CODIGO)"><span><i class="fa fa-pencil"></i></span></a>
+                  (click)="buscaEndereco(endereco.ENDERECO.CODIGO)"><span id="iconesForm"><i class="fa fa-pencil"></i></span></a>
                 <strong>Endereço: </strong> {{endereco?.ENDERECO.ENDERECO}}
               </div>
               <div class="col-xs-4 col-xs-12">
@@ -458,7 +458,7 @@
           <div class="col-md-12" *ngIf="haveLogin(); else notLogin">
             <div class="col-sm-12 col-xs-12">
               <h4><strong>Informações de login</strong></h4>
-              <a data-toggle="modal" data-target="#modalUpdateUsuario" (click)="buscaUsuario()"><span><i
+              <a data-toggle="modal" data-target="#modalUpdateUsuario" (click)="buscaUsuario()"><span id="iconesForm"><i
                     class="fa fa-pencil"></i></span></a>
             </div>
             <div class="col-xs-4 col-xs-12">
