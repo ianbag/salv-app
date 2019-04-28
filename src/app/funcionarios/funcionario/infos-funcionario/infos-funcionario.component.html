@@ -2,16 +2,14 @@
   <div class="box-header with-border">
     <h3 class="box-title">Informações do Funcionário</h3>
     <div class="box-tools pull-right">
-      <button type="button" class="btn tbn-box-tool" data-widget="collapse">
-        <i class="fa fa-minus"></i>
-      </button>
+        <a (click)="buscaFuncionario()" type="submit" class="btn btn-warning botao" data-toggle="modal" data-target="#modalEditarFuncionario">Editar</a>           
     </div>
+    
   </div>
   <div class="box-body">
     <div class="row col-md-12">
       <div class="col-md-12">
-        <a (click)="buscaFuncionario()" data-toggle="modal" data-target="#modalEditarFuncionario"><span
-            style="color: red"><i class="fa fa-pencil"></i></span></a>
+
         <div class="col-sm-12 col-xs-12">
           <h4><strong>Informações pessoais</strong></h4>
         </div>
@@ -157,10 +155,6 @@
         <div class="col-md-12">
           <!--DIV MODAL INICIO-->
           <div class="col-sm-12 col-xs-12">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modalTelefone">
-              <i class="fa fa-plus"></i>
-            </button>
             <!-- Modal -->
             <div class="modal fade" id="modalTelefone" tabindex="-1" role="dialog" aria-labelledby="modalTelefone"
               aria-hidden="true">
@@ -198,7 +192,10 @@
               </div>
             </div>
             <!--FIM MODAL-->
-            <h4><strong>Telefones</strong></h4>
+            <!-- Button trigger modal -->
+            <h4><strong>Telefones <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modalTelefone">
+                <i class="fa fa-plus"></i>
+              </button></strong></h4>
           </div>
           <!--FIM DIV MODAL-->
           <div class="col-xs-4 col-xs-12" *ngFor="let telefone of telefones">
@@ -252,10 +249,6 @@
           <div class="col-md-12">
             <!--DIV MODAL-->
             <div class="col-sm-12 col-xs-12">
-              <!-- Button trigger modal -->
-              <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modalEndereco">
-                <i class="fa fa-plus"></i>
-              </button>
               <!-- Modal -->
               <div class="modal fade" id="modalEndereco" tabindex="-1" role="dialog" aria-labelledby="modalEndereco"
                 aria-hidden="true">
@@ -305,8 +298,8 @@
                               </div>
                               <div class="col-sm-3 col-sm-12">
                                 <label>CEP</label>
-                                <input type="text" class="form-control" formControlName="CEP" placeholder="CEP"
-                                  autocomplete="off" maxlength="8">
+                                <input type="text" mask="00.000-000" class="form-control" formControlName="CEP" placeholder="CEP"
+                                  autocomplete="off" maxlength="10">
                               </div>
                               <div class="col-sm-3 col-sm-12">
                                 <label>Referência</label>
@@ -330,7 +323,10 @@
             </div>
             <!--DIV MODAL-->
             <div class="col-xs-12 col-xs-12">
-              <h4><strong>Endereços</strong></h4>
+              <!-- Button trigger modal -->
+              <h4><strong>Endereços <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modalEndereco">
+                  <i class="fa fa-plus"></i>
+                </button></strong></h4>
             </div>
             <div *ngFor="let endereco of enderecos">
               <div class="col-xs-4 col-xs-12">
@@ -550,7 +546,7 @@
                               <div class="col-sm-4 col-sm-12">
                                 <label>Senha</label>
                                 <input type="password" class="form-control" formControlName="SENHA" placeholder="Senha"
-                                  autocomplete="off" maxlength="25">
+                                  autocomplete="off" minlength="4" maxlength="100">
                               </div>
                             </div>
                           </div>

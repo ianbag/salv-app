@@ -51,7 +51,7 @@
 
               <div class="col-sm-3 col-sm-12" id="inputValidator" formGroupName="PESSOA">
                 <salv-input-container errorMessage="Mínimo 9 caracteres" label="RG">
-                  <input type="text" mask="00.000.000-0" class="form-control" formControlName="RG" placeholder="RG"
+                  <input type="text" mask="00.000.000-A" class="form-control" formControlName="RG" placeholder="RG" maxlength="12"
                     autocomplete="off">
                 </salv-input-container>
               </div>
@@ -93,7 +93,7 @@
               <div class="col-sm-4 col-sm-12" formGroupName="PESSOA">
                 <label>Data de Nascimento </label>
                 <div class="input-group date">
-                  <input type="date" class="form-control pull-right" id="datepicker" formControlName="DATA_NASCIMENTO">
+                  <input type="date" class="form-control pull-right" id="datepicker" formControlName="DATA_NASCIMENTO" max="2999-12-31">
                 </div>
                 <br>
               </div>
@@ -243,7 +243,7 @@
                 <salv-input-container errorMessage="Campo Obrigatório" label="Data de Acolhimento">
                   <span class="text-danger">*</span>
                   <div class="input-group date">
-                    <input type="date" class="form-control pull-right" id="datepicker"
+                    <input type="date" max="2999-12-31" class="form-control pull-right" id="datepicker"
                       formControlName="DATA_ACOLHIMENTO">
                   </div>
                 </salv-input-container>
@@ -255,7 +255,7 @@
           <!--BOTÃO-->
           <div class="col-sm-12 col-sm-12">
             <button (click)="novoResidente(novoResidenteForm.value)" style="margin-left: 10px"
-              class="btn btn-success botao pull-right">Próximo</button>
+              class="btn btn-success botao pull-right" [disabled]="!novoResidenteForm.valid">Próximo</button>
           </div>
         </div>
       </div>

@@ -5,7 +5,8 @@ import { Residente } from './../../residentes/residente/residente.model';
 import { FormGroup, FormBuilder, Validators, AbstractControl, FormControl } from '@angular/forms';
 import { NovoAcompanhamentoService } from './../novo-acompanhamento/novo-acompanhamento.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+
+import { Component, OnInit, ElementRef, ViewChild, Input, EventEmitter } from '@angular/core';
 import { AcompanhamentosService } from '../acompanhamentos.service';
 import { Acompanhamento, AcompanhamentoQuery, Acompanhamento_Residente, Acompanhamento_Funcionario } from './acompanhamento.model';
 import { trigger, state, transition, style, animate } from '@angular/animations';
@@ -34,6 +35,7 @@ export class AcompanhamentoComponent implements OnInit {
   acompanhamento1: Acompanhamento[]
   funcionarios1: any[]
   residentes1: any[]
+
   editarAcompanhamentoForm: FormGroup
   codigo_acompanhamento: number
   ACOMPANHAMENTO_CODIGO: any[]
@@ -71,6 +73,7 @@ export class AcompanhamentoComponent implements OnInit {
   ngOnInit() {
 
     this.spinner.show();
+
     this.acompanhamentosService.acompanhamentoById(this.route.snapshot.params['id'])
       .subscribe(acompanhamento => {
         this.spinner.hide()
@@ -211,19 +214,45 @@ export class AcompanhamentoComponent implements OnInit {
 
     this.acompanhamentoService.updateAcompanhamento(editarAcomp, this.codigo_acompanhamento).subscribe(res => {
 
-      if (this.editarAcompanhamentoForm.valid == true && this.selectedFuncionarios != null && this.selectedResidentes != null) {
+      if (res) {
 
-        this.ns.notify(`Acompanhamento inserido com sucesso!`)
-        this.router.navigate(['/acompanhamentos'])
+        this.ns.notify(`Acompanhamento atualizado com sucesso!`)
+      
 
+
+        this.acompanhamento1 = res[0]
+
+        if (res) {
+
+          this.acompanhamentoService.acompanhamentoById(this.route.snapshot.params['id']).subscribe(res => {
+            this.acompanhamento1 = res[0]
+            console.log(res)
+            this.editarAcompanhamentoForm.reset()
+            this.ns.notify('Acompanhamento atualizado com sucesso!')
+          })
+        }
       } else {
-        this.markAllDirty(this.editarAcompanhamentoForm)
-        console.log(this.editarAcompanhamentoForm.controls)
-        this.ns.notify(`Preencha os campos obrigatórios!`)
+        if (this.editarAcompanhamentoForm.valid == true && this.selectedFuncionarios != null && this.selectedResidentes != null) {
+
+          this.ns.notify(`Acompanhamento inserido com sucesso!`)
+          this.router.navigate(['/acompanhamentos'])
+
+        } else {
+          if (this.editarAcompanhamentoForm.valid == true && this.selectedFuncionarios != null && this.selectedResidentes != null) {
+
+            this.ns.notify(`Acompanhamento inserido com sucesso!`)
+            this.router.navigate(['/acompanhamentos'])
+
+          } else {
+            this.markAllDirty(this.editarAcompanhamentoForm)
+            console.log(this.editarAcompanhamentoForm.controls)
+            this.ns.notify(`Preencha os campos obrigatórios!`)
+          }
+        }
+        console.log('Edição acompanhamento', editarAcomp, this.codigo_acompanhamento)
       }
-    })
-    console.log('Edição acompanhamento', editarAcomp)
-  }
+  })
+}
 
 
 
@@ -232,6 +261,13 @@ export class AcompanhamentoComponent implements OnInit {
 
       acompanhamento_funcionario = [Object.assign(this.editarAcompanhamentoForm.value.funcionarios[index], { "ACOMPANHAMENTO_CODIGO": this.codigo_acompanhamento })]
       this.acompanhamentoService.createAcompanhamentoFuncionario(acompanhamento_funcionario).subscribe(res => {
+        if (res) {
+
+          this.acompanhamentoService.AcompanhamentoFuncionarioQuery(this.route.snapshot.params['id']).subscribe(res => {
+
+            this.funcionarios1 = res
+          })
+        }
 
         console.log('acompanhamento funcionario', acompanhamento_funcionario)
       })
@@ -244,6 +280,14 @@ export class AcompanhamentoComponent implements OnInit {
 
       acompanhamento_residente = [Object.assign(this.editarAcompanhamentoForm.value.residentes[index], { "ACOMPANHAMENTO_CODIGO": this.codigo_acompanhamento })]
       this.acompanhamentoService.createAcompanhamentoResidente(acompanhamento_residente).subscribe(res => {
+        if (res) {
+
+          this.acompanhamentoService.AcompanhamentoResidenteQuery(this.route.snapshot.params['id']).subscribe(res => {
+
+            this.residentes1 = res
+
+          })
+        }
 
         console.log('acompanhamento residente', acompanhamento_residente)
       })

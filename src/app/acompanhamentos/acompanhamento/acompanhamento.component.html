@@ -3,7 +3,7 @@
   <button (click)="reportAcompanhamento()" class="btn btn-success" id="printReport"><i class="fa fa-print"></i></button>
   <div id="content">
     <div class="box box-editar" [@acompanhamentoAppeared]="acompanhamentoState">
-      <h1>Detalhes do Acompanhamento</h1>
+      <h1>Detalhes do acompanhamento</h1>
 
       
 
@@ -13,17 +13,11 @@
 
          
           <h3 class="box-title">Informações do acompanhamento</h3>
-
-          <a  data-toggle="modal" data-target="#modalResidente"><span
-            style="color: red"><i class="fa fa-pencil"></i></span></a>
-            
+                   
           <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse">
-              <i class="fa fa-minus">
-
-              </i>
-            </button>
+              <a type="submit" class="btn btn-warning botao" data-toggle="modal" data-target="#modalResidente">Editar</a>           
           </div>
+
         </div>
         <div class="box-body" style>
                    
@@ -38,7 +32,7 @@
             <div *ngFor="let acompanhamento_residente of residentes1" >            
             {{acompanhamento_residente?.NOME}}
           </div>
-          <br>
+          
 
         </div>
       </div>
@@ -82,11 +76,11 @@
               
                         <div class="col-sm-3 col-xs-12" id="inputValidator">
                           <salv-input-container errorMessage="Campo Obrigatório">
-                        <label> <i class="fa fa-calendar"></i> Data
+                        <label for="exampleInputPassword1"> <i class="fa fa-calendar"></i> Data
                           da
                           atividade</label>
                         <div class="input-group date">
-                          <input type="date" class="form-control pull-right" id="datepicker" formControlName="DATA_ACOMPANHAMENTO">
+                          <input type="date" class="form-control pull-right" id="datepicker" formControlName="DATA_ACOMPANHAMENTO" max="2999-12-31">
                         </div>
                         <br>
                           </salv-input-container>
@@ -135,17 +129,19 @@
                   </form>
                 </div>
 
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal"[disabled]="!editarAcompanhamentoForm.valid">Cancelar</button>
+                  <button type="button" class="btn btn-success" data-dismiss="modal" (click)="editarAcompanhamento(editarAcompanhamentoForm.value); updateAcompanhamentoFuncionario();  updateAcompanhamentoResidente()"
+                  [disabled]="!editarAcompanhamentoForm.valid" 
+                   >Salvar</button>
+                </div>
+
            </div>
-           <div class="modal-footer">
-             <button type="button" class="btn btn-secondary" data-dismiss="modal"[disabled]="!editarAcompanhamentoForm.valid">Cancelar</button>
-             <button type="button" class="btn btn-success" data-dismiss="modal" (click)="editarAcompanhamento(editarAcompanhamentoForm.value); updateAcompanhamentoFuncionario();  updateAcompanhamentoResidente()"
-             [disabled]="!editarAcompanhamentoForm.valid" 
-              >Salvar</button>
-           </div>
+          
          </div>
        </div>
      </div>
-     <!-- FIM MODAL NOVO CONVENIO -->
+     <!-- FIM MODAL ACOMPANHAMENTO -->
 
 
     </div>
