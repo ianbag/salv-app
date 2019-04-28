@@ -5,10 +5,11 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { FuncionariosService } from '../funcionarios.service';
 import { ActivatedRoute } from '@angular/router';
 import * as jspdf from 'jspdf'
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NotificationService } from 'src/app/shared/notification.service';
 import { DialogConfirmService } from 'src/app/residentes/dialog-confirm.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { UniqueValuesValidators } from 'src/app/shared/validators/unique-values/unique-values.component';
 
 @Component({
   selector: 'salv-funcionario',
@@ -39,7 +40,7 @@ export class FuncionarioComponent implements OnInit {
   novoDependenteForm: FormGroup
 
 
-  constructor(private fs: FuncionariosService, private route: ActivatedRoute, private fb: FormBuilder, private ns: NotificationService, private dcs: DialogConfirmService, private spinner: NgxSpinnerService) { }
+  constructor(private fs: FuncionariosService, private route: ActivatedRoute, private fb: FormBuilder, private ns: NotificationService, private dcs: DialogConfirmService, private spinner: NgxSpinnerService, private uniqueValidators: UniqueValuesValidators) { }
 
   ngOnInit() {
     this.spinner.show()
@@ -67,9 +68,9 @@ export class FuncionarioComponent implements OnInit {
       NOME: this.fb.control(null, []),
       SOBRENOME: this.fb.control(null, []),
       DATA_NASCIMENTO: this.fb.control(null, []),
-      RG: this.fb.control(null, []),
-      CPF: this.fb.control(null, []),
-      NUMERO_CERTIDAO_NASCIMENTO: this.fb.control(null, []),
+      RG: this.fb.control(null, [Validators.minLength(9)], this.uniqueValidators.validateDependenteRG(null, null, null) ),
+      CPF: this.fb.control(null, [Validators.minLength(11)], this.uniqueValidators.validateDependenteCPF(null, null, null)),
+      NUMERO_CERTIDAO_NASCIMENTO: this.fb.control(null, [], this.uniqueValidators.validateDependenteNumeroCertidao(null, null, null)),
       FOLHA_CERTIDAO_NASCIMENTO: this.fb.control(null, []),
       LIVRO_CERTIDAO_NASCIMENTO: this.fb.control(null, []),
       CIDADE_CERTIDAO_NASCIMENTO: this.fb.control(null, []),
