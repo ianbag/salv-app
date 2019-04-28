@@ -13,31 +13,44 @@
 
     <div class="form-group">
       <a type="submit" class="btn btn-primary" [routerLink]="['/novo-residente']">Novo Residente</a>
-    </div>
 
-    <input input class="form-control" style="width: 40%" placeholder="Pesquisa" type="text" name="search" [(ngModel)]="filter">
-    <br>
-    
-    <div class="box box-default table-responsive no-padding" [@residentesAppeared]="residentesState">
-      <h1>Visualização geral dos residentes</h1>
-
+      <!-- FILTRO -->
       <a class="dropdown btn btn-success pull-right" style="float:right; margin-right: 1cm;">
 
         <a href="#" class="dropdown-toggle pull-left" data-toggle="dropdown">Filtrar<span class="caret"></span></a>
 
-        <!--MENU DA DROPDOWN-->
-        <ul class="dropdown-menu" role="menu" style="color:black">
-
-         
-          <!--FILTRO INATIVOS-->
-          <li class="divider"></li>
-          <input type="checkbox" id="Desativados" [(ngModel)]="Desativados" ng-true-value="YES" ng-false-value="NO"
-            (click)="residentesInativoss()"> Residentes Desativados
-          <br>
-
-
+         <!--MENU DA DROPDOWN-->
+        <ul class="dropdown-menu" role="menu" style="color:black"> 
+                   
+              <!--FILTRO INATIVOS-->
+              <li class="divider"></li>                     
+              <input type="checkbox" id="Desativados" [(ngModel)]="Desativados" (click)="residentesInativoss()" ng-true-value = "YES" ng-false-value="NO" style="margin: 5px"> Residentes desativados  
+              <br>
+              
         </ul>
-      </a>
+    </a>
+    <!-- FIM DO FILTRO -->
+    
+        <!-- PESQUISA -->
+            <a class="dropdown btn btn-success pull-right" style="float:right; margin-right: 1cm;">
+
+            <a href="#" class="dropdown-toggle pull-left" data-toggle="dropdown">Pesquisar<span class="caret"></span></a>
+
+             
+             <ul class="dropdown-menu" role="menu" style="color:black">
+
+            <div class="input-group" style="margin: 5px">
+                <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+                <input input class="form-control" placeholder="Pesquisar" type="text" name="search" [(ngModel)]="filter" style="height: 40px; width: 250px">
+            </div>
+           </ul>
+       </a>
+       <!-- FIM PESQUISA-->   
+    </div>
+    <br>
+    
+    <div class="box box-default table-responsive no-padding" [@residentesAppeared]="residentesState">
+      <h1>Visualização geral dos residentes</h1>
 
       <br>
 
