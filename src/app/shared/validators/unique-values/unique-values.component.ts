@@ -11,9 +11,9 @@ import { ValidatorService } from '../validator.service';
 export class UniqueValuesValidators {
   constructor(private validatorService: ValidatorService) { }
 
-  validatePessoaCpf(): AsyncValidatorFn {
+  validatePessoaCpf(CODIGO): AsyncValidatorFn {
     return (control: AbstractControl): Observable<{ [key: string]: any } | null> => {
-      return this.validatorService.uniquePessoaCPF(control.value)
+      return this.validatorService.uniquePessoaCPF(control.value, CODIGO)
         .pipe(
           map(res => {
             if (res.value == 0 && control.value != null && control.value != '')  // se nao for unico
@@ -23,9 +23,9 @@ export class UniqueValuesValidators {
     }
   }
 
-  validatePessoaRG(): AsyncValidatorFn {
+  validatePessoaRG(CODIGO): AsyncValidatorFn {
     return (control: AbstractControl): Observable<{ [key: string]: any } | null> => {
-      return this.validatorService.uniquePessoaRG(control.value)
+      return this.validatorService.uniquePessoaRG(control.value, CODIGO)
         .pipe(
           map(res => {
             if (res.value == 0 && control.value != null)  // se nao for unico
@@ -35,9 +35,9 @@ export class UniqueValuesValidators {
     }
   }
 
-  validateResidenteCartaoSAMS(): AsyncValidatorFn {
+  validateResidenteCartaoSAMS(CODIGO): AsyncValidatorFn {
     return (control: AbstractControl): Observable<{ [key: string]: any } | null> => {
-      return this.validatorService.uniqueResidenteCartaoSAMS(control.value)
+      return this.validatorService.uniqueResidenteCartaoSAMS(control.value, CODIGO)
         .pipe(
           map(res => {
             if (res.value == 0 && control.value != null && control.value != '')  // se nao for unico
@@ -47,9 +47,9 @@ export class UniqueValuesValidators {
     }
   }
 
-  validateResidenteCartaoSUS(): AsyncValidatorFn {
+  validateResidenteCartaoSUS(CODIGO): AsyncValidatorFn {
     return (control: AbstractControl): Observable<{ [key: string]: any } | null> => {
-      return this.validatorService.uniqueResidenteCartaoSUS(control.value)
+      return this.validatorService.uniqueResidenteCartaoSUS(control.value, CODIGO)
         .pipe(
           map(res => {
             if (res.value == 0 && control.value != null && control.value != '')  // se nao for unico
@@ -59,9 +59,9 @@ export class UniqueValuesValidators {
     }
   }
 
-  validateResidenteContaINSS(): AsyncValidatorFn {
+  validateResidenteContaINSS(CODIGO): AsyncValidatorFn {
     return (control: AbstractControl): Observable<{ [key: string]: any } | null> => {
-      return this.validatorService.uniqueResidenteContaINSS(control.value)
+      return this.validatorService.uniqueResidenteContaINSS(control.value, CODIGO)
         .pipe(
           map(res => {
             if (res.value == 0 && control.value != null && control.value != '')  // se nao for unico
@@ -71,9 +71,9 @@ export class UniqueValuesValidators {
     }
   }
 
-  validateResidenteNumeroCertidao(): AsyncValidatorFn {
+  validateResidenteNumeroCertidao(CODIGO): AsyncValidatorFn {
     return (control: AbstractControl): Observable<{ [key: string]: any } | null> => {
-      return this.validatorService.uniqueResidenteNumeroCertidao(control.value)
+      return this.validatorService.uniqueResidenteNumeroCertidao(control.value, CODIGO)
         .pipe(
           map(res => {
             if (res.value == 0 && control.value != null && control.value != '')  // se nao for unico
@@ -83,9 +83,9 @@ export class UniqueValuesValidators {
     }
   }
 
-  validateResidenteNumeroInss(): AsyncValidatorFn {
+  validateResidenteNumeroInss(CODIGO): AsyncValidatorFn {
     return (control: AbstractControl): Observable<{ [key: string]: any } | null> => {
-      return this.validatorService.uniqueResidenteNumeroInss(control.value)
+      return this.validatorService.uniqueResidenteNumeroInss(control.value, CODIGO)
         .pipe(
           map(res => {
             if (res.value == 0 && control.value != null && control.value != '')  // se nao for unico
@@ -95,9 +95,9 @@ export class UniqueValuesValidators {
     }
   }
 
-  validateResidenteTituloEleitor(): AsyncValidatorFn {
+  validateResidenteTituloEleitor(CODIGO): AsyncValidatorFn {
     return (control: AbstractControl): Observable<{ [key: string]: any } | null> => {
-      return this.validatorService.uniqueResidenteTituloEleitor(control.value)
+      return this.validatorService.uniqueResidenteTituloEleitor(control.value, CODIGO)
         .pipe(
           map(res => {
             if (res.value == 0 && control.value != null && control.value != '')  // se nao for unico
@@ -107,9 +107,9 @@ export class UniqueValuesValidators {
     }
   }
 
-  validateDependenteCPF(): AsyncValidatorFn {
+  validateDependenteCPF(CODIGO, NOME, SOBRENOME): AsyncValidatorFn {
     return (control: AbstractControl): Observable<{ [key: string]: any } | null> => {
-      return this.validatorService.uniqueDependenteCPF(control.value)
+      return this.validatorService.uniqueDependenteCPF(control.value, CODIGO, NOME, SOBRENOME)
         .pipe(
           map(res => {
             if (res.value == 0 && control.value != null && control.value != '')  // se nao for unico
@@ -119,9 +119,9 @@ export class UniqueValuesValidators {
     }
   }
 
-  validateDependenteRG(): AsyncValidatorFn {
+  validateDependenteRG(CODIGO, NOME, SOBRENOME): AsyncValidatorFn {
     return (control: AbstractControl): Observable<{ [key: string]: any } | null> => {
-      return this.validatorService.uniqueDependenteRG(control.value)
+      return this.validatorService.uniqueDependenteRG(control.value, CODIGO, NOME, SOBRENOME)
         .pipe(
           map(res => {
             if (res.value == 0 && control.value != null && control.value != '')  // se nao for unico
@@ -131,9 +131,9 @@ export class UniqueValuesValidators {
     }
   }
 
-  validateDependenteNumeroCertidao(): AsyncValidatorFn {
+  validateDependenteNumeroCertidao(CODIGO, NOME, SOBRENOME): AsyncValidatorFn {
     return (control: AbstractControl): Observable<{ [key: string]: any } | null> => {
-      return this.validatorService.uniqueDependenteNumeroCertidao(control.value)
+      return this.validatorService.uniqueDependenteNumeroCertidao(control.value, CODIGO, NOME, SOBRENOME)
         .pipe(
           map(res => {
             if (res.value == 0 && control.value != null && control.value != '')  // se nao for unico
@@ -143,9 +143,9 @@ export class UniqueValuesValidators {
     }
   }
 
-  validateUsuarioEmail(): AsyncValidatorFn {
+  validateUsuarioEmail(CODIGO): AsyncValidatorFn {
     return (control: AbstractControl): Observable<{ [key: string]: any } | null> => {
-      return this.validatorService.uniqueUsuarioEmail(control.value)
+      return this.validatorService.uniqueUsuarioEmail(control.value, CODIGO)
         .pipe(
           map(res => {
             if (res.value == 0 && control.value != null && control.value != '')  // se nao for unico
@@ -155,9 +155,9 @@ export class UniqueValuesValidators {
     }
   }
 
-  validateUsuarioLogin(): AsyncValidatorFn {
+  validateUsuarioLogin(CODIGO): AsyncValidatorFn {
     return (control: AbstractControl): Observable<{ [key: string]: any } | null> => {
-      return this.validatorService.uniqueUsuarioLogin(control.value)
+      return this.validatorService.uniqueUsuarioLogin(control.value, CODIGO)
         .pipe(
           map(res => {
             if (res.value == 0 && control.value != null && control.value != '')  // se nao for unico

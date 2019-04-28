@@ -1,4 +1,3 @@
-
 <div class="col-md-12">
   <div class="col-sm-12 col-xs-12">
     <h4><strong>Informações pessoais</strong></h4>
@@ -64,8 +63,8 @@
                 <div class="row">
                   <div class="col-sm-6 col-sm-12">
                     <label>Nome</label>
-                    <input type="text" class="form-control" formControlName="NOME" placeholder="Nome"
-                      autocomplete="off" maxlength="50">
+                    <input type="text" class="form-control" formControlName="NOME" placeholder="Nome" autocomplete="off"
+                      maxlength="50">
                   </div>
                   <div class="col-sm-6 col-sm-12">
                     <label>Sobrenome</label>
@@ -80,26 +79,26 @@
                       placeholder="Data de Nascimento" id="datepicker" autocomplete="off" max="2999-12-31">
                   </div>
                   <div class="col-sm-4 col-sm-12" id="inputValidator">
-                      <salv-input-container label="RG">
-                    <input type="text" class="form-control" formControlName="RG" placeholder="RG" autocomplete="off"
-                      mask="00.000.000-A" maxlength="12">
-                      </salv-input-container>
+                    <salv-input-container errorMessage="Minimo 9 caracteres" label="RG">
+                      <input type="text" class="form-control" formControlName="RG" placeholder="RG" autocomplete="off"
+                        mask="00.000.000-A" maxlength="12">
+                    </salv-input-container>
                   </div>
                   <div class="col-sm-4 col-sm-12" id="inputValidator">
-                      <salv-input-container label="CPF">
-                    <input type="text" class="form-control" formControlName="CPF" placeholder="CPF" autocomplete="off"
-                      mask="000.000.000-00" maxlength="14">
-                      </salv-input-container>
+                    <salv-input-container errorMessage="Minimo 9 caracteres" label="CPF">
+                      <input type="text" class="form-control" formControlName="CPF" placeholder="CPF" autocomplete="off"
+                        mask="000.000.000-00" maxlength="14">
+                    </salv-input-container>
                   </div>
                 </div>
                 <hr class="col-md-11">
                 <div class="row">
                   <h6><strong>Certidão de Nascimento</strong></h6>
                   <div class="col-sm-4 col-sm-12" id="inputValidator">
-                      <salv-input-container label="Número">
-                    <input type="text" class="form-control" formControlName="NUMERO_CERTIDAO_NASCIMENTO"
-                      placeholder="Número" autocomplete="off" maxlength="5">
-                      </salv-input-container>
+                    <salv-input-container label="Número">
+                      <input type="text" class="form-control" formControlName="NUMERO_CERTIDAO_NASCIMENTO"
+                        placeholder="Número" autocomplete="off" maxlength="5">
+                    </salv-input-container>
                   </div>
                   <div class="col-sm-4 col-sm-12">
                     <label>Folha</label>

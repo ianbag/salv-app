@@ -6,6 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { NotificationService } from 'src/app/shared/notification.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Pessoa } from 'src/app/funcionarios/funcionario.model';
+import { UniqueValuesValidators } from 'src/app/shared/validators/unique-values/unique-values.component';
 
 @Component({
   selector: 'salv-infos-pessoais',
@@ -67,7 +68,8 @@ export class InfosPessoaisComponent implements OnInit {
     private router: Router,
     private notificationService: NotificationService,
     private route: ActivatedRoute,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private uniqueValidators: UniqueValuesValidators
   ) { }
 
   markAllDirty(control: AbstractControl) {
@@ -97,8 +99,8 @@ export class InfosPessoaisComponent implements OnInit {
       PESSOA: this.formBuilder.group({
         NOME: this.formBuilder.control(null, [Validators.required]),
         SOBRENOME: this.formBuilder.control(null, [Validators.required]),
-        CPF: this.formBuilder.control(null, [Validators.minLength(11)]),
-        RG: this.formBuilder.control(null, [Validators.minLength(9)]),
+        CPF: this.formBuilder.control(null, [Validators.minLength(11)], this.uniqueValidators.validatePessoaCpf(this.PESSOA_CODIGO)),
+        RG: this.formBuilder.control(null, [Validators.minLength(9)], this.uniqueValidators.validatePessoaRG(this.PESSOA_CODIGO)),
         ESTADO_CIVIL: this.formBuilder.control(null, []),
         SEXO: this.formBuilder.control(null, []),
         RELIGIAO: this.formBuilder.control(null, []),
@@ -110,7 +112,7 @@ export class InfosPessoaisComponent implements OnInit {
       APELIDO: this.formBuilder.control(null, []),
       PROFISSAO: this.formBuilder.control(null, []),
       // CERTIDAO NASCIMENTO INICIO
-      NUMERO_CERTIDAO_NASCIMENTO: this.formBuilder.control(null, []),
+      NUMERO_CERTIDAO_NASCIMENTO: this.formBuilder.control(null, [], this.uniqueValidators.validateResidenteNumeroCertidao(this.PESSOA_CODIGO)),
       FOLHA_CERTIDAO_NASCIMENTO: this.formBuilder.control(null, []),
       LIVRO_CERTIDAO_NASCIMENTO: this.formBuilder.control(null, []),
       CIDADE_CERTIDAO_NASCIMENTO: this.formBuilder.control(null, []),
@@ -118,24 +120,24 @@ export class InfosPessoaisComponent implements OnInit {
       //CERTIDAO NASCIMENTO FINAL
 
       //ELEITORAL INICIO
-      TITULO_ELEITOR: this.formBuilder.control(null, []),
+      TITULO_ELEITOR: this.formBuilder.control(null, [], this.uniqueValidators.validateResidenteTituloEleitor(this.PESSOA_CODIGO)),
       ZONA_ELEITORAL: this.formBuilder.control(null, []),
       SECAO_ELEITORAL: this.formBuilder.control(null, []),
       //ELEITORAL FINAL
 
       //INSS INICIO
-      NUMERO_INSS: this.formBuilder.control(null, []),
+      NUMERO_INSS: this.formBuilder.control(null, [], this.uniqueValidators.validateResidenteNumeroInss(this.PESSOA_CODIGO)),
       BANCO_INSS: this.formBuilder.control(null, []),
       AGENCIA_INSS: this.formBuilder.control(null, []),
-      CONTA_INSS: this.formBuilder.control(null, []),
+      CONTA_INSS: this.formBuilder.control(null, [], this.uniqueValidators.validateResidenteContaINSS(this.PESSOA_CODIGO)),
       SITUACAO_INSS: this.formBuilder.control(null, []),
       VALOR_INSS: this.formBuilder.control(null, []),
       PROVA_VIDA_INSS: this.formBuilder.control(null, []),
       //INSS FINAL
 
       //OUTROS INICIO
-      CARTAO_SAMS: this.formBuilder.control(null, []),
-      CARTAO_SUS: this.formBuilder.control(null, []),
+      CARTAO_SAMS: this.formBuilder.control(null, [], this.uniqueValidators.validateResidenteCartaoSAMS(this.PESSOA_CODIGO)),
+      CARTAO_SUS: this.formBuilder.control(null, [], this.uniqueValidators.validateResidenteCartaoSUS(this.PESSOA_CODIGO)),
       DATA_ACOLHIMENTO: this.formBuilder.control(null, [Validators.required])
       //OUTROS FINAL
     })
