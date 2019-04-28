@@ -81,7 +81,7 @@
                           </salv-input-container>
                         </div>
                         <div class="col-sm-6 col-sm-12" id="inputValidator" formGroupName="PESSOA">
-                          <salv-input-container erroMessage="Minimo 9 caracteres" label="RG">
+                          <salv-input-container errorMessage="Minimo 9 caracteres" label="RG">
                             <input type="text" mask="00.000.000-A" class="form-control" formControlName="RG"
                               placeholder="RG" autocomplete="off">
                           </salv-input-container>
@@ -485,14 +485,16 @@
                           </div>
                           <div class="row">
                             <div class="col-sm-6 col-sm-12">
-                              <label>E-mail</label>
+                              <salv-input-container label="Email">
                               <input type="text" class="form-control" formControlName="EMAIL" placeholder="E-mail"
                                 autocomplete="off" maxlength="100">
+                                </salv-input-container>
                             </div>
                             <div class="col-sm-6 col-sm-12">
-                              <label>Login</label>
+                              <salv-input-container label="Login">
                               <input type="text" class="form-control" formControlName="LOGIN" placeholder="Login"
                                 autocomplete="off" maxlength="100">
+                                </salv-input-container>
                             </div>
                           </div>
                         </div>

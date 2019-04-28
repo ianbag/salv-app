@@ -76,8 +76,8 @@ export class InfosFuncionarioComponent implements OnInit {
             REFERENCIA: this.fb.control(null, []),
         })
         this.novoUsuarioForm = this.fb.group({
-            EMAIL: this.fb.control(null, [], this.uniqueValidators.validateUsuarioEmail()),
-            LOGIN: this.fb.control(null, [], this.uniqueValidators.validateUsuarioLogin()),
+            EMAIL: this.fb.control(null, [], this.uniqueValidators.validateUsuarioEmail(null)),
+            LOGIN: this.fb.control(null, [], this.uniqueValidators.validateUsuarioLogin(null)),
             SENHA: this.fb.control(null, [])
         })
         this.updateTelefoneForm = this.fb.group({
@@ -95,16 +95,16 @@ export class InfosFuncionarioComponent implements OnInit {
             REFERENCIA: this.fb.control(null, [])
         })
         this.updateUsuarioForm = this.fb.group({
-            EMAIL: this.fb.control(null, []),
-            LOGIN: this.fb.control(null, [])
+            EMAIL: this.fb.control(null, [],  this.uniqueValidators.validateUsuarioEmail(this.route.snapshot.params['id'])),
+            LOGIN: this.fb.control(null, [],  this.uniqueValidators.validateUsuarioLogin(this.route.snapshot.params['id']))
         })
         this.updateFuncionarioForm = this.fb.group({
             //PESSOA
             PESSOA: this.fb.group({
                 NOME: this.fb.control(null, [Validators.required]),
                 SOBRENOME: this.fb.control(null, [Validators.required]),
-                CPF: this.fb.control(null, [Validators.required, Validators.minLength(11)], this.uniqueValidators.validatePessoaCpf()),
-                RG: this.fb.control(null, [Validators.required, Validators.minLength(9)], this.uniqueValidators.validatePessoaRG()),
+                CPF: this.fb.control(null, [Validators.required, Validators.minLength(11)], this.uniqueValidators.validatePessoaCpf(this.route.snapshot.params['id'])),
+                RG: this.fb.control(null, [Validators.required, Validators.minLength(9)], this.uniqueValidators.validatePessoaRG(this.route.snapshot.params['id'])),
                 ESTADO_CIVIL: this.fb.control(null, []),
                 SEXO: this.fb.control(null, [Validators.required]),
                 RELIGIAO: this.fb.control(null, []),

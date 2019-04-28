@@ -108,8 +108,8 @@ export class NovoResidenteComponent implements OnInit {
       PESSOA: this.formBuilder.group({
         NOME: this.formBuilder.control(null, [Validators.required]),
         SOBRENOME: this.formBuilder.control(null, [Validators.required]),
-        CPF: this.formBuilder.control(null, [Validators.minLength(11)], this.uniqueValidators.validatePessoaCpf()),
-        RG: this.formBuilder.control(null, [Validators.minLength(9)], this.uniqueValidators.validatePessoaRG()),
+        CPF: this.formBuilder.control(null, [Validators.minLength(11)], this.uniqueValidators.validatePessoaCpf(null)),
+        RG: this.formBuilder.control(null, [Validators.minLength(9)], this.uniqueValidators.validatePessoaRG(null)),
         ESTADO_CIVIL: this.formBuilder.control(null, []),
         SEXO: this.formBuilder.control(null, []),
         RELIGIAO: this.formBuilder.control(null, []),
@@ -121,7 +121,7 @@ export class NovoResidenteComponent implements OnInit {
       APELIDO: this.formBuilder.control(null, []),
       PROFISSAO: this.formBuilder.control(null, []),
       // CERTIDAO NASCIMENTO INICIO
-      NUMERO_CERTIDAO_NASCIMENTO: this.formBuilder.control(null, [], this.uniqueValidators.validateResidenteNumeroCertidao()),
+      NUMERO_CERTIDAO_NASCIMENTO: this.formBuilder.control(null, [], this.uniqueValidators.validateResidenteNumeroCertidao(null)),
       FOLHA_CERTIDAO_NASCIMENTO: this.formBuilder.control(null, []),
       LIVRO_CERTIDAO_NASCIMENTO: this.formBuilder.control(null, []),
       CIDADE_CERTIDAO_NASCIMENTO: this.formBuilder.control(null, []),
@@ -129,24 +129,24 @@ export class NovoResidenteComponent implements OnInit {
       //CERTIDAO NASCIMENTO FINAL
 
       //ELEITORAL INICIO
-      TITULO_ELEITOR: this.formBuilder.control(null, [], this.uniqueValidators.validateResidenteTituloEleitor()),
+      TITULO_ELEITOR: this.formBuilder.control(null, [], this.uniqueValidators.validateResidenteTituloEleitor(null)),
       ZONA_ELEITORAL: this.formBuilder.control(null, []),
       SECAO_ELEITORAL: this.formBuilder.control(null, []),
       //ELEITORAL FINAL
 
       //INSS INICIO
-      NUMERO_INSS: this.formBuilder.control(null, [], this.uniqueValidators.validateResidenteNumeroInss()),
+      NUMERO_INSS: this.formBuilder.control(null, [], this.uniqueValidators.validateResidenteNumeroInss(null)),
       BANCO_INSS: this.formBuilder.control(null, []),
       AGENCIA_INSS: this.formBuilder.control(null, []),
-      CONTA_INSS: this.formBuilder.control(null, [], this.uniqueValidators.validateResidenteContaINSS()),
+      CONTA_INSS: this.formBuilder.control(null, [], this.uniqueValidators.validateResidenteContaINSS(null)),
       SITUACAO_INSS: this.formBuilder.control(null, []),
       VALOR_INSS: this.formBuilder.control(null, []),
       PROVA_VIDA_INSS: this.formBuilder.control(null, []),
       //INSS FINAL
 
       //OUTROS INICIO
-      CARTAO_SAMS: this.formBuilder.control(null, [], this.uniqueValidators.validateResidenteCartaoSAMS()),
-      CARTAO_SUS: this.formBuilder.control(null, [], this.uniqueValidators.validateResidenteCartaoSUS()),
+      CARTAO_SAMS: this.formBuilder.control(null, [], this.uniqueValidators.validateResidenteCartaoSAMS(null)),
+      CARTAO_SUS: this.formBuilder.control(null, [], this.uniqueValidators.validateResidenteCartaoSUS(null)),
       DATA_ACOLHIMENTO: this.formBuilder.control(null, [Validators.required])
       //OUTROS FINAL
     })
