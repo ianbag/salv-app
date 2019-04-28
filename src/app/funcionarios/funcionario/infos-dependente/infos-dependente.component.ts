@@ -15,7 +15,6 @@ import { UniqueValuesValidators } from 'src/app/shared/validators/unique-values/
 export class InfosDependenteComponent implements OnInit {
 
     @Input() dependente: Dependente
-    @Output() _dependentes = new EventEmitter()
     updateDependenteForm: FormGroup
 
     estados = [
@@ -46,7 +45,6 @@ export class InfosDependenteComponent implements OnInit {
         this.dcs.confirm('Deseja excluir o dependente?').then((isTrue) => {
             if (isTrue) {
                 this.fs.deleteDependente(_dep_nome, _dep_sobrenome).subscribe(() => {
-                    this._dependentes.emit(true)
                     this.ns.notify('Dependente excluído com sucesso!')
                 })
             }
@@ -78,7 +76,6 @@ export class InfosDependenteComponent implements OnInit {
                     this.ns.notify(`Houve um erro! ${error.message}`)
                 })
             } else {
-                this._dependentes.emit(true)
                 this.ns.notify('Dependente alterado com sucesso!')
             }
         })
