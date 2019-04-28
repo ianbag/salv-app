@@ -269,14 +269,60 @@
 
             <form role="form" [formGroup]="beneficioResidenteForm">
               <div class="box-body">
+                <div class="col-sm-6 col-xs-12" id="inputValidator">
+                  <salv-input-container errorMessage="Campo Obrigatório" label="Nome do Benefício">
+                    <span class="text-danger">*</span>
+                    <input type="text" class="form-control" formControlName="NOME_BENEFICIO"
+                      placeholder="Nome do Benefício" autocomplete="off" maxlength="100">
+                  </salv-input-container>
+                </div>
 
-            
+                <div class="col-sm-6 col-xs-12">
+                  <label>Banco</label>
+                  <input type="text" class="form-control" formControlName="BANCO_BENEFICIO" placeholder="Banco"
+                    autocomplete="off" maxlength="50">
+                </div>
+
+                <div class="col-sm-12 col-xs-12">
+                  <br>
+                </div>
+
+                <div class="col-sm-6 col-xs-12">
+                  <label>Agência</label>
+                  <input type="text" class="form-control" formControlName="AGENCIA_BENEFICIO" placeholder="Agência"
+                    autocomplete="off" maxlength="50">
+                </div>
+
+                <div class="col-sm-6 col-xs-12">
+                  <label>Conta</label>
+                  <input type="text" class="form-control" formControlName="CONTA_BENEFICIO" placeholder="Conta"
+                    autocomplete="off" maxlength="50">
+                </div>
+
+                <div class="col-sm-12 col-xs-12">
+                  <br>
+                </div>
+
+                <div class="col-sm-6 col-xs-12">
+                  <label>Valor</label>
+                  <input type="text" class="form-control" formControlName="VALOR_BENEFICIO" placeholder="Valor R$"
+                    autocomplete="off" maxlength="12">
+                </div>
+
+                <div class="col-sm-6 col-xs-12">
+                  <label>Prova de Vida</label>
+                  <input type="date" class="form-control pull-right" id="datepicker"
+                    formControlName="PROVA_VIDA_BENEFICIO" max="2999-12-31">
+                </div>
+
               </div>
             </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-success" data-dismiss="modal">Salvar</button>
+            <button type="button" class="btn btn-success" data-dismiss="modal"
+              (click)="beneficioResidente(beneficioResidenteForm.value)"
+              [disabled]="!beneficioResidenteForm.valid">Salvar</button>
           </div>
         </div>
       </div>

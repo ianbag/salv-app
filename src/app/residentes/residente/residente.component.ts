@@ -44,6 +44,7 @@ export class ResidenteComponent implements OnInit {
 
   familiarResidenteForm: FormGroup
   convenioResidenteForm: FormGroup
+  beneficioResidenteForm: FormGroup
 
   telefonesArray: FormArray
 
@@ -103,6 +104,15 @@ export class ResidenteComponent implements OnInit {
       CONVENIO_CODIGO: this.formBuilder.control(null, [Validators.required]),
     })
 
+    this.beneficioResidenteForm = this.formBuilder.group({
+      NOME_BENEFICIO: this.formBuilder.control(null, [Validators.required]),
+      BANCO_BENEFICIO: this.formBuilder.control(null, []),
+      AGENCIA_BENEFICIO: this.formBuilder.control(null, []),
+      CONTA_BENEFICIO: this.formBuilder.control(null, []),
+      VALOR_BENEFICIO: this.formBuilder.control(null, []),
+      PROVA_VIDA_BENEFICIO: this.formBuilder.control(null, [])
+    })
+
   }
 
   getFamiliar() {
@@ -148,6 +158,21 @@ export class ResidenteComponent implements OnInit {
           this.getConvenio()
         }
       })
+  }
+
+  beneficioResidente(beneficio: Beneficio){
+    this.residentesService.createNewBeneficio(beneficio, this.route.snapshot.params['id'])
+    .subscribe(res => {
+      if (res['errors']) {
+        res['errors'].forEach(error => {
+          this.notificationService.notify(`Houve um erro! ${error.message}`)
+        })
+      } else {
+        this.notificationService.notify(`Benefício adicionado com sucesso!`)
+        this.beneficioResidenteForm.reset()
+        this.getBeneficio()
+      }
+    })
   }
 
   reportResidente() {
