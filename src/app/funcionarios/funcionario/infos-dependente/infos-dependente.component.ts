@@ -22,7 +22,7 @@ export class InfosDependenteComponent implements OnInit {
         "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"
     ];
 
-    constructor(private dcs: DialogConfirmService, private fs: FuncionariosService, private ns: NotificationService, private fb: FormBuilder, private spinner: NgxSpinnerService, private uniqueValidators: UniqueValuesValidators ) { }
+    constructor(private dcs: DialogConfirmService, private fs: FuncionariosService, private ns: NotificationService, private fb: FormBuilder, private spinner: NgxSpinnerService, private uniqueValidators: UniqueValuesValidators, private route: ActivatedRoute ) { }
 
     ngOnInit() {
 
@@ -30,9 +30,9 @@ export class InfosDependenteComponent implements OnInit {
             NOME: this.fb.control(null, [Validators.required]),
             SOBRENOME: this.fb.control(null, [Validators.required]),
             DATA_NASCIMENTO: this.fb.control(null, [Validators.required]),
-            RG: this.fb.control(null, [], this.uniqueValidators.validateDependenteRG()),
-            CPF: this.fb.control(null, [], this.uniqueValidators.validateDependenteCPF()),
-            NUMERO_CERTIDAO_NASCIMENTO: this.fb.control(null, [], this.uniqueValidators.validateDependenteNumeroCertidao()),
+            RG: this.fb.control(null, [Validators.minLength(9)], this.uniqueValidators.validateDependenteRG(this.route.snapshot.params['id'], this.dependente.NOME, this.dependente.SOBRENOME)),
+            CPF: this.fb.control(null, [Validators.minLength(11)], this.uniqueValidators.validateDependenteCPF(this.route.snapshot.params['id'], this.dependente.NOME, this.dependente.SOBRENOME)),
+            NUMERO_CERTIDAO_NASCIMENTO: this.fb.control(null, [], this.uniqueValidators.validateDependenteNumeroCertidao(this.route.snapshot.params['id'], this.dependente.NOME, this.dependente.SOBRENOME)),
             FOLHA_CERTIDAO_NASCIMENTO: this.fb.control(null, []),
             LIVRO_CERTIDAO_NASCIMENTO: this.fb.control(null, []),
             CIDADE_CERTIDAO_NASCIMENTO: this.fb.control(null, []),
