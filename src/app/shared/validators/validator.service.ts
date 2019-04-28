@@ -10,56 +10,57 @@ export class ValidatorService {
 
   constructor(private http: HttpClient) { }
 
-  uniquePessoaCPF(CPF: string){
-    return this.http.post<any>(`${SALV_API}/pessoa/cpf`, {CPF: CPF})
+  uniquePessoaCPF(CPF: string, CODIGO: number) {
+    return this.http.post<any>(`${SALV_API}/pessoa/cpf`, { CPF: CPF, CODIGO: CODIGO })
   }
 
-  uniquePessoaRG(RG: string){
-    return this.http.post<any>(`${SALV_API}/pessoa/rg`, {RG: RG})
+  uniquePessoaRG(RG: string, CODIGO: number) {
+    return this.http.post<any>(`${SALV_API}/pessoa/rg`, { RG: RG, CODIGO: CODIGO })
   }
 
-  uniqueResidenteCartaoSAMS(CARTAO_SAMS: string){
-    return this.http.post<any>(`${SALV_API}/residente/cartao_sams`, {CARTAO_SAMS: CARTAO_SAMS})
+  uniqueResidenteCartaoSAMS(CARTAO_SAMS: string, CODIGO: number) {
+    return this.http.post<any>(`${SALV_API}/residente/cartao_sams`, { CARTAO_SAMS: CARTAO_SAMS, CODIGO: CODIGO })
   }
 
-  uniqueResidenteCartaoSUS(CARTAO_SUS: string){
-    return this.http.post<any>(`${SALV_API}/residente/cartao_sus`, {CARTAO_SUS: CARTAO_SUS})
+  uniqueResidenteCartaoSUS(CARTAO_SUS: string, CODIGO: number) {
+    return this.http.post<any>(`${SALV_API}/residente/cartao_sus`, { CARTAO_SUS: CARTAO_SUS, CODIGO: CODIGO })
   }
 
-  uniqueResidenteContaINSS(CONTA_INSS: string){
-    return this.http.post<any>(`${SALV_API}/residente/conta_inss`, {CONTA_INSS: CONTA_INSS})
+  uniqueResidenteContaINSS(CONTA_INSS: string, CODIGO: number) {
+    return this.http.post<any>(`${SALV_API}/residente/conta_inss`, { CONTA_INSS: CONTA_INSS, CODIGO: CODIGO })
   }
 
-  uniqueResidenteNumeroCertidao(NUMERO_CERTIDAO_NASCIMENTO: string){
-    return this.http.post<any>(`${SALV_API}/residente/numero_certidao_nascimento`, {NUMERO_CERTIDAO_NASCIMENTO: NUMERO_CERTIDAO_NASCIMENTO})
+  uniqueResidenteNumeroCertidao(NUMERO_CERTIDAO_NASCIMENTO: string, CODIGO: number) {
+    return this.http.post<any>(`${SALV_API}/residente/numero_certidao_nascimento`, { NUMERO_CERTIDAO_NASCIMENTO: NUMERO_CERTIDAO_NASCIMENTO, CODIGO: CODIGO })
   }
 
-  uniqueResidenteNumeroInss(NUMERO_INSS: string){
-    return this.http.post<any>(`${SALV_API}/residente/numero_inss`, {NUMERO_INSS: NUMERO_INSS})
+  uniqueResidenteNumeroInss(NUMERO_INSS: string, CODIGO: number) {
+    return this.http.post<any>(`${SALV_API}/residente/numero_inss`, { NUMERO_INSS: NUMERO_INSS, CODIGO: CODIGO })
   }
 
-  uniqueResidenteTituloEleitor(TITULO_ELEITOR: string){
-    return this.http.post<any>(`${SALV_API}/residente/titulo_eleitor`, {TITULO_ELEITOR: TITULO_ELEITOR})
+  uniqueResidenteTituloEleitor(TITULO_ELEITOR: string, CODIGO: number) {
+    return this.http.post<any>(`${SALV_API}/residente/titulo_eleitor`, { TITULO_ELEITOR: TITULO_ELEITOR, CODIGO: CODIGO })
   }
 
-  uniqueDependenteCPF(CPF: string){
-    return this.http.post<any>(`${SALV_API}/dependente/cpf`, {CPF: CPF})
+  uniqueDependenteCPF(CPF: string, CODIGO: number, NOME: string, SOBRENOME: string) {
+    return this.http.post<any>(`${SALV_API}/dependente/cpf`, { CPF: CPF, CODIGO: CODIGO, NOME: NOME, SOBRENOME: SOBRENOME })
   }
 
-  uniqueDependenteRG(RG: string){
-    return this.http.post<any>(`${SALV_API}/dependente/rg`, {RG: RG})
+  uniqueDependenteRG(RG: string, CODIGO: number, NOME: string, SOBRENOME: string) {
+    return this.http.post<any>(`${SALV_API}/dependente/rg`, { RG: RG, CODIGO: CODIGO, NOME: NOME, SOBRENOME: SOBRENOME })
   }
 
-  uniqueDependenteNumeroCertidao(NUMERO_CERTIDAO_NASCIMENTO: string){
-    return this.http.post<any>(`${SALV_API}/dependente/numero_certidao_nascimento`, {NUMERO_CERTIDAO_NASCIMENTO: NUMERO_CERTIDAO_NASCIMENTO})
+  uniqueDependenteNumeroCertidao(NUMERO_CERTIDAO_NASCIMENTO: string, CODIGO: number, NOME: string, SOBRENOME: string) {
+    return this.http.post<any>(`${SALV_API}/dependente/numero_certidao_nascimento`,
+      { NUMERO_CERTIDAO_NASCIMENTO: NUMERO_CERTIDAO_NASCIMENTO, CODIGO: CODIGO, NOME: NOME, SOBRENOME: SOBRENOME })
   }
 
-  uniqueUsuarioEmail(EMAIL: string){
-    return this.http.post<any>(`${SALV_API}/usuario/email`, {EMAIL: EMAIL})
+  uniqueUsuarioEmail(EMAIL: string, CODIGO: number) {
+    return this.http.post<any>(`${SALV_API}/usuario/email`, { EMAIL: EMAIL, CODIGO: CODIGO })
   }
 
-  uniqueUsuarioLogin(LOGIN: string){
-    return this.http.post<any>(`${SALV_API}/usuario/login`, {LOGIN: LOGIN})
+  uniqueUsuarioLogin(LOGIN: string, CODIGO: number) {
+    return this.http.post<any>(`${SALV_API}/usuario/login`, { LOGIN: LOGIN, CODIGO: CODIGO })
   }
 
 }
