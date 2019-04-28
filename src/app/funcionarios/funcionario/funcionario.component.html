@@ -19,7 +19,7 @@
                 </div>
                 <div class="box-body">
                     <div *ngIf="countDependentes(); else notDependentes">
-                        <salv-infos-dependente *ngFor="let dependente of dependentes" [(dependente)]="dependente">
+                        <salv-infos-dependente *ngFor="let dependente of dependentes" (atualizaDependentes)="buscaDependentes($event)" [(dependente)]="dependente">
                         </salv-infos-dependente>
                     </div>
                     <ng-template #notDependentes>

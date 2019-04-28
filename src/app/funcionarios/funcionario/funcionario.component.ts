@@ -47,10 +47,7 @@ export class FuncionarioComponent implements OnInit {
       this.funcionario = funcionario
     })
 
-    this.fs.dependenteById(this.route.snapshot.params['id']).subscribe(dependente => {
-      this.dependentes = dependente
-      this.n_dependentes = this.dependentes.length
-    })
+    this.buscaDependentes()
 
 
     setTimeout(() => {
@@ -76,6 +73,13 @@ export class FuncionarioComponent implements OnInit {
       ESTADO_CERTIDAO_NASCIMENTO: this.fb.control(null, [])
     })
 
+  }
+
+  buscaDependentes(){
+    this.fs.dependenteById(this.route.snapshot.params['id']).subscribe(dependente => {
+      this.dependentes = dependente
+      this.n_dependentes = this.dependentes.length
+    })
   }
 
   countDependentes() {

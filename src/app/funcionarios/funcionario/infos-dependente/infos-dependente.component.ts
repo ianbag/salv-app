@@ -15,13 +15,14 @@ import { UniqueValuesValidators } from 'src/app/shared/validators/unique-values/
 export class InfosDependenteComponent implements OnInit {
 
     @Input() dependente: Dependente
+    @Output() atualizaDependentes = new EventEmitter<Dependente[]>()
     updateDependenteForm: FormGroup
 
     estados = [
         "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"
     ];
 
-    constructor(private dcs: DialogConfirmService, private fs: FuncionariosService, private ns: NotificationService, private fb: FormBuilder, private spinner: NgxSpinnerService, private uniqueValidators: UniqueValuesValidators ) { }
+    constructor(private dcs: DialogConfirmService, private fs: FuncionariosService, private ns: NotificationService, private fb: FormBuilder, private spinner: NgxSpinnerService, private uniqueValidators: UniqueValuesValidators) { }
 
     ngOnInit() {
 
@@ -46,6 +47,9 @@ export class InfosDependenteComponent implements OnInit {
             if (isTrue) {
                 this.fs.deleteDependente(_dep_nome, _dep_sobrenome).subscribe(() => {
                     this.ns.notify('Dependente excluído com sucesso!')
+                    this.fs.dependenteById(this.dependente.CODIGO_FUNCIONARIO.toString()).subscribe(dependentes => {
+                        this.atualizaDependentes.emit(dependentes)
+                    })
                 })
             }
         })
@@ -78,6 +82,9 @@ export class InfosDependenteComponent implements OnInit {
             } else {
                 this.updateDependenteForm.reset()
                 this.ns.notify('Dependente alterado com sucesso!')
+                this.fs.dependenteById(this.dependente.CODIGO_FUNCIONARIO.toString()).subscribe(dependentes => {
+                    this.atualizaDependentes.emit(dependentes)
+                })
             }
         })
     }
