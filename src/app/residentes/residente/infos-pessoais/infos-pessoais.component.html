@@ -6,9 +6,7 @@
       </a>
     </h3>
     <div class="box-tools pull-right">
-      <button type="button" class="btn btn-box-tool" data-widget="collapse">
-        <i class="fa fa-minus"></i>
-      </button>
+     
     </div>
   </div>
   <div class="box-body">
@@ -219,7 +217,7 @@
                   </div>
                   <div class="col-sm-3 col-sm-12" id="inputValidator" formGroupName="PESSOA">
                     <salv-input-container errorMessage="Minimo 9 caracteres" label="RG">
-                      <input type="text" mask="00.000.000-0" class="form-control" formControlName="RG" placeholder="RG"
+                      <input type="text" mask="00.000.000-A" class="form-control" formControlName="RG" placeholder="RG"
                         autocomplete="off">
                     </salv-input-container>
                   </div>
@@ -264,7 +262,7 @@
                     <label>Data de Nascimento </label>
                     <div class="input-group date">
                       <input type="date" class="form-control pull-right" id="datepicker"
-                        formControlName="DATA_NASCIMENTO">
+                        formControlName="DATA_NASCIMENTO" max="2999-12-31">
                     </div>
                     <br>
                   </div>
@@ -410,7 +408,7 @@
                     <salv-input-container errorMessage="Campo Obrigatório" label="Data de Acolhimento">
                       <span class="text-danger">*</span>
                       <div class="input-group date">
-                        <input type="date" class="form-control pull-right" id="datepicker"
+                        <input type="date" max="2999-12-31" class="form-control pull-right" id="datepicker"
                           formControlName="DATA_ACOLHIMENTO">
                       </div>
                     </salv-input-container>
