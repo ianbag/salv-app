@@ -67,8 +67,8 @@ export class NovoFuncionarioComponent implements OnInit {
       PESSOA: this.fb.group({
         NOME: this.fb.control(null, [Validators.required]),
         SOBRENOME: this.fb.control(null, [Validators.required]),
-        CPF: this.fb.control(null, [Validators.required, Validators.minLength(11)], this.uniqueValidators.validatePessoaCpf()),
-        RG: this.fb.control(null, [Validators.required, Validators.minLength(9)], this.uniqueValidators.validatePessoaRG()),
+        CPF: this.fb.control(null, [Validators.required, Validators.minLength(11)], this.uniqueValidators.validatePessoaCpf(null)),
+        RG: this.fb.control(null, [Validators.required, Validators.minLength(9)], this.uniqueValidators.validatePessoaRG(null)),
         ESTADO_CIVIL: this.fb.control(null, []),
         SEXO: this.fb.control(null, [Validators.required]),
         RELIGIAO: this.fb.control(null, []),
