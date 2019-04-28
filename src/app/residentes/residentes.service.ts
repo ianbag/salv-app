@@ -5,6 +5,7 @@ import { Observable } from "rxjs";
 import { Residente, Pessoa, Residente_Convenio } from './residente/residente.model';
 import { Familiar, Endereco, Telefone } from './residente/infos-familiar/familiar.model';
 import { Convenio } from './residente/infos-convenio/convenio.model';
+import { Beneficio } from './residente/infos-beneficios/beneficio.model';
 
 @Injectable()
 export class ResidentesService {
@@ -51,6 +52,10 @@ export class ResidentesService {
     convenioById(id: string): Observable<Convenio[]> {
         return this.http.get<Convenio[]>(`${SALV_API}/residente_convenio/${id}`)
     } // remover
+
+    beneficiosById(id: number): Observable<Beneficio[]> {
+        return this.http.get<Beneficio[]>(`${SALV_API}/beneficio/${id}`)
+    }
 
     convenioOneByID(id: number): Observable<Residente_Convenio> {
         return this.http.get<Residente_Convenio>(`${SALV_API}/residente_convenio/one/${id}`)
