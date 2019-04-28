@@ -217,7 +217,7 @@ export class AcompanhamentoComponent implements OnInit {
       if (res) {
 
         this.ns.notify(`Acompanhamento atualizado com sucesso!`)
-        window.location.reload()
+      
 
 
         this.acompanhamento1 = res[0]
