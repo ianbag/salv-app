@@ -244,7 +244,7 @@
 
         <h3 class="box-title">Benefícios do {{residente?.PESSOA.NOME}}</h3>
         <div class="box-tools pull-right">
-          <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#modalConvenio"
+          <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#modalBeneficio"
             style="margin-right: 50px; color: white">Adicionar</button>
 
         </div>
@@ -253,6 +253,31 @@
         <salv-infos-beneficios *ngFor="let beneficio of beneficios" [beneficio]="beneficio"></salv-infos-beneficios>
         <div class="col-sm-12">
           <button type="submit" class="btn btn-default pull-right botao" [routerLink]="['/residentes']">Voltar</button>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="modalBeneficio" tabindex="-1" role="dialog" aria-labelledby="modalBeneficio"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="col-sm-12 col-sm-12" id="formTitle">
+              <h4 class="text-center"><strong>Adicionar Benefício</strong></h4>
+            </div>
+
+            <form role="form" [formGroup]="beneficioResidenteForm">
+              <div class="box-body">
+
+            
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-success" data-dismiss="modal">Salvar</button>
+          </div>
         </div>
       </div>
     </div>
