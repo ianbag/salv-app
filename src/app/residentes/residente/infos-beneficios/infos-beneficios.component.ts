@@ -27,4 +27,17 @@ export class InfosBeneficiosComponent implements OnInit {
 
   }
 
+  deletarBeneficio(beneficio: Beneficio) {
+    this.dialogConfirmService.confirm(`Deseja excluir o benefício?`)
+      .then((isTrue) => {
+        if (isTrue) {
+          this.residentesService.deleteBeneficio(beneficio.NOME_BENEFICIO, beneficio.CODIGO_RESIDENTE)
+            .subscribe(res => {
+              delete this.beneficio
+              this.notificationService.notify(`Beneficio deletado com sucesso!`)
+            })
+        }
+      })
+  }
+
 }
