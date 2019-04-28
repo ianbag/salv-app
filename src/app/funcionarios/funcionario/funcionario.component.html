@@ -14,15 +14,15 @@
 
                     <h3 class="box-title">Dependentes</h3>
 
-                    <button type="button" class="btn btn-success" *ngIf="dependentes" data-toggle="modal"
+                    <button type="button" class="btn btn-success" *ngIf="dependentes.length" data-toggle="modal"
                         data-target="#modalDependente">Adicionar</button>
                 </div>
                 <div class="box-body">
-                    <div *ngIf="countDependentes(); else notDependentes">
+                    <div *ngIf="dependentes.length">
                         <salv-infos-dependente *ngFor="let dependente of dependentes" (atualizaDependentes)="buscaDependentes($event)" [(dependente)]="dependente">
                         </salv-infos-dependente>
                     </div>
-                    <ng-template #notDependentes>
+                    <div *ngIf="!dependentes.length">
                         <p>Você não possui dependentes cadastrados</p>
                         <!--DIV MODAL INICIO-->
                         <div class="col-sm-12 col-xs-12">
@@ -33,7 +33,7 @@
                             </button>
                         </div>
                     <!--FIM DIV MODAL-->
-                    </ng-template>
+                    </div>
 
                 <div class="botao">
                     <a type="submit" class="btn btn-default botao" [routerLink]="['/funcionarios']">Voltar</a>

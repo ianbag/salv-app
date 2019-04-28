@@ -28,10 +28,9 @@ export class FuncionarioComponent implements OnInit {
   funcionarioState = 'ready'
 
   funcionario: Funcionario
-  dependentes: Dependente[]
+  dependentes: Dependente[] = []
   telefones: Telefone[]
   enderecos: Endereco[]
-  n_dependentes: number
 
   estados = [
     "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"
@@ -43,10 +42,7 @@ export class FuncionarioComponent implements OnInit {
 
   ngOnInit() {
     this.spinner.show()
-    this.fs.funcionarioById(this.route.snapshot.params['id']).subscribe(funcionario => {
-      this.funcionario = funcionario
-    })
-
+    this.buscaFuncionario()
     this.buscaDependentes()
 
 
@@ -75,18 +71,16 @@ export class FuncionarioComponent implements OnInit {
 
   }
 
-  buscaDependentes(){
-    this.fs.dependenteById(this.route.snapshot.params['id']).subscribe(dependente => {
-      this.dependentes = dependente
-      this.n_dependentes = this.dependentes.length
+  buscaFuncionario(){
+    this.fs.funcionarioById(this.route.snapshot.params['id']).subscribe(funcionario => {
+      this.funcionario = funcionario
     })
   }
 
-  countDependentes() {
-    if (this.n_dependentes > 0) {
-      return true
-    }
-    return false
+  buscaDependentes(){
+    this.fs.dependenteById(this.route.snapshot.params['id']).subscribe(dependente => {
+      this.dependentes = dependente
+    })
   }
 
   novoDependente(dependente: Dependente) {
