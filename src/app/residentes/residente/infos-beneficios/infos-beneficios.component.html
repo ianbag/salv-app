@@ -2,25 +2,29 @@
   <div class="col-sm-12 col-xs-12">
     <h4><strong>{{beneficio?.NOME_BENEFICIO}}</strong>
       <a (click)="deletarBeneficio(beneficio)"><i class="fa fa-close"></i></a>
-      <a data-toggle="modal"
+      <a data-toggle="modal" (click)="setValuesBeneficioForm(beneficio)"
         attr.data-target="#modalEditarBeneficio{{beneficio?.NOME_BENEFICIO}}"><i class="fa fa-pencil"></i></a>
     </h4>
   </div>
 
-  <div class="col-xs-3 col-xs-12">
+  <div class="col-xs-4 col-xs-12">
     <strong>Banco: </strong> {{beneficio?.BANCO_BENEFICIO}}
   </div>
 
-  <div class="col-xs-3 col-xs-12">
+  <div class="col-xs-4 col-xs-12">
     <strong>Agência: </strong> {{beneficio?.AGENCIA_BENEFICIO}}
   </div>
 
-  <div class="col-xs-3 col-xs-12">
+  <div class="col-xs-4 col-xs-12">
     <strong>Conta: </strong> {{beneficio?.CONTA_BENEFICIO}}
   </div>
 
-  <div class="col-xs-3 col-xs-12">
+  <div class="col-xs-4 col-xs-12">
     <strong>Valor: </strong> {{beneficio?.VALOR_BENEFICIO}}
+  </div>
+
+  <div class="col-xs-4 col-xs-12">
+    <strong>Prova de Vida: </strong> {{beneficio?.PROVA_VIDA_BENEFICIO}}
   </div>
 
   <hr class="col-md-12">

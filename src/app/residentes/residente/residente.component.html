@@ -309,10 +309,12 @@
                     autocomplete="off" maxlength="12">
                 </div>
 
-                <div class="col-sm-6 col-xs-12">
-                  <label>Prova de Vida</label>
-                  <input type="date" class="form-control pull-right" id="datepicker"
-                    formControlName="PROVA_VIDA_BENEFICIO" max="2999-12-31">
+                <div class="col-sm-6 col-xs-12" id="inputValidator">
+                  <salv-input-container errorMessage="Campo Obrigatório" label="Prova de Vida">
+                    <span class="text-danger">*</span>
+                    <input type="date" class="form-control pull-right" id="datepicker"
+                      formControlName="PROVA_VIDA_BENEFICIO" max="2999-12-31">
+                  </salv-input-container>
                 </div>
 
               </div>

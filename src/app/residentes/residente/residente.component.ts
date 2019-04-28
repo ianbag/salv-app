@@ -110,7 +110,7 @@ export class ResidenteComponent implements OnInit {
       AGENCIA_BENEFICIO: this.formBuilder.control(null, []),
       CONTA_BENEFICIO: this.formBuilder.control(null, []),
       VALOR_BENEFICIO: this.formBuilder.control(null, []),
-      PROVA_VIDA_BENEFICIO: this.formBuilder.control(null, [])
+      PROVA_VIDA_BENEFICIO: this.formBuilder.control(null, [Validators.required])
     })
 
   }
