@@ -61,7 +61,7 @@ export class FuncionarioComponent implements OnInit {
         })
       })
       this.spinner.hide()
-    }, 2300)
+    }, 1000)
 
     this.novoDependenteForm = this.fb.group({
       NOME: this.fb.control(null, []),
@@ -92,12 +92,6 @@ export class FuncionarioComponent implements OnInit {
       this.fs.dependenteById(this.route.snapshot.params['id']).subscribe(dependente => {
         this.dependentes = dependente
       })
-    })
-  }
-
-  updateDependentes() {
-    this.fs.dependenteById(this.route.snapshot.params['id']).subscribe(response => {
-      this.dependentes = response
     })
   }
 

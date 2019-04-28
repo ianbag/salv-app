@@ -29,9 +29,9 @@ export class InfosDependenteComponent implements OnInit {
             NOME: this.fb.control(null, [Validators.required]),
             SOBRENOME: this.fb.control(null, [Validators.required]),
             DATA_NASCIMENTO: this.fb.control(null, [Validators.required]),
-            RG: this.fb.control(null, [], this.uniqueValidators.validateDependenteRG()),
-            CPF: this.fb.control(null, [], this.uniqueValidators.validateDependenteCPF()),
-            NUMERO_CERTIDAO_NASCIMENTO: this.fb.control(null, [], this.uniqueValidators.validateDependenteNumeroCertidao()),
+            RG: this.fb.control(null, []),
+            CPF: this.fb.control(null, []),
+            NUMERO_CERTIDAO_NASCIMENTO: this.fb.control(null, []),
             FOLHA_CERTIDAO_NASCIMENTO: this.fb.control(null, []),
             LIVRO_CERTIDAO_NASCIMENTO: this.fb.control(null, []),
             CIDADE_CERTIDAO_NASCIMENTO: this.fb.control(null, []),
@@ -76,6 +76,7 @@ export class InfosDependenteComponent implements OnInit {
                     this.ns.notify(`Houve um erro! ${error.message}`)
                 })
             } else {
+                this.updateDependenteForm.reset()
                 this.ns.notify('Dependente alterado com sucesso!')
             }
         })
