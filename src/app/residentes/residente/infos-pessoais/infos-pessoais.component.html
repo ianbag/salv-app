@@ -2,11 +2,11 @@
   <div class="box-header with-border">
     <h3 class="box-title">Informações do Residente</h3>
 
-        <div class="box-tools pull-right">
-            <a type="submit" class="btn btn-warning botao" data-toggle="modal" data-target="#modalEditarResidente">Editar</a>           
-        </div>
-    
-    
+    <div class="box-tools pull-right">
+      <a type="submit" class="btn btn-warning botao" data-toggle="modal" data-target="#modalEditarResidente">Editar</a>
+    </div>
+
+
   </div>
   <div class="box-body">
     <div class="row col-md-12">
@@ -276,9 +276,10 @@
 
                 <div class="row">
                   <div class="col-sm-4 col-sm-12">
-                    <label>Número </label>
-                    <input type="text" mask="0*" class="form-control" formControlName="NUMERO_CERTIDAO_NASCIMENTO"
-                      placeholder="Número" autocomplete="off" maxlength="5">
+                    <salv-input-container label="Número">
+                      <input type="text" mask="0*" class="form-control" formControlName="NUMERO_CERTIDAO_NASCIMENTO"
+                        placeholder="Número" autocomplete="off" maxlength="5">
+                    </salv-input-container>
                   </div>
                   <div class="col-sm-4 col-sm-12">
                     <label>Folha </label>
@@ -316,9 +317,10 @@
                 </div>
                 <div class="row">
                   <div class="col-sm-4 col-sm-12">
-                    <label>Título </label>
-                    <input type="text" class="form-control" formControlName="TITULO_ELEITOR" placeholder="Título"
-                      autocomplete="off" maxlength="12">
+                    <salv-input-container label="Título">
+                      <input type="text" class="form-control" formControlName="TITULO_ELEITOR" placeholder="Título"
+                        autocomplete="off" maxlength="12">
+                    </salv-input-container>
                   </div>
                   <div class="col-sm-4 col-sm-12">
                     <label>Zona </label>
@@ -341,9 +343,10 @@
                 </div>
                 <div class="row">
                   <div class="col-sm-4 col-sm-12">
-                    <label for="exampleInputPassword1">Número </label>
-                    <input type="text" mask="0*" class="form-control" formControlName="NUMERO_INSS" placeholder="Número"
-                      autocomplete="off" maxlength="11">
+                    <salv-input-container label="Número">
+                      <input type="text" mask="0*" class="form-control" formControlName="NUMERO_INSS"
+                        placeholder="Número" autocomplete="off" maxlength="11">
+                    </salv-input-container>
                   </div>
                   <div class="col-sm-3 col-sm-12">
                     <label for="exampleInputPassword1">Banco </label>
@@ -351,14 +354,15 @@
                       autocomplete="off" maxlength="50">
                   </div>
                   <div class="col-sm-2 col-smm-12">
-                    <label for="exampleInputPassword1">Agência </label>
+                    <label>Agência </label>
                     <input type="text" class="form-control" formControlName="AGENCIA_INSS" placeholder="Agência"
                       autocomplete="off" maxlength="50">
                   </div>
                   <div class="col-sm-3 col-sm-12">
-                    <label for="exampleInputPassword1">Conta </label>
-                    <input type="text" class="form-control" formControlName="CONTA_INSS" placeholder="Conta"
-                      autocomplete="off" maxlength="50">
+                    <salv-input-container label="Conta">
+                      <input type="text" class="form-control" formControlName="CONTA_INSS" placeholder="Conta"
+                        autocomplete="off" maxlength="50">
+                    </salv-input-container>
                   </div>
                 </div>
                 <br />
@@ -394,14 +398,16 @@
                 </div>
                 <div class="row">
                   <div class="col-sm-4 col-sm-12">
-                    <label for="exampleInputPassword1">Cartão SAMS </label>
-                    <input type="text" class="form-control" formControlName="CARTAO_SAMS"
-                      placeholder="Número do Cartão SAMS" maxlength="16">
+                    <salv-input-container label="Cartão SAMS">
+                      <input type="text" class="form-control" formControlName="CARTAO_SAMS"
+                        placeholder="Número do Cartão SAMS" maxlength="16">
+                    </salv-input-container>
                   </div>
                   <div class="col-sm-4 col-sm-12">
-                    <label for="exampleInputPassword1">Cartão SUS </label>
-                    <input type="text" class="form-control" formControlName="CARTAO_SUS"
-                      placeholder="Número do Cartão SUS" maxlength="50">
+                    <salv-input-container label="Cartão SUS">
+                      <input type="text" class="form-control" formControlName="CARTAO_SUS"
+                        placeholder="Número do Cartão SUS" maxlength="50">
+                    </salv-input-container>
                   </div>
                   <div class="col-sm-3 col-sm-12" id="inputValidator">
                     <salv-input-container errorMessage="Campo Obrigatório" label="Data de Acolhimento">
