@@ -16,6 +16,7 @@ export class AppComponent {
   }
 
   ngOnInit() {
+    // localStorage.setItem('expandedMenu', '0')
   }
 
   ngAfterViewInit() {

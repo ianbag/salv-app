@@ -15,6 +15,7 @@ export class LoginService {
 
     login(user: User) {
         return this.http.post<User>(`${SALV_API}/login`, user).pipe(tap(res => {
+            localStorage.expandedMenu = 1
             this.showMenuEmitter.emit(true)
         }))
     }
@@ -22,6 +23,7 @@ export class LoginService {
     logout() {
         this.cs.deleteAll()
         // sessionStorage.clear()
+        localStorage.expandedMenu = 0
         this.showMenuEmitter.emit(false)
     }
 
