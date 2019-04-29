@@ -15,21 +15,26 @@
       <a type="submit" class="btn btn-primary" [routerLink]="['/novo-residente']">Novo Residente</a>
 
       <!-- FILTRO -->
-      <a class="dropdown btn btn-success pull-right" style="float:right; margin-right: 1cm;">
 
-        <a href="#" class="dropdown-toggle pull-left" data-toggle="dropdown">Filtrar<span class="caret"></span></a>
+ <a class="dropdown btn btn-success pull-right" style="float:right; margin-right: 1cm;">
 
-         <!--MENU DA DROPDOWN-->
-        <ul class="dropdown-menu" role="menu" style="color:black"> 
-                   
-              <!--FILTRO INATIVOS-->
-              <li class="divider"></li>                     
-              <input type="checkbox" id="Desativados" [(ngModel)]="Desativados" (click)="residentesInativoss()" ng-true-value = "YES" ng-false-value="NO" style="margin: 5px"> Residentes desativados  
-              <br>
-              
-        </ul>
-    </a>
-    <!-- FIM DO FILTRO -->
+  <a href="#" class="dropdown-toggle pull-left" data-toggle="dropdown">Filtrar<span class="caret"></span></a>
+
+   <!--MENU DA DROPDOWN-->
+  <ul class="dropdown-menu" role="menu"  style="color:black" > 
+             
+        <!--FILTRO INATIVOS-->
+       
+        <input type="checkbox" id="Desativados" [(ngModel)]="Desativados" name="Desativados" (click)="residentesInativoss(); ngOnInit()" ng-true-value = "YES" ng-false-value="NO" style="margin: 5px"> <label for="Desativados"> <span>Residentes desativados </span></label>
+        <br>
+        
+  </ul>
+</a>
+<!-- FIM DO FILTRO -->
+
+
+     
+  
     
         <!-- PESQUISA -->
             <a class="dropdown btn btn-success pull-right" style="float:right; margin-right: 1cm;">
@@ -131,7 +136,8 @@
             <td>{{residente.PESSOA.RG | rg}}</td>
 
             <td>
-              
+              <button type="submit" class="btn btn-primary"
+              (click)="ativarResidente(residente.CODIGO_RESIDENTE); $event.stopPropagation()">Ativar</button>
               <a type="submit" class="btn btn-success botao" [routerLink]="['/residente', residente.CODIGO_RESIDENTE]">
                +Opções</a>
             </td>

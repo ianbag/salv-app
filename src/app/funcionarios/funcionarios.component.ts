@@ -74,6 +74,18 @@ export class FuncionariosComponent implements OnInit {
       })
   }
 
+  ativarFuncionario(id: string): void {
+    this.dialogConfirmService.confirm(`Deseja ativar o funcionário?`)
+      .then((isTrue) => {
+        if (isTrue) {
+          this.funcionariosService.ativarFuncionario(id)
+            .subscribe(() => this.funcionariosService.funcionariosInativos()
+              .subscribe(funcionarios => this.funcionariosInativos = funcionarios, funcionarios => this.funcionarios = funcionarios))
+        }
+      })
+  }
+
+
   reportFuncionarios() {
     this.funcionariosService.reportFuncionarios().subscribe(res => {
       this.ns.notify('Relatório emitido com sucesso!')

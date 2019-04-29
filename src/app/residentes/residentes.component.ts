@@ -76,6 +76,20 @@ export class ResidentesComponent implements OnInit {
       })
   }
 
+  ativarResidente(id: string): void {
+    this.dialogConfirmService.confirm(`Deseja ativar o residente?`)
+      .then((isTrue) => {
+        if (isTrue) {
+          this.residentesService.ativarResidente(id)
+            .subscribe(result => {
+              this.residentesService.residentesInativos()
+                .subscribe(residentes => this.residentesInativos= residentes, residentes => this.residentes = residentes )
+              this.notificationService.notify(`Residente ativado com sucesso!`)
+            })
+        }
+      })
+  }
+
   reportResidentes() {
     this.residentesService.reportResidentes().subscribe(res => {
       this.notificationService.notify('Relatório emitido com sucesso')
