@@ -57,6 +57,10 @@ export class ResidentesService {
         return this.http.get<Beneficio[]>(`${SALV_API}/beneficio/${id}`)
     }
 
+    beneficiosByIdName(id: number, nome: string): Observable<Beneficio> {
+        return this.http.get<Beneficio>(`${SALV_API}/beneficio/${id}/${nome}`)
+    }
+
     convenioOneByID(id: number): Observable<Residente_Convenio> {
         return this.http.get<Residente_Convenio>(`${SALV_API}/residente_convenio/one/${id}`)
     }
@@ -215,6 +219,10 @@ export class ResidentesService {
     createNewBeneficio(beneficio: Beneficio, codigoResidente){
         beneficio.CODIGO_RESIDENTE = codigoResidente
         return this.http.post<any>(`${SALV_API}/beneficio`, beneficio)
+    }
+
+    updateBeneficio(beneficio: Beneficio, NOME_BENEFICIO, CODIGO_RESIDENTE){
+        return this.http.put<any>(`${SALV_API}/beneficio/${CODIGO_RESIDENTE}/${NOME_BENEFICIO}`, beneficio)
     }
 
     reportResidentes() {
