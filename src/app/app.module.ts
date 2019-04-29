@@ -1,3 +1,4 @@
+import { TituloEleitorPipe } from './shared/pipes/titulo-eleitor.pipe';
 import { SearchPipe } from './shared/pipes/filtroData.pipe';
 import { NovoAcompanhamentoService } from './acompanhamentos/novo-acompanhamento/novo-acompanhamento.service';
 import { UserDetailsComponent } from './fixed-elements/header/user-details/user-details.component';
@@ -104,6 +105,7 @@ import { FilterPipeModule } from 'ngx-filter-pipe';
     ReligiaoPipe,
     CpfPipe,
     RgPipe,
+    TituloEleitorPipe,
     InfosFamiliarComponent,
     ConveniosComponent,
     AniversariantesComponent,
