@@ -1,3 +1,4 @@
+import { CartaoSUSPipe } from './shared/pipes/cartaoSUS.pipe';
 import { NumeroINSSPipe } from './shared/pipes/inss-numero.pipe';
 import { SituacaoINSSPipe } from './shared/pipes/situacao-inss.pipe';
 import { CepPipe } from './shared/pipes/cep.pipe';
@@ -102,6 +103,7 @@ import { FilterPipeModule } from 'ngx-filter-pipe';
     ResidenteComponent,
     InfosPessoaisComponent,
 
+    CartaoSUSPipe,
     NumeroINSSPipe,
     SituacaoINSSPipe,
     TelefonePipe,
