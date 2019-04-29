@@ -1,3 +1,5 @@
+import { CepPipe } from './shared/pipes/cep.pipe';
+import { TituloEleitorPipe } from './shared/pipes/titulo-eleitor.pipe';
 import { SearchPipe } from './shared/pipes/filtroData.pipe';
 import { NovoAcompanhamentoService } from './acompanhamentos/novo-acompanhamento/novo-acompanhamento.service';
 import { UserDetailsComponent } from './fixed-elements/header/user-details/user-details.component';
@@ -27,6 +29,7 @@ import { SexoPipe } from './shared/pipes/sexo.pipe';
 import { EscolaridadePipe } from './shared/pipes/escolaridade.pipe';
 import { EstadoCivilPipe } from './shared/pipes/estado-civil.pipe';
 
+import { TelefonePipe } from './shared/pipes/telefone.pipe';
 import { ReligiaoPipe } from './shared/pipes/religiao.pipe';
 import { CpfPipe } from './shared/pipes/cpf.pipe';
 import { RgPipe } from './shared/pipes/rg.pipe';
@@ -97,6 +100,8 @@ import { FilterPipeModule } from 'ngx-filter-pipe';
     ResidenteComponent,
     InfosPessoaisComponent,
 
+    TelefonePipe,
+    CepPipe,
     SexoPipe,
     EscolaridadePipe,
     SearchPipe,
@@ -104,6 +109,7 @@ import { FilterPipeModule } from 'ngx-filter-pipe';
     ReligiaoPipe,
     CpfPipe,
     RgPipe,
+    TituloEleitorPipe,
     InfosFamiliarComponent,
     ConveniosComponent,
     AniversariantesComponent,
