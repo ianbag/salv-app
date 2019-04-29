@@ -88,15 +88,15 @@
                         </div>
                       </div>
                       <div class="row">
-                        <div class="col-sm-4 col-sm-12" formGroupName="PESSOA">
-                          <salv-input-container errorMessage="Campo Obrigatório" label="Estado Civil">
-                            <select class="form-control" formControlName="ESTADO_CIVIL">
-                              <option value="" label="Selecione" disabled selected="selected"></option>
-                              <option *ngFor="let estadoCivil of estadosCivil" [value]="estadoCivil.value">
-                                {{estadoCivil.option}}
-                              </option>
-                            </select>
-                          </salv-input-container>
+                        <div class="col-sm-4 col-sm-12" formGroupName="PESSOA" style="margin-top: -10px; margin-left: -10px">
+                              <salv-input-container errorMessage="Campo Obrigatório" label="Estado Civil">
+                                <select class="form-control" formControlName="ESTADO_CIVIL">
+                                  <option value="" label="Selecione" disabled selected="selected"></option>
+                                  <option *ngFor="let estadoCivil of estadosCivil" [value]="estadoCivil.value">
+                                    {{estadoCivil.option}}
+                                  </option>
+                                </select>
+                              </salv-input-container>
                         </div>
                         <div class="col-sm-4 col-sm-12" id="inputValidator" formGroupName="PESSOA">
                           <salv-input-container errorMessage="Campo Obrigatório" label="Sexo">
@@ -106,7 +106,7 @@
                             </select>
                           </salv-input-container>
                         </div>
-                        <div class="col-sm-4 col-sm-12" formGroupName="PESSOA">
+                        <div class="col-sm-4 col-sm-12" formGroupName="PESSOA" style="margin-top: -10px">
                           <salv-input-container errorMessage="Campo Obrigatório" label="Religião">
                             <select class="form-control" formControlName="RELIGIAO">
                               <option value="" label="Selecione" disabled selected="selected"></option>
@@ -117,19 +117,19 @@
                         </div>
                       </div>
                       <div class="row">
-                        <div class="col-sm-6 col-sm-12" formGroupName="PESSOA">
+                        <div class="col-sm-6 col-sm-12" formGroupName="PESSOA" style="margin-left: -10px">
                           <salv-input-container erroMessage="Campo Obrigatório" label="Data de Nascimento">
                             <input type="date" class="form-control pull-right" id="datepicker"
                               formControlName="DATA_NASCIMENTO" max="2999-12-31">
                           </salv-input-container>
                         </div>
-                        <div class="col-sm-6 col-sm-12">
+                        <div class="col-sm-6 col-sm-12" style="margin-left: -10px">
                           <salv-input-container errorMessage="Campo Obrigatório" label="Cargo">
                             <input type="text" class="form-control" formControlName="CARGO" placeholder="Cargo"
                               autocomplete="off" maxlength="50">
                           </salv-input-container>
                         </div>
-                        <div class="col-sm-6 col-sm-12">
+                        <div class="col-sm-6 col-sm-12" style="margin-left: -10px">
                           <salv-input-container errorMessage="Campo Obrigatório" label="Data de Admissão">
                             <input type="date" class="form-control pull-right" id="datepicker"
                               formControlName="DATA_ADMISSAO" max="2999-12-31">
