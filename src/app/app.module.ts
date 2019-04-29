@@ -1,3 +1,4 @@
+import { CepPipe } from './shared/pipes/cep.pipe';
 import { TituloEleitorPipe } from './shared/pipes/titulo-eleitor.pipe';
 import { SearchPipe } from './shared/pipes/filtroData.pipe';
 import { NovoAcompanhamentoService } from './acompanhamentos/novo-acompanhamento/novo-acompanhamento.service';
@@ -98,6 +99,7 @@ import { FilterPipeModule } from 'ngx-filter-pipe';
     ResidenteComponent,
     InfosPessoaisComponent,
 
+    CepPipe,
     SexoPipe,
     EscolaridadePipe,
     SearchPipe,
