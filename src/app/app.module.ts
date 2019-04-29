@@ -29,6 +29,7 @@ import { SexoPipe } from './shared/pipes/sexo.pipe';
 import { EscolaridadePipe } from './shared/pipes/escolaridade.pipe';
 import { EstadoCivilPipe } from './shared/pipes/estado-civil.pipe';
 
+import { TelefonePipe } from './shared/pipes/telefone.pipe';
 import { ReligiaoPipe } from './shared/pipes/religiao.pipe';
 import { CpfPipe } from './shared/pipes/cpf.pipe';
 import { RgPipe } from './shared/pipes/rg.pipe';
@@ -99,6 +100,7 @@ import { FilterPipeModule } from 'ngx-filter-pipe';
     ResidenteComponent,
     InfosPessoaisComponent,
 
+    TelefonePipe,
     CepPipe,
     SexoPipe,
     EscolaridadePipe,
