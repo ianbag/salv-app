@@ -34,6 +34,10 @@ export class ConveniosService {
         return this.http.delete<any>(`${SALV_API}/convenio/${id}`)
     }
 
+   ativarConvenio(id: string): Observable<any> {
+        return this.http.delete<any>(`${SALV_API}/convenio-ativar/${id}`)
+    }
+
     convenioQuery(id: string): Observable<ConvenioQuery[]> {
         return this.http.get<ConvenioQuery[]>(`${SALV_API}/convenio-full/${id}`)
     }

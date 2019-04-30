@@ -24,8 +24,8 @@
             <ul class="dropdown-menu" role="menu" style="color:black"> 
                        
                   <!--FILTRO INATIVOS-->
-                  <li class="divider"></li>                     
-                  <input type="checkbox" id="Desativados" [(ngModel)]="Desativados" (click)="conveniosDesativadoss()" ng-true-value = "YES" ng-false-value="NO" style="margin: 5px"> Convênios Desativados  
+                               
+                  <input type="checkbox" id="Desativados" [(ngModel)]="Desativados" name="Desativados" (click)="conveniosDesativadoss(); ngOnInit()"  ng-true-value = "YES" ng-false-value="NO" style="margin: 5px"><label for="Desativados" >Convênios Desativados  </label>
                   <br>
                   
             </ul>
@@ -95,12 +95,14 @@
                         <td>{{convenio.DDD}} {{convenio.TELEFONE}}</td>
 
                     <td>                        
-                        
+                        <button type="submit" class="btn btn-primary"
+                        (click)="ativarConvenio(convenio.CODIGO); $event.stopPropagation()">Ativar</button>
                         <a type="submit" class="btn btn-success botao" [routerLink]="['/convenio',convenio.CODIGO]">
                            +Opções</a>
                     </td>
                 </tr>
             </table>
+            <label for="Desativados"> <span class="glyphicon glyphicon-menu-left"></span><a class=" btn btn-success botao ">Voltar para ativos</a></label>
          </div>
             
 

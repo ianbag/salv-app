@@ -20,11 +20,11 @@
             <a href="#" class="dropdown-toggle pull-left" data-toggle="dropdown">Filtrar<span class="caret"></span></a>
 
              <!--MENU DA DROPDOWN-->
-            <ul class="dropdown-menu" role="menu" style="color:black"> 
+            <ul class="dropdown-menu" style="color:black" > 
                        
                   <!--FILTRO INATIVOS-->
-                  <li class="divider"></li>                     
-                  <input type="checkbox" id="Desativados" [(ngModel)]="Desativados" (click)="funcionariosInativoss()" ng-true-value = "YES" ng-false-value="NO" style="margin: 5px"> Funcinários desativados  
+                 
+                  <input type="checkbox" id="Desativados" [(ngModel)]="Desativados" name="Desativados" (click)="funcionariosInativoss(); ngOnInit()" ng-true-value = "YES" ng-false-value="NO" style="margin: 5px"> <label for="Desativados"><span>Funcionários desativados </span></label>
                   <br>
                   
             </ul>
@@ -102,18 +102,21 @@
 
                                 <tr
                                     *ngFor="let funcionario of funcionariosInativos | filter : filter : searchString  let i = index">
-                                    <td>{{funcionario.FUNCIONARIO_NOME}} {{funcionarios.FUNCIONARIO_SOBRENOME}}</td>
+               <td>{{funcionario.FUNCIONARIO_NOME}} {{funcionarios.FUNCIONARIO_SOBRENOME}}</td>
                                     <td>{{funcionario.CPF | cpf}}</td>
                                     <td>{{funcionario.RG | rg}}</td>
                                     <td>
 
                                         <!-- <a type="submit" class="btn btn-warning botao"
                                 [routerLink]="['/editar-funcionario', funcionario.CODIGO]">Editar</a> -->
+                                <button type="submit" class="btn btn-primary"
+                        (click)="ativarFuncionario(funcionario.CODIGO); $event.stopPropagation()">Ativar</button>
                                         <a type="submit" class="btn btn-success botao"
                                             [routerLink]="['/funcionario',funcionario.CODIGO]">+ Opções</a>
                                     </td>
                                 </tr>
                             </table>
+                            <label for="Desativados"> <span class="glyphicon glyphicon-menu-left"></span><a class=" btn btn-success botao ">Voltar para ativos</a></label>
                         </div>
                    
                
