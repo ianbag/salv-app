@@ -11,6 +11,7 @@ import { Telefone_Pessoa } from 'src/app/funcionarios/funcionario.model';
 import { FormArray, Validators, FormGroup, AbstractControl, FormControl, FormBuilder } from '@angular/forms';
 import { NotificationService } from 'src/app/shared/notification.service';
 import { NgxSpinnerService } from 'ngx-spinner'
+import { Beneficio } from './infos-beneficios/beneficio.model';
 
 @Component({
   selector: 'salv-residente',
@@ -38,10 +39,12 @@ export class ResidenteComponent implements OnInit {
   residente: Residente
   familiares: Familiar[]
   convenios: Convenio[]
+  beneficios: Beneficio[]
   residenteConvenios: Residente_Convenio[]
 
   familiarResidenteForm: FormGroup
   convenioResidenteForm: FormGroup
+  beneficioResidenteForm: FormGroup
 
   telefonesArray: FormArray
 
@@ -71,6 +74,8 @@ export class ResidenteComponent implements OnInit {
 
     this.getConvenio()
 
+    this.getBeneficio()
+
 
     this.familiarResidenteForm = this.formBuilder.group({
       NOME: this.formBuilder.control(null, [Validators.required]),
@@ -99,6 +104,15 @@ export class ResidenteComponent implements OnInit {
       CONVENIO_CODIGO: this.formBuilder.control(null, [Validators.required]),
     })
 
+    this.beneficioResidenteForm = this.formBuilder.group({
+      NOME_BENEFICIO: this.formBuilder.control(null, [Validators.required]),
+      BANCO_BENEFICIO: this.formBuilder.control(null, []),
+      AGENCIA_BENEFICIO: this.formBuilder.control(null, []),
+      CONTA_BENEFICIO: this.formBuilder.control(null, []),
+      VALOR_BENEFICIO: this.formBuilder.control(null, []),
+      PROVA_VIDA_BENEFICIO: this.formBuilder.control(null, [Validators.required])
+    })
+
   }
 
   getFamiliar() {
@@ -109,6 +123,11 @@ export class ResidenteComponent implements OnInit {
   getConvenio() {
     this.residentesService.convenioById(this.route.snapshot.params['id'])
       .subscribe(convenio => this.convenios = convenio)
+  }
+
+  getBeneficio(){
+    this.residentesService.beneficiosById(this.route.snapshot.params['id'])
+    .subscribe(beneficio => this.beneficios = beneficio)
   }
 
 
@@ -139,6 +158,21 @@ export class ResidenteComponent implements OnInit {
           this.getConvenio()
         }
       })
+  }
+
+  beneficioResidente(beneficio: Beneficio){
+    this.residentesService.createNewBeneficio(beneficio, this.route.snapshot.params['id'])
+    .subscribe(res => {
+      if (res['errors']) {
+        res['errors'].forEach(error => {
+          this.notificationService.notify(`Houve um erro! ${error.message}`)
+        })
+      } else {
+        this.notificationService.notify(`Benefício adicionado com sucesso!`)
+        this.beneficioResidenteForm.reset()
+        this.getBeneficio()
+      }
+    })
   }
 
   reportResidente() {

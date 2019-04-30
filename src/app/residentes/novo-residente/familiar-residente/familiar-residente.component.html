@@ -1,4 +1,4 @@
-<!--
+
 <section class="content">
 
   <div class="box" [@familiar-residenteAppeared]="familiarresidenteState">
@@ -89,39 +89,10 @@
             </div>
             <div class="row">
 
-              <div class="col-sm-6 col-sm-12">
-                <label>Telefone <span class="btn btn-success botao" (click)="addTelefones()"> Adicionar Telefone</span></label>
+              <div class="col-sm-12 col-sm-12">
+                <label>Telefone </label>
               </div>
 
-              <div class="col-sm-12">
-                <div formArrayName="TELEFONES"
-                  *ngFor="let telefone of familiarResidenteForm.get('TELEFONES').controls as tamanho; let i = index">
-                  <div class="col-sm-6" style="margin-left: -35px;" [formGroupName]="i">
-                    <div class=" col-sm-4">
-                      <salv-input-container errorMessage="Campo Obrigatório" label="DDD {{i+1}}">
-                        <span class="text-danger">*</span>
-                        <input style="margin-top:5px; margin-bottom:5px;" type="text" mask="(00)" class="form-control"
-                          formControlName="DDD" placeholder="DDD">
-                      </salv-input-container>
-                    </div>
-
-                    <div class="col-sm-5">
-                      <salv-input-container errorMessage="Campo Obrigatório" label="Número {{i+1}}">
-                        <span class="text-danger">*</span>
-                        <input style="margin-top:5px; margin-bottom:5px;" type="text" maxlength="9"
-                          class="form-control" formControlName="NUMERO" placeholder="Número">
-                      </salv-input-container>
-                    </div>
-                    
-                    <div class="col-sm-2" style="margin-top:40px;">
-                      <button class="btn btn-danger botao" (click)="removeTelefone(i)"
-                        [disabled]="tamanho.length == 1"><i class="fa fa-minus"></i></button>
-                    </div>
-                    
-                  </div>
-                
-                </div>
-              </div>
               <div class="col-sm-2 col-sm-12" formGroupName="TELEFONE">
                 <salv-input-container errorMessage="Campo Obrigatório" label="DDD">
                   <input type="text" class="form-control" formControlName="DDD" placeholder="DDD" mask="000"
@@ -154,4 +125,3 @@
     </form>
   </div>
 </section>
--->

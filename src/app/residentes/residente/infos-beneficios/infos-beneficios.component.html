@@ -1,0 +1,103 @@
+<div class="col-md-12" *ngIf="beneficio">
+  <div class="col-sm-12 col-xs-12">
+    <h4><strong>{{beneficio?.NOME_BENEFICIO}}</strong>
+      <a (click)="deletarBeneficio(beneficio)"><i class="fa fa-close"></i></a>
+      <a data-toggle="modal" (click)="setValuesBeneficioForm(beneficio)"
+        attr.data-target="#modalEditarBeneficio{{NOME_BENEFICIO_SEM_ESPACO}}"><i class="fa fa-pencil"></i></a>
+    </h4>
+  </div>
+
+  <div class="col-xs-4 col-xs-12">
+    <strong>Banco: </strong> {{beneficio?.BANCO_BENEFICIO}}
+  </div>
+
+  <div class="col-xs-4 col-xs-12">
+    <strong>Agência: </strong> {{beneficio?.AGENCIA_BENEFICIO}}
+  </div>
+
+  <div class="col-xs-4 col-xs-12">
+    <strong>Conta: </strong> {{beneficio?.CONTA_BENEFICIO}}
+  </div>
+
+  <div class="col-xs-4 col-xs-12">
+    <strong>Valor: </strong> {{beneficio?.VALOR_BENEFICIO}}
+  </div>
+
+  <div class="col-xs-4 col-xs-12">
+    <strong>Prova de Vida: </strong> {{beneficio?.PROVA_VIDA_BENEFICIO}}
+  </div>
+
+  <hr class="col-md-12">
+
+  <!-- INICIO EDITAR BENEFICIO -->
+  <div class="modal fade" id="modalEditarBeneficio{{NOME_BENEFICIO_SEM_ESPACO}}" tabindex="-1" role="dialog"
+    attr.aria-labelledby="modalEditarBeneficio{{NOME_BENEFICIO_SEM_ESPACO}}" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="col-sm-12 col-sm-12" id="formTitle">
+            <h4 class="text-center"><strong>Editar Beneficio</strong></h4>
+          </div>
+          <form role="form" [formGroup]="beneficioResidenteForm">
+            <div class="box-body">
+              <div class="col-sm-6 col-xs-12" id="inputValidator">
+                <salv-input-container errorMessage="Campo Obrigatório" label="Nome do Benefício">
+                  <span class="text-danger">*</span>
+                  <input type="text" class="form-control" formControlName="NOME_BENEFICIO"
+                    placeholder="Nome do Benefício" autocomplete="off" maxlength="100">
+                </salv-input-container>
+              </div>
+
+              <div class="col-sm-6 col-xs-12">
+                <label>Banco</label>
+                <input type="text" class="form-control" formControlName="BANCO_BENEFICIO" placeholder="Banco"
+                  autocomplete="off" maxlength="50">
+              </div>
+
+              <div class="col-sm-12 col-xs-12">
+                <br>
+              </div>
+
+              <div class="col-sm-6 col-xs-12">
+                <label>Agência</label>
+                <input type="text" class="form-control" formControlName="AGENCIA_BENEFICIO" placeholder="Agência"
+                  autocomplete="off" maxlength="50">
+              </div>
+
+              <div class="col-sm-6 col-xs-12">
+                <label>Conta</label>
+                <input type="text" class="form-control" formControlName="CONTA_BENEFICIO" placeholder="Conta"
+                  autocomplete="off" maxlength="50">
+              </div>
+
+              <div class="col-sm-12 col-xs-12">
+                <br>
+              </div>
+
+              <div class="col-sm-6 col-xs-12">
+                <label>Valor</label>
+                <input type="text" class="form-control" formControlName="VALOR_BENEFICIO" placeholder="Valor R$"
+                  autocomplete="off" maxlength="12">
+              </div>
+
+              <div class="col-sm-6 col-xs-12" id="inputValidator">
+                <salv-input-container errorMessage="Campo Obrigatório" label="Prova de Vida">
+                  <span class="text-danger">*</span>
+                  <input type="date" class="form-control pull-right" id="datepicker"
+                    formControlName="PROVA_VIDA_BENEFICIO" max="2999-12-31">
+                </salv-input-container>
+              </div>
+
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal" (click)="editarBeneficio(beneficioResidenteForm.value)"
+            [disabled]="!beneficioResidenteForm.valid">Salvar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIM MODAL EDITAR BENEFICIO -->
+</div>
