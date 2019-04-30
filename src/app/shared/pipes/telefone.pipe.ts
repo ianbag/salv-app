@@ -15,7 +15,7 @@ export class TelefonePipe implements PipeTransform {
     }
 
     function telefonePoints(value?: string): string {
-      return `${value.substr(0, 5)}-${value.substr(5, 4)}`
+      return `${value.substr(0, 4)}-${value.substr(4, 5)}`
     }
   }
 

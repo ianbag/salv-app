@@ -51,7 +51,7 @@
         </tr>
         <tr *ngFor="let acompanhamento of acompanhamentos | filter : filter : searchString | paginate: { itemsPerPage: 10, currentPage: paginaAtual} let i = index">
           <td>{{acompanhamento.ATIVIDADE}}</td>
-          <td>{{acompanhamento.DATA_ACOMPANHAMENTO | date:'dd-MM-yyyy'}}</td>
+          <td>{{acompanhamento.DATA_ACOMPANHAMENTO | date:'dd/MM/yyyy'}}</td>
          
           <td>
 

@@ -24,7 +24,7 @@
                         </salv-infos-dependente>
                     </div>
                     <div *ngIf="!dependentes.length">
-                        <p>Você não possui dependentes cadastrados</p>
+                        <p style="margin-left: 15px">Você não possui dependentes cadastrados</p>
                         <!--DIV MODAL INICIO-->
                         <div class="col-sm-12 col-xs-12">
                             <!-- Button trigger modal -->
@@ -57,43 +57,47 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-6 col-sm-12">
+                                                    <salv-input-container>
                                                     <label>Nome</label>
                                                     <input type="text" class="form-control" formControlName="NOME"
                                                         placeholder="Nome" autocomplete="off" maxlength="50">
+                                                    </salv-input-container>
                                                 </div>
                                                 <div class="col-sm-6 col-sm-12">
+                                                    <salv-input-container>
                                                     <label>Sobrenome</label>
                                                     <input type="text" class="form-control" formControlName="SOBRENOME"
                                                         placeholder="Sobrenome" autocomplete="off" maxlength="50">
+                                                    </salv-input-container>
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-sm-4 col-sm-12">
-                                                    <label>Data de Nascimento</label>
-                                                    <input type="date" class="form-control"
-                                                        formControlName="DATA_NASCIMENTO"
-                                                        placeholder="Data de Nascimento" id="datepicker"
-                                                        autocomplete="off" max="2999-12-31">
+                                                <div class="col-sm-5 col-sm-12">
+                                                    <salv-input-container errorMessage="Mínimo 11 caracteres" label="CPF">
+                                                    <input type="text" class="form-control" formControlName="CPF" placeholder="CPF" autocomplete="off" mask="000.000.000-00"
+                                                                    maxlength="14">
+                                                    </salv-input-container>
                                                 </div>
-                                                <div class="col-sm-4 col-sm-12">
+                                                <div class="col-sm-5 col-sm-12">
                                                     <salv-input-container errorMessage="Mínimo 9 caracteres" label="RG">
                                                         <input type="text" class="form-control" formControlName="RG"
                                                             placeholder="RG" autocomplete="off" mask="00.000.000-A"
                                                             maxlength="12">
                                                     </salv-input-container>
                                                 </div>
-                                                <div class="col-sm-4 col-sm-12">
-                                                    <salv-input-container errorMessage="Mínimo 11 caracteres"
-                                                        label="CPF">
-                                                        <input type="text" class="form-control" formControlName="CPF"
-                                                            placeholder="CPF" autocomplete="off" mask="000.000.000-00"
-                                                            maxlength="14">
+                                                <div class="col-sm-5 col-sm-12" >
+                                                    <salv-input-container>
+                                                    <label>Data de Nascimento</label>
+                                                    <input type="date" class="form-control" formControlName="DATA_NASCIMENTO" id="datepicker"
+                                                    autocomplete="off" max="2999-12-31">
                                                     </salv-input-container>
                                                 </div>
                                             </div>
                                             <hr class="col-md-11">
                                             <div class="row">
-                                                <h6><strong>Certidão de Nascimento</strong></h6>
+                                                <div class="col-sm-12 col-sm-12" id="formTitle" style="margin-left: 4px">
+                                                    <h5><strong>Certidão de nascimento</strong></h5>
+                                                </div>
                                                 <div class="col-sm-4 col-sm-12">
                                                     <salv-input-container label="Número">
                                                         <input type="text" class="form-control"
@@ -102,32 +106,31 @@
                                                     </salv-input-container>
                                                 </div>
                                                 <div class="col-sm-4 col-sm-12">
+                                                    <salv-input-container>
                                                     <label>Folha</label>
                                                     <input type="text" class="form-control"
                                                         formControlName="FOLHA_CERTIDAO_NASCIMENTO" placeholder="Folha"
                                                         autocomplete="off" maxlength="5">
+                                                    </salv-input-container>
                                                 </div>
-                                                <div class="col-sm-4 col-sm-12">
+                                                <div class="col-sm-4 col-sm-12" style="margin-top: 10px">
                                                     <label>Livro</label>
                                                     <input type="text" class="form-control"
                                                         formControlName="LIVRO_CERTIDAO_NASCIMENTO" placeholder="Livro"
                                                         autocomplete="off" maxlength="3">
                                                 </div>
                                             </div>
-                                            <div class="col-sm-4 col-sm-12">
-                                                <label>Livro</label>
-                                                <input type="text" class="form-control"
-                                                    formControlName="LIVRO_CERTIDAO_NASCIMENTO" placeholder="Livro"
-                                                    autocomplete="off" maxlength="3">
-                                            </div>
                                             <div class="row">
                                                 <div class="col-sm-6 col-sm-12">
+                                                    <salv-input-container>
                                                     <label>Cidade</label>
                                                     <input type="text" class="form-control"
                                                         formControlName="CIDADE_CERTIDAO_NASCIMENTO"
                                                         placeholder="Cidade" autocomplete="off" maxlength="50">
+                                                    </salv-input-container>
                                                 </div>
                                                 <div class="col-sm-6 col-sm-12">
+                                                    <salv-input-container>
                                                     <label>Estado</label>
                                                     <select class="form-control"
                                                         formControlName="ESTADO_CERTIDAO_NASCIMENTO">
@@ -137,6 +140,7 @@
                                                             {{estado}}
                                                         </option>
                                                     </select>
+                                                    </salv-input-container>
                                                 </div>
                                             </div>
                                         </div>
@@ -146,7 +150,7 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                 <button type="button" class="btn btn-success"
-                                    (click)="novoDependente(this.novoDependenteForm.value)"
+                                    (click)="novoDependente(this.novoDependenteForm.value)" [disabled]="!novoDependenteForm.valid"
                                     data-dismiss="modal">Salvar</button>
                             </div>
                         </div>
