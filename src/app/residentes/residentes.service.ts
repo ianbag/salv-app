@@ -5,6 +5,7 @@ import { Observable } from "rxjs";
 import { Residente, Pessoa, Residente_Convenio } from './residente/residente.model';
 import { Familiar, Endereco, Telefone } from './residente/infos-familiar/familiar.model';
 import { Convenio } from './residente/infos-convenio/convenio.model';
+import { Beneficio } from './residente/infos-beneficios/beneficio.model';
 
 @Injectable()
 export class ResidentesService {
@@ -52,6 +53,14 @@ export class ResidentesService {
         return this.http.get<Convenio[]>(`${SALV_API}/residente_convenio/${id}`)
     } // remover
 
+    beneficiosById(id: number): Observable<Beneficio[]> {
+        return this.http.get<Beneficio[]>(`${SALV_API}/beneficio/${id}`)
+    }
+
+    beneficiosByIdName(id: number, nome: string): Observable<Beneficio> {
+        return this.http.get<Beneficio>(`${SALV_API}/beneficio/${id}/${nome}`)
+    }
+
     convenioOneByID(id: number): Observable<Residente_Convenio> {
         return this.http.get<Residente_Convenio>(`${SALV_API}/residente_convenio/one/${id}`)
     }
@@ -84,8 +93,12 @@ export class ResidentesService {
         return this.http.delete<any>(`${SALV_API}/residente/${id}`)
     }
 
-   ativarResidente(id: string): Observable<any> {
+    ativarResidente(id: string): Observable<any> {
         return this.http.delete<any>(`${SALV_API}/residente-ativar/${id}`)
+    }
+
+    deleteBeneficio(nome: string, id: number): Observable<any> {
+        return this.http.delete<any>(`${SALV_API}/beneficio/${id}/${nome}`)
     }
 
     convenios(): Observable<Residente_Convenio[]> {
@@ -205,6 +218,15 @@ export class ResidentesService {
 
     updateTelefone(telefone: Telefone, codigoTelefone) {
         return this.http.put<Telefone>(`${SALV_API}/telefone/${codigoTelefone}`, telefone)
+    }
+
+    createNewBeneficio(beneficio: Beneficio, codigoResidente) {
+        beneficio.CODIGO_RESIDENTE = codigoResidente
+        return this.http.post<any>(`${SALV_API}/beneficio`, beneficio)
+    }
+
+    updateBeneficio(beneficio: Beneficio, NOME_BENEFICIO, CODIGO_RESIDENTE) {
+        return this.http.put<any>(`${SALV_API}/beneficio/${CODIGO_RESIDENTE}/${NOME_BENEFICIO}`, beneficio)
     }
 
     reportResidentes() {

@@ -88,6 +88,7 @@ import { ValidatorService } from './shared/validators/validator.service';
 import {CookieService} from 'ngx-cookie-service'
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FilterPipeModule } from 'ngx-filter-pipe';
+import { InfosBeneficiosComponent } from './residentes/residente/infos-beneficios/infos-beneficios.component';
 
 // import { AuthInterceptor } from './auth/auth-interceptor.service';
 
@@ -153,6 +154,7 @@ import { FilterPipeModule } from 'ngx-filter-pipe';
     EditarResidenteComponent,
     ForgetPasswordComponent,
     ResetPasswordComponent,
+    InfosBeneficiosComponent
     ],
   imports: [
     NgxPaginationModule,

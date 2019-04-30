@@ -91,31 +91,6 @@ export class FamiliarResidenteComponent implements OnInit {
       this.familiarResidenteForm.patchValue(this.familiar)
   }
 
-
-  createTelefones(): FormGroup {
-    return this.formBuilder.group({
-      DDD: this.formBuilder.control(null, [Validators.required, Validators.minLength(2)]),
-      NUMERO: this.formBuilder.control(null, [Validators.required, Validators.minLength(8)])
-    });
-  }
-
-  get telefones() {
-    return this.familiarResidenteForm.get('TELEFONES') as FormArray
-  }
-
-  addTelefones() {
-    this.telefonesArray = this.familiarResidenteForm.get('TELEFONES') as FormArray;
-    this.telefonesArray.push(this.createTelefones());
-  }
-
-  removeTelefone(index) {
-    if (this.telefonesArray.length != 1) {
-      this.telefonesArray = this.familiarResidenteForm.get('TELEFONES') as FormArray;
-      this.telefonesArray.removeAt(index)
-    }
-  }
-
-
   addDataServiceFamiliar(familiar: Familiar) {
     this.residentesService.endereco = familiar.ENDERECOS
     this.residentesService.telefones = familiar.TELEFONE
