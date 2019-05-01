@@ -95,8 +95,8 @@
                         <td>{{convenio.DDD}} {{convenio.TELEFONE}}</td>
 
                     <td>                        
-                        <button type="submit" class="btn btn-primary"
-                        (click)="ativarConvenio(convenio.CODIGO); $event.stopPropagation()">Ativar</button>
+                        <a type="submit" class="btn btn-primary botao"
+                        (click)="ativarConvenio(convenio.CODIGO); $event.stopPropagation()">Ativar</a>
                         <a type="submit" class="btn btn-success botao" [routerLink]="['/convenio',convenio.CODIGO]">
                            +Opções</a>
                     </td>
