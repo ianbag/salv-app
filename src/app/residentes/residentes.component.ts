@@ -63,7 +63,7 @@ export class ResidentesComponent implements OnInit {
 
 
   deleteResidente(id: string): void {
-    this.dialogConfirmService.confirm(`Deseja excluir o residente?`)
+    this.dialogConfirmService.confirm(`Deseja inativar o residente?`)
       .then((isTrue) => {
         if (isTrue) {
           this.residentesService.deleteResidente(id)
