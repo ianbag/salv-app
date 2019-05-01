@@ -9,13 +9,15 @@ export class SituacaoInssPipe implements PipeTransform {
     let situacaoINSS
 
     if (value == 'bpc' || 'BPC') {
-        situacaoINSS = 'Benefício de Prestação Continuada'
+      situacaoINSS = 'Benefício de Prestação Continuada'
     } else if (value == 'aiv' || 'AIV') {
-        situacaoINSS = 'Aposentadoria por Invalidez'
+      situacaoINSS = 'Aposentadoria por Invalidez'
     } else if (value == 'aid' || 'AID') {
-        situacaoINSS = 'Aposentadoria por Idade'
+      situacaoINSS = 'Aposentadoria por Idade'
+    } else {
+      situacaoINSS = 'Não especificado'
     }
-    
+
     return situacaoINSS;
   }
 

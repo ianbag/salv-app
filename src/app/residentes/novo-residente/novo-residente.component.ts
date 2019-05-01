@@ -66,7 +66,8 @@ export class NovoResidenteComponent implements OnInit {
   situacoesInss = [
     { value: "BPC", option: "Benefício de Prestação Continuada" },
     { value: "AIV", option: "Aposentadoria por Invalidez" },
-    { value: "AID", option: "Aposentadoria por Idade" }
+    { value: "AID", option: "Aposentadoria por Idade" },
+    { value: "NEC", option: "Não especificado"}
   ]
 
   novoResidenteForm: FormGroup;
