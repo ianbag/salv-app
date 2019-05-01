@@ -4,8 +4,8 @@ import { Pipe, PipeTransform } from '@angular/core'
     name: 'zonaEleitoral'
 })
 export class ZonaEleitoralPipe implements PipeTransform {
-    transform(value: string) {
-        let zonaEleitoral = value.toUpperCase()
+    transform(value: any) {
+        let zonaEleitoral = value
 
         if (zonaEleitoral) {
             return zonaEleitoral

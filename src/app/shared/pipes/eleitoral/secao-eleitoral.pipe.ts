@@ -4,8 +4,8 @@ import { Pipe, PipeTransform } from '@angular/core'
     name: 'secaoEleitoral'
 })
 export class SecaoEleitoralPipe implements PipeTransform {
-    transform(value: string) {
-        let secaoEleitoral = value.toUpperCase()
+    transform(value: any) {
+        let secaoEleitoral = value
 
         if (secaoEleitoral) {
             return secaoEleitoral
