@@ -57,15 +57,13 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-6 col-sm-12">
-                                                    <salv-input-container>
-                                                        <label>Nome</label>
+                                                    <salv-input-container errorMessage="Campo obrigatório" label="Nome">
                                                         <input type="text" class="form-control" formControlName="NOME"
                                                             placeholder="Nome" autocomplete="off" maxlength="50">
                                                     </salv-input-container>
                                                 </div>
                                                 <div class="col-sm-6 col-sm-12">
-                                                    <salv-input-container>
-                                                        <label>Sobrenome</label>
+                                                    <salv-input-container errorMessage="Campo obrigatório" label="Sobrenome">
                                                         <input type="text" class="form-control"
                                                             formControlName="SOBRENOME" placeholder="Sobrenome"
                                                             autocomplete="off" maxlength="50">
@@ -89,8 +87,7 @@
                                                     </salv-input-container>
                                                 </div>
                                                 <div class="col-sm-5 col-sm-12">
-                                                    <salv-input-container>
-                                                        <label>Data de Nascimento</label>
+                                                    <salv-input-container errorMessage="Campo obrigatório" label="Data de nascimento">
                                                         <input type="date" class="form-control"
                                                             formControlName="DATA_NASCIMENTO" id="datepicker"
                                                             autocomplete="off" max="2999-12-31">
