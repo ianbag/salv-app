@@ -1,9 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'numeroINSS'
+  name: 'numeroInss'
 })
-export class NumeroINSSPipe implements PipeTransform {
+export class NumeroInssPipe implements PipeTransform {
 
   transform(value: any): any {
     let numeroINSS = value

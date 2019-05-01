@@ -1,6 +1,4 @@
 import { CartaoSUSPipe } from './shared/pipes/cartaoSUS.pipe';
-import { NumeroINSSPipe } from './shared/pipes/inss-numero.pipe';
-import { SituacaoINSSPipe } from './shared/pipes/situacao-inss.pipe';
 import { CepPipe } from './shared/pipes/cep.pipe';
 import { TituloEleitorPipe } from './shared/pipes/eleitoral/titulo-eleitor.pipe';
 import { ZonaEleitoralPipe } from './shared/pipes/eleitoral/zona-eleitoral.pipe'
@@ -105,6 +103,16 @@ import { ProfissaoPipe } from './shared/pipes/profissao.pipe'
 import { DataPipe } from './shared/pipes/data.pipe'
 import { CartaoSamsPipe } from './shared/pipes/cartao-sams.pipe'
 
+//INSS PIPE
+import { NumeroInssPipe } from './shared/pipes/inss/numero-inss.pipe';
+import { SituacaoInssPipe } from './shared/pipes/inss/situacao-inss.pipe';
+import { BancoInssPipe } from './shared/pipes/inss/banco-inss.pipe'
+import { AgenciaInssPipe } from './shared/pipes/inss/agencia-inss.pipe'
+import { ContaInssPipe } from './shared/pipes/inss/conta-inss.pipe'
+import { ValorInssPipe } from './shared/pipes/inss/valor-inss.pipe'
+import { ProvaVidaInssPipe } from './shared/pipes/inss/prova-vida-inss.pipe'
+//
+
 // import { AuthInterceptor } from './auth/auth-interceptor.service';
 
 
@@ -118,10 +126,16 @@ import { CartaoSamsPipe } from './shared/pipes/cartao-sams.pipe'
     ResidentesComponent,
     ResidenteComponent,
     InfosPessoaisComponent,
-
     CartaoSUSPipe,
-    NumeroINSSPipe,
-    SituacaoINSSPipe,
+    //INSS PIPE
+    NumeroInssPipe,
+    SituacaoInssPipe,
+    BancoInssPipe,
+    AgenciaInssPipe,
+    ContaInssPipe,
+    ValorInssPipe,
+    ProvaVidaInssPipe,
+    //
     TelefonePipe,
     CepPipe,
     SexoPipe,
