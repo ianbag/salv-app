@@ -4,6 +4,7 @@ import { SituacaoINSSPipe } from './shared/pipes/situacao-inss.pipe';
 import { CepPipe } from './shared/pipes/cep.pipe';
 import { TituloEleitorPipe } from './shared/pipes/eleitoral/titulo-eleitor.pipe';
 import { ZonaEleitoralPipe } from './shared/pipes/eleitoral/zona-eleitoral.pipe'
+import { SecaoEleitoralPipe } from './shared/pipes/eleitoral/secao-eleitoral.pipe'
 import { SearchPipe } from './shared/pipes/filtroData.pipe';
 import { NovoAcompanhamentoService } from './acompanhamentos/novo-acompanhamento/novo-acompanhamento.service';
 import { UserDetailsComponent } from './fixed-elements/header/user-details/user-details.component';
@@ -119,6 +120,7 @@ import { InfosBeneficiosComponent } from './residentes/residente/infos-beneficio
     RgPipe,
     TituloEleitorPipe,
     ZonaEleitoralPipe,
+    SecaoEleitoralPipe,
     InfosFamiliarComponent,
     ConveniosComponent,
     AniversariantesComponent,
