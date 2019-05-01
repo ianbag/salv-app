@@ -13,7 +13,7 @@ import { UniqueValuesValidators } from 'src/app/shared/validators/unique-values/
 export class InfosFuncionarioComponent implements OnInit {
 
     @Input() funcionario: Funcionario
-    @Input() telefones: Telefone[]
+    @Input() telefones: Telefone[] = []
     @Input() enderecos: Endereco[]
     novoTelefoneForm: FormGroup
     // novoEnderecoForm: FormGroup
