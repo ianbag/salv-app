@@ -6,8 +6,8 @@
     <a><span id="iconesForm" (click)="deleteDependente(dependente.NOME, dependente.SOBRENOME)"><i
           class="fa fa-close"></i></span></a>
     <a data-toggle="modal" attr.data-target="#modalUpdateDependente{{dependente?.CPF}}"
-      (click)="buscaDependente(dependente.CODIGO_FUNCIONARIO, dependente.NOME, dependente.SOBRENOME)"><span id="iconesForm"><i
-          class="fa fa-pencil"></i></span></a>
+      (click)="buscaDependente(dependente.CODIGO_FUNCIONARIO, dependente.NOME, dependente.SOBRENOME)"><span
+        id="iconesForm"><i class="fa fa-pencil"></i></span></a>
     <strong>Nome: </strong> {{dependente?.NOME}} {{dependente?.SOBRENOME}}
     <br>
   </div>
@@ -49,8 +49,8 @@
 <!--DIV MODAL INICIO-->
 <div class="col-sm-12 col-xs-12">
   <!-- Modal -->
-  <div class="modal fade" id="modalUpdateDependente{{dependente?.CPF}}" tabindex="-1" role="dialog" attr.aria-labelledby="modalUpdateDependente{{dependente?.CPF}}"
-    aria-hidden="true">
+  <div class="modal fade" id="modalUpdateDependente{{dependente?.CPF}}" tabindex="-1" role="dialog"
+    attr.aria-labelledby="modalUpdateDependente{{dependente?.CPF}}" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-body">
@@ -62,22 +62,25 @@
                 </div>
                 <div class="row">
                   <div class="col-sm-6 col-sm-12">
-                    <label>Nome</label>
-                    <input type="text" class="form-control" formControlName="NOME" placeholder="Nome" autocomplete="off"
-                      maxlength="50">
+                    <salv-input-container errorMessage="Campo obrigatório" label="Nome">
+                      <input type="text" class="form-control" formControlName="NOME" placeholder="Nome"
+                        autocomplete="off" maxlength="50">
+                    </salv-input-container>
                   </div>
                   <div class="col-sm-6 col-sm-12">
-                    <label>Sobrenome</label>
-                    <input type="text" class="form-control" formControlName="SOBRENOME" placeholder="Sobrenome"
-                      autocomplete="off" maxlength="50">
+                    <salv-input-container errorMessage="Campo obrigatório" label="Sobrenome">
+                      <input type="text" class="form-control" formControlName="SOBRENOME" placeholder="Sobrenome"
+                        autocomplete="off" maxlength="50">
+                    </salv-input-container>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-sm-4 col-sm-12">
-                    <label>Data de Nascimento</label>
-                    <input type="date" class="form-control" formControlName="DATA_NASCIMENTO"
-                      placeholder="Data de Nascimento" id="datepicker" autocomplete="off" max="2999-12-31">
+                    <salv-input-container errorMessage="Campo obrigatório" label="Data de nascimento">
+                      <input type="date" class="form-control" formControlName="DATA_NASCIMENTO"
+                        placeholder="Data de Nascimento" id="datepicker" autocomplete="off" max="2999-12-31">
                   </div>
+                  </salv-input-container>
                   <div class="col-sm-4 col-sm-12" id="inputValidator">
                     <salv-input-container errorMessage="Minimo 9 caracteres" label="RG">
                       <input type="text" class="form-control" formControlName="RG" placeholder="RG" autocomplete="off"
