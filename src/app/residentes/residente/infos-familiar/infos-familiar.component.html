@@ -258,7 +258,7 @@
       </div>
       <div class="col-sm-12">
         <div class="col-xs-4 col-xs-12" *ngFor="let tel of telefone">
-          <strong>Telefone: </strong> ({{tel?.TELEFONE.DDD}}) {{tel?.TELEFONE.NUMERO}}
+          <strong>Telefone: </strong> ({{tel?.TELEFONE.DDD}}) {{tel?.TELEFONE.NUMERO | telefone}}
           <hr class="col-md-12">
           <a (click)="deletarTelefoneFamiliar(tel.TELEFONE.CODIGO, familiar?.CODIGO)">
             <span>
