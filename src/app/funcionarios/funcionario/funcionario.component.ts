@@ -58,7 +58,7 @@ export class FuncionarioComponent implements OnInit {
     }, 1000)
 
     this.novoDependenteForm = this.fb.group({
-      NOME: this.fb.control(null, []),
+      NOME: this.fb.control(null, [Validators.required]),
       SOBRENOME: this.fb.control(null, []),
       DATA_NASCIMENTO: this.fb.control(null, []),
       RG: this.fb.control(null, [Validators.minLength(9)], this.uniqueValidators.validateDependenteRG(null, null, null) ),
