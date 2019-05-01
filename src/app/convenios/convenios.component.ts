@@ -56,7 +56,7 @@ export class ConveniosComponent implements OnInit {
 
 
   deleteConvenio(id: string): void {
-    this.dialogConfirmService.confirm(`Deseja excluir o convênio?`)
+    this.dialogConfirmService.confirm(`Deseja inativar o convênio?`)
       .then((isTrue) => {
         if (isTrue) {
           this.conveniosService.deleteConvenio(id)
