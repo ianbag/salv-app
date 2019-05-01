@@ -548,21 +548,21 @@
                             </div>
                             <div class="row">
                               <div class="col-sm-4 col-sm-12" id="inputValidator">
-                                <salv-input-container label="Email">
+                                <salv-input-container errorMessage="Campo obrigatório" label="Email">
                                   <input type="text" class="form-control" formControlName="EMAIL" placeholder="E-mail"
                                     autocomplete="off" maxlength="100">
                                 </salv-input-container>
                               </div>
                               <div class="col-sm-4 col-sm-12" id="inputValidator">
-                                <salv-input-container label="Login">
+                                <salv-input-container errorMessage="Campo obrigatório" label="Login">
                                   <input type="text" class="form-control" formControlName="LOGIN" placeholder="Login"
                                     autocomplete="off" maxlength="100">
                                 </salv-input-container>
                               </div>
                               <div class="col-sm-4 col-sm-12">
-                                <label>Senha</label>
-                                <input type="password" class="form-control" formControlName="SENHA" placeholder="Senha"
-                                  autocomplete="off" minlength="4" maxlength="100">
+                                <salv-input-container errorMessage="Campo obrigatório" label="Senha">
+                                  <input type="password" class="form-control" formControlName="SENHA" placeholder="Senha" autocomplete="off" minlength="4" maxlength="100">
+                                </salv-input-container>
                               </div>
                             </div>
                           </div>

@@ -78,7 +78,7 @@ export class InfosFuncionarioComponent implements OnInit {
         this.novoUsuarioForm = this.fb.group({
             EMAIL: this.fb.control(null, [Validators.required], this.uniqueValidators.validateUsuarioEmail(null)),
             LOGIN: this.fb.control(null, [Validators.required], this.uniqueValidators.validateUsuarioLogin(null)),
-            SENHA: this.fb.control(null, [])
+            SENHA: this.fb.control(null, [Validators.required])
         })
         this.updateTelefoneForm = this.fb.group({
             DDD: this.fb.control(null, []),
