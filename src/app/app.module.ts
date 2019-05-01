@@ -102,6 +102,7 @@ import { LivroCertNascPipe } from './shared/pipes/cert_nasc/livro-cert-nasc.pipe
 
 import { ApelidoPipe } from './shared/pipes/apelido.pipe'
 import { ProfissaoPipe } from './shared/pipes/profissao.pipe'
+import { DataPipe } from './shared/pipes/data.pipe'
 
 // import { AuthInterceptor } from './auth/auth-interceptor.service';
 
@@ -141,6 +142,7 @@ import { ProfissaoPipe } from './shared/pipes/profissao.pipe'
     //
     ApelidoPipe,
     ProfissaoPipe,
+    DataPipe,
     InfosFamiliarComponent,
     ConveniosComponent,
     AniversariantesComponent,
