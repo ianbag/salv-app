@@ -12,6 +12,8 @@ export class SexoPipe implements PipeTransform {
       sexo = 'Masculino'
     } else if (value === 'F' || value === 'f') {
       sexo = 'Feminino'
+    } else {
+      return 'Não declarado'
     }
 
     return sexo
