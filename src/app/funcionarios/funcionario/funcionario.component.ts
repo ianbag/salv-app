@@ -60,7 +60,7 @@ export class FuncionarioComponent implements OnInit {
     this.novoDependenteForm = this.fb.group({
       NOME: this.fb.control(null, [Validators.required]),
       SOBRENOME: this.fb.control(null, [Validators.required]),
-      DATA_NASCIMENTO: this.fb.control(null, []),
+      DATA_NASCIMENTO: this.fb.control(null, [Validators.required]),
       RG: this.fb.control(null, [Validators.required, Validators.minLength(9)], this.uniqueValidators.validateDependenteRG(null, null, null) ),
       CPF: this.fb.control(null, [Validators.required, Validators.minLength(11)], this.uniqueValidators.validateDependenteCPF(null, null, null)),
       NUMERO_CERTIDAO_NASCIMENTO: this.fb.control(null, [], this.uniqueValidators.validateDependenteNumeroCertidao(null, null, null)),
