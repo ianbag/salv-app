@@ -2,9 +2,10 @@
   <div class="box-header with-border">
     <h3 class="box-title">Funcionário</h3>
     <div class="box-tools pull-right">
-        <a (click)="buscaFuncionario()" type="submit" class="btn btn-warning botao" data-toggle="modal" data-target="#modalEditarFuncionario">Editar</a>           
+      <a (click)="buscaFuncionario()" type="submit" class="btn btn-warning botao" data-toggle="modal"
+        data-target="#modalEditarFuncionario">Editar</a>
     </div>
-    
+
   </div>
   <div class="box-body">
     <div class="row col-md-12">
@@ -88,15 +89,16 @@
                         </div>
                       </div>
                       <div class="row">
-                        <div class="col-sm-4 col-sm-12" formGroupName="PESSOA" style="margin-top: -10px; margin-left: -10px">
-                              <salv-input-container errorMessage="Campo Obrigatório" label="Estado Civil">
-                                <select class="form-control" formControlName="ESTADO_CIVIL">
-                                  <option value="" label="Selecione" disabled selected="selected"></option>
-                                  <option *ngFor="let estadoCivil of estadosCivil" [value]="estadoCivil.value">
-                                    {{estadoCivil.option}}
-                                  </option>
-                                </select>
-                              </salv-input-container>
+                        <div class="col-sm-4 col-sm-12" formGroupName="PESSOA"
+                          style="margin-top: -10px; margin-left: -10px">
+                          <salv-input-container errorMessage="Campo Obrigatório" label="Estado Civil">
+                            <select class="form-control" formControlName="ESTADO_CIVIL">
+                              <option value="" label="Selecione" disabled selected="selected"></option>
+                              <option *ngFor="let estadoCivil of estadosCivil" [value]="estadoCivil.value">
+                                {{estadoCivil.option}}
+                              </option>
+                            </select>
+                          </salv-input-container>
                         </div>
                         <div class="col-sm-4 col-sm-12" id="inputValidator" formGroupName="PESSOA">
                           <salv-input-container errorMessage="Campo Obrigatório" label="Sexo">
@@ -193,18 +195,20 @@
             </div>
             <!--FIM MODAL-->
             <!-- Button trigger modal -->
-            
+
             <h4><strong>Telefones <a type="submit" data-toggle="modal" data-target="#modalTelefone">
-                <span class="plus-itens"><i class="fa fa-plus-circle"></i></span>
-            </a></strong></h4>
+                  <span class="plus-itens"><i class="fa fa-plus-circle"></i></span>
+                </a></strong></h4>
           </div>
           <!--FIM DIV MODAL-->
           <div class="col-xs-4 col-xs-12" *ngFor="let telefone of telefones" style="margin-left: -15px">
-            <strong>Telefone: </strong> ({{telefone?.TELEFONE.DDD}}) {{telefone?.TELEFONE.NUMERO}} <a><span id="iconesForm"
+            <strong>Telefone: </strong> ({{telefone?.TELEFONE.DDD}}) {{telefone?.TELEFONE.NUMERO}} <a><span
+                id="iconesForm"
                 (click)="deleteTelefone(funcionario.PESSOA.CODIGO, telefone.TELEFONE.CODIGO); $event.stopPropagation()"><i
                   class="fa fa-close"></i></span></a>
             <a data-toggle="modal" data-target="#modalUpdateTelefone"
-              (click)="buscaTelefone(telefone.TELEFONE.CODIGO)"><span id="iconesForm"><i class="fa fa-pencil"></i></span></a>
+              (click)="buscaTelefone(telefone.TELEFONE.CODIGO)"><span id="iconesForm"><i
+                  class="fa fa-pencil"></i></span></a>
           </div>
           <!--DIV MODAL INICIO-->
           <div class="col-sm-12 col-xs-12">
@@ -249,8 +253,8 @@
           <hr class="col-md-12">
           <div class="col-md-12">
             <!--DIV MODAL-->
-            <div class="col-sm-12 col-xs-12">
-              <!-- Modal -->
+            <!--div class="col-sm-12 col-xs-12">
+              
               <div class="modal fade" id="modalEndereco" tabindex="-1" role="dialog" aria-labelledby="modalEndereco"
                 aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -320,22 +324,23 @@
                   </div>
                 </div>
               </div>
-              <!--FIM MODAL-->
-            </div>
+            </div-->
             <!--DIV MODAL-->
             <div class="col-xs-12 col-xs-12" style="margin-left: -25px">
               <!-- Button trigger modal -->
-              <h4><strong>Endereços <a type="submit" data-toggle="modal" data-target="#modalEndereco">
+              <h4><strong>Endereços
+                  <!--a type="submit" data-toggle="modal" data-target="#modalEndereco">
                   <span class="plus-itens"><i class="fa fa-plus-circle"></i></span>
-              </a></strong></h4>
+              </a--></strong></h4>
             </div>
             <div *ngFor="let endereco of enderecos" style="margin-left: -25px">
               <div class="col-xs-4 col-xs-12">
-                <a><span id="iconesForm"
+                <!-- <a><span id="iconesForm"
                     (click)="deleteEndereco(funcionario.PESSOA.CODIGO, endereco.ENDERECO.CODIGO); $event.stopPropagation()"><i
-                      class="fa fa-close"></i></span></a>
+                      class="fa fa-close"></i></span></a> -->
                 <a data-toggle="modal" data-target="#modalUpdateEndereco"
-                  (click)="buscaEndereco(endereco.ENDERECO.CODIGO)"><span id="iconesForm"><i class="fa fa-pencil"></i></span></a>
+                  (click)="buscaEndereco(endereco.ENDERECO.CODIGO)"><span id="iconesForm"><i
+                      class="fa fa-pencil"></i></span></a>
                 <strong>Endereço: </strong> {{endereco?.ENDERECO.ENDERECO}}
               </div>
               <div class="col-xs-4 col-xs-12">
@@ -461,8 +466,8 @@
               <h4><strong>Informações de login</strong></h4>
             </div>
             <div class="col-xs-4 col-xs-12" style="margin-left: -15px">
-                <a data-toggle="modal" data-target="#modalUpdateUsuario" (click)="buscaUsuario()"><span id="iconesForm"><i
-                  class="fa fa-pencil"></i></span></a>
+              <a data-toggle="modal" data-target="#modalUpdateUsuario" (click)="buscaUsuario()"><span id="iconesForm"><i
+                    class="fa fa-pencil"></i></span></a>
               <strong>E-mail: </strong> {{funcionario?.USUARIO.EMAIL}}
               <br>
             </div>
@@ -487,15 +492,15 @@
                           <div class="row">
                             <div class="col-sm-6 col-sm-12">
                               <salv-input-container label="Email">
-                              <input type="text" class="form-control" formControlName="EMAIL" placeholder="E-mail"
-                                autocomplete="off" maxlength="100">
-                                </salv-input-container>
+                                <input type="text" class="form-control" formControlName="EMAIL" placeholder="E-mail"
+                                  autocomplete="off" maxlength="100">
+                              </salv-input-container>
                             </div>
                             <div class="col-sm-6 col-sm-12">
                               <salv-input-container label="Login">
-                              <input type="text" class="form-control" formControlName="LOGIN" placeholder="Login"
-                                autocomplete="off" maxlength="100">
-                                </salv-input-container>
+                                <input type="text" class="form-control" formControlName="LOGIN" placeholder="Login"
+                                  autocomplete="off" maxlength="100">
+                              </salv-input-container>
                             </div>
                           </div>
                         </div>
@@ -518,7 +523,8 @@
             <!--DIV MODAL INICIO-->
             <div class="col-sm-12 col-xs-12">
               <!-- Button trigger modal -->
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalUsuario" style="margin-left: -10px">
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalUsuario"
+                style="margin-left: -10px">
                 Adicionar usuário
               </button>
               <!-- Modal -->
