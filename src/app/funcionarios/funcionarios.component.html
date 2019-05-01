@@ -14,46 +14,51 @@
         <div class="form-group">
             <a type="submit" class="btn btn-primary" [routerLink]="['/novo-funcionario']">Novo funcionário</a>
 
-           <!-- FILTRO -->
-           <a class="dropdown btn btn-success pull-right" style="float:right; margin-right: 1cm;">
+            <!-- FILTRO -->
+            <a class="dropdown btn btn-success pull-right" style="float:right; margin-right: 1cm;">
 
-            <a href="#" class="dropdown-toggle pull-left" data-toggle="dropdown">Filtrar<span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle pull-left" data-toggle="dropdown">Filtrar<span
+                        class="caret"></span></a>
 
-             <!--MENU DA DROPDOWN-->
-            <ul class="dropdown-menu" style="color:black" > 
-                       
-                  <!--FILTRO INATIVOS-->
-                 
-                  <input type="checkbox" id="Desativados" [(ngModel)]="Desativados" name="Desativados" (click)="funcionariosInativoss(); ngOnInit()" ng-true-value = "YES" ng-false-value="NO" style="margin: 5px"> <label for="Desativados"><span>Funcionários desativados </span></label>
-                  <br>
-                  
-            </ul>
-        </a>
-        <!-- FIM DO FILTRO -->
-        
+                <!--MENU DA DROPDOWN-->
+                <ul class="dropdown-menu" style="color:black">
+
+                    <!--FILTRO INATIVOS-->
+
+                    <input type="checkbox" id="Desativados" [(ngModel)]="Desativados" name="Desativados"
+                        (click)="funcionariosInativoss(); ngOnInit()" ng-true-value="YES" ng-false-value="NO"
+                        style="margin: 5px"> <label for="Desativados"><span>Funcionários inativos </span></label>
+                    <br>
+
+                </ul>
+            </a>
+            <!-- FIM DO FILTRO -->
+
             <!-- PESQUISA -->
-                <a class="dropdown btn btn-success pull-right" style="float:right; margin-right: 1cm;">
+            <a class="dropdown btn btn-success pull-right" style="float:right; margin-right: 1cm;">
 
-                <a href="#" class="dropdown-toggle pull-left" data-toggle="dropdown">Pesquisar<span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle pull-left" data-toggle="dropdown">Pesquisar<span
+                        class="caret"></span></a>
 
-                 
-                 <ul class="dropdown-menu" role="menu" style="color:black">
 
-                <div class="input-group" style="margin: 5px">
-                    <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
-                    <input input class="form-control" placeholder="Pesquisar" type="text" name="search" [(ngModel)]="filter" style="height: 40px; width: 250px">
-                </div>
-               </ul>
-           </a>
-           <!-- FIM PESQUISA--> 
-           <br>
+                <ul class="dropdown-menu" role="menu" style="color:black">
+
+                    <div class="input-group" style="margin: 5px">
+                        <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+                        <input input class="form-control" placeholder="Pesquisar" type="text" name="search"
+                            [(ngModel)]="filter" style="height: 40px; width: 250px">
+                    </div>
+                </ul>
+            </a>
+            <!-- FIM PESQUISA-->
+            <br>
         </div>
-        
+
         <br>
         <div class="box box-default table-responsive no-padding" [@funcionariosAppeared]="funcionariosState">
             <h1 align="center">Visualização geral dos funcionários</h1>
-            
-        <br>
+
+            <br>
 
             <!--FUNCIONARIO ATIVOS-->
             <div ng [hidden]="Desativados">
@@ -85,42 +90,44 @@
                     nextLabel="Próximo" screenReaderPaginationLabel="Paginação" screenReaderPageLabel="Página"
                     screenReaderCurrentLabel="Voce esta na página"></pagination-controls>
             </div>
-       
-               
-              
 
 
-                        <!--FUNCIONARIO INATIVOS-->
-                        <div ng [hidden]="!Desativados">
-                            <table class="table table-hover">
-                                <tr>
-                                    <th>Nome</th>
-                                    <th>CPF</th>
-                                    <th>RG</th>
-                                    <th class="col-sm-4">Ações</th>
-                                </tr>
 
-                                <tr
-                                    *ngFor="let funcionario of funcionariosInativos | filter : filter : searchString  let i = index">
-               <td>{{funcionario.FUNCIONARIO_NOME}} {{funcionarios.FUNCIONARIO_SOBRENOME}}</td>
-                                    <td>{{funcionario.CPF | cpf}}</td>
-                                    <td>{{funcionario.RG | rg}}</td>
-                                    <td>
 
-                                        <!-- <a type="submit" class="btn btn-warning botao"
+
+            <!--FUNCIONARIO INATIVOS-->
+            <div ng [hidden]="!Desativados">
+                <table class="table table-hover">
+                    <tr>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>RG</th>
+                        <th class="col-sm-4">Ações</th>
+                    </tr>
+
+                    <tr
+                        *ngFor="let funcionario of funcionariosInativos | filter : filter : searchString  let i = index">
+                        <td>{{funcionario.FUNCIONARIO_NOME}} {{funcionarios.FUNCIONARIO_SOBRENOME}}</td>
+                        <td>{{funcionario.CPF | cpf}}</td>
+                        <td>{{funcionario.RG | rg}}</td>
+                        <td>
+
+                            <!-- <a type="submit" class="btn btn-warning botao"
                                 [routerLink]="['/editar-funcionario', funcionario.CODIGO]">Editar</a> -->
-                                <button type="submit" class="btn btn-primary"
-                        (click)="ativarFuncionario(funcionario.CODIGO); $event.stopPropagation()">Ativar</button>
-                                        <a type="submit" class="btn btn-success botao"
-                                            [routerLink]="['/funcionario',funcionario.CODIGO]">+ Opções</a>
-                                    </td>
-                                </tr>
-                            </table>
-                            <label for="Desativados"> <span class="glyphicon glyphicon-menu-left"></span><a class=" btn btn-success botao ">Voltar para ativos</a></label>
-                        </div>
-                   
-               
-              </div>
-          </div>
-                
+                            <a type="submit" class="btn btn-primary botao"
+                                (click)="ativarFuncionario(funcionario.CODIGO); $event.stopPropagation()">Ativar</a>
+                            <a type="submit" class="btn btn-success botao"
+                                [routerLink]="['/funcionario',funcionario.CODIGO]">+ Opções</a>
+                        </td>
+                    </tr>
+                </table>
+                <div class="botao">
+                    <label for="Desativados"> <a class=" btn btn-success botao ">Voltar para ativos</a></label>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
 </section>
