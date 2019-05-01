@@ -10,7 +10,7 @@ import { NotificationService } from './shared/notification.service';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, ErrorHandler } from '@angular/core';
+import { NgModule, ErrorHandler, LOCALE_ID } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -112,6 +112,8 @@ import { ContaInssPipe } from './shared/pipes/inss/conta-inss.pipe'
 import { ValorInssPipe } from './shared/pipes/inss/valor-inss.pipe'
 import { ProvaVidaInssPipe } from './shared/pipes/inss/prova-vida-inss.pipe'
 //
+
+import { LocationStrategy, HashLocationStrategy } from '@angular/common'
 
 // import { AuthInterceptor } from './auth/auth-interceptor.service';
 
@@ -231,6 +233,8 @@ import { ProvaVidaInssPipe } from './shared/pipes/inss/prova-vida-inss.pipe'
     ForgetService,
     ResetService,
     ValidatorService,
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    { provide: LOCALE_ID, useValue: 'pt-BR' },
     // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: ErrorHandler, useClass: GlobalErrorHandler }
   ],

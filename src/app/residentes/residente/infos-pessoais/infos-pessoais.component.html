@@ -117,19 +117,19 @@
         </div>
 
         <div class="col-xs-3 col-xs-12">
-          <strong>Banco: </strong> {{residente?.BANCO_INSS}} <br>
+          <strong>Banco: </strong> {{residente?.BANCO_INSS | bancoInss}} <br>
         </div>
 
         <div class="col-xs-3 col-xs-12">
-          <strong>Agência: </strong> {{residente?.AGENCIA_INSS}} <br>
+          <strong>Agência: </strong> {{residente?.AGENCIA_INSS | agenciaInss}} <br>
         </div>
 
         <div class="col-xs-3 col-xs-12">
-          <strong>Conta: </strong> {{residente?.CONTA_INSS}} <br>
+          <strong>Conta: </strong> {{residente?.CONTA_INSS | contaInss}} <br>
         </div>
 
         <div class="col-xs-3 col-xs-12">
-          <strong>Valor: </strong> {{residente?.VALOR_INSS}} <br>
+          <strong>Valor: </strong> {{residente?.VALOR_INSS | currency: 'BRL': true | valorInss}} <br>
         </div>
 
         <div class="col-xs-3 col-xs-12">
@@ -137,7 +137,7 @@
         </div>
 
         <div class="col-xs-3 col-xs-12">
-          <strong>Prova de Vida: </strong> {{residente?.PROVA_VIDA_INSS | date: 'dd/MM/yyy'}} <br>
+          <strong>Prova de Vida: </strong> {{residente?.PROVA_VIDA_INSS | date: 'dd/MM/yyy' | provaVidaInss}} <br>
         </div>
       </div>
 
