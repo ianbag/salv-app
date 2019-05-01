@@ -30,7 +30,7 @@ export class FuncionarioComponent implements OnInit {
 
   funcionario: Funcionario
   dependentes: Dependente[] = []
-  telefones: Telefone[]
+  telefones: Telefone[] = []
   enderecos: Endereco[]
 
   estados = [
