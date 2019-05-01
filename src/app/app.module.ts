@@ -98,6 +98,9 @@ import { EstadoCertNascPipe } from './shared/pipes/cert_nasc/estado-cert-nasc.pi
 import { NumeroCertNascPipe } from './shared/pipes/cert_nasc/numero-cert-nasc.pipe'
 import { FolhaCertNascPipe } from './shared/pipes/cert_nasc/folha-cert-nasc.pipe'
 import { LivroCertNascPipe } from './shared/pipes/cert_nasc/livro-cert-nasc.pipe'
+//
+
+import {ApelidoPipe} from './shared/pipes/apelido.pipe'
 
 // import { AuthInterceptor } from './auth/auth-interceptor.service';
 
@@ -135,6 +138,7 @@ import { LivroCertNascPipe } from './shared/pipes/cert_nasc/livro-cert-nasc.pipe
     LivroCertNascPipe,
     FolhaCertNascPipe,
     //
+    ApelidoPipe,
     InfosFamiliarComponent,
     ConveniosComponent,
     AniversariantesComponent,
