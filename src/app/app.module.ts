@@ -2,7 +2,8 @@ import { CartaoSUSPipe } from './shared/pipes/cartaoSUS.pipe';
 import { NumeroINSSPipe } from './shared/pipes/inss-numero.pipe';
 import { SituacaoINSSPipe } from './shared/pipes/situacao-inss.pipe';
 import { CepPipe } from './shared/pipes/cep.pipe';
-import { TituloEleitorPipe } from './shared/pipes/titulo-eleitor.pipe';
+import { TituloEleitorPipe } from './shared/pipes/eleitoral/titulo-eleitor.pipe';
+import { ZonaEleitoralPipe } from './shared/pipes/eleitoral/zona-eleitoral.pipe'
 import { SearchPipe } from './shared/pipes/filtroData.pipe';
 import { NovoAcompanhamentoService } from './acompanhamentos/novo-acompanhamento/novo-acompanhamento.service';
 import { UserDetailsComponent } from './fixed-elements/header/user-details/user-details.component';
@@ -85,7 +86,7 @@ import { ResetService } from './auth/reset-password/reset.service';
 import { AuthGuardService } from './auth/auth-guard.service';
 
 import { ValidatorService } from './shared/validators/validator.service';
-import {CookieService} from 'ngx-cookie-service'
+import { CookieService } from 'ngx-cookie-service'
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FilterPipeModule } from 'ngx-filter-pipe';
 import { InfosBeneficiosComponent } from './residentes/residente/infos-beneficios/infos-beneficios.component';
@@ -117,6 +118,7 @@ import { InfosBeneficiosComponent } from './residentes/residente/infos-beneficio
     CpfPipe,
     RgPipe,
     TituloEleitorPipe,
+    ZonaEleitoralPipe,
     InfosFamiliarComponent,
     ConveniosComponent,
     AniversariantesComponent,
@@ -155,7 +157,7 @@ import { InfosBeneficiosComponent } from './residentes/residente/infos-beneficio
     ForgetPasswordComponent,
     ResetPasswordComponent,
     InfosBeneficiosComponent
-    ],
+  ],
   imports: [
     NgxPaginationModule,
     BrowserModule,
@@ -172,7 +174,7 @@ import { InfosBeneficiosComponent } from './residentes/residente/infos-beneficio
     Ng2SearchPipeModule,
     FilterPipeModule
   ],
- 
+
 
   providers: [
     CookieService,
