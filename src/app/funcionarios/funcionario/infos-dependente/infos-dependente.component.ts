@@ -27,16 +27,16 @@ export class InfosDependenteComponent implements OnInit {
     ngOnInit() {
 
         this.updateDependenteForm = this.fb.group({
-            NOME: this.fb.control(null, [Validators.required]),
-            SOBRENOME: this.fb.control(null, [Validators.required]),
-            DATA_NASCIMENTO: this.fb.control(null, [Validators.required]),
-            RG: this.fb.control(null, [Validators.minLength(9)], this.uniqueValidators.validateDependenteRG(this.route.snapshot.params['id'], this.dependente.NOME, this.dependente.SOBRENOME)),
-            CPF: this.fb.control(null, [Validators.minLength(11)], this.uniqueValidators.validateDependenteCPF(this.route.snapshot.params['id'], this.dependente.NOME, this.dependente.SOBRENOME)),
-            NUMERO_CERTIDAO_NASCIMENTO: this.fb.control(null, [], this.uniqueValidators.validateDependenteNumeroCertidao(this.route.snapshot.params['id'], this.dependente.NOME, this.dependente.SOBRENOME)),
-            FOLHA_CERTIDAO_NASCIMENTO: this.fb.control(null, []),
-            LIVRO_CERTIDAO_NASCIMENTO: this.fb.control(null, []),
-            CIDADE_CERTIDAO_NASCIMENTO: this.fb.control(null, []),
-            ESTADO_CERTIDAO_NASCIMENTO: this.fb.control(null, [])
+            NOME: this.fb.control('', [Validators.required]),
+            SOBRENOME: this.fb.control('', [Validators.required]),
+            DATA_NASCIMENTO: this.fb.control('', [Validators.required]),
+            RG: this.fb.control('', [Validators.minLength(9)], this.uniqueValidators.validateDependenteRG(this.route.snapshot.params['id'], this.dependente.NOME, this.dependente.SOBRENOME)),
+            CPF: this.fb.control('', [Validators.minLength(11)], this.uniqueValidators.validateDependenteCPF(this.route.snapshot.params['id'], this.dependente.NOME, this.dependente.SOBRENOME)),
+            NUMERO_CERTIDAO_NASCIMENTO: this.fb.control('', [], this.uniqueValidators.validateDependenteNumeroCertidao(this.route.snapshot.params['id'], this.dependente.NOME, this.dependente.SOBRENOME)),
+            FOLHA_CERTIDAO_NASCIMENTO: this.fb.control('', []),
+            LIVRO_CERTIDAO_NASCIMENTO: this.fb.control('', []),
+            CIDADE_CERTIDAO_NASCIMENTO: this.fb.control('', []),
+            ESTADO_CERTIDAO_NASCIMENTO: this.fb.control('', [])
 
         })
 
