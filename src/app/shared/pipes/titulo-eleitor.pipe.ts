@@ -11,7 +11,7 @@ export class TituloEleitorPipe implements PipeTransform {
     if (tituloEleitor) {
       return tituloEleitorPoints(tituloEleitor)
     } else {
-      return 'Não Declarado'
+      return 'Não declarado'
     }
 
     function tituloEleitorPoints(value?: string): string {

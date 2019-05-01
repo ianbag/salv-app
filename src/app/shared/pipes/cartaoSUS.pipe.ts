@@ -11,7 +11,7 @@ export class CartaoSUSPipe implements PipeTransform {
     if (cartaoSUS) {
       return cartaoSUSPoints(cartaoSUS)
     } else {
-      return 'Não Declarado'
+      return 'Não declarado'
     }
 
     function cartaoSUSPoints(value?: string): string {

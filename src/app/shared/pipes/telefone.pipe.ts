@@ -11,7 +11,7 @@ export class TelefonePipe implements PipeTransform {
     if (telefone) {
       return telefonePoints(telefone)
     } else {
-      return 'Não Declarado'
+      return 'Não declarado'
     }
 
     function telefonePoints(value?: string): string {

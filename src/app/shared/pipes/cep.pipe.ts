@@ -11,7 +11,7 @@ export class CepPipe implements PipeTransform {
     if (cep) {
       return cepPoints(cep)
     } else {
-      return 'Não Declarado'
+      return 'Não declarado'
     }
 
     function cepPoints(value?: string): string {

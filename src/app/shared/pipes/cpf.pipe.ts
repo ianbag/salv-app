@@ -11,7 +11,7 @@ export class CpfPipe implements PipeTransform {
     if (cpf) {
       return cpfPoints(cpf)
     } else {
-      return 'Não Declarado'
+      return 'Não declarado'
     }
 
     function cpfPoints(value?: string): string {

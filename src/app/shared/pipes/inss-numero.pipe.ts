@@ -11,7 +11,7 @@ export class NumeroINSSPipe implements PipeTransform {
     if (numeroINSS) {
       return numeroINSSPoints(numeroINSS)
     } else {
-      return 'Não Declarado'
+      return 'Não declarado'
     }
 
     function numeroINSSPoints(value?: string): string {

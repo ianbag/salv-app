@@ -10,7 +10,7 @@ export class EscolaridadePipe implements PipeTransform {
 
     switch (value) {
       default:
-        escolaridade = 'Não Especificado'
+        escolaridade = 'Não especificado'
         break;
       case 'fi':
         escolaridade = 'Fundamental Incompleto'
