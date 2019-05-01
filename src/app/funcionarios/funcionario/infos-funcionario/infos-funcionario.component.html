@@ -204,7 +204,7 @@
           <!--INICIO TELEFONES-->
           <div *ngIf="telefones.length">
           <div class="col-xs-4 col-xs-12" *ngFor="let telefone of telefones" style="margin-left: -15px">
-            <strong>Telefone: </strong> ({{telefone?.TELEFONE.DDD}}) {{telefone?.TELEFONE.NUMERO}} <a><span
+            <strong>Telefone: </strong> ({{telefone?.TELEFONE.DDD}}) {{telefone?.TELEFONE.NUMERO | telefone}} <a><span
                 id="iconesForm"
                 (click)="deleteTelefone(funcionario.PESSOA.CODIGO, telefone.TELEFONE.CODIGO); $event.stopPropagation()"><i
                   class="fa fa-close"></i></span></a>
