@@ -99,7 +99,7 @@
                     </tr>
                     <tr *ngFor="let convenio of conveniosDesativados |  filter : filter : searchString  let i = index">
                         <td>{{convenio.NOME_CONVENIO}}</td>
-                        <td>{{convenio.DDD}} {{convenio.TELEFONE}}</td>
+                        <td>({{convenio.DDD}}) {{convenio.TELEFONE}}</td>
 
                         <td>
                             <a type="submit" class="btn btn-primary botao"
