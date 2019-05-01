@@ -61,7 +61,7 @@ export class FuncionarioComponent implements OnInit {
       NOME: this.fb.control(null, [Validators.required]),
       SOBRENOME: this.fb.control(null, [Validators.required]),
       DATA_NASCIMENTO: this.fb.control(null, []),
-      RG: this.fb.control(null, [Validators.minLength(9)], this.uniqueValidators.validateDependenteRG(null, null, null) ),
+      RG: this.fb.control(null, [Validators.required, Validators.minLength(9)], this.uniqueValidators.validateDependenteRG(null, null, null) ),
       CPF: this.fb.control(null, [Validators.minLength(11)], this.uniqueValidators.validateDependenteCPF(null, null, null)),
       NUMERO_CERTIDAO_NASCIMENTO: this.fb.control(null, [], this.uniqueValidators.validateDependenteNumeroCertidao(null, null, null)),
       FOLHA_CERTIDAO_NASCIMENTO: this.fb.control(null, []),
