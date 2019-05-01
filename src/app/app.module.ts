@@ -92,6 +92,13 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FilterPipeModule } from 'ngx-filter-pipe';
 import { InfosBeneficiosComponent } from './residentes/residente/infos-beneficios/infos-beneficios.component';
 
+//CERTIDAO DE NASCIMENTO PIPE
+import { CidadeCertNascPipe } from './shared/pipes/cert_nasc/cidade-cert-nasc.pipe'
+import { EstadoCertNascPipe } from './shared/pipes/cert_nasc/estado-cert-nasc.pipe'
+import { NumeroCertNascPipe } from './shared/pipes/cert_nasc/numero-cert-nasc.pipe'
+import { FolhaCertNascPipe } from './shared/pipes/cert_nasc/folha-cert-nasc.pipe'
+import { LivroCertNascPipe } from './shared/pipes/cert_nasc/livro-cert-nasc.pipe'
+
 // import { AuthInterceptor } from './auth/auth-interceptor.service';
 
 
@@ -121,6 +128,13 @@ import { InfosBeneficiosComponent } from './residentes/residente/infos-beneficio
     TituloEleitorPipe,
     ZonaEleitoralPipe,
     SecaoEleitoralPipe,
+    // CERTIDAO DE NASCIMENTO PIPE
+    CidadeCertNascPipe,
+    EstadoCertNascPipe,
+    NumeroCertNascPipe,
+    LivroCertNascPipe,
+    FolhaCertNascPipe,
+    //
     InfosFamiliarComponent,
     ConveniosComponent,
     AniversariantesComponent,

@@ -3,7 +3,7 @@ import { Pipe, PipeTransform } from '@angular/core'
 @Pipe({
     name: 'cidadeCertNasc'
 })
-export class CidadeCertNasc implements PipeTransform {
+export class CidadeCertNascPipe implements PipeTransform {
     transform(value: any) {
         let cidade = value
 
