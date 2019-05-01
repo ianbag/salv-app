@@ -151,7 +151,7 @@
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                 <button type="button" class="btn btn-success"
                                     (click)="novoDependente(this.novoDependenteForm.value)" [disabled]="!novoDependenteForm.valid"
-                                    data-dismiss="modal">Salvar</button>
+                                    data-dismiss="modal" [disabled]="!novoDependenteForm.valid">Salvar</button>
                             </div>
                         </div>
                     </div>
