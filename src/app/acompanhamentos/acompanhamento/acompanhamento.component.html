@@ -89,9 +89,10 @@
                       <div class="col-sm-10 col-xs-12" id="inputValidator">
                           <salv-input-container errorMessage="Campo Obrigatório">
                         <label>Atividade realizada</label>
-                        <textarea class="form-control" rows="3" formControlName="ATIVIDADE" 
-                        placeholder="Descrição da atividade realizada"
-                          auatocomplete="off"></textarea>
+                        <textarea class="form-control" required rows="3" formControlName="ATIVIDADE" 
+            placeholder="Descrição da atividade realizada" id="ATIVIDADE"  maxlength="500" 
+              auatocomplete="off" #ATIVIDADE></textarea>
+              <small class="form-text text-muted"><code>{{ATIVIDADE.value.length}}</code> de <code>{{maxATIVIDADELength}}</code>500 caracteres</small>
                          
                         <br>
                         </salv-input-container>

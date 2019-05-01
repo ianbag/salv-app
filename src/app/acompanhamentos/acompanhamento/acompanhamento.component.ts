@@ -144,7 +144,7 @@ export class AcompanhamentoComponent implements OnInit {
 
         DATA_ACOMPANHAMENTO: this.acompanhamento[0].DATA_ACOMPANHAMENTO,
         ATIVIDADE: this.acompanhamento[0].ATIVIDADE,
-
+       
 
       })
       if (this.editarAcompanhamentoForm != null) {
@@ -221,16 +221,22 @@ export class AcompanhamentoComponent implements OnInit {
 
 
         this.acompanhamento1 = res[0]
-
-        if (res) {
+        
+        
+        
+       
+      
 
           this.acompanhamentoService.acompanhamentoById(this.route.snapshot.params['id']).subscribe(res => {
             this.acompanhamento1 = res[0]
+          
+           
+           
             console.log(res)
-            this.editarAcompanhamentoForm.reset()
+         
             this.ns.notify('Acompanhamento atualizado com sucesso!')
           })
-        }
+        
       } else {
         if (this.editarAcompanhamentoForm.valid == true && this.selectedFuncionarios != null && this.selectedResidentes != null) {
 
@@ -266,6 +272,8 @@ export class AcompanhamentoComponent implements OnInit {
           this.acompanhamentoService.AcompanhamentoFuncionarioQuery(this.route.snapshot.params['id']).subscribe(res => {
 
             this.funcionarios1 = res
+            this.selectedFuncionarios = res
+           
           })
         }
 
@@ -285,6 +293,8 @@ export class AcompanhamentoComponent implements OnInit {
           this.acompanhamentoService.AcompanhamentoResidenteQuery(this.route.snapshot.params['id']).subscribe(res => {
 
             this.residentes1 = res
+            this.selectedResidentes = res
+           
 
           })
         }
