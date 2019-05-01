@@ -139,7 +139,7 @@
             <td>{{residente.PESSOA.RG | rg}}</td>
 
             <td>
-              <button type="submit" class="btn btn-primary"
+              <button type="submit" class="btn btn-primary botao"
                 (click)="ativarResidente(residente.CODIGO_RESIDENTE); $event.stopPropagation()">Ativar</button>
               <a type="submit" class="btn btn-success botao" [routerLink]="['/residente', residente.CODIGO_RESIDENTE]">
                 +Opções</a>
