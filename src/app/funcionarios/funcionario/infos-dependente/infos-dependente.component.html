@@ -24,23 +24,23 @@
     <br>
   </div>
   <div class="col-xs-4 col-xs-12" *ngIf="dependente.NUMERO_CERTIDAO_NASCIMENTO">
-    <strong>Nº Certidão de Nascimento: </strong> {{dependente?.NUMERO_CERTIDAO_NASCIMENTO}}
+    <strong>Nº Certidão de Nascimento: </strong> {{dependente?.NUMERO_CERTIDAO_NASCIMENTO | numeroCertNasc}}
     <br>
   </div>
   <div class="col-xs-4 col-xs-12" *ngIf="dependente.FOLHA_CERTIDAO_NASCIMENTO">
-    <strong>Folha Certidão de Nascimento: </strong> {{dependente?.FOLHA_CERTIDAO_NASCIMENTO}}
+    <strong>Folha Certidão de Nascimento: </strong> {{dependente?.FOLHA_CERTIDAO_NASCIMENTO | folhaCertNasc}}
     <br>
   </div>
   <div class="col-xs-4 col-xs-12" *ngIf="dependente.LIVRO_CERTIDAO_NASCIMENTO">
-    <strong>Livro Certidão de Nascimento: </strong> {{dependente?.LIVRO_CERTIDAO_NASCIMENTO}}
+    <strong>Livro Certidão de Nascimento: </strong> {{dependente?.LIVRO_CERTIDAO_NASCIMENTO | livroCertNasc}}
     <br>
   </div>
   <div class="col-xs-4 col-xs-12" *ngIf="dependente.CIDADE_CERTIDAO_NASCIMENTO">
-    <strong>Cidade Certidão de Nascimento: </strong> {{dependente?.CIDADE_CERTIDAO_NASCIMENTO}}
+    <strong>Cidade Certidão de Nascimento: </strong> {{dependente?.CIDADE_CERTIDAO_NASCIMENTO | cidadeCertNasc}}
     <br>
   </div>
   <div class="col-xs-4 col-xs-12" *ngIf="dependente.ESTADO_CERTIDAO_NASCIMENTO">
-    <strong>Estado Certidão de Nascimento: </strong> {{dependente?.ESTADO_CERTIDAO_NASCIMENTO}}
+    <strong>Estado Certidão de Nascimento: </strong> {{dependente?.ESTADO_CERTIDAO_NASCIMENTO | estadoCertNasc}}
     <br>
   </div>
 </div>
