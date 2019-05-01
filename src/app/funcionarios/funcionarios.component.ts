@@ -64,7 +64,7 @@ export class FuncionariosComponent implements OnInit {
   }
 
   deleteFuncionario(id: string): void {
-    this.dialogConfirmService.confirm(`Deseja excluir o funcionário?`)
+    this.dialogConfirmService.confirm(`Deseja inativar o funcionário?`)
       .then((isTrue) => {
         if (isTrue) {
           this.funcionariosService.deleteFuncionario(id)
