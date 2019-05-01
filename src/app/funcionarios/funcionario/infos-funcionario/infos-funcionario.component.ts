@@ -16,7 +16,7 @@ export class InfosFuncionarioComponent implements OnInit {
     @Input() telefones: Telefone[]
     @Input() enderecos: Endereco[]
     novoTelefoneForm: FormGroup
-    novoEnderecoForm: FormGroup
+    // novoEnderecoForm: FormGroup
     novoUsuarioForm: FormGroup
     updateTelefoneForm: FormGroup
     updateEnderecoForm: FormGroup
@@ -65,16 +65,16 @@ export class InfosFuncionarioComponent implements OnInit {
             DDD: this.fb.control(null, []),
             NUMERO: this.fb.control(null, [])
         })
-        this.novoEnderecoForm = this.fb.group({
-            ENDERECO: this.fb.control(null, []),
-            NUMERO: this.fb.control(null, []),
-            BAIRRO: this.fb.control(null, []),
-            COMPLEMENTO: this.fb.control(null, []),
-            CIDADE: this.fb.control(null, []),
-            ESTADO: this.fb.control('Selecione', []),
-            CEP: this.fb.control(null, []),
-            REFERENCIA: this.fb.control(null, []),
-        })
+        // this.novoEnderecoForm = this.fb.group({
+        //     ENDERECO: this.fb.control(null, []),
+        //     NUMERO: this.fb.control(null, []),
+        //     BAIRRO: this.fb.control(null, []),
+        //     COMPLEMENTO: this.fb.control(null, []),
+        //     CIDADE: this.fb.control(null, []),
+        //     ESTADO: this.fb.control('Selecione', []),
+        //     CEP: this.fb.control(null, []),
+        //     REFERENCIA: this.fb.control(null, []),
+        // })
         this.novoUsuarioForm = this.fb.group({
             EMAIL: this.fb.control(null, [], this.uniqueValidators.validateUsuarioEmail(null)),
             LOGIN: this.fb.control(null, [], this.uniqueValidators.validateUsuarioLogin(null)),
@@ -134,22 +134,22 @@ export class InfosFuncionarioComponent implements OnInit {
         })
     }
 
-    novoEndereco(endereco: Endereco) {
-        this.fs.novoEndereco(this.funcionario.PESSOA_CODIGO, endereco).subscribe(res => {
-            if (res['errors']) {
-                res['errors'].forEach(error => {
-                    console.log('Houve um erro!', error)
-                    this.ns.notify(`Houve um erro! ${error.message}`)
-                })
-            } else {
-                this.fs.enderecoById(this.funcionario.PESSOA_CODIGO.toString()).subscribe(res => {
-                    this.enderecos = res
-                    this.novoEnderecoForm.reset()
-                    this.ns.notify('Endereço inserido com sucesso!')
-                })
-            }
-        })
-    }
+    // novoEndereco(endereco: Endereco) {
+    //     this.fs.novoEndereco(this.funcionario.PESSOA_CODIGO, endereco).subscribe(res => {
+    //         if (res['errors']) {
+    //             res['errors'].forEach(error => {
+    //                 console.log('Houve um erro!', error)
+    //                 this.ns.notify(`Houve um erro! ${error.message}`)
+    //             })
+    //         } else {
+    //             this.fs.enderecoById(this.funcionario.PESSOA_CODIGO.toString()).subscribe(res => {
+    //                 this.enderecos = res
+    //                 this.novoEnderecoForm.reset()
+    //                 this.ns.notify('Endereço inserido com sucesso!')
+    //             })
+    //         }
+    //     })
+    // }
 
     novoUsuario(usuario: Usuario) {
         this.fs.novoUsuario(this.funcionario.CODIGO_FUNCIONARIO, usuario).subscribe(res => {
@@ -187,18 +187,18 @@ export class InfosFuncionarioComponent implements OnInit {
         })
     }
 
-    deleteEndereco(_cod_pes: number, _cod_end: number): void {
-        this.dcs.confirm(`Deseja exluir o endereço?`).then((isTrue) => {
-            if (isTrue) {
-                this.fs.deleteEndereco(_cod_pes, _cod_end).subscribe(() => {
-                    this.fs.enderecoById(this.funcionario.PESSOA.CODIGO.toString()).subscribe(response => {
-                        this.enderecos = response
-                        this.ns.notify('Endereço excluído com sucesso!')
-                    })
-                })
-            }
-        })
-    }
+    // deleteEndereco(_cod_pes: number, _cod_end: number): void {
+    //     this.dcs.confirm(`Deseja exluir o endereço?`).then((isTrue) => {
+    //         if (isTrue) {
+    //             this.fs.deleteEndereco(_cod_pes, _cod_end).subscribe(() => {
+    //                 this.fs.enderecoById(this.funcionario.PESSOA.CODIGO.toString()).subscribe(response => {
+    //                     this.enderecos = response
+    //                     this.ns.notify('Endereço excluído com sucesso!')
+    //                 })
+    //             })
+    //         }
+    //     })
+    // }
 
     buscaTelefone(codTelefone) {
         this.fs.telefoneId(codTelefone).subscribe(telefone => {
