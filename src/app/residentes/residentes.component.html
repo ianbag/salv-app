@@ -43,14 +43,23 @@
 
         <a href="#" class="dropdown-toggle pull-left" data-toggle="dropdown">Pesquisar<span class="caret"></span></a>
 
-
         <ul class="dropdown-menu" role="menu" style="color:black">
 
+          <!-- PESQUISA POR NOME -->
           <div class="input-group" style="margin: 5px">
             <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
-            <input input class="form-control" placeholder="Pesquisar" type="text" name="search" [(ngModel)]="searchTerm"
+            <input input class="form-control" placeholder="Pesquisar por nome" type="text" name="search" [(ngModel)]="searchTerm"
               style="height: 40px; width: 250px">
           </div>
+          <!-- FIM PESQUISA POR NOME -->
+
+          <!-- PESQUISA POR APELIDO -->
+          <!--<div class="input-group" style="margin: 5px">
+              <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+              <input input class="form-control" placeholder="Pesquisar por apelido" type="text" name="search" [(ngModel)]="filter"
+                style="height: 40px; width: 250px">
+            </div>-->
+          <!-- FIM PESQUISA POR APELIDO -->
         </ul>
       </a>
       <!-- FIM PESQUISA-->
@@ -99,7 +108,7 @@
             <th class="col-sm-4">Ações</th>
           </tr>
           <tr
-            *ngFor="let residente of residentes | residenteFilter:searchTerm | paginate: { itemsPerPage: 10, currentPage: paginaAtual} let i = index">
+            *ngFor="let residente of residentes | residenteFilter:searchTerm | filter: filter : searchString | paginate: { itemsPerPage: 10, currentPage: paginaAtual} let i = index">
             <td>{{residente.PESSOA.NOME}} {{residente.PESSOA.SOBRENOME}}</td>
             <td>{{residente.APELIDO}}</td>
             <td>{{residente.PESSOA.CPF | cpf}}</td>
