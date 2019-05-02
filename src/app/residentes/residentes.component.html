@@ -48,7 +48,7 @@
 
           <div class="input-group" style="margin: 5px">
             <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
-            <input input class="form-control" placeholder="Pesquisar" type="text" name="search" [(ngModel)]="filter"
+            <input input class="form-control" placeholder="Pesquisar" type="text" name="search" [(ngModel)]="searchTerm"
               style="height: 40px; width: 250px">
           </div>
         </ul>
@@ -99,7 +99,7 @@
             <th class="col-sm-4">Ações</th>
           </tr>
           <tr
-            *ngFor="let residente of residentes | filter : filter : searchString | paginate: { itemsPerPage: 10, currentPage: paginaAtual} let i = index">
+            *ngFor="let residente of residentes | residenteFilter:searchTerm | paginate: { itemsPerPage: 10, currentPage: paginaAtual} let i = index">
             <td>{{residente.PESSOA.NOME}} {{residente.PESSOA.SOBRENOME}}</td>
             <td>{{residente.APELIDO}}</td>
             <td>{{residente.PESSOA.CPF | cpf}}</td>

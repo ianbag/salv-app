@@ -2,7 +2,7 @@ import { DialogConfirmService } from 'src/app/residentes/dialog-confirm.service'
 import { Validators } from '@angular/forms';
 import { ConvenioQuery, Telefone } from './../convenio.model';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Convenio } from 'src/app/convenios/convenio.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConveniosService } from 'src/app/convenios/convenios.service';
@@ -30,7 +30,7 @@ export class ConvenioComponent implements OnInit {
 
   convenio: Convenio
 
-  telefones: Telefone[] = []
+  @Input() telefones: Telefone[] = []
   novoTelefoneForm: FormGroup
   updateTelefoneForm: FormGroup
   codigoTelefone: number
@@ -60,7 +60,7 @@ export class ConvenioComponent implements OnInit {
           this.telefones = resT
         })
         this.spinner.hide()
-      }, 1000)
+      }, 500)
 
 
     this.cs.convenioQuery(this.ar.snapshot.params['id']).subscribe(data => {
