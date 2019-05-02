@@ -1,3 +1,20 @@
+<style>
+  #tabela1 {
+        border: 0px;
+        margin: 0px auto;
+        width: 500px;
+        height: 100px;
+        position: relative
+    }
+    #tabela2 {
+        border: 0px;
+        margin: 0px auto;
+        width: 500px;
+        height: 100px;
+        position:static
+    }
+
+</style>
 <ngx-spinner></ngx-spinner>
 <section class="content">
   <button (click)="reportAcompanhamento()" class="btn btn-success" id="printReport"><i class="fa fa-print"></i></button>
@@ -19,22 +36,36 @@
           </div>
 
         </div>
-        <div class="box-body" style>
+        
                    
           <div class="box-body" style>
-            <strong>Atividade realizada: </strong> {{acompanhamento1?.ATIVIDADE}} <br>
-            <strong>Data: </strong> {{acompanhamento1?.DATA_ACOMPANHAMENTO | date:'dd/MM/yyyy'}} <br>
-            <strong >Funcionário(s):  </strong>
-            <div *ngFor="let acompanhamento_funcionario of funcionarios1" >
-            {{acompanhamento_funcionario?.FNOME}}  
-            </div>
-            <strong>Residentes participantes: </strong> 
-            <div *ngFor="let acompanhamento_residente of residentes1" >            
-            {{acompanhamento_residente?.NOME}}
-          </div>
+            <div>
+            <strong>Atividade realizada: </strong> {{acompanhamento1?.ATIVIDADE}} 
+            <strong style="margin-left: 30px"> Data: </strong> {{acompanhamento1?.DATA_ACOMPANHAMENTO | date:'dd/MM/yyyy'}}
+          </div> <br>
+     
+            <table  class="table table-hover" id="tabela1" style="float:left; margin-top: 10px">
+              <tr>                
+                <th>Funcionarios Participantes:</th>               
+              </tr>       
+            <tr *ngFor="let acompanhamento_funcionario of funcionarios1" >
+               <td> {{acompanhamento_funcionario?.FNOME}}</td>
+            </tr>
+            </table>
+
+
+            <table class="table table-hover" id="tabela2" style="float:left; margin-top: 10px">
+                <tr>                
+                  <th>Residentes Participantes:</th>               
+                </tr>       
+              <tr *ngFor="let acompanhamento_residente of residentes1" >
+                 <td>  {{acompanhamento_residente?.NOME}}</td>
+              </tr>
+              </table>
+         
+            
           
 
-        </div>
       </div>
 
 

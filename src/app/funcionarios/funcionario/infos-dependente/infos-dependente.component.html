@@ -3,11 +3,7 @@
     <h4><strong>Informações pessoais</strong></h4>
   </div>
   <div class="col-xs-4 col-xs-12">
-    <a><span id="iconesForm" (click)="deleteDependente(dependente.NOME, dependente.SOBRENOME)"><i
-          class="fa fa-close"></i></span></a>
-    <a data-toggle="modal" attr.data-target="#modalUpdateDependente{{dependente?.CPF}}"
-      (click)="buscaDependente(dependente.CODIGO_FUNCIONARIO, dependente.NOME, dependente.SOBRENOME)"><span
-        id="iconesForm"><i class="fa fa-pencil"></i></span></a>
+    
     <strong>Nome: </strong> {{dependente?.NOME}} {{dependente?.SOBRENOME}}
     <br>
   </div>
@@ -17,6 +13,17 @@
   </div>
   <div class="col-xs-4 col-xs-12">
     <strong>RG: </strong> {{dependente?.RG | rg}}
+
+    <a><span id="iconesForm" style="margin-left: 3.5cm; margin-right: 0.7cm" (click)="deleteDependente(dependente.NOME, dependente.SOBRENOME)"><i
+      class="fa fa-close"></i>
+    </span>
+  </a>
+
+<a data-toggle="modal" attr.data-target="#modalUpdateDependente{{dependente?.CPF}}"
+  (click)="buscaDependente(dependente.CODIGO_FUNCIONARIO, dependente.NOME, dependente.SOBRENOME)"><span id="iconesForm"  ><i class="fa fa-pencil"></i>
+  </span>
+</a>
+
     <br>
   </div>
   <div class="col-xs-4 col-xs-12">

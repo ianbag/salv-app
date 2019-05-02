@@ -203,14 +203,22 @@
           <!--FIM DIV MODAL-->
           <!--INICIO TELEFONES-->
           <div *ngIf="telefones.length">
+
           <div class="col-xs-4 col-xs-12" *ngFor="let telefone of telefones" style="margin-left: -15px">
-            <strong>Telefone: </strong> ({{telefone?.TELEFONE.DDD}}) {{telefone?.TELEFONE.NUMERO | telefone}} <a><span
-                id="iconesForm"
-                (click)="deleteTelefone(funcionario.PESSOA.CODIGO, telefone.TELEFONE.CODIGO); $event.stopPropagation()"><i
-                  class="fa fa-close"></i></span></a>
+            <strong>Telefone: </strong> ({{telefone?.TELEFONE.DDD}}) {{telefone?.TELEFONE.NUMERO | telefone}} 
+            <a><span id="iconesForm" style="margin: 0.5cm"
+                (click)="deleteTelefone(funcionario.PESSOA.CODIGO, telefone.TELEFONE.CODIGO); $event.stopPropagation()">
+                <i class="fa fa-close" ></i>
+              </span>
+            </a>
+
             <a data-toggle="modal" data-target="#modalUpdateTelefone"
-              (click)="buscaTelefone(telefone.TELEFONE.CODIGO)"><span id="iconesForm"><i
-                  class="fa fa-pencil"></i></span></a>
+              (click)="buscaTelefone(telefone.TELEFONE.CODIGO)">
+              <span id="iconesForm"><i
+                  class="fa fa-pencil"></i>
+                </span>
+              </a>
+
           </div>
           </div>
           <div class="col-xs-4 col-xs-12" *ngIf="!telefones.length">
@@ -345,9 +353,7 @@
                 <!-- <a><span id="iconesForm"
                     (click)="deleteEndereco(funcionario.PESSOA.CODIGO, endereco.ENDERECO.CODIGO); $event.stopPropagation()"><i
                       class="fa fa-close"></i></span></a> -->
-                <a data-toggle="modal" data-target="#modalUpdateEndereco"
-                  (click)="buscaEndereco(endereco.ENDERECO.CODIGO)"><span id="iconesForm"><i
-                      class="fa fa-pencil"></i></span></a>
+                
                 <strong>Endereço: </strong> {{endereco?.ENDERECO.ENDERECO}}
               </div>
               <div class="col-xs-4 col-xs-12">
@@ -355,7 +361,17 @@
               </div>
               <div class="col-xs-4 col-xs-12">
                 <strong>Bairro: </strong> {{endereco?.ENDERECO.BAIRRO}}
+
+                <a data-toggle="modal" data-target="#modalUpdateEndereco"
+                (click)="buscaEndereco(endereco.ENDERECO.CODIGO)">
+                <span id="iconesForm" style="margin: 14px"><i
+                    class="fa fa-pencil"></i>
+                  </span></a>
+
               </div>
+              
+            
+
               <div class="col-xs-4 col-xs-12" *ngIf="endereco.ENDERECO.COMPLEMENTO">
                 <strong>Complemento: </strong> {{endereco?.ENDERECO.COMPLEMENTO}}
               </div>
@@ -372,7 +388,10 @@
                 <strong>Referência: </strong> {{endereco?.ENDERECO.REFERENCIA}}
               </div>
 
+             
+
             </div>
+
             <!--DIV MODAL-->
             <div class="col-sm-12 col-xs-12">
               <!-- Modal -->
@@ -473,13 +492,16 @@
               <h4><strong>Informações de login</strong></h4>
             </div>
             <div class="col-xs-4 col-xs-12" style="margin-left: -15px">
-              <a data-toggle="modal" data-target="#modalUpdateUsuario" (click)="buscaUsuario()"><span id="iconesForm"><i
-                    class="fa fa-pencil"></i></span></a>
+              
               <strong>E-mail: </strong> {{funcionario?.USUARIO.EMAIL}}
               <br>
             </div>
             <div class="col-xs-4 col-xs-12">
               <strong>Login: </strong> {{funcionario?.USUARIO.LOGIN}}
+              <a data-toggle="modal" data-target="#modalUpdateUsuario" (click)="buscaUsuario()"><span id="iconesForm" style="margin: 8px"><i
+                class="fa fa-pencil"></i>
+              </span>
+            </a>
             </div>
           </div>
           <!--DIV MODAL INICIO-->
@@ -526,12 +548,13 @@
           </div>
           <!--FIM DIV MODAL-->
           <ng-template #notLogin>
-            <p style="margin-left: 5px">Você não possui usuário cadastrado</p>
+           
             <!--DIV MODAL INICIO-->
             <div class="col-sm-12 col-xs-12">
               <!-- Button trigger modal -->
+              <p style="text-align: center">Você não possui usuário cadastrado</p>
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalUsuario"
-                style="margin-left: -10px">
+                style="margin-left: -20px">
                 Adicionar usuário
               </button>
               <!-- Modal -->
@@ -580,6 +603,7 @@
               <!--FIM MODAL-->
             </div>
             <!--FIM DIV MODAL-->
+            
           </ng-template>
 
         </div>
