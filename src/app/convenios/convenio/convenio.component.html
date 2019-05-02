@@ -168,10 +168,6 @@
                         </div>
 
                         <div class="col-xs-4 col-xs-12">
-                            <strong>Telefone: </strong> ({{convenio?.DDD}}) {{convenio?.TELEFONE | telefone}}
-                        </div>
-
-                        <div class="col-xs-4 col-xs-12">
                             <strong>Endereço: </strong> {{convenio?.ENDERECO}}
                         </div>
 
@@ -199,18 +195,115 @@
                             <strong>CEP: </strong> {{convenio?.CEP | cep}}
                         </div>
 
-                        <div class="col-xs-12 col-xs-12" *ngIf="convenio.REFERENCIA">
+                        <div class="col-xs-4 col-xs-12" *ngIf="convenio.REFERENCIA">
                             <strong>Referência: </strong> {{convenio?.REFERENCIA}}
                         </div>
                         <div class="col-sm-12 col-xs-12">
                             <br>
                         </div>
+                        <div class="col-sm-12 col-xs-12">
+                                <h4><strong>Telefones <a type="submit" data-toggle="modal" data-target="#modalTelefone" style="margin-left: -10px">
+                                        <span class="plus-itens"><i class="fa fa-plus-circle"></i></span>
+                                      </a></strong></h4>
+                                
+                                <!--FIM DIV MODAL-->
+                                <!--INICIO TELEFONES-->
+                                <div>
+                                <div class="col-xs-4 col-xs-12" *ngFor="let telefone of telefones">
+                                  <strong>Telefone: </strong> ({{telefone?.TELEFONE.DDD}}) {{telefone?.TELEFONE.NUMERO | telefone}} <a><span
+                                      id="iconesForm"
+                                      (click)="deleteTelefone(convenio.CODIGO, telefone.TELEFONE.CODIGO); $event.stopPropagation()"><i
+                                        class="fa fa-close"></i></span></a>
+                                  <a data-toggle="modal" data-target="#modalUpdateTelefone"
+                                    (click)="buscaTelefone(telefone.TELEFONE.CODIGO)"><span id="iconesForm"><i
+                                        class="fa fa-pencil"></i></span></a>
+                                </div>
+                                </div>
+                        </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="modalTelefone" tabindex="-1" role="dialog" aria-labelledby="modalTelefone"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <form [formGroup]="novoTelefoneForm" novalidate>
+                    <div class="box-body">
+                      <div>
+                        <div class="col-sm-12 col-sm-12" id="formTitle">
+                          <h4><strong>Adicionar novo telefone</strong></h4>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-3 col-sm-12">
+                            <label>DDD</label>
+                            <input type="text" class="form-control" mask="000" formControlName="DDD" placeholder="DDD"
+                              autocomplete="off" maxlength="3">
+                          </div>
+                          <div class="col-sm-3 col-sm-12">
+                            <label>Número</label>
+                            <input type="text" class="form-control" mask="000000000" formControlName="NUMERO" placeholder="Número"
+                              autocomplete="off" maxlength="9">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                  <button type="button" class="btn btn-success" (click)="novoTelefone(this.novoTelefoneForm.value)"
+                    data-dismiss="modal">Salvar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--FIM MODAL-->
+
+          <!-- Modal -->
+          <div class="modal fade" id="modalUpdateTelefone" tabindex="-1" role="dialog"
+          aria-labelledby="modalUpdateTelefone" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                <form [formGroup]="updateTelefoneForm" novalidate>
+                  <div class="box-body">
+                    <div>
+                      <div class="col-sm-12 col-sm-12" id="formTitle">
+                        <h4><strong>Editar telefone</strong></h4>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-3 col-sm-12">
+                          <label>DDD</label>
+                          <input type="text" class="form-control" mask="000" formControlName="DDD" placeholder="DDD"
+                            autocomplete="off" maxlength="3">
+                        </div>
+                        <div class="col-sm-3 col-sm-12">
+                          <label>Número</label>
+                          <input type="text" class="form-control" mask="000000000" formControlName="NUMERO" placeholder="Número"
+                            autocomplete="off" maxlength="9">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-success"
+                  (click)="updateTelefone(this.updateTelefoneForm.value)" data-dismiss="modal">Salvar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--FIM MODAL-->
+
+
+
+
 
 
 
                     </div>
-
-
 
                 </div>
                 <div class="botao">
