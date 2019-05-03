@@ -51,8 +51,8 @@
 
               <div class="col-sm-3 col-sm-12" id="inputValidator" formGroupName="PESSOA">
                 <salv-input-container errorMessage="Mínimo 9 caracteres" label="RG">
-                  <input type="text" mask="00.000.000-A" class="form-control" formControlName="RG" placeholder="RG" maxlength="12"
-                    autocomplete="off">
+                  <input type="text" mask="00.000.000-A" class="form-control" formControlName="RG" placeholder="RG"
+                    maxlength="12" autocomplete="off">
                 </salv-input-container>
               </div>
               <div class="col-sm-3 col-sm-12" formGroupName="PESSOA">
@@ -93,7 +93,8 @@
               <div class="col-sm-4 col-sm-12" formGroupName="PESSOA">
                 <label>Data de Nascimento </label>
                 <div class="input-group date">
-                  <input type="date" class="form-control pull-right" id="datepicker" formControlName="DATA_NASCIMENTO" max="2999-12-31">
+                  <input type="date" class="form-control pull-right" id="datepicker" formControlName="DATA_NASCIMENTO"
+                    max="2999-12-31">
                 </div>
                 <br>
               </div>
@@ -150,8 +151,8 @@
             <div class="row">
               <div class="col-sm-4 col-sm-12" id="inputValidator">
                 <salv-input-container label="Título">
-                  <input type="text" class="form-control" formControlName="TITULO_ELEITOR" placeholder="Título"
-                    autocomplete="off" maxlength="12">
+                  <input type="text" mask="0*" class="form-control" formControlName="TITULO_ELEITOR"
+                    placeholder="Título" autocomplete="off" maxlength="12">
                 </salv-input-container>
               </div>
               <div class="col-sm-4 col-sm-12">
@@ -174,7 +175,7 @@
               <h4><strong>INSS </strong></h4>
             </div>
             <div class="row">
-              <div class="col-sm-4 col-sm-12"  id="inputValidator">
+              <div class="col-sm-4 col-sm-12" id="inputValidator">
                 <salv-input-container label="Número">
                   <input type="text" mask="0*" class="form-control" formControlName="NUMERO_INSS" placeholder="Número"
                     autocomplete="off" maxlength="11">
@@ -187,10 +188,10 @@
               </div>
               <div class="col-sm-2 col-smm-12">
                 <label>Agência </label>
-                <input type="text" class="form-control" formControlName="AGENCIA_INSS" placeholder="Agência"
+                <input type="text" mask="0*" class="form-control" formControlName="AGENCIA_INSS" placeholder="Agência"
                   autocomplete="off" maxlength="50">
               </div>
-              <div class="col-sm-3 col-sm-12"  id="inputValidator">
+              <div class="col-sm-3 col-sm-12" id="inputValidator">
                 <salv-input-container label="Conta">
                   <input type="text" class="form-control" formControlName="CONTA_INSS" placeholder="Conta"
                     autocomplete="off" maxlength="50">
@@ -208,8 +209,9 @@
               </div>
               <div class="col-sm-3 col-sm-12">
                 <label>Valor </label>
-                <input type="text" prefix="R$ " mask="0*,00" class="form-control" formControlName="VALOR_INSS"
-                  placeholder="Valor" autocomplete="off" maxlength="12" placeholder="R$ 0,00">
+                <input type="text" class="form-control" formControlName="VALOR_INSS" currencyMask
+                  [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" min="0" autocomplete="off" maxlength="12"
+                  placeholder="R$ 0,00">
               </div>
               <div class="col-sm-3 col-sm-12">
                 <label>Prova de vida </label>
@@ -230,13 +232,13 @@
               <div class="col-sm-4 col-sm-12" id="inputValidator">
                 <salv-input-container label="Cartão SAMS">
                   <input type="text" class="form-control" formControlName="CARTAO_SAMS"
-                    placeholder="Número do Cartão SAMS" maxlength="16">
+                    placeholder="Número do Cartão SAMS" mask="0*" maxlength="16">
                 </salv-input-container>
               </div>
-              <div class="col-sm-4 col-sm-12"  id="inputValidator">
+              <div class="col-sm-4 col-sm-12" id="inputValidator">
                 <salv-input-container label="Cartão SUS">
                   <input type="text" class="form-control" formControlName="CARTAO_SUS"
-                    placeholder="Número do Cartão SUS" maxlength="50">
+                    placeholder="Número do Cartão SUS" mask="0*" maxlength="50">
                 </salv-input-container>
               </div>
               <div class="col-sm-3 col-sm-12" id="inputValidator">

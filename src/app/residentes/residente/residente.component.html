@@ -319,13 +319,13 @@
                 <div class="col-sm-6 col-xs-12">
                   <label>Agência</label>
                   <input type="text" class="form-control" formControlName="AGENCIA_BENEFICIO" placeholder="Agência"
-                    autocomplete="off" maxlength="50">
+                    autocomplete="off" mask="0*" maxlength="50">
                 </div>
 
                 <div class="col-sm-6 col-xs-12">
                   <label>Conta</label>
                   <input type="text" class="form-control" formControlName="CONTA_BENEFICIO" placeholder="Conta"
-                    autocomplete="off" maxlength="50">
+                    autocomplete="off" mask="0*" maxlength="50">
                 </div>
 
                 <div class="col-sm-12 col-xs-12">
@@ -334,8 +334,9 @@
 
                 <div class="col-sm-6 col-xs-12">
                   <label>Valor</label>
-                  <input type="text" class="form-control" formControlName="VALOR_BENEFICIO" placeholder="Valor R$"
-                    autocomplete="off" maxlength="12">
+                  <input type="text" class="form-control" formControlName="VALOR_BENEFICIO" currencyMask
+                    [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" min="0" autocomplete="off"
+                    maxlength="12" placeholder="R$ 0,00">
                 </div>
 
                 <div class="col-sm-6 col-xs-12" id="inputValidator">
