@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Convenio } from './convenio.model';
 import { ResidentesService } from '../../residentes.service';
 import { Residente_Convenio } from '../residente.model';
@@ -13,6 +13,7 @@ import { NotificationService } from 'src/app/shared/notification.service';
 export class InfosConvenioComponent implements OnInit {
 
   @Input() convenio: Residente_Convenio
+  @Output() atualizaConvenio = new EventEmitter<Residente_Convenio[]>()
 
   residenteConvenios: Residente_Convenio[]
   convenioResidenteForm: FormGroup
@@ -67,6 +68,7 @@ export class InfosConvenioComponent implements OnInit {
             .subscribe(res => {
               delete this.convenio
               this.notificationService.notify(`Convenio deletado com sucesso!`)
+              this.atualizaConvenio.emit(res)
             })
         }
       })

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Beneficio } from './beneficio.model';
 import { ResidentesService } from '../../residentes.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -13,6 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 export class InfosBeneficiosComponent implements OnInit {
 
   @Input() beneficio: Beneficio
+  @Output() atualizaBeneficio = new EventEmitter<Beneficio[]>()
 
   beneficios: Beneficio[]
   beneficioResidenteForm: FormGroup
@@ -49,6 +50,7 @@ export class InfosBeneficiosComponent implements OnInit {
             .subscribe(res => {
               delete this.beneficio
               this.notificationService.notify(`Beneficio deletado com sucesso!`)
+              this.atualizaBeneficio.emit(res)
             })
         }
       })
