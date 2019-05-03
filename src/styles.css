@@ -51,6 +51,11 @@
     text-align: center;
   }
 
+  .plus-itens{
+    margin-left: 10px; 
+    color: #00A65A;
+  }
+
   #formTitle{
     margin-left: -16px;
   }
@@ -58,6 +63,10 @@
   #inputValidator{
     margin-top: -10px;
     margin-left: -10px;
+  }
+
+  #iconesForm{
+    color: #00A65A
   }
 
   .user-menu>span {

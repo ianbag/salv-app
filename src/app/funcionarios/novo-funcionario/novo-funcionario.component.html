@@ -1,177 +1,182 @@
 <section class="content">
+
   <div class="box" [@novo-funcionarioAppeared]="novoFuncionarioState">
     <h1>Adicionar novo funcionário</h1>
     <hr class="col-md-12">
+
     <form [formGroup]="novoFuncionarioForm" novalidate>
       <div class="box-body">
-        <div>
-          <!--PESSOA INICIO-->
-          <div class="col-sm-12 col-sm-12" id="formTitle">
-            <h4><strong>Informações pessoais</strong></h4>
+          <div>
+            <div class="form-group">
+              <!--PESSOA INICIO-->
+              <div class="col-sm-12 col-sm-12" id="formTitle">
+                <h4><strong>Informações pessoais</strong></h4>
+              </div>
+              <div class="row">
+                <div class="col-sm-3 col-sm-12" id="inputValidator" formGroupName="PESSOA">
+                  <salv-input-container errorMessage="Campo Obrgatório" label="Nome">
+                    <input type="text" class="form-control" formControlName="NOME" placeholder="Nome" autocomplete="off" maxlength="50">
+                  </salv-input-container>
+                </div>
+                <div class="col-sm-3 col-sm-12" id="inputValidator" formGroupName="PESSOA">
+                  <salv-input-container errorMessage="Campo Obrigatório" label="Sobrenome">
+                    <input type="text" class="form-control" formControlName="SOBRENOME" placeholder="Sobrenome"
+                      autocomplete="off" maxlength="50">
+                  </salv-input-container>
+                </div>
+                <div class="col-sm-3 col-sm-12" id="inputValidator" formGroupName="PESSOA">
+                  <salv-input-container errorMessage="Minimo 11 caracteres" label="CPF">
+                    <input type="text" mask="000.000.000-00" class="form-control" formControlName="CPF" placeholder="CPF"
+                      autocomplete="off" maxlength="15">
+                  </salv-input-container>
+                </div>
+                <div class="col-sm-3 col-sm-12" id="inputValidator" formGroupName="PESSOA">
+                  <salv-input-container errorMessage="Minimo 9 caracteres" label="RG">
+                    <input type="text" mask="00.000.000-A" class="form-control" formControlName="RG" placeholder="RG"
+                      autocomplete="off">
+                  </salv-input-container>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-sm-3 col-xs-12" formGroupName="PESSOA" style="margin-left: -9px">
+                  <salv-input-container errorMessage="Campo Obrigatório" label="Estado Civil">
+                    <select class="form-control" formControlName="ESTADO_CIVIL">
+                      <option value="" label="Selecione" disabled selected="selected"></option>
+                      <option *ngFor="let estadoCivil of estadosCivil" [value]="estadoCivil.value">{{estadoCivil.option}}
+                      </option>
+                    </select>
+                  </salv-input-container>
+                </div>
+                <div class="col-sm-3 col-xs-12" id="inputValidator" formGroupName="PESSOA" style="margin-left: -9px">
+                  <salv-input-container errorMessage="Campo Obrigatório" label="Sexo">
+                    <select class="form-control" formControlName="SEXO">
+                      <option value="" label="Selecione" disabled selected="selected"></option>
+                      <option *ngFor="let sexo of sexos" [value]="sexo.value">{{sexo.option}}</option>
+                    </select>
+                  </salv-input-container>
+                </div>
+                <div class="col-sm-3 col-xs-12" formGroupName="PESSOA" style="margin-left: -9px">
+                  <salv-input-container errorMessage="Campo Obrigatório" label="Religião">
+                    <select class="form-control" formControlName="RELIGIAO">
+                      <option value="" label="Selecione" disabled selected="selected"></option>
+                      <option *ngFor="let religiao of religioes" [value]="religiao.value">{{religiao.option}}</option>
+                    </select>
+                  </salv-input-container>
+                </div>
+                <div class="col-sm-3 col-xs-12" formGroupName="PESSOA" style="margin-left: -9px">
+                  <salv-input-container errorMessage="Campo Obrigatório" label="Escolaridade">
+                    <select class="form-control" formControlName="ESCOLARIDADE">
+                      <option value="" label="Selecione" disabled selected="selected"></option>
+                      <option *ngFor="let escolaridade of escolaridades" [value]="escolaridade.value">
+                        {{escolaridade.option}}
+                      </option>
+                    </select>
+                  </salv-input-container>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-3 col-sm-12" formGroupName="PESSOA" style="margin-left: -9px">
+                  <salv-input-container erroMessage="Campo Obrigatório" label="Data de Nascimento">
+                    <input type="date" class="form-control pull-right" id="datepicker" formControlName="DATA_NASCIMENTO" max="2999-12-31">
+                  </salv-input-container>
+                </div>
+                <div class="col-sm-3 col-sm-12" style="margin-left: -9px">
+                  <salv-input-container errorMessage="Campo Obrigatório" label="Cargo">
+                    <input type="text" class="form-control" formControlName="CARGO" placeholder="Cargo" autocomplete="off" maxlength="50">
+                  </salv-input-container>
+                </div>
+                <div class="col-sm-3 col-sm-12" style="margin-left: -9px">
+                  <salv-input-container errorMessage="Campo Obrigatório" label="Data de Admissão">
+                    <input type="date" class="form-control pull-right" id="datepicker" formControlName="DATA_ADMISSAO" max="2999-12-31">
+                  </salv-input-container>
+                </div>
+              </div>
+              <!--PESSOA FIM-->
+              <hr class="col-md-12">
+              <!--TELEFONE-->
+              <div class="col-sm-12 col-sm-12" id="formTitle">
+                <h4><strong>Telefone</strong></h4>
+              </div>
+              <div class="row">
+                <div class="col-sm-2 col-sm-12" id="inputValidator" formGroupName="TELEFONE">
+                  <salv-input-container errorMessage="Campo Obrigatório" label="DDD">
+                    <input type="text" mask="000" class="form-control" formControlName="DDD" placeholder="DDD" autocomplete="off" maxlength="3">
+                  </salv-input-container>
+                </div>
+                <div class="col-sm-3 col-sm-12" id="inputValidator" formGroupName="TELEFONE">
+                  <salv-input-container errorMessage="Campo Obrigatório" label="Telefone">
+                    <input type="text" mask="000000000" class="form-control" formControlName="NUMERO" placeholder="Telefone"
+                      autocomplete="off" maxlength="9">
+                  </salv-input-container>
+                </div>
+              </div>
+              <!--TELEFONE FIM-->
+              <hr class="col-md-12">
+              <!--ENDERECO-->
+              <div class="col-sm-12 col-sm-12" id="formTitle">
+                <h4><strong>Endereço</strong></h4>
+              </div>
+              <div class="row">
+                <div class="col-sm-3 col-sm-12" id="inputValidator" formGroupName="ENDERECO">
+                  <salv-input-container errorMessage="Campo Obrigatório" label="Endereço">
+                    <input type="text" class="form-control" formControlName="ENDERECO" placeholder="Endereço"
+                      autocomplete="off" maxlength="100">
+                  </salv-input-container>
+                </div>
+                <div class="col-sm-3 col-sm-12" id="inputValidator" formGroupName="ENDERECO">
+                  <salv-input-container errorMessage="Campo Obrigatório" label="Número">
+                    <input type="text" mask="00000" class="form-control" formControlName="NUMERO" placeholder="Número"
+                      autocomplete="off" maxlength="5">
+                  </salv-input-container>
+                </div>
+                <div class="col-sm-3 col-sm-12" id="inputValidator" formGroupName="ENDERECO">
+                  <salv-input-container errorMessage="Campo Obrigatório" label="Bairro">
+                    <input type="text" class="form-control" formControlName="BAIRRO" placeholder="Bairro"
+                      autocomplete="off" maxlength="50">
+                  </salv-input-container>
+                </div>
+                <div class="col-sm-3 col-sm-12" formGroupName="ENDERECO">
+                  <label>Complemento</label>
+                  <input type="text" class="form-control" formControlName="COMPLEMENTO" placeholder="Complemento"
+                    autocomplete="off" maxlength="50">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-3 col-sm-12" formGroupName="ENDERECO" style="margin-left: -9.5px">
+                  <salv-input-container errorMessage="Campo Obrigatório" label="Cidade">
+                    <input type="text" class="form-control" formControlName="CIDADE" placeholder="Cidade"
+                      autocomplete="off" maxlength="50">
+                  </salv-input-container>
+                </div>
+                <div class="col-sm-3 col-sm-12" formGroupName="ENDERECO" style="margin-left: -9.5px">
+                  <salv-input-container errorMessage="Campo Obrigatório" label="Estado">
+                    <select class="form-control" formControlName="ESTADO">
+                      <option value="" label="Selecione" disabled selected="selected"></option>
+                      <option *ngFor="let estado of estados">
+                        {{estado}}
+                      </option>
+                    </select>
+                  </salv-input-container>
+                </div>
+                <div class="col-sm-3 col-sm-12" formGroupName="ENDERECO" style="margin-left: -10px">
+                  <salv-input-container errorMessage="Campo Obrigatório" label="CEP">
+                    <input type="text" mask="00.000-000" class="form-control" formControlName="CEP" placeholder="CEP" autocomplete="off" maxlength="10">
+                  </salv-input-container>
+                </div>
+                <div class="col-sm-3 col-sm-12" formGroupName="ENDERECO" style="margin-left: -1px; margin-top: 10px">
+                  <label>Referência</label>
+                  <input type="text" class="form-control" formControlName="REFERENCIA" placeholder="Referência"
+                    autocomplete="off" maxlength="100">
+                </div>
+              </div>
+              <div class="col-sm-12 col-sm-12">
+                <br>
+                <button (click)="novoFuncionario(novoFuncionarioForm.value)" style="margin-left: 10px"
+                  class="btn btn-success botao pull-right" [disabled]="!novoFuncionarioForm.valid">Finalizar cadastro</button>
+              </div>
+            </div>
           </div>
-          <div class="row">
-            <div class="col-sm-3 col-sm-12" id="inputValidator" formGroupName="PESSOA">
-              <salv-input-container errorMessage="Campo Obrgatório" label="Nome">
-                <input type="text" class="form-control" formControlName="NOME" placeholder="Nome" autocomplete="off" maxlength="50">
-              </salv-input-container>
-            </div>
-            <div class="col-sm-3 col-sm-12" id="inputValidator" formGroupName="PESSOA">
-              <salv-input-container errorMessage="Campo Obrigatório" label="Sobrenome">
-                <input type="text" class="form-control" formControlName="SOBRENOME" placeholder="Sobrenome"
-                  autocomplete="off" maxlength="50">
-              </salv-input-container>
-            </div>
-            <div class="col-sm-3 col-sm-12" id="inputValidator" formGroupName="PESSOA">
-              <salv-input-container errorMessage="Minimo 11 caracteres" label="CPF">
-                <input type="text" mask="000.000.000-00" class="form-control" formControlName="CPF" placeholder="CPF"
-                  autocomplete="off" maxlength="15">
-              </salv-input-container>
-            </div>
-            <div class="col-sm-3 col-sm-12" id="inputValidator" formGroupName="PESSOA">
-              <salv-input-container errorMessage="Minimo 9 caracteres" label="RG">
-                <input type="text" mask="00.000.000-A" class="form-control" formControlName="RG" placeholder="RG"
-                  autocomplete="off">
-              </salv-input-container>
-            </div>
-          </div>
-          <br>
-          <div class="row">
-            <div class="col-sm-3 col-sm-12" formGroupName="PESSOA">
-              <salv-input-container errorMessage="Campo Obrigatório" label="Estado Civil">
-                <select class="form-control" formControlName="ESTADO_CIVIL">
-                  <option value="" label="Selecione" disabled selected="selected"></option>
-                  <option *ngFor="let estadoCivil of estadosCivil" [value]="estadoCivil.value">{{estadoCivil.option}}
-                  </option>
-                </select>
-              </salv-input-container>
-            </div>
-            <div class="col-sm-3 col-sm-12" id="inputValidator" formGroupName="PESSOA">
-              <salv-input-container errorMessage="Campo Obrigatório" label="Sexo">
-                <select class="form-control" formControlName="SEXO">
-                  <option value="" label="Selecione" disabled selected="selected"></option>
-                  <option *ngFor="let sexo of sexos" [value]="sexo.value">{{sexo.option}}</option>
-                </select>
-              </salv-input-container>
-            </div>
-            <div class="col-sm-3 col-sm-12" formGroupName="PESSOA">
-              <salv-input-container errorMessage="Campo Obrigatório" label="Religião">
-                <select class="form-control" formControlName="RELIGIAO">
-                  <option value="" label="Selecione" disabled selected="selected"></option>
-                  <option *ngFor="let religiao of religioes" [value]="religiao.value">{{religiao.option}}</option>
-                </select>
-              </salv-input-container>
-            </div>
-            <div class="col-sm-3 col-sm-12" formGroupName="PESSOA">
-              <salv-input-container errorMessage="Campo Obrigatório" label="Escolaridade">
-                <select class="form-control" formControlName="ESCOLARIDADE">
-                  <option value="" label="Selecione" disabled selected="selected"></option>
-                  <option *ngFor="let escolaridade of escolaridades" [value]="escolaridade.value">
-                    {{escolaridade.option}}
-                  </option>
-                </select>
-              </salv-input-container>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-3 col-sm-12" formGroupName="PESSOA">
-              <salv-input-container erroMessage="Campo Obrigatório" label="Data de Nascimento">
-                <input type="date" class="form-control pull-right" id="datepicker" formControlName="DATA_NASCIMENTO" max="2999-12-31">
-              </salv-input-container>
-            </div>
-            <div class="col-sm-3 col-sm-12">
-              <salv-input-container errorMessage="Campo Obrigatório" label="Cargo">
-                <input type="text" class="form-control" formControlName="CARGO" placeholder="Cargo" autocomplete="off" maxlength="50">
-              </salv-input-container>
-            </div>
-            <div class="col-sm-3 col-sm-12">
-              <salv-input-container errorMessage="Campo Obrigatório" label="Data de Admissão">
-                <input type="date" class="form-control pull-right" id="datepicker" formControlName="DATA_ADMISSAO" max="2999-12-31">
-              </salv-input-container>
-            </div>
-          </div>
-          <!--PESSOA FIM-->
-          <hr class="col-md-12">
-          <!--TELEFONE-->
-          <div class="col-sm-12 col-sm-12" id="formTitle">
-            <h4><strong>Telefone</strong></h4>
-          </div>
-          <div class="row">
-            <div class="col-sm-2 col-sm-12" id="inputValidator" formGroupName="TELEFONE">
-              <salv-input-container errorMessage="Campo Obrigatório" label="DDD">
-                <input type="text" class="form-control" formControlName="DDD" placeholder="DDD" autocomplete="off" maxlength="3">
-              </salv-input-container>
-            </div>
-            <div class="col-sm-3 col-sm-12" id="inputValidator" formGroupName="TELEFONE">
-              <salv-input-container errorMessage="Campo Obrigatório" label="Telefone">
-                <input type="text" class="form-control" formControlName="NUMERO" placeholder="Telefone"
-                  autocomplete="off" maxlength="9">
-              </salv-input-container>
-            </div>
-          </div>
-          <!--TELEFONE FIM-->
-          <hr class="col-md-12">
-          <!--ENDERECO-->
-          <div class="col-sm-12 col-sm-12" id="formTitle">
-            <h4><strong>Endereço</strong></h4>
-          </div>
-          <div class="row">
-            <div class="col-sm-3 col-sm-12" id="inputValidator" formGroupName="ENDERECO">
-              <salv-input-container errorMessage="Campo Obrigatório" label="Endereço">
-                <input type="text" class="form-control" formControlName="ENDERECO" placeholder="Endereço"
-                  autocomplete="off" maxlength="100">
-              </salv-input-container>
-            </div>
-            <div class="col-sm-3 col-sm-12" id="inputValidator" formGroupName="ENDERECO">
-              <salv-input-container errorMessage="Campo Obrigatório" label="Número">
-                <input type="text" class="form-control" formControlName="NUMERO" placeholder="Número"
-                  autocomplete="off" maxlength="5">
-              </salv-input-container>
-            </div>
-            <div class="col-sm-3 col-sm-12" id="inputValidator" formGroupName="ENDERECO">
-              <salv-input-container errorMessage="Campo Obrigatório" label="Bairro">
-                <input type="text" class="form-control" formControlName="BAIRRO" placeholder="Bairro"
-                  autocomplete="off" maxlength="50">
-              </salv-input-container>
-            </div>
-            <div class="col-sm-3 col-sm-12" formGroupName="ENDERECO">
-              <label>Complemento</label>
-              <input type="text" class="form-control" formControlName="COMPLEMENTO" placeholder="Complemento"
-                autocomplete="off" maxlength="50">
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-3 col-sm-12" formGroupName="ENDERECO">
-              <salv-input-container errorMessage="Campo Obrigatório" label="Cidade">
-                <input type="text" class="form-control" formControlName="CIDADE" placeholder="Cidade"
-                  autocomplete="off" maxlength="50">
-              </salv-input-container>
-            </div>
-            <div class="col-sm-3 col-sm-12" formGroupName="ENDERECO">
-              <salv-input-container errorMessage="Campo Obrigatório" label="Estado">
-                <select class="form-control" formControlName="ESTADO">
-                  <option value="" label="Selecione" disabled selected="selected"></option>
-                  <option *ngFor="let estado of estados">
-                    {{estado}}
-                  </option>
-                </select>
-              </salv-input-container>
-            </div>
-            <div class="col-sm-3 col-sm-12" formGroupName="ENDERECO">
-              <salv-input-container errorMessage="Campo Obrigatório" label="CEP">
-                <input type="text" mask="00.000-000" class="form-control" formControlName="CEP" placeholder="CEP" autocomplete="off" maxlength="10">
-              </salv-input-container>
-            </div>
-            <div class="col-sm-3 col-sm-12" formGroupName="ENDERECO">
-              <label>Referência</label>
-              <input type="text" class="form-control" formControlName="REFERENCIA" placeholder="Referência"
-                autocomplete="off" maxlength="100">
-            </div>
-          </div>
-          <div class="col-sm-12 col-sm-12">
-            <button (click)="novoFuncionario(novoFuncionarioForm.value)" style="margin-left: 10px"
-              class="btn btn-success botao pull-right">Finalizar cadastro</button>
-          </div>
-        </div>
       </div>
     </form>
   </div>

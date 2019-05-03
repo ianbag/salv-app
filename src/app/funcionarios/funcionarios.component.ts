@@ -64,7 +64,7 @@ export class FuncionariosComponent implements OnInit {
   }
 
   deleteFuncionario(id: string): void {
-    this.dialogConfirmService.confirm(`Deseja excluir o funcionário?`)
+    this.dialogConfirmService.confirm(`Deseja inativar o funcionário?`)
       .then((isTrue) => {
         if (isTrue) {
           this.funcionariosService.deleteFuncionario(id)
@@ -73,6 +73,18 @@ export class FuncionariosComponent implements OnInit {
         }
       })
   }
+
+  ativarFuncionario(id: string): void {
+    this.dialogConfirmService.confirm(`Deseja ativar o funcionário?`)
+      .then((isTrue) => {
+        if (isTrue) {
+          this.funcionariosService.ativarFuncionario(id)
+            .subscribe(() => this.funcionariosService.funcionariosInativos()
+              .subscribe(funcionarios => this.funcionariosInativos = funcionarios, funcionarios => this.funcionarios = funcionarios))
+        }
+      })
+  }
+
 
   reportFuncionarios() {
     this.funcionariosService.reportFuncionarios().subscribe(res => {

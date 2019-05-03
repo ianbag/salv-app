@@ -29,10 +29,9 @@ export class FuncionarioComponent implements OnInit {
   funcionarioState = 'ready'
 
   funcionario: Funcionario
-  dependentes: Dependente[]
-  telefones: Telefone[]
+  dependentes: Dependente[] = []
+  telefones: Telefone[] = []
   enderecos: Endereco[]
-  n_dependentes: number
 
   estados = [
     "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"
@@ -44,14 +43,8 @@ export class FuncionarioComponent implements OnInit {
 
   ngOnInit() {
     this.spinner.show()
-    this.fs.funcionarioById(this.route.snapshot.params['id']).subscribe(funcionario => {
-      this.funcionario = funcionario
-    })
-
-    this.fs.dependenteById(this.route.snapshot.params['id']).subscribe(dependente => {
-      this.dependentes = dependente
-      this.n_dependentes = this.dependentes.length
-    })
+    this.buscaFuncionario()
+    this.buscaDependentes()
 
 
     setTimeout(() => {
@@ -62,12 +55,12 @@ export class FuncionarioComponent implements OnInit {
         })
       })
       this.spinner.hide()
-    }, 2300)
+    }, 1000)
 
     this.novoDependenteForm = this.fb.group({
-      NOME: this.fb.control(null, []),
-      SOBRENOME: this.fb.control(null, []),
-      DATA_NASCIMENTO: this.fb.control(null, []),
+      NOME: this.fb.control(null, [Validators.required]),
+      SOBRENOME: this.fb.control(null, [Validators.required]),
+      DATA_NASCIMENTO: this.fb.control(null, [Validators.required]),
       RG: this.fb.control(null, [Validators.minLength(9)], this.uniqueValidators.validateDependenteRG(null, null, null) ),
       CPF: this.fb.control(null, [Validators.minLength(11)], this.uniqueValidators.validateDependenteCPF(null, null, null)),
       NUMERO_CERTIDAO_NASCIMENTO: this.fb.control(null, [], this.uniqueValidators.validateDependenteNumeroCertidao(null, null, null)),
@@ -79,11 +72,16 @@ export class FuncionarioComponent implements OnInit {
 
   }
 
-  countDependentes() {
-    if (this.n_dependentes > 0) {
-      return true
-    }
-    return false
+  buscaFuncionario(){
+    this.fs.funcionarioById(this.route.snapshot.params['id']).subscribe(funcionario => {
+      this.funcionario = funcionario
+    })
+  }
+
+  buscaDependentes(){
+    this.fs.dependenteById(this.route.snapshot.params['id']).subscribe(dependente => {
+      this.dependentes = dependente
+    })
   }
 
   novoDependente(dependente: Dependente) {
@@ -93,12 +91,6 @@ export class FuncionarioComponent implements OnInit {
       this.fs.dependenteById(this.route.snapshot.params['id']).subscribe(dependente => {
         this.dependentes = dependente
       })
-    })
-  }
-
-  updateDependentes() {
-    this.fs.dependenteById(this.route.snapshot.params['id']).subscribe(response => {
-      this.dependentes = response
     })
   }
 

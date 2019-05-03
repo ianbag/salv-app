@@ -11,7 +11,7 @@ export class RgPipe implements PipeTransform {
     if (rg) {
       return rgPoints(rg)
     } else {
-      return 'Não Declarado'
+      return 'Não declarado'
     }
 
     function rgPoints(value?: string): string {

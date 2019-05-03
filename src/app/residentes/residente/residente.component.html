@@ -2,7 +2,7 @@
 <section class="content">
   <button class="btn btn-success" (click)="reportResidente()" id="printReport"><i class="fa fa-print"></i></button>
   <div class="box box-editar" [@residenteAppeared]="residenteState">
-    <h1>Detalhes do Residente</h1>
+    <h1>Detalhes do residente</h1>
     <hr><br>
 
     <div>
@@ -14,8 +14,8 @@
           <h3 class="box-title">Familiares do {{residente?.PESSOA.NOME}}</h3>
           <div class="box-tools pull-right">
 
-            <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#modalFamiliar"
-              style="margin-right: 50px; color: white">Adicionar</button>
+            <a type="submit" class="btn btn-success botao" data-toggle="modal" data-target="#modalFamiliar"
+              style="color: white">Adicionar</a>
 
           </div>
         </div>
@@ -162,9 +162,8 @@
 
         <h3 class="box-title">Convênios do {{residente?.PESSOA.NOME}}</h3>
         <div class="box-tools pull-right">
-          <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#modalConvenio"
-            style="margin-right: 50px; color: white">Adicionar</button>
-
+          <a type="submit" class="btn btn-success botao" data-toggle="modal" data-target="#modalConvenio"
+            style="color: white">Adicionar</a>
         </div>
       </div>
       <div class="box-body" style>

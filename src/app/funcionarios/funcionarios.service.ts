@@ -42,6 +42,10 @@ export class FuncionariosService {
         return this.http.delete<any>(`${SALV_API}/funcionario/${id}`)
     }
 
+    ativarFuncionario(id: string): Observable<any> {
+        return this.http.delete<any>(`${SALV_API}/funcionario-ativar/${id}`)
+    }
+
     funcionarioQuery(id: string): Observable<FuncionarioQuery[]> {
         return this.http.get<FuncionarioQuery[]>(`${SALV_API}/funcionario-full/${id}`)
     }

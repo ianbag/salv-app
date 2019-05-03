@@ -23,7 +23,7 @@
                    
           <div class="box-body" style>
             <strong>Atividade realizada: </strong> {{acompanhamento1?.ATIVIDADE}} <br>
-            <strong>Data: </strong> {{acompanhamento1?.DATA_ACOMPANHAMENTO}} <br>
+            <strong>Data: </strong> {{acompanhamento1?.DATA_ACOMPANHAMENTO | date:'dd/MM/yyyy'}} <br>
             <strong >Funcionário(s):  </strong>
             <div *ngFor="let acompanhamento_funcionario of funcionarios1" >
             {{acompanhamento_funcionario?.FNOME}}  

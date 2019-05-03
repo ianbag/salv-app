@@ -1,3 +1,8 @@
+import { CartaoSUSPipe } from './shared/pipes/cartaoSUS.pipe';
+import { CepPipe } from './shared/pipes/cep.pipe';
+import { TituloEleitorPipe } from './shared/pipes/eleitoral/titulo-eleitor.pipe';
+import { ZonaEleitoralPipe } from './shared/pipes/eleitoral/zona-eleitoral.pipe'
+import { SecaoEleitoralPipe } from './shared/pipes/eleitoral/secao-eleitoral.pipe'
 import { SearchPipe } from './shared/pipes/filtroData.pipe';
 import { NovoAcompanhamentoService } from './acompanhamentos/novo-acompanhamento/novo-acompanhamento.service';
 import { UserDetailsComponent } from './fixed-elements/header/user-details/user-details.component';
@@ -5,7 +10,7 @@ import { NotificationService } from './shared/notification.service';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, ErrorHandler } from '@angular/core';
+import { NgModule, ErrorHandler, LOCALE_ID } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -27,6 +32,7 @@ import { SexoPipe } from './shared/pipes/sexo.pipe';
 import { EscolaridadePipe } from './shared/pipes/escolaridade.pipe';
 import { EstadoCivilPipe } from './shared/pipes/estado-civil.pipe';
 
+import { TelefonePipe } from './shared/pipes/telefone.pipe';
 import { ReligiaoPipe } from './shared/pipes/religiao.pipe';
 import { CpfPipe } from './shared/pipes/cpf.pipe';
 import { RgPipe } from './shared/pipes/rg.pipe';
@@ -79,10 +85,35 @@ import { ResetService } from './auth/reset-password/reset.service';
 import { AuthGuardService } from './auth/auth-guard.service';
 
 import { ValidatorService } from './shared/validators/validator.service';
-import {CookieService} from 'ngx-cookie-service'
+import { CookieService } from 'ngx-cookie-service'
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FilterPipeModule } from 'ngx-filter-pipe';
 import { InfosBeneficiosComponent } from './residentes/residente/infos-beneficios/infos-beneficios.component';
+
+//CERTIDAO DE NASCIMENTO PIPE
+import { CidadeCertNascPipe } from './shared/pipes/cert_nasc/cidade-cert-nasc.pipe'
+import { EstadoCertNascPipe } from './shared/pipes/cert_nasc/estado-cert-nasc.pipe'
+import { NumeroCertNascPipe } from './shared/pipes/cert_nasc/numero-cert-nasc.pipe'
+import { FolhaCertNascPipe } from './shared/pipes/cert_nasc/folha-cert-nasc.pipe'
+import { LivroCertNascPipe } from './shared/pipes/cert_nasc/livro-cert-nasc.pipe'
+//
+
+import { ApelidoPipe } from './shared/pipes/apelido.pipe'
+import { ProfissaoPipe } from './shared/pipes/profissao.pipe'
+import { DataPipe } from './shared/pipes/data.pipe'
+import { CartaoSamsPipe } from './shared/pipes/cartao-sams.pipe'
+
+//INSS PIPE
+import { NumeroInssPipe } from './shared/pipes/inss/numero-inss.pipe';
+import { SituacaoInssPipe } from './shared/pipes/inss/situacao-inss.pipe';
+import { BancoInssPipe } from './shared/pipes/inss/banco-inss.pipe'
+import { AgenciaInssPipe } from './shared/pipes/inss/agencia-inss.pipe'
+import { ContaInssPipe } from './shared/pipes/inss/conta-inss.pipe'
+import { ValorInssPipe } from './shared/pipes/inss/valor-inss.pipe'
+import { ProvaVidaInssPipe } from './shared/pipes/inss/prova-vida-inss.pipe'
+//
+
+import { LocationStrategy, HashLocationStrategy } from '@angular/common'
 
 // import { AuthInterceptor } from './auth/auth-interceptor.service';
 
@@ -97,7 +128,18 @@ import { InfosBeneficiosComponent } from './residentes/residente/infos-beneficio
     ResidentesComponent,
     ResidenteComponent,
     InfosPessoaisComponent,
-
+    CartaoSUSPipe,
+    //INSS PIPE
+    NumeroInssPipe,
+    SituacaoInssPipe,
+    BancoInssPipe,
+    AgenciaInssPipe,
+    ContaInssPipe,
+    ValorInssPipe,
+    ProvaVidaInssPipe,
+    //
+    TelefonePipe,
+    CepPipe,
     SexoPipe,
     EscolaridadePipe,
     SearchPipe,
@@ -105,6 +147,20 @@ import { InfosBeneficiosComponent } from './residentes/residente/infos-beneficio
     ReligiaoPipe,
     CpfPipe,
     RgPipe,
+    TituloEleitorPipe,
+    ZonaEleitoralPipe,
+    SecaoEleitoralPipe,
+    // CERTIDAO DE NASCIMENTO PIPE
+    CidadeCertNascPipe,
+    EstadoCertNascPipe,
+    NumeroCertNascPipe,
+    LivroCertNascPipe,
+    FolhaCertNascPipe,
+    //
+    ApelidoPipe,
+    ProfissaoPipe,
+    DataPipe,
+    CartaoSamsPipe,
     InfosFamiliarComponent,
     ConveniosComponent,
     AniversariantesComponent,
@@ -143,7 +199,7 @@ import { InfosBeneficiosComponent } from './residentes/residente/infos-beneficio
     ForgetPasswordComponent,
     ResetPasswordComponent,
     InfosBeneficiosComponent
-    ],
+  ],
   imports: [
     NgxPaginationModule,
     BrowserModule,
@@ -160,7 +216,7 @@ import { InfosBeneficiosComponent } from './residentes/residente/infos-beneficio
     Ng2SearchPipeModule,
     FilterPipeModule
   ],
- 
+
 
   providers: [
     CookieService,
@@ -177,6 +233,8 @@ import { InfosBeneficiosComponent } from './residentes/residente/infos-beneficio
     ForgetService,
     ResetService,
     ValidatorService,
+    // { provide: LocationStrategy, useClass: HashLocationStrategy },
+    // { provide: LOCALE_ID, useValue: 'pt-BR' },
     // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: ErrorHandler, useClass: GlobalErrorHandler }
   ],

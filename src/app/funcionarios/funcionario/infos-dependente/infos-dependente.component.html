@@ -3,11 +3,11 @@
     <h4><strong>Informações pessoais</strong></h4>
   </div>
   <div class="col-xs-4 col-xs-12">
-    <a><span (click)="deleteDependente(dependente.NOME, dependente.SOBRENOME); $event.stopPropagation()"><i
+    <a><span id="iconesForm" (click)="deleteDependente(dependente.NOME, dependente.SOBRENOME)"><i
           class="fa fa-close"></i></span></a>
-    <a data-toggle="modal" data-target="#modalUpdateDependente"
-      (click)="buscaDependente(dependente.CODIGO_FUNCIONARIO, dependente.NOME, dependente.SOBRENOME)"><span><i
-          class="fa fa-pencil"></i></span></a>
+    <a data-toggle="modal" attr.data-target="#modalUpdateDependente{{dependente?.CPF}}"
+      (click)="buscaDependente(dependente.CODIGO_FUNCIONARIO, dependente.NOME, dependente.SOBRENOME)"><span
+        id="iconesForm"><i class="fa fa-pencil"></i></span></a>
     <strong>Nome: </strong> {{dependente?.NOME}} {{dependente?.SOBRENOME}}
     <br>
   </div>
@@ -24,23 +24,23 @@
     <br>
   </div>
   <div class="col-xs-4 col-xs-12" *ngIf="dependente.NUMERO_CERTIDAO_NASCIMENTO">
-    <strong>Nº Certidão de Nascimento: </strong> {{dependente?.NUMERO_CERTIDAO_NASCIMENTO}}
+    <strong>Nº Certidão de Nascimento: </strong> {{dependente?.NUMERO_CERTIDAO_NASCIMENTO | numeroCertNasc}}
     <br>
   </div>
   <div class="col-xs-4 col-xs-12" *ngIf="dependente.FOLHA_CERTIDAO_NASCIMENTO">
-    <strong>Folha Certidão de Nascimento: </strong> {{dependente?.FOLHA_CERTIDAO_NASCIMENTO}}
+    <strong>Folha Certidão de Nascimento: </strong> {{dependente?.FOLHA_CERTIDAO_NASCIMENTO | folhaCertNasc}}
     <br>
   </div>
   <div class="col-xs-4 col-xs-12" *ngIf="dependente.LIVRO_CERTIDAO_NASCIMENTO">
-    <strong>Livro Certidão de Nascimento: </strong> {{dependente?.LIVRO_CERTIDAO_NASCIMENTO}}
+    <strong>Livro Certidão de Nascimento: </strong> {{dependente?.LIVRO_CERTIDAO_NASCIMENTO | livroCertNasc}}
     <br>
   </div>
   <div class="col-xs-4 col-xs-12" *ngIf="dependente.CIDADE_CERTIDAO_NASCIMENTO">
-    <strong>Cidade Certidão de Nascimento: </strong> {{dependente?.CIDADE_CERTIDAO_NASCIMENTO}}
+    <strong>Cidade Certidão de Nascimento: </strong> {{dependente?.CIDADE_CERTIDAO_NASCIMENTO | cidadeCertNasc}}
     <br>
   </div>
   <div class="col-xs-4 col-xs-12" *ngIf="dependente.ESTADO_CERTIDAO_NASCIMENTO">
-    <strong>Estado Certidão de Nascimento: </strong> {{dependente?.ESTADO_CERTIDAO_NASCIMENTO}}
+    <strong>Estado Certidão de Nascimento: </strong> {{dependente?.ESTADO_CERTIDAO_NASCIMENTO | estadoCertNasc}}
     <br>
   </div>
 </div>
@@ -49,8 +49,8 @@
 <!--DIV MODAL INICIO-->
 <div class="col-sm-12 col-xs-12">
   <!-- Modal -->
-  <div class="modal fade" id="modalUpdateDependente" tabindex="-1" role="dialog" aria-labelledby="modalUpdateDependente"
-    aria-hidden="true">
+  <div class="modal fade" id="modalUpdateDependente{{dependente?.CPF}}" tabindex="-1" role="dialog"
+    attr.aria-labelledby="modalUpdateDependente{{dependente?.CPF}}" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-body">
@@ -62,21 +62,24 @@
                 </div>
                 <div class="row">
                   <div class="col-sm-6 col-sm-12">
-                    <label>Nome</label>
-                    <input type="text" class="form-control" formControlName="NOME" placeholder="Nome" autocomplete="off"
-                      maxlength="50">
+                    <salv-input-container errorMessage="Campo obrigatório" label="Nome">
+                      <input type="text" class="form-control" formControlName="NOME" placeholder="Nome"
+                        autocomplete="off" maxlength="50">
+                    </salv-input-container>
                   </div>
                   <div class="col-sm-6 col-sm-12">
-                    <label>Sobrenome</label>
-                    <input type="text" class="form-control" formControlName="SOBRENOME" placeholder="Sobrenome"
-                      autocomplete="off" maxlength="50">
+                    <salv-input-container errorMessage="Campo obrigatório" label="Sobrenome">
+                      <input type="text" class="form-control" formControlName="SOBRENOME" placeholder="Sobrenome"
+                        autocomplete="off" maxlength="50">
+                    </salv-input-container>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-sm-4 col-sm-12">
-                    <label>Data de Nascimento</label>
-                    <input type="date" class="form-control" formControlName="DATA_NASCIMENTO"
-                      placeholder="Data de Nascimento" id="datepicker" autocomplete="off" max="2999-12-31">
+                    <salv-input-container errorMessage="Campo obrigatório" label="Data de nascimento">
+                      <input type="date" class="form-control" formControlName="DATA_NASCIMENTO"
+                        placeholder="Data de Nascimento" id="datepicker" autocomplete="off" max="2999-12-31">
+                    </salv-input-container>
                   </div>
                   <div class="col-sm-4 col-sm-12" id="inputValidator">
                     <salv-input-container errorMessage="Minimo 9 caracteres" label="RG">
@@ -95,10 +98,9 @@
                 <div class="row">
                   <h6><strong>Certidão de Nascimento</strong></h6>
                   <div class="col-sm-4 col-sm-12" id="inputValidator">
-                    <salv-input-container label="Número">
-                      <input type="text" class="form-control" formControlName="NUMERO_CERTIDAO_NASCIMENTO"
-                        placeholder="Número" autocomplete="off" maxlength="5">
-                    </salv-input-container>
+                    <label>Número</label>
+                    <input type="text" class="form-control" formControlName="NUMERO_CERTIDAO_NASCIMENTO"
+                      placeholder="Número" autocomplete="off" maxlength="5">
                   </div>
                   <div class="col-sm-4 col-sm-12">
                     <label>Folha</label>

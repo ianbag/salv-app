@@ -8,19 +8,16 @@ export class EstadoCivilPipe implements PipeTransform {
   transform(value: any): any {
     let estadoCivil
 
-    switch (value) {
-      case 's' || 'S':
-        estadoCivil = 'Solteiro'
-        break;
-      case 'c':
-        estadoCivil = 'Casado'
-        break;
-      case 'v':
-        estadoCivil = 'Viúvo'
-        break;
-      case 'd':
-        estadoCivil = 'Divorciado'
-        break;
+    if (value == 'S') {
+      estadoCivil = 'Solteiro'
+    } else if (value == 'C') {
+      estadoCivil = 'Casado'
+    } else if (value == 'V') {
+      estadoCivil = 'Viúvo'
+    } else if (value == 'D') {
+      estadoCivil = 'Divorciado'
+    } else {
+      estadoCivil = 'Não especificado'
     }
 
     return estadoCivil

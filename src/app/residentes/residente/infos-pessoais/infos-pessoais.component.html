@@ -21,7 +21,7 @@
         </div>
 
         <div class="col-xs-4 col-xs-12">
-          <strong>Apelido: </strong> {{residente?.APELIDO}} <br>
+          <strong>Apelido: </strong> {{residente?.APELIDO | apelido}} <br>
         </div>
 
         <div class="col-xs-4 col-xs-12">
@@ -41,7 +41,7 @@
         </div>
 
         <div class="col-xs-4 col-xs-12">
-          <strong>Data de Nascimento: </strong> {{residente?.PESSOA.DATA_NASCIMENTO | date: 'dd/MM/yyy'}} <br>
+          <strong>Data de Nascimento: </strong> {{residente?.PESSOA.DATA_NASCIMENTO | date: 'dd/MM/yyy' | data}} <br>
         </div>
 
         <div class="col-xs-4 col-xs-12">
@@ -53,7 +53,7 @@
         </div>
 
         <div class="col-xs-4 col-xs-12">
-          <strong>Profissão: </strong> {{residente?.PROFISSAO}} <br>
+          <strong>Profissão: </strong> {{residente?.PROFISSAO | profissao}} <br>
         </div>
       </div>
 
@@ -65,15 +65,15 @@
         </div>
 
         <div class="col-xs-4 col-xs-12">
-          <strong>Título de Eleitor: </strong> {{residente?.TITULO_ELEITOR}} <br>
+          <strong>Título de Eleitor: </strong> {{residente?.TITULO_ELEITOR | tituloEleitor}} <br>
         </div>
 
         <div class="col-xs-4 col-xs-12">
-          <strong>Zona Eleitoral: </strong> {{residente?.ZONA_ELEITORAL}} <br>
+          <strong>Zona Eleitoral: </strong> {{residente?.ZONA_ELEITORAL | zonaEleitoral}} <br>
         </div>
 
         <div class="col-xs-4 col-xs-12">
-          <strong>Seção Eleitoral: </strong> {{residente?.SECAO_ELEITORAL}} <br>
+          <strong>Seção Eleitoral: </strong> {{residente?.SECAO_ELEITORAL | secaoEleitoral}} <br>
         </div>
       </div>
 
@@ -85,23 +85,23 @@
         </div>
 
         <div class="col-xs-4 col-xs-12">
-          <strong>Nº Certidão de Nascimento: </strong> {{residente?.NUMERO_CERTIDAO_NASCIMENTO}} <br>
+          <strong>Nº Certidão de Nascimento: </strong> {{residente?.NUMERO_CERTIDAO_NASCIMENTO | numeroCertNasc}} <br>
         </div>
 
         <div class="col-xs-4 col-xs-12">
-          <strong>Folha: </strong> {{residente?.FOLHA_CERTIDAO_NASCIMENTO}} <br>
+          <strong>Folha: </strong> {{residente?.FOLHA_CERTIDAO_NASCIMENTO | folhaCertNasc}} <br>
         </div>
 
         <div class="col-xs-4 col-xs-12">
-          <strong>Livro: </strong> {{residente?.LIVRO_CERTIDAO_NASCIMENTO}} <br>
+          <strong>Livro: </strong> {{residente?.LIVRO_CERTIDAO_NASCIMENTO | livroCertNasc}} <br>
         </div>
 
         <div class="col-xs-4 col-xs-12">
-          <strong>Cidade: </strong> {{residente?.CIDADE_CERTIDAO_NASCIMENTO}} <br>
+          <strong>Cidade: </strong> {{residente?.CIDADE_CERTIDAO_NASCIMENTO | cidadeCertNasc}} <br>
         </div>
 
         <div class="col-xs-4 col-xs-12">
-          <strong>Estado: </strong> {{residente?.ESTADO_CERTIDAO_NASCIMENTO}} <br>
+          <strong>Estado: </strong> {{residente?.ESTADO_CERTIDAO_NASCIMENTO | estadoCertNasc}} <br>
         </div>
       </div>
 
@@ -113,31 +113,31 @@
         </div>
 
         <div class="col-xs-3 col-xs-12">
-          <strong>Nº: </strong> {{residente?.NUMERO_INSS}} <br>
+          <strong>Nº: </strong> {{residente?.NUMERO_INSS | numeroInss}} <br>
         </div>
 
         <div class="col-xs-3 col-xs-12">
-          <strong>Banco: </strong> {{residente?.BANCO_INSS}} <br>
+          <strong>Banco: </strong> {{residente?.BANCO_INSS | bancoInss}} <br>
         </div>
 
         <div class="col-xs-3 col-xs-12">
-          <strong>Agência: </strong> {{residente?.AGENCIA_INSS}} <br>
+          <strong>Agência: </strong> {{residente?.AGENCIA_INSS | agenciaInss}} <br>
         </div>
 
         <div class="col-xs-3 col-xs-12">
-          <strong>Conta: </strong> {{residente?.CONTA_INSS}} <br>
+          <strong>Conta: </strong> {{residente?.CONTA_INSS | contaInss}} <br>
         </div>
 
         <div class="col-xs-3 col-xs-12">
-          <strong>Valor: </strong> {{residente?.VALOR_INSS}} <br>
+          <strong>Valor: </strong> {{residente?.VALOR_INSS | currency: 'BRL': true | valorInss}} <br>
         </div>
 
         <div class="col-xs-3 col-xs-12">
-          <strong>Situação: </strong> {{residente?.SITUACAO_INSS}} <br>
+          <strong>Situação: </strong> {{residente?.SITUACAO_INSS | situacaoInss}} <br>
         </div>
 
         <div class="col-xs-3 col-xs-12">
-          <strong>Prova de Vida: </strong> {{residente?.PROVA_VIDA_INSS | date: 'dd/MM/yyy'}} <br>
+          <strong>Prova de Vida: </strong> {{residente?.PROVA_VIDA_INSS | date: 'dd/MM/yyy' | provaVidaInss}} <br>
         </div>
       </div>
 
@@ -149,11 +149,11 @@
         </div>
 
         <div class="col-xs-4 col-xs-12">
-          <strong>Cartão SUS: </strong> {{residente?.CARTAO_SUS}} <br>
+          <strong>Cartão SUS: </strong> {{residente?.CARTAO_SUS | cartaoSUS}} <br>
         </div>
 
         <div class="col-xs-4 col-xs-12">
-          <strong>Cartão SAMS: </strong> {{residente?.CARTAO_SAMS}} <br>
+          <strong>Cartão SAMS: </strong> {{residente?.CARTAO_SAMS | cartaoSams}} <br>
         </div>
 
         <div class="col-xs-4 col-xs-12">

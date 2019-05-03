@@ -54,13 +54,25 @@ export class ConveniosComponent implements OnInit {
       })
   }
 
+
   deleteConvenio(id: string): void {
-    this.dialogConfirmService.confirm(`Deseja excluir o convênio?`)
+    this.dialogConfirmService.confirm(`Deseja inativar o convênio?`)
       .then((isTrue) => {
         if (isTrue) {
           this.conveniosService.deleteConvenio(id)
             .subscribe(() => this.conveniosService.convenios()
               .subscribe(convenios => this.convenios = convenios))
+        }
+      })
+  }
+
+  ativarConvenio(id: string): void {
+    this.dialogConfirmService.confirm(`Deseja ativar o convênio?`)
+      .then((isTrue) => {
+        if (isTrue) {
+          this.conveniosService.ativarConvenio(id)
+            .subscribe(() => this.conveniosService.conveniosDesativados()
+              .subscribe( convenios => this.conveniosDesativados = convenios, convenios => this.convenios = convenios ))
         }
       })
   }
