@@ -15,12 +15,22 @@
           <div class="box-tools pull-right">
 
             <a type="submit" class="btn btn-success botao" data-toggle="modal" data-target="#modalFamiliar"
-              style="color: white">Adicionar</a>
+              style="color: white" *ngIf="familiares.length" >Adicionar</a>
 
           </div>
         </div>
         <div class="box-body" style>
           <salv-infos-familiar *ngFor="let familiar of familiares" [familiar]="familiar"></salv-infos-familiar>
+          <div *ngIf="!familiares.length">
+            <p style="margin-left: 15px">Você não possui familiares cadastrados</p>
+            <div class="col-sm-12 col-xs-12">
+                <button type="button" class="btn btn-primary" data-toggle="modal"
+                    data-target="#modalFamiliar">
+                    Adicionar familiar
+                </button>
+            </div>
+        </div>
+
         </div>
       </div>
 
