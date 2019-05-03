@@ -1,5 +1,5 @@
 import { Familiar, Telefone } from './familiar.model';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ResidentesService } from '../../residentes.service';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -19,6 +19,7 @@ export class InfosFamiliarComponent implements OnInit {
   ];
 
   @Input() familiar: Familiar
+  @Output() atualizaFamiliar = new EventEmitter<Familiar[]>()
 
   familiarResidenteForm: FormGroup
 
@@ -121,6 +122,7 @@ export class InfosFamiliarComponent implements OnInit {
             .subscribe(res => {
               delete this.familiar
               this.notificationService.notify(`Familiar deletado com sucesso!`)
+              this.atualizaFamiliar.emit(res)
             })
         }
       })
