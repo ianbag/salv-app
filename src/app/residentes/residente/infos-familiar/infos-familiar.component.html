@@ -2,10 +2,10 @@
   <div class="col-sm-12 col-xs-12">
     <h4>
       <strong>Informações de {{familiar?.NOME}}</strong>
-      <a (click)="deletarFamiliar(familiar?.CODIGO)">
+      <a class="input-remove" (click)="deletarFamiliar(familiar?.CODIGO)">
         <i class="fa fa-close"></i>
       </a>
-      <a data-toggle="modal" (click)="editarFamiliar(familiar)"
+      <a class="input-edit" data-toggle="modal" (click)="editarFamiliar(familiar)"
         attr.data-target="#modalEditarFamiliar{{familiar?.CODIGO}}">
         <i class="fa fa-pencil"></i>
       </a>
@@ -263,7 +263,7 @@
   <div class="col-sm-12 col-xs-12">
     <h4>
       <strong>Telefones </strong>
-      <button type="button" class="btn btn-default btn-xs" data-toggle="modal"
+      <button type="button" class="btn btn-success btn-xs" data-toggle="modal"
         attr.data-target="#modalNovoTelefone{{familiar?.CODIGO}}">
         <i class="fa fa-plus"></i>
       </button>
@@ -273,12 +273,10 @@
     <ng-container *ngIf="telefone.length; else elseTelefoneTemplate">
       <div class="col-xs-4 col-xs-12" *ngFor="let tel of telefone">
         <strong>Telefone: </strong> ({{tel?.TELEFONE.DDD}}) {{tel?.TELEFONE.NUMERO | telefone}}
-        <a (click)="deletarTelefoneFamiliar(tel.TELEFONE.CODIGO, familiar?.CODIGO)">
-          <span>
-            <i class="fa fa-close"></i>
-          </span>
+        <a class="input-remove" (click)="deletarTelefoneFamiliar(tel.TELEFONE.CODIGO, familiar?.CODIGO)">
+          <span><i class="fa fa-close"></i></span>
         </a>
-        <a data-toggle="modal" (click)="buscarTelefone(tel.TELEFONE.CODIGO)"
+        <a class="input-edit" data-toggle="modal" (click)="buscarTelefone(tel.TELEFONE.CODIGO)"
           attr.data-target="#modalEditarTelefone{{familiar?.CODIGO}}">
           <span><i class="fa fa-pencil"></i></span></a>
       </div>

@@ -69,6 +69,23 @@
     color: #00A65A
   }
 
+  .input-edit {
+    color: #f39c12;
+  }
+  .input-edit:hover {
+    color: #f39c12;
+    opacity: 0.6;
+  }
+
+  .input-remove {
+    color: #dd4b39;
+  }
+
+  .input-remove:hover{
+    color: #dd4b39;
+    opacity: 0.6;
+  }
+
   .user-menu>span {
     /**/
     position: relative;

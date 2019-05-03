@@ -1,8 +1,8 @@
 <div class="col-md-12" *ngIf="beneficio">
   <div class="col-sm-12 col-xs-12">
     <h4><strong>{{beneficio?.NOME_BENEFICIO}}</strong>
-      <a (click)="deletarBeneficio(beneficio)"><i class="fa fa-close"></i></a>
-      <a data-toggle="modal" (click)="setValuesBeneficioForm(beneficio)"
+      <a class="input-remove" (click)="deletarBeneficio(beneficio)"><i class="fa fa-close"></i></a>
+      <a class="input-edit" data-toggle="modal" (click)="setValuesBeneficioForm(beneficio)"
         attr.data-target="#modalEditarBeneficio{{NOME_BENEFICIO_SEM_ESPACO}}"><i class="fa fa-pencil"></i></a>
     </h4>
   </div>
