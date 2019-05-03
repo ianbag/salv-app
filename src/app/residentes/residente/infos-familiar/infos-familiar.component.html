@@ -270,20 +270,27 @@
     </h4>
   </div>
   <div class="col-sm-12">
-    <div class="col-xs-4 col-xs-12" *ngFor="let tel of telefone">
-      <strong>Telefone: </strong> ({{tel?.TELEFONE.DDD}}) {{tel?.TELEFONE.NUMERO | telefone}}
-      <a (click)="deletarTelefoneFamiliar(tel.TELEFONE.CODIGO, familiar?.CODIGO)">
-        <span>
-          <i class="fa fa-close"></i>
-        </span>
-      </a>
-      <a data-toggle="modal" (click)="buscarTelefone(tel.TELEFONE.CODIGO)"
-        attr.data-target="#modalEditarTelefone{{familiar?.CODIGO}}">
-        <span>
-          <i class="fa fa-pencil"></i>
-        </span>
-      </a>
-    </div>
+    <ng-container *ngIf="telefone.length; else elseTelefoneTemplate">
+      <div class="col-xs-4 col-xs-12" *ngFor="let tel of telefone">
+        <strong>Telefone: </strong> ({{tel?.TELEFONE.DDD}}) {{tel?.TELEFONE.NUMERO | telefone}}
+        <a (click)="deletarTelefoneFamiliar(tel.TELEFONE.CODIGO, familiar?.CODIGO)">
+          <span>
+            <i class="fa fa-close"></i>
+          </span>
+        </a>
+        <a data-toggle="modal" (click)="buscarTelefone(tel.TELEFONE.CODIGO)"
+          attr.data-target="#modalEditarTelefone{{familiar?.CODIGO}}">
+          <span><i class="fa fa-pencil"></i></span></a>
+      </div>
+    </ng-container>
+
+    <ng-template #elseTelefoneTemplate>
+      <div class="col-xs-4 col-xs-12">
+        {{familiar?.NOME}} não possui telefone cadastrado. Adicione um clicando em +
+      </div>
+    </ng-template>
+
+
     <hr class="col-md-12">
   </div>
 </div>
