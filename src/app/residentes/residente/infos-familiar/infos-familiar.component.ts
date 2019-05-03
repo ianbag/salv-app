@@ -56,8 +56,8 @@ export class InfosFamiliarComponent implements OnInit {
     })
 
     this.novoTelefoneForm = this.formBuilder.group({
-      DDD: this.formBuilder.control(null, []),
-      NUMERO: this.formBuilder.control(null, [])
+      DDD: this.formBuilder.control(null, [Validators.required]),
+      NUMERO: this.formBuilder.control(null, [Validators.required])
     })
 
   }
