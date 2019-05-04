@@ -1,3 +1,4 @@
+import { ResidenteFilterPipe } from './shared/pipes/filtro-residente.pipe';
 import { CartaoSUSPipe } from './shared/pipes/cartaoSUS.pipe';
 import { CepPipe } from './shared/pipes/cep.pipe';
 import { TituloEleitorPipe } from './shared/pipes/eleitoral/titulo-eleitor.pipe';
@@ -129,6 +130,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common'
     ResidenteComponent,
     InfosPessoaisComponent,
     CartaoSUSPipe,
+    ResidenteFilterPipe,
     //INSS PIPE
     NumeroInssPipe,
     SituacaoInssPipe,
