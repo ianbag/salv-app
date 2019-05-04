@@ -3,7 +3,7 @@
 
   <ng-content></ng-content>
 
-  <span class="help-block" *ngIf="showTip && hasSuccess()"><i class="fa fa-check"></i> OK</span>
+  <span class="help-block" *ngIf="showTip && hasSuccess() && verifyInputEmpty()"><i class="fa fa-check"></i> OK</span>
   <span class="help-block" *ngIf="showTip && hasError() && !verifyUniqueInput()"><i class="fa fa-remove"></i> {{errorMessage}}</span>
   <span class="help-block" *ngIf="showTip && hasError() && verifyUniqueInput()"><i class="fa fa-remove"></i> {{label}} já existente</span>
 </div>

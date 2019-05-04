@@ -10,6 +10,7 @@ export class InputComponent implements OnInit, AfterContentInit {
   @Input() label: string
   @Input() errorMessage: string
   @Input() showTip: boolean = true
+  @Input() value: string = null
 
   input: any
 
@@ -18,6 +19,7 @@ export class InputComponent implements OnInit, AfterContentInit {
   constructor() { }
 
   ngOnInit() {
+
   }
 
   ngAfterContentInit() {
@@ -28,8 +30,12 @@ export class InputComponent implements OnInit, AfterContentInit {
     }
   }
 
+  verifyInputEmpty(): boolean {
+    return this.input.value != "" ? true : false
+  }
+
   hasSuccess(): boolean {
-    return this.input.valid && (this.input.dirty /*|| this.input.touched*/)
+    return this.input.valid && (this.input.dirty /*|| this.input.touched*/) && this.verifyInputEmpty()
   }
 
   hasError(): boolean {
@@ -39,4 +45,6 @@ export class InputComponent implements OnInit, AfterContentInit {
   verifyUniqueInput(): boolean {
     return this.input.errors.unique && (this.input.dirty || this.input.touched)
   }
+
+
 }
