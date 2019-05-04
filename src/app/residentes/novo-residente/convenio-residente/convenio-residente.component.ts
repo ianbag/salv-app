@@ -58,10 +58,10 @@ export class ConvenioResidenteComponent implements OnInit {
       .subscribe(convenio => this.convenios = convenio)
 
     this.convenioResidenteForm = this.formBuilder.group({
-      NUMERO_CONVENIO: this.formBuilder.control(null, [Validators.required]),
-      TITULAR_CONVENIO: this.formBuilder.control(null, [Validators.required]),
+      NUMERO_CONVENIO: this.formBuilder.control(null, []),
+      TITULAR_CONVENIO: this.formBuilder.control(null, []),
       PARENTESCO_TITULAR: this.formBuilder.control(null, []),
-      CONVENIO_CODIGO: this.formBuilder.control(null, [Validators.required]),
+      CONVENIO_CODIGO: this.formBuilder.control(null, []),
     })
 
     if (this.residenteConvenio != undefined)
@@ -79,20 +79,25 @@ export class ConvenioResidenteComponent implements OnInit {
         .subscribe(res => {
           if (res.errors) {
             res.errors.forEach(error => {
-              this.notificationService.notify(`Houve um erro! ${error.message}`)
+              if (error.validatorKey != 'is_null')
+                this.notificationService.notify(`Houve um erro! ${error.message}`)
+              else
+                this.residenteInseridoMensagem()
             })
-          } else {
-            this.router.navigate(['/residentes'])
-            this.notificationService.notify(`Residente inserido com sucesso!`)
-            this.residentesService.clearDataResidente()
-          }
+          } else
+            this.residenteInseridoMensagem()
         })
     }
     else {
       this.markAllDirty(this.convenioResidenteForm)
-      //console.log(this.convenioResidenteForm.controls)
       this.notificationService.notify(`Preencha os campos obrigatórios!`)
     }
+  }
+
+  residenteInseridoMensagem() {
+    this.router.navigate(['/residentes'])
+    this.notificationService.notify(`Residente inserido com sucesso!`)
+    this.residentesService.clearDataResidente()
   }
 }
 
