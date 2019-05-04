@@ -168,7 +168,6 @@ export class NovoResidenteComponent implements OnInit {
       this.router.navigate(['/familiar-residente'])
     } else {
       this.markAllDirty(this.novoResidenteForm)
-      console.log(this.novoResidenteForm.controls)
       this.notificationService.notify(`Preencha os campos obrigatórios!`)
     }
   }
