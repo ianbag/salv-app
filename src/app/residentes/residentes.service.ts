@@ -106,13 +106,10 @@ export class ResidentesService {
     }
 
     createNewResidente() {
-        console.log("PESSOA", this.pessoa)
         return this.http.post<Pessoa>(`${SALV_API}/pessoa`, this.pessoa).switchMap(resPessoa => {
             this.residente.PESSOA_CODIGO = resPessoa.CODIGO
-            console.log("RESIDENTE", this.residente)
 
             return this.http.post<Residente>(`${SALV_API}/residente`, this.residente).switchMap(resResidente => {
-                console.log("FAMILIAR", this.familiar)
 
                 return this.http.post<Familiar>(`${SALV_API}/familiar`, this.familiar).switchMap(resFamiliar => {
 
@@ -120,28 +117,28 @@ export class ResidentesService {
                         FAMILIAR_CODIGO: resFamiliar.CODIGO,
                         RESIDENTE_CODIGO: resResidente.CODIGO_RESIDENTE
                     }
-                    console.log("RESIDENTE FAMILIAR", RESIDENTE_FAMILIAR)
 
                     return this.http.post<any>(`${SALV_API}/residente_familiar`, RESIDENTE_FAMILIAR).switchMap(resResidenteFamiliar => {
-                        console.log("ENDERECO", this.endereco)
+
                         return this.http.post<Endereco>(`${SALV_API}/endereco`, this.endereco).switchMap(resEndereco => {
-                            console.log("RES ENDERECO POS", resEndereco)
+
                             let ENDERECO_FAMILIAR = {
                                 FAMILIAR_CODIGO: resFamiliar.CODIGO,
                                 ENDERECO_CODIGO: resEndereco.CODIGO
                             }
-                            console.log("ENDERECO_FAMILIAR", ENDERECO_FAMILIAR)
+
                             return this.http.post<any>(`${SALV_API}/endereco_familiar`, ENDERECO_FAMILIAR).switchMap(resEnderecoFamiliar => {
+
                                 return this.http.post<any>(`${SALV_API}/telefone`, this.telefones).switchMap(resTelefone => {
-                                    console.log("TELEFONE", resTelefone);
+
                                     let TELEFONES_FAMILIARES = {
                                         FAMILIAR_CODIGO: resFamiliar.CODIGO,
                                         TELEFONE_CODIGO: resTelefone.CODIGO
                                     }
-                                    console.log("TELEFONESFAMILIARES", TELEFONES_FAMILIARES)
+
                                     return this.http.post<any>(`${SALV_API}/telefone_familiar`, TELEFONES_FAMILIARES).switchMap(resTelefonesFamiliares => {
-                                        console.log("CONVENIO", this.residenteConvenio)
                                         this.residenteConvenio.RESIDENTE_CODIGO = resResidente.CODIGO_RESIDENTE
+
                                         return this.http.post<any>(`${SALV_API}/residente_convenio`, this.residenteConvenio)
                                     })
                                 })
@@ -155,7 +152,6 @@ export class ResidentesService {
     }
 
     updateResidente(dataForm: Residente, idResidente, idPessoa) {
-        console.log("DATAFORM EDIT", dataForm)
         return this.http.put<Pessoa>(`${SALV_API}/pessoa/${idPessoa}`, dataForm.PESSOA).switchMap(res => {
             delete dataForm.PESSOA
             return this.http.put<Residente>(`${SALV_API}/residente/${idResidente}`, dataForm)
@@ -202,7 +198,6 @@ export class ResidentesService {
     }
 
     updateConvenio(residenteConvenio: Residente_Convenio) {
-        console.log("residenteConvenio Dataform", residenteConvenio)
         return this.http.put<Residente_Convenio>(`${SALV_API}/residente_convenio/${residenteConvenio.NUMERO_CONVENIO}`, residenteConvenio)
     }
 
