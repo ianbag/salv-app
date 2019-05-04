@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { NgxMaskModule } from "ngx-mask";
+import { CurrencyMaskModule } from "ng2-currency-mask";
 
 import { ROUTES } from "./app.routes";
 
@@ -216,7 +217,8 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common'
     NgxMaskModule.forRoot(),
     NgMultiSelectDropDownModule.forRoot(),
     Ng2SearchPipeModule,
-    FilterPipeModule
+    FilterPipeModule,
+    CurrencyMaskModule
   ],
 
 

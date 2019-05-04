@@ -62,9 +62,9 @@ export class FamiliarResidenteComponent implements OnInit {
     this.familiar = this.residentesService.familiar
 
     this.familiarResidenteForm = this.formBuilder.group({
-      NOME: this.formBuilder.control(null, [Validators.required]),
-      SOBRENOME: this.formBuilder.control(null, [Validators.required]),
-      PARENTESCO: this.formBuilder.control(null, [Validators.required]),
+      NOME: this.formBuilder.control(null, []),
+      SOBRENOME: this.formBuilder.control(null, []),
+      PARENTESCO: this.formBuilder.control(null, []),
       ENDERECOS: this.formBuilder.group({
         ENDERECO: this.formBuilder.control(null, []),
         NUMERO: this.formBuilder.control(null, []),
@@ -76,8 +76,8 @@ export class FamiliarResidenteComponent implements OnInit {
         REFERENCIA: this.formBuilder.control(null, []),
       }),
       TELEFONE: this.formBuilder.group({
-        DDD: this.formBuilder.control(null, [Validators.required, Validators.minLength(2), Validators.maxLength(3)]),
-        NUMERO: this.formBuilder.control(null, [Validators.required, Validators.minLength(8), Validators.maxLength(9)])
+        DDD: this.formBuilder.control(null, [ Validators.minLength(2), Validators.maxLength(3)]),
+        NUMERO: this.formBuilder.control(null, [Validators.minLength(8), Validators.maxLength(9)])
       })
     })
 
