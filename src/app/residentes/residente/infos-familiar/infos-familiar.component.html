@@ -6,10 +6,14 @@
         <h4>
           <strong>Informações de {{familiar?.NOME}}</strong>
           <a (click)="deletarFamiliar(familiar?.CODIGO)">
+              <span id="iconesForm" style="margin: 0.6cm">
             <i class="fa fa-close"></i>
+          </span>
           </a>
           <a data-toggle="modal" (click)="editarFamiliar(familiar)" attr.data-target="#modalEditarFamiliar{{familiar?.CODIGO}}">
+              <span id="iconesForm">
             <i class="fa fa-pencil"></i>
+            </span>
           </a>
         </h4>
       </div>
@@ -251,9 +255,11 @@
       <div class="col-sm-12 col-xs-12">
         <h4>
           <strong>Telefones </strong>
-          <button type="button" class="btn btn-default btn-xs" data-toggle="modal" attr.data-target="#modalNovoTelefone{{familiar?.CODIGO}}">
-            <i class="fa fa-plus"></i>
-          </button>
+          
+            <span class="plus-itens"  data-toggle="modal" attr.data-target="#modalNovoTelefone{{familiar?.CODIGO}}"><i class="fa fa-plus-circle"></i></span>
+ 
+
+          
         </h4>
       </div>
       <div class="col-sm-12">
@@ -261,12 +267,12 @@
           <strong>Telefone: </strong> ({{tel?.TELEFONE.DDD}}) {{tel?.TELEFONE.NUMERO | telefone}}
           <hr class="col-md-12">
           <a (click)="deletarTelefoneFamiliar(tel.TELEFONE.CODIGO, familiar?.CODIGO)">
-            <span>
+            <span id="iconesForm" style="margin: 0.4cm">
               <i class="fa fa-close"></i>
             </span>
           </a>
           <a data-toggle="modal" (click)="buscarTelefone(tel.TELEFONE.CODIGO)" attr.data-target="#modalEditarTelefone{{familiar?.CODIGO}}">
-            <span>
+            <span id="iconesForm">
               <i class="fa fa-pencil"></i>
             </span>
           </a>

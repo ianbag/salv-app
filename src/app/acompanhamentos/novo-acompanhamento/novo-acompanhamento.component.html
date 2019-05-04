@@ -35,11 +35,14 @@
           </div>
 
           <div class="col-sm-10 col-xs-12" id="inputValidator">
+            
               <salv-input-container errorMessage="Campo Obrigatório">
             <label>Atividade realizada</label>
+            
             <textarea class="form-control" required rows="3" formControlName="ATIVIDADE" 
-            placeholder="Descrição da atividade realizada"
-              auatocomplete="off" ></textarea>
+            placeholder="Descrição da atividade realizada" id="ATIVIDADE"  maxlength="500" 
+              auatocomplete="off" #ATIVIDADE></textarea>
+              <small class="form-text text-muted"><code>{{ATIVIDADE.value.length}}</code> de <code>{{maxATIVIDADELength}}</code>500 caracteres</small>
             </salv-input-container>
             <br>
           </div>
@@ -65,11 +68,11 @@
         <!--Botão-->
         <div class="col-sm-12 col-xs-12">
           <br>
-          <button (click)="novoAcompanhamento(novoAcompanhamentoForm.value); NovoAcompanhamentoResidente(); NovoAcompanhamentoFuncionario()" style="margin-left: 10px" class="btn btn-success botao pull-right"
+          <button (click)="novoAcompanhamento(novoAcompanhamentoForm.value); NovoAcompanhamentoResidente(); NovoAcompanhamentoFuncionario()" style="margin-left: 10px" class="btn btn-success botao pull-right" [disabled]="!novoAcompanhamentoForm.valid"
                   
             [routerLink]="['/acompanhamentos']">Finalizar cadastro</button>
 
-          <button type="submit" (click)="novoAcompanhamentoForm()" class="btn btn-default botao pull-right"
+          <button type="submit" (click)="novoAcompanhamentoForm()" class="btn btn-default botao pull-right" 
           [routerLink]="['/acompanhamentos']">Voltar</button>
         </div>
         <!--Fim botão-->
