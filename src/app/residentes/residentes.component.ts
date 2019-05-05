@@ -28,8 +28,6 @@ export class ResidentesComponent implements OnInit {
 
   public searchString: string;
 
-  searchTerm: string;
-
   residentesInativos: Residente[]
 
   residentes: Residente[]
