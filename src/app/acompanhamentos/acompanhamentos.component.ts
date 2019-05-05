@@ -49,6 +49,7 @@ export class AcompanhamentosComponent implements OnInit {
 
       if (window.navigator && window.navigator.msSaveOrOpenBlob) {
         window.navigator.msSaveOrOpenBlob(newBlob)
+        return
       }
 
       const data = window.URL.createObjectURL(newBlob)
