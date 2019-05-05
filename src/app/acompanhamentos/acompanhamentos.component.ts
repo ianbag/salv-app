@@ -5,6 +5,7 @@ import { AcompanhamentosService } from './acompanhamentos.service';
 import { trigger, state, transition, style, animate } from '@angular/animations';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { NotificationService } from '../shared/notification.service';
+import { link } from 'fs';
 
 @Component({
   selector: 'salv-acompanhamentos',
@@ -39,7 +40,30 @@ export class AcompanhamentosComponent implements OnInit {
           this.acompanhamentos = acompanhamentos
           console.log('acompanahmentos', this.acompanhamentos)
         })
+  }
 
+  reportAcompanhamentos() {
+    this.spinner.show()
+    this.acompanhamentosService.reportAcompanhamentos().subscribe(x => {
+      var newBlob = new Blob([x], { type: 'application/pdf' })
+
+      if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+        window.navigator.msSaveOrOpenBlob(newBlob)
+      }
+
+      const data = window.URL.createObjectURL(newBlob)
+      var link = document.createElement('a')
+      link.href = data
+      link.download = "Relatório de acompanhamentos.pdf"
+      link.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }))
+
+      setTimeout(function () {
+        window.URL.revokeObjectURL(data)
+        link.remove()
+      }, 100)
+      this.spinner.hide()
+      this.ns.notify('Relatório emitido com sucesso')
+    })
   }
 
 }
