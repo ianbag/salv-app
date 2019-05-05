@@ -40,9 +40,10 @@
               <br>
               <div class="row">
                 <div class="col-sm-3 col-xs-12" formGroupName="PESSOA" style="margin-left: -9px">
-                  <salv-input-container errorMessage="Campo Obrigatório" label="Estado Civil">
-                    <select class="form-control" formControlName="ESTADO_CIVIL">
-                      <option value="" label="Selecione" disabled selected="selected"></option>
+                  <salv-input-container id="a" errorMessage="Campo Obrigatório" label="Estado Civil">
+                    
+                    <select class="form-control" formControlName="ESTADO_CIVIL" la>
+                      <option disabled hidden value="null" label="Selecione um estado civil" disabled selected="selected" ></option>
                       <option *ngFor="let estadoCivil of estadosCivil" [value]="estadoCivil.value">{{estadoCivil.option}}
                       </option>
                     </select>
@@ -51,7 +52,7 @@
                 <div class="col-sm-3 col-xs-12" id="inputValidator" formGroupName="PESSOA" style="margin-left: -9px">
                   <salv-input-container errorMessage="Campo Obrigatório" label="Sexo">
                     <select class="form-control" formControlName="SEXO">
-                      <option value="" label="Selecione" disabled selected="selected"></option>
+                      <option disabled hidden value="null" label="Selecione o sexo" disabled selected="selected"></option>
                       <option *ngFor="let sexo of sexos" [value]="sexo.value">{{sexo.option}}</option>
                     </select>
                   </salv-input-container>
@@ -59,7 +60,7 @@
                 <div class="col-sm-3 col-xs-12" formGroupName="PESSOA" style="margin-left: -9px">
                   <salv-input-container errorMessage="Campo Obrigatório" label="Religião">
                     <select class="form-control" formControlName="RELIGIAO">
-                      <option value="" label="Selecione" disabled selected="selected"></option>
+                      <option disabled hidden value="null" label="Selecione uma religião" disabled selected="selected"></option>
                       <option *ngFor="let religiao of religioes" [value]="religiao.value">{{religiao.option}}</option>
                     </select>
                   </salv-input-container>
@@ -67,7 +68,7 @@
                 <div class="col-sm-3 col-xs-12" formGroupName="PESSOA" style="margin-left: -9px">
                   <salv-input-container errorMessage="Campo Obrigatório" label="Escolaridade">
                     <select class="form-control" formControlName="ESCOLARIDADE">
-                      <option value="" label="Selecione" disabled selected="selected"></option>
+                      <option disabled hidden value="null" label="Selecione uma escolaridade" disabled selected="selected"></option>
                       <option *ngFor="let escolaridade of escolaridades" [value]="escolaridade.value">
                         {{escolaridade.option}}
                       </option>

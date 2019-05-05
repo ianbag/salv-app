@@ -4,9 +4,14 @@
 <style>
   .my-pagination /deep/ .ngx-pagination .current {
     background: #00AE5D;
-
-
   }
+
+  p {
+  max-width: 15ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 </style>
 
 <section class="content">
@@ -50,7 +55,7 @@
           <th class="col-sm-4">Ações</th>
         </tr>
         <tr *ngFor="let acompanhamento of acompanhamentos | filter : filter : searchString | paginate: { itemsPerPage: 10, currentPage: paginaAtual} let i = index">
-          <td>{{acompanhamento.ATIVIDADE}}</td>
+          <td ><p>{{acompanhamento.ATIVIDADE}}</p></td>
           <td>{{acompanhamento.DATA_ACOMPANHAMENTO | date:'dd/MM/yyyy'}}</td>
          
           <td>

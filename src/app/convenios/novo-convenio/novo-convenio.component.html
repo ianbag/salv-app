@@ -38,9 +38,9 @@
                 </salv-input-container>
               </div>
               <div class="col-sm-2 col-sm-12" id="inputValidator" formGroupName="ENDERECO">
-                <salv-input-container errorMessage="Campo Obrigatório" label="Número">
+                <salv-input-container errorMessage="Campo Obrigatório" label="Número" >
                     <span class="text-danger">*</span>
-                  <input type="text" class="form-control" formControlName="NUMERO" placeholder="Número" autocomplete="off" maxlength="5">
+                  <input type="text" class="form-control" formControlName="NUMERO" placeholder="Número" autocomplete="off" maxlength="5" mask="00000">
                 </salv-input-container>
               </div>
               <div class="col-sm-3 col-sm-12" id="inputValidator" formGroupName="ENDERECO">
@@ -88,13 +88,13 @@
               <div class="col-sm-2 col-sm-12" id="inputValidator" formGroupName="TELEFONE">
                 <salv-input-container errorMessage="Campo Obrigatório" label="DDD">
                     <span class="text-danger">*</span>
-                  <input type="text" class="form-control" formControlName="DDD" placeholder="DDD" autocomplete="off" maxlength="2">
+                  <input type="text" class="form-control" formControlName="DDD" placeholder="DDD" autocomplete="off" maxlength="2" mask="000">
                 </salv-input-container>
               </div>
               <div class="col-sm-3 col-sm-12" id="inputValidator" formGroupName="TELEFONE">
                 <salv-input-container errorMessage="Campo Obrigatório" label="Telefone">
                     <span class="text-danger">*</span>
-                  <input type="text" class="form-control" formControlName="NUMERO" placeholder="Telefone" autocomplete="off" maxlength="9">
+                  <input type="text" class="form-control" formControlName="NUMERO" placeholder="Telefone" autocomplete="off" maxlength="9" mask="000000000">
                 </salv-input-container>
               </div>
 
