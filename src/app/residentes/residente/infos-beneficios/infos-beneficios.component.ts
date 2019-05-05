@@ -15,7 +15,7 @@ export class InfosBeneficiosComponent implements OnInit {
   @Input() beneficio: Beneficio
   @Output() atualizaBeneficio = new EventEmitter<Beneficio[]>()
 
-  beneficios: Beneficio[]
+  beneficios: Beneficio[] 
   beneficioResidenteForm: FormGroup
 
   NOME_BENEFICIO_SEM_ESPACO

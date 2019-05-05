@@ -26,7 +26,7 @@ export class InfosFamiliarComponent implements OnInit {
   novoTelefoneForm: FormGroup
 
   codigoTelefone: number
-  telefone: Telefone[]
+  telefone: Telefone[] = []
 
   constructor(
     private residenteService: ResidentesService,

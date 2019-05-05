@@ -28,9 +28,9 @@ export class ResidentesComponent implements OnInit {
 
   public searchString: string;
 
-  residentesInativos: Residente[]
+  residentesInativos: Residente[] = []
 
-  residentes: Residente[]
+  residentes: Residente[] = []
 
 
   constructor(private residentesService: ResidentesService, private dialogConfirmService: DialogConfirmService, private notificationService: NotificationService, private spinner: NgxSpinnerService) { }
