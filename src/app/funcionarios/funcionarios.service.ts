@@ -194,10 +194,10 @@ export class FuncionariosService {
     }
 
     reportFuncionarios() {
-        return this.http.get(`${SALV_API}/relatorio_funcionarios`)
+        return this.http.get(`${SALV_API}/relatorio-funcionarios`)
     }
 
     reportFuncionario(cod_pes, cod_func) {
-        return this.http.get(`${SALV_API}/relatorio_funcionario/${cod_pes}/${cod_func}`)
+        return this.http.get(`${SALV_API}/relatorio-funcionario/${cod_pes}/${cod_func}`)
     }
 }

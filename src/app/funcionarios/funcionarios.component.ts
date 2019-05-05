@@ -34,24 +34,14 @@ export class FuncionariosComponent implements OnInit {
   paginaAtual: number = 1;
 
   ngOnInit() {
-
     this.spinner.show()
     this.funcionariosService.funcionarios()
       .subscribe(funcionarios => {
         this.spinner.hide()
         this.funcionarios = funcionarios
         console.log('FUNCIONARIOS', funcionarios)
-
-
       })
-
-
-
-
-
   }
-
-
 
   funcionariosInativoss() {
     this.funcionariosService.funcionariosInativos()
@@ -85,10 +75,9 @@ export class FuncionariosComponent implements OnInit {
       })
   }
 
-
   reportFuncionarios() {
     this.funcionariosService.reportFuncionarios().subscribe(res => {
-      this.ns.notify('Relatório emitido com sucesso!')
+      
     })
   }
 
