@@ -97,4 +97,11 @@ export class ConveniosService {
         return this.http.put<Telefone>(`${SALV_API}/telefone/${id}`, telefone)
     }
 
+    reportConvenios(): Observable<Blob> {
+        return this.http.get(`${SALV_API}/relatorio-convenios`, { responseType: 'blob' })
+    }
+
+    reportConvenio(cod_conv): Observable<Blob> {
+        return this.http.get(`${SALV_API}/relatorio-convenio/${cod_conv}`, { responseType: 'blob' })
+    }
 }
