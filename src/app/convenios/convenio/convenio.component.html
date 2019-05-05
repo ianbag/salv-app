@@ -123,24 +123,6 @@
                                                             autocomplete="off" maxlength="100">
                                                     </div>
 
-                                                    <div class="col-sm-3 col-xs-12" id="inputValidator"
-                                                        formGroupName="TELEFONE"
-                                                        style="padding-left: 25px; margin-top: 10.3px">
-                                                        <salv-input-container errorMessage="Campo Obrigatório" label="DDD">
-                                                            <input type="text" class="form-control" formControlName="DDD"
-                                                            placeholder="DDD" autocomplete="off" maxlength="3" mask="000">
-                                                        </salv-input-container>
-                                                    </div>
-
-                                                    <div class="col-sm-6 col-xs-12" id="inputValidator"
-                                                        formGroupName="TELEFONE" style="margin-top: 10.3px">
-                                                        <salv-input-container errorMessage="Campo Obrigatório" label="Telefone">
-                                                            <input type="text" class="form-control" formControlName="NUMERO"
-                                                            placeholder="Telefone" autocomplete="off" maxlength="9" mask="000000000">
-                                                        </salv-input-container>
-                                                        <br>
-                                                    </div>
-
                                                 </div>
                                             </div>
                                         </form>
@@ -210,7 +192,7 @@
                                 <!--INICIO TELEFONES-->
                                 <div>
                                 <div class="col-xs-4 col-xs-12" *ngFor="let telefone of telefones">
-                                  <strong>Telefone: </strong> ({{telefone?.TELEFONE.DDD}}) {{telefone?.TELEFONE.NUMERO | telefone}} <a><span
+                                  <strong style="margin-left: -12px">Telefone: </strong> ({{telefone?.TELEFONE.DDD}}) {{telefone?.TELEFONE.NUMERO | telefone}} <a><span
                                       id="iconesForm"
                                       (click)="deleteTelefone(convenio.CODIGO, telefone.TELEFONE.CODIGO); $event.stopPropagation()"><i
                                         class="fa fa-close"></i></span></a>

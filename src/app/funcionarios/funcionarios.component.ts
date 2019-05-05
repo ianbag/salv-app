@@ -4,7 +4,6 @@ import { Funcionario } from './funcionario.model';
 import { DialogConfirmService } from '../residentes/dialog-confirm.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { NgxSpinnerService } from 'ngx-spinner';
-import * as jspdf from 'jspdf';
 import { NotificationService } from '../shared/notification.service';
 
 @Component({
@@ -34,24 +33,14 @@ export class FuncionariosComponent implements OnInit {
   paginaAtual: number = 1;
 
   ngOnInit() {
-
     this.spinner.show()
     this.funcionariosService.funcionarios()
       .subscribe(funcionarios => {
         this.spinner.hide()
         this.funcionarios = funcionarios
         console.log('FUNCIONARIOS', funcionarios)
-
-
       })
-
-
-
-
-
   }
-
-
 
   funcionariosInativoss() {
     this.funcionariosService.funcionariosInativos()
@@ -85,10 +74,28 @@ export class FuncionariosComponent implements OnInit {
       })
   }
 
-
   reportFuncionarios() {
-    this.funcionariosService.reportFuncionarios().subscribe(res => {
-      this.ns.notify('Relatório emitido com sucesso!')
+    this.spinner.show()
+    this.funcionariosService.reportFuncionarios().subscribe(x => {
+      var newBlob = new Blob([x], { type: 'application/pdf' })
+
+      if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+        window.navigator.msSaveOrOpenBlob(newBlob)
+        return
+      }
+
+      const data = window.URL.createObjectURL(newBlob)
+      var link = document.createElement('a')
+      link.href = data
+      link.download = "Relatório de funcionários.pdf"
+      link.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }))
+
+      setTimeout(function () {
+        window.URL.revokeObjectURL(data)
+        link.remove()
+      }, 100)
+      this.spinner.hide()
+      this.ns.notify('Relatório emitido com sucesso')
     })
   }
 

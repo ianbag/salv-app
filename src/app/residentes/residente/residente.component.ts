@@ -37,10 +37,10 @@ export class ResidenteComponent implements OnInit {
   ];
 
   residente: Residente
-  familiares: Familiar[]
-  convenios: Convenio[]
-  beneficios: Beneficio[]
-  residenteConvenios: Residente_Convenio[]
+  familiares: Familiar[] = [];
+  convenios: Convenio[] = [];
+  beneficios: Beneficio[] = [];
+  residenteConvenios: Residente_Convenio[] = [];
 
   familiarResidenteForm: FormGroup
   convenioResidenteForm: FormGroup
@@ -125,9 +125,9 @@ export class ResidenteComponent implements OnInit {
       .subscribe(convenio => this.convenios = convenio)
   }
 
-  getBeneficio(){
+  getBeneficio() {
     this.residentesService.beneficiosById(this.route.snapshot.params['id'])
-    .subscribe(beneficio => this.beneficios = beneficio)
+      .subscribe(beneficio => this.beneficios = beneficio)
   }
 
 
@@ -160,19 +160,19 @@ export class ResidenteComponent implements OnInit {
       })
   }
 
-  beneficioResidente(beneficio: Beneficio){
+  beneficioResidente(beneficio: Beneficio) {
     this.residentesService.createNewBeneficio(beneficio, this.route.snapshot.params['id'])
-    .subscribe(res => {
-      if (res['errors']) {
-        res['errors'].forEach(error => {
-          this.notificationService.notify(`Houve um erro! ${error.message}`)
-        })
-      } else {
-        this.notificationService.notify(`Benefício adicionado com sucesso!`)
-        this.beneficioResidenteForm.reset()
-        this.getBeneficio()
-      }
-    })
+      .subscribe(res => {
+        if (res['errors']) {
+          res['errors'].forEach(error => {
+            this.notificationService.notify(`Houve um erro! ${error.message}`)
+          })
+        } else {
+          this.notificationService.notify(`Benefício adicionado com sucesso!`)
+          this.beneficioResidenteForm.reset()
+          this.getBeneficio()
+        }
+      })
   }
 
   reportResidente() {
