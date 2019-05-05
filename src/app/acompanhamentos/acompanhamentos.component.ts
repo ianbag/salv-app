@@ -4,9 +4,6 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AcompanhamentosService } from './acompanhamentos.service';
 import { trigger, state, transition, style, animate } from '@angular/animations';
 import { NgxSpinnerService } from 'ngx-spinner';
-import * as jspdf from 'jspdf'
-import { checkAndUpdateQuery } from '@angular/core/src/view/query';
-import { throwError } from 'rxjs';
 import { NotificationService } from '../shared/notification.service';
 
 @Component({
@@ -34,7 +31,6 @@ export class AcompanhamentosComponent implements OnInit {
 
   paginaAtual: number = 1;
   ngOnInit() {
-
     this.spinner.show();
     this.acompanhamentosService.acompanhamentos()
       .subscribe(
@@ -43,11 +39,7 @@ export class AcompanhamentosComponent implements OnInit {
           this.acompanhamentos = acompanhamentos
           console.log('acompanahmentos', this.acompanhamentos)
         })
+
   }
 
-  reportAcompanhamentos() {
-    this.acompanhamentosService.reportAcompanhamentos().subscribe(res => {
-      this.ns.notify('Relatório emitido com sucesso!')
-    })
-  }
 }
