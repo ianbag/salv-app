@@ -21,9 +21,9 @@
         </div>
         <div class="box-body" style>
           <salv-infos-familiar *ngFor="let familiar of familiares" (atualizaFamiliar)="getFamiliar($event)"
-            [(familiar)]="familiar"></salv-infos-familiar>
+            [(familiar)]="familiar.length"></salv-infos-familiar>
 
-          <div *ngIf="!familiares">
+          <div *ngIf="!familiares.length">
             <p style="margin-left: 15px">Você não possui familiares cadastrados</p>
             <div class="col-sm-12 col-xs-12">
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalFamiliar">
@@ -179,9 +179,9 @@
       </div>
       <div class="box-body" style>
         <salv-infos-convenio *ngFor="let convenio of convenios" (atualizaConvenio)="getConvenio($event)"
-          [(convenio)]="convenio"></salv-infos-convenio>
+          [(convenio)]="convenio.length"></salv-infos-convenio>
 
-        <div *ngIf="!convenios">
+        <div *ngIf="!convenios.length">
           <p style="margin-left: 15px">Você não possui convênios cadastrados</p>
           <div class="col-sm-12 col-xs-12">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalConvenio">
@@ -263,8 +263,8 @@
 
         <h3 class="box-title">Benefícios do {{residente?.PESSOA.NOME}}</h3>
         <div class="box-tools pull-right">
-          <button type="submit" class="btn btn-success" *ngIf="beneficios" data-toggle="modal" data-target="#modalBeneficio"
-            style="color: white">Adicionar</button>
+          <button type="submit" class="btn btn-success" *ngIf="beneficios" data-toggle="modal"
+            data-target="#modalBeneficio" style="color: white">Adicionar</button>
         </div>
       </div>
       <div class="box-body" style>
