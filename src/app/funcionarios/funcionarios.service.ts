@@ -198,7 +198,7 @@ export class FuncionariosService {
         return this.http.get(`${SALV_API}/relatorio-funcionarios`, { responseType: 'blob' })
     }
 
-    reportFuncionario(cod_pes, cod_func) {
-        return this.http.get(`${SALV_API}/relatorio-funcionario/${cod_pes}/${cod_func}`)
+    reportFuncionario(cod_pes, cod_func): Observable<Blob> {
+        return this.http.get(`${SALV_API}/relatorio-funcionario/${cod_pes}/${cod_func}`, { responseType: 'blob' })
     }
 }
