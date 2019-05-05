@@ -75,6 +75,7 @@ export class FuncionariosComponent implements OnInit {
   }
 
   reportFuncionarios() {
+    this.spinner.show()
     this.funcionariosService.reportFuncionarios().subscribe(x => {
       var newBlob = new Blob([x], { type: 'application/pdf' })
 
@@ -93,6 +94,8 @@ export class FuncionariosComponent implements OnInit {
         window.URL.revokeObjectURL(data)
         link.remove()
       }, 100)
+      this.spinner.hide()
+      this.ns.notify('Relatório emitido com sucesso')
     })
   }
 
