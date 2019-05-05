@@ -224,12 +224,12 @@ export class ResidentesService {
         return this.http.put<any>(`${SALV_API}/beneficio/${CODIGO_RESIDENTE}/${NOME_BENEFICIO}`, beneficio)
     }
 
-    reportResidentes() {
-        return this.http.get(`${SALV_API}/relatorio_residentes`)
+    reportResidentes(): Observable<Blob> {
+        return this.http.get(`${SALV_API}/relatorio_residentes`, { responseType: 'blob' })
     }
 
-    reportResidente(cod_res) {
-        return this.http.get(`${SALV_API}/relatorio_residente/${cod_res}`)
+    reportResidente(cod_pes, cod_res): Observable<Blob> {
+        return this.http.get(`${SALV_API}/relatorio_residente/${cod_pes}/${cod_res}`, { responseType: 'blob' })
     }
 
 }
