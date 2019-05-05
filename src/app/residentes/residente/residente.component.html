@@ -23,7 +23,7 @@
           <salv-infos-familiar *ngFor="let familiar of familiares" (atualizaFamiliar)="getFamiliar($event)"
             [(familiar)]="familiar"></salv-infos-familiar>
 
-          <div *ngIf="!familiares">
+          <div *ngIf="!familiares.length">
             <p style="margin-left: 15px">Você não possui familiares cadastrados</p>
             <div class="col-sm-12 col-xs-12">
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalFamiliar">
@@ -181,7 +181,7 @@
         <salv-infos-convenio *ngFor="let convenio of convenios" (atualizaConvenio)="getConvenio($event)"
           [(convenio)]="convenio"></salv-infos-convenio>
 
-        <div *ngIf="!convenios">
+        <div *ngIf="!convenios.length">
           <p style="margin-left: 15px">Você não possui convênios cadastrados</p>
           <div class="col-sm-12 col-xs-12">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalConvenio">
@@ -271,7 +271,7 @@
         <salv-infos-beneficios *ngFor="let beneficio of beneficios" (atualizaBeneficio)="getBeneficio($event)"
           [(beneficio)]="beneficio"></salv-infos-beneficios>
 
-        <div *ngIf="!beneficios">
+        <div *ngIf="!beneficios.length">
           <p style="margin-left: 15px">Você não possui benefícios cadastrados</p>
           <div class="col-sm-12 col-xs-12">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalBeneficio">
