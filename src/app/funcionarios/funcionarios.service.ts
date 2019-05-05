@@ -5,6 +5,7 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import 'rxjs/add/observable/forkJoin'
 import { Funcionario, Pessoa, Telefone, Telefone_Pessoa, Endereco, Endereco_Pessoa, FuncionarioQuery, Usuario } from './funcionario.model';
+import { RequestOptions, ResponseContentType } from '@angular/http';
 
 
 @Injectable()
@@ -193,8 +194,8 @@ export class FuncionariosService {
         return this.http.put<Dependente>(`${SALV_API}/dependente/${id}/${nome}/${sobrenome}`, dependente)
     }
 
-    reportFuncionarios() {
-        return this.http.get(`${SALV_API}/relatorio-funcionarios`)
+    reportFuncionarios(): Observable<Blob> {
+        return this.http.get(`${SALV_API}/relatorio-funcionarios`, { responseType: 'blob' })
     }
 
     reportFuncionario(cod_pes, cod_func) {
