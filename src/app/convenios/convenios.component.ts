@@ -72,14 +72,9 @@ export class ConveniosComponent implements OnInit {
         if (isTrue) {
           this.conveniosService.ativarConvenio(id)
             .subscribe(() => this.conveniosService.conveniosDesativados()
-              .subscribe( convenios => this.conveniosDesativados = convenios, convenios => this.convenios = convenios ))
+              .subscribe(convenios => this.conveniosDesativados = convenios, convenios => this.convenios = convenios))
         }
       })
   }
 
-  reportConvenios() {
-    this.conveniosService.reportConvenios().subscribe(res => {
-      this.ns.notify('Relatório emitido com sucesso!')
-    })
-  }
 }
