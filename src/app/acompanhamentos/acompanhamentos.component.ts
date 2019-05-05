@@ -5,7 +5,6 @@ import { AcompanhamentosService } from './acompanhamentos.service';
 import { trigger, state, transition, style, animate } from '@angular/animations';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { NotificationService } from '../shared/notification.service';
-import { link } from 'fs';
 
 @Component({
   selector: 'salv-acompanhamentos',

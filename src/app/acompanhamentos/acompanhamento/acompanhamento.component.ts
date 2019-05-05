@@ -280,7 +280,7 @@ export class AcompanhamentoComponent implements OnInit {
       const data = window.URL.createObjectURL(newBlob)
       var link = document.createElement('a')
       link.href = data
-      link.download = `Relatório de acompanhamento - ${this.acompanhamento1.DATA_ACOMPANHAMENTO}.pdf`
+      link.download = `Relatório de acompanhamento - ${this.acompanhamento[0].DATA_ACOMPANHAMENTO}.pdf`
       link.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }))
 
       setTimeout(function () {
