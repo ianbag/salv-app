@@ -65,4 +65,9 @@ export class AcompanhamentosService {
     reportAcompanhamentos(): Observable<Blob> {
         return this.http.get(`${SALV_API}/relatorio-acompanhamentos`, { responseType: 'blob' })
     }
+
+    reportAcompanhamento(cod_acomp): Observable<Blob> {
+        return this.http.get(`${SALV_API}/relatorio-acompanhamento/${cod_acomp}`, { responseType: 'blob' })
+    }
+
 }
