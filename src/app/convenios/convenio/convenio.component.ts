@@ -197,4 +197,28 @@ export class ConvenioComponent implements OnInit {
     })
   }
 
+  reportConvenio() {
+    this.spinner.show()
+    this.cs.reportConvenio(this.convenio.CODIGO).subscribe(x => {
+      var newBlob = new Blob([x], { type: 'applcation/pdf' })
+
+      if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+        window.navigator.msSaveOrOpenBlob(newBlob)
+      }
+
+      const data = window.URL.createObjectURL(newBlob)
+      var link = document.createElement('a')
+      link.href = data
+      link.download = `Relatório de convênio - ${this.convenio.NOME_CONVENIO}.pdf`
+      link.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }))
+
+      setTimeout(function () {
+        window.URL.revokeObjectURL(data)
+        link.remove()
+      }, 100)
+      this.spinner.hide()
+      this.ns.notify('Relatório emitido com sucesso')
+    })
+  }
+
 }
