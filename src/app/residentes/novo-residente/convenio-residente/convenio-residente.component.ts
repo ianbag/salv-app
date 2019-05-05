@@ -7,6 +7,7 @@ import { Residente, Residente_Convenio } from '../../residente/residente.model';
 import { Route, Router } from '@angular/router';
 import { Familiar } from '../../residente/infos-familiar/familiar.model';
 import { NotificationService } from 'src/app/shared/notification.service';
+import { ConveniosService } from 'src/app/convenios/convenios.service';
 
 @Component({
   selector: 'salv-convenio-residente',
@@ -25,8 +26,12 @@ export class ConvenioResidenteComponent implements OnInit {
 
   convenioresidenteState = 'ready'
 
+  estados = [
+    "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"
+  ];
 
   convenioResidenteForm: FormGroup
+  novoConvenioForm: FormGroup
 
   residente: Residente
   familiar: Familiar
@@ -37,7 +42,8 @@ export class ConvenioResidenteComponent implements OnInit {
     private formBuilder: FormBuilder,
     private residentesService: ResidentesService,
     private router: Router,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private convenioService: ConveniosService
   ) { }
 
   markAllDirty(control: AbstractControl) {
@@ -54,14 +60,32 @@ export class ConvenioResidenteComponent implements OnInit {
   ngOnInit() {
     this.residenteConvenio = this.residentesService.residenteConvenio
 
-    this.residentesService.convenios()
-      .subscribe(convenio => this.convenios = convenio)
+    this.getConvenio()
 
     this.convenioResidenteForm = this.formBuilder.group({
       NUMERO_CONVENIO: this.formBuilder.control(null, []),
       TITULAR_CONVENIO: this.formBuilder.control(null, []),
       PARENTESCO_TITULAR: this.formBuilder.control(null, []),
       CONVENIO_CODIGO: this.formBuilder.control(null, []),
+    })
+
+    this.novoConvenioForm = this.formBuilder.group({
+      NOME_CONVENIO: this.formBuilder.control('', [Validators.required]),
+      TIPO_CONVENIO: this.formBuilder.control('', [Validators.required]),
+      ENDERECO: this.formBuilder.group({
+        ENDERECO: this.formBuilder.control(null, [Validators.required]),
+        NUMERO: this.formBuilder.control(null, [Validators.required]),
+        BAIRRO: this.formBuilder.control(null, [Validators.required]),
+        COMPLEMENTO: this.formBuilder.control(null),
+        CIDADE: this.formBuilder.control(null, [Validators.required]),
+        ESTADO: this.formBuilder.control(null, [Validators.required]),
+        CEP: this.formBuilder.control(null, [Validators.required, Validators.minLength(8), Validators.maxLength(8)]),
+        REFERENCIA: this.formBuilder.control(null),
+      }),
+      TELEFONE: this.formBuilder.group({
+        DDD: this.formBuilder.control(null, [Validators.required, Validators.minLength(2), Validators.maxLength(3)]),
+        NUMERO: this.formBuilder.control(null, [Validators.required, Validators.minLength(8), Validators.maxLength(9)])
+      })
     })
 
     if (this.residenteConvenio != undefined)
@@ -92,6 +116,26 @@ export class ConvenioResidenteComponent implements OnInit {
       this.markAllDirty(this.convenioResidenteForm)
       this.notificationService.notify(`Preencha os campos obrigatórios!`)
     }
+  }
+
+  getConvenio(){
+    this.residentesService.convenios()
+      .subscribe(convenio => this.convenios = convenio)
+  }
+
+  novoConvenio(convenio: Convenio){
+    this.convenioService.createNewConvenio(convenio.TELEFONE, convenio.ENDERECO, convenio)
+      .subscribe(res => {
+        if (res['errors']) {
+          res['errors'].forEach(error => {
+            console.log('Houve um erro!', error)
+            this.notificationService.notify(`Houve um erro! ${error.message}`)
+          })
+        } else {
+          this.notificationService.notify(`Convênio inserido com sucesso!`)
+          this.getConvenio()
+        }
+      })
   }
 
   residenteInseridoMensagem() {

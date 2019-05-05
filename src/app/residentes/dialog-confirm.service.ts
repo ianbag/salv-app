@@ -7,4 +7,9 @@ export class DialogConfirmService {
             return resolve(window.confirm(message || 'Confirma ?'))
         })
     }
+    prompt(message?: string){
+        return new Promise(resolve => {
+            return resolve(prompt(message))
+        })
+    }
 }

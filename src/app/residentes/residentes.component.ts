@@ -66,12 +66,15 @@ export class ResidentesComponent implements OnInit {
     this.dialogConfirmService.confirm(`Deseja inativar o residente?`)
       .then((isTrue) => {
         if (isTrue) {
-          this.residentesService.deleteResidente(id)
+          this.dialogConfirmService.prompt(`Informe o motivo do desacolhimento`)
+          .then(motivo => {
+            this.residentesService.deleteResidente(id, motivo)
             .subscribe(result => {
               this.residentesService.residentes()
                 .subscribe(residentes => this.residentes = residentes)
               this.notificationService.notify(`Residente excluido com sucesso!`)
             })
+          })
         }
       })
   }
