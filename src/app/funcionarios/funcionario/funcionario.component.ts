@@ -61,7 +61,7 @@ export class FuncionarioComponent implements OnInit {
       NOME: this.fb.control(null, [Validators.required]),
       SOBRENOME: this.fb.control(null, [Validators.required]),
       DATA_NASCIMENTO: this.fb.control(null, [Validators.required]),
-      RG: this.fb.control(null, [Validators.minLength(9)], this.uniqueValidators.validateDependenteRG(null, null, null) ),
+      RG: this.fb.control(null, [Validators.minLength(9)], this.uniqueValidators.validateDependenteRG(null, null, null)),
       CPF: this.fb.control(null, [Validators.minLength(11)], this.uniqueValidators.validateDependenteCPF(null, null, null)),
       NUMERO_CERTIDAO_NASCIMENTO: this.fb.control(null, [], this.uniqueValidators.validateDependenteNumeroCertidao(null, null, null)),
       FOLHA_CERTIDAO_NASCIMENTO: this.fb.control(null, []),
@@ -72,13 +72,13 @@ export class FuncionarioComponent implements OnInit {
 
   }
 
-  buscaFuncionario(){
+  buscaFuncionario() {
     this.fs.funcionarioById(this.route.snapshot.params['id']).subscribe(funcionario => {
       this.funcionario = funcionario
     })
   }
 
-  buscaDependentes(){
+  buscaDependentes() {
     this.fs.dependenteById(this.route.snapshot.params['id']).subscribe(dependente => {
       this.dependentes = dependente
     })
@@ -95,8 +95,28 @@ export class FuncionarioComponent implements OnInit {
   }
 
   reportFuncionario() {
-    this.fs.reportFuncionario(this.funcionario.PESSOA_CODIGO.toString(), this.funcionario.CODIGO_FUNCIONARIO.toString()).subscribe(res => {
-      this.ns.notify('Relatório emitido com sucesso!')
+    this.spinner.show()
+    this.fs.reportFuncionario(this.funcionario.PESSOA_CODIGO, this.funcionario.CODIGO_FUNCIONARIO).subscribe(x => {
+      var newBlob = new Blob([x], { type: 'application/pdf' })
+
+      if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+        window.navigator.msSaveOrOpenBlob(newBlob)
+        return
+      }
+
+      const data = window.URL.createObjectURL(newBlob)
+      var link = document.createElement('a')
+      link.href = data
+      link.download = `Relatório de funcionário - ${this.funcionario.PESSOA.NOME} ${this.funcionario.PESSOA.SOBRENOME}.pdf`
+      link.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }))
+
+      setTimeout(function () {
+        window.URL.revokeObjectURL(data)
+        link.remove()
+      }, 100)
+      this.spinner.hide()
+      this.ns.notify('Relatório emitido com sucesso')
     })
   }
+  
 }
