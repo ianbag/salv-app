@@ -62,4 +62,7 @@ export class AcompanhamentosService {
         return this.http.delete<any>(`${SALV_API}/acompanhamento_residente/${idResidente}/${idAcompanhamento}`)
     }
 
+    reportAcompanhamentos(): Observable<Blob> {
+        return this.http.get(`${SALV_API}/relatorio-acompanhamentos`, { responseType: 'blob' })
+    }
 }
