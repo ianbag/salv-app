@@ -80,4 +80,29 @@ export class ResidentesComponent implements OnInit {
       })
   }
 
+  reportResidentes() {
+    this.spinner.show()
+    this.residentesService.reportResidentes().subscribe(x => {
+      var newBlob = new Blob([x], { type: 'application/pdf' })
+
+      if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+        window.navigator.msSaveOrOpenBlob(newBlob)
+        return
+      }
+
+      const data = window.URL.createObjectURL(newBlob)
+      var link = document.createElement('a')
+      link.href = data
+      link.download = "Relatório de residentes.pdf"
+      link.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }))
+
+      setTimeout(function () {
+        window.URL.revokeObjectURL(data)
+        link.remove()
+      }, 100)
+      this.spinner.hide()
+      this.notificationService.notify('Relatório emitido com sucesso')
+    })
+  }
+
 }
