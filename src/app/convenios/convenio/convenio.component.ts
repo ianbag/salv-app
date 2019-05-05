@@ -96,10 +96,6 @@ export class ConvenioComponent implements OnInit {
         ESTADO: this.fb.control(null, [Validators.required]),
         CEP: this.fb.control(null, [Validators.required, Validators.minLength(8), Validators.maxLength(8)]),
         REFERENCIA: this.fb.control(null),
-      }),
-      TELEFONE: this.fb.group({
-        DDD: this.fb.control(null, [Validators.required, Validators.minLength(2), Validators.maxLength(3)]),
-        NUMERO: this.fb.control(null, [Validators.required, Validators.minLength(8), Validators.maxLength(9)])
       })
     })
 
@@ -119,12 +115,7 @@ export class ConvenioComponent implements OnInit {
           ESTADO: this.convenio1[0].ESTADO.toUpperCase(),
           CEP: this.convenio1[0].CEP,
           REFERENCIA: this.convenio1[0].REFERENCIA
-        },
-        TELEFONE: {
-          DDD: this.convenio1[0].DDD,
-          NUMERO: this.convenio1[0].NUM_TEL
         }
-
       }
       )
       this.spinner.hide()
