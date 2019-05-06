@@ -1,5 +1,5 @@
 import { SALV_API } from './../app.api';
-import { Injectable, EventEmitter } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Residente, Pessoa, Residente_Convenio } from './residente/residente.model';
@@ -224,12 +224,12 @@ export class ResidentesService {
         return this.http.put<any>(`${SALV_API}/beneficio/${CODIGO_RESIDENTE}/${NOME_BENEFICIO}`, beneficio)
     }
 
-    reportResidentes() {
-        return this.http.get(`${SALV_API}/relatorio_residentes`)
+    reportResidentes(): Observable<Blob> {
+        return this.http.get(`${SALV_API}/relatorio-residentes`, { responseType: 'blob' })
     }
 
-    reportResidente(cod_res) {
-        return this.http.get(`${SALV_API}/relatorio_residente/${cod_res}`)
+    reportResidente(cod_pes, cod_res): Observable<Blob> {
+        return this.http.get(`${SALV_API}/relatorio-residente/${cod_pes}/${cod_res}`, { responseType: 'blob' })
     }
 
 }

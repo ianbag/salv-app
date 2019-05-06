@@ -1,13 +1,10 @@
 import { Convenio } from './infos-convenio/convenio.model';
-
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ResidentesService } from '../residentes.service';
 import { ActivatedRoute } from '@angular/router';
 import { Residente, Residente_Convenio } from './residente.model';
 import { Familiar, Telefone } from './infos-familiar/familiar.model';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import * as jspdf from 'jspdf'
-import { Telefone_Pessoa } from 'src/app/funcionarios/funcionario.model';
 import { FormArray, Validators, FormGroup, AbstractControl, FormControl, FormBuilder } from '@angular/forms';
 import { NotificationService } from 'src/app/shared/notification.service';
 import { NgxSpinnerService } from 'ngx-spinner'
@@ -67,7 +64,6 @@ export class ResidenteComponent implements OnInit {
 
     this.residentesService.residenteById(this.CODIGO_RESIDENTE)
       .subscribe(residente => {
-
         this.residente = residente
       })
 
@@ -84,7 +80,6 @@ export class ResidenteComponent implements OnInit {
     this.getConvenio()
 
     this.getBeneficio()
-
 
     this.familiarResidenteForm = this.formBuilder.group({
       NOME: this.formBuilder.control(null, [Validators.required]),
@@ -121,7 +116,6 @@ export class ResidenteComponent implements OnInit {
       VALOR_BENEFICIO: this.formBuilder.control(null, []),
       PROVA_VIDA_BENEFICIO: this.formBuilder.control(null, [Validators.required])
     })
-
   }
 
   getFamiliar() {
@@ -139,7 +133,6 @@ export class ResidenteComponent implements OnInit {
       .subscribe(beneficio => this.beneficios = beneficio)
   }
 
-
   familiarResidente(familiar: Familiar) {
     this.residentesService.createNewFamiliar(familiar, this.CODIGO_RESIDENTE)
       .subscribe(res => {
@@ -154,6 +147,7 @@ export class ResidenteComponent implements OnInit {
         }
       })
   }
+
   convenioResidente(residenteConvenio: Residente_Convenio) {
     this.residentesService.createNewConvenio(residenteConvenio, this.CODIGO_RESIDENTE)
       .subscribe(res => {
@@ -185,8 +179,27 @@ export class ResidenteComponent implements OnInit {
   }
 
   reportResidente() {
-    this.residentesService.reportResidente(this.residente.CODIGO_RESIDENTE.toString()).subscribe(res => {
-      this.notificationService.notify('Relatório emitido com sucesso!')
+    this.spinner.show()
+    this.residentesService.reportResidente(this.residente.PESSOA.CODIGO, this.residente.CODIGO_RESIDENTE).subscribe(x => {
+      var newBlob = new Blob([x], { type: 'application/pdf' })
+
+      if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+        window.navigator.msSaveOrOpenBlob(newBlob)
+        return
+      }
+
+      const data = window.URL.createObjectURL(newBlob)
+      var link = document.createElement('a')
+      link.href = data
+      link.download = `Relatório de residente - ${this.residente.PESSOA.NOME} ${this.residente.PESSOA.SOBRENOME}`
+      link.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }))
+
+      setTimeout(function () {
+        window.URL.revokeObjectURL(data)
+        link.remove()
+      }, 100)
+      this.spinner.hide()
+      this.notificationService.notify('Relatório emitido com sucesso')
     })
   }
 

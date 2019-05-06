@@ -8,7 +8,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ConveniosService } from 'src/app/convenios/convenios.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { NgxSpinnerService } from 'ngx-spinner';
-import * as jspdf from 'jspdf'
 import { NotificationService } from 'src/app/shared/notification.service';
 
 @Component({
@@ -55,12 +54,12 @@ export class ConvenioComponent implements OnInit {
         this.convenio = convenio[0], console.log(this.convenio)
       })
 
-      setTimeout(() => {
-        this.cs.telefoneById(this.convenio.CODIGO.toString()).subscribe(resT => {
-          this.telefones = resT
-        })
-        this.spinner.hide()
-      }, 500)
+    setTimeout(() => {
+      this.cs.telefoneById(this.convenio.CODIGO.toString()).subscribe(resT => {
+        this.telefones = resT
+      })
+      this.spinner.hide()
+    }, 500)
 
 
     this.cs.convenioQuery(this.ar.snapshot.params['id']).subscribe(data => {
@@ -143,66 +142,83 @@ export class ConvenioComponent implements OnInit {
 
   novoTelefone(telefone: Telefone) {
     this.cs.novoTelefone(this.convenio.CODIGO, telefone).subscribe((res) => {
-        if (res['errors']) {
-            res['errors'].forEach(error => {
-                console.log('Houve um erro!', error)
-                this.ns.notify(`Houve um erro! ${error.message}`)
-            })
-        } else {
-            this.cs.telefoneById(this.convenio.CODIGO.toString()).subscribe(res => {
-                this.telefones = res
-                this.novoTelefoneForm.reset()
-                this.ns.notify('Telefone inserido com sucesso!')
-            })
-        }
+      if (res['errors']) {
+        res['errors'].forEach(error => {
+          console.log('Houve um erro!', error)
+          this.ns.notify(`Houve um erro! ${error.message}`)
+        })
+      } else {
+        this.cs.telefoneById(this.convenio.CODIGO.toString()).subscribe(res => {
+          this.telefones = res
+          this.novoTelefoneForm.reset()
+          this.ns.notify('Telefone inserido com sucesso!')
+        })
+      }
     })
   }
 
   deleteTelefone(_cod_conv: number, _cod_tel: number): void {
     this.dcs.confirm(`Deseja excluir o telefone?`).then((isTrue) => {
-        if (isTrue) {
-            this.cs.deleteTelefone(this._cod_conv, _cod_tel).subscribe(() => {
-                this.cs.telefoneById(this.convenio.CODIGO.toString()).subscribe(response => {
-                    this.telefones = response
-                    this.ns.notify('Telefone excluído com sucesso!')
-                })
-            })
-        }
+      if (isTrue) {
+        this.cs.deleteTelefone(this._cod_conv, _cod_tel).subscribe(() => {
+          this.cs.telefoneById(this.convenio.CODIGO.toString()).subscribe(response => {
+            this.telefones = response
+            this.ns.notify('Telefone excluído com sucesso!')
+          })
+        })
+      }
     })
   }
 
   buscaTelefone(codTelefone) {
     this.cs.telefoneId(codTelefone).subscribe(telefone => {
-        this.codigoTelefone = telefone.CODIGO
-        this.updateTelefoneForm.patchValue({
-          DDD: this.convenio1[0].DDD,
-          NUMERO: this.convenio1[0].NUM_TEL
-        })
+      this.codigoTelefone = telefone.CODIGO
+      this.updateTelefoneForm.patchValue({
+        DDD: this.convenio1[0].DDD,
+        NUMERO: this.convenio1[0].NUM_TEL
+      })
     })
   }
 
   updateTelefone(telefoneAtualizado) {
     this.cs.updateTelefone(this.codigoTelefone, telefoneAtualizado).subscribe(res => {
-        if (res['errors']) {
-            res['errors'].forEach(error => {
-                console.log('Houve um erro!', error)
-                this.ns.notify(`Houve um erro! ${error.message}`)
-            })
-        } else {
-            this.cs.telefoneById(this.convenio.CODIGO.toString()).subscribe(response => {
-                this.telefones = response
-                this.updateTelefoneForm.reset()
-                this.ns.notify('Telefone atualizado com sucesso!')
-            })
-        }
+      if (res['errors']) {
+        res['errors'].forEach(error => {
+          console.log('Houve um erro!', error)
+          this.ns.notify(`Houve um erro! ${error.message}`)
+        })
+      } else {
+        this.cs.telefoneById(this.convenio.CODIGO.toString()).subscribe(response => {
+          this.telefones = response
+          this.updateTelefoneForm.reset()
+          this.ns.notify('Telefone atualizado com sucesso!')
+        })
+      }
     })
   }
 
   reportConvenio() {
-    this.cs.reportConvenio(this._cod_conv).subscribe(res => {
-      this.ns.notify('Relatório emitido com sucesso!')
+    this.spinner.show()
+    this.cs.reportConvenio(this.convenio.CODIGO).subscribe(x => {
+      var newBlob = new Blob([x], { type: 'applcation/pdf' })
+
+      if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+        window.navigator.msSaveOrOpenBlob(newBlob)
+      }
+
+      const data = window.URL.createObjectURL(newBlob)
+      var link = document.createElement('a')
+      link.href = data
+      link.download = `Relatório de convênio - ${this.convenio.NOME_CONVENIO}.pdf`
+      link.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }))
+
+      setTimeout(function () {
+        window.URL.revokeObjectURL(data)
+        link.remove()
+      }, 100)
+      this.spinner.hide()
+      this.ns.notify('Relatório emitido com sucesso')
     })
   }
-  
 
 }

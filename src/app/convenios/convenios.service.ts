@@ -9,7 +9,6 @@ export class ConveniosService {
 
     constructor(private http: HttpClient) { }
 
-
     convenios(): Observable<Convenio[]> {
         return this.http.get<Convenio[]>(`${SALV_API}/convenio`)
     }
@@ -34,7 +33,7 @@ export class ConveniosService {
         return this.http.delete<any>(`${SALV_API}/convenio/${id}`)
     }
 
-   ativarConvenio(id: string): Observable<any> {
+    ativarConvenio(id: string): Observable<any> {
         return this.http.delete<any>(`${SALV_API}/convenio-ativar/${id}`)
     }
 
@@ -63,18 +62,16 @@ export class ConveniosService {
                 })
             })
         })
-
-
     }
 
     updateConvenio(cod_conv, cod_end, cod_tel, telefone, endereco, convenio) {
         console.log(convenio)
         return this.http.put<Convenio>(`${SALV_API}/convenio/${cod_conv}`, convenio).switchMap(resConv => {
             return this.http.put<Endereco>(`${SALV_API}/endereco/${cod_end}`, endereco).switchMap(resEnd => {
-               return this.http.put<Telefone>(`${SALV_API}/telefone/${cod_tel}`, telefone)
-           })
-       })
-   }
+                return this.http.put<Telefone>(`${SALV_API}/telefone/${cod_tel}`, telefone)
+            })
+        })
+    }
 
     novoTelefone(_cod_conv: number, telefone: Telefone) {
         return this.http.post<Telefone>(`${SALV_API}/telefone`, telefone).switchMap(resT => {
@@ -100,12 +97,11 @@ export class ConveniosService {
         return this.http.put<Telefone>(`${SALV_API}/telefone/${id}`, telefone)
     }
 
-    reportConvenios() {
-        return this.http.get(`${SALV_API}/relatorio_convenios`)
+    reportConvenios(): Observable<Blob> {
+        return this.http.get(`${SALV_API}/relatorio-convenios`, { responseType: 'blob' })
     }
 
-    reportConvenio(cod_conv) {
-        return this.http.get(`${SALV_API}/relatorio_convenio/${cod_conv}`)
+    reportConvenio(cod_conv): Observable<Blob> {
+        return this.http.get(`${SALV_API}/relatorio-convenio/${cod_conv}`, { responseType: 'blob' })
     }
-
 }

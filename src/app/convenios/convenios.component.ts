@@ -72,14 +72,34 @@ export class ConveniosComponent implements OnInit {
         if (isTrue) {
           this.conveniosService.ativarConvenio(id)
             .subscribe(() => this.conveniosService.conveniosDesativados()
-              .subscribe( convenios => this.conveniosDesativados = convenios, convenios => this.convenios = convenios ))
+              .subscribe(convenios => this.conveniosDesativados = convenios, convenios => this.convenios = convenios))
         }
       })
   }
 
   reportConvenios() {
-    this.conveniosService.reportConvenios().subscribe(res => {
-      this.ns.notify('Relatório emitido com sucesso!')
+    this.spinner.show()
+    this.conveniosService.reportConvenios().subscribe(x => {
+      var newBlob = new Blob([x], { type: 'application/pdf' })
+
+      if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+        window.navigator.msSaveOrOpenBlob(newBlob)
+        return
+      }
+
+      const data = window.URL.createObjectURL(newBlob)
+      var link = document.createElement('a')
+      link.href = data
+      link.download = "Relatório de convênios.pdf"
+      link.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }))
+
+      setTimeout(function () {
+        window.URL.revokeObjectURL(data)
+        link.remove()
+      }, 100)
+      this.spinner.hide()
+      this.ns.notify('Relatório emitido com sucesso')
     })
   }
+
 }
