@@ -63,4 +63,11 @@ export class ValidatorService {
     return this.http.post<any>(`${SALV_API}/usuario/login`, { LOGIN: LOGIN, CODIGO: CODIGO })
   }
 
+  uniqueBeneficioNome(NOME_BENEFICIO: string, CODIGO: number, NOME_BENEFICIO_EDITAR: string) {
+    return this.http.post<any>(`${SALV_API}/beneficio/nome`, {
+      NOME_BENEFICIO: NOME_BENEFICIO,
+      CODIGO: CODIGO, NOME_BENEFICIO_EDITAR: NOME_BENEFICIO_EDITAR
+    })
+  }
+
 }

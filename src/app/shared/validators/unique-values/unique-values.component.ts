@@ -9,6 +9,9 @@ import { ValidatorService } from '../validator.service';
 })
 
 export class UniqueValuesValidators {
+
+  NOME_BENEFICIO_EDITAR: string = null
+
   constructor(private validatorService: ValidatorService) { }
 
   validatePessoaCpf(CODIGO): AsyncValidatorFn {
@@ -158,6 +161,18 @@ export class UniqueValuesValidators {
   validateUsuarioLogin(CODIGO): AsyncValidatorFn {
     return (control: AbstractControl): Observable<{ [key: string]: any } | null> => {
       return this.validatorService.uniqueUsuarioLogin(control.value, CODIGO)
+        .pipe(
+          map(res => {
+            if (res.value == 0 && control.value != null && control.value != '')  // se nao for unico
+              return { 'unique': true }// retorna o erro
+          })
+        )
+    }
+  }
+
+  validateBeneficioNome(CODIGO, NOME_BENEFICIO_EDITAR): AsyncValidatorFn {
+    return (control: AbstractControl): Observable<{ [key: string]: any } | null> => {
+      return this.validatorService.uniqueBeneficioNome(control.value, CODIGO, NOME_BENEFICIO_EDITAR)
         .pipe(
           map(res => {
             if (res.value == 0 && control.value != null && control.value != '')  // se nao for unico

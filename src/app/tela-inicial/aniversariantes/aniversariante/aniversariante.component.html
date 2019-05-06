@@ -3,6 +3,7 @@
     <thead>
       <tr>
         <th>Residente</th>
+        <th>Idade</th>
         <th>Data Nascimento</th>
       </tr>
     </thead>
@@ -12,10 +13,12 @@
           <i class="fa fa-birthday-cake" style="margin-right: 10px;"></i>
           {{aniversariante.NOME}} {{aniversariante.SOBRENOME}}
         </td>
-
+        <td>
+          {{aniversariante.IDADE}} anos
+        </td>
         <td>
           <span class="label label-success">
-            {{aniversariante.DATA_NASCIMENTO | date:'dd/MM/yyyy'}}
+            {{aniversariante.DATA_NASCIMENTO}}
           </span>
         </td>
       </tr>

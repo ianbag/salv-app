@@ -9,6 +9,7 @@ import { FormArray, Validators, FormGroup, AbstractControl, FormControl, FormBui
 import { NotificationService } from 'src/app/shared/notification.service';
 import { NgxSpinnerService } from 'ngx-spinner'
 import { Beneficio } from './infos-beneficios/beneficio.model';
+import { UniqueValuesValidators } from 'src/app/shared/validators/unique-values/unique-values.component';
 
 @Component({
   selector: 'salv-residente',
@@ -45,17 +46,23 @@ export class ResidenteComponent implements OnInit {
 
   telefonesArray: FormArray
 
+  CODIGO_RESIDENTE
+
   constructor(
     private residentesService: ResidentesService,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private notificationService: NotificationService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private uniqueValidators: UniqueValuesValidators
   ) { }
 
   ngOnInit() {
     this.spinner.show()
-    this.residentesService.residenteById(this.route.snapshot.params['id'])
+
+    this.CODIGO_RESIDENTE = this.route.snapshot.params['id']
+
+    this.residentesService.residenteById(this.CODIGO_RESIDENTE)
       .subscribe(residente => {
         this.residente = residente
       })
@@ -65,6 +72,8 @@ export class ResidenteComponent implements OnInit {
         this.spinner.hide()
         this.residenteConvenios = convenio
       })
+
+      
 
     this.getFamiliar()
 
@@ -100,7 +109,7 @@ export class ResidenteComponent implements OnInit {
     })
 
     this.beneficioResidenteForm = this.formBuilder.group({
-      NOME_BENEFICIO: this.formBuilder.control(null, [Validators.required]),
+      NOME_BENEFICIO: this.formBuilder.control(null, [Validators.required], this.uniqueValidators.validateBeneficioNome(this.CODIGO_RESIDENTE, null)),
       BANCO_BENEFICIO: this.formBuilder.control(null, []),
       AGENCIA_BENEFICIO: this.formBuilder.control(null, []),
       CONTA_BENEFICIO: this.formBuilder.control(null, []),
@@ -110,22 +119,22 @@ export class ResidenteComponent implements OnInit {
   }
 
   getFamiliar() {
-    this.residentesService.familiarById(this.route.snapshot.params['id'])
+    this.residentesService.familiarById(this.CODIGO_RESIDENTE)
       .subscribe(familiar => this.familiares = familiar)
   }
 
   getConvenio() {
-    this.residentesService.convenioById(this.route.snapshot.params['id'])
+    this.residentesService.convenioById(this.CODIGO_RESIDENTE)
       .subscribe(convenio => this.convenios = convenio)
   }
 
   getBeneficio() {
-    this.residentesService.beneficiosById(this.route.snapshot.params['id'])
+    this.residentesService.beneficiosById(this.CODIGO_RESIDENTE)
       .subscribe(beneficio => this.beneficios = beneficio)
   }
 
   familiarResidente(familiar: Familiar) {
-    this.residentesService.createNewFamiliar(familiar, this.route.snapshot.params['id'])
+    this.residentesService.createNewFamiliar(familiar, this.CODIGO_RESIDENTE)
       .subscribe(res => {
         if (res['errors']) {
           res['errors'].forEach(error => {
@@ -140,7 +149,7 @@ export class ResidenteComponent implements OnInit {
   }
 
   convenioResidente(residenteConvenio: Residente_Convenio) {
-    this.residentesService.createNewConvenio(residenteConvenio, this.route.snapshot.params['id'])
+    this.residentesService.createNewConvenio(residenteConvenio, this.CODIGO_RESIDENTE)
       .subscribe(res => {
         if (res['errors']) {
           res['errors'].forEach(error => {
@@ -155,7 +164,7 @@ export class ResidenteComponent implements OnInit {
   }
 
   beneficioResidente(beneficio: Beneficio) {
-    this.residentesService.createNewBeneficio(beneficio, this.route.snapshot.params['id'])
+    this.residentesService.createNewBeneficio(beneficio, this.CODIGO_RESIDENTE)
       .subscribe(res => {
         if (res['errors']) {
           res['errors'].forEach(error => {
