@@ -21,7 +21,7 @@
         </div>
         <div class="box-body" style>
           <salv-infos-familiar *ngFor="let familiar of familiares" (atualizaFamiliar)="getFamiliar($event)"
-            [(familiar)]="familiar.length"></salv-infos-familiar>
+            [(familiar)]="familiar"></salv-infos-familiar>
 
           <div *ngIf="!familiares.length">
             <p style="margin-left: 15px">Você não possui familiares cadastrados</p>
@@ -178,7 +178,7 @@
       </div>
       <div class="box-body" style>
         <salv-infos-convenio *ngFor="let convenio of convenios" (atualizaConvenio)="getConvenio($event)"
-          [(convenio)]="convenio.length"></salv-infos-convenio>
+          [(convenio)]="convenio"></salv-infos-convenio>
 
         <div *ngIf="!convenios.length">
           <p style="margin-left: 15px">Você não possui convênios cadastrados</p>
