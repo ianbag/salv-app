@@ -144,6 +144,8 @@ export class AcompanhamentoComponent implements OnInit {
 
         DATA_ACOMPANHAMENTO: this.acompanhamento[0].DATA_ACOMPANHAMENTO,
         ATIVIDADE: this.acompanhamento[0].ATIVIDADE,
+        residentes : this.selectedResidentes,
+        funcionarios: this.selectedFuncionarios
        
 
       })
@@ -221,13 +223,7 @@ export class AcompanhamentoComponent implements OnInit {
 
 
         this.acompanhamento1 = res[0]
-        
-        
-        
-       
-      
-
-          this.acompanhamentoService.acompanhamentoById(this.route.snapshot.params['id']).subscribe(res => {
+                  this.acompanhamentoService.acompanhamentoById(this.route.snapshot.params['id']).subscribe(res => {
             this.acompanhamento1 = res[0]
           
            
@@ -334,6 +330,34 @@ export class AcompanhamentoComponent implements OnInit {
       })
   }
 
+  deleteAllFuncionario(idAcomp: number) {
+    this.dialogConfirmService.confirm(`Deseja excluir o todos funcionários do acompanhamento?`)
+      .then((isTrue) => {
+        if (isTrue) {
+          this.acompanhamentoService.deleteFuncionarioAllAcompanhamento(idAcomp)
+            .subscribe(() => {
+
+              this.ns.notify('Funcionario excluído com sucesso!')
+            })
+        }
+  
+      })
+  }
+
+  deleteAllResidente(idAcomp: number) {
+    this.dialogConfirmService.confirm(`Deseja excluir o todos residentes do acompanhamento?`)
+      .then((isTrue) => {
+        if (isTrue) {
+          this.acompanhamentoService.deleteResidenteAllAcompanhamento(idAcomp)
+            .subscribe(() => {
+
+              this.ns.notify('Residentes excluídos com sucesso!')
+            })
+        }
+  
+      })
+  }
+
 
 
 
@@ -344,7 +368,7 @@ export class AcompanhamentoComponent implements OnInit {
 
 
   }
-
+  
   onDeResidenteSelect(residente: any) {
     this.deleteResidente(residente.CODIGO_RESIDENTE, this.codigo_acompanhamento)
 
@@ -361,6 +385,18 @@ export class AcompanhamentoComponent implements OnInit {
     this.deleteFuncionario(funcionarios.CODIGO_FUNCIONARIO, this.codigo_acompanhamento)
     console.log('onDeFuncionarioSelect', funcionarios.CODIGO_RESIDENTE, this.codigo_acompanhamento)
   }
+  
+
+ onDeSelectAllFuncionarios(items: any): void{
+   
+    this.deleteAllFuncionario(this.codigo_acompanhamento)
+}
+
+
+onDeSelectAllResidentes(items: any): void{
+   
+  this.deleteAllResidente(this.codigo_acompanhamento)
+}
 
 
 

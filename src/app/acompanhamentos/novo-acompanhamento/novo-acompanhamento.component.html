@@ -15,7 +15,7 @@
             <label>Residentes que participaram da atividade </label><br>
             <ng-multiselect-dropdown [placeholder]="'Selecione os residentes'" [data]="residentes"
             formControlName="residentes"            
-              [disabled]="disabled" [settings]="dropdownSettings" (onSelect)="onResidenteSelect($event)">
+              [disabled]="disabled" [settings]="dropdownSettings" (onSelect)="onResidenteSelect($event)" >
               
             </ng-multiselect-dropdown>
             </salv-input-container>
