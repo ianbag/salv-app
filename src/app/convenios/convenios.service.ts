@@ -64,12 +64,10 @@ export class ConveniosService {
         })
     }
 
-    updateConvenio(cod_conv, cod_end, cod_tel, telefone, endereco, convenio) {
+    updateConvenio(cod_conv, cod_end, endereco, convenio) {
         console.log(convenio)
         return this.http.put<Convenio>(`${SALV_API}/convenio/${cod_conv}`, convenio).switchMap(resConv => {
-            return this.http.put<Endereco>(`${SALV_API}/endereco/${cod_end}`, endereco).switchMap(resEnd => {
-                return this.http.put<Telefone>(`${SALV_API}/telefone/${cod_tel}`, telefone)
-            })
+            return this.http.put<Endereco>(`${SALV_API}/endereco/${cod_end}`, endereco)
         })
     }
 

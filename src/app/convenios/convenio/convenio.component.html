@@ -58,6 +58,7 @@
                             {{telefone?.TELEFONE.NUMERO | telefone}} <a><span id="iconesForm"
                                     (click)="deleteTelefone(convenio.CODIGO, telefone.TELEFONE.CODIGO); $event.stopPropagation()"><i
                                         class="fa fa-close"></i></span></a>
+                                        
                             <a data-toggle="modal" data-target="#modalUpdateTelefone"
                                 (click)="buscaTelefone(telefone.TELEFONE.CODIGO)"><span id="iconesForm"><i
                                         class="fa fa-pencil"></i></span></a>
