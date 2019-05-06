@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DialogConfirmService } from '../../dialog-confirm.service';
 import { NotificationService } from 'src/app/shared/notification.service';
 import { ActivatedRoute } from '@angular/router';
+import { UniqueValuesValidators } from 'src/app/shared/validators/unique-values/unique-values.component';
 
 @Component({
   selector: 'salv-infos-beneficios',
@@ -19,21 +20,25 @@ export class InfosBeneficiosComponent implements OnInit {
   beneficioResidenteForm: FormGroup
 
   NOME_BENEFICIO_SEM_ESPACO
+  CODIGO_RESIDENTE
 
   constructor(
     private residentesService: ResidentesService,
     private formBuilder: FormBuilder,
     private dialogConfirmService: DialogConfirmService,
     private notificationService: NotificationService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private uniqueValidators: UniqueValuesValidators
   ) { }
 
   ngOnInit() {
 
     this.NOME_BENEFICIO_SEM_ESPACO = this.beneficio.NOME_BENEFICIO.replace(/\s/g, '')
 
+    this.CODIGO_RESIDENTE = this.route.snapshot.params['id']
+
     this.beneficioResidenteForm = this.formBuilder.group({
-      NOME_BENEFICIO: this.formBuilder.control(null, [Validators.required]),
+      NOME_BENEFICIO: this.formBuilder.control(null, [Validators.required], this.uniqueValidators.validateBeneficioNome(this.CODIGO_RESIDENTE, this.beneficio.NOME_BENEFICIO)),
       BANCO_BENEFICIO: this.formBuilder.control(null, []),
       AGENCIA_BENEFICIO: this.formBuilder.control(null, []),
       CONTA_BENEFICIO: this.formBuilder.control(null, []),
