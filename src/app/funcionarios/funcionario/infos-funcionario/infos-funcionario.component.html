@@ -472,7 +472,9 @@
           <hr class="col-md-12">
           <div class="col-md-12">
             <div class="col-sm-12 col-xs-12" style="margin-left: -25px">
-              <h4><strong>Informações funcionais</strong></h4>
+              <h4>
+                <strong>Informações funcionais</strong>
+              </h4>
             </div>
             <div class="col-xs-4 col-xs-12" style="margin-left: -25px">
               <strong>Cargo: </strong> {{funcionario?.CARGO}}
@@ -490,7 +492,11 @@
           <hr class="col-md-12">
           <div class="col-md-12" *ngIf="haveLogin(); else notLogin" style="margin-left: -10px">
             <div class="col-sm-12 col-xs-12" style="margin-left: -15px">
-              <h4><strong>Informações de login</strong></h4>
+              <h4>
+                <strong>Informações de login</strong>
+                <a class="icones-editar-excluir" data-toggle="modal" data-target="#modalUpdateUsuario" (click)="buscaUsuario()"><span id="iconesForm">
+                    <i class="fa fa-pencil" style="color: #f39c12;"></i></span></a>
+              </h4>
             </div>
             <div class="col-xs-4 col-xs-12" style="margin-left: -15px">
 
@@ -499,10 +505,6 @@
             </div>
             <div class="col-xs-4 col-xs-12">
               <strong>Login: </strong> {{funcionario?.USUARIO.LOGIN}}
-              <a data-toggle="modal" data-target="#modalUpdateUsuario" (click)="buscaUsuario()"><span id="iconesForm"
-                  style="margin: 8px"><i class="fa fa-pencil"></i>
-                </span>
-              </a>
             </div>
           </div>
           <!--DIV MODAL INICIO-->
