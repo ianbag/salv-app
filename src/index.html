@@ -17,31 +17,10 @@
   <link rel="icon" type="image/x-icon" href="./assets/ico/medicina.ico">
 </head>
 
-<body class="hold-transition skin-green sidebar">
+<body class="hold-transition skin-green sidebar-collapse">
 
   <salv-root>Carregando...</salv-root>
 
 </body>
 
 </html>
-
-<script>
-
-  $(function () {
-    if (localStorage.expandedMenu == 0) {
-      $('body').removeClass('sidebar')
-      $('body').addClass('sidebar-collapse')
-    }
-
-    $('body').bind('expanded.pushMenu', function () {
-      localStorage.expandedMenu = 1
-    })
-
-    $('body').bind('collapsed.pushMenu', function () {
-      localStorage.expandedMenu = 0
-    })
-
-  })
-
-  
-</script>
