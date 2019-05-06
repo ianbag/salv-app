@@ -553,11 +553,16 @@
             <!--DIV MODAL INICIO-->
             <div class="col-sm-12 col-xs-12">
               <!-- Button trigger modal -->
-              <p style="text-align: center">Você não possui usuário cadastrado</p>
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalUsuario"
-                style="margin-left: -20px">
-                Adicionar usuário
-              </button>
+              <div class="nao-possui-add">
+                  <p>Você não possui usuário cadastrado</p>
+                  <div class="col-ms-12">
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalUsuario">
+                      Adicionar usuário
+                    </button>
+                  </div>
+              </div>
+              
+              
               <!-- Modal -->
               <div class="modal fade" id="modalUsuario" tabindex="-1" role="dialog" aria-labelledby="modalUsuario"
                 aria-hidden="true">
