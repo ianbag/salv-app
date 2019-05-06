@@ -116,3 +116,7 @@
   .box.box-solid.box-default>.box-header a, .box.box-solid.box-default>.box-header .btn{
     color: white;
   }
+
+  .nao-possui-add{
+    text-align: center;
+  }
