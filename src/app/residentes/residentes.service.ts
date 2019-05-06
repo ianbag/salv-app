@@ -225,11 +225,11 @@ export class ResidentesService {
     }
 
     reportResidentes(): Observable<Blob> {
-        return this.http.get(`${SALV_API}/relatorio_residentes`, { responseType: 'blob' })
+        return this.http.get(`${SALV_API}/relatorio-residentes`, { responseType: 'blob' })
     }
 
     reportResidente(cod_pes, cod_res): Observable<Blob> {
-        return this.http.get(`${SALV_API}/relatorio_residente/${cod_pes}/${cod_res}`, { responseType: 'blob' })
+        return this.http.get(`${SALV_API}/relatorio-residente/${cod_pes}/${cod_res}`, { responseType: 'blob' })
     }
 
 }

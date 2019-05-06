@@ -269,7 +269,7 @@ export class AcompanhamentoComponent implements OnInit {
 
   reportAcompanhamento() {
     this.spinner.show()
-    this.acompanhamentosService.reportAcompanhamento(this.ACOMPANHAMENTO_CODIGO).subscribe(x => {
+    this.acompanhamentosService.reportAcompanhamento(this.acompanhamento[0].CODIGO).subscribe(x => {
       var newBlob = new Blob([x], { type: 'application/pdf' })
 
       if (window.navigator && window.navigator.msSaveOrOpenBlob) {
