@@ -15,7 +15,7 @@
           <div class="box-tools pull-right">
 
             <a type="submit" class="btn btn-success botao" data-toggle="modal" data-target="#modalFamiliar"
-              style="color: white" *ngIf="familiares">Adicionar</a>
+              style="color: white" *ngIf="familiares.length">Adicionar</a>
 
           </div>
         </div>
@@ -173,7 +173,7 @@
         <h3 class="box-title">Convênios do {{residente?.PESSOA.NOME}}</h3>
         <div class="box-tools pull-right">
           <a type="submit" class="btn btn-success botao" data-toggle="modal" data-target="#modalConvenio"
-            style="color: white" *ngIf="convenios">Adicionar</a>
+            style="color: white" *ngIf="convenios.length">Adicionar</a>
         </div>
       </div>
       <div class="box-body" style>
@@ -258,7 +258,7 @@
 
         <h3 class="box-title">Benefícios do {{residente?.PESSOA.NOME}}</h3>
         <div class="box-tools pull-right">
-          <button type="submit" class="btn btn-success" *ngIf="beneficios" data-toggle="modal"
+          <button type="submit" class="btn btn-success" *ngIf="beneficios.length" data-toggle="modal"
             data-target="#modalBeneficio" style="color: white">Adicionar</button>
         </div>
       </div>
