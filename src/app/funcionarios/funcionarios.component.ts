@@ -26,6 +26,9 @@ export class FuncionariosComponent implements OnInit {
   funcionarios: Funcionario[]
   funcionariosInativos: Funcionario[]
 
+  public Desativados
+  public filter
+
   constructor(private funcionariosService: FuncionariosService, private dialogConfirmService: DialogConfirmService, private spinner: NgxSpinnerService, private ns: NotificationService) { }
 
   funcionariosState = 'ready'

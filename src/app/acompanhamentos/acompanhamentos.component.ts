@@ -27,6 +27,9 @@ export class AcompanhamentosComponent implements OnInit {
   public searchString: string;
   acompanhamentos: Acompanhamento[]
 
+  public Desativos
+  public filter
+
   constructor(private acompanhamentosService: AcompanhamentosService, private route: ActivatedRoute, private spinner: NgxSpinnerService, private ns: NotificationService) { }
 
   paginaAtual: number = 1;

@@ -29,6 +29,9 @@ export class ResidentesComponent implements OnInit {
 
   residentes: Residente[] = []
 
+  public Desativados
+  public filter
+
   constructor(private residentesService: ResidentesService, private dialogConfirmService: DialogConfirmService, private notificationService: NotificationService, private spinner: NgxSpinnerService) { }
 
   paginaAtual: number = 1;
