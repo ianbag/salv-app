@@ -15,34 +15,34 @@
             </div>
             <div class="box-body">
                 <div class="col-sm-12 col-xs-12">
-                    <h4><strong>{{convenio?.NOME_CONVENIO}}</strong></h4>
+                    <h4><strong>{{convenio1?.NOME_CONVENIO}}</strong></h4>
                 </div>
                 <div class="col-xs-4 col-xs-12">
-                    <strong>Tipo: </strong> {{convenio?.TIPO_CONVENIO}}<br>
+                    <strong>Tipo: </strong> {{convenio1?.TIPO_CONVENIO}}<br>
                 </div>
                 <div class="col-xs-4 col-xs-12">
-                    <strong>Endereço: </strong> {{convenio?.ENDERECO}}
+                    <strong>Endereço: </strong> {{convenio1?.ENDERECO}}
                 </div>
                 <div class="col-xs-4 col-xs-12">
-                    <strong>Nº: </strong> {{convenio?.ENDERECO.NUMERO}}
+                    <strong>Nº: </strong> {{convenio1?.NUMERO}}
                 </div>
                 <div class="col-xs-4 col-xs-12">
-                    <!-- <strong>Bairro: </strong> {{convenio?.BAIRRO}} -->
+                    <strong>Bairro: </strong> {{convenio1?.BAIRRO}}
                 </div>
-                <div class="col-xs-4 col-xs-12" *ngIf="convenio.ENDERECO.COMPLEMENTO">
-                    <!-- <strong>Complemento: </strong> {{convenio?.COMPLEMENTO}} -->
-                </div>
-                <div class="col-xs-4 col-xs-12">
-                    <!-- <strong>Cidade: </strong> {{convenio?.CIDADE}} -->
+                <div class="col-xs-4 col-xs-12" *ngIf="convenio1.COMPLEMENTO">
+                    <strong>Complemento: </strong> {{convenio1?.COMPLEMENTO}}
                 </div>
                 <div class="col-xs-4 col-xs-12">
-                    <!-- <strong>Estado: </strong> {{convenio?.ESTADO}} -->
+                    <strong>Cidade: </strong> {{convenio1?.CIDADE}}
                 </div>
                 <div class="col-xs-4 col-xs-12">
-                    <!-- <strong>CEP: </strong> {{convenio?.CEP | cep}} -->
+                    <strong>Estado: </strong> {{convenio1?.ESTADO}}
                 </div>
-                <div class="col-xs-4 col-xs-12" *ngIf="convenio.ENDERECO.REFERENCIA">
-                    <!-- <strong>Referência: </strong> {{convenio?.REFERENCIA}} -->
+                <div class="col-xs-4 col-xs-12">
+                    <strong>CEP: </strong> {{convenio1?.CEP | cep}}
+                </div>
+                <div class="col-xs-4 col-xs-12" *ngIf="convenio1.REFERENCIA">
+                    <strong>Referência: </strong> {{convenio1?.REFERENCIA}}
                 </div>
                 <br />
                 <div class="col-sm-12 col-xs-12">
