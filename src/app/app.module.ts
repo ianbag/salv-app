@@ -235,7 +235,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common'
     ForgetService,
     ResetService,
     ValidatorService,
-    // { provide: LocationStrategy, useClass: HashLocationStrategy },
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
     // { provide: LOCALE_ID, useValue: 'pt-BR' },
     // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: ErrorHandler, useClass: GlobalErrorHandler }
