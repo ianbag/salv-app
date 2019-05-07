@@ -68,7 +68,7 @@ export class AcompanhamentoComponent implements OnInit {
     this.acompanhamentosService.acompanhamentoById(this.route.snapshot.params['id'])
       .subscribe(acompanhamento => {
         this.spinner.hide()
-        this.acompanhamento1 = acompanhamento[0]; console.log(acompanhamento)
+        this.acompanhamento1 = acompanhamento[0]; console.log(this.acompanhamento1)
       })
 
     this.acompanhamentosService.AcompanhamentoFuncionarioQuery(this.route.snapshot.params['id']).subscribe(acompanhamento_funcionario => {

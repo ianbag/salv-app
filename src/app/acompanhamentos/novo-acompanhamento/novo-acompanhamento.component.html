@@ -67,7 +67,7 @@
         <div class="col-sm-12 col-xs-12">
           <br>
           <button
-            (click)="novoAcompanhamento(novoAcompanhamentoForm.value); NovoAcompanhamentoResidente(); NovoAcompanhamentoFuncionario()"
+            (click)="novoAcompanhamento(novoAcompanhamentoForm.value); NovoAcompanhamentoResidente(null); NovoAcompanhamentoFuncionario(null)"
             style="margin-left: 10px" class="btn btn-success botao pull-right"
             [disabled]="!novoAcompanhamentoForm.valid" [routerLink]="['/acompanhamentos']">Finalizar cadastro</button>
 
