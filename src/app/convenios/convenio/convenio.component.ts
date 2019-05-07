@@ -29,7 +29,7 @@ export class ConvenioComponent implements OnInit {
 
   @Input() convenio: Convenio
 
-  @Input() telefones: Telefone[] = []
+  telefones: Telefone[] = []
   novoTelefoneForm: FormGroup
   updateTelefoneForm: FormGroup
   codigoTelefone: number
@@ -123,7 +123,7 @@ export class ConvenioComponent implements OnInit {
   }
 
   editarConvenio(editConvenio) {
-    this.cs.updateConvenio(this._cod_conv, this._cod_end, this._cod_tel, editConvenio.TELEFONE, editConvenio.ENDERECO, editConvenio).subscribe(res => {
+    this.cs.updateConvenio(this._cod_conv, this._cod_end, editConvenio.ENDERECO, editConvenio).subscribe(res => {
       console.log(editConvenio)
       if (res['errors']) {
         res['errors'].forEach(error => {
@@ -156,6 +156,7 @@ export class ConvenioComponent implements OnInit {
       }
     })
   }
+  
 
   deleteTelefone(_cod_conv: number, _cod_tel: number): void {
     this.dcs.confirm(`Deseja excluir o telefone?`).then((isTrue) => {
