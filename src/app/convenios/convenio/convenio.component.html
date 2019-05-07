@@ -29,7 +29,7 @@
                 <div class="col-xs-4 col-xs-12">
                     <strong>Bairro: </strong> {{convenio?.ENDERECO.BAIRRO}}
                 </div>
-                <div class="col-xs-4 col-xs-12" *ngIf="convenio.COMPLEMENTO">
+                <div class="col-xs-4 col-xs-12" *ngIf="convenio.ENDERECO.COMPLEMENTO">
                     <strong>Complemento: </strong> {{convenio?.ENDERECO.COMPLEMENTO}}
                 </div>
                 <div class="col-xs-4 col-xs-12">
@@ -41,7 +41,7 @@
                 <div class="col-xs-4 col-xs-12">
                     <strong>CEP: </strong> {{convenio?.ENDERECO.CEP | cep}}
                 </div>
-                <div class="col-xs-4 col-xs-12" *ngIf="convenio.REFERENCIA">
+                <div class="col-xs-4 col-xs-12" *ngIf="convenio.ENDERECO.REFERENCIA">
                     <strong>Referência: </strong> {{convenio?.ENDERECO.REFERENCIA}}
                 </div>
                 <br />
