@@ -31,6 +31,7 @@ export class NovoAcompanhamentoComponent implements OnInit {
 
   ACOMPANHAMENTO_CODIGOi = 1
   ACOMPANHAMENTO_CODIGO
+  public maxATIVIDADELength
 
 
   novoacompanhamentoState = 'ready'

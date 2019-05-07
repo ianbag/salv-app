@@ -29,7 +29,7 @@ export class AcompanhamentoComponent implements OnInit {
   acompanhamento1: Acompanhamento[]
   funcionarios1: any[]
   residentes1: any[]
-
+  public maxATIVIDADELength
   editarAcompanhamentoForm: FormGroup
   codigo_acompanhamento: number
   ACOMPANHAMENTO_CODIGO: any[]
