@@ -1,4 +1,4 @@
 export const environment = {
-  apiUrl: 'https://drvida-api.herokuapp.com',
-  production: true
+  production: true,
+  apiUrl: 'https://drvida-api.herokuapp.com'
 };
