@@ -284,10 +284,10 @@
       <ng-container *ngIf="telefone; else elseTelefoneTemplate">
         <div class="col-xs-4 col-xs-12" *ngFor="let tel of telefone">
           <strong>Telefone: </strong> ({{tel?.TELEFONE.DDD}}) {{tel?.TELEFONE.NUMERO | telefone}}
-          <a class="input-remove" (click)="deletarTelefoneFamiliar(tel.TELEFONE.CODIGO, familiar?.CODIGO)">
+          <a class="input-remove icones-editar-excluir" (click)="deletarTelefoneFamiliar(tel.TELEFONE.CODIGO, familiar?.CODIGO)">
             <span><i class="fa fa-close"></i></span>
           </a>
-          <a class="input-edit" data-toggle="modal" (click)="buscarTelefone(tel.TELEFONE.CODIGO)"
+          <a class="input-edit icones-editar-excluir" data-toggle="modal" (click)="buscarTelefone(tel.TELEFONE.CODIGO)"
             attr.data-target="#modalEditarTelefone{{familiar?.CODIGO}}">
             <span><i class="fa fa-pencil"></i></span></a>
         </div>
