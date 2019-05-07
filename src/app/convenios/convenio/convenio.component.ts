@@ -27,7 +27,7 @@ export class ConvenioComponent implements OnInit {
 
   convenioState = 'ready'
 
-  convenio: Convenio
+  convenio: Convenio[]
 
   telefones: Telefone[] = []
   novoTelefoneForm: FormGroup
