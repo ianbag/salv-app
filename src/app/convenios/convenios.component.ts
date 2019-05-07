@@ -32,6 +32,8 @@ export class ConveniosComponent implements OnInit {
 
   paginaAtual: number = 1;
 
+  public Desativados
+  public filter
 
   ngOnInit() {
     this.spinner.show()
