@@ -27,13 +27,12 @@ export class ConvenioComponent implements OnInit {
 
   convenioState = 'ready'
 
-  @Input() convenio: Convenio
+  convenio: any
 
   telefones: Telefone[] = []
   novoTelefoneForm: FormGroup
   updateTelefoneForm: FormGroup
   codigoTelefone: number
-  public NUMERO
   editarConvenioForm: FormGroup
   convenio1: ConvenioQuery[] = []
   _cod_end: number
