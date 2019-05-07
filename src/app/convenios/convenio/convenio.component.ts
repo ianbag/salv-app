@@ -27,7 +27,7 @@ export class ConvenioComponent implements OnInit {
 
   convenioState = 'ready'
 
-  convenio: Convenio
+  @Input() convenio: Convenio
 
   @Input() telefones: Telefone[] = []
   novoTelefoneForm: FormGroup
