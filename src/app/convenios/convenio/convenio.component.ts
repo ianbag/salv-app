@@ -33,7 +33,7 @@ export class ConvenioComponent implements OnInit {
   novoTelefoneForm: FormGroup
   updateTelefoneForm: FormGroup
   codigoTelefone: number
-
+  public NUMERO
   editarConvenioForm: FormGroup
   convenio1: ConvenioQuery[] = []
   _cod_end: number
