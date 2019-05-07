@@ -21,28 +21,28 @@
                     <strong>Tipo: </strong> {{convenio?.TIPO_CONVENIO}}<br>
                 </div>
                 <div class="col-xs-4 col-xs-12">
-                    <strong>Endereço: </strong> {{convenio?.ENDERECO}}
+                    <strong>Endereço: </strong> {{convenio?.ENDERECO.ENDERECO}}
                 </div>
                 <div class="col-xs-4 col-xs-12">
-                    <strong>Nº: </strong> {{convenio?.NUMERO}}
+                    <strong>Nº: </strong> {{convenio?.ENDERECO.NUMERO}}
                 </div>
                 <div class="col-xs-4 col-xs-12">
-                    <strong>Bairro: </strong> {{convenio?.BAIRRO}}
+                    <strong>Bairro: </strong> {{convenio?.ENDERECO.BAIRRO}}
                 </div>
-                <div class="col-xs-4 col-xs-12" *ngIf="convenio.COMPLEMENTO">
-                    <strong>Complemento: </strong> {{convenio?.COMPLEMENTO}}
-                </div>
-                <div class="col-xs-4 col-xs-12">
-                    <strong>Cidade: </strong> {{convenio?.CIDADE}}
+                <div class="col-xs-4 col-xs-12" *ngIf="convenio.ENDERECO.COMPLEMENTO">
+                    <strong>Complemento: </strong> {{convenio?.ENDERECO.COMPLEMENTO}}
                 </div>
                 <div class="col-xs-4 col-xs-12">
-                    <strong>Estado: </strong> {{convenio?.ESTADO}}
+                    <strong>Cidade: </strong> {{convenio?.ENDERECO.CIDADE}}
                 </div>
                 <div class="col-xs-4 col-xs-12">
-                    <strong>CEP: </strong> {{convenio?.CEP | cep}}
+                    <strong>Estado: </strong> {{convenio?.ENDERECO.ESTADO}}
                 </div>
-                <div class="col-xs-4 col-xs-12" *ngIf="convenio.REFERENCIA">
-                    <strong>Referência: </strong> {{convenio?.REFERENCIA}}
+                <div class="col-xs-4 col-xs-12">
+                    <strong>CEP: </strong> {{convenio?.ENDERECO.CEP | cep}}
+                </div>
+                <div class="col-xs-4 col-xs-12" *ngIf="convenio.ENDERECO.REFERENCIA">
+                    <strong>Referência: </strong> {{convenio?.ENDERECO.REFERENCIA}}
                 </div>
                 <br />
                 <div class="col-sm-12 col-xs-12">
@@ -53,16 +53,6 @@
                     <!--INICIO TELEFONES-->
                     <div>
                         <div class="col-xs-4 col-xs-12" *ngFor="let telefone of telefones">
-<<<<<<< HEAD
-                            <strong style="margin-left: -12px">Telefone: </strong> ({{telefone?.TELEFONE.DDD}})
-                            {{telefone?.TELEFONE.NUMERO | telefone}} <a><span id="iconesForm"
-                                    (click)="deleteTelefone(convenio.CODIGO, telefone.TELEFONE.CODIGO); $event.stopPropagation()"><i
-                                        class="fa fa-close"></i></span></a>
-                                        
-                            <a data-toggle="modal" data-target="#modalUpdateTelefone"
-                                (click)="buscaTelefone(telefone.TELEFONE.CODIGO)"><span id="iconesForm"><i
-                                        class="fa fa-pencil"></i></span></a>
-=======
                             <strong style="margin-left: -12px">Telefone: </strong> ({{telefone?.TELEFONE.DDD}}) {{telefone?.TELEFONE.NUMERO | telefone}} 
                             <a class="icones-editar-excluir">
                                 <span id="iconesForm" (click)="deleteTelefone(convenio.CODIGO, telefone.TELEFONE.CODIGO); $event.stopPropagation()">
@@ -72,7 +62,6 @@
                                 <span id="iconesForm">
                                 <i class="fa fa-pencil" style="color: #f39c12;"></i></span>
                             </a>
->>>>>>> 2495877e121cc77027987e164d33bcd21a9d0f8a
                         </div>
                     </div>
                 </div>
