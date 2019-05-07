@@ -1,6 +1,6 @@
 import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
-import { EditarAcompanhamentoComponent } from './acompanhamentos/editar-acompanhamento/editar-acompanhamento.component';
-import { EditarConvenioComponent } from './convenios/editar-convenio/editar-convenio.component';
+// import { EditarAcompanhamentoComponent } from './acompanhamentos/editar-acompanhamento/editar-acompanhamento.component';
+// import { EditarConvenioComponent } from './convenios/editar-convenio/editar-convenio.component';
 import { NovoConvenioComponent } from './convenios/novo-convenio/novo-convenio.component';
 import { NovoAcompanhamentoComponent } from './acompanhamentos/novo-acompanhamento/novo-acompanhamento.component';
 
@@ -21,8 +21,8 @@ import { FamiliarResidenteComponent } from './residentes/novo-residente/familiar
 import { ConvenioResidenteComponent } from './residentes/novo-residente/convenio-residente/convenio-residente.component';
 import { LoginComponent } from './auth/login/login.component'
 import { NovoFuncionarioComponent } from './funcionarios/novo-funcionario/novo-funcionario.component';
-import { EditarFuncionarioComponent } from './funcionarios/editar-funcionario/editar-funcionario.component';
-import { EditarResidenteComponent } from './residentes/editar-residente/editar-residente.component';
+// import { EditarFuncionarioComponent } from './funcionarios/editar-funcionario/editar-funcionario.component';
+// import { EditarResidenteComponent } from './residentes/editar-residente/editar-residente.component';
 import { ForgetPasswordComponent } from './auth/forget-password/forget-password.component';
 
 import { AuthGuardService as AuthGuard } from './auth/auth-guard.service'
@@ -35,15 +35,15 @@ export const ROUTES: Routes = [
     { path: 'novo-residente', component: NovoResidenteComponent, canActivate: [AuthGuard] },
     { path: 'familiar-residente', component: FamiliarResidenteComponent, canActivate: [AuthGuard] },
     { path: 'convenio-residente', component: ConvenioResidenteComponent, canActivate: [AuthGuard] },
-    { path: 'editar-residente/:id', component: EditarResidenteComponent, canActivate: [AuthGuard] },
+    // { path: 'editar-residente/:id', component: EditarResidenteComponent, canActivate: [AuthGuard] },
     { path: 'convenios', component: ConveniosComponent, canActivate: [AuthGuard] },
     { path: 'convenio/:id', component: ConvenioComponent, canActivate: [AuthGuard] },
     { path: 'novo-convenio', component: NovoConvenioComponent, canActivate: [AuthGuard] },
-    { path: 'editar-convenio/:id', component: EditarConvenioComponent, canActivate: [AuthGuard] },
+    // { path: 'editar-convenio/:id', component: EditarConvenioComponent, canActivate: [AuthGuard] },
     { path: 'funcionarios', component: FuncionariosComponent, canActivate: [AuthGuard] },
     { path: 'novo-funcionario', component: NovoFuncionarioComponent, canActivate: [AuthGuard] },
     { path: 'funcionario/:id', component: FuncionarioComponent, canActivate: [AuthGuard] },
-    { path: 'editar-funcionario/:id', component: EditarFuncionarioComponent, canActivate: [AuthGuard] },
+    // { path: 'editar-funcionario/:id', component: EditarFuncionarioComponent, canActivate: [AuthGuard] },
     { path: 'acompanhamentos', component: AcompanhamentosComponent, canActivate: [AuthGuard] },
     // { path: 'editar-acompanhamento/:id', component: EditarAcompanhamentoComponent, canActivate: [AuthGuard] },
     { path: 'acompanhamento/:id', component: AcompanhamentoComponent, canActivate: [AuthGuard] },
