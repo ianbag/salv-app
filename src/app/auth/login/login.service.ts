@@ -14,7 +14,7 @@ export class LoginService {
     constructor(private http: HttpClient, private cs: CookieService) { }
 
     login(user: User) {
-        return this.http.post<User>(`$https://www.drvida-api.herokuapp.com/login/`, user).pipe(tap(res => {
+        return this.http.post<User>(`https://drvida-api.herokuapp.com/login/`, user).pipe(tap(res => {
             localStorage.expandedMenu = 1
             this.showMenuEmitter.emit(true)
         }))
