@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  apiUrl: 'https://drvida-api.herokuapp.com',
+  apiUrl: 'https://www.drvida-api.herokuapp.com',
   production: true
 };
 
