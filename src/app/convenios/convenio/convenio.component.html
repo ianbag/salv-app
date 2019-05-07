@@ -24,25 +24,25 @@
                     <strong>Endereço: </strong> {{convenio?.ENDERECO}}
                 </div>
                 <div class="col-xs-4 col-xs-12">
-                    <strong>Nº: </strong> {{convenio?.ENDERECO.NUMERO}}
+                    <strong>Nº: </strong> {{convenio?.NUMERO}}
                 </div>
                 <div class="col-xs-4 col-xs-12">
-                    <strong>Bairro: </strong> {{convenio?.ENDERECO.BAIRRO}}
+                    <strong>Bairro: </strong> {{convenio?.BAIRRO}}
                 </div>
                 <div class="col-xs-4 col-xs-12" *ngIf="convenio.ENDERECO.COMPLEMENTO">
-                    <strong>Complemento: </strong> {{convenio?.ENDERECO.COMPLEMENTO}}
+                    <strong>Complemento: </strong> {{convenio?.COMPLEMENTO}}
                 </div>
                 <div class="col-xs-4 col-xs-12">
-                    <strong>Cidade: </strong> {{convenio?.ENDERECO.CIDADE}}
+                    <strong>Cidade: </strong> {{convenio?.CIDADE}}
                 </div>
                 <div class="col-xs-4 col-xs-12">
-                    <strong>Estado: </strong> {{convenio?.ENDERECO.ESTADO}}
+                    <strong>Estado: </strong> {{convenio?.ESTADO}}
                 </div>
                 <div class="col-xs-4 col-xs-12">
-                    <strong>CEP: </strong> {{convenio?.ENDERECO.CEP | cep}}
+                    <strong>CEP: </strong> {{convenio?.CEP | cep}}
                 </div>
                 <div class="col-xs-4 col-xs-12" *ngIf="convenio.ENDERECO.REFERENCIA">
-                    <strong>Referência: </strong> {{convenio?.ENDERECO.REFERENCIA}}
+                    <strong>Referência: </strong> {{convenio?.REFERENCIA}}
                 </div>
                 <br />
                 <div class="col-sm-12 col-xs-12">
