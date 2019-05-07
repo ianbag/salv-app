@@ -2,7 +2,7 @@ export interface Convenio {
     CODIGO: number,
     NOME_CONVENIO: string,
     TIPO_CONVENIO: string,
-       
+        ENDERECO: {
             CODIGO: number,
             ENDERECO: string,
             NUMERO: number,
@@ -12,12 +12,12 @@ export interface Convenio {
             ESTADO: string,
             CEP: string,
             REFERENCIA: string
-        
-        // TELEFONE: {
-        //     CODIGO: number,
-        //     DDD: string,
-        //     NUMERO: string
-        // }
+        },
+        TELEFONE: {
+            CODIGO: number,
+            DDD: string,
+            NUMERO: string
+        }
 }
 
 export interface Endereco {
