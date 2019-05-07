@@ -50,7 +50,7 @@ export class ConvenioComponent implements OnInit {
     this.cs.conveniosById(this.ar.snapshot.params['id'])
       .subscribe(convenio => {
         this.spinner.hide();
-        this.convenio = convenio, console.log(this.convenio)
+        this.convenio = convenio[0], console.log(this.convenio)
       })
 
     setTimeout(() => {
