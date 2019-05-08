@@ -15,41 +15,28 @@
             <a type="submit" class="btn btn-primary" [routerLink]="['/novo-funcionario']">Novo funcionário</a>
 
             <!-- FILTRO -->
-            <a class="dropdown btn btn-success pull-right" style="float:right; margin-right: 1cm;">
-
-                <a href="#" class="dropdown-toggle pull-left" data-toggle="dropdown">Filtrar<span
-                        class="caret"></span></a>
-
-                <!--MENU DA DROPDOWN-->
-                <ul class="dropdown-menu" style="color:black">
-
-                    <!--FILTRO INATIVOS-->
-
+            <div class="btn-group pull-right" style="margin-right: 40px; margin-left: 40px">
+                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Filtro</button>
+                <ul class="dropdown-menu" role="menu">
                     <input type="checkbox" id="Desativados" [(ngModel)]="Desativados" name="Desativados"
                         (click)="funcionariosInativoss(); ngOnInit()" ng-true-value="YES" ng-false-value="NO"
-                        style="margin: 5px"> <label for="Desativados"><span style="margin-left: 3px; margin-right: 7px">Funcionários inativos </span></label>
-                    <br>
-
+                        style="margin: 5px"> <label for="Desativados">Funcionários inativos</label>
                 </ul>
-            </a>
+              </div>
             <!-- FIM DO FILTRO -->
 
             <!-- PESQUISA -->
-            <a class="dropdown btn btn-success pull-right" style="float:right; margin-right: 1cm;">
-
-                <a href="#" class="dropdown-toggle pull-left" data-toggle="dropdown">Pesquisar<span
-                        class="caret"></span></a>
-
-
-                <ul class="dropdown-menu" role="menu" style="color:black">
-
+            <div class="btn-group pull-right">
+                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Pesquisar</button>
+                
+                <ul class="dropdown-menu" role="menu">
                     <div class="input-group" style="margin: 5px">
                         <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
                         <input input class="form-control" placeholder="Pesquisar" type="text" name="search"
-                            [(ngModel)]="filter" style="height: 40px; width: 250px">
+                        [(ngModel)]="filter" style="height: 40px; width: 250px">
                     </div>
                 </ul>
-            </a>
+            </div>
             <!-- FIM PESQUISA-->
             <br>
         </div>
