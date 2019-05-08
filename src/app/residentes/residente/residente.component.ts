@@ -10,6 +10,7 @@ import { NotificationService } from 'src/app/shared/notification.service';
 import { NgxSpinnerService } from 'ngx-spinner'
 import { Beneficio } from './infos-beneficios/beneficio.model';
 import { UniqueValuesValidators } from 'src/app/shared/validators/unique-values/unique-values.component';
+import { ConveniosService } from 'src/app/convenios/convenios.service';
 
 @Component({
   selector: 'salv-residente',
@@ -38,7 +39,7 @@ export class ResidenteComponent implements OnInit {
   familiares: Familiar[] = [];
   convenios: Convenio[] = [];
   beneficios: Beneficio[] = [];
-  residenteConvenios: Residente_Convenio[] = [];
+  residenteConvenios: any[] = [];
 
   familiarResidenteForm: FormGroup
   convenioResidenteForm: FormGroup
@@ -54,7 +55,8 @@ export class ResidenteComponent implements OnInit {
     private formBuilder: FormBuilder,
     private notificationService: NotificationService,
     private spinner: NgxSpinnerService,
-    private uniqueValidators: UniqueValuesValidators
+    private uniqueValidators: UniqueValuesValidators,
+    private cs: ConveniosService
   ) { }
 
   ngOnInit() {
@@ -67,13 +69,17 @@ export class ResidenteComponent implements OnInit {
         this.residente = residente
       })
 
-    this.residentesService.convenios()
+    // this.residentesService.convenios()
+    //   .subscribe(convenio => {
+    //     this.spinner.hide()
+    //     this.residenteConvenios = convenio
+    //   })
+
+    this.cs.tratados()
       .subscribe(convenio => {
         this.spinner.hide()
         this.residenteConvenios = convenio
       })
-
-      
 
     this.getFamiliar()
 
