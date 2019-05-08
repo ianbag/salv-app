@@ -23,26 +23,28 @@
     <div class="form-group">
       <a type="submit" class="btn btn-primary" [routerLink]="['/novo-acompanhamento']">Novo acompanhamento</a>
 
+
       <!-- FILTRO -->
      
-    <!-- FIM DO FILTRO -->
+      <!-- FIM DO FILTRO -->
     
         <!-- PESQUISA -->
-            <a class="dropdown btn btn-success pull-right" style="float:right; margin-right: 1cm;">
+        <div class="btn-group pull-right" style="margin-right: 40px; margin-left: 40px">
+          <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Pesquisar</button>
+          
+          <ul class="dropdown-menu" role="menu">
+              <div class="input-group" style="margin: 5px">
+                  <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+                  <input input class="form-control" placeholder="Pesquisar" type="text" name="search"
+                  [(ngModel)]="filter" style="height: 40px; width: 250px">
+              </div>
+          </ul>
+        </div>
+        <!-- FIM PESQUISA-->  
+      <br>  
 
-            <a href="#" class="dropdown-toggle pull-left" data-toggle="dropdown">Pesquisar<span class="caret"></span></a>
-
-             
-             <ul class="dropdown-menu" role="menu" style="color:black">
-
-            <div class="input-group" style="margin: 5px">
-                <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
-                <input input class="form-control" placeholder="Pesquisar" type="text" name="search" [(ngModel)]="filter" style="height: 40px; width: 250px">
-            </div>
-           </ul>
-       </a>
-       <!-- FIM PESQUISA-->
     </div>
+    <br>
 
     <div class="box box-default table-responsive no-padding" [@acompanhamentosAppeared]="acompanhamentosState">
       <h1>Visualização geral dos acompanhamentos</h1>
