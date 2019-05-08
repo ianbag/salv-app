@@ -345,19 +345,16 @@
                 </div>
               </div>
             </div-->
-            <!--DIV MODAL-->
-            <div class="col-xs-12 col-xs-12" style="margin-left: -25px">
-              <!-- Button trigger modal -->
-              <h4><strong>Endereços
-                  <!--a type="submit" data-toggle="modal" data-target="#modalEndereco">
-                  <span class="plus-itens"><i class="fa fa-plus-circle"></i></span>
-              </a--></strong></h4>
-            </div>
             <div *ngFor="let endereco of enderecos" style="margin-left: -25px">
+
+              <!--DIV MODAL-->
+              <div class="col-xs-12 col-xs-12" style="margin-left: -5px">
+                <!-- Button trigger modal -->
+                <h4><strong>Endereços</strong> <a data-toggle="modal" data-target="#modalUpdateEndereco"
+                    (click)="buscaEndereco(endereco.ENDERECO.CODIGO)">
+                    <span id="iconesForm" style="margin: 14px;"><i class="fa fa-pencil"></i></span></a></h4>
+              </div>
               <div class="col-xs-4 col-xs-12">
-                <!-- <a><span id="iconesForm"
-                    (click)="deleteEndereco(funcionario.PESSOA.CODIGO, endereco.ENDERECO.CODIGO); $event.stopPropagation()"><i
-                      class="fa fa-close"></i></span></a> -->
                 <strong>Endereço: </strong> {{endereco?.ENDERECO.ENDERECO}}
               </div>
               <div class="col-xs-4 col-xs-12">
@@ -542,6 +539,7 @@
           </div>
           <!--FIM DIV MODAL-->
           <ng-template #notLogin>
+
             <!--DIV MODAL INICIO-->
             <div class="col-sm-12 col-xs-12">
               <!-- Button trigger modal -->
@@ -553,6 +551,8 @@
                   </button>
                 </div>
               </div>
+
+
               <!-- Modal -->
               <div class="modal fade" id="modalUsuario" tabindex="-1" role="dialog" aria-labelledby="modalUsuario"
                 aria-hidden="true">
@@ -600,7 +600,9 @@
               <!--FIM MODAL-->
             </div>
             <!--FIM DIV MODAL-->
+
           </ng-template>
+
         </div>
       </div>
     </div>
