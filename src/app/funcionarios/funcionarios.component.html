@@ -17,13 +17,15 @@
             <!-- FILTRO -->
             <div class="btn-group pull-right" style="margin-right: 40px; margin-left: 40px">
                 <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Filtro</button>
-                <ul class="dropdown-menu" role="menu">
-                    <input type="checkbox" id="Desativados" [(ngModel)]="Desativados" name="Desativados"
-                        (click)="funcionariosInativoss(); ngOnInit()" ng-true-value="YES" ng-false-value="NO"
-                        style="margin: 5px"> <label for="Desativados">Funcionários inativos</label>
-                </ul>
-              </div>
-            <!-- FIM DO FILTRO -->
+
+                    <ul class="dropdown-menu" role="menu">
+                        <input type="checkbox" id="Desativados" [(ngModel)]="Desativados" name="Desativados"
+                        (click)="funcionariosInativoss(); ngOnInit()" ng-true-value="YES" ng-false-value="NO">
+                        <label for="Desativados">Funcionários inativos</label>
+                    </ul>
+
+            </div>
+             <!-- FIM DO FILTRO -->
 
             <!-- PESQUISA -->
             <div class="btn-group pull-right">
