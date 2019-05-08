@@ -13,6 +13,10 @@ export class ConveniosService {
         return this.http.get<Convenio[]>(`${SALV_API}/convenio`)
     }
 
+    tratados(): Observable<Convenio[]> {
+        return this.http.get<Convenio[]>(`${SALV_API}/tratados`)
+    }
+
     conveniosDesativados(): Observable<Convenio[]> {
         return this.http.get<Convenio[]>(`${SALV_API}/convenio-desativados`)
     }

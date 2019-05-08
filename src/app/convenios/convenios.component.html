@@ -64,7 +64,7 @@
                     <tr
                         *ngFor="let convenio of convenios |  filter : filter : searchString | paginate: { itemsPerPage: 10, currentPage: paginaAtual} let i = index">
                         <td>{{convenio.NOME_CONVENIO}}</td>
-                        <td>({{convenio.DDD}}) {{convenio.TELEFONE | telefone}}</td>
+                        <td>{{convenio.TELEFONES}}</td>
                         <td>
                             <button type="submit" class="btn btn-danger botao"
                                 (click)="deleteConvenio(convenio.CODIGO); $event.stopPropagation()">Inativar</button>
