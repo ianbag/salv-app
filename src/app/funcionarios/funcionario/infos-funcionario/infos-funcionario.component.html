@@ -199,9 +199,9 @@
             <h4>
               <strong>Telefones</strong>
               <a class="icones-editar-excluir" type="submit" *ngIf="telefones.length" data-toggle="modal"
-                  data-target="#modalTelefone">
-                  <i class="fa fa-plus-circle" style="color: #00a65a;"></i>
-                </a>
+                data-target="#modalTelefone">
+                <i class="fa fa-plus-circle" style="color: #00a65a;"></i>
+              </a>
             </h4>
           </div>
           <!--FIM DIV MODAL-->
@@ -225,8 +225,8 @@
             </div>
           </div>
           <div class="col-xs-12 col-xs-12" *ngIf="!telefones.length">
-            <p>Você não possui telefones cadastros. <a type="submit" data-toggle="modal"
-                data-target="#modalTelefone" style="color: #00A65A">Cadastre um aqui</a></p>
+            <p>Você não possui telefones cadastros. <a type="submit" data-toggle="modal" data-target="#modalTelefone"
+                style="color: #00A65A">Cadastre um aqui</a></p>
             <!-- <p>Você não possui telefones cadastros. Cadastre um no +</p> -->
           </div>
           <!--FINAL TELEFONES-->
@@ -358,7 +358,6 @@
                 <!-- <a><span id="iconesForm"
                     (click)="deleteEndereco(funcionario.PESSOA.CODIGO, endereco.ENDERECO.CODIGO); $event.stopPropagation()"><i
                       class="fa fa-close"></i></span></a> -->
-
                 <strong>Endereço: </strong> {{endereco?.ENDERECO.ENDERECO}}
               </div>
               <div class="col-xs-4 col-xs-12">
@@ -366,16 +365,7 @@
               </div>
               <div class="col-xs-4 col-xs-12">
                 <strong>Bairro: </strong> {{endereco?.ENDERECO.BAIRRO}}
-
-                <a data-toggle="modal" data-target="#modalUpdateEndereco"
-                  (click)="buscaEndereco(endereco.ENDERECO.CODIGO)">
-                  <span id="iconesForm" style="margin: 14px"><i class="fa fa-pencil"></i>
-                  </span></a>
-
               </div>
-
-
-
               <div class="col-xs-4 col-xs-12" *ngIf="endereco.ENDERECO.COMPLEMENTO">
                 <strong>Complemento: </strong> {{endereco?.ENDERECO.COMPLEMENTO}}
               </div>
@@ -391,9 +381,6 @@
               <div class="col-xs-4 col-xs-12" *ngIf="endereco.ENDERECO.REFERENCIA">
                 <strong>Referência: </strong> {{endereco?.ENDERECO.REFERENCIA}}
               </div>
-
-
-
             </div>
 
             <!--DIV MODAL-->
@@ -497,7 +484,8 @@
             <div class="col-sm-12 col-xs-12" style="margin-left: -15px">
               <h4>
                 <strong>Informações de login</strong>
-                <a class="icones-editar-excluir" data-toggle="modal" data-target="#modalUpdateUsuario" (click)="buscaUsuario()"><span id="iconesForm">
+                <a class="icones-editar-excluir" data-toggle="modal" data-target="#modalUpdateUsuario"
+                  (click)="buscaUsuario()"><span id="iconesForm">
                     <i class="fa fa-pencil" style="color: #f39c12;"></i></span></a>
               </h4>
             </div>
@@ -554,20 +542,17 @@
           </div>
           <!--FIM DIV MODAL-->
           <ng-template #notLogin>
-
             <!--DIV MODAL INICIO-->
             <div class="col-sm-12 col-xs-12">
               <!-- Button trigger modal -->
               <div class="nao-possui-add">
-                  <p>Você não possui usuário cadastrado</p>
-                  <div class="col-ms-12">
-                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalUsuario">
-                      Adicionar usuário
-                    </button>
-                  </div>
+                <p>Você não possui usuário cadastrado</p>
+                <div class="col-ms-12">
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalUsuario">
+                    Adicionar usuário
+                  </button>
+                </div>
               </div>
-              
-              
               <!-- Modal -->
               <div class="modal fade" id="modalUsuario" tabindex="-1" role="dialog" aria-labelledby="modalUsuario"
                 aria-hidden="true">
@@ -615,9 +600,7 @@
               <!--FIM MODAL-->
             </div>
             <!--FIM DIV MODAL-->
-
           </ng-template>
-
         </div>
       </div>
     </div>
