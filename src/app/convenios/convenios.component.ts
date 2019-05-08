@@ -37,6 +37,7 @@ export class ConveniosComponent implements OnInit {
 
   ngOnInit() {
     this.spinner.show()
+
     this.conveniosService.convenios()
       .subscribe(convenios => {
         this.spinner.hide();
@@ -44,13 +45,11 @@ export class ConveniosComponent implements OnInit {
         console.log('CONVENIOS', convenios)
       })
 
-
   }
 
   conveniosDesativadoss() {
     this.conveniosService.conveniosDesativados()
       .subscribe(conveniosDesativados => {
-
         this.conveniosDesativados = conveniosDesativados
         console.log('conveniosDesativados', conveniosDesativados)
       })
