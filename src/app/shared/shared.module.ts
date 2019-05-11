@@ -1,5 +1,5 @@
 //Modules
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
@@ -12,6 +12,22 @@ import { FilterPipeModule } from 'ngx-filter-pipe';
 //Components
 import { InputComponent } from './input/input.component';
 import { SnackbarComponent } from './snackbar/snackbar.component';
+
+//Services
+import { CookieService } from 'ngx-cookie-service';
+import { ResidentesService } from './../residentes/residentes.service';
+import { ConveniosService } from './../convenios/convenios.service';
+import { DialogConfirmService } from 'src/app/residentes/dialog-confirm.service';
+import { AcompanhamentosService } from './../acompanhamentos/acompanhamentos.service';
+import { FuncionariosService } from './../funcionarios/funcionarios.service';
+import { LoginService } from './../auth/login/login.service';
+import { AuthGuardService } from 'src/app/auth/auth-guard.service';
+import { NotificationService } from 'src/app/shared/notification.service';
+import { TelaInicialService } from './../tela-inicial/tela-inicial.service';
+import { NovoAcompanhamentoService } from './../acompanhamentos/novo-acompanhamento/novo-acompanhamento.service';
+import { ForgetService } from './../auth/forget-password/forget.service';
+import { ResetService } from './../auth/reset-password/reset.service';
+import { ValidatorService } from 'src/app/shared/validators/validator.service';
 
 //Pipes
 import { ApelidoPipe } from './pipes/apelido.pipe';
@@ -137,4 +153,26 @@ import { ValorInssPipe } from './pipes/inss/valor-inss.pipe';
         ValorInssPipe
     ]
 })
-export class SharedModule { }
+export class SharedModule {
+    static forRoot(): ModuleWithProviders {
+        return {
+            ngModule: SharedModule,
+            providers: [
+                CookieService,
+                ResidentesService,
+                ConveniosService,
+                DialogConfirmService,
+                AcompanhamentosService,
+                FuncionariosService,
+                LoginService,
+                AuthGuardService,
+                NotificationService,
+                TelaInicialService,
+                NovoAcompanhamentoService,
+                ForgetService,
+                ResetService,
+                ValidatorService,
+            ]
+        }
+    }
+}
