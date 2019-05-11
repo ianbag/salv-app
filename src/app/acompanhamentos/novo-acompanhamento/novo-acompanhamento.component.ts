@@ -162,11 +162,11 @@ export class NovoAcompanhamentoComponent implements OnInit {
           this.ns.notify(`Houve um erro! ${error.message}`)
         })
       } else {
-        let acompanhamento = res.CODIGO
+
         i = 1
         console.log("re", this.NovoAcompanhamentoFuncionario)
         this.ns.notify(`Acompanhamento inserido com sucesso!`)
-        this.router.navigate([`/acompanhamentos/${acompanhamento}`])
+        this.router.navigate([`/acompanhamentos`])
       }
       if (this.novoAcompanhamentoForm.valid == true) {
         this.ns.notify(`Acompanhamento inserido com sucesso!`)

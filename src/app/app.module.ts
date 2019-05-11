@@ -55,6 +55,7 @@ import { InfosBeneficiosComponent } from './residentes/residente/infos-beneficio
 
 import { LocationStrategy, HashLocationStrategy } from '@angular/common'
 import { SharedModule } from './shared/shared.module';
+import { CurrencyMaskModule } from "ng2-currency-mask";
 
 // import { AuthInterceptor } from './auth/auth-interceptor.service';
 
@@ -80,7 +81,7 @@ import { SharedModule } from './shared/shared.module';
     InfosPessoaisComponent,
     InfosFamiliarComponent,
     InfosConvenioComponent,
-    InfosBeneficiosComponent
+    InfosBeneficiosComponent,
     FamiliarResidenteComponent,
     ConvenioResidenteComponent,
     NovoResidenteComponent,
@@ -91,6 +92,7 @@ import { SharedModule } from './shared/shared.module';
     HttpClientModule,
     HttpModule,
     BrowserAnimationsModule,
+    CurrencyMaskModule,
     RouterModule.forRoot(ROUTES),
   ],
 

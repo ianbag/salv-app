@@ -8,7 +8,6 @@ import { NgxMaskModule } from "ngx-mask";
 import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FilterPipeModule } from 'ngx-filter-pipe';
-import { CurrencyMaskModule } from "ng2-currency-mask";
 
 //Components
 import { InputComponent } from './input/input.component';
@@ -90,8 +89,7 @@ import { ValorInssPipe } from './pipes/inss/valor-inss.pipe';
         NgxMaskModule.forRoot(),
         NgMultiSelectDropDownModule.forRoot(),
         Ng2SearchPipeModule,
-        FilterPipeModule,
-        CurrencyMaskModule
+        FilterPipeModule
     ],
     exports: [
         //Modules
