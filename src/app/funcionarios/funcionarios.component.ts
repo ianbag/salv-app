@@ -9,7 +9,6 @@ import { NotificationService } from '../shared/notification.service';
 @Component({
   selector: 'salv-funcionarios',
   templateUrl: './funcionarios.component.html',
-  styleUrls: ['./funcionarios.component.css'],
   animations: [
     trigger('funcionariosAppeared', [
       state('ready', style({ opacity: 1 })),

@@ -100,7 +100,7 @@ export class FamiliarResidenteComponent implements OnInit {
   familiarResidente(familiar: Familiar) {
     if (this.familiarResidenteForm.valid == true) {
       this.addDataServiceFamiliar(familiar)
-      this.router.navigate(['/convenio-residente'])
+      this.router.navigate(['/residentes/convenio-residente'])
     }
     else {
       this.markAllDirty(this.familiarResidenteForm)

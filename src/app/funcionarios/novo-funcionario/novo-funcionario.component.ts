@@ -27,7 +27,7 @@ export class NovoFuncionarioComponent implements OnInit {
     "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"
   ];
   estadosCivil = [
-   
+
     { value: "S", option: "Solteiro" },
     { value: "C", option: "Casado" },
     { value: "D", option: "Divorciado" },
@@ -104,7 +104,8 @@ export class NovoFuncionarioComponent implements OnInit {
             this.ns.notify(`Houve um erro! ${error.message}`)
           })
         } else {
-          this.router.navigate(['/funcionarios'])
+          let funcionario = res.CODIGO_FUNCIONARIO
+          this.router.navigate([`/funcionarios/${funcionario}`])
           this.ns.notify(`Funcionário inserido com sucesso!`)
         }
       })
