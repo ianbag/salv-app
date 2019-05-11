@@ -1,6 +1,13 @@
 import { NgModule } from '@angular/core'
 
-@NgModule({
+//Components
+import { InputComponent } from './input/input.component'
+import { SnackbarComponent } from './snackbar/snackbar.component'
 
+@NgModule({
+    declarations: [
+        InputComponent,
+        SnackbarComponent
+    ]
 })
 export class SharedModule { }
