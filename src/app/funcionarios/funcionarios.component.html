@@ -9,7 +9,8 @@
 
 <!-- Main content -->
 <section class="content">
-    <button class="btn btn-success" (click)="reportFuncionarios()" id="printReport"><i class="fa fa-print"></i></button>
+    <button class="btn btn-success" *ngIf="!Desativados" (click)="reportFuncionarios(1)" id="printReport"><i class="fa fa-print"></i></button>
+    <button class="btn btn-success" *ngIf="Desativados" (click)="reportFuncionarios(0)" id="printReport"><i class="fa fa-print"></i></button>
     <div>
         <div class="form-group">
             <a type="submit" class="btn btn-primary" [routerLink]="['/funcionarios/novo-funcionario']">Novo funcionário</a>
@@ -20,7 +21,7 @@
 
                     <ul class="dropdown-menu" role="menu">
                         <input type="checkbox" id="Desativados" [(ngModel)]="Desativados" name="Desativados"
-                        (click)="funcionariosInativoss(); ngOnInit()" ng-true-value="YES" ng-false-value="NO">
+                        (click)="funcionariosInativoss()" ng-true-value="YES" ng-false-value="NO">
                         <label for="Desativados">Funcionários inativos</label>
                     </ul>
 
@@ -111,7 +112,7 @@
                     </tr>
                 </table>
                 <div class="botao">
-                    <label for="Desativados"> <a class=" btn btn-success botao ">Voltar para ativos</a></label>
+                    <label for="Desativados"> <a class="btn btn-success botao">Voltar para ativos</a></label>
                 </div>
             </div>
 

@@ -47,7 +47,6 @@ export class FuncionariosComponent implements OnInit {
   funcionariosInativoss() {
     this.funcionariosService.funcionariosInativos()
       .subscribe(funcionariosInativos => {
-
         this.funcionariosInativos = funcionariosInativos
         console.log('FUNCIONARIOS', funcionariosInativos)
       })
@@ -76,9 +75,9 @@ export class FuncionariosComponent implements OnInit {
       })
   }
 
-  reportFuncionarios() {
+  reportFuncionarios(status) {
     this.spinner.show()
-    this.funcionariosService.reportFuncionarios().subscribe(x => {
+    this.funcionariosService.reportFuncionarios(status).subscribe(x => {
       var newBlob = new Blob([x], { type: 'application/pdf' })
 
       if (window.navigator && window.navigator.msSaveOrOpenBlob) {
