@@ -28,14 +28,11 @@ import { AniversarianteComponent } from './tela-inicial/aniversariantes/aniversa
 import { InfosConvenioComponent } from './residentes/residente/infos-convenio/infos-convenio.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { DialogConfirmService } from './residentes/dialog-confirm.service';
-import { AcompanhamentosComponent } from './acompanhamentos/acompanhamentos.component';
-import { AcompanhamentoComponent } from './acompanhamentos/acompanhamento/acompanhamento.component';
 import { AcompanhamentosService } from './acompanhamentos/acompanhamentos.service';
 import { NovoResidenteComponent } from './residentes/novo-residente/novo-residente.component';
 import { FamiliarResidenteComponent } from './residentes/novo-residente/familiar-residente/familiar-residente.component';
 
 import { ConvenioResidenteComponent } from './residentes/novo-residente/convenio-residente/convenio-residente.component';
-import { NovoAcompanhamentoComponent } from './acompanhamentos/novo-acompanhamento/novo-acompanhamento.component';
 
 import { FuncionariosService } from './funcionarios/funcionarios.service';
 
@@ -69,26 +66,24 @@ import { SharedModule } from './shared/shared.module';
     SidebarComponent,
     FooterComponent,
     TelaInicialComponent,
-    ResidentesComponent,
-    ResidenteComponent,
-    InfosPessoaisComponent,
-    InfosFamiliarComponent,
     AniversariantesComponent,
-    ProvaDeVidaComponent,
     AniversarianteComponent,
-    InfosConvenioComponent,
-    AcompanhamentosComponent,
+    ProvaDeVidaComponent,
     NotFoundComponent,
-    AcompanhamentoComponent,
-    NovoResidenteComponent,
-    FamiliarResidenteComponent,
-    ConvenioResidenteComponent,
-    NovoAcompanhamentoComponent,
     LoginComponent,
     UserDetailsComponent,
     ForgetPasswordComponent,
     ResetPasswordComponent,
+
+    ResidentesComponent,
+    ResidenteComponent,
+    InfosPessoaisComponent,
+    InfosFamiliarComponent,
+    InfosConvenioComponent,
     InfosBeneficiosComponent
+    FamiliarResidenteComponent,
+    ConvenioResidenteComponent,
+    NovoResidenteComponent,
   ],
   imports: [
     SharedModule,
