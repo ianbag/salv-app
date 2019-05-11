@@ -15,24 +15,15 @@ import { HeaderComponent } from './fixed-elements/header/header.component';
 import { SidebarComponent } from './fixed-elements/sidebar/sidebar.component';
 import { FooterComponent } from './fixed-elements/footer/footer.component';
 import { TelaInicialComponent } from './tela-inicial/tela-inicial.component';
-import { ResidentesComponent } from './residentes/residentes.component';
 import { ResidentesService } from './residentes/residentes.service';
-import { ResidenteComponent } from './residentes/residente/residente.component';
-import { InfosPessoaisComponent } from './residentes/residente/infos-pessoais/infos-pessoais.component';
 
-import { InfosFamiliarComponent } from './residentes/residente/infos-familiar/infos-familiar.component';
 import { ConveniosService } from './convenios/convenios.service';
 import { AniversariantesComponent } from './tela-inicial/aniversariantes/aniversariantes.component';
 import { ProvaDeVidaComponent } from './tela-inicial/prova-de-vida/prova-de-vida.component';
 import { AniversarianteComponent } from './tela-inicial/aniversariantes/aniversariante/aniversariante.component';
-import { InfosConvenioComponent } from './residentes/residente/infos-convenio/infos-convenio.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { DialogConfirmService } from './residentes/dialog-confirm.service';
 import { AcompanhamentosService } from './acompanhamentos/acompanhamentos.service';
-import { NovoResidenteComponent } from './residentes/novo-residente/novo-residente.component';
-import { FamiliarResidenteComponent } from './residentes/novo-residente/familiar-residente/familiar-residente.component';
-
-import { ConvenioResidenteComponent } from './residentes/novo-residente/convenio-residente/convenio-residente.component';
 
 import { FuncionariosService } from './funcionarios/funcionarios.service';
 
@@ -50,8 +41,6 @@ import { AuthGuardService } from './auth/auth-guard.service';
 
 import { ValidatorService } from './shared/validators/validator.service';
 import { CookieService } from 'ngx-cookie-service'
-
-import { InfosBeneficiosComponent } from './residentes/residente/infos-beneficios/infos-beneficios.component';
 
 import { LocationStrategy, HashLocationStrategy } from '@angular/common'
 import { SharedModule } from './shared/shared.module';
@@ -75,16 +64,6 @@ import { CurrencyMaskModule } from "ng2-currency-mask";
     UserDetailsComponent,
     ForgetPasswordComponent,
     ResetPasswordComponent,
-
-    ResidentesComponent,
-    ResidenteComponent,
-    InfosPessoaisComponent,
-    InfosFamiliarComponent,
-    InfosConvenioComponent,
-    InfosBeneficiosComponent,
-    FamiliarResidenteComponent,
-    ConvenioResidenteComponent,
-    NovoResidenteComponent,
   ],
   imports: [
     SharedModule,
