@@ -44,7 +44,6 @@ import { CookieService } from 'ngx-cookie-service'
 
 import { LocationStrategy, HashLocationStrategy } from '@angular/common'
 import { SharedModule } from './shared/shared.module';
-import { CurrencyMaskModule } from "ng2-currency-mask";
 
 // import { AuthInterceptor } from './auth/auth-interceptor.service';
 
@@ -71,7 +70,6 @@ import { CurrencyMaskModule } from "ng2-currency-mask";
     HttpClientModule,
     HttpModule,
     BrowserAnimationsModule,
-    CurrencyMaskModule,
     RouterModule.forRoot(ROUTES),
   ],
 
