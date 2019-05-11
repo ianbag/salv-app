@@ -14,6 +14,14 @@ import { NovoResidenteComponent } from './novo-residente/novo-residente.componen
 import { FamiliarResidenteComponent } from './novo-residente/familiar-residente/familiar-residente.component';
 import { ConvenioResidenteComponent } from './novo-residente/convenio-residente/convenio-residente.component';
 
+//Routes
+const ROUTES: Routes = [
+    { path: '', component: ResidentesComponent },
+    { path: 'novo-residente', component: NovoResidenteComponent },
+    { path: 'familiar-residente', component: FamiliarResidenteComponent },
+    { path: 'convenio-residente', component: ConvenioResidenteComponent },
+    { path: ':id', component: InfosPessoaisComponent }
+]
 
 @NgModule({
     declarations: [
@@ -28,7 +36,8 @@ import { ConvenioResidenteComponent } from './novo-residente/convenio-residente/
         ConvenioResidenteComponent
     ],
     imports: [
-        SharedModule
+        SharedModule,
+        RouterModule.forChild(ROUTES)
     ]
 })
 export class ResidenteModule { }
