@@ -5,10 +5,8 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler, LOCALE_ID } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { CurrencyMaskModule } from "ng2-currency-mask";
 
@@ -30,8 +28,6 @@ import { ProvaDeVidaComponent } from './tela-inicial/prova-de-vida/prova-de-vida
 import { AniversarianteComponent } from './tela-inicial/aniversariantes/aniversariante/aniversariante.component';
 import { InfosConvenioComponent } from './residentes/residente/infos-convenio/infos-convenio.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { FuncionariosComponent } from './funcionarios/funcionarios.component';
-import { FuncionarioComponent } from './funcionarios/funcionario/funcionario.component';
 import { DialogConfirmService } from './residentes/dialog-confirm.service';
 import { AcompanhamentosComponent } from './acompanhamentos/acompanhamentos.component';
 import { AcompanhamentoComponent } from './acompanhamentos/acompanhamento/acompanhamento.component';
@@ -49,9 +45,6 @@ import { LoginService } from './auth/login/login.service';
 import { GlobalErrorHandler } from './app.global-error-handler';
 
 import { TelaInicialService } from './tela-inicial/tela-inicial.service';
-import { InfosFuncionarioComponent } from './funcionarios/funcionario/infos-funcionario/infos-funcionario.component';
-import { InfosDependenteComponent } from './funcionarios/funcionario/infos-dependente/infos-dependente.component';
-import { NovoFuncionarioComponent } from './funcionarios/novo-funcionario/novo-funcionario.component';
 import { ForgetPasswordComponent } from './auth/forget-password/forget-password.component';
 import { ForgetService } from './auth/forget-password/forget.service';
 import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
@@ -86,8 +79,6 @@ import { SharedModule } from './shared/shared.module';
     AniversarianteComponent,
     InfosConvenioComponent,
     NotFoundComponent,
-    FuncionariosComponent,
-    FuncionarioComponent,
     InfosConvenioComponent,
     NotFoundComponent,
     InfosConvenioComponent,
@@ -102,10 +93,6 @@ import { SharedModule } from './shared/shared.module';
     NovoAcompanhamentoComponent,
     LoginComponent,
     UserDetailsComponent,
-    NovoFuncionarioComponent,
-    InfosFuncionarioComponent,
-    InfosDependenteComponent,
-    NovoFuncionarioComponent,
     ForgetPasswordComponent,
     ResetPasswordComponent,
     InfosBeneficiosComponent
@@ -137,7 +124,6 @@ import { SharedModule } from './shared/shared.module';
     ResetService,
     ValidatorService,
     { provide: LocationStrategy, useClass: HashLocationStrategy },
-    // { provide: LOCALE_ID, useValue: 'pt-BR' },
     // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: ErrorHandler, useClass: GlobalErrorHandler }
   ],
