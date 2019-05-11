@@ -9,10 +9,12 @@ import { NovoConvenioComponent } from './novo-convenio/novo-convenio.component';
 
 @NgModule({
     declarations: [
-
+        ConveniosComponent,
+        ConvenioComponent,
+        NovoConvenioComponent
     ],
     imports: [
-
+        SharedModule
     ]
 })
 export class ConvenioModule { }
