@@ -17,17 +17,17 @@ import { SnackbarComponent } from './snackbar/snackbar.component';
 import { CookieService } from 'ngx-cookie-service';
 import { ResidentesService } from './../residentes/residentes.service';
 import { ConveniosService } from './../convenios/convenios.service';
-import { DialogConfirmService } from 'src/app/residentes/dialog-confirm.service';
+import { DialogConfirmService } from './../residentes/dialog-confirm.service';
 import { AcompanhamentosService } from './../acompanhamentos/acompanhamentos.service';
 import { FuncionariosService } from './../funcionarios/funcionarios.service';
 import { LoginService } from './../auth/login/login.service';
-import { AuthGuardService } from 'src/app/auth/auth-guard.service';
-import { NotificationService } from 'src/app/shared/notification.service';
+import { AuthGuardService } from './../auth/auth-guard.service';
+import { NotificationService } from './notification.service';
 import { TelaInicialService } from './../tela-inicial/tela-inicial.service';
 import { NovoAcompanhamentoService } from './../acompanhamentos/novo-acompanhamento/novo-acompanhamento.service';
 import { ForgetService } from './../auth/forget-password/forget.service';
 import { ResetService } from './../auth/reset-password/reset.service';
-import { ValidatorService } from 'src/app/shared/validators/validator.service';
+import { ValidatorService } from './validators/validator.service';
 
 //Pipes
 import { ApelidoPipe } from './pipes/apelido.pipe';
