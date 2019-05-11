@@ -1,9 +1,3 @@
-import { CartaoSUSPipe } from './shared/pipes/cartaoSUS.pipe';
-import { CepPipe } from './shared/pipes/cep.pipe';
-import { TituloEleitorPipe } from './shared/pipes/eleitoral/titulo-eleitor.pipe';
-import { ZonaEleitoralPipe } from './shared/pipes/eleitoral/zona-eleitoral.pipe'
-import { SecaoEleitoralPipe } from './shared/pipes/eleitoral/secao-eleitoral.pipe'
-import { SearchPipe } from './shared/pipes/filtroData.pipe';
 import { NovoAcompanhamentoService } from './acompanhamentos/novo-acompanhamento/novo-acompanhamento.service';
 import { UserDetailsComponent } from './fixed-elements/header/user-details/user-details.component';
 import { NotificationService } from './shared/notification.service';
@@ -29,14 +23,7 @@ import { ResidentesComponent } from './residentes/residentes.component';
 import { ResidentesService } from './residentes/residentes.service';
 import { ResidenteComponent } from './residentes/residente/residente.component';
 import { InfosPessoaisComponent } from './residentes/residente/infos-pessoais/infos-pessoais.component';
-import { SexoPipe } from './shared/pipes/sexo.pipe';
-import { EscolaridadePipe } from './shared/pipes/escolaridade.pipe';
-import { EstadoCivilPipe } from './shared/pipes/estado-civil.pipe';
 
-import { TelefonePipe } from './shared/pipes/telefone.pipe';
-import { ReligiaoPipe } from './shared/pipes/religiao.pipe';
-import { CpfPipe } from './shared/pipes/cpf.pipe';
-import { RgPipe } from './shared/pipes/rg.pipe';
 import { InfosFamiliarComponent } from './residentes/residente/infos-familiar/infos-familiar.component';
 import { ConveniosComponent } from './convenios/convenios.component';
 import { ConveniosService } from './convenios/convenios.service';
@@ -54,7 +41,6 @@ import { AcompanhamentosComponent } from './acompanhamentos/acompanhamentos.comp
 import { AcompanhamentoComponent } from './acompanhamentos/acompanhamento/acompanhamento.component';
 import { AcompanhamentosService } from './acompanhamentos/acompanhamentos.service';
 import { NovoResidenteComponent } from './residentes/novo-residente/novo-residente.component';
-import { InputComponent } from './shared/input/input.component';
 import { FamiliarResidenteComponent } from './residentes/novo-residente/familiar-residente/familiar-residente.component';
 
 import { ConvenioResidenteComponent } from './residentes/novo-residente/convenio-residente/convenio-residente.component';
@@ -66,7 +52,6 @@ import { FuncionariosService } from './funcionarios/funcionarios.service';
 import { LoginComponent } from './auth/login/login.component';
 import { LoginService } from './auth/login/login.service';
 import { GlobalErrorHandler } from './app.global-error-handler';
-import { SnackbarComponent } from './shared/snackbar/snackbar.component';
 
 import { NovoConvenioComponent } from './convenios/novo-convenio/novo-convenio.component';
 // import { EditarConvenioComponent } from './convenios/editar-convenio/editar-convenio.component';
@@ -91,30 +76,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FilterPipeModule } from 'ngx-filter-pipe';
 import { InfosBeneficiosComponent } from './residentes/residente/infos-beneficios/infos-beneficios.component';
 
-//CERTIDAO DE NASCIMENTO PIPE
-import { CidadeCertNascPipe } from './shared/pipes/cert_nasc/cidade-cert-nasc.pipe'
-import { EstadoCertNascPipe } from './shared/pipes/cert_nasc/estado-cert-nasc.pipe'
-import { NumeroCertNascPipe } from './shared/pipes/cert_nasc/numero-cert-nasc.pipe'
-import { FolhaCertNascPipe } from './shared/pipes/cert_nasc/folha-cert-nasc.pipe'
-import { LivroCertNascPipe } from './shared/pipes/cert_nasc/livro-cert-nasc.pipe'
-//
-
-import { ApelidoPipe } from './shared/pipes/apelido.pipe'
-import { ProfissaoPipe } from './shared/pipes/profissao.pipe'
-import { DataPipe } from './shared/pipes/data.pipe'
-import { CartaoSamsPipe } from './shared/pipes/cartao-sams.pipe'
-
-//INSS PIPE
-import { NumeroInssPipe } from './shared/pipes/inss/numero-inss.pipe';
-import { SituacaoInssPipe } from './shared/pipes/inss/situacao-inss.pipe';
-import { BancoInssPipe } from './shared/pipes/inss/banco-inss.pipe'
-import { AgenciaInssPipe } from './shared/pipes/inss/agencia-inss.pipe'
-import { ContaInssPipe } from './shared/pipes/inss/conta-inss.pipe'
-import { ValorInssPipe } from './shared/pipes/inss/valor-inss.pipe'
-import { ProvaVidaInssPipe } from './shared/pipes/inss/prova-vida-inss.pipe'
-//
-
 import { LocationStrategy, HashLocationStrategy } from '@angular/common'
+import { SharedModule } from './shared/shared.module';
 
 // import { AuthInterceptor } from './auth/auth-interceptor.service';
 
@@ -129,39 +92,6 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common'
     ResidentesComponent,
     ResidenteComponent,
     InfosPessoaisComponent,
-    CartaoSUSPipe,
-    //INSS PIPE
-    NumeroInssPipe,
-    SituacaoInssPipe,
-    BancoInssPipe,
-    AgenciaInssPipe,
-    ContaInssPipe,
-    ValorInssPipe,
-    ProvaVidaInssPipe,
-    //
-    TelefonePipe,
-    CepPipe,
-    SexoPipe,
-    EscolaridadePipe,
-    SearchPipe,
-    EstadoCivilPipe,
-    ReligiaoPipe,
-    CpfPipe,
-    RgPipe,
-    TituloEleitorPipe,
-    ZonaEleitoralPipe,
-    SecaoEleitoralPipe,
-    // CERTIDAO DE NASCIMENTO PIPE
-    CidadeCertNascPipe,
-    EstadoCertNascPipe,
-    NumeroCertNascPipe,
-    LivroCertNascPipe,
-    FolhaCertNascPipe,
-    //
-    ApelidoPipe,
-    ProfissaoPipe,
-    DataPipe,
-    CartaoSamsPipe,
     InfosFamiliarComponent,
     ConveniosComponent,
     AniversariantesComponent,
@@ -170,7 +100,6 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common'
     InfosConvenioComponent,
     NotFoundComponent,
     FuncionariosComponent,
-    SnackbarComponent,
     FuncionarioComponent,
     InfosConvenioComponent,
     NotFoundComponent,
@@ -182,7 +111,6 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common'
     NotFoundComponent,
     AcompanhamentoComponent,
     NovoResidenteComponent,
-    InputComponent,
     FamiliarResidenteComponent,
     ConvenioResidenteComponent,
     NovoAcompanhamentoComponent,
@@ -203,14 +131,13 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common'
   ],
   imports: [
     NgxPaginationModule,
+    SharedModule,
     BrowserModule,
     HttpClientModule,
     HttpModule,
     BrowserAnimationsModule,
-    FormsModule,
     NgxSpinnerModule,
     Ng2SearchPipeModule,
-    ReactiveFormsModule,
     RouterModule.forRoot(ROUTES),
     NgxMaskModule.forRoot(),
     NgMultiSelectDropDownModule.forRoot(),
