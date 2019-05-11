@@ -8,6 +8,13 @@ import { AcompanhamentosComponent } from './acompanhamentos.component';
 import { AcompanhamentoComponent } from './acompanhamento/acompanhamento.component';
 import { NovoAcompanhamentoComponent } from './novo-acompanhamento/novo-acompanhamento.component';
 
+//Routes
+const ROUTES: Routes = [
+    { path: '', component: AcompanhamentosComponent },
+    { path: 'novo-acompanhamento', component: NovoAcompanhamentoComponent },
+    { path: ':id', component: AcompanhamentoComponent }
+]
+
 @NgModule({
     declarations: [
         AcompanhamentosComponent,
