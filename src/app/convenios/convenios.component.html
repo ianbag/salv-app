@@ -13,7 +13,7 @@
     <button class="btn btn-success" (click)="reportConvenios()" id="printReport"><i class="fa fa-print"></i></button>
     <div>
         <div class="form-group">
-            <a type="submit" class="btn btn-primary" [routerLink]="['/novo-convenio']">Novo convênio</a>
+            <a type="submit" class="btn btn-primary" [routerLink]="['/convenios/novo-convenio']">Novo convênio</a>
 
             <!-- FILTRO -->
             <div class="btn-group pull-right" style="margin-right: 40px; margin-left: 40px">
@@ -69,7 +69,7 @@
                             <button type="submit" class="btn btn-danger botao"
                                 (click)="deleteConvenio(convenio.CODIGO); $event.stopPropagation()">Inativar</button>
                             <a type="submit" class="btn btn-success botao"
-                                [routerLink]="['/convenios/',convenio.CODIGO]">+
+                                [routerLink]="['/convenios',convenio.CODIGO]">+
                                 Opções</a>
                         </td>
                     </tr>

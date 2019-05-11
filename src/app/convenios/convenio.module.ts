@@ -11,8 +11,8 @@ import { NovoConvenioComponent } from './novo-convenio/novo-convenio.component';
 //Routes
 const ROUTES: Routes = [
     { path: '', component: ConveniosComponent },
+    { path: 'novo-convenio', component: NovoConvenioComponent },
     { path: ':id', component: ConvenioComponent },
-    { path: 'novo-convenio', component: NovoConvenioComponent }
 ]
 
 @NgModule({
