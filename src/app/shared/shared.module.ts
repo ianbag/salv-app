@@ -1,12 +1,14 @@
 //Modules
-import { NgModule } from '@angular/core'
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/core';
 
 //Components
-import { InputComponent } from './input/input.component'
-import { SnackbarComponent } from './snackbar/snackbar.component'
+import { InputComponent } from './input/input.component';
+import { SnackbarComponent } from './snackbar/snackbar.component';
 
 //Pipes
-import { ApelidoPipe } from './pipes/apelido.pipe'
+import { ApelidoPipe } from './pipes/apelido.pipe';
 import { CartaoSamsPipe } from './pipes/cartao-sams.pipe';
 import { CartaoSUSPipe } from './pipes/cartaoSUS.pipe';
 import { CepPipe } from './pipes/cep.pipe';
@@ -38,6 +40,50 @@ import { ValorInssPipe } from './pipes/inss/valor-inss.pipe';
 
 @NgModule({
     declarations: [
+        //Components
+        InputComponent,
+        SnackbarComponent,
+        //Pipes
+        ApelidoPipe,
+        CartaoSamsPipe,
+        CartaoSUSPipe,
+        CepPipe,
+        CpfPipe,
+        DataPipe,
+        EscolaridadePipe,
+        EstadoCivilPipe,
+        SearchPipe,
+        ProfissaoPipe,
+        ReligiaoPipe,
+        RgPipe,
+        SexoPipe,
+        TelefonePipe,
+        EstadoCertNascPipe,
+        CidadeCertNascPipe,
+        FolhaCertNascPipe,
+        LivroCertNascPipe,
+        NumeroCertNascPipe,
+        SecaoEleitoralPipe,
+        TituloEleitorPipe,
+        ZonaEleitoralPipe,
+        AgenciaInssPipe,
+        BancoInssPipe,
+        ContaInssPipe,
+        NumeroInssPipe,
+        ProvaVidaInssPipe,
+        SituacaoInssPipe,
+        ValorInssPipe
+    ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule
+    ],
+    exports: [
+        //Modules
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule
         //Components
         InputComponent,
         SnackbarComponent,
