@@ -25,7 +25,6 @@ import { ResidenteComponent } from './residentes/residente/residente.component';
 import { InfosPessoaisComponent } from './residentes/residente/infos-pessoais/infos-pessoais.component';
 
 import { InfosFamiliarComponent } from './residentes/residente/infos-familiar/infos-familiar.component';
-import { ConveniosComponent } from './convenios/convenios.component';
 import { ConveniosService } from './convenios/convenios.service';
 import { AniversariantesComponent } from './tela-inicial/aniversariantes/aniversariantes.component';
 import { ProvaDeVidaComponent } from './tela-inicial/prova-de-vida/prova-de-vida.component';
@@ -35,7 +34,6 @@ import { InfosConvenioComponent } from './residentes/residente/infos-convenio/in
 import { NotFoundComponent } from './not-found/not-found.component';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 import { FuncionarioComponent } from './funcionarios/funcionario/funcionario.component';
-import { ConvenioComponent } from './convenios/convenio/convenio.component';
 import { DialogConfirmService } from './residentes/dialog-confirm.service';
 import { AcompanhamentosComponent } from './acompanhamentos/acompanhamentos.component';
 import { AcompanhamentoComponent } from './acompanhamentos/acompanhamento/acompanhamento.component';
@@ -53,7 +51,6 @@ import { LoginComponent } from './auth/login/login.component';
 import { LoginService } from './auth/login/login.service';
 import { GlobalErrorHandler } from './app.global-error-handler';
 
-import { NovoConvenioComponent } from './convenios/novo-convenio/novo-convenio.component';
 import { TelaInicialService } from './tela-inicial/tela-inicial.service';
 import { InfosFuncionarioComponent } from './funcionarios/funcionario/infos-funcionario/infos-funcionario.component';
 import { InfosDependenteComponent } from './funcionarios/funcionario/infos-dependente/infos-dependente.component';
@@ -79,86 +76,83 @@ import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    SidebarComponent,
-    FooterComponent,
-    TelaInicialComponent,
-    ResidentesComponent,
-    ResidenteComponent,
-    InfosPessoaisComponent,
-    InfosFamiliarComponent,
-    ConveniosComponent,
-    AniversariantesComponent,
-    ProvaDeVidaComponent,
-    AniversarianteComponent,
-    InfosConvenioComponent,
-    NotFoundComponent,
-    FuncionariosComponent,
-    FuncionarioComponent,
-    InfosConvenioComponent,
-    NotFoundComponent,
-    ConvenioComponent,
-    InfosConvenioComponent,
-    NotFoundComponent,
-    AcompanhamentosComponent,
-    InfosConvenioComponent,
-    NotFoundComponent,
-    AcompanhamentoComponent,
-    NovoResidenteComponent,
-    FamiliarResidenteComponent,
-    ConvenioResidenteComponent,
-    NovoAcompanhamentoComponent,
-    LoginComponent,
-    UserDetailsComponent,
-    NovoConvenioComponent,
-    NovoFuncionarioComponent,
-    InfosFuncionarioComponent,
-    InfosDependenteComponent,
-    NovoFuncionarioComponent,
-    ForgetPasswordComponent,
-    ResetPasswordComponent,
-    InfosBeneficiosComponent
-  ],
-  imports: [
-    NgxPaginationModule,
-    SharedModule,
-    BrowserModule,
-    HttpClientModule,
-    HttpModule,
-    BrowserAnimationsModule,
-    NgxSpinnerModule,
-    Ng2SearchPipeModule,
-    RouterModule.forRoot(ROUTES),
-    NgxMaskModule.forRoot(),
-    NgMultiSelectDropDownModule.forRoot(),
-    Ng2SearchPipeModule,
-    FilterPipeModule,
-    CurrencyMaskModule
-  ],
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        SidebarComponent,
+        FooterComponent,
+        TelaInicialComponent,
+        ResidentesComponent,
+        ResidenteComponent,
+        InfosPessoaisComponent,
+        InfosFamiliarComponent,
+        AniversariantesComponent,
+        ProvaDeVidaComponent,
+        AniversarianteComponent,
+        InfosConvenioComponent,
+        NotFoundComponent,
+        FuncionariosComponent,
+        FuncionarioComponent,
+        InfosConvenioComponent,
+        NotFoundComponent,
+        InfosConvenioComponent,
+        NotFoundComponent,
+        AcompanhamentosComponent,
+        InfosConvenioComponent,
+        NotFoundComponent,
+        AcompanhamentoComponent,
+        NovoResidenteComponent,
+        FamiliarResidenteComponent,
+        ConvenioResidenteComponent,
+        NovoAcompanhamentoComponent,
+        LoginComponent,
+        UserDetailsComponent,
+        NovoFuncionarioComponent,
+        InfosFuncionarioComponent,
+        InfosDependenteComponent,
+        NovoFuncionarioComponent,
+        ForgetPasswordComponent,
+        ResetPasswordComponent,
+        InfosBeneficiosComponent
+    ],
+    imports: [
+        NgxPaginationModule,
+        SharedModule,
+        BrowserModule,
+        HttpClientModule,
+        HttpModule,
+        BrowserAnimationsModule,
+        NgxSpinnerModule,
+        Ng2SearchPipeModule,
+        RouterModule.forRoot(ROUTES),
+        NgxMaskModule.forRoot(),
+        NgMultiSelectDropDownModule.forRoot(),
+        Ng2SearchPipeModule,
+        FilterPipeModule,
+        CurrencyMaskModule
+    ],
 
 
-  providers: [
-    CookieService,
-    ResidentesService,
-    ConveniosService,
-    DialogConfirmService,
-    AcompanhamentosService,
-    FuncionariosService,
-    LoginService,
-    AuthGuardService,
-    NotificationService,
-    TelaInicialService,
-    NovoAcompanhamentoService,
-    ForgetService,
-    ResetService,
-    ValidatorService,
-    { provide: LocationStrategy, useClass: HashLocationStrategy },
-    // { provide: LOCALE_ID, useValue: 'pt-BR' },
-    // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    { provide: ErrorHandler, useClass: GlobalErrorHandler }
-  ],
-  bootstrap: [AppComponent]
+    providers: [
+        CookieService,
+        ResidentesService,
+        ConveniosService,
+        DialogConfirmService,
+        AcompanhamentosService,
+        FuncionariosService,
+        LoginService,
+        AuthGuardService,
+        NotificationService,
+        TelaInicialService,
+        NovoAcompanhamentoService,
+        ForgetService,
+        ResetService,
+        ValidatorService,
+        { provide: LocationStrategy, useClass: HashLocationStrategy },
+        // { provide: LOCALE_ID, useValue: 'pt-BR' },
+        // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+        { provide: ErrorHandler, useClass: GlobalErrorHandler }
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
