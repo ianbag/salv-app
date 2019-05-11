@@ -25,6 +25,9 @@ import { CidadeCertNascPipe } from './pipes/cert_nasc/cidade-cert-nasc.pipe';
 import { FolhaCertNascPipe } from './pipes/cert_nasc/folha-cert-nasc.pipe';
 import { LivroCertNascPipe } from './pipes/cert_nasc/livro-cert-nasc.pipe';
 import { NumeroCertNascPipe } from './pipes/cert_nasc/numero-cert-nasc.pipe';
+import { SecaoEleitoralPipe } from './pipes/eleitoral/secao-eleitoral.pipe';
+import { TituloEleitorPipe } from './pipes/eleitoral/titulo-eleitor.pipe';
+import { ZonaEleitoralPipe } from './pipes/eleitoral/zona-eleitoral.pipe';
 
 @NgModule({
     declarations: [
@@ -50,7 +53,10 @@ import { NumeroCertNascPipe } from './pipes/cert_nasc/numero-cert-nasc.pipe';
         CidadeCertNascPipe,
         FolhaCertNascPipe,
         LivroCertNascPipe,
-        NumeroCertNascPipe
+        NumeroCertNascPipe,
+        SecaoEleitoralPipe,
+        TituloEleitorPipe,
+        ZonaEleitoralPipe
     ]
 })
 export class SharedModule { }
