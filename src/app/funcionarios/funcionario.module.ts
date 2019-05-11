@@ -10,6 +10,13 @@ import { InfosFuncionarioComponent } from './funcionario/infos-funcionario/infos
 import { InfosDependenteComponent } from './funcionario/infos-dependente/infos-dependente.component'
 import { NovoFuncionarioComponent } from './novo-funcionario/novo-funcionario.component'
 
+//Routes
+const ROUTES: Routes = [
+    { path: '', component: FuncionariosComponent },
+    { path: 'novo-funcionario', component: NovoFuncionarioComponent },
+    { path: ':id', component: FuncionarioComponent }
+]
+
 @NgModule({
     declarations: [
         FuncionariosComponent,
