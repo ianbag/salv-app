@@ -99,8 +99,8 @@ export class ConveniosService {
         return this.http.put<Telefone>(`${SALV_API}/telefone/${id}`, telefone)
     }
 
-    reportConvenios(): Observable<Blob> {
-        return this.http.get(`${SALV_API}/relatorio-convenios`, { responseType: 'blob' })
+    reportConvenios(status): Observable<Blob> {
+        return this.http.get(`${SALV_API}/relatorio-convenios/${status}`, { responseType: 'blob' })
     }
 
     reportConvenio(cod_conv): Observable<Blob> {

@@ -77,9 +77,9 @@ export class ConveniosComponent implements OnInit {
       })
   }
 
-  reportConvenios() {
+  reportConvenios(status) {
     this.spinner.show()
-    this.conveniosService.reportConvenios().subscribe(x => {
+    this.conveniosService.reportConvenios(status).subscribe(x => {
       var newBlob = new Blob([x], { type: 'application/pdf' })
 
       if (window.navigator && window.navigator.msSaveOrOpenBlob) {
