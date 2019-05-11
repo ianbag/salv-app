@@ -20,6 +20,11 @@ import { ReligiaoPipe } from './pipes/religiao.pipe';
 import { RgPipe } from './pipes/rg.pipe';
 import { SexoPipe } from './pipes/sexo.pipe';
 import { TelefonePipe } from './pipes/telefone.pipe';
+import { EstadoCertNascPipe } from './pipes/cert_nasc/estado-cert-nasc.pipe';
+import { CidadeCertNascPipe } from './pipes/cert_nasc/cidade-cert-nasc.pipe';
+import { FolhaCertNascPipe } from './pipes/cert_nasc/folha-cert-nasc.pipe';
+import { LivroCertNascPipe } from './pipes/cert_nasc/livro-cert-nasc.pipe';
+import { NumeroCertNascPipe } from './pipes/cert_nasc/numero-cert-nasc.pipe';
 
 @NgModule({
     declarations: [
@@ -40,7 +45,12 @@ import { TelefonePipe } from './pipes/telefone.pipe';
         ReligiaoPipe,
         RgPipe,
         SexoPipe,
-        TelefonePipe
+        TelefonePipe,
+        EstadoCertNascPipe,
+        CidadeCertNascPipe,
+        FolhaCertNascPipe,
+        LivroCertNascPipe,
+        NumeroCertNascPipe
     ]
 })
 export class SharedModule { }
