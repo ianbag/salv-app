@@ -54,14 +54,10 @@ import { LoginService } from './auth/login/login.service';
 import { GlobalErrorHandler } from './app.global-error-handler';
 
 import { NovoConvenioComponent } from './convenios/novo-convenio/novo-convenio.component';
-// import { EditarConvenioComponent } from './convenios/editar-convenio/editar-convenio.component';
 import { TelaInicialService } from './tela-inicial/tela-inicial.service';
 import { InfosFuncionarioComponent } from './funcionarios/funcionario/infos-funcionario/infos-funcionario.component';
 import { InfosDependenteComponent } from './funcionarios/funcionario/infos-dependente/infos-dependente.component';
 import { NovoFuncionarioComponent } from './funcionarios/novo-funcionario/novo-funcionario.component';
-// import { EditarAcompanhamentoComponent } from './acompanhamentos/editar-acompanhamento/editar-acompanhamento.component';
-// import { EditarFuncionarioComponent } from './funcionarios/editar-funcionario/editar-funcionario.component';
-// import { EditarResidenteComponent } from './residentes/editar-residente/editar-residente.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ForgetPasswordComponent } from './auth/forget-password/forget-password.component';
 import { ForgetService } from './auth/forget-password/forget.service';
@@ -117,14 +113,10 @@ import { SharedModule } from './shared/shared.module';
     LoginComponent,
     UserDetailsComponent,
     NovoConvenioComponent,
-    // EditarConvenioComponent,
     NovoFuncionarioComponent,
     InfosFuncionarioComponent,
     InfosDependenteComponent,
-    // EditarAcompanhamentoComponent,
     NovoFuncionarioComponent,
-    // EditarFuncionarioComponent,
-    // EditarResidenteComponent,
     ForgetPasswordComponent,
     ResetPasswordComponent,
     InfosBeneficiosComponent
