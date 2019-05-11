@@ -28,6 +28,13 @@ import { NumeroCertNascPipe } from './pipes/cert_nasc/numero-cert-nasc.pipe';
 import { SecaoEleitoralPipe } from './pipes/eleitoral/secao-eleitoral.pipe';
 import { TituloEleitorPipe } from './pipes/eleitoral/titulo-eleitor.pipe';
 import { ZonaEleitoralPipe } from './pipes/eleitoral/zona-eleitoral.pipe';
+import { AgenciaInssPipe } from './pipes/inss/agencia-inss.pipe';
+import { BancoInssPipe } from './pipes/inss/banco-inss.pipe';
+import { ContaInssPipe } from './pipes/inss/conta-inss.pipe';
+import { NumeroInssPipe } from './pipes/inss/numero-inss.pipe';
+import { ProvaVidaInssPipe } from './pipes/inss/prova-vida-inss.pipe';
+import { SituacaoInssPipe } from './pipes/inss/situacao-inss.pipe';
+import { ValorInssPipe } from './pipes/inss/valor-inss.pipe';
 
 @NgModule({
     declarations: [
@@ -56,7 +63,14 @@ import { ZonaEleitoralPipe } from './pipes/eleitoral/zona-eleitoral.pipe';
         NumeroCertNascPipe,
         SecaoEleitoralPipe,
         TituloEleitorPipe,
-        ZonaEleitoralPipe
+        ZonaEleitoralPipe,
+        AgenciaInssPipe,
+        BancoInssPipe,
+        ContaInssPipe,
+        NumeroInssPipe,
+        ProvaVidaInssPipe,
+        SituacaoInssPipe,
+        ValorInssPipe
     ]
 })
 export class SharedModule { }
