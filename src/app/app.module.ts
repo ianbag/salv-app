@@ -8,7 +8,6 @@ import { NgModule, ErrorHandler, LOCALE_ID } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { RouterModule } from "@angular/router";
-import { CurrencyMaskModule } from "ng2-currency-mask";
 
 import { ROUTES } from "./app.routes";
 
@@ -104,7 +103,6 @@ import { SharedModule } from './shared/shared.module';
     HttpModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(ROUTES),
-    CurrencyMaskModule
   ],
 
 
