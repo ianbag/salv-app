@@ -12,7 +12,7 @@
     <button class="btn btn-success" (click)="reportFuncionarios()" id="printReport"><i class="fa fa-print"></i></button>
     <div>
         <div class="form-group">
-            <a type="submit" class="btn btn-primary" [routerLink]="['/novo-funcionario']">Novo funcionário</a>
+            <a type="submit" class="btn btn-primary" [routerLink]="['/funcionarios/novo-funcionario']">Novo funcionário</a>
 
             <!-- FILTRO -->
             <div class="btn-group pull-right" style="margin-right: 40px; margin-left: 40px">
@@ -71,7 +71,7 @@
                             <!-- <a type="submit" class="btn btn-warning botao"
                             [routerLink]="['/editar-funcionario', funcionario.CODIGO]">Editar</a> -->
                             <a type="submit" class="btn btn-success botao"
-                                [routerLink]="['/funcionario',funcionario.CODIGO]">+ Opções</a>
+                                [routerLink]="['/funcionarios',funcionario.CODIGO]">+ Opções</a>
                         </td>
                     </tr>
                 </table>
@@ -106,7 +106,7 @@
                             <a type="submit" class="btn btn-primary botao"
                                 (click)="ativarFuncionario(funcionario.CODIGO); $event.stopPropagation()">Ativar</a>
                             <a type="submit" class="btn btn-success botao"
-                                [routerLink]="['/funcionario',funcionario.CODIGO]">+ Opções</a>
+                                [routerLink]="['/funcionarios',funcionario.CODIGO]">+ Opções</a>
                         </td>
                     </tr>
                 </table>
