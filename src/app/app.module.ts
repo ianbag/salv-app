@@ -70,7 +70,7 @@ import { SharedModule } from './shared/shared.module';
     HttpClientModule,
     HttpModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(ROUTES),
+    RouterModule.forRoot(ROUTES)
   ],
 
 

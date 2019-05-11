@@ -21,24 +21,24 @@ const ROUTES: Routes = [
     { path: 'novo-residente', component: NovoResidenteComponent },
     { path: 'familiar-residente', component: FamiliarResidenteComponent },
     { path: 'convenio-residente', component: ConvenioResidenteComponent },
-    { path: ':id', component: InfosPessoaisComponent }
+    { path: ':id', component: ResidenteComponent }
 ]
 
 @NgModule({
     declarations: [
         ResidentesComponent,
         ResidenteComponent,
-        InfosPessoaisComponent,
         InfosFamiliarComponent,
-        InfosConvenioComponent,
         InfosBeneficiosComponent,
+        InfosConvenioComponent,
+        InfosPessoaisComponent,
         NovoResidenteComponent,
         FamiliarResidenteComponent,
         ConvenioResidenteComponent
     ],
     imports: [
         SharedModule,
-        CurrencyMaskModule, 
+        CurrencyMaskModule,
         RouterModule.forChild(ROUTES)
     ]
 })
