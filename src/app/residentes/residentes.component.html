@@ -8,7 +8,8 @@
 </style>
 <!-- Main content -->
 <section class="content">
-  <button class="btn btn-success" (click)="reportResidentes()" id="printReport"><i class="fa fa-print"></i></button>
+  <button class="btn btn-success" *ngIf="!Desativados" (click)="reportResidentes(1)" id="printReport"><i class="fa fa-print"></i></button>
+  <button class="btn btn-success" *ngIf="Desativados" (click)="reportResidentes(0)" id="printReport"><i class="fa fa-print"></i></button>
   <div>
 
     <div class="form-group">

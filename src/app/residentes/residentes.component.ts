@@ -86,9 +86,9 @@ export class ResidentesComponent implements OnInit {
       })
   }
 
-  reportResidentes() {
+  reportResidentes(status) {
     this.spinner.show()
-    this.residentesService.reportResidentes().subscribe(x => {
+    this.residentesService.reportResidentes(status).subscribe(x => {
       var newBlob = new Blob([x], { type: 'application/pdf' })
 
       if (window.navigator && window.navigator.msSaveOrOpenBlob) {
