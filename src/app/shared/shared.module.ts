@@ -2,6 +2,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxMaskModule } from "ngx-mask";
+import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { FilterPipeModule } from 'ngx-filter-pipe';
 
 //Components
 import { InputComponent } from './input/input.component';
@@ -77,13 +83,25 @@ import { ValorInssPipe } from './pipes/inss/valor-inss.pipe';
     imports: [
         CommonModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        NgxSpinnerModule,
+        NgxPaginationModule,
+        NgxMaskModule.forRoot(),
+        NgMultiSelectDropDownModule.forRoot(),
+        Ng2SearchPipeModule,
+        FilterPipeModule
     ],
     exports: [
         //Modules
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
+        NgxSpinnerModule,
+        NgxPaginationModule,
+        NgxMaskModule,
+        NgMultiSelectDropDownModule,
+        Ng2SearchPipeModule,
+        FilterPipeModule,
         //Components
         InputComponent,
         SnackbarComponent,
