@@ -33,16 +33,21 @@
 
           <div class="col-sm-4 col-xs-12">
             <br>
-            <label>Número do Convênio</label>
-            <input type="text" class="form-control" formControlName="NUMERO_CONVENIO"
+            <salv-input-container errorMessage="Campo Obrigatório" label="Número do convênio">
+                <span class="text-danger">*</span>
+                <input type="text" class="form-control" formControlName="NUMERO_CONVENIO"
               placeholder="Nº de inscrição do convênio" autocomplete="off" maxlength="11">
+              </salv-input-container>
+            
           </div>
 
           <div class="col-sm-4 col-xs-12">
             <br>
-            <label>Nome do Titular</label>
-            <input type="text" class="form-control" formControlName="TITULAR_CONVENIO" placeholder="Nome do Titular"
+            <salv-input-container errorMessage="Campo Obrigatório" label="Nome do titular">
+                <span class="text-danger">*</span>
+                <input type="text" class="form-control" formControlName="TITULAR_CONVENIO" placeholder="Nome do Titular"
               autocomplete="off" maxlength="100">
+              </salv-input-container>
           </div>
 
           <div class="col-sm-4 col-xs-12">
