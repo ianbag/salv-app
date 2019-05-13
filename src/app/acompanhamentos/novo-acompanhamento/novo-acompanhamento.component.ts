@@ -31,6 +31,7 @@ export class NovoAcompanhamentoComponent implements OnInit {
 
   ACOMPANHAMENTO_CODIGOi = 1
   ACOMPANHAMENTO_CODIGO
+  public maxATIVIDADELength
 
 
   novoacompanhamentoState = 'ready'
@@ -83,7 +84,7 @@ export class NovoAcompanhamentoComponent implements OnInit {
 
 
     //Residentes List    
-   
+
     this.NovoAcompanhamentoService.residentes()
       .subscribe(residentes => {
 
@@ -106,17 +107,17 @@ export class NovoAcompanhamentoComponent implements OnInit {
 
 
 
-    this.NovoAcompanhamentoService.codigoAcompanhamento().subscribe(codigo => {  
+    this.NovoAcompanhamentoService.codigoAcompanhamento().subscribe(codigo => {
       this.ACOMPANHAMENTO_CODIGO = codigo
 
-      if( this.ACOMPANHAMENTO_CODIGO[0].ACOMPANHAMENTO_CODIGO == null){
+      if (this.ACOMPANHAMENTO_CODIGO[0].ACOMPANHAMENTO_CODIGO == null) {
 
-        this.ACOMPANHAMENTO_CODIGO[0] = {"ACOMPANHAMENTO_CODIGO":"1"}
-       }
+        this.ACOMPANHAMENTO_CODIGO[0] = { "ACOMPANHAMENTO_CODIGO": "1" }
+      }
       console.log('Codigo acompanhamento', this.ACOMPANHAMENTO_CODIGO)
     })
 
-   
+
 
 
 
@@ -152,70 +153,70 @@ export class NovoAcompanhamentoComponent implements OnInit {
   }
 
 
-   novoAcompanhamento(acompanhamento: Acompanhamento) {
- 
+  novoAcompanhamento(acompanhamento: Acompanhamento) {
+
     this.NovoAcompanhamentoService.createAcompanhamento(acompanhamento).subscribe(res => {
       if (res['errors']) {
         res['errors'].forEach(error => {
           console.log('Houve um erro!', error)
           this.ns.notify(`Houve um erro! ${error.message}`)
         })
-      } else {     
-      
+      } else {
+
         i = 1
         console.log("re", this.NovoAcompanhamentoFuncionario)
         this.ns.notify(`Acompanhamento inserido com sucesso!`)
+        this.router.navigate([`/acompanhamentos`])
+      }
+      if (this.novoAcompanhamentoForm.valid == true) {
+        this.ns.notify(`Acompanhamento inserido com sucesso!`)
         this.router.navigate(['/acompanhamentos'])
-      }      
-      if (this.novoAcompanhamentoForm.valid == true){
-      this.ns.notify(`Acompanhamento inserido com sucesso!`)
-      this.router.navigate(['/acompanhamentos'])
-    
-      }else {
-      this.markAllDirty(this.novoAcompanhamentoForm)
-      console.log(this.novoAcompanhamentoForm.controls)
-      this.ns.notify(`Preencha os campos obrigatórios!`)
-    }
-    
-    }) 
-  
-   
-  } 
-  
+
+      } else {
+        this.markAllDirty(this.novoAcompanhamentoForm)
+        console.log(this.novoAcompanhamentoForm.controls)
+        this.ns.notify(`Preencha os campos obrigatórios!`)
+      }
+
+    })
+
+
+  }
+
 
 
 
   NovoAcompanhamentoFuncionario(acompanhamento_funcionario: Acompanhamento_Funcionario[]) {
-    
+
     for (let index = 0; index < this.novoAcompanhamentoForm.value.funcionarios.length; index++) {
-      
+
       acompanhamento_funcionario = [Object.assign(this.novoAcompanhamentoForm.value.funcionarios[index], this.ACOMPANHAMENTO_CODIGO[0])]
       this.NovoAcompanhamentoService.createAcompanhamentoFuncionario(acompanhamento_funcionario).subscribe(res => {
 
-        console.log('acompanhamento funcionario', acompanhamento_funcionario, )
+        console.log('acompanhamento funcionario', acompanhamento_funcionario)
       })
 
-    
-   }
+
+    }
   }
   NovoAcompanhamentoResidente(acompanhamento_residente: Acompanhamento_Residente[]) {
-   
-    
+
+
     for (let index = 0; index < this.novoAcompanhamentoForm.value.residentes.length; index++) {
-      
+
       acompanhamento_residente = [Object.assign(this.novoAcompanhamentoForm.value.residentes[index], this.ACOMPANHAMENTO_CODIGO[0])]
       this.NovoAcompanhamentoService.createAcompanhamentoResidente(acompanhamento_residente).subscribe(res => {
 
         console.log('acompanhamento residente', acompanhamento_residente)
       })
-    
+
     }
 
-     
-    
+
+
   }
 
- 
+
   onResidenteSelect(residente: any) {
     console.log('onResidenteSelect', residente['CODIGO_RESIDENTE'])
   }

@@ -67,7 +67,8 @@ export class NovoConvenioComponent implements OnInit {
             this.ns.notify(`Houve um erro! ${error.message}`)
           })
         } else {
-          this.router.navigate(['/convenios'])
+          let convenio = res.CONVENIO_CODIGO
+          this.router.navigate([`/convenios/${convenio}`])
           this.ns.notify(`Convênio inserido com sucesso!`)
         }
       })

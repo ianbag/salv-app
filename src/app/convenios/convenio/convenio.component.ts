@@ -27,13 +27,12 @@ export class ConvenioComponent implements OnInit {
 
   convenioState = 'ready'
 
-  convenio: Convenio
+  convenio: any
 
-  @Input() telefones: Telefone[] = []
+  telefones: Telefone[] = []
   novoTelefoneForm: FormGroup
   updateTelefoneForm: FormGroup
   codigoTelefone: number
-
   editarConvenioForm: FormGroup
   convenio1: ConvenioQuery[] = []
   _cod_end: number
@@ -50,15 +49,14 @@ export class ConvenioComponent implements OnInit {
     this.spinner.show();
     this.cs.conveniosById(this.ar.snapshot.params['id'])
       .subscribe(convenio => {
-        this.spinner.hide();
         this.convenio = convenio[0], console.log(this.convenio)
       })
 
     setTimeout(() => {
       this.cs.telefoneById(this.convenio.CODIGO.toString()).subscribe(resT => {
         this.telefones = resT
+        this.spinner.hide()
       })
-      this.spinner.hide()
     }, 500)
 
 
@@ -117,13 +115,15 @@ export class ConvenioComponent implements OnInit {
         }
       }
       )
-      this.spinner.hide()
     }, 2250)
+
+    setTimeout(() => {
+    }, 300)
 
   }
 
   editarConvenio(editConvenio) {
-    this.cs.updateConvenio(this._cod_conv, this._cod_end, this._cod_tel, editConvenio.TELEFONE, editConvenio.ENDERECO, editConvenio).subscribe(res => {
+    this.cs.updateConvenio(this._cod_conv, this._cod_end, editConvenio.ENDERECO, editConvenio).subscribe(res => {
       console.log(editConvenio)
       if (res['errors']) {
         res['errors'].forEach(error => {
@@ -156,6 +156,7 @@ export class ConvenioComponent implements OnInit {
       }
     })
   }
+
 
   deleteTelefone(_cod_conv: number, _cod_tel: number): void {
     this.dcs.confirm(`Deseja excluir o telefone?`).then((isTrue) => {

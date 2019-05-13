@@ -165,7 +165,7 @@ export class NovoResidenteComponent implements OnInit {
     //console.log("console verificar pessoa",)
     if (this.novoResidenteForm.valid == true) {
       //if(this.verificarUniqueResidente(residente))
-      this.router.navigate(['/familiar-residente'])
+      this.router.navigate(['/residentes/familiar-residente'])
     } else {
       this.markAllDirty(this.novoResidenteForm)
       this.notificationService.notify(`Preencha os campos obrigatórios!`)

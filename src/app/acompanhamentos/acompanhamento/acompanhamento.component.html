@@ -40,8 +40,8 @@
                    
           <div class="box-body" style>
             <div>
-            <strong>Atividade realizada: </strong> {{acompanhamento1?.ATIVIDADE}} 
-            <strong style="margin-left: 30px"> Data: </strong> {{acompanhamento1?.DATA_ACOMPANHAMENTO | date:'dd/MM/yyyy'}}
+            <strong>Atividade realizada: </strong> {{atividade}} 
+            <strong style="margin-left: 30px"> Data: </strong> {{data_atividade | date:'dd/MM/yyyy'}}
           </div> <br>
      
             <table  class="table table-hover" id="tabela1" style="float:left; margin-top: 10px">
@@ -97,9 +97,13 @@
                             <salv-input-container errorMessage="Campo Obrigatório">
                           <label>Residentes que participaram da atividade </label><br>
                           <ng-multiselect-dropdown [placeholder]="'Selecione os residentes'" [data]="residentes"
+                          
                           [(ngModel)]="selectedResidentes" 
                           formControlName="residentes"
-                            [disabled]="disabled" [settings]="dropdownSettings" (onSelect)="onResidenteSelect($event)" (onDeSelect)="onDeResidenteSelect($event)">
+                            [disabled]="disabled" [settings]="dropdownSettings" 
+                            (onSelect)="onResidenteSelect($event)" 
+                            (onDeSelectAll)="onDeSelectAllResidentes($event)"
+                            >
                             
                           </ng-multiselect-dropdown>
                           </salv-input-container>
@@ -138,6 +142,7 @@
                           [disabled]="disabled"
                           [settings]="dropdownSettings2"
                           (onSelect)="onFuncionarioSelect($event)"
+                          (onDeSelectAll)=" onDeSelectAllFuncionarios($event)"
                           (onDeSelect)="onDeFuncionarioSelect($event)"
               
                           >
@@ -163,7 +168,7 @@
 
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal"[disabled]="!editarAcompanhamentoForm.valid">Cancelar</button>
-                  <button type="button" class="btn btn-success" data-dismiss="modal" (click)="editarAcompanhamento(editarAcompanhamentoForm.value); updateAcompanhamentoFuncionario();  updateAcompanhamentoResidente()"
+                  <button type="button" class="btn btn-success" data-dismiss="modal" (click)="editarAcompanhamento(editarAcompanhamentoForm.value); updateAcompanhamentoFuncionario(null);  updateAcompanhamentoResidente(null)"
                   [disabled]="!editarAcompanhamentoForm.valid" 
                    >Salvar</button>
                 </div>

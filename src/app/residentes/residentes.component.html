@@ -8,54 +8,38 @@
 </style>
 <!-- Main content -->
 <section class="content">
-  <button class="btn btn-success" (click)="reportResidentes()" id="printReport"><i class="fa fa-print"></i></button>
+  <button class="btn btn-success" *ngIf="!Desativados" (click)="reportResidentes(1)" id="printReport"><i class="fa fa-print"></i></button>
+  <button class="btn btn-success" *ngIf="Desativados" (click)="reportResidentes(0)" id="printReport"><i class="fa fa-print"></i></button>
   <div>
 
     <div class="form-group">
-      <a type="submit" class="btn btn-primary" [routerLink]="['/novo-residente']">Novo Residente</a>
+      <a type="submit" class="btn btn-primary" [routerLink]="['/residentes/novo-residente']">Novo Residente</a>
 
       <!-- FILTRO -->
-
-      <a class="dropdown btn btn-success pull-right" style="float:right; margin-right: 1cm;">
-
-        <a href="#" class="dropdown-toggle pull-left" data-toggle="dropdown">Filtrar<span class="caret"></span></a>
-
-        <!--MENU DA DROPDOWN-->
-        <ul class="dropdown-menu" role="menu" style="color:black">
-
-          <!--FILTRO INATIVOS-->
-
-          <input type="checkbox" id="Desativados" [(ngModel)]="Desativados" name="Desativados"
+      <div class="btn-group pull-right" style="margin-right: 40px; margin-left: 40px">
+        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Filtro</button>
+        <ul class="dropdown-menu" role="menu">
+            <input type="checkbox" id="Desativados" [(ngModel)]="Desativados" name="Desativados"
             (click)="residentesInativoss(); ngOnInit()" ng-true-value="YES" ng-false-value="NO" style="margin: 5px">
-          <label for="Desativados"> <span style="margin-left: 3px; margin-right: 7px">Residentes inativos
-            </span></label>
-          <br>
-
+             <label for="Desativados">Residentes inativos</label>
         </ul>
-      </a>
-      <!-- FIM DO FILTRO -->
+      </div>
+    <!-- FIM DO FILTRO -->
 
-
-
-
-
-      <!-- PESQUISA -->
-      <a class="dropdown btn btn-success pull-right" style="float:right; margin-right: 1cm;">
-
-        <a href="#" class="dropdown-toggle pull-left" data-toggle="dropdown">Pesquisar<span class="caret"></span></a>
-
-        <ul class="dropdown-menu" role="menu" style="color:black">
-
-          <!-- PESQUISA POR NOME -->
-          <div class="input-group" style="margin: 5px">
-            <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
-            <input input class="form-control" placeholder="Pesquisar" type="text" name="search" [(ngModel)]="filter"
-              style="height: 40px; width: 250px">
-          </div>
-          <!-- FIM PESQUISA POR NOME -->
+    <!-- PESQUISA -->
+    <div class="btn-group pull-right">
+        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Pesquisar</button>
+        
+        <ul class="dropdown-menu" role="menu">
+            <div class="input-group" style="margin: 5px">
+                <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+                <input input class="form-control" placeholder="Pesquisar" type="text" name="search"
+                [(ngModel)]="filter" style="height: 40px; width: 250px">
+            </div>
         </ul>
-      </a>
-      <!-- FIM PESQUISA-->
+    </div>
+    <!-- FIM PESQUISA-->
+      
     </div>
     <br>
 
@@ -112,7 +96,7 @@
                 (click)="deleteResidente(residente.CODIGO); $event.stopPropagation()">Inativar</button>
               <!-- <a type="submit" class="btn btn-warning botao"
                 [routerLink]="['/editar-residente', residente.CODIGO_RESIDENTE]">Editar</a> -->
-              <a type="submit" class="btn btn-success botao" [routerLink]="['/residente', residente.CODIGO]">+
+              <a type="submit" class="btn btn-success botao" [routerLink]="['/residentes', residente.CODIGO]">+
                 Opções</a>
             </td>
           </tr>
@@ -143,7 +127,7 @@
             <td>
               <button type="submit" class="btn btn-primary botao"
                 (click)="ativarResidente(residente.CODIGO); $event.stopPropagation()">Ativar</button>
-              <a type="submit" class="btn btn-success botao" [routerLink]="['/residente', residente.CODIGO]">
+              <a type="submit" class="btn btn-success botao" [routerLink]="['/residentes', residente.CODIGO]">
                 +Opções</a>
             </td>
           </tr>

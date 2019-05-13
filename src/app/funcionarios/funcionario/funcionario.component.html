@@ -23,8 +23,8 @@
                             (atualizaDependentes)="buscaDependentes($event)" [(dependente)]="dependente">
                         </salv-infos-dependente>
                     </div>
-                    <div *ngIf="!dependentes.length">
-                        <p style="text-align: center">Você não possui dependentes cadastrados</p>
+                    <div *ngIf="!dependentes.length" class="nao-possui-add">
+                        <p>Você não possui dependentes cadastrados</p>
                         <!--DIV MODAL INICIO-->
                         <div class="col-sm-12 col-xs-12">
                             <!-- Button trigger modal -->

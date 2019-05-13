@@ -80,34 +80,30 @@
                 <br>
               </div>
             </div>
+
+            <div class="col-sm-12 col-sm-12" id="formTitle">
+              <label>Telefone </label>
+            </div>
             <div class="row">
-
-              <div class="col-sm-12 col-sm-12">
-                <label>Telefone </label>
-              </div>
-
               <div class="col-sm-2 col-sm-12" formGroupName="TELEFONE">
                 <salv-input-container errorMessage="Campo Obrigatório" label="DDD">
                   <input type="text" class="form-control" formControlName="DDD" placeholder="DDD" mask="000"
                     maxlength="3">
                 </salv-input-container>
               </div>
-
-              <div class="col-sm-4 col-sm-12" formGroupName="TELEFONE">
+              <div class="col-sm-6 col-sm-12" formGroupName="TELEFONE">
                 <salv-input-container errorMessage="Campo Obrigatório" label="Telefone">
                   <input type="text" class="form-control" formControlName="NUMERO" mask="00000-0000"
                     placeholder="Número Telefone">
                 </salv-input-container>
-
               </div>
-
             </div>
 
             <div class="col-sm-12 col-sm-12">
               <a style="margin-left: 10px" (click)="familiarResidente(familiarResidenteForm.value)"
                 class="btn btn-success botao pull-right">Próximo</a>
               <a type="submit" class="btn btn-default botao pull-right"
-                (click)="voltarResidente(familiarResidenteForm.value)" [routerLink]="['/novo-residente']">Voltar</a>
+                (click)="voltarResidente(familiarResidenteForm.value)" [routerLink]="['/residentes/novo-residente']">Voltar</a>
             </div>
 
           </div>

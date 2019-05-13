@@ -224,8 +224,8 @@ export class ResidentesService {
         return this.http.put<any>(`${SALV_API}/beneficio/${CODIGO_RESIDENTE}/${NOME_BENEFICIO}`, beneficio)
     }
 
-    reportResidentes(): Observable<Blob> {
-        return this.http.get(`${SALV_API}/relatorio-residentes`, { responseType: 'blob' })
+    reportResidentes(status): Observable<Blob> {
+        return this.http.get(`${SALV_API}/relatorio-residentes/${status}`, { responseType: 'blob' })
     }
 
     reportResidente(cod_pes, cod_res): Observable<Blob> {

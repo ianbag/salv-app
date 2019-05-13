@@ -196,10 +196,13 @@
             <!--FIM MODAL-->
             <!-- Button trigger modal -->
 
-            <h4><strong>Telefones <a type="submit" *ngIf="telefones.length" data-toggle="modal"
-                  data-target="#modalTelefone">
-                  <span class="plus-itens"><i class="fa fa-plus-circle"></i></span>
-                </a></strong></h4>
+            <h4>
+              <strong>Telefones</strong>
+              <a class="icones-editar-excluir" type="submit" *ngIf="telefones.length" data-toggle="modal"
+                data-target="#modalTelefone">
+                <i class="fa fa-plus-circle" style="color: #00a65a;"></i>
+              </a>
+            </h4>
           </div>
           <!--FIM DIV MODAL-->
           <!--INICIO TELEFONES-->
@@ -207,23 +210,23 @@
 
             <div class="col-xs-4 col-xs-12" *ngFor="let telefone of telefones" style="margin-left: -15px">
               <strong>Telefone: </strong> ({{telefone?.TELEFONE.DDD}}) {{telefone?.TELEFONE.NUMERO | telefone}}
-              <a><span id="iconesForm" style="margin: 0.5cm"
+              <a class="icones-editar-excluir"><span id="iconesForm"
                   (click)="deleteTelefone(funcionario.PESSOA.CODIGO, telefone.TELEFONE.CODIGO); $event.stopPropagation()">
-                  <i class="fa fa-close"></i>
+                  <i class="fa fa-close" style="color: #dd4b39;"></i>
                 </span>
               </a>
 
-              <a data-toggle="modal" data-target="#modalUpdateTelefone"
+              <a class="icones-editar-excluir" data-toggle="modal" data-target="#modalUpdateTelefone"
                 (click)="buscaTelefone(telefone.TELEFONE.CODIGO)">
-                <span id="iconesForm"><i class="fa fa-pencil"></i>
+                <span id="iconesForm"><i class="fa fa-pencil" style="color: #f39c12;"></i>
                 </span>
               </a>
 
             </div>
           </div>
           <div class="col-xs-12 col-xs-12" *ngIf="!telefones.length">
-            <p>Você não possui telefones cadastros. <a type="submit" data-toggle="modal"
-                data-target="#modalTelefone" style="color: #00A65A">Cadastre um aqui</a></p>
+            <p>Você não possui telefones cadastros. <a type="submit" data-toggle="modal" data-target="#modalTelefone"
+                style="color: #00A65A">Cadastre um aqui</a></p>
             <!-- <p>Você não possui telefones cadastros. Cadastre um no +</p> -->
           </div>
           <!--FINAL TELEFONES-->
@@ -342,20 +345,16 @@
                 </div>
               </div>
             </div-->
-            <!--DIV MODAL-->
-            <div class="col-xs-12 col-xs-12" style="margin-left: -25px">
-              <!-- Button trigger modal -->
-              <h4><strong>Endereços
-                  <!--a type="submit" data-toggle="modal" data-target="#modalEndereco">
-                  <span class="plus-itens"><i class="fa fa-plus-circle"></i></span>
-              </a--></strong></h4>
-            </div>
             <div *ngFor="let endereco of enderecos" style="margin-left: -25px">
-              <div class="col-xs-4 col-xs-12">
-                <!-- <a><span id="iconesForm"
-                    (click)="deleteEndereco(funcionario.PESSOA.CODIGO, endereco.ENDERECO.CODIGO); $event.stopPropagation()"><i
-                      class="fa fa-close"></i></span></a> -->
 
+              <!--DIV MODAL-->
+              <div class="col-xs-12 col-xs-12" style="margin-left: -5px">
+                <!-- Button trigger modal -->
+                <h4><strong>Endereços</strong> <a data-toggle="modal" data-target="#modalUpdateEndereco"
+                    (click)="buscaEndereco(endereco.ENDERECO.CODIGO)">
+                    <span id="iconesForm" style="margin: 14px;"><i class="fa fa-pencil"></i></span></a></h4>
+              </div>
+              <div class="col-xs-4 col-xs-12">
                 <strong>Endereço: </strong> {{endereco?.ENDERECO.ENDERECO}}
               </div>
               <div class="col-xs-4 col-xs-12">
@@ -363,16 +362,7 @@
               </div>
               <div class="col-xs-4 col-xs-12">
                 <strong>Bairro: </strong> {{endereco?.ENDERECO.BAIRRO}}
-
-                <a data-toggle="modal" data-target="#modalUpdateEndereco"
-                  (click)="buscaEndereco(endereco.ENDERECO.CODIGO)">
-                  <span id="iconesForm" style="margin: 14px"><i class="fa fa-pencil"></i>
-                  </span></a>
-
               </div>
-
-
-
               <div class="col-xs-4 col-xs-12" *ngIf="endereco.ENDERECO.COMPLEMENTO">
                 <strong>Complemento: </strong> {{endereco?.ENDERECO.COMPLEMENTO}}
               </div>
@@ -388,9 +378,6 @@
               <div class="col-xs-4 col-xs-12" *ngIf="endereco.ENDERECO.REFERENCIA">
                 <strong>Referência: </strong> {{endereco?.ENDERECO.REFERENCIA}}
               </div>
-
-
-
             </div>
 
             <!--DIV MODAL-->
@@ -472,7 +459,9 @@
           <hr class="col-md-12">
           <div class="col-md-12">
             <div class="col-sm-12 col-xs-12" style="margin-left: -25px">
-              <h4><strong>Informações funcionais</strong></h4>
+              <h4>
+                <strong>Informações funcionais</strong>
+              </h4>
             </div>
             <div class="col-xs-4 col-xs-12" style="margin-left: -25px">
               <strong>Cargo: </strong> {{funcionario?.CARGO}}
@@ -490,7 +479,12 @@
           <hr class="col-md-12">
           <div class="col-md-12" *ngIf="haveLogin(); else notLogin" style="margin-left: -10px">
             <div class="col-sm-12 col-xs-12" style="margin-left: -15px">
-              <h4><strong>Informações de login</strong></h4>
+              <h4>
+                <strong>Informações de login</strong>
+                <a class="icones-editar-excluir" data-toggle="modal" data-target="#modalUpdateUsuario"
+                  (click)="buscaUsuario()"><span id="iconesForm">
+                    <i class="fa fa-pencil" style="color: #f39c12;"></i></span></a>
+              </h4>
             </div>
             <div class="col-xs-4 col-xs-12" style="margin-left: -15px">
 
@@ -499,10 +493,6 @@
             </div>
             <div class="col-xs-4 col-xs-12">
               <strong>Login: </strong> {{funcionario?.USUARIO.LOGIN}}
-              <a data-toggle="modal" data-target="#modalUpdateUsuario" (click)="buscaUsuario()"><span id="iconesForm"
-                  style="margin: 8px"><i class="fa fa-pencil"></i>
-                </span>
-              </a>
             </div>
           </div>
           <!--DIV MODAL INICIO-->
@@ -553,11 +543,16 @@
             <!--DIV MODAL INICIO-->
             <div class="col-sm-12 col-xs-12">
               <!-- Button trigger modal -->
-              <p style="text-align: center">Você não possui usuário cadastrado</p>
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalUsuario"
-                style="margin-left: -20px">
-                Adicionar usuário
-              </button>
+              <div class="nao-possui-add">
+                <p>Você não possui usuário cadastrado</p>
+                <div class="col-ms-12">
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalUsuario">
+                    Adicionar usuário
+                  </button>
+                </div>
+              </div>
+
+
               <!-- Modal -->
               <div class="modal fade" id="modalUsuario" tabindex="-1" role="dialog" aria-labelledby="modalUsuario"
                 aria-hidden="true">

@@ -41,24 +41,32 @@ export class AcompanhamentosService {
 
     updateAcompanhamento(acompanhamento: Acompanhamento, id: number) {
         return this.http.put<Acompanhamento>(`${SALV_API}/acompanhamento-editar/${id}`, acompanhamento)
+        
+        }
 
-    }
+  createAcompanhamentoFuncionario(acompanhamento_funcionario: Acompanhamento_Funcionario[]){
+            return this.http.post<Acompanhamento_Funcionario[]>(`${SALV_API}/acompanhamento_funcionario`, acompanhamento_funcionario)
+            
+            }
 
-    createAcompanhamentoFuncionario(acompanhamento_funcionario: Acompanhamento_Funcionario[]) {
-        return this.http.post<Acompanhamento_Funcionario[]>(`${SALV_API}/acompanhamento_funcionario`, acompanhamento_funcionario)
+   createAcompanhamentoResidente(acompanhamento_residente: Acompanhamento_Residente[]){
+          return this.http.post<Acompanhamento_Residente[]>(`${SALV_API}/acompanhamento_residente`, acompanhamento_residente)
+                
+            }      
+            
+    deleteFuncionarioAcompanhamento(idFuncionario: number, idAcomp:number): Observable<any> {
+                return this.http.delete<any>(`${SALV_API}/acompanhamento_funcionario/${idFuncionario}/${idAcomp}`)
+       } 
 
-    }
+ deleteFuncionarioAllAcompanhamento(idAcomp:number): Observable<any> {
+        return this.http.delete<any>(`${SALV_API}/acompanhamento_funcionarioAll/${idAcomp}`)
+} 
 
-    createAcompanhamentoResidente(acompanhamento_residente: Acompanhamento_Residente[]) {
-        return this.http.post<Acompanhamento_Residente[]>(`${SALV_API}/acompanhamento_residente`, acompanhamento_residente)
-
-    }
-
-    deleteFuncionarioAcompanhamento(idFuncionario: number, idAcomp: number): Observable<any> {
-        return this.http.delete<any>(`${SALV_API}/acompanhamento_funcionario/${idFuncionario}/${idAcomp}`)
-    }
-
-    deleteResidenteAcompanhamento(idResidente: number, idAcompanhamento: number): Observable<any> {
+deleteResidenteAllAcompanhamento(idAcomp:number): Observable<any> {
+    return this.http.delete<any>(`${SALV_API}/acompanhamento_residenteAll/${idAcomp}`)
+} 
+       
+   deleteResidenteAcompanhamento(idResidente: number, idAcompanhamento:number): Observable<any> {
         return this.http.delete<any>(`${SALV_API}/acompanhamento_residente/${idResidente}/${idAcompanhamento}`)
     }
 
