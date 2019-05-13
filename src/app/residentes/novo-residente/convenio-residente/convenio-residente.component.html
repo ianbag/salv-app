@@ -15,7 +15,7 @@
           <div class="col-sm-4 col-sm-12">
             <label>Nome</label>
             <select class="form-control" formControlName="CONVENIO_CODIGO">
-              <option value="" label="Nome do convênio" disabled selected="selected"></option>
+              <option [ngValue]="null">Selecione</option>
               <option *ngFor="let convenio of convenios" [value]="convenio.CODIGO">{{convenio.NOME_CONVENIO}}</option>
             </select>
 
