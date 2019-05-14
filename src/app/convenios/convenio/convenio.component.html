@@ -189,15 +189,21 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-sm-3 col-sm-12">
-                                                <label>DDD</label>
-                                                <input type="text" class="form-control" mask="000" formControlName="DDD"
-                                                    placeholder="DDD" autocomplete="off" maxlength="3">
+                                                <salv-input-container errorMessage="Campo Obrigatório" label="DDD">
+                                                    <span class="text-danger">*</span>
+                                                    <input type="text" class="form-control" mask="000" formControlName="DDD"
+                                                    placeholder="DDD" autocomplete="off" maxlength="2">
+                                                  </salv-input-container>
+                                                
                                             </div>
-                                            <div class="col-sm-3 col-sm-12">
-                                                <label>Número</label>
-                                                <input type="text" class="form-control" mask="000000000"
+                                            <div class="col-sm-4 col-sm-12">
+                                                <salv-input-container errorMessage="Campo Obrigatório" label="Número">
+                                                    <span class="text-danger">*</span>
+                                                    <input type="text" class="form-control" mask="00000-0000"
                                                     formControlName="NUMERO" placeholder="Número" autocomplete="off"
-                                                    maxlength="9">
+                                                    maxlength="10">
+                                                  </salv-input-container>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -228,14 +234,14 @@
                                         <div class="row">
                                             <div class="col-sm-3 col-sm-12">
                                                 <label>DDD</label>
-                                                <input type="text" class="form-control" mask="000" formControlName="DDD"
-                                                    placeholder="DDD" autocomplete="off" maxlength="3">
+                                                <input type="text" class="form-control" mask="00" formControlName="DDD"
+                                                    placeholder="DDD" autocomplete="off" maxlength="2">
                                             </div>
-                                            <div class="col-sm-3 col-sm-12">
+                                            <div class="col-sm-4 col-sm-12">
                                                 <label>Número</label>
-                                                <input type="text" class="form-control" mask="000000000"
+                                                <input type="text" class="form-control" mask="00000-0000"
                                                     formControlName="NUMERO" placeholder="Número" autocomplete="off"
-                                                    maxlength="9">
+                                                    maxlength="10">
                                             </div>
                                         </div>
                                     </div>
