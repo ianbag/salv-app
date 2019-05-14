@@ -100,9 +100,11 @@
                           
                           [(ngModel)]="selectedResidentes" 
                           formControlName="residentes"
-                            [disabled]="disabled" [settings]="dropdownSettings" 
+                            [disabled]="disabled" 
+                            [settings]="dropdownSettings" 
                             (onSelect)="onResidenteSelect($event)" 
                             (onDeSelectAll)="onDeSelectAllResidentes($event)"
+                            (onDeSelect)="onDeResidenteSelect($event)"
                             >
                             
                           </ng-multiselect-dropdown>

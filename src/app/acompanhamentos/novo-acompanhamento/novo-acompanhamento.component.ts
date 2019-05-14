@@ -166,11 +166,11 @@ export class NovoAcompanhamentoComponent implements OnInit {
         i = 1
         console.log("re", this.NovoAcompanhamentoFuncionario)
         this.ns.notify(`Acompanhamento inserido com sucesso!`)
-        this.router.navigate([`/acompanhamentos`])
+        
       }
       if (this.novoAcompanhamentoForm.valid == true) {
         this.ns.notify(`Acompanhamento inserido com sucesso!`)
-        this.router.navigate(['/acompanhamentos'])
+        
 
       } else {
         this.markAllDirty(this.novoAcompanhamentoForm)
