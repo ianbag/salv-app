@@ -58,7 +58,8 @@
               <div class="col-sm-3 col-sm-12" formGroupName="PESSOA">
                 <label>Estado Civil </label>
                 <select class="form-control" formControlName="ESTADO_CIVIL">
-                  <option disabled hidden value="null" label="Selecione um estado civil" disabled selected="selected"></option>
+                  <option disabled hidden value="null" label="Selecione um estado civil" disabled selected="selected">
+                  </option>
                   <option *ngFor="let estadoCivil of estadosCivil" [value]="estadoCivil.value">{{estadoCivil.option}}
                   </option>
                 </select>
@@ -78,14 +79,16 @@
               <div class="col-sm-4 col-sm-12" formGroupName="PESSOA">
                 <label>Religião </label>
                 <select class="form-control" formControlName="RELIGIAO">
-                  <option disabled hidden value="null" label="Selecione uma religião" disabled selected="selected"></option>
+                  <option disabled hidden value="null" label="Selecione uma religião" disabled selected="selected">
+                  </option>
                   <option *ngFor="let religiao of religioes" [value]="religiao.value">{{religiao.option}}</option>
                 </select>
               </div>
               <div class="col-sm-4 col-sm-12" formGroupName="PESSOA">
                 <label>Escolaridade </label>
                 <select class="form-control" formControlName="ESCOLARIDADE">
-                  <option disabled hidden value="null" label="Selecione uma escolaridade" disabled selected="selected"></option>
+                  <option disabled hidden value="null" label="Selecione uma escolaridade" disabled selected="selected">
+                  </option>
                   <option *ngFor="let escolaridade of escolaridades" [value]="escolaridade.value">
                     {{escolaridade.option}}</option>
                 </select>

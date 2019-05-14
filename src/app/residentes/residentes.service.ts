@@ -16,7 +16,7 @@ export class ResidentesService {
     endereco: Endereco
     telefones: Telefone
     residenteConvenio: Residente_Convenio
-
+    codigoResidente
 
     constructor(private http: HttpClient) { }
 
@@ -105,49 +105,12 @@ export class ResidentesService {
         return this.http.get<Residente_Convenio[]>(`${SALV_API}/convenio`)
     }
 
-    createNewResidente() {
-        return this.http.post<Pessoa>(`${SALV_API}/pessoa`, this.pessoa).switchMap(resPessoa => {
-            this.residente.PESSOA_CODIGO = resPessoa.CODIGO
+    createNewResidente(residente: Residente){
+        return this.http.post<Pessoa>(`${SALV_API}/pessoa`, residente.PESSOA).switchMap(resPessoa => {
+            residente.PESSOA_CODIGO = resPessoa.CODIGO
+            delete residente.PESSOA
 
-            return this.http.post<Residente>(`${SALV_API}/residente`, this.residente).switchMap(resResidente => {
-
-                return this.http.post<Familiar>(`${SALV_API}/familiar`, this.familiar).switchMap(resFamiliar => {
-
-                    let RESIDENTE_FAMILIAR = {
-                        FAMILIAR_CODIGO: resFamiliar.CODIGO,
-                        RESIDENTE_CODIGO: resResidente.CODIGO_RESIDENTE
-                    }
-
-                    return this.http.post<any>(`${SALV_API}/residente_familiar`, RESIDENTE_FAMILIAR).switchMap(resResidenteFamiliar => {
-
-                        return this.http.post<Endereco>(`${SALV_API}/endereco`, this.endereco).switchMap(resEndereco => {
-
-                            let ENDERECO_FAMILIAR = {
-                                FAMILIAR_CODIGO: resFamiliar.CODIGO,
-                                ENDERECO_CODIGO: resEndereco.CODIGO
-                            }
-
-                            return this.http.post<any>(`${SALV_API}/endereco_familiar`, ENDERECO_FAMILIAR).switchMap(resEnderecoFamiliar => {
-
-                                return this.http.post<any>(`${SALV_API}/telefone`, this.telefones).switchMap(resTelefone => {
-
-                                    let TELEFONES_FAMILIARES = {
-                                        FAMILIAR_CODIGO: resFamiliar.CODIGO,
-                                        TELEFONE_CODIGO: resTelefone.CODIGO
-                                    }
-
-                                    return this.http.post<any>(`${SALV_API}/telefone_familiar`, TELEFONES_FAMILIARES).switchMap(resTelefonesFamiliares => {
-                                        this.residenteConvenio.RESIDENTE_CODIGO = resResidente.CODIGO_RESIDENTE
-
-                                        return this.http.post<any>(`${SALV_API}/residente_convenio`, this.residenteConvenio)
-                                    })
-                                })
-                            })
-                        })
-                    })
-
-                })
-            })
+            return this.http.post<Residente>(`${SALV_API}/residente`, residente)
         })
     }
 

@@ -8,6 +8,7 @@ import { Route, Router } from '@angular/router';
 import { Familiar } from '../../residente/infos-familiar/familiar.model';
 import { NotificationService } from 'src/app/shared/notification.service';
 import { ConveniosService } from 'src/app/convenios/convenios.service';
+import { DialogConfirmService } from '../../dialog-confirm.service';
 
 @Component({
   selector: 'salv-convenio-residente',
@@ -43,7 +44,8 @@ export class ConvenioResidenteComponent implements OnInit {
     private residentesService: ResidentesService,
     private router: Router,
     private notificationService: NotificationService,
-    private convenioService: ConveniosService
+    private convenioService: ConveniosService,
+    private dialogConfirmService: DialogConfirmService
   ) { }
 
   markAllDirty(control: AbstractControl) {
@@ -63,10 +65,10 @@ export class ConvenioResidenteComponent implements OnInit {
     this.getConvenio()
 
     this.convenioResidenteForm = this.formBuilder.group({
-      NUMERO_CONVENIO: this.formBuilder.control(null, []),
-      TITULAR_CONVENIO: this.formBuilder.control(null, []),
+      NUMERO_CONVENIO: this.formBuilder.control(null, [Validators.required]),
+      TITULAR_CONVENIO: this.formBuilder.control(null, [Validators.required]),
       PARENTESCO_TITULAR: this.formBuilder.control(null, []),
-      CONVENIO_CODIGO: this.formBuilder.control(null, []),
+      CONVENIO_CODIGO: this.formBuilder.control(null, [Validators.required]),
     })
 
     this.novoConvenioForm = this.formBuilder.group({
@@ -92,30 +94,28 @@ export class ConvenioResidenteComponent implements OnInit {
       this.convenioResidenteForm.patchValue(this.residenteConvenio)
   }
 
-  voltarFamiliar(residenteConvenio: Residente_Convenio) {
-    this.residentesService.residenteConvenio = residenteConvenio
+  voltar() {
+    this.dialogConfirmService.confirm(`Tem certeza que deseja voltar?`)
+    .then((isTrue) => {
+      if (isTrue) 
+        this.router.navigate([`/residentes/${this.residentesService.codigoResidente}`])
+      
+    })
   }
 
   convenioResidente(residenteConvenio: Residente_Convenio) {
-    if (this.convenioResidenteForm.valid == true) {
-      this.residentesService.residenteConvenio = residenteConvenio
-      this.residentesService.createNewResidente()
-        .subscribe(res => {
-          if (res.errors) {
-            res.errors.forEach(error => {
-              if (error.validatorKey != 'is_null')
-                this.notificationService.notify(`Houve um erro! ${error.message}`)
-              else
-                this.residenteInseridoMensagem()
-            })
-          } else
-            this.residenteInseridoMensagem()
-        })
-    }
-    else {
-      this.markAllDirty(this.convenioResidenteForm)
-      this.notificationService.notify(`Preencha os campos obrigatórios!`)
-    }
+    this.residentesService.createNewConvenio(residenteConvenio, this.residentesService.codigoResidente)
+      .subscribe(res => {
+        if (res['errors']) {
+          res['errors'].forEach(error => {
+            console.log('Houve um erro!', error)
+            this.notificationService.notify(`Houve um erro! ${error.message}`)
+          })
+        } else {
+          this.notificationService.notify(`Convênio inserido com sucesso!`)
+          this.router.navigate([`/residentes/${this.residentesService.codigoResidente}`])
+        }
+      })
   }
 
   getConvenio(){
@@ -138,10 +138,5 @@ export class ConvenioResidenteComponent implements OnInit {
       })
   }
 
-  residenteInseridoMensagem() {
-    this.router.navigate(['/residentes'])
-    this.notificationService.notify(`Residente inserido com sucesso!`)
-    this.residentesService.clearDataResidente()
-  }
 }
 
