@@ -187,7 +187,7 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-success" (click)="novoTelefone(this.novoTelefoneForm.value)"
+                    <button type="button" class="btn btn-success" (click)="novoTelefone(this.novoTelefoneForm.value)" [disabled]="!novoTelefoneForm.valid"
                       data-dismiss="modal">Salvar</button>
                   </div>
                 </div>
