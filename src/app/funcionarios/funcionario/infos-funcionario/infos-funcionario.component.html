@@ -575,23 +575,26 @@
                         <div class="box-body">
                           <div>
                             <div class="col-sm-12 col-sm-12" id="formTitle">
-                              <h4><strong>Adicionar usuário</strong></h4>
+                              <h4 class="text-center"><strong>Adicionar usuário</strong></h4>
                             </div>
                             <div class="row">
-                              <div class="col-sm-4 col-sm-12" id="inputValidator">
+                              <div class="col-sm-7 col-sm-12" id="inputValidator">
                                 <salv-input-container errorMessage="Campo obrigatório" label="Email">
+                                    <span class="text-danger">*</span>
                                   <input type="text" class="form-control" formControlName="EMAIL" placeholder="E-mail"
                                     autocomplete="off" maxlength="100">
                                 </salv-input-container>
                               </div>
-                              <div class="col-sm-4 col-sm-12" id="inputValidator">
-                                <salv-input-container errorMessage="Campo obrigatório" label="Login">
+                              <div class="col-sm-5 col-sm-12" id="inputValidator">
+                                <salv-input-container errorMessage="Campo obrigatório" label="Nome">
+                                    <span class="text-danger">*</span>
                                   <input type="text" class="form-control" formControlName="LOGIN" placeholder="Login"
                                     autocomplete="off" maxlength="100">
                                 </salv-input-container>
                               </div>
-                              <div class="col-sm-4 col-sm-12">
+                              <div class="col-sm-6 col-sm-12" style="margin-left: -10px;">
                                 <salv-input-container errorMessage="Campo obrigatório" label="Senha">
+                                    <span class="text-danger">*</span>
                                   <input type="password" class="form-control" formControlName="SENHA"
                                     placeholder="Senha" autocomplete="off" minlength="4" maxlength="100">
                                 </salv-input-container>
