@@ -150,7 +150,7 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
           <button type="button" class="btn btn-success"
-            (click)="updateDependente(dependente.CODIGO_FUNCIONARIO, dependente.NOME, dependente.SOBRENOME, this.updateDependenteForm.value)"
+            (click)="updateDependente(dependente.CODIGO_FUNCIONARIO, dependente.NOME, dependente.SOBRENOME, this.updateDependenteForm.value)" [disabled]="!updateDependenteForm.valid"
             data-dismiss="modal">Salvar</button>
         </div>
       </div>
