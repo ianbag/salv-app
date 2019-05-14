@@ -87,7 +87,7 @@
                                 <div class="box-body">
                                     <div>
                                         <div class="col-sm-12 col-xs-12" id="FormTitle">
-                                            <h4><strong>Editar convênio</strong></h4>
+                                            <h4 class="text-center"><strong>Editar convênio</strong></h4>
                                         </div>
                                         <div class="col-sm-6 col-xs-12">
                                             <salv-input-container errorMessage="Campo Obrigatório" label="Nome">
@@ -189,7 +189,7 @@
                                 <div class="box-body">
                                     <div>
                                         <div class="col-sm-12 col-sm-12" id="formTitle">
-                                            <h4><strong>Adicionar novo telefone</strong></h4>
+                                            <h4 class="text-center"><strong>Adicionar novo telefone</strong></h4>
                                         </div>
                                         <div class="row">
                                             <div class="col-sm-3 col-sm-12">
@@ -211,7 +211,7 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                             <button type="button" class="btn btn-success"
-                                (click)="novoTelefone(this.novoTelefoneForm.value)" data-dismiss="modal">Salvar</button>
+                                (click)="novoTelefone(this.novoTelefoneForm.value)" [disabled]="!novoTelefoneForm.valid" data-dismiss="modal">Salvar</button>
                         </div>
                     </div>
                 </div>
@@ -227,7 +227,7 @@
                                 <div class="box-body">
                                     <div>
                                         <div class="col-sm-12 col-sm-12" id="formTitle">
-                                            <h4><strong>Editar telefone</strong></h4>
+                                            <h4 class="text-center"><strong>Editar telefone</strong></h4>
                                         </div>
                                         <div class="row">
                                             <div class="col-sm-3 col-sm-12">
