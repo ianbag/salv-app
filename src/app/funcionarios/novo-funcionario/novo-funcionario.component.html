@@ -111,15 +111,15 @@
               <div class="col-sm-2 col-sm-12" id="inputValidator" formGroupName="TELEFONE">
                 <salv-input-container errorMessage="Campo Obrigatório" label="DDD">
                     <span class="text-danger">*</span>
-                  <input type="text" mask="000" class="form-control" formControlName="DDD" placeholder="DDD"
-                    autocomplete="off" maxlength="3">
+                  <input type="text" mask="00" class="form-control" formControlName="DDD" placeholder="DDD"
+                    autocomplete="off" maxlength="2">
                 </salv-input-container>
               </div>
               <div class="col-sm-3 col-sm-12" id="inputValidator" formGroupName="TELEFONE">
                 <salv-input-container errorMessage="Campo Obrigatório" label="Telefone">
                     <span class="text-danger">*</span>
-                  <input type="text" mask="000000000" class="form-control" formControlName="NUMERO"
-                    placeholder="Telefone" autocomplete="off" maxlength="9">
+                  <input type="text" mask="00000-0000" class="form-control" formControlName="NUMERO"
+                    placeholder="Telefone" autocomplete="off" maxlength="10">
                 </salv-input-container>
               </div>
             </div>
