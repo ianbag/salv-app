@@ -20,7 +20,7 @@
               </ng-multiselect-dropdown>
             </salv-input-container>
           </div>
-          
+
           <div class="col-sm-3 col-xs-12" id="inputValidator">
             <salv-input-container errorMessage="Campo Obrigatório">
               <label for="exampleInputPassword1"> <i class="fa fa-calendar"></i> Data
@@ -45,7 +45,7 @@
           </div>
 
 
-         
+
 
           <div class="col-sm-10 col-xs-12" id="inputValidator">
 
@@ -60,10 +60,6 @@
             </salv-input-container>
             <br>
           </div>
-
-         
-
-
         </div>
         <!--form group-->
 
@@ -71,7 +67,7 @@
         <div class="col-sm-12 col-xs-12">
           <br>
           <button
-            (click)="novoAcompanhamento(novoAcompanhamentoForm.value); NovoAcompanhamentoFuncionario(); NovoAcompanhamentoResidente()"
+            (click)="novoAcompanhamento(novoAcompanhamentoForm.value); NovoAcompanhamentoFuncionario(null); NovoAcompanhamentoResidente(null)"
             style="margin-left: 10px" class="btn btn-success botao pull-right"
             [disabled]="!novoAcompanhamentoForm.valid">Finalizar cadastro</button>
 

@@ -171,10 +171,10 @@ export class NovoAcompanhamentoComponent implements OnInit {
       }
       if (this.novoAcompanhamentoForm.valid == true && this.NovoAcompanhamentoResidente && this.NovoAcompanhamentoFuncionario) {
         let acompanhamento = res.CODIGO
-        
+
         this.ns.notify(`Acompanhamento inserido com sucesso!`)
         this.router.navigate([`/acompanhamentos/${acompanhamento}`])
-        
+
 
       } else {
         this.markAllDirty(this.novoAcompanhamentoForm)
