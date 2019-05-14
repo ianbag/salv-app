@@ -22,7 +22,7 @@
   </div>
 
   <div class="col-xs-4 col-xs-12">
-    <strong>Valor: </strong> {{beneficio?.VALOR_BENEFICIO}}
+    <strong>Valor: </strong> {{beneficio?.VALOR_BENEFICIO | currency: 'BRL': true | valorInss}}
   </div>
 
   <div class="col-xs-4 col-xs-12">
