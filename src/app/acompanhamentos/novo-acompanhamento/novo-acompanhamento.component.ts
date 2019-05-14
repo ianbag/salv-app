@@ -169,6 +169,8 @@ export class NovoAcompanhamentoComponent implements OnInit {
         
       }
       if (this.novoAcompanhamentoForm.valid == true) {
+        let acompanhamento = res.CODIGO
+        this.router.navigate([`/acompanhamentos/${acompanhamento}`])
         this.ns.notify(`Acompanhamento inserido com sucesso!`)
         
 
