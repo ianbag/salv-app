@@ -4,7 +4,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { RouterModule } from "@angular/router";
+import { RouterModule, PreloadAllModules } from "@angular/router";
 import { GlobalErrorHandler } from './app.global-error-handler';
 import { SharedModule } from './shared/shared.module';
 
@@ -51,7 +51,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     HttpClientModule,
     BrowserAnimationsModule,
     SharedModule.forRoot(),
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES, { preloadingStrategy: PreloadAllModules })
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },
