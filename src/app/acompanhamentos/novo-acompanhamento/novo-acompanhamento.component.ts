@@ -164,14 +164,16 @@ export class NovoAcompanhamentoComponent implements OnInit {
       } else {
 
         i = 1
-        console.log("re", this.NovoAcompanhamentoFuncionario)
+        console.log("re", this.NovoAcompanhamentoResidente)
         this.ns.notify(`Acompanhamento inserido com sucesso!`)
-        
-      }
-      if (this.novoAcompanhamentoForm.valid == true) {
         let acompanhamento = res.CODIGO
         this.router.navigate([`/acompanhamentos/${acompanhamento}`])
+      }
+      if (this.novoAcompanhamentoForm.valid == true && this.NovoAcompanhamentoResidente && this.NovoAcompanhamentoFuncionario) {
+        let acompanhamento = res.CODIGO
+        
         this.ns.notify(`Acompanhamento inserido com sucesso!`)
+        this.router.navigate([`/acompanhamentos/${acompanhamento}`])
         
 
       } else {
