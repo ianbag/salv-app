@@ -6,6 +6,7 @@ import { ResidentesService } from '../../residentes.service';
 import { Endereco } from 'src/app/funcionarios/funcionario.model';
 import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/shared/notification.service';
+import { DialogConfirmService } from '../../dialog-confirm.service';
 
 @Component({
   selector: 'salv-familiar-residente',
@@ -42,7 +43,8 @@ export class FamiliarResidenteComponent implements OnInit {
     private formBuilder: FormBuilder,
     private residentesService: ResidentesService,
     private router: Router,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private dialogConfirmService: DialogConfirmService
   ) { }
 
   markAllDirty(control: AbstractControl) {
@@ -62,22 +64,22 @@ export class FamiliarResidenteComponent implements OnInit {
     this.familiar = this.residentesService.familiar
 
     this.familiarResidenteForm = this.formBuilder.group({
-      NOME: this.formBuilder.control(null, []),
-      SOBRENOME: this.formBuilder.control(null, []),
-      PARENTESCO: this.formBuilder.control(null, []),
+      NOME: this.formBuilder.control(null, [Validators.required]),
+      SOBRENOME: this.formBuilder.control(null, [Validators.required]),
+      PARENTESCO: this.formBuilder.control(null, [Validators.required]),
       ENDERECOS: this.formBuilder.group({
-        ENDERECO: this.formBuilder.control(null, []),
-        NUMERO: this.formBuilder.control(null, []),
-        BAIRRO: this.formBuilder.control(null, []),
-        CIDADE: this.formBuilder.control(null, []),
-        ESTADO: this.formBuilder.control(null, []),
-        CEP: this.formBuilder.control(null, []),
+        ENDERECO: this.formBuilder.control(null, [Validators.required]),
+        NUMERO: this.formBuilder.control(null, [Validators.required]),
+        BAIRRO: this.formBuilder.control(null, [Validators.required]),
+        CIDADE: this.formBuilder.control(null, [Validators.required]),
+        ESTADO: this.formBuilder.control(null, [Validators.required]),
+        CEP: this.formBuilder.control(null, [Validators.required]),
         COMPLEMENTO: this.formBuilder.control(null, []),
         REFERENCIA: this.formBuilder.control(null, []),
       }),
       TELEFONE: this.formBuilder.group({
-        DDD: this.formBuilder.control(null, [ Validators.minLength(2), Validators.maxLength(3)]),
-        NUMERO: this.formBuilder.control(null, [Validators.minLength(8), Validators.maxLength(9)])
+        DDD: this.formBuilder.control(null, [Validators.required, Validators.minLength(2), Validators.maxLength(3)]),
+        NUMERO: this.formBuilder.control(null, [Validators.required, Validators.minLength(8), Validators.maxLength(9)])
       })
     })
 
@@ -98,19 +100,33 @@ export class FamiliarResidenteComponent implements OnInit {
   }
 
   familiarResidente(familiar: Familiar) {
-    if (this.familiarResidenteForm.valid == true) {
-      this.addDataServiceFamiliar(familiar)
-      this.router.navigate(['/residentes/convenio-residente'])
-    }
-    else {
-      this.markAllDirty(this.familiarResidenteForm)
-      //console.log(this.familiarResidenteForm.controls)
-      this.notificationService.notify(`Preencha os campos obrigatórios!`)
-    }
+    this.residentesService.createNewFamiliar(familiar, this.residentesService.codigoResidente)
+      .subscribe(res => {
+        if (res['errors']) {
+          res['errors'].forEach(error => {
+            console.log('Houve um erro!', error)
+            this.notificationService.notify(`Houve um erro! ${error.message}`)
+          })
+        } else {
+          this.dialogConfirmService.confirm(`Deseja cadastrar um convênio para o residente?`)
+            .then((isTrue) => {
+              if (isTrue) {
+                this.router.navigate(['/residentes/convenio-residente'])
+              }
+            })
+          this.notificationService.notify(`Familiar inserido com sucesso!`)
+          this.router.navigate([`/residentes/${this.residentesService.codigoResidente}`])
+        }
+      })
   }
 
-  voltarResidente(familiar: Familiar) {
-    this.addDataServiceFamiliar(familiar)
+  voltar() {
+    this.dialogConfirmService.confirm(`Tem certeza que deseja voltar?`)
+    .then((isTrue) => {
+      if (isTrue) 
+        this.router.navigate([`/residentes/${this.residentesService.codigoResidente}`])
+      
+    })
   }
 
 }
