@@ -79,7 +79,8 @@
               <div class="col-sm-6 col-xs-12">
                 <label>Valor</label>
                 <input type="text" class="form-control" formControlName="VALOR_BENEFICIO" placeholder="Valor R$"
-                  autocomplete="off" maxlength="12">
+                  autocomplete="off" maxlength="12" currencyMask
+                  [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" min="0">
               </div>
 
               <div class="col-sm-6 col-xs-12" id="inputValidator">
