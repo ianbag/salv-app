@@ -395,46 +395,58 @@
                               <h4 class="text-center"><strong>Editar endereço</strong></h4>
                             </div>
                             <div class="row">
-                              <div class="col-sm-3 col-sm-12">
-                                <label>Endereço</label>
-                                <input type="text" class="form-control" formControlName="ENDERECO"
+                              <div class="col-sm-7 col-sm-12">
+                                <salv-input-container errorMessage="Campo Obrigatório" label="Nome">
+                                  <span class="text-danger">*</span>
+                                  <input type="text" class="form-control" formControlName="ENDERECO"
                                   placeholder="Endereço" autocomplete="off" maxlength="100">
+                                </salv-input-container>
                               </div>
-                              <div class="col-sm-3 col-sm-12">
-                                <label>Número</label>
-                                <input type="text" class="form-control" mask="00000" formControlName="NUMERO"
+                              <div class="col-sm-4 col-sm-12">
+                                <salv-input-container errorMessage="Campo Obrigatório" label="Número">
+                                  <span class="text-danger">*</span>
+                                  <input type="text" class="form-control" mask="00000" formControlName="NUMERO"
                                   placeholder="Número" autocomplete="off" maxlength="5">
+                                </salv-input-container>
                               </div>
-                              <div class="col-sm-3 col-sm-12">
-                                <label>Bairro</label>
-                                <input type="text" class="form-control" formControlName="BAIRRO" placeholder="Bairro"
+                              <div class="col-sm-6 col-sm-12">
+                                <salv-input-container errorMessage="Campo Obrigatório" label="Bairro">
+                                  <span class="text-danger">*</span>
+                                  <input type="text" class="form-control" formControlName="BAIRRO" placeholder="Bairro"
                                   autocomplete="off" maxlength="50">
+                                </salv-input-container>
                               </div>
-                              <div class="col-sm-3 col-sm-12">
+                              <div class="col-sm-6 col-sm-12" style="margin-top: 10px;">
                                 <label>Complemento</label>
                                 <input type="text" class="form-control" formControlName="COMPLEMENTO"
                                   placeholder="Complemento" autocomplete="off" maxlength="50">
                               </div>
                             </div>
                             <div class="row">
-                              <div class="col-sm-3 col-sm-12">
-                                <label>Cidade</label>
-                                <input type="text" class="form-control" formControlName="CIDADE" placeholder="Cidade"
+                              <div class="col-sm-6 col-sm-12">
+                                <salv-input-container errorMessage="Campo Obrigatório" label="Cidade">
+                                  <span class="text-danger">*</span>
+                                  <input type="text" class="form-control" formControlName="CIDADE" placeholder="Cidade"
                                   autocomplete="off" maxlength="50">
+                                </salv-input-container>
                               </div>
-                              <div class="col-sm-3 col-sm-12">
-                                <label>Estado</label>
-                                <select class="form-control" formControlName="ESTADO">
-                                  <option value="" label="Selecione" disabled selected="true"></option>
-                                  <option *ngFor="let estado of estados">{{estado}}</option>
-                                </select>
+                              <div class="col-sm-6 col-sm-12" style="margin-left: -10px;">
+                                <salv-input-container errorMessage="Campo Obrigatório" label="Estado">
+                                  <span class="text-danger">*</span>
+                                  <select class="form-control" formControlName="ESTADO">
+                                    <option value="" label="Selecione" disabled selected="true"></option>
+                                    <option *ngFor="let estado of estados">{{estado}}</option>
+                                  </select>
+                                </salv-input-container>
                               </div>
-                              <div class="col-sm-3 col-sm-12">
-                                <label>CEP</label>
-                                <input type="text" class="form-control" formControlName="CEP" placeholder="CEP"
-                                  autocomplete="off" maxlength="8">
+                              <div class="col-sm-6 col-sm-12">
+                                <salv-input-container errorMessage="Campo Obrigatório" label="CEP">
+                                  <span class="text-danger">*</span>
+                                  <input type="text" class="form-control" formControlName="CEP" placeholder="CEP"
+                                  autocomplete="off" maxlength="8" mask="00.000-000">
+                                </salv-input-container>
                               </div>
-                              <div class="col-sm-3 col-sm-12">
+                              <div class="col-sm-6 col-sm-12" style="margin-top: 10px;">
                                 <label>Referência</label>
                                 <input type="text" class="form-control" formControlName="REFERENCIA"
                                   placeholder="Referência" autocomplete="off" maxlength="100">
