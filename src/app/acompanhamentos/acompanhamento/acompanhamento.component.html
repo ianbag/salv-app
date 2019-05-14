@@ -100,15 +100,17 @@
                           
                           [(ngModel)]="selectedResidentes" 
                           formControlName="residentes"
-                            [disabled]="disabled" [settings]="dropdownSettings" 
+                            [disabled]="disabled" 
+                            [settings]="dropdownSettings" 
                             (onSelect)="onResidenteSelect($event)" 
                             (onDeSelectAll)="onDeSelectAllResidentes($event)"
+                            (onDeSelect)="onDeResidenteSelect($event)"
                             >
                             
                           </ng-multiselect-dropdown>
                           </salv-input-container>
                         </div>
-              
+
                         <div class="col-sm-3 col-xs-12" id="inputValidator">
                           <salv-input-container errorMessage="Campo Obrigatório">
                         <label for="exampleInputPassword1"> <i class="fa fa-calendar"></i> Data
@@ -120,6 +122,26 @@
                         <br>
                           </salv-input-container>
                       </div>
+
+                        <div class="col-sm-8 col-xs-12" id="inputValidator" >
+                          <salv-input-container errorMessage="Campo Obrigatório" >
+                        <label>Funcionários que realizaram a atividade </label><br>
+                        <ng-multiselect-dropdown name="funcionarios" 
+                        [placeholder]="'Selecione os funcionários'" [data]="funcionarios"        
+                        [(ngModel)]="selectedFuncionarios" 
+                        formControlName="funcionarios"
+                        [disabled]="disabled"
+                        [settings]="dropdownSettings2"
+                        (onSelect)="onFuncionarioSelect($event)"
+                        (onDeSelectAll)=" onDeSelectAllFuncionarios($event)"
+                        (onDeSelect)="onDeFuncionarioSelect($event)"
+            
+                        >
+                        </ng-multiselect-dropdown>
+                          </salv-input-container>
+                      </div>
+              
+                        
             
                       <div class="col-sm-10 col-xs-12" id="inputValidator">
                           <salv-input-container errorMessage="Campo Obrigatório">
@@ -132,23 +154,7 @@
                         <br>
                         </salv-input-container>
                       </div>
-                        <div class="col-sm-8 col-xs-12" id="inputValidator" >
-                            <salv-input-container errorMessage="Campo Obrigatório" >
-                          <label>Funcionários que realizaram a atividade </label><br>
-                          <ng-multiselect-dropdown name="funcionarios" 
-                          [placeholder]="'Selecione os funcionários'" [data]="funcionarios"        
-                          [(ngModel)]="selectedFuncionarios" 
-                          formControlName="funcionarios"
-                          [disabled]="disabled"
-                          [settings]="dropdownSettings2"
-                          (onSelect)="onFuncionarioSelect($event)"
-                          (onDeSelectAll)=" onDeSelectAllFuncionarios($event)"
-                          (onDeSelect)="onDeFuncionarioSelect($event)"
-              
-                          >
-                          </ng-multiselect-dropdown>
-                            </salv-input-container>
-                        </div>
+                        
               
               
                       </div>
