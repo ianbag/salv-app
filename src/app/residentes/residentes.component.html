@@ -8,8 +8,10 @@
 </style>
 <!-- Main content -->
 <section class="content">
-  <button class="btn btn-success" *ngIf="!Desativados" (click)="reportResidentes(1)" id="printReport"><i class="fa fa-print"></i></button>
-  <button class="btn btn-success" *ngIf="Desativados" (click)="reportResidentes(0)" id="printReport"><i class="fa fa-print"></i></button>
+  <button class="btn btn-success" *ngIf="!Desativados" (click)="reportResidentes(1)" id="printReport"><i
+      class="fa fa-print"></i></button>
+  <button class="btn btn-success" *ngIf="Desativados" (click)="reportResidentes(0)" id="printReport"><i
+      class="fa fa-print"></i></button>
   <div>
 
     <div class="form-group">
@@ -19,27 +21,27 @@
       <div class="btn-group pull-right" style="margin-right: 40px; margin-left: 40px">
         <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Filtro</button>
         <ul class="dropdown-menu" role="menu">
-            <input type="checkbox" id="Desativados" [(ngModel)]="Desativados" name="Desativados"
+          <input type="checkbox" id="Desativados" [(ngModel)]="Desativados" name="Desativados"
             (click)="residentesInativoss(); ngOnInit()" ng-true-value="YES" ng-false-value="NO" style="margin: 5px">
-             <label for="Desativados">Residentes inativos</label>
+          <label for="Desativados">Residentes inativos</label>
         </ul>
       </div>
-    <!-- FIM DO FILTRO -->
+      <!-- FIM DO FILTRO -->
 
-    <!-- PESQUISA -->
-    <div class="btn-group pull-right">
+      <!-- PESQUISA -->
+      <div class="btn-group pull-right">
         <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Pesquisar</button>
-        
+
         <ul class="dropdown-menu" role="menu">
-            <div class="input-group" style="margin: 5px">
-                <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
-                <input input class="form-control" placeholder="Pesquisar" type="text" name="search"
-                [(ngModel)]="filter" style="height: 40px; width: 250px">
-            </div>
+          <div class="input-group" style="margin: 5px">
+            <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+            <input input class="form-control" placeholder="Pesquisar" type="text" name="search" [(ngModel)]="filter"
+              style="height: 40px; width: 250px">
+          </div>
         </ul>
-    </div>
-    <!-- FIM PESQUISA-->
-      
+      </div>
+      <!-- FIM PESQUISA-->
+
     </div>
     <br>
 
