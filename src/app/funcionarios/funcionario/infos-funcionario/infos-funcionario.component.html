@@ -519,17 +519,19 @@
                       <div class="box-body">
                         <div>
                           <div class="col-sm-12 col-sm-12" id="formTitle">
-                            <h4><strong>Alterar usuário</strong></h4>
+                            <h4 class="text-center"><strong>Editar usuário</strong></h4>
                           </div>
                           <div class="row">
                             <div class="col-sm-6 col-sm-12">
                               <salv-input-container label="Email">
+                                  <span class="text-danger">*</span>
                                 <input type="text" class="form-control" formControlName="EMAIL" placeholder="E-mail"
                                   autocomplete="off" maxlength="100">
                               </salv-input-container>
                             </div>
                             <div class="col-sm-6 col-sm-12">
-                              <salv-input-container label="Login">
+                              <salv-input-container label="Nome">
+                                  <span class="text-danger">*</span>
                                 <input type="text" class="form-control" formControlName="LOGIN" placeholder="Login"
                                   autocomplete="off" maxlength="100">
                               </salv-input-container>
