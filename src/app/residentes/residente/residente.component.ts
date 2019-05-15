@@ -82,7 +82,7 @@ export class ResidenteComponent implements OnInit {
       })
 
     this.getFamiliar()
-
+      
     this.getConvenio()
 
     this.getBeneficio()
