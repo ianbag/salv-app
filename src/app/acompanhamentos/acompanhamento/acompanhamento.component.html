@@ -70,23 +70,23 @@
           </div>
 
 
-       <!-- INICIO MODAL EDITAR ACOMPANHAMENTO -->
-       <div class="modal fade" id="modalResidente" tabindex="-1" role="dialog" aria-labelledby="modalResidente"
-       aria-hidden="true">
-       <div class="modal-dialog" role="document">
-         <div class="modal-content">
-           <div class="modal-body">
+          <!-- INICIO MODAL EDITAR ACOMPANHAMENTO -->
+          <div class="modal fade" id="modalResidente" tabindex="-1" role="dialog" aria-labelledby="modalResidente"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-body">
 
-              <div class="box">
-                  <h1 align="center">Editar acompanhamento</h1>
-                  <hr>
-              
-                  <form [formGroup]="editarAcompanhamentoForm" novalidate >
-                    <div class="box-body">
-                      <div class="form-group" >
-              
-              
-                        <div class="col-sm-8 col-xs-12" id="inputValidator">
+                  <div class="box">
+                    <h1 align="center">Editar acompanhamento</h1>
+                    <hr>
+
+                    <form [formGroup]="editarAcompanhamentoForm" novalidate>
+                      <div class="box-body">
+                        <div class="form-group">
+
+
+                          <div class="col-sm-8 col-xs-12" id="inputValidator">
                             <salv-input-container errorMessage="Campo Obrigatório">
                               <label>Residentes que participaram da atividade </label><br>
                               <ng-multiselect-dropdown [placeholder]="'Selecione os residentes'" [data]="residentes"
@@ -129,10 +129,10 @@
                             <salv-input-container errorMessage="Campo Obrigatório">
                               <label>Atividade realizada</label>
                               <textarea class="form-control" required rows="3" formControlName="ATIVIDADE"
-                                placeholder="Descrição da atividade realizada" id="ATIVIDADE" maxlength="500"
+                                placeholder="Descrição da atividade realizada" id="ATIVIDADE" maxlength="1000"
                                 auatocomplete="off" #ATIVIDADE></textarea>
                               <small class="form-text text-muted"><code>{{ATIVIDADE.value.length}}</code> de
-                                <code>{{maxATIVIDADELength}}</code>500 caracteres</small>
+                                <code>{{maxATIVIDADELength}}</code>1000 caracteres</small>
 
                               <br>
                             </salv-input-container>
@@ -156,8 +156,7 @@
                   </div>
 
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                      [disabled]="!editarAcompanhamentoForm.valid">Cancelar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                     <button type="button" class="btn btn-success" data-dismiss="modal"
                       (click)="editarAcompanhamento(editarAcompanhamentoForm.value); updateAcompanhamentoFuncionario(null);  updateAcompanhamentoResidente(null)"
                       [disabled]="!editarAcompanhamentoForm.valid">Salvar</button>
