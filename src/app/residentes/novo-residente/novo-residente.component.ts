@@ -9,6 +9,7 @@ import { NotificationService } from 'src/app/shared/notification.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ValidatorService } from 'src/app/shared/validators/validator.service';
 import { UniqueValuesValidators } from 'src/app/shared/validators/unique-values/unique-values.component';
+import { DialogConfirmService } from '../dialog-confirm.service';
 
 @Component({
   selector: 'salv-novo-residente',
@@ -67,7 +68,7 @@ export class NovoResidenteComponent implements OnInit {
     { value: "BPC", option: "Benefício de Prestação Continuada" },
     { value: "AIV", option: "Aposentadoria por Invalidez" },
     { value: "AID", option: "Aposentadoria por Idade" },
-    { value: "NEC", option: "Não especificado"}
+    { value: "NEC", option: "Não especificado" }
   ]
 
   novoResidenteForm: FormGroup;
@@ -82,7 +83,8 @@ export class NovoResidenteComponent implements OnInit {
     private router: Router,
     private notificationService: NotificationService,
     private spinner: NgxSpinnerService,
-    private uniqueValidators: UniqueValuesValidators
+    private uniqueValidators: UniqueValuesValidators,
+    private dialogConfirmService: DialogConfirmService
   ) { }
 
   markAllDirty(control: AbstractControl) {
@@ -160,16 +162,33 @@ export class NovoResidenteComponent implements OnInit {
   }
 
   novoResidente(residente: Residente) {
-    this.residentesService.pessoa = residente.PESSOA
-    this.residentesService.residente = residente
-    //console.log("console verificar pessoa",)
-    if (this.novoResidenteForm.valid == true) {
-      //if(this.verificarUniqueResidente(residente))
-      this.router.navigate(['/familiar-residente'])
-    } else {
-      this.markAllDirty(this.novoResidenteForm)
-      this.notificationService.notify(`Preencha os campos obrigatórios!`)
-    }
+    this.residentesService.createNewResidente(residente)
+      .subscribe(res => {
+        if (res['errors']) {
+          res['errors'].forEach(error => {
+            console.log('Houve um erro!', error)
+            this.notificationService.notify(`Houve um erro! ${error.message}`)
+          })
+        } else {
+          this.dialogConfirmService.confirm(`Deseja cadastrar um familiar para o residente?`)
+            .then((isTrue) => {
+              if (isTrue) {
+                this.residentesService.codigoResidente = res.CODIGO_RESIDENTE
+                this.router.navigate(['/residentes/familiar-residente'])
+              } else {
+                this.dialogConfirmService.confirm(`Deseja cadastrar um convênio para o residente?`)
+                  .then((isTrue) => {
+                    if (isTrue) {
+                      this.residentesService.codigoResidente = res.CODIGO_RESIDENTE
+                      this.router.navigate(['/residentes/convenio-residente'])
+                    }
+                  })
+              }
+            })
+          this.notificationService.notify(`Residente inserido com sucesso!`)
+          this.router.navigate([`/residentes/${res.CODIGO_RESIDENTE}`])
+        }
+      })
   }
 
 

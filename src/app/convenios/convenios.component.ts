@@ -32,23 +32,23 @@ export class ConveniosComponent implements OnInit {
 
   paginaAtual: number = 1;
 
+  public Desativados
+  public filter
 
   ngOnInit() {
     this.spinner.show()
-    this.conveniosService.convenios()
+
+    this.conveniosService.tratados()
       .subscribe(convenios => {
         this.spinner.hide();
         this.convenios = convenios
         console.log('CONVENIOS', convenios)
       })
-
-
   }
 
   conveniosDesativadoss() {
     this.conveniosService.conveniosDesativados()
       .subscribe(conveniosDesativados => {
-
         this.conveniosDesativados = conveniosDesativados
         console.log('conveniosDesativados', conveniosDesativados)
       })
@@ -77,9 +77,9 @@ export class ConveniosComponent implements OnInit {
       })
   }
 
-  reportConvenios() {
+  reportConvenios(status) {
     this.spinner.show()
-    this.conveniosService.reportConvenios().subscribe(x => {
+    this.conveniosService.reportConvenios(status).subscribe(x => {
       var newBlob = new Blob([x], { type: 'application/pdf' })
 
       if (window.navigator && window.navigator.msSaveOrOpenBlob) {

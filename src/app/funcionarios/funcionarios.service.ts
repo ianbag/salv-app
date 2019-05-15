@@ -194,8 +194,8 @@ export class FuncionariosService {
         return this.http.put<Dependente>(`${SALV_API}/dependente/${id}/${nome}/${sobrenome}`, dependente)
     }
 
-    reportFuncionarios(): Observable<Blob> {
-        return this.http.get(`${SALV_API}/relatorio-funcionarios`, { responseType: 'blob' })
+    reportFuncionarios(status): Observable<Blob> {
+        return this.http.get(`${SALV_API}/relatorio-funcionarios/${status}`, { responseType: 'blob' })
     }
 
     reportFuncionario(cod_pes, cod_func): Observable<Blob> {

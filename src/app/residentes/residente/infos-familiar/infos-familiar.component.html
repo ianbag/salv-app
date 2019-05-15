@@ -42,7 +42,7 @@
       </div>
 
       <div class="col-xs-4 col-xs-12">
-        <strong>Complemento: </strong> {{familiar?.COMPLEMENTO}}
+        <strong>Complemento: </strong> {{familiar?.COMPLEMENTO | complemento}}
       </div>
 
       <div class="col-xs-4 col-xs-12">
@@ -58,7 +58,7 @@
       </div>
 
       <div class="col-xs-4 col-xs-12">
-        <strong>Referência: </strong> {{familiar?.REFERENCIA}}
+        <strong>Referência: </strong> {{familiar?.REFERENCIA | referencia}}
       </div>
 
 
@@ -191,7 +191,7 @@
                 <div class="box-body">
                   <div>
                     <div class="col-sm-12 col-sm-12">
-                      <h4>
+                      <h4 class="text-center">
                         <strong>Adicionar novo telefone</strong>
                       </h4>
                     </div>
@@ -236,7 +236,7 @@
                 <div class="box-body">
                   <div>
                     <div class="col-sm-12 col-sm-12">
-                      <h4>
+                      <h4 class="text-center">
                         <strong>Editar telefone</strong>
                       </h4>
                     </div>
@@ -274,20 +274,20 @@
     <div class="col-sm-12 col-xs-12">
       <h4>
         <strong>Telefones </strong>
-        <button type="button" class="btn btn-success btn-xs" data-toggle="modal"
-          attr.data-target="#modalNovoTelefone{{familiar?.CODIGO}}">
-          <i class="fa fa-plus-circle"></i>
-        </button>
+        <a class="icones-editar-excluir" type="submit" data-toggle="modal"
+        attr.data-target="#modalNovoTelefone{{familiar?.CODIGO}}">
+          <i class="fa fa-plus-circle" style="color: #00a65a;"></i>
+        </a>
       </h4>
     </div>
     <div class="col-sm-12">
-      <ng-container *ngIf="telefone; else elseTelefoneTemplate">
+      <ng-container *ngIf="telefone.length; else elseTelefoneTemplate">
         <div class="col-xs-4 col-xs-12" *ngFor="let tel of telefone">
           <strong>Telefone: </strong> ({{tel?.TELEFONE.DDD}}) {{tel?.TELEFONE.NUMERO | telefone}}
-          <a class="input-remove" (click)="deletarTelefoneFamiliar(tel.TELEFONE.CODIGO, familiar?.CODIGO)">
+          <a class="input-remove icones-editar-excluir" (click)="deletarTelefoneFamiliar(tel.TELEFONE.CODIGO, familiar?.CODIGO)">
             <span><i class="fa fa-close"></i></span>
           </a>
-          <a class="input-edit" data-toggle="modal" (click)="buscarTelefone(tel.TELEFONE.CODIGO)"
+          <a class="input-edit icones-editar-excluir" data-toggle="modal" (click)="buscarTelefone(tel.TELEFONE.CODIGO)"
             attr.data-target="#modalEditarTelefone{{familiar?.CODIGO}}">
             <span><i class="fa fa-pencil"></i></span></a>
         </div>

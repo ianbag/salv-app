@@ -29,6 +29,9 @@ export class ResidentesComponent implements OnInit {
 
   residentes: Residente[] = []
 
+  public Desativados
+  public filter
+
   constructor(private residentesService: ResidentesService, private dialogConfirmService: DialogConfirmService, private notificationService: NotificationService, private spinner: NgxSpinnerService) { }
 
   paginaAtual: number = 1;
@@ -83,9 +86,9 @@ export class ResidentesComponent implements OnInit {
       })
   }
 
-  reportResidentes() {
+  reportResidentes(status) {
     this.spinner.show()
-    this.residentesService.reportResidentes().subscribe(x => {
+    this.residentesService.reportResidentes(status).subscribe(x => {
       var newBlob = new Blob([x], { type: 'application/pdf' })
 
       if (window.navigator && window.navigator.msSaveOrOpenBlob) {

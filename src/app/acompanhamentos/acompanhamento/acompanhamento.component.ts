@@ -29,7 +29,9 @@ export class AcompanhamentoComponent implements OnInit {
   acompanhamento1: Acompanhamento[]
   funcionarios1: any[]
   residentes1: any[]
-
+  public maxATIVIDADELength
+  atividade
+  data_atividade
   editarAcompanhamentoForm: FormGroup
   codigo_acompanhamento: number
   ACOMPANHAMENTO_CODIGO: any[]
@@ -66,9 +68,11 @@ export class AcompanhamentoComponent implements OnInit {
     this.spinner.show();
 
     this.acompanhamentosService.acompanhamentoById(this.route.snapshot.params['id'])
-      .subscribe(acompanhamento => {
+      .subscribe((acompanhamento: Acompanhamento) => {
         this.spinner.hide()
-        this.acompanhamento1 = acompanhamento[0]; console.log(acompanhamento)
+        this.acompanhamento1 = acompanhamento[0]; console.log(this.acompanhamento1)
+        this.atividade = acompanhamento[0].ATIVIDADE
+        this.data_atividade = acompanhamento[0].DATA_ACOMPANHAMENTO
       })
 
     this.acompanhamentosService.AcompanhamentoFuncionarioQuery(this.route.snapshot.params['id']).subscribe(acompanhamento_funcionario => {
@@ -115,6 +119,10 @@ export class AcompanhamentoComponent implements OnInit {
       this.editarAcompanhamentoForm.patchValue({
         DATA_ACOMPANHAMENTO: this.acompanhamento[0].DATA_ACOMPANHAMENTO,
         ATIVIDADE: this.acompanhamento[0].ATIVIDADE,
+        residentes: this.selectedResidentes,
+        funcionarios: this.selectedFuncionarios
+
+
       })
       if (this.editarAcompanhamentoForm != null) {
         this.spinner.hide()
@@ -172,9 +180,14 @@ export class AcompanhamentoComponent implements OnInit {
         this.acompanhamento1 = res[0]
         this.acompanhamentoService.acompanhamentoById(this.route.snapshot.params['id']).subscribe(res => {
           this.acompanhamento1 = res[0]
+
+
+
           console.log(res)
+
           this.ns.notify('Acompanhamento atualizado com sucesso!')
         })
+
       } else {
         if (this.editarAcompanhamentoForm.valid == true && this.selectedFuncionarios != null && this.selectedResidentes != null) {
           this.ns.notify(`Acompanhamento inserido com sucesso!`)
@@ -249,6 +262,39 @@ export class AcompanhamentoComponent implements OnInit {
       })
   }
 
+  deleteAllFuncionario(idAcomp: number) {
+    this.dialogConfirmService.confirm(`Deseja excluir o todos funcionários do acompanhamento?`)
+      .then((isTrue) => {
+        if (isTrue) {
+          this.acompanhamentoService.deleteFuncionarioAllAcompanhamento(idAcomp)
+            .subscribe(() => {
+
+              this.ns.notify('Funcionario excluído com sucesso!')
+            })
+        }
+
+      })
+  }
+
+  deleteAllResidente(idAcomp: number) {
+    this.dialogConfirmService.confirm(`Deseja excluir o todos residentes do acompanhamento?`)
+      .then((isTrue) => {
+        if (isTrue) {
+          this.acompanhamentoService.deleteResidenteAllAcompanhamento(idAcomp)
+            .subscribe(() => {
+
+              this.ns.notify('Residentes excluídos com sucesso!')
+            })
+        }
+
+      })
+  }
+
+
+
+
+
+
   onResidenteSelect(residente: any) {
     console.log('onResidenteSelect', residente['CODIGO_RESIDENTE'])
   }
@@ -265,6 +311,18 @@ export class AcompanhamentoComponent implements OnInit {
   onDeFuncionarioSelect(funcionarios: any) {
     this.deleteFuncionario(funcionarios.CODIGO_FUNCIONARIO, this.codigo_acompanhamento)
     console.log('onDeFuncionarioSelect', funcionarios.CODIGO_RESIDENTE, this.codigo_acompanhamento)
+  }
+
+
+  onDeSelectAllFuncionarios(items: any): void {
+
+    this.deleteAllFuncionario(this.codigo_acompanhamento)
+  }
+
+
+  onDeSelectAllResidentes(items: any): void {
+
+    this.deleteAllResidente(this.codigo_acompanhamento)
   }
 
   reportAcompanhamento() {
