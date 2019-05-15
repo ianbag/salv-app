@@ -447,7 +447,7 @@
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                       <button type="button" class="btn btn-success"
-                        (click)="updateEndereco(this.updateEnderecoForm.value)" data-dismiss="modal">Salvar</button>
+                        (click)="updateEndereco(this.updateEnderecoForm.value)" [disabled]="!updateEnderecoForm.valid" data-dismiss="modal">Salvar</button>
                     </div>
                   </div>
                 </div>
@@ -530,7 +530,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                     <button type="button" class="btn btn-success" (click)="updateUsuario(this.updateUsuarioForm.value)"
-                      data-dismiss="modal">Salvar</button>
+                      [disabled]="!updateUsuarioForm.valid" data-dismiss="modal">Salvar</button>
                   </div>
                 </div>
               </div>
