@@ -59,7 +59,8 @@ import { NumeroInssPipe } from './pipes/inss/numero-inss.pipe';
 import { ProvaVidaInssPipe } from './pipes/inss/prova-vida-inss.pipe';
 import { SituacaoInssPipe } from './pipes/inss/situacao-inss.pipe';
 import { ValorInssPipe } from './pipes/inss/valor-inss.pipe';
-import { ReferenciaPipe } from './pipes/referencia.pipe'
+import { ReferenciaPipe } from './pipes/referencia.pipe';
+import { ComplementoPipe } from './pipes/complemento.pipe';
 
 @NgModule({
     declarations: [
@@ -96,7 +97,8 @@ import { ReferenciaPipe } from './pipes/referencia.pipe'
         ProvaVidaInssPipe,
         SituacaoInssPipe,
         ValorInssPipe,
-        ReferenciaPipe
+        ReferenciaPipe,
+        ComplementoPipe
     ],
     imports: [
         CommonModule,
@@ -153,7 +155,8 @@ import { ReferenciaPipe } from './pipes/referencia.pipe'
         ProvaVidaInssPipe,
         SituacaoInssPipe,
         ValorInssPipe,
-        ReferenciaPipe
+        ReferenciaPipe,
+        ComplementoPipe
     ]
 })
 export class SharedModule {
