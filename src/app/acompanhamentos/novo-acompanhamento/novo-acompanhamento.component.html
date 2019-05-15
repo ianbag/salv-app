@@ -30,20 +30,6 @@
                   errorMessage="Campo Obrigatório" max="2999-12-31">
               </div>
             </salv-input-container>
-            <br>
-          </div>
-
-          <div class="col-sm-10 col-xs-12" id="inputValidator">
-
-            <salv-input-container errorMessage="Campo Obrigatório">
-              <label>Atividade realizada</label>
-              <span class="text-danger">*</span>
-              <textarea class="form-control" required rows="3" formControlName="ATIVIDADE"
-                placeholder="Descrição da atividade realizada" id="ATIVIDADE" maxlength="1000" auatocomplete="off"
-                #ATIVIDADE></textarea>
-              <small class="form-text text-muted"><code>{{ATIVIDADE.value.length}}</code> de
-                <code>{{maxATIVIDADELength}}</code>1000 caracteres</small>
-            </salv-input-container>
           </div>
 
           <div class="col-sm-8 col-xs-12" id="inputValidator">
@@ -57,22 +43,19 @@
             </salv-input-container>
           </div>
 
-
-
-
-          <div class="col-sm-10 col-xs-12" id="inputValidator">
+          <div class="col-sm-12 col-sm-12" id="inputValidator">
 
             <salv-input-container errorMessage="Campo Obrigatório">
               <label>Atividade realizada</label>
-
+              <span class="text-danger">*</span>
               <textarea class="form-control" required rows="3" formControlName="ATIVIDADE"
-                placeholder="Descrição da atividade realizada" id="ATIVIDADE" maxlength="500" auatocomplete="off"
+                placeholder="Descrição da atividade realizada" id="ATIVIDADE" maxlength="1000" auatocomplete="off"
                 #ATIVIDADE></textarea>
               <small class="form-text text-muted"><code>{{ATIVIDADE.value.length}}</code> de
-                <code>{{maxATIVIDADELength}}</code>500 caracteres</small>
+                <code>{{maxATIVIDADELength}}</code>1000 caracteres</small>
             </salv-input-container>
-            <br>
           </div>
+
         </div>
         <!--form group-->
 
