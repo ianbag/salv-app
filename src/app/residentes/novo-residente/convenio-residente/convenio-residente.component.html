@@ -12,12 +12,14 @@
             <h4><strong>Informações do convênio</strong></h4>
           </div>
 
-          <div class="col-sm-4 col-sm-12">
-            <label>Nome</label>
-            <select class="form-control" formControlName="CONVENIO_CODIGO">
-              <option [ngValue]="null">Selecione</option>
-              <option *ngFor="let convenio of convenios" [value]="convenio.CODIGO">{{convenio.NOME_CONVENIO}}</option>
-            </select>
+          <div class="col-sm-4 col-sm-12" id="inputValidator">
+            <salv-input-container errorMessage="Campo Obrigatório" label="Nome">
+              <span class="text-danger">*</span>
+              <select class="form-control" formControlName="CONVENIO_CODIGO">
+                <option value="" label="Nome do convênio" disabled selected="selected"></option>
+                <option *ngFor="let convenio of convenios" [value]="convenio.CODIGO">{{convenio.NOME_CONVENIO}}</option>
+              </select>
+            </salv-input-container>
 
           </div>
 
@@ -31,19 +33,18 @@
 
           <div class="col-md-12"><br></div>
 
-          <div class="col-sm-4 col-xs-12" style="margin-left: -10px;">
+          <div class="col-sm-4 col-xs-12" id="inputValidator">
             <br>
             <salv-input-container errorMessage="Campo Obrigatório" label="Número do convênio">
               <span class="text-danger">*</span>
               <input type="text" class="form-control" formControlName="NUMERO_CONVENIO"
                 placeholder="Nº de inscrição do convênio" autocomplete="off" maxlength="11">
             </salv-input-container>
-
           </div>
 
           <div class="col-sm-4 col-xs-12" id="inputValidator">
             <br>
-            <salv-input-container errorMessage="Campo Obrigatório" label="Nome do titular">
+            <salv-input-container errorMessage="Campo Obrigatório" label="Nome do Titular">
               <span class="text-danger">*</span>
               <input type="text" class="form-control" formControlName="TITULAR_CONVENIO" placeholder="Nome do Titular"
                 autocomplete="off" maxlength="100">
