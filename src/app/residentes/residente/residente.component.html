@@ -110,7 +110,7 @@
                       <salv-input-container errorMessage="Campo Obrigatório" label="Estado">
                         <span class="text-danger">*</span>
                         <select class="form-control" formControlName="ESTADO">
-                          <option value="" label="Selecione" disabled selected="selected"></option>
+                            <option [ngValue]="null">Selecione</option>
                           <option *ngFor="let estado of estados">{{estado}}</option>
                         </select>
                       </salv-input-container>
@@ -139,9 +139,9 @@
                   </div>
                   <div class="row">
                     <div class="row">
-                      <div class="col-sm-3 col-sm-12" formGroupName="TELEFONE">
+                      <div class="col-sm-3 col-sm-12" formGroupName="TELEFONE" style="margin-left: 5px;">
                         <salv-input-container errorMessage="Campo Obrigatório" label="DDD">
-                          <input type="text" class="form-control" formControlName="DDD" placeholder="DDD" maxlength="3">
+                          <input type="text" class="form-control" formControlName="DDD" placeholder="DDD" maxlength="2">
                         </salv-input-container>
                       </div>
                       <div class="col-sm-5 col-sm-12" formGroupName="TELEFONE">
@@ -197,7 +197,7 @@
         <div class="modal-content">
           <div class="modal-body">
             <div class="col-sm-12 col-sm-12" id="formTitle">
-              <h4 class="text-center"><strong>Adicionar Convenio</strong></h4>
+              <h4 class="text-center"><strong>Adicionar Convênio</strong></h4>
             </div>
 
             <form role="form" [formGroup]="convenioResidenteForm">
@@ -208,7 +208,7 @@
                     <salv-input-container errorMessage="Campo Obrigatório" label="Nome">
                       <span class="text-danger">*</span>
                       <select class="form-control" formControlName="CONVENIO_CODIGO">
-                        <option value="" label="Nome do convênio" disabled selected="selected"></option>
+                          <option [ngValue]="null">Selecione</option>
                         <option *ngFor="let convenio of residenteConvenios" [value]="convenio.CODIGO">
                           {{convenio.NOME_CONVENIO}}</option>
                       </select>
@@ -233,8 +233,8 @@
                         placeholder="Nome do Titular" autocomplete="off" maxlength="100">
                     </salv-input-container>
                   </div>
-                  <div class="col-sm-6 col-xs-12">
-                    <label>Parentesco Titular</label>
+                  <div class="col-sm-6 col-xs-12" style="margin-top: 10px;">
+                    <label>Parentesco titular</label>
                     <input type="text" class="form-control" formControlName="PARENTESCO_TITULAR"
                       placeholder="Parentesco Titular" autocomplete="off" maxlength="100">
                   </div>
@@ -288,7 +288,7 @@
         <div class="modal-content">
           <div class="modal-body">
             <div class="col-sm-12 col-sm-12" id="formTitle">
-              <h4 class="text-center"><strong>Adicionar Benefício</strong></h4>
+              <h4 class="text-center"><strong>Adicionar benefício</strong></h4>
             </div>
 
             <form role="form" [formGroup]="beneficioResidenteForm">
@@ -301,7 +301,7 @@
                   </salv-input-container>
                 </div>
 
-                <div class="col-sm-6 col-xs-12">
+                <div class="col-sm-6 col-xs-12" style="margin-left: 10px;">
                   <label>Banco</label>
                   <input type="text" class="form-control" formControlName="BANCO_BENEFICIO" placeholder="Banco"
                     autocomplete="off" maxlength="50">

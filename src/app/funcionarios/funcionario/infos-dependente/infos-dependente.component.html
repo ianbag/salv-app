@@ -132,8 +132,7 @@
                   <div class="col-sm-6 col-sm-12">
                     <label>Estado</label>
                     <select class="form-control" formControlName="ESTADO_CERTIDAO_NASCIMENTO">
-                      <option value="" label="Selecione" disabled selected="selected">
-                      </option>
+                        <option [ngValue]="null">Selecione</option>
                       <option *ngFor="let estado of estados">
                         {{estado}}
                       </option>

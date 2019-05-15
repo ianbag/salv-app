@@ -70,31 +70,23 @@
           </div>
 
 
-          <div>
+       <!-- INICIO MODAL EDITAR ACOMPANHAMENTO -->
+       <div class="modal fade" id="modalResidente" tabindex="-1" role="dialog" aria-labelledby="modalResidente"
+       aria-hidden="true">
+       <div class="modal-dialog" role="document">
+         <div class="modal-content">
+           <div class="modal-body">
 
-            <div class="botao">
-              <a type="submit" class="btn btn-default botao" [routerLink]="['/acompanhamentos']">Voltar</a>
-            </div>
-          </div>
-
-
-          <!-- INICIO MODAL EDITAR ACOMPANHAMENTO -->
-          <div class="modal fade" id="modalResidente" tabindex="-1" role="dialog" aria-labelledby="modalResidente"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-body">
-
-                  <div class="box">
-                    <h1 align="center">Atualizar acompanhamento</h1>
-                    <hr>
-
-                    <form [formGroup]="editarAcompanhamentoForm" novalidate>
-                      <div class="box-body">
-                        <div class="form-group">
-
-
-                          <div class="col-sm-8 col-xs-12" id="inputValidator">
+              <div class="box">
+                  <h1 align="center">Editar acompanhamento</h1>
+                  <hr>
+              
+                  <form [formGroup]="editarAcompanhamentoForm" novalidate >
+                    <div class="box-body">
+                      <div class="form-group" >
+              
+              
+                        <div class="col-sm-8 col-xs-12" id="inputValidator">
                             <salv-input-container errorMessage="Campo Obrigatório">
                               <label>Residentes que participaram da atividade </label><br>
                               <ng-multiselect-dropdown [placeholder]="'Selecione os residentes'" [data]="residentes"

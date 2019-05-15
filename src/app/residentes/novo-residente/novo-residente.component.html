@@ -58,8 +58,7 @@
               <div class="col-sm-3 col-sm-12" formGroupName="PESSOA">
                 <label>Estado Civil </label>
                 <select class="form-control" formControlName="ESTADO_CIVIL">
-                  <option disabled hidden value="null" label="Selecione um estado civil" disabled selected="selected">
-                  </option>
+                    <option [ngValue]="null">Selecione</option>
                   <option *ngFor="let estadoCivil of estadosCivil" [value]="estadoCivil.value">{{estadoCivil.option}}
                   </option>
                 </select>
@@ -67,7 +66,7 @@
               <div class="col-sm-3 col-sm-12" formGroupName="PESSOA">
                 <label>Sexo</label>
                 <select class="form-control" formControlName="SEXO">
-                  <option disabled hidden value="null" label="Selecione o sexo" disabled selected="selected"></option>
+                    <option [ngValue]="null">Selecione</option>
                   <option *ngFor="let sexo of sexos" [value]="sexo.value">{{sexo.option}}</option>
                 </select>
 
@@ -79,16 +78,14 @@
               <div class="col-sm-4 col-sm-12" formGroupName="PESSOA">
                 <label>Religião </label>
                 <select class="form-control" formControlName="RELIGIAO">
-                  <option disabled hidden value="null" label="Selecione uma religião" disabled selected="selected">
-                  </option>
+                    <option [ngValue]="null">Selecione</option>
                   <option *ngFor="let religiao of religioes" [value]="religiao.value">{{religiao.option}}</option>
                 </select>
               </div>
               <div class="col-sm-4 col-sm-12" formGroupName="PESSOA">
                 <label>Escolaridade </label>
                 <select class="form-control" formControlName="ESCOLARIDADE">
-                  <option disabled hidden value="null" label="Selecione uma escolaridade" disabled selected="selected">
-                  </option>
+                    <option [ngValue]="null">Selecione</option>
                   <option *ngFor="let escolaridade of escolaridades" [value]="escolaridade.value">
                     {{escolaridade.option}}</option>
                 </select>
@@ -138,7 +135,7 @@
               <div class="col-sm-2 col-sm-12">
                 <label>Estado </label>
                 <select class="form-control" formControlName="ESTADO_CERTIDAO_NASCIMENTO">
-                  <option value="" label="Selecione" disabled selected="selected"></option>
+                    <option [ngValue]="null">Selecione</option>
                   <option *ngFor="let estado of estados">{{estado}}</option>
                 </select>
                 <br>
@@ -206,7 +203,7 @@
               <div class="col-sm-4 col-sm-12">
                 <label>Situação </label>
                 <select class="form-control" formControlName="SITUACAO_INSS">
-                  <option value="" label="Selecione" disabled selected="selected"></option>
+                    <option [ngValue]="null">Selecione</option>
                   <option *ngFor="let situacao of situacoesInss" [value]="situacao.value">{{situacao.option}}</option>
                 </select>
               </div>

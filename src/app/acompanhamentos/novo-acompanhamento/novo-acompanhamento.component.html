@@ -12,7 +12,8 @@
 
           <div class="col-sm-8 col-xs-12" id="inputValidator">
             <salv-input-container errorMessage="Campo Obrigatório">
-              <label>Residentes que participaram da atividade </label><br>
+              <label>Residentes que participaram da atividade </label>
+              <span class="text-danger">*</span><br>
               <ng-multiselect-dropdown [placeholder]="'Selecione os residentes'" [data]="residentes"
                 formControlName="residentes" [disabled]="disabled" [settings]="dropdownSettings"
                 (onSelect)="onResidenteSelect($event)">
@@ -22,21 +23,33 @@
           </div>
 
           <div class="col-sm-3 col-xs-12" id="inputValidator">
-            <salv-input-container errorMessage="Campo Obrigatório">
-              <label for="exampleInputPassword1"> <i class="fa fa-calendar"></i> Data
-                da
-                atividade</label>
+            <salv-input-container errorMessage="Campo Obrigatório" label="Data da atividade">
+              <span class="text-danger">*</span>
               <div class="input-group date">
                 <input type="date" class="form-control pull-right" id="datepicker" formControlName="DATA_ACOMPANHAMENTO"
                   errorMessage="Campo Obrigatório" max="2999-12-31">
               </div>
-              <br>
+            </salv-input-container>
+            <br>
+          </div>
+
+          <div class="col-sm-10 col-xs-12" id="inputValidator">
+
+            <salv-input-container errorMessage="Campo Obrigatório">
+              <label>Atividade realizada</label>
+              <span class="text-danger">*</span>
+              <textarea class="form-control" required rows="3" formControlName="ATIVIDADE"
+                placeholder="Descrição da atividade realizada" id="ATIVIDADE" maxlength="1000" auatocomplete="off"
+                #ATIVIDADE></textarea>
+              <small class="form-text text-muted"><code>{{ATIVIDADE.value.length}}</code> de
+                <code>{{maxATIVIDADELength}}</code>1000 caracteres</small>
             </salv-input-container>
           </div>
 
           <div class="col-sm-8 col-xs-12" id="inputValidator">
             <salv-input-container errorMessage="Campo Obrigatório">
-              <label>Funcionários que realizaram a atividade </label><br>
+              <label>Funcionários que realizaram a atividade </label>
+              <span class="text-danger">*</span><br>
               <ng-multiselect-dropdown name="funcionarios" [placeholder]="'Selecione os funcionários'"
                 [data]="funcionarios" formControlName="funcionarios" [disabled]="disabled"
                 [settings]="dropdownSettings2" (onSelect)="onFuncionarioSelect($event)">
