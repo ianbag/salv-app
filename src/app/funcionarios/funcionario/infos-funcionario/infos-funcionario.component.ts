@@ -95,8 +95,8 @@ export class InfosFuncionarioComponent implements OnInit {
             REFERENCIA: this.fb.control(null, [])
         })
         this.updateUsuarioForm = this.fb.group({
-            EMAIL: this.fb.control(null, [], this.uniqueValidators.validateUsuarioEmail(this.route.snapshot.params['id'])),
-            LOGIN: this.fb.control(null, [], this.uniqueValidators.validateUsuarioLogin(this.route.snapshot.params['id']))
+            EMAIL: this.fb.control(null, [Validators.required], this.uniqueValidators.validateUsuarioEmail(this.route.snapshot.params['id'])),
+            LOGIN: this.fb.control(null, [Validators.required], this.uniqueValidators.validateUsuarioLogin(this.route.snapshot.params['id']))
         })
         this.updateFuncionarioForm = this.fb.group({
             //PESSOA
