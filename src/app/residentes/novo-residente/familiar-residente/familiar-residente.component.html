@@ -80,20 +80,18 @@
               </div>
               <div class="col-sm-3 col-sm-12" formGroupName="ENDERECOS">
                 <salv-input-container errorMessage="Campo Obrigatório" label="Complemento">
-                  <span class="text-danger">*</span>
                   <input type="text" class="form-control" formControlName="COMPLEMENTO" placeholder="Complemento">
                 </salv-input-container>
               </div>
               <div class="col-sm-6 col-sm-12" formGroupName="ENDERECOS">
                 <salv-input-container errorMessage="Campo Obrigatório" label="Referência">
-                  <span class="text-danger">*</span>
                   <input type="text" class="form-control" formControlName="REFERENCIA" placeholder="Referência"
                     maxlength="100">
                 </salv-input-container>
                 <br>
               </div>
             </div>
-
+          <div class="row">
             <div class="col-sm-2 col-sm-12" formGroupName="TELEFONE">
               <salv-input-container errorMessage="Campo Obrigatório" label="DDD">
                 <span class="text-danger">*</span>
@@ -104,9 +102,10 @@
               <salv-input-container errorMessage="Campo Obrigatório" label="Número">
                 <span class="text-danger">*</span>
                 <input type="text" class="form-control" formControlName="NUMERO" mask="00000-0000"
-                  placeholder="Número Telefone">
+                  placeholder="Número">
               </salv-input-container>
             </div>
+          </div>
           </div>
 
           <div class="col-sm-12 col-sm-12">

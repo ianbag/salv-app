@@ -175,8 +175,8 @@ export class ConvenioComponent implements OnInit {
     this.cs.telefoneId(codTelefone).subscribe(telefone => {
       this.codigoTelefone = telefone.CODIGO
       this.updateTelefoneForm.patchValue({
-        DDD: this.convenio1[0].DDD,
-        NUMERO: this.convenio1[0].NUM_TEL
+        DDD: telefone.DDD,
+        NUMERO: telefone.NUMERO
       })
     })
   }

@@ -9,6 +9,7 @@ import { Familiar } from '../../residente/infos-familiar/familiar.model';
 import { NotificationService } from 'src/app/shared/notification.service';
 import { ConveniosService } from 'src/app/convenios/convenios.service';
 import { DialogConfirmService } from '../../dialog-confirm.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'salv-convenio-residente',
@@ -36,7 +37,7 @@ export class ConvenioResidenteComponent implements OnInit {
 
   residente: Residente
   familiar: Familiar
-  convenios: Residente_Convenio[]
+  convenios: Convenio[]
   residenteConvenio: Residente_Convenio
 
   constructor(
@@ -45,7 +46,8 @@ export class ConvenioResidenteComponent implements OnInit {
     private router: Router,
     private notificationService: NotificationService,
     private convenioService: ConveniosService,
-    private dialogConfirmService: DialogConfirmService
+    private dialogConfirmService: DialogConfirmService,
+    private spinner: NgxSpinnerService
   ) { }
 
   markAllDirty(control: AbstractControl) {
@@ -60,6 +62,8 @@ export class ConvenioResidenteComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    
     this.residenteConvenio = this.residentesService.residenteConvenio
 
     this.getConvenio()
@@ -119,7 +123,7 @@ export class ConvenioResidenteComponent implements OnInit {
   }
 
   getConvenio(){
-    this.residentesService.convenios()
+    this.convenioService.tratados()
       .subscribe(convenio => this.convenios = convenio)
   }
 
