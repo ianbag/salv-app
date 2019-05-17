@@ -160,8 +160,8 @@ export class ResidentesService {
         return this.http.post<any>(`${SALV_API}/residente_convenio`, residenteConvenio)
     }
 
-    updateConvenio(residenteConvenio: Residente_Convenio) {
-        return this.http.put<Residente_Convenio>(`${SALV_API}/residente_convenio/${residenteConvenio.NUMERO_CONVENIO}`, residenteConvenio)
+    updateConvenio(convenio_codigo: any, residenteConvenio: Residente_Convenio) {
+        return this.http.put<Residente_Convenio>(`${SALV_API}/residente_convenio/${convenio_codigo}`, residenteConvenio)
     }
 
     createNewTelefoneFamiliar(telefone: Telefone, CODIGO_FAMILIAR) {

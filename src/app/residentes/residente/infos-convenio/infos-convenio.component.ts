@@ -70,7 +70,7 @@ export class InfosConvenioComponent implements OnInit {
   }
 
   editarConvenio(convenio: Residente_Convenio) {
-    this.residentesService.updateConvenio(convenio)
+    this.residentesService.updateConvenio(this.convenio.NUMERO_CONVENIO, convenio)
       .subscribe(res => {
         if (res['errors']) {
           res['errors'].forEach(error => {
