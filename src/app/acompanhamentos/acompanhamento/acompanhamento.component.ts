@@ -26,7 +26,7 @@ export class AcompanhamentoComponent implements OnInit {
 
   acompanhamentoState = 'ready'
 
-  acompanhamento1: Acompanhamento[]
+  acompanhamento1: Acompanhamento
   funcionarios1: any[]
   residentes1: any[]
   public maxATIVIDADELength
