@@ -14,7 +14,7 @@ export class TelaInicialComponent implements OnInit {
 
   ngOnInit() {
     if (this.ls.primeiro_acesso == 1) {
-      this.toastr.info('É seu primeiro acesso! <a target="_blank" href="https://www.google.com.br">Clique aqui</a> e defina sua senha!', 'Bem vindo!', {
+      this.toastr.info('É seu primeiro acesso! <a target="_blank" href="http://localhost:4200/#/primeiro-acesso">Clique aqui</a> e defina sua senha!', 'Bem vindo!', {
         closeButton: true,
         timeOut: 30000,
         extendedTimeOut: 30000,
