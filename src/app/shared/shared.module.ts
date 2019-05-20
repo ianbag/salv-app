@@ -29,6 +29,7 @@ import { NovoAcompanhamentoService } from './../acompanhamentos/novo-acompanhame
 import { ForgetService } from './../auth/forget-password/forget.service';
 import { ResetService } from './../auth/reset-password/reset.service';
 import { ValidatorService } from './validators/validator.service';
+import { FirstAccessService } from '../auth/first-access/first-access.service';
 
 //Pipes
 import { ApelidoPipe } from './pipes/apelido.pipe';
@@ -180,6 +181,7 @@ export class SharedModule {
                 ForgetService,
                 ResetService,
                 ValidatorService,
+                FirstAccessService
             ]
         }
     }

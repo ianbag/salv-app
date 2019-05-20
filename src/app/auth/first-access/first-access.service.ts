@@ -7,4 +7,8 @@ import { FirstAccess } from './first-access.model'
 export class FirstAccessService {
 
     constructor(private http: HttpClient) { }
+
+    definePass(firstAccess: FirstAccess) {
+        console.log(firstAccess)
+    }
 }

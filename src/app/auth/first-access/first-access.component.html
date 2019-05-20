@@ -6,7 +6,7 @@
     <p class="login-box-msg">Por favor, defina sua senha</p>
     <form [formGroup]="senhaForm">
       <salv-input-container [showTip]=false>
-        <input type="text" formControlName="senha" class="form-control" placeholder="Nova senha">
+        <input type="password" formControlName="senha" class="form-control" placeholder="Nova senha">
         <span class="glyphicon glyphicon-lock form-control-feedback icon-log-input"></span>
       </salv-input-container>
 
@@ -18,7 +18,7 @@
       <div class="row">
         <br/>
         <div class=" col-xs-12">
-          <button type="submit" [disabled]="senhaForm.invalid"
+          <button type="submit" (click)="defineSenha()" [disabled]="senhaForm.invalid"
             class="btn btn-success btn-block btn-flat">Definir senha</button>
         </div>
       </div>
