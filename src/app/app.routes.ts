@@ -5,6 +5,7 @@ import { TelaInicialComponent } from './tela-inicial/tela-inicial.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './auth/login/login.component'
 import { ForgetPasswordComponent } from './auth/forget-password/forget-password.component';
+import { FirstAccessComponent } from './auth/first-access/first-access.component';
 
 import { AuthGuardService as AuthGuard } from './auth/auth-guard.service'
 
@@ -14,6 +15,7 @@ export const ROUTES: Routes = [
     { path: 'home', component: TelaInicialComponent, canActivate: [AuthGuard] },
     { path: 'esqueci-a-senha', component: ForgetPasswordComponent },
     { path: 'esqueci-a-senha/:token', component: ResetPasswordComponent },
+    { path: 'primeiro-acesso', component: FirstAccessComponent },
 
     { path: 'convenios', loadChildren: './convenios/convenio.module#ConvenioModule', canActivate: [AuthGuard] },
     { path: 'funcionarios', loadChildren: './funcionarios/funcionario.module#FuncionarioModule', canActivate: [AuthGuard] },
