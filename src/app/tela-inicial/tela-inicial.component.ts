@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NotificationService } from '../shared/notification.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'salv-tela-inicial',
@@ -8,9 +9,12 @@ import { NotificationService } from '../shared/notification.service';
 })
 export class TelaInicialComponent implements OnInit {
 
-  constructor(private ns:NotificationService) { }
+  constructor(private ns: NotificationService, private toastr: ToastrService) { }
 
   ngOnInit() {
+    if ('TESTE') {
+      this.toastr.info('Primeiro acesso', 'É seu primeiro acesso e o toastr está funcionando corretamente')
+    }
   }
-     
+
 }
