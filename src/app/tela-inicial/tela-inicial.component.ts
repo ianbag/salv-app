@@ -14,7 +14,14 @@ export class TelaInicialComponent implements OnInit {
 
   ngOnInit() {
     if (this.ls.primeiro_acesso == 1) {
-      this.toastr.info('Primeiro acesso', 'É seu primeiro acesso e o toastr está funcionando corretamente')
+      this.toastr.info('Primeiro acesso', 'É seu primeiro acesso e o toastr está funcionando corretamente', {
+        closeButton: true,
+        timeOut: 30000,
+        extendedTimeOut: 0,
+        enableHtml: true,
+        progressBar: true,
+        positionClass: 'toast-bottom-center'
+      })
     }
   }
 
