@@ -8,6 +8,7 @@ import { NgxMaskModule } from "ngx-mask";
 import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FilterPipeModule } from 'ngx-filter-pipe';
+import { ToastrModule } from 'ngx-toastr';
 
 //Components
 import { InputComponent } from './input/input.component';
@@ -109,7 +110,8 @@ import { ComplementoPipe } from './pipes/complemento.pipe';
         NgxMaskModule.forRoot(),
         NgMultiSelectDropDownModule.forRoot(),
         Ng2SearchPipeModule,
-        FilterPipeModule
+        FilterPipeModule,
+        ToastrModule.forRoot()
     ],
     exports: [
         //Modules
