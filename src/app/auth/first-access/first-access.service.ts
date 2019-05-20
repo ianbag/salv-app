@@ -7,9 +7,13 @@ import { LoginService } from '../login/login.service';
 @Injectable()
 export class FirstAccessService {
 
-    constructor(private http: HttpClient, private ls: LoginService) { }
+    username: string
+
+    constructor(private http: HttpClient) { }
 
     definePass(firstAccess: FirstAccess) {
-        console.log(firstAccess)
+        let hash = location.hash
+        this.username = hash.slice(18)
+        return this.http.post<FirstAccess>(`${SALV_API}/usuario/${this.username}`, firstAccess)
     }
 }
