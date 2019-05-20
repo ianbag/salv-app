@@ -11,6 +11,7 @@ export class LoginService {
     user: User
     showMenuEmitter = new EventEmitter<boolean>()
     primeiro_acesso: number
+    username: string
 
     constructor(private http: HttpClient, private cs: CookieService) { }
 
@@ -18,6 +19,7 @@ export class LoginService {
         return this.http.post<User>(`${SALV_API}/login/`, user).pipe(tap(res => {
             localStorage.expandedMenu = 1
             this.primeiro_acesso = res.primeiro_acesso
+            this.username = res.login
             this.showMenuEmitter.emit(true)
         }))
     }

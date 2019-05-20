@@ -15,7 +15,7 @@ export const ROUTES: Routes = [
     { path: 'home', component: TelaInicialComponent, canActivate: [AuthGuard] },
     { path: 'esqueci-a-senha', component: ForgetPasswordComponent },
     { path: 'esqueci-a-senha/:token', component: ResetPasswordComponent },
-    { path: 'primeiro-acesso', component: FirstAccessComponent },
+    { path: 'primeiro-acesso/:username', component: FirstAccessComponent },
 
     { path: 'convenios', loadChildren: './convenios/convenio.module#ConvenioModule', canActivate: [AuthGuard] },
     { path: 'funcionarios', loadChildren: './funcionarios/funcionario.module#FuncionarioModule', canActivate: [AuthGuard] },
