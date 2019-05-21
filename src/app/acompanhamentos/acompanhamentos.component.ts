@@ -5,6 +5,8 @@ import { AcompanhamentosService } from './acompanhamentos.service';
 import { trigger, state, transition, style, animate } from '@angular/animations';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { NotificationService } from '../shared/notification.service';
+import { RadioOption } from './../shared/radio/radio-option.model'
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms'
 
 @Component({
   selector: 'salv-acompanhamentos',
@@ -22,6 +24,13 @@ import { NotificationService } from '../shared/notification.service';
 })
 export class AcompanhamentosComponent implements OnInit {
 
+  dateReportForm: FormGroup
+
+  printOptions: RadioOption[] = [
+    { label: 'Sem filtro', value: 'noDate' },
+    { label: 'Por data', value: 'Date' }
+  ]
+
   acompanhamentosState = 'ready'
 
   public searchString: string;
@@ -30,7 +39,7 @@ export class AcompanhamentosComponent implements OnInit {
   public Desativos
   public filter
 
-  constructor(private acompanhamentosService: AcompanhamentosService, private route: ActivatedRoute, private spinner: NgxSpinnerService, private ns: NotificationService) { }
+  constructor(private acompanhamentosService: AcompanhamentosService, private route: ActivatedRoute, private spinner: NgxSpinnerService, private ns: NotificationService, private fb: FormBuilder) { }
 
   paginaAtual: number = 1;
   ngOnInit() {
@@ -38,10 +47,14 @@ export class AcompanhamentosComponent implements OnInit {
     this.acompanhamentosService.acompanhamentos()
       .subscribe(
         acompanhamentos => {
-          this.spinner.hide()
           this.acompanhamentos = acompanhamentos
           console.log('acompanahmentos', this.acompanhamentos)
+          this.spinner.hide()
         })
+
+    this.dateReportForm = this.fb.group({
+      printOption: this.fb.control('', [Validators.required])
+    })
   }
 
   reportAcompanhamentos() {

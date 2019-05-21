@@ -3,7 +3,7 @@ import { RadioOption } from './radio-option.model';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: 'mt-radio',
+  selector: 'salv-radio',
   templateUrl: './radio.component.html',
   providers: [
     {

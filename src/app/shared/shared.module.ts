@@ -130,6 +130,7 @@ import { ComplementoPipe } from './pipes/complemento.pipe';
         //Components
         InputComponent,
         SnackbarComponent,
+        RadioComponent,
         //Pipes
         ApelidoPipe,
         CartaoSamsPipe,

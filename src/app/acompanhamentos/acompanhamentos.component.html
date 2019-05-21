@@ -23,15 +23,22 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-body">
-          <!-- <form [formGroup]="dateReportForm" novalidate> -->
-          <div class="box-body">
-            <div>
-              <div class="col-sm-12 col-sm-12" id="formTitle">
-                <h4 class="text-center"><strong>Relatório de acompanhamentos</strong></h4>
+          <form [formGroup]="dateReportForm" novalidate>
+            <div class="box-body">
+              <div>
+                <div class="col-sm-12 col-sm-12" id="formTitle">
+                  <h4 class="text-center"><strong>Relatório de acompanhamentos</strong></h4>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6 col-xs-12">
+                    <div class="form-group">
+                      <salv-radio [options]="printOptions" formControlName="printOption"></salv-radio>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-          <!-- </form> -->
+          </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
