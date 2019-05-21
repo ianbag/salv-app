@@ -47,32 +47,38 @@ export class AcompanhamentosComponent implements OnInit {
                 })
 
         this.dateReportForm = this.fb.group({
+            dateStart: this.fb.control(null),
+            dateFinish: this.fb.control(null)
         })
     }
 
     reportAcompanhamentos() {
-        this.spinner.show()
-        this.acompanhamentosService.reportAcompanhamentos().subscribe(x => {
-            var newBlob = new Blob([x], { type: 'application/pdf' })
-
-            if (window.navigator && window.navigator.msSaveOrOpenBlob) {
-                window.navigator.msSaveOrOpenBlob(newBlob)
-                return
-            }
-
-            const data = window.URL.createObjectURL(newBlob)
-            var link = document.createElement('a')
-            link.href = data
-            link.download = "Relatório de acompanhamentos.pdf"
-            link.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }))
-
-            setTimeout(function() {
-                window.URL.revokeObjectURL(data)
-                link.remove()
-            }, 100)
-            this.spinner.hide()
-            this.ns.notify('Relatório emitido com sucesso')
-        })
+        this.acompanhamentosService.reportAcompanhamentos(this.dateReportForm.value)
     }
+
+    // reportAcompanhamentos() {
+    //     this.spinner.show()
+    //     this.acompanhamentosService.reportAcompanhamentos().subscribe(x => {
+    //         var newBlob = new Blob([x], { type: 'application/pdf' })
+
+    //         if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+    //             window.navigator.msSaveOrOpenBlob(newBlob)
+    //             return
+    //         }
+
+    //         const data = window.URL.createObjectURL(newBlob)
+    //         var link = document.createElement('a')
+    //         link.href = data
+    //         link.download = "Relatório de acompanhamentos.pdf"
+    //         link.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }))
+
+    //         setTimeout(function() {
+    //             window.URL.revokeObjectURL(data)
+    //             link.remove()
+    //         }, 100)
+    //         this.spinner.hide()
+    //         this.ns.notify('Relatório emitido com sucesso')
+    //     })
+    // }
 
 }
