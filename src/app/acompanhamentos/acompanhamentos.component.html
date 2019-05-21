@@ -15,8 +15,32 @@
 <section class="content">
 
 
-  <button class="btn btn-success" (click)="reportAcompanhamentos()" id="printReport"><i
+  <button class="btn btn-success" id="printReport" data-toggle="modal" data-target="#modalReport"><i
       class="fa fa-print"></i></button>
+
+  <!--MODAL-->
+  <div class="modal fade" id="modalReport" tabindex="-1" role="dialog" aria-labelledby="modalReport" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <!-- <form [formGroup]="dateReportForm" novalidate> -->
+          <div class="box-body">
+            <div>
+              <div class="col-sm-12 col-sm-12" id="formTitle">
+                <h4 class="text-center"><strong>Relatório de acompanhamentos</strong></h4>
+              </div>
+            </div>
+          </div>
+          <!-- </form> -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal">Imprimir</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--FIM MODAL-->
 
   <div id="content">
     <div class="form-group">
