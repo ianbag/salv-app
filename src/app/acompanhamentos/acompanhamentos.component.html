@@ -34,6 +34,9 @@
                     <div class="form-group">
                       <salv-radio [options]="printOptions" formControlName="printOption"></salv-radio>
                     </div>
+                    <div *ngIf="printOption?.value=='Date'">
+                      <p>Date</p>
+                    </div>
                   </div>
                 </div>
               </div>
