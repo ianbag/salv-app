@@ -7,7 +7,7 @@
         attr.data-target="#modalEditarConvenio{{convenio?.NUMERO_CONVENIO}}"><i class="fa fa-pencil"></i></a>
     </h4>
     <div class="box-tools pull-right">
-      <button type="button" class="btn btn-success" style="margin-right: -30px;" data-toggle="modal" data-target="#modalExibirConvenio">
+      <button type="button" class="btn btn-success" style="margin-right: -30px;" data-toggle="modal" attr.data-target="#modalExibirConvenio{{convenio?.NUMERO_CONVENIO}}">
         Informações
       </button>
     </div>
@@ -28,8 +28,8 @@
     <strong>Tipo: </strong> {{convenio?.TIPO_CONVENIO}}<br>
   </div>
 
-  <div class="modal fade" id="modalExibirConvenio" tabindex="-1" role="dialog"
-  attr.aria-labelledby="modalExibirConvenio" aria-hidden="true">
+  <div class="modal fade" id="modalExibirConvenio{{convenio?.NUMERO_CONVENIO}}" tabindex="-1" role="dialog"
+  attr.aria-labelledby="modalExibirConvenio{{convenio?.NOME_CONVENIO}}" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-body">
