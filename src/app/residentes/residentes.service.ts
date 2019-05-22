@@ -125,8 +125,16 @@ export class ResidentesService {
 
     updateResidente(dataForm: Residente, idResidente, idPessoa) {
         return this.http.put<Pessoa>(`${SALV_API}/pessoa/${idPessoa}`, dataForm.PESSOA).switchMap(res => {
-            delete dataForm.PESSOA
-            return this.http.put<Residente>(`${SALV_API}/residente/${idResidente}`, dataForm)
+            if (dataForm.PESSOA.ESTADO_CIVIL == 'S' || dataForm.PESSOA.ESTADO_CIVIL == null) {
+                delete dataForm.PESSOA
+                delete dataForm.CERTIDAO_CASAMENTO
+                return this.http.put<Residente>(`${SALV_API}/residente/${idResidente}`, dataForm)
+            } else {
+                return this.http.put<Residente>(`${SALV_API}/residente/${idResidente}`, dataForm).switchMap(resResidente => {
+                    delete dataForm.PESSOA
+                    return this.http.put<Certidao_Casamento>(`${SALV_API}/certidao_casamento${idResidente}`, dataForm.CERTIDAO_CASAMENTO)
+                })
+            }
         })
     }
 
