@@ -8,10 +8,12 @@ import { NgxMaskModule } from "ngx-mask";
 import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FilterPipeModule } from 'ngx-filter-pipe';
+import { ToastrModule } from 'ngx-toastr';
 
 //Components
 import { InputComponent } from './input/input.component';
 import { SnackbarComponent } from './snackbar/snackbar.component';
+import { RadioComponent } from './radio/radio.component';
 
 //Services
 import { CookieService } from 'ngx-cookie-service';
@@ -28,6 +30,7 @@ import { NovoAcompanhamentoService } from './../acompanhamentos/novo-acompanhame
 import { ForgetService } from './../auth/forget-password/forget.service';
 import { ResetService } from './../auth/reset-password/reset.service';
 import { ValidatorService } from './validators/validator.service';
+import { FirstAccessService } from '../auth/first-access/first-access.service';
 
 //Pipes
 import { ApelidoPipe } from './pipes/apelido.pipe';
@@ -59,12 +62,15 @@ import { NumeroInssPipe } from './pipes/inss/numero-inss.pipe';
 import { ProvaVidaInssPipe } from './pipes/inss/prova-vida-inss.pipe';
 import { SituacaoInssPipe } from './pipes/inss/situacao-inss.pipe';
 import { ValorInssPipe } from './pipes/inss/valor-inss.pipe';
+import { ReferenciaPipe } from './pipes/referencia.pipe';
+import { ComplementoPipe } from './pipes/complemento.pipe';
 
 @NgModule({
     declarations: [
         //Components
         InputComponent,
         SnackbarComponent,
+        RadioComponent,
         //Pipes
         ApelidoPipe,
         CartaoSamsPipe,
@@ -94,7 +100,9 @@ import { ValorInssPipe } from './pipes/inss/valor-inss.pipe';
         NumeroInssPipe,
         ProvaVidaInssPipe,
         SituacaoInssPipe,
-        ValorInssPipe
+        ValorInssPipe,
+        ReferenciaPipe,
+        ComplementoPipe
     ],
     imports: [
         CommonModule,
@@ -105,7 +113,8 @@ import { ValorInssPipe } from './pipes/inss/valor-inss.pipe';
         NgxMaskModule.forRoot(),
         NgMultiSelectDropDownModule.forRoot(),
         Ng2SearchPipeModule,
-        FilterPipeModule
+        FilterPipeModule,
+        ToastrModule.forRoot()
     ],
     exports: [
         //Modules
@@ -121,6 +130,7 @@ import { ValorInssPipe } from './pipes/inss/valor-inss.pipe';
         //Components
         InputComponent,
         SnackbarComponent,
+        RadioComponent,
         //Pipes
         ApelidoPipe,
         CartaoSamsPipe,
@@ -150,7 +160,9 @@ import { ValorInssPipe } from './pipes/inss/valor-inss.pipe';
         NumeroInssPipe,
         ProvaVidaInssPipe,
         SituacaoInssPipe,
-        ValorInssPipe
+        ValorInssPipe,
+        ReferenciaPipe,
+        ComplementoPipe
     ]
 })
 export class SharedModule {
@@ -172,6 +184,7 @@ export class SharedModule {
                 ForgetService,
                 ResetService,
                 ValidatorService,
+                FirstAccessService
             ]
         }
     }

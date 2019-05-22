@@ -46,25 +46,36 @@
                 </div>
                 <br />
                 <div class="col-sm-12 col-xs-12">
-                    <h4><strong>Telefones <a class="icones-editar-excluir" type="submit" data-toggle="modal" data-target="#modalTelefone">
+                    <h4><strong>Telefones <a class="icones-editar-excluir" type="submit" data-toggle="modal"
+                                data-target="#modalTelefone">
                                 <span class="plus-itens"><i class="fa fa-plus-circle"></i></span>
                             </a></strong></h4>
                     <!--FIM DIV MODAL-->
                     <!--INICIO TELEFONES-->
-                    <div>
+                    <div *ngIf="telefones.length">
                         <div class="col-xs-4 col-xs-12" *ngFor="let telefone of telefones">
-                            <strong style="margin-left: -12px">Telefone: </strong> ({{telefone?.TELEFONE.DDD}}) {{telefone?.TELEFONE.NUMERO | telefone}} 
-                            <a class="icones-editar-excluir">
-                                <span id="iconesForm" (click)="deleteTelefone(convenio.CODIGO, telefone.TELEFONE.CODIGO); $event.stopPropagation()">
-                                <i class="fa fa-close" style="color: #dd4b39;"></i></span>
+                            <strong style="margin-left: -12px">Telefone: </strong> ({{telefone?.TELEFONE.DDD}})
+                            {{telefone?.TELEFONE.NUMERO | telefone}}
+                            <a class="icones-editar-excluir" *ngIf="telefones.length > 1">
+                                <span id="iconesForm"
+                                    (click)="deleteTelefone(convenio.CODIGO, telefone.TELEFONE.CODIGO); $event.stopPropagation()">
+                                    <i class="fa fa-close" style="color: #dd4b39;"></i></span>
                             </a>
-                            <a class="icones-editar-excluir" data-toggle="modal" data-target="#modalUpdateTelefone" (click)="buscaTelefone(telefone.TELEFONE.CODIGO)">
+                            <a class="icones-editar-excluir" data-toggle="modal" data-target="#modalUpdateTelefone"
+                                (click)="buscaTelefone(telefone.TELEFONE.CODIGO)">
                                 <span id="iconesForm">
-                                <i class="fa fa-pencil" style="color: #f39c12;"></i></span>
+                                    <i class="fa fa-pencil" style="color: #f39c12;"></i></span>
                             </a>
                         </div>
                     </div>
                 </div>
+                <div class="col-xs-12 col-xs-12" *ngIf="!telefones.length">
+                    <p>Você não possui telefones cadastros. <a type="submit" data-toggle="modal"
+                            data-target="#modalTelefone" style="color: #00A65A">Cadastre um aqui</a></p>
+                    <!-- <p>Você não possui telefones cadastros. Cadastre um no +</p> -->
+                </div>
+
+
             </div>
             <!--MODAL-->
             <div class="modal fade" id="modalConvenio" tabindex="-1" role="dialog" aria-labelledby="modalConvenio"
@@ -76,10 +87,11 @@
                                 <div class="box-body">
                                     <div>
                                         <div class="col-sm-12 col-xs-12" id="FormTitle">
-                                            <h4><strong>Editar convênio</strong></h4>
+                                            <h4 class="text-center"><strong>Editar convênio</strong></h4>
                                         </div>
                                         <div class="col-sm-6 col-xs-12">
                                             <salv-input-container errorMessage="Campo Obrigatório" label="Nome">
+                                                    <span class="text-danger">*</span> 
                                                 <input type="text" class="form-control" formControlName="NOME_CONVENIO"
                                                     placeholder="Nome" autocomplete="off" maxlength="100">
                                             </salv-input-container>
@@ -88,6 +100,7 @@
                                         <div class="col-sm-6 col-xs-12">
                                             <salv-input-container errorMessage="Campo Obrigatório"
                                                 label="Tipo do convênio">
+                                                <span class="text-danger">*</span> 
                                                 <input type="text" class="form-control" formControlName="TIPO_CONVENIO"
                                                     placeholder="Tipo" autocomplete="off" maxlength="100">
                                             </salv-input-container>
@@ -96,12 +109,14 @@
                                         <div class="col-sm-9 col-xs-12" id="inputValidator" formGroupName="ENDERECO"
                                             style="padding-left: 25px">
                                             <salv-input-container errorMessage="Campo Obrigatório" label="Endereço">
+                                                    <span class="text-danger">*</span> 
                                                 <input type="text" class="form-control" formControlName="ENDERECO"
                                                     placeholder="Endereço" autocomplete="off" maxlength="100">
                                             </salv-input-container>
                                         </div>
                                         <div class="col-sm-3 col-xs-12" id="inputValidator" formGroupName="ENDERECO">
                                             <salv-input-container errorMessage="Campo Obrigatório" label="Número">
+                                                    <span class="text-danger">*</span> 
                                                 <input type="text" class="form-control" formControlName="NUMERO"
                                                     placeholder="Número" autocomplete="off" maxlength="5" mask="00000">
                                             </salv-input-container>
@@ -110,6 +125,7 @@
                                             style="padding-left: 25px; margin-top: -20px">
                                             <br>
                                             <salv-input-container errorMessage="Campo Obrigatório" label="Bairro">
+                                                    <span class="text-danger">*</span> 
                                                 <input type="text" class="form-control" formControlName="BAIRRO"
                                                     placeholder="Bairro" autocomplete="off" maxlength="50">
                                             </salv-input-container>
@@ -124,6 +140,7 @@
                                         <div class="col-sm-4 col-xs-12" formGroupName="ENDERECO"
                                             style="margin-top: 0.3px">
                                             <salv-input-container errorMessage="Campo Obrigatório" label="Cidade">
+                                                    <span class="text-danger">*</span> 
                                                 <input type="text" class="form-control" formControlName="CIDADE"
                                                     placeholder="Cidade" autocomplete="off" maxlength="50">
                                             </salv-input-container>
@@ -131,6 +148,7 @@
                                         <div class="col-sm-4 col-xs-12" formGroupName="ENDERECO"
                                             style="margin-top: 0.3px">
                                             <salv-input-container errorMessage="Campo Obrigatório" label="Estado">
+                                                    <span class="text-danger">*</span> 
                                                 <select class="form-control" formControlName="ESTADO">
                                                     <option value="" label="Selecione" disabled selected="selected">
                                                     </option>
@@ -143,6 +161,7 @@
                                         <div class="col-sm-4 col-xs-12" formGroupName="ENDERECO"
                                             style="margin-top: 0.3px">
                                             <salv-input-container errorMessage="Campo Obrigatório" label="CEP">
+                                                    <span class="text-danger">*</span> 
                                                 <input type="text" mask="00.000-000" class="form-control"
                                                     formControlName="CEP" placeholder="CEP" autocomplete="off"
                                                     maxlength="10">
@@ -178,19 +197,25 @@
                                 <div class="box-body">
                                     <div>
                                         <div class="col-sm-12 col-sm-12" id="formTitle">
-                                            <h4><strong>Adicionar novo telefone</strong></h4>
+                                            <h4 class="text-center"><strong>Adicionar novo telefone</strong></h4>
                                         </div>
                                         <div class="row">
                                             <div class="col-sm-3 col-sm-12">
-                                                <label>DDD</label>
-                                                <input type="text" class="form-control" mask="000" formControlName="DDD"
-                                                    placeholder="DDD" autocomplete="off" maxlength="3">
+                                                <salv-input-container errorMessage="Campo Obrigatório" label="DDD">
+                                                    <span class="text-danger">*</span>
+                                                    <input type="text" class="form-control" mask="000" formControlName="DDD"
+                                                    placeholder="DDD" autocomplete="off" maxlength="2">
+                                                  </salv-input-container>
+                                                
                                             </div>
-                                            <div class="col-sm-3 col-sm-12">
-                                                <label>Número</label>
-                                                <input type="text" class="form-control" mask="000000000"
+                                            <div class="col-sm-4 col-sm-12">
+                                                <salv-input-container errorMessage="Campo Obrigatório" label="Número">
+                                                    <span class="text-danger">*</span>
+                                                    <input type="text" class="form-control" mask="00000-0000"
                                                     formControlName="NUMERO" placeholder="Número" autocomplete="off"
-                                                    maxlength="9">
+                                                    maxlength="10">
+                                                  </salv-input-container>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -200,7 +225,7 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                             <button type="button" class="btn btn-success"
-                                (click)="novoTelefone(this.novoTelefoneForm.value)" data-dismiss="modal">Salvar</button>
+                                (click)="novoTelefone(this.novoTelefoneForm.value)" [disabled]="!novoTelefoneForm.valid" data-dismiss="modal">Salvar</button>
                         </div>
                     </div>
                 </div>
@@ -216,19 +241,19 @@
                                 <div class="box-body">
                                     <div>
                                         <div class="col-sm-12 col-sm-12" id="formTitle">
-                                            <h4><strong>Editar telefone</strong></h4>
+                                            <h4 class="text-center"><strong>Editar telefone</strong></h4>
                                         </div>
                                         <div class="row">
                                             <div class="col-sm-3 col-sm-12">
                                                 <label>DDD</label>
-                                                <input type="text" class="form-control" mask="000" formControlName="DDD"
-                                                    placeholder="DDD" autocomplete="off" maxlength="3">
+                                                <input type="text" class="form-control" mask="00" formControlName="DDD"
+                                                    placeholder="DDD" autocomplete="off" maxlength="2">
                                             </div>
-                                            <div class="col-sm-3 col-sm-12">
+                                            <div class="col-sm-4 col-sm-12">
                                                 <label>Número</label>
-                                                <input type="text" class="form-control" mask="000000000"
+                                                <input type="text" class="form-control" mask="00000-0000"
                                                     formControlName="NUMERO" placeholder="Número" autocomplete="off"
-                                                    maxlength="9">
+                                                    maxlength="10">
                                             </div>
                                         </div>
                                     </div>

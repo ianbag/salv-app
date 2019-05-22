@@ -68,25 +68,28 @@
             <div class="box-body">
               <div>
                 <div class="col-sm-12 col-sm-12" id="formTitle">
-                  <h4><strong>Alterar dependente</strong></h4>
+                  <h4 class="text-center"><strong>Editar dependente</strong></h4>
                 </div>
                 <div class="row">
                   <div class="col-sm-6 col-sm-12">
                     <salv-input-container errorMessage="Campo obrigatório" label="Nome">
+                        <span class="text-danger">*</span>
                       <input type="text" class="form-control" formControlName="NOME" placeholder="Nome"
                         autocomplete="off" maxlength="50">
                     </salv-input-container>
                   </div>
                   <div class="col-sm-6 col-sm-12">
                     <salv-input-container errorMessage="Campo obrigatório" label="Sobrenome">
+                        <span class="text-danger">*</span>
                       <input type="text" class="form-control" formControlName="SOBRENOME" placeholder="Sobrenome"
                         autocomplete="off" maxlength="50">
                     </salv-input-container>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-sm-4 col-sm-12">
+                  <div class="col-sm-4 col-sm-12" style="margin-top: -10px;">
                     <salv-input-container errorMessage="Campo obrigatório" label="Data de nascimento">
+                        <span class="text-danger">*</span>
                       <input type="date" class="form-control" formControlName="DATA_NASCIMENTO"
                         placeholder="Data de Nascimento" id="datepicker" autocomplete="off" max="2999-12-31">
                     </salv-input-container>
@@ -106,34 +109,33 @@
                 </div>
                 <hr class="col-md-11">
                 <div class="row">
-                  <h6><strong>Certidão de Nascimento</strong></h6>
-                  <div class="col-sm-4 col-sm-12" id="inputValidator">
+                  <h5 style="margin-left: 35px;"><strong>Certidão de Nascimento</strong></h5>
+                  <div class="col-sm-6 col-sm-12" id="inputValidator" style="margin: 1px 0px 0px 10px;">
                     <label>Número</label>
                     <input type="text" class="form-control" formControlName="NUMERO_CERTIDAO_NASCIMENTO"
                       placeholder="Número" autocomplete="off" maxlength="5">
                   </div>
-                  <div class="col-sm-4 col-sm-12">
+                  <div class="col-sm-5 col-sm-12">
                     <label>Folha</label>
                     <input type="text" class="form-control" formControlName="FOLHA_CERTIDAO_NASCIMENTO"
                       placeholder="Folha" autocomplete="off" maxlength="5">
                   </div>
-                  <div class="col-sm-4 col-sm-12">
+                  <div class="col-sm-6 col-sm-12" style="margin: 15px 0px 0px 10px">
                     <label>Livro</label>
                     <input type="text" class="form-control" formControlName="LIVRO_CERTIDAO_NASCIMENTO"
                       placeholder="Livro" autocomplete="off" maxlength="3">
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-sm-6 col-sm-12">
+                  <div class="col-sm-6 col-sm-12" style="margin: 15px 0px 0px 10px">
                     <label>Cidade</label>
                     <input type="text" class="form-control" formControlName="CIDADE_CERTIDAO_NASCIMENTO"
                       placeholder="Cidade" autocomplete="off" maxlength="50">
                   </div>
-                  <div class="col-sm-6 col-sm-12">
+                  <div class="col-sm-5 col-sm-12" style="margin-top: 15px">
                     <label>Estado</label>
                     <select class="form-control" formControlName="ESTADO_CERTIDAO_NASCIMENTO">
-                      <option value="" label="Selecione" disabled selected="selected">
-                      </option>
+                        <option [ngValue]="null">Selecione</option>
                       <option *ngFor="let estado of estados">
                         {{estado}}
                       </option>
@@ -147,7 +149,7 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
           <button type="button" class="btn btn-success"
-            (click)="updateDependente(dependente.CODIGO_FUNCIONARIO, dependente.NOME, dependente.SOBRENOME, this.updateDependenteForm.value)"
+            (click)="updateDependente(dependente.CODIGO_FUNCIONARIO, dependente.NOME, dependente.SOBRENOME, this.updateDependenteForm.value)" [disabled]="!updateDependenteForm.valid"
             data-dismiss="modal">Salvar</button>
         </div>
       </div>

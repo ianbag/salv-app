@@ -1,6 +1,6 @@
 <div class="box box-default box-solid">
   <div class="box-header with-border">
-    <h3 class="box-title">Funcionário</h3>
+    <h3 class="box-title">Informações do funcionário</h3>
     <div class="box-tools pull-right">
       <a (click)="buscaFuncionario()" type="submit" class="btn btn-warning botao" data-toggle="modal"
         data-target="#modalEditarFuncionario">Editar</a>
@@ -60,29 +60,33 @@
                   <div class="box-body">
                     <div>
                       <div class="col-sm-12 col-sm-12" id="formTitle">
-                        <h4><strong>Editar funcionário</strong></h4>
+                        <h4 class="text-center"><strong>Editar funcionário</strong></h4>
                       </div>
                       <div class="row">
                         <div class="col-sm-6 col-sm-12" id="inputValidator" formGroupName="PESSOA">
                           <salv-input-container errorMessage="Campo Obrgatório" label="Nome">
+                              <span class="text-danger">*</span>
                             <input type="text" class="form-control" formControlName="NOME" placeholder="Nome"
                               autocomplete="off" maxlength="50">
                           </salv-input-container>
                         </div>
                         <div class="col-sm-6 col-sm-12" id="inputValidator" formGroupName="PESSOA">
                           <salv-input-container errorMessage="Campo Obrigatório" label="Sobrenome">
+                              <span class="text-danger">*</span>
                             <input type="text" class="form-control" formControlName="SOBRENOME" placeholder="Sobrenome"
                               autocomplete="off" maxlength="50">
                           </salv-input-container>
                         </div>
                         <div class="col-sm-6 col-sm-12" id="inputValidator" formGroupName="PESSOA">
                           <salv-input-container errorMessage="Minimo 11 caracteres" label="CPF">
+                              <span class="text-danger">*</span>
                             <input type="text" mask="000.000.000-00" class="form-control" formControlName="CPF"
                               placeholder="CPF" autocomplete="off" maxlength="15">
                           </salv-input-container>
                         </div>
                         <div class="col-sm-6 col-sm-12" id="inputValidator" formGroupName="PESSOA">
                           <salv-input-container errorMessage="Minimo 9 caracteres" label="RG">
+                              <span class="text-danger">*</span>
                             <input type="text" mask="00.000.000-A" class="form-control" formControlName="RG"
                               placeholder="RG" autocomplete="off">
                           </salv-input-container>
@@ -92,6 +96,7 @@
                         <div class="col-sm-4 col-sm-12" formGroupName="PESSOA"
                           style="margin-top: -10px; margin-left: -10px">
                           <salv-input-container errorMessage="Campo Obrigatório" label="Estado Civil">
+                              <span class="text-danger">*</span>
                             <select class="form-control" formControlName="ESTADO_CIVIL">
                               <option value="" label="Selecione" disabled selected="selected"></option>
                               <option *ngFor="let estadoCivil of estadosCivil" [value]="estadoCivil.value">
@@ -102,6 +107,7 @@
                         </div>
                         <div class="col-sm-4 col-sm-12" id="inputValidator" formGroupName="PESSOA">
                           <salv-input-container errorMessage="Campo Obrigatório" label="Sexo">
+                              <span class="text-danger">*</span>
                             <select class="form-control" formControlName="SEXO">
                               <option value="" label="Selecione" disabled selected="selected"></option>
                               <option *ngFor="let sexo of sexos" [value]="sexo.value">{{sexo.option}}</option>
@@ -121,18 +127,21 @@
                       <div class="row">
                         <div class="col-sm-6 col-sm-12" formGroupName="PESSOA" style="margin-left: -10px">
                           <salv-input-container erroMessage="Campo Obrigatório" label="Data de Nascimento">
+                              <span class="text-danger">*</span>
                             <input type="date" class="form-control pull-right" id="datepicker"
                               formControlName="DATA_NASCIMENTO" max="2999-12-31">
                           </salv-input-container>
                         </div>
                         <div class="col-sm-6 col-sm-12" style="margin-left: -10px">
                           <salv-input-container errorMessage="Campo Obrigatório" label="Cargo">
+                              <span class="text-danger">*</span>
                             <input type="text" class="form-control" formControlName="CARGO" placeholder="Cargo"
                               autocomplete="off" maxlength="50">
                           </salv-input-container>
                         </div>
                         <div class="col-sm-6 col-sm-12" style="margin-left: -10px">
                           <salv-input-container errorMessage="Campo Obrigatório" label="Data de Admissão">
+                              <span class="text-danger">*</span>
                             <input type="date" class="form-control pull-right" id="datepicker"
                               formControlName="DATA_ADMISSAO" max="2999-12-31">
                           </salv-input-container>
@@ -167,18 +176,18 @@
                       <div class="box-body">
                         <div>
                           <div class="col-sm-12 col-sm-12" id="formTitle">
-                            <h4><strong>Adicionar novo telefone</strong></h4>
+                            <h4 class="text-center"><strong>Adicionar novo telefone</strong></h4>
                           </div>
                           <div class="row">
                             <div class="col-sm-3 col-sm-12">
-                              <label>DDD</label>
-                              <input type="text" class="form-control" mask="000" formControlName="DDD" placeholder="DDD"
-                                autocomplete="off" maxlength="3">
+                              <label>DDD</label><span class="text-danger">*</span>
+                              <input type="text" class="form-control" mask="00" formControlName="DDD" placeholder="DDD"
+                                autocomplete="off" maxlength="2">
                             </div>
                             <div class="col-sm-3 col-sm-12">
-                              <label>Número</label>
-                              <input type="text" class="form-control" mask="000000000" formControlName="NUMERO"
-                                placeholder="Número" autocomplete="off" maxlength="9">
+                              <label>Número</label><span class="text-danger">*</span>
+                              <input type="text" class="form-control" mask="00000-0000" formControlName="NUMERO"
+                                placeholder="Número" autocomplete="off" maxlength="10">
                             </div>
                           </div>
                         </div>
@@ -187,7 +196,7 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-success" (click)="novoTelefone(this.novoTelefoneForm.value)"
+                    <button type="button" class="btn btn-success" (click)="novoTelefone(this.novoTelefoneForm.value)" [disabled]="!novoTelefoneForm.valid"
                       data-dismiss="modal">Salvar</button>
                   </div>
                 </div>
@@ -242,18 +251,20 @@
                       <div class="box-body">
                         <div>
                           <div class="col-sm-12 col-sm-12" id="formTitle">
-                            <h4><strong>Editar telefone</strong></h4>
+                            <h4 class="text-center"><strong>Editar telefone</strong></h4>
                           </div>
                           <div class="row">
                             <div class="col-sm-3 col-sm-12">
                               <label>DDD</label>
-                              <input type="text" class="form-control" mask="000" formControlName="DDD" placeholder="DDD"
-                                autocomplete="off" maxlength="3">
+                              <span class="text-danger">*</span>
+                              <input type="text" class="form-control" mask="00" formControlName="DDD" placeholder="DDD"
+                                autocomplete="off" maxlength="2">
                             </div>
-                            <div class="col-sm-3 col-sm-12">
+                            <div class="col-sm-4 col-sm-12">
                               <label>Número</label>
-                              <input type="text" class="form-control" mask="000000000" formControlName="NUMERO"
-                                placeholder="Número" autocomplete="off" maxlength="9">
+                              <span class="text-danger">*</span>
+                              <input type="text" class="form-control" mask="00000-0000" formControlName="NUMERO"
+                                placeholder="Número" autocomplete="off" maxlength="10">
                             </div>
                           </div>
                         </div>
@@ -350,9 +361,9 @@
               <!--DIV MODAL-->
               <div class="col-xs-12 col-xs-12" style="margin-left: -5px">
                 <!-- Button trigger modal -->
-                <h4><strong>Endereços</strong> <a data-toggle="modal" data-target="#modalUpdateEndereco"
+                <h4><strong>Endereço</strong> <a data-toggle="modal" data-target="#modalUpdateEndereco"
                     (click)="buscaEndereco(endereco.ENDERECO.CODIGO)">
-                    <span id="iconesForm" style="margin: 14px;"><i class="fa fa-pencil"></i></span></a></h4>
+                    <span id="iconesForm" style="margin: 14px;"><i class="fa fa-pencil" style="color: #f39c12"></i></span></a></h4>
               </div>
               <div class="col-xs-4 col-xs-12">
                 <strong>Endereço: </strong> {{endereco?.ENDERECO.ENDERECO}}
@@ -392,49 +403,61 @@
                         <div class="box-body">
                           <div>
                             <div class="col-sm-12 col-sm-12" id="formTitle">
-                              <h4><strong>Alterar endereço</strong></h4>
+                              <h4 class="text-center"><strong>Editar endereço</strong></h4>
                             </div>
                             <div class="row">
-                              <div class="col-sm-3 col-sm-12">
-                                <label>Endereço</label>
-                                <input type="text" class="form-control" formControlName="ENDERECO"
+                              <div class="col-sm-7 col-sm-12">
+                                <salv-input-container errorMessage="Campo Obrigatório" label="Nome">
+                                  <span class="text-danger">*</span>
+                                  <input type="text" class="form-control" formControlName="ENDERECO"
                                   placeholder="Endereço" autocomplete="off" maxlength="100">
+                                </salv-input-container>
                               </div>
-                              <div class="col-sm-3 col-sm-12">
-                                <label>Número</label>
-                                <input type="text" class="form-control" mask="00000" formControlName="NUMERO"
+                              <div class="col-sm-4 col-sm-12">
+                                <salv-input-container errorMessage="Campo Obrigatório" label="Número">
+                                  <span class="text-danger">*</span>
+                                  <input type="text" class="form-control" mask="00000" formControlName="NUMERO"
                                   placeholder="Número" autocomplete="off" maxlength="5">
+                                </salv-input-container>
                               </div>
-                              <div class="col-sm-3 col-sm-12">
-                                <label>Bairro</label>
-                                <input type="text" class="form-control" formControlName="BAIRRO" placeholder="Bairro"
+                              <div class="col-sm-6 col-sm-12">
+                                <salv-input-container errorMessage="Campo Obrigatório" label="Bairro">
+                                  <span class="text-danger">*</span>
+                                  <input type="text" class="form-control" formControlName="BAIRRO" placeholder="Bairro"
                                   autocomplete="off" maxlength="50">
+                                </salv-input-container>
                               </div>
-                              <div class="col-sm-3 col-sm-12">
+                              <div class="col-sm-6 col-sm-12" style="margin-top: 10px;">
                                 <label>Complemento</label>
                                 <input type="text" class="form-control" formControlName="COMPLEMENTO"
                                   placeholder="Complemento" autocomplete="off" maxlength="50">
                               </div>
                             </div>
                             <div class="row">
-                              <div class="col-sm-3 col-sm-12">
-                                <label>Cidade</label>
-                                <input type="text" class="form-control" formControlName="CIDADE" placeholder="Cidade"
+                              <div class="col-sm-6 col-sm-12">
+                                <salv-input-container errorMessage="Campo Obrigatório" label="Cidade">
+                                  <span class="text-danger">*</span>
+                                  <input type="text" class="form-control" formControlName="CIDADE" placeholder="Cidade"
                                   autocomplete="off" maxlength="50">
+                                </salv-input-container>
                               </div>
-                              <div class="col-sm-3 col-sm-12">
-                                <label>Estado</label>
-                                <select class="form-control" formControlName="ESTADO">
-                                  <option value="" label="Selecione" disabled selected="true"></option>
-                                  <option *ngFor="let estado of estados">{{estado}}</option>
-                                </select>
+                              <div class="col-sm-6 col-sm-12" style="margin-left: -10px;">
+                                <salv-input-container errorMessage="Campo Obrigatório" label="Estado">
+                                  <span class="text-danger">*</span>
+                                  <select class="form-control" formControlName="ESTADO">
+                                    <option value="" label="Selecione" disabled selected="true"></option>
+                                    <option *ngFor="let estado of estados">{{estado}}</option>
+                                  </select>
+                                </salv-input-container>
                               </div>
-                              <div class="col-sm-3 col-sm-12">
-                                <label>CEP</label>
-                                <input type="text" class="form-control" formControlName="CEP" placeholder="CEP"
-                                  autocomplete="off" maxlength="8">
+                              <div class="col-sm-6 col-sm-12">
+                                <salv-input-container errorMessage="Campo Obrigatório" label="CEP">
+                                  <span class="text-danger">*</span>
+                                  <input type="text" class="form-control" formControlName="CEP" placeholder="CEP"
+                                  autocomplete="off" maxlength="8" mask="00.000-000">
+                                </salv-input-container>
                               </div>
-                              <div class="col-sm-3 col-sm-12">
+                              <div class="col-sm-6 col-sm-12" style="margin-top: 10px;">
                                 <label>Referência</label>
                                 <input type="text" class="form-control" formControlName="REFERENCIA"
                                   placeholder="Referência" autocomplete="off" maxlength="100">
@@ -447,7 +470,7 @@
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                       <button type="button" class="btn btn-success"
-                        (click)="updateEndereco(this.updateEnderecoForm.value)" data-dismiss="modal">Salvar</button>
+                        (click)="updateEndereco(this.updateEnderecoForm.value)" [disabled]="!updateEnderecoForm.valid" data-dismiss="modal">Salvar</button>
                     </div>
                   </div>
                 </div>
@@ -507,17 +530,19 @@
                       <div class="box-body">
                         <div>
                           <div class="col-sm-12 col-sm-12" id="formTitle">
-                            <h4><strong>Alterar usuário</strong></h4>
+                            <h4 class="text-center"><strong>Editar usuário</strong></h4>
                           </div>
                           <div class="row">
                             <div class="col-sm-6 col-sm-12">
                               <salv-input-container label="Email">
+                                  <span class="text-danger">*</span>
                                 <input type="text" class="form-control" formControlName="EMAIL" placeholder="E-mail"
                                   autocomplete="off" maxlength="100">
                               </salv-input-container>
                             </div>
                             <div class="col-sm-6 col-sm-12">
-                              <salv-input-container label="Login">
+                              <salv-input-container label="Nome">
+                                  <span class="text-danger">*</span>
                                 <input type="text" class="form-control" formControlName="LOGIN" placeholder="Login"
                                   autocomplete="off" maxlength="100">
                               </salv-input-container>
@@ -530,7 +555,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                     <button type="button" class="btn btn-success" (click)="updateUsuario(this.updateUsuarioForm.value)"
-                      data-dismiss="modal">Salvar</button>
+                      [disabled]="!updateUsuarioForm.valid" data-dismiss="modal">Salvar</button>
                   </div>
                 </div>
               </div>
@@ -563,23 +588,26 @@
                         <div class="box-body">
                           <div>
                             <div class="col-sm-12 col-sm-12" id="formTitle">
-                              <h4><strong>Adicionar usuário</strong></h4>
+                              <h4 class="text-center"><strong>Adicionar usuário</strong></h4>
                             </div>
                             <div class="row">
-                              <div class="col-sm-4 col-sm-12" id="inputValidator">
+                              <div class="col-sm-7 col-sm-12" id="inputValidator">
                                 <salv-input-container errorMessage="Campo obrigatório" label="Email">
+                                    <span class="text-danger">*</span>
                                   <input type="text" class="form-control" formControlName="EMAIL" placeholder="E-mail"
                                     autocomplete="off" maxlength="100">
                                 </salv-input-container>
                               </div>
-                              <div class="col-sm-4 col-sm-12" id="inputValidator">
-                                <salv-input-container errorMessage="Campo obrigatório" label="Login">
+                              <div class="col-sm-5 col-sm-12" id="inputValidator">
+                                <salv-input-container errorMessage="Campo obrigatório" label="Nome">
+                                    <span class="text-danger">*</span>
                                   <input type="text" class="form-control" formControlName="LOGIN" placeholder="Login"
                                     autocomplete="off" maxlength="100">
                                 </salv-input-container>
                               </div>
-                              <div class="col-sm-4 col-sm-12">
+                              <div class="col-sm-6 col-sm-12" style="margin-left: -10px;">
                                 <salv-input-container errorMessage="Campo obrigatório" label="Senha">
+                                    <span class="text-danger">*</span>
                                   <input type="password" class="form-control" formControlName="SENHA"
                                     placeholder="Senha" autocomplete="off" minlength="4" maxlength="100">
                                 </salv-input-container>
@@ -591,7 +619,7 @@
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                      <button type="button" class="btn btn-success" (click)="novoUsuario(this.novoUsuarioForm.value)"
+                      <button type="button" class="btn btn-success" (click)="novoUsuario(this.novoUsuarioForm.value)" [disabled]="!novoUsuarioForm.valid"
                         data-dismiss="modal">Salvar</button>
                     </div>
                   </div>

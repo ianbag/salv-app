@@ -1,19 +1,19 @@
 <style>
   #tabela1 {
-        border: 0px;
-        margin: 0px auto;
-        width: 500px;
-        height: 100px;
-        position: relative
-    }
-    #tabela2 {
-        border: 0px;
-        margin: 0px auto;
-        width: 500px;
-        height: 100px;
-        position:static
-    }
+    border: 0px;
+    margin: 0px auto;
+    width: 500px;
+    height: 100px;
+    position: relative
+  }
 
+  #tabela2 {
+    border: 0px;
+    margin: 0px auto;
+    width: 500px;
+    height: 100px;
+    position: static
+  }
 </style>
 <ngx-spinner></ngx-spinner>
 <section class="content">
@@ -22,168 +22,157 @@
     <div class="box box-editar" [@acompanhamentoAppeared]="acompanhamentoState">
       <h1>Detalhes do acompanhamento</h1>
 
-      
 
-    <div>
-      <div class="box box-default box-solid">
-        <div class="box-header with-border">
 
-         
-          <h3 class="box-title">Informações do acompanhamento</h3>
-                   
-          <div class="box-tools pull-right">
-              <a type="submit" class="btn btn-warning botao" data-toggle="modal" data-target="#modalResidente">Editar</a>           
+      <div>
+        <div class="box box-default box-solid">
+          <div class="box-header with-border">
+
+
+            <h3 class="box-title">Informações do acompanhamento</h3>
+
+            <div class="box-tools pull-right">
+              <a type="submit" class="btn btn-warning botao" data-toggle="modal"
+                data-target="#modalResidente">Editar</a>
+            </div>
+
           </div>
 
-        </div>
-        
-                   
+
           <div class="box-body" style>
             <div>
-            <strong>Atividade realizada: </strong> {{atividade}} 
-            <strong style="margin-left: 30px"> Data: </strong> {{data_atividade | date:'dd/MM/yyyy'}}
-          </div> <br>
-     
-            <table  class="table table-hover" id="tabela1" style="float:left; margin-top: 10px">
-              <tr>                
-                <th>Funcionarios Participantes:</th>               
-              </tr>       
-            <tr *ngFor="let acompanhamento_funcionario of funcionarios1" >
-               <td> {{acompanhamento_funcionario?.FNOME}}</td>
-            </tr>
+              <strong>Atividade realizada: </strong> {{acompanhamento1.ATIVIDADE}}
+              <strong style="margin-left: 30px"> Data: </strong> {{acompanhamento1.DATA_ACOMPANHAMENTO | date:'dd/MM/yyyy'}}
+            </div> <br>
+
+            <table class="table table-hover" id="tabela1" style="float:left; margin-top: 10px">
+              <tr>
+                <th>Funcionarios Participantes:</th>
+              </tr>
+              <tr *ngFor="let acompanhamento_funcionario of funcionarios1">
+                <td> {{acompanhamento_funcionario?.FNOME}}</td>
+              </tr>
             </table>
 
 
             <table class="table table-hover" id="tabela2" style="float:left; margin-top: 10px">
-                <tr>                
-                  <th>Residentes Participantes:</th>               
-                </tr>       
-              <tr *ngFor="let acompanhamento_residente of residentes1" >
-                 <td>  {{acompanhamento_residente?.NOME}}</td>
+              <tr>
+                <th>Residentes Participantes:</th>
               </tr>
-              </table>
-         
-            
-          
-
-      </div>
+              <tr *ngFor="let acompanhamento_residente of residentes1">
+                <td> {{acompanhamento_residente?.NOME}}</td>
+              </tr>
+            </table>
 
 
-      <div>
 
-        <div class="botao">
-          <a type="submit" class="btn btn-default botao" [routerLink]="['/acompanhamentos']">Voltar</a>
+
+          </div>
+
+
+          <!-- INICIO MODAL EDITAR ACOMPANHAMENTO -->
+          <div class="modal fade" id="modalResidente" tabindex="-1" role="dialog" aria-labelledby="modalResidente"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-body">
+
+                  <div class="box">
+                    <h1 align="center">Editar acompanhamento</h1>
+                    <hr>
+
+                    <form [formGroup]="editarAcompanhamentoForm" novalidate>
+                      <div class="box-body">
+                        <div class="form-group">
+
+
+                          <div class="col-sm-8 col-xs-12" id="inputValidator">
+                            <salv-input-container errorMessage="Campo Obrigatório">
+                              <label>Residentes que participaram da atividade </label><br>
+                              <ng-multiselect-dropdown [placeholder]="'Selecione os residentes'" [data]="residentes"
+                                [(ngModel)]="selectedResidentes" formControlName="residentes" [disabled]="disabled"
+                                [settings]="dropdownSettings" (onSelect)="onResidenteSelect($event)"
+                                (onDeSelectAll)="onDeSelectAllResidentes($event)"
+                                (onDeSelect)="onDeResidenteSelect($event)">
+
+                              </ng-multiselect-dropdown>
+                            </salv-input-container>
+                          </div>
+
+                          <div class="col-sm-4 col-xs-12" id="inputValidator">
+                            <salv-input-container errorMessage="Campo Obrigatório" label="Data da Atividade">
+                              <span class="text-danger">*</span>
+                              <div class="input-group date">
+                                <input type="date" class="form-control pull-right" id="datepicker"
+                                  formControlName="DATA_ACOMPANHAMENTO" max="2999-12-31">
+                              </div>
+                            </salv-input-container>
+                            <br>
+                          </div>
+
+                          <div class="col-sm-8 col-xs-12" id="inputValidator">
+                            <salv-input-container errorMessage="Campo Obrigatório">
+                              <label>Funcionários que realizaram a atividade </label><br>
+                              <ng-multiselect-dropdown name="funcionarios" [placeholder]="'Selecione os funcionários'"
+                                [data]="funcionarios" [(ngModel)]="selectedFuncionarios" formControlName="funcionarios"
+                                [disabled]="disabled" [settings]="dropdownSettings2"
+                                (onSelect)="onFuncionarioSelect($event)"
+                                (onDeSelectAll)=" onDeSelectAllFuncionarios($event)"
+                                (onDeSelect)="onDeFuncionarioSelect($event)">
+                              </ng-multiselect-dropdown>
+                            </salv-input-container>
+                          </div>
+
+
+
+                          <div class="col-sm-10 col-xs-12" id="inputValidator">
+                            <salv-input-container errorMessage="Campo Obrigatório">
+                              <label>Atividade realizada</label>
+                              <textarea class="form-control" required rows="3" formControlName="ATIVIDADE"
+                                placeholder="Descrição da atividade realizada" id="ATIVIDADE" maxlength="1000"
+                                auatocomplete="off" #ATIVIDADE></textarea>
+                              <small class="form-text text-muted"><code>{{ATIVIDADE.value.length}}</code> de
+                                <code>{{maxATIVIDADELength}}</code>1000 caracteres</small>
+
+                              <br>
+                            </salv-input-container>
+                          </div>
+
+
+
+                        </div>
+                        <!--form group-->
+
+                        <!--Botão-->
+                        <div class="col-sm-12 col-xs-12">
+                          <br>
+
+                        </div>
+                        <!--Fim botão-->
+
+                      </div>
+
+                    </form>
+                  </div>
+
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal"
+                      (click)="editarAcompanhamento(editarAcompanhamentoForm.value); updateAcompanhamentoFuncionario(null);  updateAcompanhamentoResidente(null)"
+                      [disabled]="!editarAcompanhamentoForm.valid">Salvar</button>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <!-- FIM MODAL ACOMPANHAMENTO -->
+
+
         </div>
       </div>
-
-
-       <!-- INICIO MODAL EDITAR ACOMPANHAMENTO -->
-       <div class="modal fade" id="modalResidente" tabindex="-1" role="dialog" aria-labelledby="modalResidente"
-       aria-hidden="true">
-       <div class="modal-dialog" role="document">
-         <div class="modal-content">
-           <div class="modal-body">
-
-              <div class="box">
-                  <h1 align="center">Atualizar acompanhamento</h1>
-                  <hr>
-              
-                  <form [formGroup]="editarAcompanhamentoForm" novalidate >
-                    <div class="box-body">
-                      <div class="form-group" >
-              
-              
-                        <div class="col-sm-8 col-xs-12" id="inputValidator">
-                            <salv-input-container errorMessage="Campo Obrigatório">
-                          <label>Residentes que participaram da atividade </label><br>
-                          <ng-multiselect-dropdown [placeholder]="'Selecione os residentes'" [data]="residentes"
-                          
-                          [(ngModel)]="selectedResidentes" 
-                          formControlName="residentes"
-                            [disabled]="disabled" [settings]="dropdownSettings" 
-                            (onSelect)="onResidenteSelect($event)" 
-                            (onDeSelectAll)="onDeSelectAllResidentes($event)"
-                            >
-                            
-                          </ng-multiselect-dropdown>
-                          </salv-input-container>
-                        </div>
-              
-                        <div class="col-sm-3 col-xs-12" id="inputValidator">
-                          <salv-input-container errorMessage="Campo Obrigatório">
-                        <label for="exampleInputPassword1"> <i class="fa fa-calendar"></i> Data
-                          da
-                          atividade</label>
-                        <div class="input-group date">
-                          <input type="date" class="form-control pull-right" id="datepicker" formControlName="DATA_ACOMPANHAMENTO" max="2999-12-31">
-                        </div>
-                        <br>
-                          </salv-input-container>
-                      </div>
-            
-                      <div class="col-sm-10 col-xs-12" id="inputValidator">
-                          <salv-input-container errorMessage="Campo Obrigatório">
-                        <label>Atividade realizada</label>
-                        <textarea class="form-control" required rows="3" formControlName="ATIVIDADE" 
-            placeholder="Descrição da atividade realizada" id="ATIVIDADE"  maxlength="500" 
-              auatocomplete="off" #ATIVIDADE></textarea>
-              <small class="form-text text-muted"><code>{{ATIVIDADE.value.length}}</code> de <code>{{maxATIVIDADELength}}</code>500 caracteres</small>
-                         
-                        <br>
-                        </salv-input-container>
-                      </div>
-                        <div class="col-sm-8 col-xs-12" id="inputValidator" >
-                            <salv-input-container errorMessage="Campo Obrigatório" >
-                          <label>Funcionários que realizaram a atividade </label><br>
-                          <ng-multiselect-dropdown name="funcionarios" 
-                          [placeholder]="'Selecione os funcionários'" [data]="funcionarios"        
-                          [(ngModel)]="selectedFuncionarios" 
-                          formControlName="funcionarios"
-                          [disabled]="disabled"
-                          [settings]="dropdownSettings2"
-                          (onSelect)="onFuncionarioSelect($event)"
-                          (onDeSelectAll)=" onDeSelectAllFuncionarios($event)"
-                          (onDeSelect)="onDeFuncionarioSelect($event)"
-              
-                          >
-                          </ng-multiselect-dropdown>
-                            </salv-input-container>
-                        </div>
-              
-              
-                      </div>
-                      <!--form group-->
-              
-                      <!--Botão-->
-                      <div class="col-sm-12 col-xs-12">
-                        <br>
-                        
-                      </div>
-                      <!--Fim botão-->
-              
-                    </div>
-              
-                  </form>
-                </div>
-
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal"[disabled]="!editarAcompanhamentoForm.valid">Cancelar</button>
-                  <button type="button" class="btn btn-success" data-dismiss="modal" (click)="editarAcompanhamento(editarAcompanhamentoForm.value); updateAcompanhamentoFuncionario(null);  updateAcompanhamentoResidente(null)"
-                  [disabled]="!editarAcompanhamentoForm.valid" 
-                   >Salvar</button>
-                </div>
-
-           </div>
-          
-         </div>
-       </div>
-     </div>
-     <!-- FIM MODAL ACOMPANHAMENTO -->
-
-
+      <!-- /.row -->
     </div>
   </div>
-  <!-- /.row -->
-</div>
-</div>
 </section>

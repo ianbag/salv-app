@@ -85,18 +85,18 @@ export class InfosFuncionarioComponent implements OnInit {
             NUMERO: this.fb.control(null, [])
         })
         this.updateEnderecoForm = this.fb.group({
-            ENDERECO: this.fb.control(null, []),
-            NUMERO: this.fb.control(null, []),
-            BAIRRO: this.fb.control(null, []),
+            ENDERECO: this.fb.control(null, [Validators.required]),
+            NUMERO: this.fb.control(null, [Validators.required]),
+            BAIRRO: this.fb.control(null, [Validators.required]),
             COMPLEMENTO: this.fb.control(null, []),
-            CIDADE: this.fb.control(null, []),
-            ESTADO: this.fb.control(null, []),
-            CEP: this.fb.control(null, []),
+            CIDADE: this.fb.control(null, [Validators.required]),
+            ESTADO: this.fb.control(null, [Validators.required]),
+            CEP: this.fb.control(null, [Validators.required]),
             REFERENCIA: this.fb.control(null, [])
         })
         this.updateUsuarioForm = this.fb.group({
-            EMAIL: this.fb.control(null, [], this.uniqueValidators.validateUsuarioEmail(this.route.snapshot.params['id'])),
-            LOGIN: this.fb.control(null, [], this.uniqueValidators.validateUsuarioLogin(this.route.snapshot.params['id']))
+            EMAIL: this.fb.control(null, [Validators.required], this.uniqueValidators.validateUsuarioEmail(this.route.snapshot.params['id'])),
+            LOGIN: this.fb.control(null, [Validators.required], this.uniqueValidators.validateUsuarioLogin(this.route.snapshot.params['id']))
         })
         this.updateFuncionarioForm = this.fb.group({
             //PESSOA

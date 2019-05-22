@@ -12,22 +12,22 @@ export class EscolaridadePipe implements PipeTransform {
       default:
         escolaridade = 'Não especificado'
         break;
-      case 'fi':
+      case 'FI':
         escolaridade = 'Fundamental Incompleto'
         break;
-      case 'fc':
+      case 'FC':
         escolaridade = 'Fundamental Completo'
         break;
-      case 'mi':
+      case 'MI':
         escolaridade = 'Médio Incompleto'
         break;
-      case 'mc':
+      case 'MC':
         escolaridade = 'Médio Completo'
         break;
-      case 'si':
+      case 'SI':
         escolaridade = 'Superior Incompleto'
         break;
-      case 'sc':
+      case 'SC':
         escolaridade = 'Superior Completo'
         break;
     }

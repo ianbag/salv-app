@@ -67,7 +67,7 @@
                 <salv-input-container errorMessage="Campo Obrigatório" label="Estado">
                     <span class="text-danger">*</span>
                   <select class="form-control" formControlName="ESTADO">
-                    <option value="" label="Selecione" selected="selected"></option>
+                      <option [ngValue]="null">Selecione</option>
                     <option *ngFor="let estado of estados">{{estado}}</option>
                   </select>
                 </salv-input-container>
@@ -94,7 +94,7 @@
               <div class="col-sm-3 col-sm-12" id="inputValidator" formGroupName="TELEFONE">
                 <salv-input-container errorMessage="Campo Obrigatório" label="Telefone">
                     <span class="text-danger">*</span>
-                  <input type="text" class="form-control" formControlName="NUMERO" placeholder="Telefone" autocomplete="off" maxlength="9" mask="000000000">
+                  <input type="text" class="form-control" formControlName="NUMERO" placeholder="Número do telefone" autocomplete="off" maxlength="10" mask="00000-0000">
                 </salv-input-container>
               </div>
 

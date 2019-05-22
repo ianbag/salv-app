@@ -22,7 +22,7 @@
   </div>
 
   <div class="col-xs-4 col-xs-12">
-    <strong>Valor: </strong> {{beneficio?.VALOR_BENEFICIO}}
+    <strong>Valor: </strong> {{beneficio?.VALOR_BENEFICIO | currency: 'BRL': true | valorInss}}
   </div>
 
   <div class="col-xs-4 col-xs-12">
@@ -38,7 +38,7 @@
       <div class="modal-content">
         <div class="modal-body">
           <div class="col-sm-12 col-sm-12" id="formTitle">
-            <h4 class="text-center"><strong>Editar Beneficio</strong></h4>
+            <h4 class="text-center"><strong>Editar benefício</strong></h4>
           </div>
           <form role="form" [formGroup]="beneficioResidenteForm">
             <div class="box-body">
@@ -50,7 +50,7 @@
                 </salv-input-container>
               </div>
 
-              <div class="col-sm-6 col-xs-12">
+              <div class="col-sm-6 col-xs-12" style="margin-left: 10px;">
                 <label>Banco</label>
                 <input type="text" class="form-control" formControlName="BANCO_BENEFICIO" placeholder="Banco"
                   autocomplete="off" maxlength="50">
@@ -79,7 +79,8 @@
               <div class="col-sm-6 col-xs-12">
                 <label>Valor</label>
                 <input type="text" class="form-control" formControlName="VALOR_BENEFICIO" placeholder="Valor R$"
-                  autocomplete="off" maxlength="12">
+                  autocomplete="off" maxlength="12" currencyMask
+                  [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" min="0">
               </div>
 
               <div class="col-sm-6 col-xs-12" id="inputValidator">

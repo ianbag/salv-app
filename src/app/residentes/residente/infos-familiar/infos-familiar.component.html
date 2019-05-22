@@ -10,11 +10,11 @@
     </h4>
   </div>
   <div class="col-sm-12">
-    <div class="col-xs-6 col-xs-12">
+    <div class="col-xs-4 col-xs-12">
       <strong>Nome: </strong> {{familiar?.NOME}} {{familiar?.SOBRENOME}}
     </div>
 
-    <div class="col-xs-6 col-xs-12">
+    <div class="col-xs-6 col-xs-12" style="margin-top: 6px;">
       <strong>Parentesco: </strong> {{familiar?.PARENTESCO}}
     </div>
   </div>
@@ -42,7 +42,7 @@
       </div>
 
       <div class="col-xs-4 col-xs-12">
-        <strong>Complemento: </strong> {{familiar?.COMPLEMENTO}}
+        <strong>Complemento: </strong> {{familiar?.COMPLEMENTO | complemento}}
       </div>
 
       <div class="col-xs-4 col-xs-12">
@@ -58,7 +58,7 @@
       </div>
 
       <div class="col-xs-4 col-xs-12">
-        <strong>Referência: </strong> {{familiar?.REFERENCIA}}
+        <strong>Referência: </strong> {{familiar?.REFERENCIA | referencia}}
       </div>
 
 
@@ -191,7 +191,7 @@
                 <div class="box-body">
                   <div>
                     <div class="col-sm-12 col-sm-12">
-                      <h4>
+                      <h4 class="text-center">
                         <strong>Adicionar novo telefone</strong>
                       </h4>
                     </div>
@@ -200,7 +200,7 @@
                         <salv-input-container errorMessage="Campo Obrigatório" label="DDD">
                           <span class="text-danger">*</span>
                           <input type="text" class="form-control" formControlName="DDD" placeholder="DDD"
-                            autocomplete="off" mask="000">
+                            autocomplete="off" mask="00">
                         </salv-input-container>
                       </div>
                       <div class="col-sm-7 col-sm-12">
@@ -236,7 +236,7 @@
                 <div class="box-body">
                   <div>
                     <div class="col-sm-12 col-sm-12">
-                      <h4>
+                      <h4 class="text-center">
                         <strong>Editar telefone</strong>
                       </h4>
                     </div>
@@ -245,7 +245,7 @@
                         <salv-input-container errorMessage="Campo Obrigatório" label="DDD">
                           <span class="text-danger">*</span>
                           <input type="text" class="form-control" formControlName="DDD" placeholder="DDD"
-                            autocomplete="off" mask="000">
+                            autocomplete="off" mask="00">
                         </salv-input-container>
                       </div>
                       <div class="col-sm-7 col-sm-12">

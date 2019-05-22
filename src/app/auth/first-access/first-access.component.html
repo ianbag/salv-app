@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="login-logo">
+    <img src="./../../../assets/img/dr.vida.png" Login>
+  </div>
+  <div class="col-xs-12 col-sm-offset-3 col-sm-6 login-box-body">
+    <p class="login-box-msg">Por favor, defina sua senha</p>
+    <form [formGroup]="senhaForm">
+      <salv-input-container [showTip]=false>
+        <input type="password" formControlName="senha" class="form-control" placeholder="Nova senha">
+        <span class="glyphicon glyphicon-lock form-control-feedback icon-log-input"></span>
+      </salv-input-container>
+
+      <salv-input-container [showTip]=false>
+        <input type="password" formControlName="confirmaSenha" class="form-control" placeholder="Confirme sua senha">
+        <span class="glyphicon glyphicon-lock form-control-feedback icon-log-input"></span>
+      </salv-input-container>
+
+      <div class="row">
+        <br/>
+        <div class=" col-xs-12">
+          <button type="submit" (click)="defineSenha()" [disabled]="senhaForm.invalid"
+            class="btn btn-success btn-block btn-flat">Definir senha</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
