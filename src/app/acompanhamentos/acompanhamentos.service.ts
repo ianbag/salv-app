@@ -77,12 +77,12 @@ export class AcompanhamentosService {
         return this.http.delete<any>(`${SALV_API}/acompanhamento_residente/${idResidente}/${idAcompanhamento}`)
     }
 
-    filtroDataInicial(dates): Observable<any> {
-        return this.http.get(`${SALV_API}/acompanhamento-data-inicial`, dates)
+    filtroDataInicial(dates): Observable<Acompanhamento[]> {
+        return this.http.post<Acompanhamento[]>(`${SALV_API}/acompanhamento-data-inicial`, dates)
     }
 
-    filtroDataInicialFinal(dates): Observable<any> {
-        return this.http.get(`${SALV_API}/acompanhamento-data-inicial-final`, dates)
+    filtroDataInicialFinal(dates): Observable<Acompanhamento[]> {
+        return this.http.post<Acompanhamento[]>(`${SALV_API}/acompanhamento-data-inicial-final`, dates)
     }
 
     reportAcompanhamentos(dates): Observable<Blob> {

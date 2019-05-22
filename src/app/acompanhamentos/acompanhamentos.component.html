@@ -72,6 +72,7 @@
         <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Filtro</button>
 
         <ul class="dropdown-menu" role="menu">
+          <form [formGroup]="dateForm" novalidate>
             <div class="col-sm-12 col-xs-12">  
               <label>De:</label>
               <input type="date" class="form-control pull-right" id="datepicker" formControlName="dateStart"
@@ -83,9 +84,10 @@
                 max="2999-12-31">
             </div>
             <hr class="col-6">
-            <button type="button" class="btn btn-block btn-success btn-xs" (click)="filtroDataInicial();">Filtrar</button>
-            <!-- <button type="button" class="btn btn-success pull-right" style="margin: 5px">Filtrar</button> -->
+            <button type="button" class="btn btn-block btn-success btn-xs" (click)="filtroData();">Filtrar</button>
+          </form>
           
+
         </ul>
       </div>
       <!-- FIM DO FILTRO -->

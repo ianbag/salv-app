@@ -34,11 +34,10 @@ export class AcompanhamentosComponent implements OnInit {
 
     public Desativos
     public filter
-
+    
     constructor(private acompanhamentosService: AcompanhamentosService, private route: ActivatedRoute, private spinner: NgxSpinnerService, private ns: NotificationService, private fb: FormBuilder) { }
 
-    filtroDataInicial: Date;
-    dates: Date;
+    
 
     paginaAtual: number = 1;
     ngOnInit() {
@@ -62,22 +61,28 @@ export class AcompanhamentosComponent implements OnInit {
         })
     }
 
-     filtroDataInical() {
-         let dates = this.dateForm.value
-         this.spinner.show()
-         this.acompanhamentosService.filtroDataInicial(dates)
-             .subscribe(dateFilter => {
-                this.dateForm = dateFilter
-                this.spinner.hide()
-            })
-     }
+    filtroData () {
+        let dates = this.dateForm.value
 
-    // filtroDataIniciall() {
-    //     this.acompanhamentosService.filtroDataInicial(this.dates)
-    //         .subscribe(dataFilter => {
-    //             this.filtroDataInicial = dataFilter
-    //         })
-    // }
+        if (dates.dateFinish == null) {
+            this.spinner.show()
+        this.acompanhamentosService.filtroDataInicial(dates).subscribe((response) => {
+            this.acompanhamentos = response
+            this.dateForm.reset()
+            this.spinner.hide()
+            console.log(dates)
+        })
+        } else {
+            this.spinner.show()
+            this.acompanhamentosService.filtroDataInicialFinal(dates)
+            .subscribe((response) => {
+                this.acompanhamentos = response
+                this.dateForm.reset()
+                this.spinner.hide()
+                console.log(dates)
+            })
+        }
+    }
 
     reportAcompanhamentos() {
         let dates = this.dateReportForm.value
