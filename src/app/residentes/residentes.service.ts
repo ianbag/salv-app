@@ -89,8 +89,8 @@ export class ResidentesService {
         return this.http.delete<any>(`${SALV_API}/residente_convenio/${numeroConvenio}`)
     }
 
-    deleteResidente(id: string, motivo): Observable<any> {
-        return this.http.post<any>(`${SALV_API}/residente-inativar/${id}`, {MOTIVO_DESACOLHIMENTO: motivo})
+    deleteResidente(id: number, residente_delete): Observable<any> {
+        return this.http.post<any>(`${SALV_API}/residente-inativar/${id}`, residente_delete)
     }
 
     ativarResidente(id: string): Observable<any> {
