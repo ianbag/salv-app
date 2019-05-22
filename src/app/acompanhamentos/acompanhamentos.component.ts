@@ -25,6 +25,8 @@ export class AcompanhamentosComponent implements OnInit {
 
     dateReportForm: FormGroup
 
+    dateForm: FormGroup
+
     acompanhamentosState = 'ready'
 
     public searchString: string;
@@ -34,6 +36,9 @@ export class AcompanhamentosComponent implements OnInit {
     public filter
 
     constructor(private acompanhamentosService: AcompanhamentosService, private route: ActivatedRoute, private spinner: NgxSpinnerService, private ns: NotificationService, private fb: FormBuilder) { }
+
+    filtroDataInicial: Date;
+    dates: Date;
 
     paginaAtual: number = 1;
     ngOnInit() {
@@ -50,7 +55,29 @@ export class AcompanhamentosComponent implements OnInit {
             dateStart: this.fb.control(null),
             dateFinish: this.fb.control(null)
         })
+
+        this.dateForm = this.fb.group({
+            dateStart: this.fb.control(null),
+            dateFinish: this.fb.control(null)
+        })
     }
+
+     filtroDataInical() {
+         let dates = this.dateForm.value
+         this.spinner.show()
+         this.acompanhamentosService.filtroDataInicial(dates)
+             .subscribe(dateFilter => {
+                this.dateForm = dateFilter
+                this.spinner.hide()
+            })
+     }
+
+    // filtroDataIniciall() {
+    //     this.acompanhamentosService.filtroDataInicial(this.dates)
+    //         .subscribe(dataFilter => {
+    //             this.filtroDataInicial = dataFilter
+    //         })
+    // }
 
     reportAcompanhamentos() {
         let dates = this.dateReportForm.value
