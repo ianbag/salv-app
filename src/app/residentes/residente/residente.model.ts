@@ -62,3 +62,13 @@ export interface Residente_delete {
     MOTIVO_DESACOLHIMENTO: string,
     DATA_DESACOLHIMENTO: string
 }
+
+export interface Certidao_Casamento {
+    CODIGO_RESIDENTE: number,
+    FOLHA: string,
+    LIVRO: string,
+    REGISTRO: string,
+    CIDADE: string,
+    ESTADO: string,
+    CONJUGE: string
+}
