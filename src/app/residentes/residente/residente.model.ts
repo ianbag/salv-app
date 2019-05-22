@@ -57,3 +57,8 @@ export interface Residente_Convenio {
     PARENTESCO_TITULAR: string,
     CONVENIO_CODIGO: number
 }
+
+export interface Residente_delete {
+    MOTIVO_DESACOLHIMENTO: string,
+    DATA_DESACOLHIMENTO: string
+}
