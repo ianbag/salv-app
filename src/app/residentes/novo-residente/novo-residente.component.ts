@@ -155,7 +155,7 @@ export class NovoResidenteComponent implements OnInit {
 
       // CERTIDOA CASAMENTO INICIO
       CERTIDAO_CASAMENTO: this.formBuilder.group({
-        FOLHA: this.formBuilder.control(null, [], this.uniqueValidators.validateResidenteNumeroCertidao(null)),
+        FOLHA: this.formBuilder.control(null, []),
         LIVRO: this.formBuilder.control(null, []),
         REGISTRO: this.formBuilder.control(null, []),
         CIDADE: this.formBuilder.control(null, []),
