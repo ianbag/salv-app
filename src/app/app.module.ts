@@ -27,6 +27,7 @@ import { ProvaDeVidaComponent } from './tela-inicial/prova-de-vida/prova-de-vida
 import { AniversarianteComponent } from './tela-inicial/aniversariantes/aniversariante/aniversariante.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { FirstAccessComponent } from './auth/first-access/first-access.component';
+import { SobreComponent } from './sobre/sobre.component';
 
 // import { AuthInterceptor } from './auth/auth-interceptor.service';
 
@@ -46,6 +47,7 @@ import { FirstAccessComponent } from './auth/first-access/first-access.component
     ForgetPasswordComponent,
     ResetPasswordComponent,
     FirstAccessComponent,
+    SobreComponent,
   ],
   imports: [
     BrowserModule,
