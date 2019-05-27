@@ -266,5 +266,42 @@
     .botao-acoes-residente{
       margin-top: 3px !important;
     }
+
+    .campos-infos{
+      width: 100%;
+    }
+
+    .precisa-de-margin{
+      margin-left: -15px;
+    }
+
+    .precisa-de-margin-numero-mobile{
+      margin-left: -43px;
+    }
+
+    .precisa-de-margin-numero-mobile-2{
+      margin-left: -45px;
+    }
+
+    .add-telefone-familiar-residente{
+      width: 150%;
+      margin-left: -42px;
+    }
+
+    .precisa-de-margin-tel-mobile-addfamiliar{
+      margin-left: 5px;
+    }
+
+    .precisa-de-margin-campo-conv{
+      margin-left: -2px;
+    }
+
+    .precisa-de-margin-addconv{
+      margin-left: -10px;
+    }
+
+    .precisa-de-margin-addbene{
+      margin-left: -1px !important;
+    }
   }
 

@@ -33,31 +33,31 @@
         <strong>Endereço: </strong> {{familiar?.ENDERECO}}
       </div>
 
-      <div class="col-xs-4 col-xs-12 campos-infos">
+      <div class="col-xs-4 col-xs-12 campos-infos precisa-de-margin-numero-mobile">
         <strong>Nº: </strong> {{familiar?.NUMERO}}
       </div>
 
-      <div class="col-xs-4 col-xs-12 campos-infos precisa-de-margin-atras">
+      <div class="col-xs-4 col-xs-12 campos-infos precisa-de-margin-atras precisa-de-margin-numero-mobile">
         <strong>Bairro: </strong> {{familiar?.BAIRRO}}
       </div>
 
-      <div class="col-xs-4 col-xs-12 campos-infos precisa-de-margin-frente" style="margin-left: -44px;">
+      <div class="col-xs-4 col-xs-12 campos-infos precisa-de-margin-frente precisa-de-margin-numero-mobile-2" style="margin-left: -44px;">
         <strong>Complemento: </strong> {{familiar?.COMPLEMENTO | complemento}}
       </div>
 
-      <div class="col-xs-4 col-xs-12 campos-infos precisa-de-margin-atras">
+      <div class="col-xs-4 col-xs-12 campos-infos precisa-de-margin-atras precisa-de-margin-numero-mobile">
         <strong>Cidade: </strong> {{familiar?.CIDADE}}
       </div>
 
-      <div class="col-xs-4 col-xs-12 campos-infos">
+      <div class="col-xs-4 col-xs-12 campos-infos precisa-de-margin-numero-mobile">
         <strong>Estado: </strong> {{familiar?.ESTADO}}
       </div>
 
-      <div class="col-xs-4 col-xs-12 campos-infos" style="margin-left: -44px;">
+      <div class="col-xs-4 col-xs-12 campos-infos precisa-de-margin-numero-mobile-2" style="margin-left: -44px;">
         <strong>CEP: </strong> {{familiar?.CEP}}
       </div>
 
-      <div class="col-xs-4 col-xs-12 campos-infos">
+      <div class="col-xs-4 col-xs-12 campos-infos precisa-de-margin-numero-mobile">
         <strong>Referência: </strong> {{familiar?.REFERENCIA | referencia}}
       </div>
 
@@ -282,7 +282,7 @@
     </div>
     <div class="col-sm-12">
       <ng-container *ngIf="telefone.length; else elseTelefoneTemplate">
-        <div class="col-xs-4 col-xs-12 campos-infos-cem" *ngFor="let tel of telefone" style="margin-left: -44px;">
+        <div class="col-xs-4 col-xs-12 campos-infos-cem campos-infos" *ngFor="let tel of telefone" style="margin-left: -44px;">
           <strong>Telefone: </strong> ({{tel?.TELEFONE.DDD}}) {{tel?.TELEFONE.NUMERO | telefone}}
           <a class="input-remove icones-editar-excluir" (click)="deletarTelefoneFamiliar(tel.TELEFONE.CODIGO, familiar?.CODIGO)">
             <span><i class="fa fa-close"></i></span>
@@ -294,7 +294,7 @@
       </ng-container>
 
       <ng-template #elseTelefoneTemplate>
-        <div class="col-xs-4 col-xs-12 add-telefone-familiar-residente">
+        <div class="col-xs-4 col-xs-12 add-telefone-familiar-residente campos-infos ">
           <p>{{familiar?.NOME}} não possui telefone cadastrado. Adicione um clicando em +</p>
         </div>
       </ng-template>
