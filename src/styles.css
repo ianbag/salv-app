@@ -198,6 +198,38 @@
     .botao-acoes-residente{
       margin-top: 3px !important;
     }
+
+    .add-telefone-familiar-residente{
+      width: 100%;
+    }
+
+    .add-telefone-familiar-residente p{
+      width: 100%;
+      margin-left: -42px;
+    }
+
+    .campos-infos{
+      width: 50%;
+    }
+    .campos-infos-cem{
+      width: 100%;
+    }
+    .precisa-de-margin-atras{
+      margin-left: -44px;
+    }
+
+    .precisa-de-margin-frente{
+      margin-left: 0px !important;
+    }
+
+    .precisa-de-margin{
+      margin-left: -30px;
+      margin-top: -1px !important;
+    }
+
+    .precisa-de-margin-addconvenio{
+      margin-left: -10px;
+    }
   }
 
   /*Responsivo MOBILE*/

@@ -16,43 +16,43 @@
           <h4><strong>Informações pessoais</strong></h4>
         </div>
 
-        <div class="col-xs-4 col-xs-12">
+        <div class="col-xs-4 col-xs-12 campos-infos">
           <strong>Nome: </strong> {{residente?.PESSOA.NOME}} {{residente?.PESSOA.SOBRENOME}}<br>
         </div>
 
-        <div class="col-xs-4 col-xs-12">
+        <div class="col-xs-4 col-xs-12 campos-infos">
           <strong>Apelido: </strong> {{residente?.APELIDO | apelido}} <br>
         </div>
 
-        <div class="col-xs-4 col-xs-12">
+        <div class="col-xs-4 col-xs-12 campos-infos">
           <strong>CPF: </strong> {{residente?.PESSOA.CPF | cpf}} <br>
         </div>
 
-        <div class="col-xs-4 col-xs-12">
+        <div class="col-xs-4 col-xs-12 campos-infos">
           <strong>RG: </strong> {{residente?.PESSOA.RG | rg}} <br>
         </div>
 
-        <div class="col-xs-4 col-xs-12">
+        <div class="col-xs-4 col-xs-12 campos-infos">
           <strong>Sexo: </strong> {{residente?.PESSOA.SEXO | sexo}} <br>
         </div>
 
-        <div class="col-xs-4 col-xs-12">
+        <div class="col-xs-4 col-xs-12 campos-infos">
           <strong>Estado Civil: </strong> {{residente?.PESSOA.ESTADO_CIVIL | estadoCivil}} <br>
         </div>
 
-        <div class="col-xs-4 col-xs-12">
+        <div class="col-xs-4 col-xs-12 campos-infos">
           <strong>Data de Nascimento: </strong> {{residente?.PESSOA.DATA_NASCIMENTO | date: 'dd/MM/yyy' | data}} <br>
         </div>
 
-        <div class="col-xs-4 col-xs-12">
+        <div class="col-xs-4 col-xs-12 campos-infos">
           <strong>Religião: </strong> {{residente?.PESSOA.RELIGIAO | religiao}} <br>
         </div>
 
-        <div class="col-xs-4 col-xs-12">
+        <div class="col-xs-4 col-xs-12 campos-infos">
           <strong>Escolaridade: </strong> {{residente?.PESSOA.ESCOLARIDADE | escolaridade}} <br>
         </div>
 
-        <div class="col-xs-4 col-xs-12">
+        <div class="col-xs-4 col-xs-12 campos-infos">
           <strong>Profissão: </strong> {{residente?.PROFISSAO | profissao}} <br>
         </div>
       </div>
@@ -64,15 +64,15 @@
           <h4><strong>Eleitoral</strong></h4>
         </div>
 
-        <div class="col-xs-4 col-xs-12">
+        <div class="col-xs-4 col-xs-12 campos-infos">
           <strong>Título de Eleitor: </strong> {{residente?.TITULO_ELEITOR | tituloEleitor}} <br>
         </div>
 
-        <div class="col-xs-4 col-xs-12">
+        <div class="col-xs-4 col-xs-12 campos-infos">
           <strong>Zona Eleitoral: </strong> {{residente?.ZONA_ELEITORAL | zonaEleitoral}} <br>
         </div>
 
-        <div class="col-xs-4 col-xs-12">
+        <div class="col-xs-4 col-xs-12 campos-infos">
           <strong>Seção Eleitoral: </strong> {{residente?.SECAO_ELEITORAL | secaoEleitoral}} <br>
         </div>
       </div>
@@ -84,23 +84,23 @@
           <h4><strong>Certidão de Nascimento</strong></h4>
         </div>
 
-        <div class="col-xs-4 col-xs-12">
+        <div class="col-xs-4 col-xs-12 campos-infos">
           <strong>Nº Certidão de Nascimento: </strong> {{residente?.NUMERO_CERTIDAO_NASCIMENTO | numeroCertNasc}} <br>
         </div>
 
-        <div class="col-xs-4 col-xs-12">
+        <div class="col-xs-4 col-xs-12 campos-infos">
           <strong>Folha: </strong> {{residente?.FOLHA_CERTIDAO_NASCIMENTO | folhaCertNasc}} <br>
         </div>
 
-        <div class="col-xs-4 col-xs-12">
+        <div class="col-xs-4 col-xs-12 campos-infos">
           <strong>Livro: </strong> {{residente?.LIVRO_CERTIDAO_NASCIMENTO | livroCertNasc}} <br>
         </div>
 
-        <div class="col-xs-4 col-xs-12">
+        <div class="col-xs-4 col-xs-12 campos-infos">
           <strong>Cidade: </strong> {{residente?.CIDADE_CERTIDAO_NASCIMENTO | cidadeCertNasc}} <br>
         </div>
 
-        <div class="col-xs-4 col-xs-12">
+        <div class="col-xs-4 col-xs-12 campos-infos">
           <strong>Estado: </strong> {{residente?.ESTADO_CERTIDAO_NASCIMENTO | estadoCertNasc}} <br>
         </div>
       </div>
@@ -112,31 +112,31 @@
           <h4><strong>INSS</strong></h4>
         </div>
 
-        <div class="col-xs-3 col-xs-12">
+        <div class="col-xs-3 col-xs-12 campos-infos">
           <strong>Nº: </strong> {{residente?.NUMERO_INSS | numeroInss}} <br>
         </div>
 
-        <div class="col-xs-3 col-xs-12">
+        <div class="col-xs-3 col-xs-12 campos-infos">
           <strong>Banco: </strong> {{residente?.BANCO_INSS | bancoInss}} <br>
         </div>
 
-        <div class="col-xs-3 col-xs-12">
+        <div class="col-xs-3 col-xs-12 campos-infos">
           <strong>Agência: </strong> {{residente?.AGENCIA_INSS | agenciaInss}} <br>
         </div>
 
-        <div class="col-xs-3 col-xs-12">
+        <div class="col-xs-3 col-xs-12 campos-infos">
           <strong>Conta: </strong> {{residente?.CONTA_INSS | contaInss}} <br>
         </div>
 
-        <div class="col-xs-3 col-xs-12">
+        <div class="col-xs-3 col-xs-12 campos-infos">
           <strong>Valor: </strong> {{residente?.VALOR_INSS | currency: 'BRL': true | valorInss}} <br>
         </div>
 
-        <div class="col-xs-3 col-xs-12">
+        <div class="col-xs-3 col-xs-12 campos-infos">
           <strong>Situação: </strong> {{residente?.SITUACAO_INSS | situacaoInss}} <br>
         </div>
 
-        <div class="col-xs-3 col-xs-12">
+        <div class="col-xs-3 col-xs-12 campos-infos">
           <strong>Prova de Vida: </strong> {{residente?.PROVA_VIDA_INSS | date: 'dd/MM/yyy' | provaVidaInss}} <br>
         </div>
       </div>
@@ -148,15 +148,15 @@
           <h4><strong>Outros</strong></h4>
         </div>
 
-        <div class="col-xs-4 col-xs-12">
+        <div class="col-xs-4 col-xs-12 campos-infos">
           <strong>Cartão SUS: </strong> {{residente?.CARTAO_SUS | cartaoSUS}} <br>
         </div>
 
-        <div class="col-xs-4 col-xs-12">
+        <div class="col-xs-4 col-xs-12 campos-infos">
           <strong>Cartão SAMS: </strong> {{residente?.CARTAO_SAMS | cartaoSams}} <br>
         </div>
 
-        <div class="col-xs-4 col-xs-12">
+        <div class="col-xs-4 col-xs-12 campos-infos">
           <strong>Data de Acolhimento: </strong> {{residente?.DATA_ACOLHIMENTO | date: 'dd/MM/yyy'}} <br>
         </div>
       </div>
