@@ -235,6 +235,23 @@
     .precisa-de-margin-addconvenio{
       margin-left: -10px;
     }
+
+    .tel-conv{
+      margin-left: -3px;
+      padding-right: 1px;
+    }
+
+    .botao-mais-tel{
+      margin-left: -13px;
+    }
+
+    .precisa-de-margin-num-conv{
+      margin-left: 1px !important;
+    }
+
+    .precisa-de-margin-com-conv{
+      margin-left: 10px;
+    }
   }
 
   /*Responsivo MOBILE*/
@@ -313,6 +330,22 @@
 
     .precisa-de-margin-addbene{
       margin-left: -1px !important;
+    }
+
+    .tel-conv{
+      margin-left: -3px;
+    }
+
+    .botao-mais-tel{
+      margin-left: -13px;
+    }
+
+    .precisa-de-margin-num-conv{
+      margin-left: 1px !important;
+    }
+
+    .precisa-de-margin-com-conv{
+      margin-left: 10px;
     }
   }
 
