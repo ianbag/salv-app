@@ -276,9 +276,21 @@
       margin-right: 48px !important;
     }
 
+    .botao-pesquisa-acom{
+      width: 15%;
+      margin-top: -33px !important;
+      margin-right: 80px !important;
+    }
+
+
     .caixa-pesquisa{
       width: 100%;
     }
+
+    .caixa-pesquisa-acom{
+      margin-right: -40px;
+    }
+
 
     .botao-filtro{
       display: flex;
