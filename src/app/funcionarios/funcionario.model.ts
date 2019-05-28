@@ -20,7 +20,8 @@ export interface Funcionario {
         CODIGO_FUNCIONARIO: number,
         EMAIL: string,
         LOGIN: string,
-        SENHA: string
+        SENHA: string,
+        PERMISSAO_ACESSO: string
     },
     TELEFONE: {
         CODIGO: number,
