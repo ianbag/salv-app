@@ -8,6 +8,7 @@ import { AcompanhamentosService } from '../acompanhamentos.service';
 import { Acompanhamento, AcompanhamentoQuery, Acompanhamento_Residente, Acompanhamento_Funcionario } from './acompanhamento.model';
 import { trigger, state, transition, style, animate } from '@angular/animations';
 import { NgxSpinnerService } from 'ngx-spinner';
+import {LoginService} from './../../auth/login/login.service'
 
 @Component({
   selector: 'salv-acompanhamento',
@@ -25,6 +26,8 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class AcompanhamentoComponent implements OnInit {
 
   acompanhamentoState = 'ready'
+
+  access: boolean
 
   acompanhamento1: Acompanhamento
   funcionarios1: any[]
@@ -49,7 +52,7 @@ export class AcompanhamentoComponent implements OnInit {
   dropdownSettings: any = []
   dropdownSettings2: any = []
 
-  constructor(private acompanhamentosService: AcompanhamentosService, private formBuilder: FormBuilder, private route: ActivatedRoute, private acompanhamentoService: AcompanhamentosService, private NovoAcompanhamentoService: NovoAcompanhamentoService, private router: Router, private activatedRoute: ActivatedRoute, private ns: NotificationService, private dialogConfirmService: DialogConfirmService, private spinner: NgxSpinnerService) { }
+  constructor(private acompanhamentosService: AcompanhamentosService, private formBuilder: FormBuilder, private route: ActivatedRoute, private acompanhamentoService: AcompanhamentosService, private NovoAcompanhamentoService: NovoAcompanhamentoService, private router: Router, private activatedRoute: ActivatedRoute, private ns: NotificationService, private dialogConfirmService: DialogConfirmService, private spinner: NgxSpinnerService, private ls: LoginService) { }
 
   markAllDirty(control: AbstractControl) {
     if (control.hasOwnProperty('controls')) {
@@ -66,6 +69,8 @@ export class AcompanhamentoComponent implements OnInit {
 
   ngOnInit() {
     this.spinner.show();
+
+    this.access = this.ls.permissao_acesso
 
     this.acompanhamentosService.acompanhamentoById(this.route.snapshot.params['id'])
       .subscribe((acompanhamento: Acompanhamento) => {

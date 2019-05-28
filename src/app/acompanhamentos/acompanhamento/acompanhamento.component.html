@@ -32,7 +32,7 @@
             <h3 class="box-title">Informações do acompanhamento</h3>
 
             <div class="box-tools pull-right">
-              <a type="submit" class="btn btn-warning botao" data-toggle="modal"
+              <a *ngIf="access" type="submit" class="btn btn-warning botao" data-toggle="modal"
                 data-target="#modalResidente">Editar</a>
             </div>
 
@@ -42,7 +42,8 @@
           <div class="box-body" style>
             <div>
               <strong>Atividade realizada: </strong> {{acompanhamento1.ATIVIDADE}}
-              <strong style="margin-left: 30px"> Data: </strong> {{acompanhamento1.DATA_ACOMPANHAMENTO | date:'dd/MM/yyyy'}}
+              <strong style="margin-left: 30px"> Data: </strong>
+              {{acompanhamento1.DATA_ACOMPANHAMENTO | date:'dd/MM/yyyy'}}
             </div> <br>
 
             <table class="table table-hover" id="tabela1" style="float:left; margin-top: 10px">
