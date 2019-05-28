@@ -173,6 +173,11 @@
   /*Responsivo TABLET*/
   @media screen and (min-width: 424px) and (max-width: 808px){
     
+    .ngx-pagination{
+      width: 100%;
+      margin-right: -5px;
+    }
+    
     .botao-novo-residente{
       width: 15%;
       margin: 0px;
@@ -234,6 +239,12 @@
 
   /*Responsivo MOBILE*/
   @media screen and (min-width: 100px) and (max-width: 423px){
+
+    .ngx-pagination{
+      width: 100%;
+      margin-right: -5px;
+    }
+
     .botao-novo-residente{
       display: flex;
       flex-wrap: nowrap;
