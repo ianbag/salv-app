@@ -252,6 +252,46 @@
     .precisa-de-margin-com-conv{
       margin-left: 10px;
     }
+
+    .precisa-de-margin-num-editar{
+      margin-left: -10px !important;
+    }
+
+    .precisa-de-margin-login-fun{
+      margin-left: -19px !important;
+    }
+
+    .precisa-de-margin-reli-fun{
+      margin-left: -10px !important;
+    }
+
+    .precisa-de-margin-ende-fun{
+      margin-left: -5px !important;
+    }
+
+    .margin-rg-dep{
+      margin-left: 1px !important;
+    }
+
+    .margin-cpf-dep{
+      margin-left: 1px !important;
+    }
+
+    .margin-folha-dep{
+      margin-left: 10px !important;
+    }
+
+    .margin-estado-dep{
+      margin-left: 10px !important;
+    }
+
+    .margin-inf-fun{
+      margin-left: -5px !important;
+    }
+    
+    .campos-infos-2{
+      width: 100%;
+    }
   }
 
   /*Responsivo MOBILE*/

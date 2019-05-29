@@ -217,7 +217,7 @@
           <!--INICIO TELEFONES-->
           <div *ngIf="telefones.length">
 
-            <div class="col-xs-4 col-xs-12 campos-infos" *ngFor="let telefone of telefones" style="margin-left: -15px">
+            <div class="col-xs-4 col-xs-12 campos-infos campos-infos-2" *ngFor="let telefone of telefones" style="margin-left: -15px">
               <strong>Telefone: </strong> ({{telefone?.TELEFONE.DDD}}) {{telefone?.TELEFONE.NUMERO | telefone}}
               <a class="icones-editar-excluir"><span id="iconesForm"
                   (click)="deleteTelefone(funcionario.PESSOA.CODIGO, telefone.TELEFONE.CODIGO); $event.stopPropagation()">
@@ -406,42 +406,42 @@
                               <h4 class="text-center"><strong>Editar endereço</strong></h4>
                             </div>
                             <div class="row">
-                              <div class="col-sm-7 col-sm-12">
+                              <div class="col-sm-7 col-sm-12 campos-infos">
                                 <salv-input-container errorMessage="Campo Obrigatório" label="Nome">
                                   <span class="text-danger">*</span>
                                   <input type="text" class="form-control" formControlName="ENDERECO"
                                   placeholder="Endereço" autocomplete="off" maxlength="100">
                                 </salv-input-container>
                               </div>
-                              <div class="col-sm-4 col-sm-12">
+                              <div class="col-sm-4 col-sm-12 campos-infos precisa-de-margin-num-editar">
                                 <salv-input-container errorMessage="Campo Obrigatório" label="Número">
                                   <span class="text-danger">*</span>
                                   <input type="text" class="form-control" mask="00000" formControlName="NUMERO"
                                   placeholder="Número" autocomplete="off" maxlength="5">
                                 </salv-input-container>
                               </div>
-                              <div class="col-sm-6 col-sm-12">
+                              <div class="col-sm-6 col-sm-12 campos-infos">
                                 <salv-input-container errorMessage="Campo Obrigatório" label="Bairro">
                                   <span class="text-danger">*</span>
                                   <input type="text" class="form-control" formControlName="BAIRRO" placeholder="Bairro"
                                   autocomplete="off" maxlength="50">
                                 </salv-input-container>
                               </div>
-                              <div class="col-sm-6 col-sm-12 precisa-de-margin-ende-com" style="margin-top: 10px;">
+                              <div class="col-sm-6 col-sm-12 campos-infos precisa-de-margin-ende-com" style="margin-top: 10px;">
                                 <label>Complemento</label>
                                 <input type="text" class="form-control" formControlName="COMPLEMENTO"
                                   placeholder="Complemento" autocomplete="off" maxlength="50">
                               </div>
                             </div>
                             <div class="row">
-                              <div class="col-sm-6 col-sm-12">
+                              <div class="col-sm-6 col-sm-12 campos-infos">
                                 <salv-input-container errorMessage="Campo Obrigatório" label="Cidade">
                                   <span class="text-danger">*</span>
                                   <input type="text" class="form-control" formControlName="CIDADE" placeholder="Cidade"
                                   autocomplete="off" maxlength="50">
                                 </salv-input-container>
                               </div>
-                              <div class="col-sm-6 col-sm-12 precisa-de-margin-ende-est" style="margin-left: -10px;">
+                              <div class="col-sm-6 col-sm-12 campos-infos precisa-de-margin-ende-est" style="margin-left: -10px;">
                                 <salv-input-container errorMessage="Campo Obrigatório" label="Estado">
                                   <span class="text-danger">*</span>
                                   <select class="form-control" formControlName="ESTADO">
@@ -450,14 +450,14 @@
                                   </select>
                                 </salv-input-container>
                               </div>
-                              <div class="col-sm-6 col-sm-12">
+                              <div class="col-sm-6 col-sm-12 campos-infos">
                                 <salv-input-container errorMessage="Campo Obrigatório" label="CEP">
                                   <span class="text-danger">*</span>
                                   <input type="text" class="form-control" formControlName="CEP" placeholder="CEP"
                                   autocomplete="off" maxlength="8" mask="00.000-000">
                                 </salv-input-container>
                               </div>
-                              <div class="col-sm-6 col-sm-12 precisa-de-margin-ende-ref" style="margin-top: 10px;">
+                              <div class="col-sm-6 col-sm-12 campos-infos precisa-de-margin-ende-ref" style="margin-top: 10px;">
                                 <label>Referência</label>
                                 <input type="text" class="form-control" formControlName="REFERENCIA"
                                   placeholder="Referência" autocomplete="off" maxlength="100">
