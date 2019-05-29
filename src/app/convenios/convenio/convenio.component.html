@@ -8,7 +8,7 @@
         <div class="box box-default box-solid">
             <div class="box-header with-border">
                 <h3 class="box-title">Informações do convênio</h3>
-                <div class="box-tools pull-right">
+                <div *ngIf="access" class="box-tools pull-right">
                     <a type="submit" class="btn btn-warning botao" data-toggle="modal"
                         data-target="#modalConvenio">Editar</a>
                 </div>
@@ -46,7 +46,7 @@
                 </div>
                 <br />
                 <div class="col-sm-12 col-xs-12">
-                    <h4><strong>Telefones <a class="icones-editar-excluir" type="submit" data-toggle="modal"
+                    <h4><strong>Telefones <a *ngIf="access" class="icones-editar-excluir" type="submit" data-toggle="modal"
                                 data-target="#modalTelefone">
                                 <span class="plus-itens"><i class="fa fa-plus-circle"></i></span>
                             </a></strong></h4>
@@ -56,12 +56,12 @@
                         <div class="col-xs-4 col-xs-12" *ngFor="let telefone of telefones">
                             <strong style="margin-left: -12px">Telefone: </strong> ({{telefone?.TELEFONE.DDD}})
                             {{telefone?.TELEFONE.NUMERO | telefone}}
-                            <a class="icones-editar-excluir" *ngIf="telefones.length > 1">
+                            <a class="icones-editar-excluir" *ngIf="telefones.length > 1 && !access">
                                 <span id="iconesForm"
                                     (click)="deleteTelefone(convenio.CODIGO, telefone.TELEFONE.CODIGO); $event.stopPropagation()">
                                     <i class="fa fa-close" style="color: #dd4b39;"></i></span>
                             </a>
-                            <a class="icones-editar-excluir" data-toggle="modal" data-target="#modalUpdateTelefone"
+                            <a *ngIf="access" class="icones-editar-excluir" data-toggle="modal" data-target="#modalUpdateTelefone"
                                 (click)="buscaTelefone(telefone.TELEFONE.CODIGO)">
                                 <span id="iconesForm">
                                     <i class="fa fa-pencil" style="color: #f39c12;"></i></span>
@@ -70,7 +70,7 @@
                     </div>
                 </div>
                 <div class="col-xs-12 col-xs-12" *ngIf="!telefones.length">
-                    <p>Você não possui telefones cadastros. <a type="submit" data-toggle="modal"
+                    <p>Convênio não possui telefones cadastros. <a type="submit" data-toggle="modal"
                             data-target="#modalTelefone" style="color: #00A65A">Cadastre um aqui</a></p>
                     <!-- <p>Você não possui telefones cadastros. Cadastre um no +</p> -->
                 </div>

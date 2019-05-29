@@ -9,6 +9,7 @@ import { ConveniosService } from 'src/app/convenios/convenios.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { NotificationService } from 'src/app/shared/notification.service';
+import { LoginService } from "./../../auth/login/login.service"
 
 @Component({
   selector: 'salv-convenio',
@@ -24,6 +25,8 @@ import { NotificationService } from 'src/app/shared/notification.service';
   ]
 })
 export class ConvenioComponent implements OnInit {
+
+  access: boolean
 
   convenioState = 'ready'
 
@@ -43,10 +46,11 @@ export class ConvenioComponent implements OnInit {
     "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"
   ];
 
-  constructor(private fb: FormBuilder, private cs: ConveniosService, private router: Router, private ar: ActivatedRoute, private ns: NotificationService, private spinner: NgxSpinnerService, private dcs: DialogConfirmService) { }
+  constructor(private fb: FormBuilder, private cs: ConveniosService, private router: Router, private ar: ActivatedRoute, private ns: NotificationService, private spinner: NgxSpinnerService, private dcs: DialogConfirmService, private ls: LoginService) { }
 
   ngOnInit() {
     this.spinner.show();
+    this.access = this.ls.permissao_acesso
     this.cs.conveniosById(this.ar.snapshot.params['id'])
       .subscribe(convenio => {
         this.convenio = convenio[0], console.log(this.convenio)
