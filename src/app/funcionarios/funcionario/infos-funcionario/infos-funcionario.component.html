@@ -65,28 +65,28 @@
                       <div class="row">
                         <div class="col-sm-6 col-sm-12" id="inputValidator" formGroupName="PESSOA">
                           <salv-input-container errorMessage="Campo Obrgatório" label="Nome">
-                              <span class="text-danger">*</span>
+                            <span class="text-danger">*</span>
                             <input type="text" class="form-control" formControlName="NOME" placeholder="Nome"
                               autocomplete="off" maxlength="50">
                           </salv-input-container>
                         </div>
                         <div class="col-sm-6 col-sm-12" id="inputValidator" formGroupName="PESSOA">
                           <salv-input-container errorMessage="Campo Obrigatório" label="Sobrenome">
-                              <span class="text-danger">*</span>
+                            <span class="text-danger">*</span>
                             <input type="text" class="form-control" formControlName="SOBRENOME" placeholder="Sobrenome"
                               autocomplete="off" maxlength="50">
                           </salv-input-container>
                         </div>
                         <div class="col-sm-6 col-sm-12" id="inputValidator" formGroupName="PESSOA">
                           <salv-input-container errorMessage="Minimo 11 caracteres" label="CPF">
-                              <span class="text-danger">*</span>
+                            <span class="text-danger">*</span>
                             <input type="text" mask="000.000.000-00" class="form-control" formControlName="CPF"
                               placeholder="CPF" autocomplete="off" maxlength="15">
                           </salv-input-container>
                         </div>
                         <div class="col-sm-6 col-sm-12" id="inputValidator" formGroupName="PESSOA">
                           <salv-input-container errorMessage="Minimo 9 caracteres" label="RG">
-                              <span class="text-danger">*</span>
+                            <span class="text-danger">*</span>
                             <input type="text" mask="00.000.000-A" class="form-control" formControlName="RG"
                               placeholder="RG" autocomplete="off">
                           </salv-input-container>
@@ -96,7 +96,7 @@
                         <div class="col-sm-4 col-sm-12" formGroupName="PESSOA"
                           style="margin-top: -10px; margin-left: -10px">
                           <salv-input-container errorMessage="Campo Obrigatório" label="Estado Civil">
-                              <span class="text-danger">*</span>
+                            <span class="text-danger">*</span>
                             <select class="form-control" formControlName="ESTADO_CIVIL">
                               <option value="" label="Selecione" disabled selected="selected"></option>
                               <option *ngFor="let estadoCivil of estadosCivil" [value]="estadoCivil.value">
@@ -107,7 +107,7 @@
                         </div>
                         <div class="col-sm-4 col-sm-12" id="inputValidator" formGroupName="PESSOA">
                           <salv-input-container errorMessage="Campo Obrigatório" label="Sexo">
-                              <span class="text-danger">*</span>
+                            <span class="text-danger">*</span>
                             <select class="form-control" formControlName="SEXO">
                               <option value="" label="Selecione" disabled selected="selected"></option>
                               <option *ngFor="let sexo of sexos" [value]="sexo.value">{{sexo.option}}</option>
@@ -127,21 +127,21 @@
                       <div class="row">
                         <div class="col-sm-6 col-sm-12" formGroupName="PESSOA" style="margin-left: -10px">
                           <salv-input-container erroMessage="Campo Obrigatório" label="Data de Nascimento">
-                              <span class="text-danger">*</span>
+                            <span class="text-danger">*</span>
                             <input type="date" class="form-control pull-right" id="datepicker"
                               formControlName="DATA_NASCIMENTO" max="2999-12-31">
                           </salv-input-container>
                         </div>
                         <div class="col-sm-6 col-sm-12" style="margin-left: -10px">
                           <salv-input-container errorMessage="Campo Obrigatório" label="Cargo">
-                              <span class="text-danger">*</span>
+                            <span class="text-danger">*</span>
                             <input type="text" class="form-control" formControlName="CARGO" placeholder="Cargo"
                               autocomplete="off" maxlength="50">
                           </salv-input-container>
                         </div>
                         <div class="col-sm-6 col-sm-12" style="margin-left: -10px">
                           <salv-input-container errorMessage="Campo Obrigatório" label="Data de Admissão">
-                              <span class="text-danger">*</span>
+                            <span class="text-danger">*</span>
                             <input type="date" class="form-control pull-right" id="datepicker"
                               formControlName="DATA_ADMISSAO" max="2999-12-31">
                           </salv-input-container>
@@ -196,8 +196,8 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-success" (click)="novoTelefone(this.novoTelefoneForm.value)" [disabled]="!novoTelefoneForm.valid"
-                      data-dismiss="modal">Salvar</button>
+                    <button type="button" class="btn btn-success" (click)="novoTelefone(this.novoTelefoneForm.value)"
+                      [disabled]="!novoTelefoneForm.valid" data-dismiss="modal">Salvar</button>
                   </div>
                 </div>
               </div>
@@ -234,8 +234,8 @@
             </div>
           </div>
           <div class="col-xs-12 col-xs-12" *ngIf="!telefones.length">
-            <p>Funcionário não possui telefones cadastros. <a *ngIf="access" type="submit" data-toggle="modal" data-target="#modalTelefone"
-                style="color: #00A65A">Cadastre um aqui</a></p>
+            <p>Funcionário não possui telefones cadastros. <a *ngIf="access" type="submit" data-toggle="modal"
+                data-target="#modalTelefone" style="color: #00A65A">Cadastre um aqui</a></p>
             <!-- <p>Você não possui telefones cadastros. Cadastre um no +</p> -->
           </div>
           <!--FINAL TELEFONES-->
@@ -363,7 +363,8 @@
                 <!-- Button trigger modal -->
                 <h4><strong>Endereço</strong> <a *ngIf="access" data-toggle="modal" data-target="#modalUpdateEndereco"
                     (click)="buscaEndereco(endereco.ENDERECO.CODIGO)">
-                    <span id="iconesForm" style="margin: 14px;"><i class="fa fa-pencil" style="color: #f39c12"></i></span></a></h4>
+                    <span id="iconesForm" style="margin: 14px;"><i class="fa fa-pencil"
+                        style="color: #f39c12"></i></span></a></h4>
               </div>
               <div class="col-xs-4 col-xs-12">
                 <strong>Endereço: </strong> {{endereco?.ENDERECO.ENDERECO}}
@@ -410,21 +411,21 @@
                                 <salv-input-container errorMessage="Campo Obrigatório" label="Nome">
                                   <span class="text-danger">*</span>
                                   <input type="text" class="form-control" formControlName="ENDERECO"
-                                  placeholder="Endereço" autocomplete="off" maxlength="100">
+                                    placeholder="Endereço" autocomplete="off" maxlength="100">
                                 </salv-input-container>
                               </div>
                               <div class="col-sm-4 col-sm-12">
                                 <salv-input-container errorMessage="Campo Obrigatório" label="Número">
                                   <span class="text-danger">*</span>
                                   <input type="text" class="form-control" mask="00000" formControlName="NUMERO"
-                                  placeholder="Número" autocomplete="off" maxlength="5">
+                                    placeholder="Número" autocomplete="off" maxlength="5">
                                 </salv-input-container>
                               </div>
                               <div class="col-sm-6 col-sm-12">
                                 <salv-input-container errorMessage="Campo Obrigatório" label="Bairro">
                                   <span class="text-danger">*</span>
                                   <input type="text" class="form-control" formControlName="BAIRRO" placeholder="Bairro"
-                                  autocomplete="off" maxlength="50">
+                                    autocomplete="off" maxlength="50">
                                 </salv-input-container>
                               </div>
                               <div class="col-sm-6 col-sm-12" style="margin-top: 10px;">
@@ -438,7 +439,7 @@
                                 <salv-input-container errorMessage="Campo Obrigatório" label="Cidade">
                                   <span class="text-danger">*</span>
                                   <input type="text" class="form-control" formControlName="CIDADE" placeholder="Cidade"
-                                  autocomplete="off" maxlength="50">
+                                    autocomplete="off" maxlength="50">
                                 </salv-input-container>
                               </div>
                               <div class="col-sm-6 col-sm-12" style="margin-left: -10px;">
@@ -454,7 +455,7 @@
                                 <salv-input-container errorMessage="Campo Obrigatório" label="CEP">
                                   <span class="text-danger">*</span>
                                   <input type="text" class="form-control" formControlName="CEP" placeholder="CEP"
-                                  autocomplete="off" maxlength="8" mask="00.000-000">
+                                    autocomplete="off" maxlength="8" mask="00.000-000">
                                 </salv-input-container>
                               </div>
                               <div class="col-sm-6 col-sm-12" style="margin-top: 10px;">
@@ -470,7 +471,8 @@
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                       <button type="button" class="btn btn-success"
-                        (click)="updateEndereco(this.updateEnderecoForm.value)" [disabled]="!updateEnderecoForm.valid" data-dismiss="modal">Salvar</button>
+                        (click)="updateEndereco(this.updateEnderecoForm.value)" [disabled]="!updateEnderecoForm.valid"
+                        data-dismiss="modal">Salvar</button>
                     </div>
                   </div>
                 </div>
@@ -510,106 +512,56 @@
               </h4>
             </div>
             <div class="col-xs-4 col-xs-12" style="margin-left: -15px">
-
               <strong>E-mail: </strong> {{funcionario?.USUARIO.EMAIL}}
               <br>
             </div>
             <div class="col-xs-4 col-xs-12">
               <strong>Login: </strong> {{funcionario?.USUARIO.LOGIN}}
+              <br>
             </div>
-          </div>
-          <!--DIV MODAL INICIO-->
-          <div class="col-sm-12 col-xs-12">
-            <!-- Modal -->
-            <div class="modal fade" id="modalUpdateUsuario" tabindex="-1" role="dialog"
-              aria-labelledby="modalUpdateUsuario" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-body">
-                    <form [formGroup]="updateUsuarioForm" novalidate>
-                      <div class="box-body">
-                        <div>
-                          <div class="col-sm-12 col-sm-12" id="formTitle">
-                            <h4 class="text-center"><strong>Editar usuário</strong></h4>
-                          </div>
-                          <div class="row">
-                            <div class="col-sm-6 col-sm-12">
-                              <salv-input-container label="Email">
-                                  <span class="text-danger">*</span>
-                                <input type="text" class="form-control" formControlName="EMAIL" placeholder="E-mail"
-                                  autocomplete="off" maxlength="100">
-                              </salv-input-container>
-                            </div>
-                            <div class="col-sm-6 col-sm-12">
-                              <salv-input-container label="Nome">
-                                  <span class="text-danger">*</span>
-                                <input type="text" class="form-control" formControlName="LOGIN" placeholder="Login"
-                                  autocomplete="off" maxlength="100">
-                              </salv-input-container>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-success" (click)="updateUsuario(this.updateUsuarioForm.value)"
-                      [disabled]="!updateUsuarioForm.valid" data-dismiss="modal">Salvar</button>
-                  </div>
-                </div>
-              </div>
+            <div class="col-xs-4 col-xs-12">
+              <strong>Permissão de acesso: </strong> {{funcionario?.USUARIO.PERMISSAO_ACESSO | acesso}}
+              <br>
             </div>
-            <!--FIM MODAL-->
-          </div>
-          <!--FIM DIV MODAL-->
-          <ng-template #notLogin>
-
             <!--DIV MODAL INICIO-->
             <div class="col-sm-12 col-xs-12">
-              <!-- Button trigger modal -->
-              <div class="nao-possui-add">
-                <p>Funcionário não possui usuário cadastrado</p>
-                <div class="col-ms-12">
-                  <button *ngIf="access" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalUsuario">
-                    Adicionar usuário
-                  </button>
-                </div>
-              </div>
-
-
               <!-- Modal -->
-              <div class="modal fade" id="modalUsuario" tabindex="-1" role="dialog" aria-labelledby="modalUsuario"
-                aria-hidden="true">
+              <div class="modal fade" id="modalUpdateUsuario" tabindex="-1" role="dialog"
+                aria-labelledby="modalUpdateUsuario" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-body">
-                      <form [formGroup]="novoUsuarioForm" novalidate>
+                      <form [formGroup]="updateUsuarioForm" novalidate>
                         <div class="box-body">
                           <div>
                             <div class="col-sm-12 col-sm-12" id="formTitle">
-                              <h4 class="text-center"><strong>Adicionar usuário</strong></h4>
+                              <h4 class="text-center"><strong>Editar usuário</strong></h4>
                             </div>
                             <div class="row">
-                              <div class="col-sm-7 col-sm-12" id="inputValidator">
-                                <salv-input-container errorMessage="Campo obrigatório" label="Email">
-                                    <span class="text-danger">*</span>
+                              <div class="col-sm-6 col-sm-12">
+                                <salv-input-container label="Email">
+                                  <span class="text-danger">*</span>
                                   <input type="text" class="form-control" formControlName="EMAIL" placeholder="E-mail"
                                     autocomplete="off" maxlength="100">
                                 </salv-input-container>
                               </div>
-                              <div class="col-sm-5 col-sm-12" id="inputValidator">
-                                <salv-input-container errorMessage="Campo obrigatório" label="Nome">
-                                    <span class="text-danger">*</span>
+                              <div class="col-sm-6 col-sm-12">
+                                <salv-input-container label="Nome">
+                                  <span class="text-danger">*</span>
                                   <input type="text" class="form-control" formControlName="LOGIN" placeholder="Login"
                                     autocomplete="off" maxlength="100">
                                 </salv-input-container>
                               </div>
-                              <div class="col-sm-6 col-sm-12" style="margin-left: -10px;">
-                                <salv-input-container errorMessage="Campo obrigatório" label="Senha">
-                                    <span class="text-danger">*</span>
-                                  <input type="password" class="form-control" formControlName="SENHA"
-                                    placeholder="Senha" autocomplete="off" minlength="4" maxlength="100">
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-6 col-sm-12">
+                                <salv-input-container errorMessage="Campo Obrigatório" label="Permissão de acesso">
+                                  <span class="text-danger">*</span>
+                                  <select class="form-control" formControlName="PERMISSAO_ACESSO">
+                                    <option value="" label="Selecione" disabled selected="selected"></option>
+                                    <option *ngFor="let acesso of acessos" [value]="acesso.value">{{acesso.option}}
+                                    </option>
+                                  </select>
                                 </salv-input-container>
                               </div>
                             </div>
@@ -619,7 +571,8 @@
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                      <button type="button" class="btn btn-success" (click)="novoUsuario(this.novoUsuarioForm.value)" [disabled]="!novoUsuarioForm.valid"
+                      <button type="button" class="btn btn-success"
+                        (click)="updateUsuario(this.updateUsuarioForm.value)" [disabled]="!updateUsuarioForm.valid"
                         data-dismiss="modal">Salvar</button>
                     </div>
                   </div>
@@ -628,9 +581,87 @@
               <!--FIM MODAL-->
             </div>
             <!--FIM DIV MODAL-->
+            <ng-template #notLogin>
 
-          </ng-template>
+              <!--DIV MODAL INICIO-->
+              <div class="col-sm-12 col-xs-12">
+                <!-- Button trigger modal -->
+                <div class="nao-possui-add">
+                  <p>Funcionário não possui usuário cadastrado</p>
+                  <div class="col-ms-12">
+                    <button *ngIf="access" type="button" class="btn btn-primary" data-toggle="modal"
+                      data-target="#modalUsuario">
+                      Adicionar usuário
+                    </button>
+                  </div>
+                </div>
 
+
+                <!-- Modal -->
+                <div class="modal fade" id="modalUsuario" tabindex="-1" role="dialog" aria-labelledby="modalUsuario"
+                  aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-body">
+                        <form [formGroup]="novoUsuarioForm" novalidate>
+                          <div class="box-body">
+                            <div>
+                              <div class="col-sm-12 col-sm-12" id="formTitle">
+                                <h4 class="text-center"><strong>Adicionar usuário</strong></h4>
+                              </div>
+                              <div class="row">
+                                <div class="col-sm-7 col-sm-12" id="inputValidator">
+                                  <salv-input-container errorMessage="Campo obrigatório" label="Email">
+                                    <span class="text-danger">*</span>
+                                    <input type="text" class="form-control" formControlName="EMAIL" placeholder="E-mail"
+                                      autocomplete="off" maxlength="100">
+                                  </salv-input-container>
+                                </div>
+                                <div class="col-sm-5 col-sm-12" id="inputValidator">
+                                  <salv-input-container errorMessage="Campo obrigatório" label="Nome">
+                                    <span class="text-danger">*</span>
+                                    <input type="text" class="form-control" formControlName="LOGIN" placeholder="Login"
+                                      autocomplete="off" maxlength="100">
+                                  </salv-input-container>
+                                </div>
+                                <div class="col-sm-6 col-sm-12" style="margin-left: -10px;">
+                                  <salv-input-container errorMessage="Campo obrigatório" label="Senha">
+                                    <span class="text-danger">*</span>
+                                    <input type="password" class="form-control" formControlName="SENHA"
+                                      placeholder="Senha" autocomplete="off" minlength="4" maxlength="100">
+                                  </salv-input-container>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-sm-6 col-sm-12">
+                                  <salv-input-container errorMessage="Campo obrigatório" label="Permissão de acceso">
+                                    <span class="text-danger">*</span>
+                                    <select class="form-control" formControlName="PERMISSAO_ACESSO">
+                                      <option value="" label="Selecione" disabled selected="selected"></option>
+                                      <option *ngFor="let acesso of acessos" [value]="acesso.value">{{acesso.option}}
+                                      </option>
+                                    </select>
+                                  </salv-input-container>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-success" (click)="novoUsuario(this.novoUsuarioForm.value)"
+                          [disabled]="!novoUsuarioForm.valid" data-dismiss="modal">Salvar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--FIM MODAL-->
+              </div>
+              <!--FIM DIV MODAL-->
+
+            </ng-template>
+
+          </div>
         </div>
       </div>
-    </div>

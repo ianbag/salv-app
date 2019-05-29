@@ -9,14 +9,13 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  
+
   showMenu: boolean = false
 
   constructor(private ls: LoginService, private spinner: NgxSpinnerService) {
   }
 
   ngOnInit() {
-    // localStorage.setItem('expandedMenu', '0')
   }
 
   ngAfterViewInit() {

@@ -64,6 +64,7 @@ import { SituacaoInssPipe } from './pipes/inss/situacao-inss.pipe';
 import { ValorInssPipe } from './pipes/inss/valor-inss.pipe';
 import { ReferenciaPipe } from './pipes/referencia.pipe';
 import { ComplementoPipe } from './pipes/complemento.pipe';
+import { AcessoPipe } from './pipes/acesso.pipe'
 
 @NgModule({
     declarations: [
@@ -102,7 +103,8 @@ import { ComplementoPipe } from './pipes/complemento.pipe';
         SituacaoInssPipe,
         ValorInssPipe,
         ReferenciaPipe,
-        ComplementoPipe
+        ComplementoPipe,
+        AcessoPipe
     ],
     imports: [
         CommonModule,
@@ -162,7 +164,8 @@ import { ComplementoPipe } from './pipes/complemento.pipe';
         SituacaoInssPipe,
         ValorInssPipe,
         ReferenciaPipe,
-        ComplementoPipe
+        ComplementoPipe,
+        AcessoPipe
     ]
 })
 export class SharedModule {
