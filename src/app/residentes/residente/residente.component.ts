@@ -11,6 +11,7 @@ import { NgxSpinnerService } from 'ngx-spinner'
 import { Beneficio } from './infos-beneficios/beneficio.model';
 import { UniqueValuesValidators } from 'src/app/shared/validators/unique-values/unique-values.component';
 import { ConveniosService } from 'src/app/convenios/convenios.service';
+import { LoginService } from "./../../auth/login/login.service"
 
 @Component({
   selector: 'salv-residente',
@@ -26,6 +27,8 @@ import { ConveniosService } from 'src/app/convenios/convenios.service';
   ]
 })
 export class ResidenteComponent implements OnInit {
+
+  access: boolean
 
   residenteState = 'ready'
 
@@ -56,11 +59,13 @@ export class ResidenteComponent implements OnInit {
     private notificationService: NotificationService,
     private spinner: NgxSpinnerService,
     private uniqueValidators: UniqueValuesValidators,
-    private cs: ConveniosService
+    private cs: ConveniosService,
+    private ls: LoginService
   ) { }
 
   ngOnInit() {
     this.spinner.show()
+    this.access = this.ls.permissao_acesso
 
     this.CODIGO_RESIDENTE = this.route.snapshot.params['id']
 
@@ -82,7 +87,7 @@ export class ResidenteComponent implements OnInit {
       })
 
     this.getFamiliar()
-      
+
     this.getConvenio()
 
     this.getBeneficio()

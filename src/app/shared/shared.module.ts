@@ -66,6 +66,8 @@ import { ReferenciaPipe } from './pipes/referencia.pipe';
 import { ComplementoPipe } from './pipes/complemento.pipe';
 import { ChangePasswordService } from '../auth/change-password/change-password.service';
 import { UserDetailsComponent } from '../fixed-elements/header/user-details/user-details.component';
+import { AcessoPipe } from './pipes/acesso.pipe'
+
 
 @NgModule({
     declarations: [
@@ -104,7 +106,8 @@ import { UserDetailsComponent } from '../fixed-elements/header/user-details/user
         SituacaoInssPipe,
         ValorInssPipe,
         ReferenciaPipe,
-        ComplementoPipe
+        ComplementoPipe,
+        AcessoPipe
     ],
     imports: [
         CommonModule,
@@ -164,7 +167,8 @@ import { UserDetailsComponent } from '../fixed-elements/header/user-details/user
         SituacaoInssPipe,
         ValorInssPipe,
         ReferenciaPipe,
-        ComplementoPipe
+        ComplementoPipe,
+        AcessoPipe
     ]
 })
 export class SharedModule {

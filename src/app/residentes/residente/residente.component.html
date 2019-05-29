@@ -12,7 +12,7 @@
         <div class="box-header with-border">
 
           <h3 class="box-title">Familiares do {{residente?.PESSOA.NOME}}</h3>
-          <div class="box-tools pull-right">
+          <div *ngIf="access" class="box-tools pull-right">
 
             <a type="submit" class="btn btn-success botao" data-toggle="modal" data-target="#modalFamiliar"
               style="color: white" *ngIf="familiares.length">Adicionar</a>
@@ -24,9 +24,10 @@
             [(familiar)]="familiar"></salv-infos-familiar>
 
           <div *ngIf="!familiares.length" class="nao-possui-add">
-            <p>Você não possui familiares cadastrados</p>
+            <p>Residente não possui familiares cadastrados</p>
             <div class="col-sm-12 col-xs-12">
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalFamiliar">
+              <button *ngIf="access" type="button" class="btn btn-primary" data-toggle="modal"
+                data-target="#modalFamiliar">
                 Adicionar familiar
               </button>
             </div>
@@ -110,7 +111,7 @@
                       <salv-input-container errorMessage="Campo Obrigatório" label="Estado">
                         <span class="text-danger">*</span>
                         <select class="form-control" formControlName="ESTADO">
-                            <option [ngValue]="null">Selecione</option>
+                          <option [ngValue]="null">Selecione</option>
                           <option *ngFor="let estado of estados">{{estado}}</option>
                         </select>
                       </salv-input-container>
@@ -171,7 +172,7 @@
       <div class="box-header with-border">
 
         <h3 class="box-title">Convênios do {{residente?.PESSOA.NOME}}</h3>
-        <div class="box-tools pull-right">
+        <div *ngIf="access" class="box-tools pull-right">
           <a type="submit" class="btn btn-success botao" data-toggle="modal" data-target="#modalConvenio"
             style="color: white" *ngIf="convenios.length">Adicionar</a>
         </div>
@@ -181,9 +182,10 @@
           [(convenio)]="convenio"></salv-infos-convenio>
 
         <div *ngIf="!convenios.length" class="nao-possui-add">
-          <p>Você não possui convênios cadastrados</p>
+          <p>Residente não possui convênios cadastrados</p>
           <div class="col-sm-12 col-xs-12">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalConvenio">
+            <button *ngIf="access" type="button" class="btn btn-primary" data-toggle="modal"
+              data-target="#modalConvenio">
               Adicionar convênio
             </button>
           </div>
@@ -208,7 +210,7 @@
                     <salv-input-container errorMessage="Campo Obrigatório" label="Nome">
                       <span class="text-danger">*</span>
                       <select class="form-control" formControlName="CONVENIO_CODIGO">
-                          <option [ngValue]="null">Selecione</option>
+                        <option [ngValue]="null">Selecione</option>
                         <option *ngFor="let convenio of residenteConvenios" [value]="convenio.CODIGO">
                           {{convenio.NOME_CONVENIO}}</option>
                       </select>
@@ -257,7 +259,7 @@
       <div class="box-header with-border">
 
         <h3 class="box-title">Benefícios do {{residente?.PESSOA.NOME}}</h3>
-        <div class="box-tools pull-right">
+        <div *ngIf="access" class="box-tools pull-right">
           <button type="submit" class="btn btn-success" *ngIf="beneficios.length" data-toggle="modal"
             data-target="#modalBeneficio" style="color: white">Adicionar</button>
         </div>
@@ -267,9 +269,10 @@
           [(beneficio)]="beneficio"></salv-infos-beneficios>
 
         <div *ngIf="!beneficios.length" class="nao-possui-add">
-          <p>Você não possui benefícios cadastrados</p>
+          <p>Residente não possui benefícios cadastrados</p>
           <div class="col-sm-12 col-xs-12">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalBeneficio">
+            <button *ngIf="access" type="button" class="btn btn-primary" data-toggle="modal"
+              data-target="#modalBeneficio">
               Adicionar benefício
             </button>
           </div>

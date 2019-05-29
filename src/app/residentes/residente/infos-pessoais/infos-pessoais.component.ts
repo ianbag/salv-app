@@ -7,12 +7,15 @@ import { NotificationService } from 'src/app/shared/notification.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Pessoa } from 'src/app/funcionarios/funcionario.model';
 import { UniqueValuesValidators } from 'src/app/shared/validators/unique-values/unique-values.component';
+import { LoginService } from "./../../../auth/login/login.service"
 
 @Component({
   selector: 'salv-infos-pessoais',
   templateUrl: './infos-pessoais.component.html'
 })
 export class InfosPessoaisComponent implements OnInit {
+
+  access: boolean
 
   @Input() residente: Residente
 
@@ -70,7 +73,8 @@ export class InfosPessoaisComponent implements OnInit {
     private notificationService: NotificationService,
     private route: ActivatedRoute,
     private spinner: NgxSpinnerService,
-    private uniqueValidators: UniqueValuesValidators
+    private uniqueValidators: UniqueValuesValidators,
+    private ls: LoginService
   ) { }
 
   markAllDirty(control: AbstractControl) {
@@ -87,6 +91,7 @@ export class InfosPessoaisComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.access = this.ls.permissao_acesso
     if ((this.residentesService.residente == undefined) && (this.residentesService.pessoa == undefined))
       this.residentesService.residenteById(this.route.snapshot.params['id'])
         .subscribe(res => {

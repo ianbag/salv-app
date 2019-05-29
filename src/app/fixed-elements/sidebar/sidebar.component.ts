@@ -9,10 +9,12 @@ import { AuthGuardService } from 'src/app/auth/auth-guard.service';
 export class SidebarComponent implements OnInit {
 
   constructor(private authGuard: AuthGuardService) { }
+
   showSidebar: boolean = false
+
   ngOnInit() {
     this.showSidebar = this.authGuard.isLoggedIn()
-    if(this.showSidebar){
+    if (this.showSidebar) {
       let selector = document.querySelector("body")
       selector.setAttribute("class", "hold-transition skin-green sidebar")
     }

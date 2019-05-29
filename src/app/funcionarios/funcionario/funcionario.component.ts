@@ -10,6 +10,7 @@ import { NotificationService } from 'src/app/shared/notification.service';
 import { DialogConfirmService } from 'src/app/residentes/dialog-confirm.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { UniqueValuesValidators } from 'src/app/shared/validators/unique-values/unique-values.component';
+import { LoginService } from "./../../auth/login/login.service"
 
 @Component({
   selector: 'salv-funcionario',
@@ -26,6 +27,8 @@ import { UniqueValuesValidators } from 'src/app/shared/validators/unique-values/
 })
 export class FuncionarioComponent implements OnInit {
 
+  access: boolean
+
   funcionarioState = 'ready'
 
   funcionario: Funcionario
@@ -39,10 +42,11 @@ export class FuncionarioComponent implements OnInit {
   novoDependenteForm: FormGroup
 
 
-  constructor(private fs: FuncionariosService, private route: ActivatedRoute, private fb: FormBuilder, private ns: NotificationService, private dcs: DialogConfirmService, private spinner: NgxSpinnerService, private uniqueValidators: UniqueValuesValidators) { }
+  constructor(private fs: FuncionariosService, private route: ActivatedRoute, private fb: FormBuilder, private ns: NotificationService, private dcs: DialogConfirmService, private spinner: NgxSpinnerService, private uniqueValidators: UniqueValuesValidators, private ls: LoginService) { }
 
   ngOnInit() {
     this.spinner.show()
+    this.access = this.ls.permissao_acesso
     this.buscaFuncionario()
     this.buscaDependentes()
 
@@ -118,5 +122,5 @@ export class FuncionarioComponent implements OnInit {
       this.ns.notify('Relatório emitido com sucesso')
     })
   }
-  
+
 }

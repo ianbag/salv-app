@@ -11,6 +11,7 @@ export class LoginService {
     user: User
     showMenuEmitter = new EventEmitter<boolean>()
     primeiro_acesso: number
+    permissao_acesso: boolean
     username: string
 
     constructor(private http: HttpClient, private cs: CookieService) { }
@@ -20,8 +21,17 @@ export class LoginService {
             localStorage.expandedMenu = 1
             this.primeiro_acesso = res.primeiro_acesso
             this.username = res.login
+            this.permissao_acesso = this.verificaPermissaoAcesso(res.access)
             this.showMenuEmitter.emit(true)
         }))
+    }
+
+    verificaPermissaoAcesso(database) {
+        if (database == 'ADM') {
+            return true
+        } else {
+            return false
+        }
     }
 
     logout() {

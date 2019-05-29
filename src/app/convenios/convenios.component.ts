@@ -6,6 +6,7 @@ import { trigger, state, transition, style, animate } from '@angular/animations'
 import { NgxSpinnerService } from 'ngx-spinner';
 import 'jspdf-autotable'
 import { NotificationService } from '../shared/notification.service';
+import { LoginService } from "./../auth/login/login.service"
 
 @Component({
   selector: 'salv-convenios',
@@ -22,9 +23,11 @@ import { NotificationService } from '../shared/notification.service';
 })
 export class ConveniosComponent implements OnInit {
 
+  access: boolean
+
   conveniosState = 'ready'
 
-  constructor(private conveniosService: ConveniosService, private dialogConfirmService: DialogConfirmService, private spinner: NgxSpinnerService, private ns: NotificationService) { }
+  constructor(private conveniosService: ConveniosService, private dialogConfirmService: DialogConfirmService, private spinner: NgxSpinnerService, private ns: NotificationService, private ls: LoginService) { }
 
   public searchString: string;
   convenios: Convenio[]
@@ -37,6 +40,8 @@ export class ConveniosComponent implements OnInit {
 
   ngOnInit() {
     this.spinner.show()
+
+    this.access = this.ls.permissao_acesso
 
     this.conveniosService.tratados()
       .subscribe(convenios => {
