@@ -10,11 +10,11 @@
     </h4>
   </div>
   <div class="col-sm-12">
-    <div class="col-xs-4 col-xs-12" style="margin-left: -15px;">
+    <div class="col-xs-4 col-xs-12 campos-infos" style="margin-left: -15px;">
       <strong>Nome: </strong> {{familiar?.NOME}} {{familiar?.SOBRENOME}}
     </div>
 
-    <div class="col-xs-6 col-xs-12" style="margin-top: 6px;">
+    <div class="col-xs-6 col-xs-12 campos-infos precisa-de-margin" style="margin-top: 6px;">
       <strong>Parentesco: </strong> {{familiar?.PARENTESCO}}
     </div>
   </div>
@@ -22,36 +22,45 @@
   <div class="col-xs-12 col-xs-12">
     <div class="col-md-12" *ngIf="familiar">
       <div class="col-sm-12">
-        <h4 style="margin-left: -29px;">
-          <strong>Endereço</strong>
-        </h4>
+      <h4 style="margin-left: -29px;">
+        <strong>Endereço</strong>
+      </h4>
+    </div>
+    <div class="col-xs-12 col-xs-12">
+
+
+      <div class="col-xs-4 col-xs-12 campos-infos" style="margin-left: -44px;">
+        <strong>Endereço: </strong> {{familiar?.ENDERECO}}
       </div>
       <div class="col-xs-12 col-xs-12">
 
+      <div class="col-xs-4 col-xs-12 campos-infos precisa-de-margin-numero-mobile">
+        <strong>Nº: </strong> {{familiar?.NUMERO}}
+      </div>
 
-        <div class="col-xs-4 col-xs-12" style="margin-left: -44px;">
-          <strong>Endereço: </strong> {{familiar?.ENDERECO}}
-        </div>
+      <div class="col-xs-4 col-xs-12 campos-infos precisa-de-margin-atras precisa-de-margin-numero-mobile">
+        <strong>Bairro: </strong> {{familiar?.BAIRRO}}
+      </div>
 
-        <div class="col-xs-4 col-xs-12">
-          <strong>Nº: </strong> {{familiar?.NUMERO}}
-        </div>
+      <div class="col-xs-4 col-xs-12 campos-infos precisa-de-margin-frente precisa-de-margin-numero-mobile-2" style="margin-left: -44px;">
+        <strong>Complemento: </strong> {{familiar?.COMPLEMENTO | complemento}}
+      </div>
 
-        <div class="col-xs-4 col-xs-12">
-          <strong>Bairro: </strong> {{familiar?.BAIRRO}}
-        </div>
+      <div class="col-xs-4 col-xs-12 campos-infos precisa-de-margin-atras precisa-de-margin-numero-mobile">
+        <strong>Cidade: </strong> {{familiar?.CIDADE}}
+      </div>
 
-        <div class="col-xs-4 col-xs-12" style="margin-left: -44px;">
-          <strong>Complemento: </strong> {{familiar?.COMPLEMENTO | complemento}}
-        </div>
+      <div class="col-xs-4 col-xs-12 campos-infos precisa-de-margin-numero-mobile">
+        <strong>Estado: </strong> {{familiar?.ESTADO}}
+      </div>
 
-        <div class="col-xs-4 col-xs-12">
-          <strong>Cidade: </strong> {{familiar?.CIDADE}}
-        </div>
+      <div class="col-xs-4 col-xs-12 campos-infos precisa-de-margin-numero-mobile-2" style="margin-left: -44px;">
+        <strong>CEP: </strong> {{familiar?.CEP}}
+      </div>
 
-        <div class="col-xs-4 col-xs-12">
-          <strong>Estado: </strong> {{familiar?.ESTADO}}
-        </div>
+      <div class="col-xs-4 col-xs-12 campos-infos precisa-de-margin-numero-mobile">
+        <strong>Referência: </strong> {{familiar?.REFERENCIA | referencia}}
+      </div>
 
         <div class="col-xs-4 col-xs-12" style="margin-left: -44px;">
           <strong>CEP: </strong> {{familiar?.CEP}}
@@ -181,92 +190,32 @@
         </div>
         <!-- FIM MODAL EDITAR FAMILIAR -->
 
-        <!-- MODAL NOVO TELEFONE -->
-        <div class="modal fade" id="modalNovoTelefone{{familiar?.CODIGO}}" tabindex="-1" role="dialog"
-          attr.aria-labelledby="modalNovoTelefone{{familiar?.CODIGO}}" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-body">
-                <form [formGroup]="novoTelefoneForm" novalidate>
-                  <div class="box-body">
-                    <div>
-                      <div class="col-sm-12 col-sm-12">
-                        <h4 class="text-center">
-                          <strong>Adicionar novo telefone</strong>
-                        </h4>
-                      </div>
-                      <div class="row">
-                        <div class="col-sm-5 col-sm-12">
-                          <salv-input-container errorMessage="Campo Obrigatório" label="DDD">
-                            <span class="text-danger">*</span>
-                            <input type="text" class="form-control" formControlName="DDD" placeholder="DDD"
-                              autocomplete="off" mask="00">
-                          </salv-input-container>
-                        </div>
-                        <div class="col-sm-7 col-sm-12">
-                          <salv-input-container errorMessage="Campo Obrigatório" label="Número">
-                            <span class="text-danger">*</span>
-                            <input type="text" class="form-control" formControlName="NUMERO" placeholder="Número"
-                              mask="00000-0000" autocomplete="off">
-                          </salv-input-container>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-success"
-                  (click)="novoTelefone(this.novoTelefoneForm.value, familiar?.CODIGO)"
-                  [disabled]="!novoTelefoneForm.valid" data-dismiss="modal">Salvar</button>
-              </div>
-            </div>
-          </div>
+    </div>
+    <div class="col-sm-12 col-xs-12">
+      <h4 style="margin-left: -31px;">
+        <strong>Telefones </strong>
+        <a class="icones-editar-excluir" type="submit" data-toggle="modal"
+        attr.data-target="#modalNovoTelefone{{familiar?.CODIGO}}">
+          <i class="fa fa-plus-circle" style="color: #00a65a;"></i>
+        </a>
+      </h4>
+    </div>
+    <div class="col-sm-12">
+      <ng-container *ngIf="telefone.length; else elseTelefoneTemplate">
+        <div class="col-xs-4 col-xs-12 campos-infos-cem campos-infos" *ngFor="let tel of telefone" style="margin-left: -44px;">
+          <strong>Telefone: </strong> ({{tel?.TELEFONE.DDD}}) {{tel?.TELEFONE.NUMERO | telefone}}
+          <a class="input-remove icones-editar-excluir" (click)="deletarTelefoneFamiliar(tel.TELEFONE.CODIGO, familiar?.CODIGO)">
+            <span><i class="fa fa-close"></i></span>
+          </a>
+          <a class="input-edit icones-editar-excluir" data-toggle="modal" (click)="buscarTelefone(tel.TELEFONE.CODIGO)"
+            attr.data-target="#modalEditarTelefone{{familiar?.CODIGO}}">
+            <span><i class="fa fa-pencil"></i></span></a>
         </div>
         <!-- FIM MODAL NOVO TELEFONE -->
 
-        <!-- MODAL EDITAR TELEFONE -->
-        <div class="modal fade" id="modalEditarTelefone{{familiar?.CODIGO}}" tabindex="-1" role="dialog"
-          attr.aria-labelledby="modalEditarTelefone{{familiar?.CODIGO}}" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-body">
-                <form [formGroup]="novoTelefoneForm" novalidate>
-                  <div class="box-body">
-                    <div>
-                      <div class="col-sm-12 col-sm-12">
-                        <h4 class="text-center">
-                          <strong>Editar telefone</strong>
-                        </h4>
-                      </div>
-                      <div class="row">
-                        <div class="col-sm-5 col-sm-12">
-                          <salv-input-container errorMessage="Campo Obrigatório" label="DDD">
-                            <span class="text-danger">*</span>
-                            <input type="text" class="form-control" formControlName="DDD" placeholder="DDD"
-                              autocomplete="off" mask="00">
-                          </salv-input-container>
-                        </div>
-                        <div class="col-sm-7 col-sm-12">
-                          <salv-input-container errorMessage="Campo Obrigatório" label="Número">
-                            <span class="text-danger">*</span>
-                            <input type="text" class="form-control" formControlName="NUMERO" placeholder="Número"
-                              mask="00000-0000" autocomplete="off">
-                          </salv-input-container>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-success" (click)="editarTelefone(this.novoTelefoneForm.value)"
-                  [disabled]="!novoTelefoneForm.valid" data-dismiss="modal">Salvar</button>
-              </div>
-            </div>
-          </div>
+      <ng-template #elseTelefoneTemplate>
+        <div class="col-xs-4 col-xs-12 add-telefone-familiar-residente campos-infos ">
+          <p>{{familiar?.NOME}} não possui telefone cadastrado. Adicione um clicando em +</p>
         </div>
         <!-- FIM MODAL EDITAR TELEFONE -->
 
