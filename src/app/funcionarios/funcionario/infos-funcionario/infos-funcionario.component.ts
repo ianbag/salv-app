@@ -14,6 +14,7 @@ import { LoginService } from "./../../../auth/login/login.service"
 export class InfosFuncionarioComponent implements OnInit {
 
     access: boolean
+    notLogin: any
 
     @Input() funcionario: Funcionario
     @Input() telefones: Telefone[] = []
