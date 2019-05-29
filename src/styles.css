@@ -134,7 +134,7 @@
   .conteudo-sobre{
     display: flex;
     width: 100%;
-    height: 400px !important;
+    height: 300px !important;
   }
 
   .imagem-sobre{
@@ -177,6 +177,10 @@
       width: 100%;
     }
 
+    .margin-sobre{
+      margin-bottom: 70px !important;
+    }
+
     .equipe{
       display: flex;
       flex-wrap: wrap;
@@ -187,7 +191,7 @@
     }
 
     .sobre-titulo-equipe{
-      margin-top: 0px;
+      margin: 60px 10px 0 10px;
     }
   }
 
