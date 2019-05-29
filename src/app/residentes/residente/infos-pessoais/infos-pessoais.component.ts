@@ -16,6 +16,7 @@ import { LoginService } from "./../../../auth/login/login.service"
 export class InfosPessoaisComponent implements OnInit {
 
   access: boolean
+  elseCertidao: any
 
   @Input() residente: Residente
 
