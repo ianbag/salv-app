@@ -48,7 +48,7 @@ import { SobreComponent } from './sobre/sobre.component';
     ResetPasswordComponent,
     FirstAccessComponent,
     ChangePasswordComponent,
-    SobreComponentF
+    SobreComponent
   ],
   imports: [
     BrowserModule,
