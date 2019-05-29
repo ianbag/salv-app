@@ -1,10 +1,12 @@
 <div class="col-md-12" *ngIf="beneficio">
   <div class="col-sm-12 col-xs-12">
     <h4>
-      
-        <strong>{{beneficio?.NOME_BENEFICIO}}</strong>
-        <a class="input-remove icones-editar-excluir" (click)="deletarBeneficio(beneficio)"><i class="fa fa-close"></i></a>
-      <a class="input-edit icones-editar-excluir" data-toggle="modal" (click)="setValuesBeneficioForm(beneficio)"
+
+      <strong>{{beneficio?.NOME_BENEFICIO}}</strong>
+      <a *ngIf="access" class="input-remove icones-editar-excluir" (click)="deletarBeneficio(beneficio)"><i
+          class="fa fa-close"></i></a>
+      <a *ngIf="access" class="input-edit icones-editar-excluir" data-toggle="modal"
+        (click)="setValuesBeneficioForm(beneficio)"
         attr.data-target="#modalEditarBeneficio{{NOME_BENEFICIO_SEM_ESPACO}}"><i class="fa fa-pencil"></i></a>
     </h4>
   </div>
@@ -96,7 +98,8 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-success" data-dismiss="modal" (click)="editarBeneficio(beneficioResidenteForm.value)"
+          <button type="button" class="btn btn-success" data-dismiss="modal"
+            (click)="editarBeneficio(beneficioResidenteForm.value)"
             [disabled]="!beneficioResidenteForm.valid">Salvar</button>
         </div>
       </div>

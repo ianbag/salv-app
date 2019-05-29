@@ -6,6 +6,7 @@ import { DialogConfirmService } from '../../dialog-confirm.service';
 import { NotificationService } from 'src/app/shared/notification.service';
 import { ActivatedRoute } from '@angular/router';
 import { UniqueValuesValidators } from 'src/app/shared/validators/unique-values/unique-values.component';
+import { LoginService } from "./../../../auth/login/login.service"
 
 @Component({
   selector: 'salv-infos-beneficios',
@@ -13,10 +14,12 @@ import { UniqueValuesValidators } from 'src/app/shared/validators/unique-values/
 })
 export class InfosBeneficiosComponent implements OnInit {
 
+  access: boolean
+
   @Input() beneficio: Beneficio
   @Output() atualizaBeneficio = new EventEmitter<Beneficio[]>()
 
-  beneficios: Beneficio[] 
+  beneficios: Beneficio[]
   beneficioResidenteForm: FormGroup
 
   NOME_BENEFICIO_SEM_ESPACO
@@ -28,10 +31,12 @@ export class InfosBeneficiosComponent implements OnInit {
     private dialogConfirmService: DialogConfirmService,
     private notificationService: NotificationService,
     private route: ActivatedRoute,
-    private uniqueValidators: UniqueValuesValidators
+    private uniqueValidators: UniqueValuesValidators,
+    private ls: LoginService
   ) { }
 
   ngOnInit() {
+    this.access = this.ls.permissao_acesso
 
     this.NOME_BENEFICIO_SEM_ESPACO = this.beneficio.NOME_BENEFICIO.replace(/\s/g, '')
 
