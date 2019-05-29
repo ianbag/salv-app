@@ -3,7 +3,16 @@
     <li class="user user-menu">
 
       <span *ngIf="isLoggedIn()">
-        Olá, {{user}} | <a (click)="logout()">Sair</a>
+
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> Olá, {{user}} <span class="caret"></span></a>
+        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+          <li><a [routerLink]="['/alterar-senha']"><i class="fa fa-cogs"></i> Alterar senha </a></li>
+          <li class="divider"></li>
+          <li><a (click)="logout()"><i class="fa fa-sign-out"></i> Sair</a>
+        </ul>
+      </li>
+
       </span>
 
     </li>
