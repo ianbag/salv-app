@@ -6,11 +6,14 @@ import { NotificationService } from 'src/app/shared/notification.service';
 import { DialogConfirmService } from 'src/app/residentes/dialog-confirm.service';
 import { ActivatedRoute } from '@angular/router';
 import { UniqueValuesValidators } from 'src/app/shared/validators/unique-values/unique-values.component';
+import {LoginService} from "./../../../auth/login/login.service"
 @Component({
     selector: 'salv-infos-funcionario',
     templateUrl: './infos-funcionario.component.html'
 })
 export class InfosFuncionarioComponent implements OnInit {
+
+    access: boolean
 
     @Input() funcionario: Funcionario
     @Input() telefones: Telefone[] = []
@@ -57,9 +60,11 @@ export class InfosFuncionarioComponent implements OnInit {
         { value: "NE", option: "Não Especificado" },
     ];
 
-    constructor(private fs: FuncionariosService, private fb: FormBuilder, private ns: NotificationService, private dcs: DialogConfirmService, private route: ActivatedRoute, private uniqueValidators: UniqueValuesValidators) { }
+    constructor(private fs: FuncionariosService, private fb: FormBuilder, private ns: NotificationService, private dcs: DialogConfirmService, private route: ActivatedRoute, private uniqueValidators: UniqueValuesValidators, private ls: LoginService) { }
 
     ngOnInit(): void {
+
+        this.access = this.ls.permissao_acesso
 
         this.novoTelefoneForm = this.fb.group({
             DDD: this.fb.control(null, []),

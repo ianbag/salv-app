@@ -1,7 +1,7 @@
 <div class="box box-default box-solid">
   <div class="box-header with-border">
     <h3 class="box-title">Informações do funcionário</h3>
-    <div class="box-tools pull-right">
+    <div *ngIf="access" class="box-tools pull-right">
       <a (click)="buscaFuncionario()" type="submit" class="btn btn-warning botao" data-toggle="modal"
         data-target="#modalEditarFuncionario">Editar</a>
     </div>
@@ -207,7 +207,7 @@
 
             <h4>
               <strong>Telefones</strong>
-              <a class="icones-editar-excluir" type="submit" *ngIf="telefones.length" data-toggle="modal"
+              <a class="icones-editar-excluir" type="submit" *ngIf="telefones.length && !access" data-toggle="modal"
                 data-target="#modalTelefone">
                 <i class="fa fa-plus-circle" style="color: #00a65a;"></i>
               </a>
@@ -219,13 +219,13 @@
 
             <div class="col-xs-4 col-xs-12" *ngFor="let telefone of telefones" style="margin-left: -15px">
               <strong>Telefone: </strong> ({{telefone?.TELEFONE.DDD}}) {{telefone?.TELEFONE.NUMERO | telefone}}
-              <a class="icones-editar-excluir"><span id="iconesForm"
+              <a *ngIf="access" class="icones-editar-excluir"><span id="iconesForm"
                   (click)="deleteTelefone(funcionario.PESSOA.CODIGO, telefone.TELEFONE.CODIGO); $event.stopPropagation()">
                   <i class="fa fa-close" style="color: #dd4b39;"></i>
                 </span>
               </a>
 
-              <a class="icones-editar-excluir" data-toggle="modal" data-target="#modalUpdateTelefone"
+              <a *ngIf="access" class="icones-editar-excluir" data-toggle="modal" data-target="#modalUpdateTelefone"
                 (click)="buscaTelefone(telefone.TELEFONE.CODIGO)">
                 <span id="iconesForm"><i class="fa fa-pencil" style="color: #f39c12;"></i>
                 </span>
@@ -234,7 +234,7 @@
             </div>
           </div>
           <div class="col-xs-12 col-xs-12" *ngIf="!telefones.length">
-            <p>Você não possui telefones cadastros. <a type="submit" data-toggle="modal" data-target="#modalTelefone"
+            <p>Funcionário não possui telefones cadastros. <a *ngIf="access" type="submit" data-toggle="modal" data-target="#modalTelefone"
                 style="color: #00A65A">Cadastre um aqui</a></p>
             <!-- <p>Você não possui telefones cadastros. Cadastre um no +</p> -->
           </div>
@@ -361,7 +361,7 @@
               <!--DIV MODAL-->
               <div class="col-xs-12 col-xs-12" style="margin-left: -5px">
                 <!-- Button trigger modal -->
-                <h4><strong>Endereço</strong> <a data-toggle="modal" data-target="#modalUpdateEndereco"
+                <h4><strong>Endereço</strong> <a *ngIf="access" data-toggle="modal" data-target="#modalUpdateEndereco"
                     (click)="buscaEndereco(endereco.ENDERECO.CODIGO)">
                     <span id="iconesForm" style="margin: 14px;"><i class="fa fa-pencil" style="color: #f39c12"></i></span></a></h4>
               </div>
@@ -504,7 +504,7 @@
             <div class="col-sm-12 col-xs-12" style="margin-left: -15px">
               <h4>
                 <strong>Informações de login</strong>
-                <a class="icones-editar-excluir" data-toggle="modal" data-target="#modalUpdateUsuario"
+                <a *ngIf="access" class="icones-editar-excluir" data-toggle="modal" data-target="#modalUpdateUsuario"
                   (click)="buscaUsuario()"><span id="iconesForm">
                     <i class="fa fa-pencil" style="color: #f39c12;"></i></span></a>
               </h4>
@@ -569,9 +569,9 @@
             <div class="col-sm-12 col-xs-12">
               <!-- Button trigger modal -->
               <div class="nao-possui-add">
-                <p>Você não possui usuário cadastrado</p>
+                <p>Funcionário não possui usuário cadastrado</p>
                 <div class="col-ms-12">
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalUsuario">
+                  <button *ngIf="access" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalUsuario">
                     Adicionar usuário
                   </button>
                 </div>

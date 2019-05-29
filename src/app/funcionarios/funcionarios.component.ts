@@ -5,6 +5,7 @@ import { DialogConfirmService } from '../residentes/dialog-confirm.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { NotificationService } from '../shared/notification.service';
+import { LoginService } from "./../auth/login/login.service"
 
 @Component({
   selector: 'salv-funcionarios',
@@ -21,6 +22,8 @@ import { NotificationService } from '../shared/notification.service';
 })
 export class FuncionariosComponent implements OnInit {
 
+  access: boolean
+
   public searchString: string;
   funcionarios: Funcionario[]
   funcionariosInativos: Funcionario[]
@@ -28,7 +31,7 @@ export class FuncionariosComponent implements OnInit {
   public Desativados
   public filter
 
-  constructor(private funcionariosService: FuncionariosService, private dialogConfirmService: DialogConfirmService, private spinner: NgxSpinnerService, private ns: NotificationService) { }
+  constructor(private funcionariosService: FuncionariosService, private dialogConfirmService: DialogConfirmService, private spinner: NgxSpinnerService, private ns: NotificationService, private ls: LoginService) { }
 
   funcionariosState = 'ready'
 
@@ -36,6 +39,7 @@ export class FuncionariosComponent implements OnInit {
 
   ngOnInit() {
     this.spinner.show()
+    this.access = this.ls.permissao_acesso
     this.funcionariosService.funcionarios()
       .subscribe(funcionarios => {
         this.spinner.hide()
