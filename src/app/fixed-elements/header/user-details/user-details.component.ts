@@ -31,13 +31,17 @@ export class UserDetailsComponent implements OnInit {
     this.dcs.confirm(`Deseja sair?`)
       .then((isTrue) => {
         if (isTrue) {
-          this.ls.logout()
+          this.methodLogout()
+        }
+      })
+  }
+
+  methodLogout(){
+    this.ls.logout()
           this.router.navigate(['/login'])
           this.ns.notify('Até logo!')
           let selector = document.querySelector("body")
           selector.setAttribute("class", "hold-transition skin-green sidebar-collapse")
-        }
-      })
   }
 
 }
