@@ -64,6 +64,8 @@ import { SituacaoInssPipe } from './pipes/inss/situacao-inss.pipe';
 import { ValorInssPipe } from './pipes/inss/valor-inss.pipe';
 import { ReferenciaPipe } from './pipes/referencia.pipe';
 import { ComplementoPipe } from './pipes/complemento.pipe';
+import { ChangePasswordService } from '../auth/change-password/change-password.service';
+import { UserDetailsComponent } from '../fixed-elements/header/user-details/user-details.component';
 
 @NgModule({
     declarations: [
@@ -184,7 +186,9 @@ export class SharedModule {
                 ForgetService,
                 ResetService,
                 ValidatorService,
-                FirstAccessService
+                FirstAccessService,
+                ChangePasswordService,
+                UserDetailsComponent
             ]
         }
     }
