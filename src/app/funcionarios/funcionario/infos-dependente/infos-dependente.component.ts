@@ -7,12 +7,15 @@ import { NotificationService } from 'src/app/shared/notification.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { UniqueValuesValidators } from 'src/app/shared/validators/unique-values/unique-values.component';
+import { LoginService } from "./../../../auth/login/login.service"
 
 @Component({
     selector: 'salv-infos-dependente',
     templateUrl: './infos-dependente.component.html'
 })
 export class InfosDependenteComponent implements OnInit {
+
+    access: boolean
 
     @Input() dependente: Dependente
     @Output() atualizaDependentes = new EventEmitter<Dependente[]>()
@@ -22,9 +25,11 @@ export class InfosDependenteComponent implements OnInit {
         "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"
     ];
 
-    constructor(private dcs: DialogConfirmService, private fs: FuncionariosService, private ns: NotificationService, private fb: FormBuilder, private spinner: NgxSpinnerService, private uniqueValidators: UniqueValuesValidators, private route: ActivatedRoute ) { }
+    constructor(private dcs: DialogConfirmService, private fs: FuncionariosService, private ns: NotificationService, private fb: FormBuilder, private spinner: NgxSpinnerService, private uniqueValidators: UniqueValuesValidators, private route: ActivatedRoute, private ls: LoginService) { }
 
     ngOnInit() {
+
+        this.access = this.ls.permissao_acesso
 
         this.updateDependenteForm = this.fb.group({
             NOME: this.fb.control('', [Validators.required]),
