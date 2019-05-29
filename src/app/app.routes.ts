@@ -8,6 +8,7 @@ import { ForgetPasswordComponent } from './auth/forget-password/forget-password.
 import { FirstAccessComponent } from './auth/first-access/first-access.component';
 
 import { AuthGuardService as AuthGuard } from './auth/auth-guard.service'
+import { SobreComponent } from './sobre/sobre.component';
 
 export const ROUTES: Routes = [
     { path: 'login', component: LoginComponent },
@@ -21,6 +22,7 @@ export const ROUTES: Routes = [
     { path: 'funcionarios', loadChildren: './funcionarios/funcionario.module#FuncionarioModule', canActivate: [AuthGuard] },
     { path: 'acompanhamentos', loadChildren: './acompanhamentos/acompanhamento.module#AcompanhamentoModule', canActivate: [AuthGuard] },
     { path: 'residentes', loadChildren: './residentes/residente.module#ResidenteModule', canActivate: [AuthGuard] },
+    { path: 'sobre', component: SobreComponent },
 
     { path: '**', component: NotFoundComponent }
 ]

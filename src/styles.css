@@ -128,3 +128,418 @@
   body, html {
     height: 100%!important;
   }
+
+  /*PAGINA SOBRE*/
+
+  .conteudo-sobre{
+    display: flex;
+    width: 100%;
+    height: 300px !important;
+  }
+
+  .imagem-sobre{
+    justify-content: left;
+    width: 20%;
+    height: 200px;
+    margin: 3%;
+  }
+
+  .imagem-sobre img{
+    width: 100%;
+    height: 160px;
+    margin-top: 25px;
+  }
+
+  .texto-sobre{
+    width: 70%;
+    height: 200px;
+    margin: 3%;
+  }
+
+  .sobre-titulo-equipe{
+    font-family: 'Source Sans Pro',sans-serif;
+  }
+
+  .equipe{
+    display: flex;
+    justify-content: center;
+  }
+
+  .integrantes{
+    width: 20%;
+    margin: 2%;
+  }
+
+
+  @media screen and (min-width: 809px) and (max-width: 1400px){
+    .conteudo-sobre{
+      display: flex;
+      width: 100%;
+    }
+
+    .margin-sobre{
+      margin-bottom: 70px !important;
+    }
+
+    .equipe{
+      display: flex;
+      flex-wrap: wrap;
+    }
+    
+    .integrantes{
+      width: 33%;
+    }
+
+    .sobre-titulo-equipe{
+      margin: 60px 10px 0 10px;
+    }
+  }
+
+  /*Responsivo TABLET*/
+  @media screen and (min-width: 424px) and (max-width: 808px){
+    
+    .ngx-pagination{
+      width: 100%;
+      margin-right: -5px;
+    }
+    
+    .botao-novo-residente{
+      width: 15%;
+      margin: 0px;
+    }
+
+    .botao-pesquisa{
+      width: 15%;
+      margin: 0px;
+    }
+
+    .caixa-pesquisa{
+      margin-right: -25px;
+    }
+
+    .botao-filtro{
+      width: 5%;
+    }
+
+    .caixa-filtro{
+      margin-right: -35px;
+    }
+
+    .botao-acoes-residente{
+      margin-top: 3px !important;
+    }
+
+    .add-telefone-familiar-residente{
+      width: 100%;
+    }
+
+    .add-telefone-familiar-residente p{
+      width: 100%;
+      margin-left: -42px;
+    }
+
+    .campos-infos{
+      width: 50%;
+    }
+    .campos-infos-cem{
+      width: 100%;
+    }
+    .precisa-de-margin-atras{
+      margin-left: -44px;
+    }
+
+    .precisa-de-margin-frente{
+      margin-left: 0px !important;
+    }
+
+    .precisa-de-margin{
+      margin-left: -30px;
+      margin-top: -1px !important;
+    }
+
+    .precisa-de-margin-addconvenio{
+      margin-left: -10px;
+    }
+
+    .tel-conv{
+      margin-left: -3px;
+      padding-right: 1px;
+    }
+
+    .botao-mais-tel{
+      margin-left: -13px;
+    }
+
+    .precisa-de-margin-num-conv{
+      margin-left: 1px !important;
+    }
+
+    .precisa-de-margin-com-conv{
+      margin-left: 10px;
+    }
+
+    .precisa-de-margin-num-editar{
+      margin-left: -10px !important;
+    }
+
+    .precisa-de-margin-login-fun{
+      margin-left: -19px !important;
+    }
+
+    .precisa-de-margin-reli-fun{
+      margin-left: -10px !important;
+    }
+
+    .precisa-de-margin-ende-fun{
+      margin-left: -5px !important;
+    }
+
+    .margin-rg-dep{
+      margin-left: 1px !important;
+    }
+
+    .margin-cpf-dep{
+      margin-left: 1px !important;
+    }
+
+    .margin-folha-dep{
+      margin-left: 10px !important;
+    }
+
+    .margin-estado-dep{
+      margin-left: 10px !important;
+    }
+
+    .margin-inf-fun{
+      margin-left: -5px !important;
+    }
+    
+    .campos-infos-2{
+      width: 100%;
+    }
+
+    .conteudo-sobre{
+      width: 100%;
+      flex-wrap: wrap;
+    }
+
+    .margin-sobre{
+      margin-bottom: 315px !important;
+    }
+
+    .imagem-sobre{
+      width: 100%;
+    }
+
+    .texto-sobre{
+      width: 100%;
+    }
+
+    .texto-sobre h3{
+      text-align: center;
+    }
+
+    .sobre-titulo-equipe{
+      margin-top: 315px !important;
+    }
+
+    .equipe{
+      display: flex;
+      flex-wrap: wrap;
+    }
+    
+    .integrantes{
+      width: 33%;
+    }
+  }
+
+  /*Responsivo MOBILE*/
+  @media screen and (min-width: 100px) and (max-width: 423px){
+
+    .ngx-pagination{
+      width: 100%;
+      margin-right: -5px;
+    }
+
+    .botao-novo-residente{
+      display: flex;
+      flex-wrap: nowrap;
+      width: 2%;
+      margin: 0px !important;
+    }
+
+    .botao-pesquisa{
+      display: flex;
+      flex-wrap: nowrap;
+      width: 2%;
+      margin-right: 48px !important;
+    }
+
+    .botao-pesquisa-acom{
+      width: 15%;
+      margin-top: -33px !important;
+      margin-right: 80px !important;
+    }
+
+
+    .caixa-pesquisa{
+      width: 100%;
+    }
+
+    .caixa-pesquisa-acom{
+      margin-right: -40px;
+    }
+
+
+    .botao-filtro{
+      display: flex;
+      flex-wrap: nowrap;
+      width: 2%;
+      margin-right: 53px !important;
+    }
+
+    .caixa-filtro{
+      margin-right: -55px;
+    }
+
+    .botao-acoes-residente{
+      margin-top: 3px !important;
+    }
+
+    .campos-infos{
+      width: 100%;
+    }
+
+    .precisa-de-margin{
+      margin-left: -15px;
+    }
+
+    .precisa-de-margin-numero-mobile{
+      margin-left: -43px;
+    }
+
+    .precisa-de-margin-numero-mobile-2{
+      margin-left: -45px;
+    }
+
+    .add-telefone-familiar-residente{
+      width: 150%;
+      margin-left: -42px;
+    }
+
+    .precisa-de-margin-tel-mobile-addfamiliar{
+      margin-left: 5px;
+    }
+
+    .precisa-de-margin-campo-conv{
+      margin-left: -2px;
+    }
+
+    .precisa-de-margin-addconv{
+      margin-left: -10px;
+    }
+
+    .precisa-de-margin-addbene{
+      margin-left: -1px !important;
+    }
+
+    .tel-conv{
+      margin-left: -3px;
+    }
+
+    .botao-mais-tel{
+      margin-left: -13px;
+    }
+
+    .precisa-de-margin-num-conv{
+      margin-left: 1px !important;
+    }
+
+    .precisa-de-margin-com-conv{
+      margin-left: 10px;
+    }
+
+    .precisa-de-margin-login-fun{
+      margin-left: -19px !important;
+    }
+
+    .precisa-de-margin-reli-fun{
+      margin-left: -10px !important;
+    }
+
+    .precisa-de-margin-ende-fun{
+      margin-left: -5px !important;
+    }
+
+    .precisa-de-margin-ende-com{
+      margin-left: 10px !important;
+    }
+
+    .precisa-de-margin-ende-est{
+      margin-left: 0.5px !important;
+    }
+
+    .precisa-de-margin-ende-ref{
+      margin-left: 10px !important;
+    }
+
+    .margin-rg-dep{
+      margin-left: 1px !important;
+    }
+
+    .margin-cpf-dep{
+      margin-left: 1px !important;
+    }
+
+    .margin-folha-dep{
+      margin-left: 10px !important;
+    }
+
+    .margin-estado-dep{
+      margin-left: 10px !important;
+    }
+
+    .margin-inf-fun{
+      margin-left: -5px !important;
+    }
+
+    .conteudo-sobre{
+      width: 100%;
+      flex-wrap: wrap;
+    }
+
+    .margin-sobre{
+      margin-bottom: 480px !important;
+    }
+
+    .imagem-sobre{
+      width: 100%;
+    }
+
+    .texto-sobre{
+      width: 100%;
+    }
+
+    .texto-sobre h3{
+      text-align: center;
+    }
+
+    .texto-sobre p{
+      text-align: center;
+    }
+
+    .sobre-titulo-equipe{
+      margin-top: 480px !important;
+    }
+
+    .equipe{
+      display: flex;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+    
+    .integrantes{
+      width: 100%;
+    }
+  }
+
