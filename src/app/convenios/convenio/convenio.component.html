@@ -56,7 +56,7 @@
                         <div class="col-xs-4 col-xs-12" *ngFor="let telefone of telefones">
                             <strong style="margin-left: -12px">Telefone: </strong> ({{telefone?.TELEFONE.DDD}})
                             {{telefone?.TELEFONE.NUMERO | telefone}}
-                            <a class="icones-editar-excluir" *ngIf="telefones.length > 1 && !access">
+                            <a class="icones-editar-excluir" *ngIf="telefones.length > 1 && access">
                                 <span id="iconesForm"
                                     (click)="deleteTelefone(convenio.CODIGO, telefone.TELEFONE.CODIGO); $event.stopPropagation()">
                                     <i class="fa fa-close" style="color: #dd4b39;"></i></span>

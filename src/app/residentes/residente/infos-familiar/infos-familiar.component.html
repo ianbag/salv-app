@@ -274,7 +274,7 @@
       <div class="col-sm-12 col-xs-12">
         <h4 style="margin-left: -31px;">
           <strong>Telefones </strong>
-          <a class="icones-editar-excluir" type="submit" data-toggle="modal"
+          <a *ngIf="access" class="icones-editar-excluir" type="submit" data-toggle="modal"
             attr.data-target="#modalNovoTelefone{{familiar?.CODIGO}}">
             <i class="fa fa-plus-circle" style="color: #00a65a;"></i>
           </a>
