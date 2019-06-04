@@ -28,7 +28,7 @@ import { AniversarianteComponent } from './tela-inicial/aniversariantes/aniversa
 import { NotFoundComponent } from './not-found/not-found.component';
 import { FirstAccessComponent } from './auth/first-access/first-access.component';
 import { ChangePasswordComponent } from './auth/change-password/change-password.component';
-
+import { SobreComponent } from './sobre/sobre.component';
 // import { AuthInterceptor } from './auth/auth-interceptor.service';
 
 @NgModule({
@@ -48,6 +48,7 @@ import { ChangePasswordComponent } from './auth/change-password/change-password.
     ResetPasswordComponent,
     FirstAccessComponent,
     ChangePasswordComponent,
+    SobreComponent
   ],
   imports: [
     BrowserModule,

@@ -20,25 +20,24 @@
                 convênio</a>
 
             <!-- FILTRO -->
-            <div class="btn-group pull-right" style="margin-right: 40px; margin-left: 40px">
+            <div class="btn-group pull-right botao-filtro" style="margin-right: 40px; margin-left: 40px">
                 <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Filtro</button>
 
-                <ul class="dropdown-menu" role="menu">
-                    <input type="checkbox" id="Desativados" [(ngModel)]="Desativados" name="Desativados"
-                        (click)="conveniosDesativadoss(); ngOnInit()" ng-true-value="YES" ng-false-value="NO"
-                        style="margin: 5px">
-                    <label for="Desativados">Convênios inativos</label>
-                </ul>
+                    <ul class="dropdown-menu caixa-filtro" role="menu">
+                        <input type="checkbox" id="Desativados" [(ngModel)]="Desativados" name="Desativados"
+                        (click)="conveniosDesativadoss(); ngOnInit()" ng-true-value="YES" ng-false-value="NO" style="margin: 5px">
+                        <label for="Desativados">Convênios inativos</label>
+                    </ul>
 
             </div>
             <!-- FIM DO FILTRO -->
 
             <!-- PESQUISA -->
-            <div class="btn-group pull-right">
+            <div class="btn-group pull-right botao-pesquisa">
                 <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Pesquisar</button>
-
-                <ul class="dropdown-menu" role="menu">
-                    <div class="input-group" style="margin: 5px">
+                
+                <ul class="dropdown-menu caixa-pesquisa" role="menu">
+                    <div class="input-group " style="margin: 5px">
                         <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
                         <input input class="form-control" placeholder="Pesquisar" type="text" name="search"
                             [(ngModel)]="filter" style="height: 40px; width: 250px">
@@ -73,7 +72,7 @@
                         <td>
                             <button *ngIf="access" type="submit" class="btn btn-danger botao"
                                 (click)="deleteConvenio(convenio.CODIGO); $event.stopPropagation()">Inativar</button>
-                            <a type="submit" class="btn btn-success botao"
+                            <a type="submit" class="btn btn-success botao botao-acoes-residente"
                                 [routerLink]="['/convenios',convenio.CODIGO]">+
                                 Opções</a>
                         </td>
