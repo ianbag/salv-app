@@ -6,6 +6,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { NotificationService } from '../shared/notification.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LoginService } from "./../auth/login/login.service"
 
 @Component({
   selector: 'salv-residentes',
@@ -21,6 +22,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   ]
 })
 export class ResidentesComponent implements OnInit {
+
+  access: boolean
 
   residentesState = 'ready'
 
@@ -43,10 +46,14 @@ export class ResidentesComponent implements OnInit {
     private notificationService: NotificationService,
     private spinner: NgxSpinnerService,
     private formBuilder: FormBuilder,
+    private ls: LoginService
   ) { }
 
   paginaAtual: number = 1;
   ngOnInit() {
+
+    this.access = this.ls.permissao_acesso
+
     this.spinner.show()
     this.residentesService.residentes()
       .subscribe(residentes => {
@@ -54,8 +61,8 @@ export class ResidentesComponent implements OnInit {
         this.residentes = residentes
         console.log(residentes)
       })
-      // limpar os dados armazenados no services toda vez que for inicializado
-      this.residentesService.clearDataResidente()
+    // limpar os dados armazenados no services toda vez que for inicializado
+    this.residentesService.clearDataResidente()
 
     this.deleteResidenteForm = this.formBuilder.group({
       MOTIVO_DESACOLHIMENTO: this.formBuilder.control(null, [Validators.required]),

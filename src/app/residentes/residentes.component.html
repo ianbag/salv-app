@@ -15,12 +15,12 @@
   <div>
 
     <div class="form-group">
-      <a type="submit" class="btn btn-primary" [routerLink]="['/residentes/novo-residente']">Novo Residente</a>
+      <a *ngIf="access" type="submit" class="btn btn-primary" [routerLink]="['/residentes/novo-residente']">Novo Residente</a>
 
       <!-- FILTRO -->
-      <div class="btn-group pull-right" style="margin-right: 40px; margin-left: 40px">
+      <div class="btn-group pull-right botao-filtro" style="margin-right: 40px; margin-left: 40px">
         <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Filtro</button>
-        <ul class="dropdown-menu" role="menu">
+        <ul class="dropdown-menu caixa-filtro" role="menu">
           <input type="checkbox" id="Desativados" [(ngModel)]="Desativados" name="Desativados"
             (click)="residentesInativoss(); ngOnInit()" ng-true-value="YES" ng-false-value="NO" style="margin: 5px">
           <label for="Desativados">Residentes inativos</label>
@@ -29,13 +29,13 @@
       <!-- FIM DO FILTRO -->
 
       <!-- PESQUISA -->
-      <div class="btn-group pull-right">
+      <div class="btn-group pull-right botao-pesquisa">
         <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Pesquisar</button>
 
-        <ul class="dropdown-menu" role="menu">
+        <ul class="dropdown-menu caixa-pesquisa" role="menu">
           <div class="input-group" style="margin: 5px">
             <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
-            <input input class="form-control" placeholder="Pesquisar" type="text" name="search" [(ngModel)]="filter"
+            <input input class="form-control caixa-pesquisa" placeholder="Pesquisar" type="text" name="search" [(ngModel)]="filter"
               style="height: 40px; width: 250px">
           </div>
         </ul>
@@ -94,17 +94,17 @@
             <td>{{residente.RESIDENTE_RG | rg}}</td>
 
             <td>
-              <button type="submit" class="btn btn-danger botao" data-toggle="modal"
+              <button *ngIf="access" type="submit" class="btn btn-danger botao" data-toggle="modal"
                 (click)="getResidenteID(residente.CODIGO);" data-target="#deletarResidente">Inativar</button>
               <!-- <a type="submit" class="btn btn-warning botao"
                 [routerLink]="['/editar-residente', residente.CODIGO_RESIDENTE]">Editar</a> -->
-              <a type="submit" class="btn btn-success botao" [routerLink]="['/residentes', residente.CODIGO]">+
+              <a type="submit" class="btn btn-success botao botao-acoes-residente" [routerLink]="['/residentes', residente.CODIGO]">+
                 Opções</a>
             </td>
           </tr>
 
         </table>
-        <pagination-controls class="my-pagination " (pageChange)="paginaAtual = $event" previousLabel="Anterior"
+        <pagination-controls class="my-pagination" (pageChange)="paginaAtual = $event" previousLabel="Anterior"
           nextLabel="Próximo" screenReaderPaginationLabel="Paginação" screenReaderPageLabel="Página"
           screenReaderCurrentLabel="Voce esta na página"></pagination-controls>
       </div>
@@ -127,7 +127,7 @@
             <td>{{residente.RESIDENTE_RG | rg}}</td>
 
             <td>
-              <button type="submit" class="btn btn-primary botao"
+              <button *ngIf="access" type="submit" class="btn btn-primary botao"
                 (click)="ativarResidente(residente.CODIGO); $event.stopPropagation()">Ativar</button>
               <a type="submit" class="btn btn-success botao" [routerLink]="['/residentes', residente.CODIGO]">
                 +Opções</a>
@@ -180,7 +180,8 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary botao" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-success botao" data-dismiss="modal" (click)="deleteResidente(deleteResidenteForm.value)"
+        <button type="button" class="btn btn-success botao" data-dismiss="modal"
+          (click)="deleteResidente(deleteResidenteForm.value)"
           [disabled]="!deleteResidenteForm.valid">Confirmar</button>
       </div>
     </div>

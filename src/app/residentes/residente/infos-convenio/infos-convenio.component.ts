@@ -8,12 +8,15 @@ import { NotificationService } from 'src/app/shared/notification.service';
 import { Telefone } from 'src/app/convenios/convenio.model';
 import { ConveniosService } from 'src/app/convenios/convenios.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { LoginService } from "./../../../auth/login/login.service"
 
 @Component({
   selector: 'salv-infos-convenio',
   templateUrl: './infos-convenio.component.html'
 })
 export class InfosConvenioComponent implements OnInit {
+
+  access: boolean
 
   @Input() convenio: Residente_Convenio
   @Output() atualizaConvenio = new EventEmitter<Residente_Convenio[]>()
@@ -36,11 +39,13 @@ export class InfosConvenioComponent implements OnInit {
     private dialogConfirmService: DialogConfirmService,
     private notificationService: NotificationService,
     private spinner: NgxSpinnerService,
-    private cs: ConveniosService
+    private cs: ConveniosService,
+    private ls: LoginService
   ) { }
 
   ngOnInit() {
     this.spinner.show();
+    this.access = this.ls.permissao_acesso
 
     setTimeout(() => {
       this.getTelefones()
@@ -75,9 +80,6 @@ export class InfosConvenioComponent implements OnInit {
 
   }
 
-
-
-  //getTelefonesConvenio() {
   //this.residentesService.telefonesConvenio()
   //.subscribe(telconv => this.telefonesConvenio = telconv)
   //console.log(this.telefonesConvenio)

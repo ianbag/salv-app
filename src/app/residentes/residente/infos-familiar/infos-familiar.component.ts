@@ -5,12 +5,15 @@ import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { NotificationService } from 'src/app/shared/notification.service';
 import { DialogConfirmService } from '../../dialog-confirm.service';
+import { LoginService } from "./../../../auth/login/login.service"
 
 @Component({
   selector: 'salv-infos-familiar',
   templateUrl: './infos-familiar.component.html'
 })
 export class InfosFamiliarComponent implements OnInit {
+
+  access: boolean
 
   estados = [
     "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT",
@@ -33,11 +36,13 @@ export class InfosFamiliarComponent implements OnInit {
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private notificationService: NotificationService,
-    private dialogConfirmService: DialogConfirmService
+    private dialogConfirmService: DialogConfirmService,
+    private ls: LoginService
   ) { }
 
   ngOnInit() {
     this.getTelefones()
+    this.access = this.ls.permissao_acesso
 
     this.familiarResidenteForm = this.formBuilder.group({
       NOME: this.formBuilder.control(null, [Validators.required]),

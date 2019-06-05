@@ -6,11 +6,15 @@ import { NotificationService } from 'src/app/shared/notification.service';
 import { DialogConfirmService } from 'src/app/residentes/dialog-confirm.service';
 import { ActivatedRoute } from '@angular/router';
 import { UniqueValuesValidators } from 'src/app/shared/validators/unique-values/unique-values.component';
+import { LoginService } from "./../../../auth/login/login.service"
 @Component({
     selector: 'salv-infos-funcionario',
     templateUrl: './infos-funcionario.component.html'
 })
 export class InfosFuncionarioComponent implements OnInit {
+
+    access: boolean
+    notLogin: any
 
     @Input() funcionario: Funcionario
     @Input() telefones: Telefone[] = []
@@ -56,10 +60,16 @@ export class InfosFuncionarioComponent implements OnInit {
         { value: "SC", option: "Superior Completo" },
         { value: "NE", option: "Não Especificado" },
     ];
+    acessos = [
+        { value: "ADM", option: "Administrador" },
+        { value: "FUN", option: "Funcionário" }
+    ];
 
-    constructor(private fs: FuncionariosService, private fb: FormBuilder, private ns: NotificationService, private dcs: DialogConfirmService, private route: ActivatedRoute, private uniqueValidators: UniqueValuesValidators) { }
+    constructor(private fs: FuncionariosService, private fb: FormBuilder, private ns: NotificationService, private dcs: DialogConfirmService, private route: ActivatedRoute, private uniqueValidators: UniqueValuesValidators, private ls: LoginService) { }
 
     ngOnInit(): void {
+
+        this.access = this.ls.permissao_acesso
 
         this.novoTelefoneForm = this.fb.group({
             DDD: this.fb.control(null, []),
@@ -78,7 +88,8 @@ export class InfosFuncionarioComponent implements OnInit {
         this.novoUsuarioForm = this.fb.group({
             EMAIL: this.fb.control(null, [Validators.required], this.uniqueValidators.validateUsuarioEmail(null)),
             LOGIN: this.fb.control(null, [Validators.required], this.uniqueValidators.validateUsuarioLogin(null)),
-            SENHA: this.fb.control(null, [Validators.required])
+            SENHA: this.fb.control(null, [Validators.required]),
+            PERMISSAO_ACESSO: this.fb.control(null, [Validators.required])
         })
         this.updateTelefoneForm = this.fb.group({
             DDD: this.fb.control(null, []),
@@ -95,8 +106,9 @@ export class InfosFuncionarioComponent implements OnInit {
             REFERENCIA: this.fb.control(null, [])
         })
         this.updateUsuarioForm = this.fb.group({
-            EMAIL: this.fb.control(null, [Validators.required], this.uniqueValidators.validateUsuarioEmail(this.route.snapshot.params['id'])),
-            LOGIN: this.fb.control(null, [Validators.required], this.uniqueValidators.validateUsuarioLogin(this.route.snapshot.params['id']))
+            EMAIL: this.fb.control(null, [Validators.required]),
+            LOGIN: this.fb.control(null, [Validators.required]),
+            PERMISSAO_ACESSO: this.fb.control(null, [Validators.required])
         })
         this.updateFuncionarioForm = this.fb.group({
             //PESSOA
@@ -264,7 +276,8 @@ export class InfosFuncionarioComponent implements OnInit {
         this.fs.usuarioId(this.funcionario.CODIGO_FUNCIONARIO.toString()).subscribe(usuario => {
             this.updateUsuarioForm.patchValue({
                 EMAIL: usuario[0].EMAIL,
-                LOGIN: usuario[0].LOGIN
+                LOGIN: usuario[0].LOGIN,
+                PERMISSAO_ACESSO: usuario[0].ACESSO
             })
         })
     }

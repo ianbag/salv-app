@@ -3,4 +3,5 @@ export interface User {
     email: string
     accessToken: string
     primeiro_acesso: number
+    access: string
 }

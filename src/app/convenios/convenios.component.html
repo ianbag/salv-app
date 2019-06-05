@@ -10,34 +10,37 @@
 <!-- Main content -->
 <section class="content">
 
-    <button class="btn btn-success" *ngIf="!Desativados" (click)="reportConvenios(1)" id="printReport"><i class="fa fa-print"></i></button>
-    <button class="btn btn-success" *ngIf="Desativados" (click)="reportConvenios(0)" id="printReport"><i class="fa fa-print"></i></button>
+    <button class="btn btn-success" *ngIf="!Desativados" (click)="reportConvenios(1)" id="printReport"><i
+            class="fa fa-print"></i></button>
+    <button class="btn btn-success" *ngIf="Desativados" (click)="reportConvenios(0)" id="printReport"><i
+            class="fa fa-print"></i></button>
     <div>
         <div class="form-group">
-            <a type="submit" class="btn btn-primary" [routerLink]="['/convenios/novo-convenio']">Novo convênio</a>
+            <a *ngIf="access" type="submit" class="btn btn-primary" [routerLink]="['/convenios/novo-convenio']">Novo
+                convênio</a>
 
             <!-- FILTRO -->
-            <div class="btn-group pull-right" style="margin-right: 40px; margin-left: 40px">
+            <div class="btn-group pull-right botao-filtro" style="margin-right: 40px; margin-left: 40px">
                 <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Filtro</button>
 
-                    <ul class="dropdown-menu" role="menu">
+                    <ul class="dropdown-menu caixa-filtro" role="menu">
                         <input type="checkbox" id="Desativados" [(ngModel)]="Desativados" name="Desativados"
                         (click)="conveniosDesativadoss(); ngOnInit()" ng-true-value="YES" ng-false-value="NO" style="margin: 5px">
                         <label for="Desativados">Convênios inativos</label>
                     </ul>
 
             </div>
-             <!-- FIM DO FILTRO -->
+            <!-- FIM DO FILTRO -->
 
             <!-- PESQUISA -->
-            <div class="btn-group pull-right">
+            <div class="btn-group pull-right botao-pesquisa">
                 <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Pesquisar</button>
                 
-                <ul class="dropdown-menu" role="menu">
-                    <div class="input-group" style="margin: 5px">
+                <ul class="dropdown-menu caixa-pesquisa" role="menu">
+                    <div class="input-group " style="margin: 5px">
                         <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
                         <input input class="form-control" placeholder="Pesquisar" type="text" name="search"
-                        [(ngModel)]="filter" style="height: 40px; width: 250px">
+                            [(ngModel)]="filter" style="height: 40px; width: 250px">
                     </div>
                 </ul>
 
@@ -67,9 +70,9 @@
                         <td>{{convenio.NOME_CONVENIO}}</td>
                         <td>{{convenio.TELEFONES}}</td>
                         <td>
-                            <button type="submit" class="btn btn-danger botao"
+                            <button *ngIf="access" type="submit" class="btn btn-danger botao"
                                 (click)="deleteConvenio(convenio.CODIGO); $event.stopPropagation()">Inativar</button>
-                            <a type="submit" class="btn btn-success botao"
+                            <a type="submit" class="btn btn-success botao botao-acoes-residente"
                                 [routerLink]="['/convenios',convenio.CODIGO]">+
                                 Opções</a>
                         </td>
@@ -94,9 +97,10 @@
                         <td>({{convenio.DDD}}) {{convenio.TELEFONE | telefone}} </td>
 
                         <td>
-                            <a type="submit" class="btn btn-primary botao"
+                            <a *ngIf="access" type="submit" class="btn btn-primary botao"
                                 (click)="ativarConvenio(convenio.CODIGO); $event.stopPropagation()">Ativar</a>
-                            <a type="submit" class="btn btn-success botao" [routerLink]="['/convenios',convenio.CODIGO]">
+                            <a type="submit" class="btn btn-success botao"
+                                [routerLink]="['/convenios',convenio.CODIGO]">
                                 +Opções</a>
                         </td>
                     </tr>
