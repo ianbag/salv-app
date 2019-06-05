@@ -57,19 +57,68 @@
             <input type="text" class="form-control" formControlName="PARENTESCO_TITULAR"
               placeholder="Parentesco Titular" autocomplete="off" maxlength="100">
           </div>
-
-          <div class="col-md-12"><br></div>
-        </div>
-        <!--form group-->
-
-        <div class="col-sm-12 col-xs-12">
-          <button (click)="convenioResidente(convenioResidenteForm.value)" style="margin-left: 10px"
-            class="btn btn-success botao pull-right" [disabled]="!convenioResidenteForm.valid">Finalizar
-            cadastro</button>
-          <button type="submit" class="btn btn-default botao pull-right" (click)="voltar()">Voltar</button>
         </div>
       </div>
     </form>
+
+    <div class="col-sm-12 text-center">
+      <ng-container *ngIf="novoTelefoneParentesco; else elseTemplate">
+        <button type="button" class="btn btn-danger"
+          (click)="novoTelefoneParentesco = false; convenioTelefoneParentescoForm.reset()">Remova o telefone do
+          Parentesco Titular</button>
+      </ng-container>
+      <ng-template #elseTemplate>
+        <button type="button" class="btn btn-default" (click)="novoTelefoneParentesco = true">Adicione um telefone ao
+          Parentesco Titular</button>
+      </ng-template>
+    </div>
+
+    <form role="form" [formGroup]="convenioTelefoneParentescoForm">
+      <div class="box-body">
+
+        <div class="form-group">
+          <div *ngIf="novoTelefoneParentesco">
+            <div class="col-sm-4 col-sm-12">
+              <salv-input-container errorMessage="Campo Obrigatório" label="DDD">
+                <span class="text-danger">*</span>
+                <input type="text" class="form-control" formControlName="DDD" placeholder="DDD" mask="00">
+              </salv-input-container>
+            </div>
+            <div class="col-sm-6 col-sm-12">
+              <salv-input-container errorMessage="Campo Obrigatório" label="Telefone">
+                <span class="text-danger">*</span>
+                <input type="text" class="form-control" formControlName="NUMERO" mask="00000-0000"
+                  placeholder="Número Telefone">
+              </salv-input-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <div class="col-md-12"><br></div>
+
+    <!--form group-->
+
+    <div class="box-body">
+
+      <div class="col-sm-12 col-xs-12">
+        <ng-container *ngIf="!novoTelefoneParentesco; else elseButtonSave">
+          <button (click)="convenioResidente(convenioResidenteForm.value)" style="margin-left: 10px"
+            class="btn btn-success botao pull-right" [disabled]="!convenioResidenteForm.valid">Finalizar
+            cadastro</button>
+        </ng-container>
+        <ng-template #elseButtonSave>
+          <button (click)="convenioResidente(convenioResidenteForm.value, convenioTelefoneParentescoForm.value)"
+            style="margin-left: 10px" class="btn btn-success botao pull-right"
+            [disabled]="!convenioResidenteForm.valid || !convenioTelefoneParentescoForm.valid">Finalizar
+            cadastro</button>
+        </ng-template>
+        <button type="submit" class="btn btn-default botao pull-right" (click)="voltar()">Voltar</button>
+      </div>
+
+    </div>
+
   </div>
 </section>
 

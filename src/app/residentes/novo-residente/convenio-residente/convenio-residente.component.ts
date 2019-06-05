@@ -10,6 +10,7 @@ import { NotificationService } from 'src/app/shared/notification.service';
 import { ConveniosService } from 'src/app/convenios/convenios.service';
 import { DialogConfirmService } from '../../dialog-confirm.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Telefone } from '../../residente/infos-convenio/convenio.model';
 
 @Component({
   selector: 'salv-convenio-residente',
@@ -34,6 +35,9 @@ export class ConvenioResidenteComponent implements OnInit {
 
   convenioResidenteForm: FormGroup
   novoConvenioForm: FormGroup
+  convenioTelefoneParentescoForm: FormGroup
+
+  novoTelefoneParentesco: boolean = false
 
   residente: Residente
   familiar: Familiar
@@ -75,6 +79,11 @@ export class ConvenioResidenteComponent implements OnInit {
       CONVENIO_CODIGO: this.formBuilder.control(null, [Validators.required]),
     })
 
+    this.convenioTelefoneParentescoForm = this.formBuilder.group({
+      DDD: this.formBuilder.control(null, [Validators.required, Validators.minLength(2), Validators.maxLength(3)]),
+      NUMERO: this.formBuilder.control(null, [Validators.required, Validators.minLength(8), Validators.maxLength(9)])
+    })
+
     this.novoConvenioForm = this.formBuilder.group({
       NOME_CONVENIO: this.formBuilder.control('', [Validators.required]),
       TIPO_CONVENIO: this.formBuilder.control('', [Validators.required]),
@@ -107,8 +116,8 @@ export class ConvenioResidenteComponent implements OnInit {
     })
   }
 
-  convenioResidente(residenteConvenio: Residente_Convenio) {
-    this.residentesService.createNewConvenio(residenteConvenio, this.residentesService.codigoResidente)
+  convenioResidente(residenteConvenio: Residente_Convenio,  telefoneParentesco: Telefone) {
+    this.residentesService.createNewConvenio(residenteConvenio, this.residentesService.codigoResidente, telefoneParentesco)
       .subscribe(res => {
         if (res['errors']) {
           res['errors'].forEach(error => {
