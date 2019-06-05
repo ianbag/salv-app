@@ -116,7 +116,6 @@ export class ResidentesService {
     createNewResidente(residente: Residente) {
         return this.http.post<Pessoa>(`${SALV_API}/pessoa`, residente.PESSOA).switchMap(resPessoa => {
             residente.PESSOA_CODIGO = resPessoa.CODIGO
-
             if (residente.PESSOA.ESTADO_CIVIL == 'S' || residente.PESSOA.ESTADO_CIVIL == null) {
                 delete residente.PESSOA
                 delete residente.CERTIDAO_CASAMENTO
@@ -140,7 +139,14 @@ export class ResidentesService {
             } else {
                 return this.http.put<Residente>(`${SALV_API}/residente/${idResidente}`, dataForm).switchMap(resResidente => {
                     delete dataForm.PESSOA
-                    return this.http.put<Certidao_Casamento>(`${SALV_API}/certidao_casamento/${idResidente}`, dataForm.CERTIDAO_CASAMENTO)
+                    return this.http.get<Certidao_Casamento>(`${SALV_API}/certidao_casamento/${idResidente}`).switchMap(resCertidao => {
+                        if (resCertidao != null)
+                            return this.http.put<Certidao_Casamento>(`${SALV_API}/certidao_casamento/${idResidente}`, dataForm.CERTIDAO_CASAMENTO)
+                        else {
+                            this.residente.CERTIDAO_CASAMENTO.CODIGO_RESIDENTE = idResidente
+                            return this.http.post<Certidao_Casamento>(`${SALV_API}/certidao_casamento`, dataForm.CERTIDAO_CASAMENTO)
+                        }
+                    })
                 })
             }
         })
@@ -182,9 +188,9 @@ export class ResidentesService {
 
     createNewConvenio(residenteConvenio: Residente_Convenio, codigoResidente, telefoneParentesco: Telefone) {
         residenteConvenio.RESIDENTE_CODIGO = codigoResidente
-        if(telefoneParentesco == undefined)
+        if (telefoneParentesco == undefined)
             return this.http.post<any>(`${SALV_API}/residente_convenio`, residenteConvenio)
-        else{
+        else {
             return this.http.post<any>(`${SALV_API}/residente_convenio`, residenteConvenio).switchMap(res => {
                 return this.createNewTelefoneParentesco(telefoneParentesco, res.NUMERO_CONVENIO)
             })
