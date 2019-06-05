@@ -44,6 +44,9 @@ export class ResidenteComponent implements OnInit {
   familiarResidenteForm: FormGroup
   convenioResidenteForm: FormGroup
   beneficioResidenteForm: FormGroup
+  convenioTelefoneParentescoForm: FormGroup
+
+  novoTelefoneParentesco: boolean = false
 
   telefonesArray: FormArray
 
@@ -114,6 +117,11 @@ export class ResidenteComponent implements OnInit {
       CONVENIO_CODIGO: this.formBuilder.control(null, [Validators.required]),
     })
 
+    this.convenioTelefoneParentescoForm = this.formBuilder.group({
+      DDD: this.formBuilder.control(null, [Validators.required, Validators.minLength(2), Validators.maxLength(3)]),
+      NUMERO: this.formBuilder.control(null, [Validators.required, Validators.minLength(8), Validators.maxLength(9)])
+    })
+
     this.beneficioResidenteForm = this.formBuilder.group({
       NOME_BENEFICIO: this.formBuilder.control(null, [Validators.required], this.uniqueValidators.validateBeneficioNome(this.CODIGO_RESIDENTE, null)),
       BANCO_BENEFICIO: this.formBuilder.control(null, []),
@@ -154,9 +162,10 @@ export class ResidenteComponent implements OnInit {
       })
   }
 
-  convenioResidente(residenteConvenio: Residente_Convenio) {
-    this.residentesService.createNewConvenio(residenteConvenio, this.CODIGO_RESIDENTE)
+  convenioResidente(residenteConvenio: Residente_Convenio, telefoneParentesco: Telefone) {
+    this.residentesService.createNewConvenio(residenteConvenio, this.CODIGO_RESIDENTE, telefoneParentesco)
       .subscribe(res => {
+        console.log(res)
         if (res['errors']) {
           res['errors'].forEach(error => {
             this.notificationService.notify(`Houve um erro! ${error.message}`)
@@ -164,11 +173,14 @@ export class ResidenteComponent implements OnInit {
         } else {
           this.notificationService.notify(`Convenio adicionado com sucesso!`)
           this.convenioResidenteForm.reset()
+          this.convenioTelefoneParentescoForm.reset()
           this.getConvenio()
         }
       })
   }
 
+
+  
   beneficioResidente(beneficio: Beneficio) {
     this.residentesService.createNewBeneficio(beneficio, this.CODIGO_RESIDENTE)
       .subscribe(res => {
