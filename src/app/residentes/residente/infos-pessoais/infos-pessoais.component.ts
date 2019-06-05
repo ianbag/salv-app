@@ -159,11 +159,13 @@ export class InfosPessoaisComponent implements OnInit {
       this.residente = this.residentesService.residente
       delete this.pessoa.CODIGO // REMOVE CODIGO PARA INSERCAO NO FORM
       delete this.pessoa['STATUS'] // REMOVE STATUS NAO EXISTENTE NO MODEL
-      delete this.residente.CERTIDAO_CASAMENTO.CODIGO_RESIDENTE
+      if(this.residente.CERTIDAO_CASAMENTO != null)
+        delete this.residente.CERTIDAO_CASAMENTO.CODIGO_RESIDENTE
 
       if (this.pessoa != undefined)
         this.novoResidenteForm.controls['PESSOA'].setValue(this.pessoa)
       if (this.residente != undefined) {
+        
         this.novoResidenteForm.patchValue(this.residente)
         this.novoResidenteForm.controls['CERTIDAO_CASAMENTO'].setValue(this.residente.CERTIDAO_CASAMENTO)
         // this.novoResidenteForm.controls['CERTIDAO_CASAMENTO'].patchValue({ESTADO: "SP"})

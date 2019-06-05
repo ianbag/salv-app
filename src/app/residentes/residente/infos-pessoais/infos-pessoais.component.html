@@ -117,27 +117,27 @@
           </div>
 
           <div class="col-xs-4 col-xs-12">
-            <strong>Folha: </strong> {{residente?.CERTIDAO_CASAMENTO.FOLHA | folhaCertNasc}} <br>
+            <strong>Folha: </strong> {{residente?.CERTIDAO_CASAMENTO?.FOLHA | folhaCertNasc }} <br>
           </div>
 
           <div class="col-xs-4 col-xs-12">
-            <strong>Livro: </strong> {{residente?.CERTIDAO_CASAMENTO.LIVRO | livroCertNasc}} <br>
+            <strong>Livro: </strong> {{residente?.CERTIDAO_CASAMENTO?.LIVRO | livroCertNasc}} <br>
           </div>
 
           <div class="col-xs-4 col-xs-12">
-            <strong>Registro: </strong> {{residente?.CERTIDAO_CASAMENTO.REGISTRO | numeroCertNasc}} <br>
+            <strong>Registro: </strong> {{residente?.CERTIDAO_CASAMENTO?.REGISTRO | folhaCertNasc}} <br>
           </div>
 
           <div class="col-xs-4 col-xs-12">
-            <strong>Cidade: </strong> {{residente?.CERTIDAO_CASAMENTO.CIDADE | cidadeCertNasc}} <br>
+            <strong>Cidade: </strong> {{residente?.CERTIDAO_CASAMENTO?.CIDADE | cidadeCertNasc}} <br>
           </div>
 
           <div class="col-xs-4 col-xs-12">
-            <strong>Estado: </strong> {{residente?.CERTIDAO_CASAMENTO.ESTADO | estadoCertNasc}} <br>
+            <strong>Estado: </strong> {{residente?.CERTIDAO_CASAMENTO?.ESTADO | estadoCertNasc}} <br>
           </div>
 
           <div class="col-xs-4 col-xs-12">
-            <strong>Conjuge: </strong> {{residente?.CERTIDAO_CASAMENTO.CONJUGE}} <br>
+            <strong>Conjuge: </strong> {{residente?.CERTIDAO_CASAMENTO?.CONJUGE | folhaCertNasc}} <br>
           </div>
         </div>
       </ng-template>
