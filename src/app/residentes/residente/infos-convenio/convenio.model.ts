@@ -42,12 +42,17 @@ export interface Endereco_Convenio {
 
 export interface Telefone {
     CODIGO: number,
-    DDD: string,
-    NUMERO: string
+    DDD: number,
+    NUMERO: number
 }
 
 export interface Telefone_Convenio {
     CONVENIO_CODIGO: number,
+    TELEFONE_CODIGO: number
+}
+
+export interface Telefone_Parentesco {
+    NUMERO_CONVENIO: number,
     TELEFONE_CODIGO: number
 }
 

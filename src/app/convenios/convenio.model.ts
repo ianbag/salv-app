@@ -15,8 +15,8 @@ export interface Convenio {
         },
         TELEFONE: {
             CODIGO: number,
-            DDD: string,
-            NUMERO: string
+            DDD: number,
+            NUMERO: number
         }
 }
 
@@ -39,8 +39,8 @@ export interface Endereco_Convenio {
 
 export interface Telefone {
     CODIGO: number,
-    DDD: string,
-    NUMERO: string
+    DDD: number,
+    NUMERO: number
 }
 
 export interface Telefone_Convenio {
