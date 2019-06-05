@@ -1,13 +1,15 @@
 <div class="col-md-12" *ngIf="convenio">
   <div class="col-sm-12 col-xs-12">
     <h4 class="col-sm-8 col-xs-12" style="margin-left: -15px;">
-        <strong>{{convenio?.NOME_CONVENIO}}</strong>
-        <a class="input-remove icones-editar-excluir" (click)="deletarConvenio(convenio?.NUMERO_CONVENIO)"><i class="fa fa-close"></i></a>
+      <strong>{{convenio?.NOME_CONVENIO}}</strong>
+      <a class="input-remove icones-editar-excluir" (click)="deletarConvenio(convenio?.NUMERO_CONVENIO)"><i
+          class="fa fa-close"></i></a>
       <a class="input-edit icones-editar-excluir" data-toggle="modal" (click)="setValuesConvenioForm(convenio)"
         attr.data-target="#modalEditarConvenio{{convenio?.NUMERO_CONVENIO}}"><i class="fa fa-pencil"></i></a>
     </h4>
     <div class="box-tools pull-right">
-      <button type="button" class="btn btn-success" style="margin-right: -30px;" data-toggle="modal" attr.data-target="#modalExibirConvenio{{convenio?.NUMERO_CONVENIO}}">
+      <button type="button" class="btn btn-success" style="margin-right: -30px;" data-toggle="modal"
+        attr.data-target="#modalExibirConvenio{{convenio?.NUMERO_CONVENIO}}">
         Informações
       </button>
     </div>
@@ -28,66 +30,98 @@
     <strong>Tipo: </strong> {{convenio?.TIPO_CONVENIO}}<br>
   </div>
 
-  <div class="modal fade" id="modalExibirConvenio{{convenio?.NUMERO_CONVENIO}}" tabindex="-1" role="dialog"
-  attr.aria-labelledby="modalExibirConvenio{{convenio?.NUMERO_CONVENIO}}" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-        <div class="col-sm-12 col-sm-12" id="formTitle">
-          <h4 class="text-center"><strong>Informações de Convênio</strong></h4>
+  <div class="col-xs-12 col-xs-12">
+    <h4>
+      <strong>Telefones Titular</strong>
+      <a class="icones-editar-excluir" type="submit" data-toggle="modal"
+        attr.data-target="#modalNovoTelefone{{convenio?.NUMERO_CONVENIO}}">
+        <i class="fa fa-plus-circle" style="color: #00a65a;"></i>
+      </a>
+    </h4>
+
+    <div class="col-xs-12">
+
+      <ng-container *ngIf="telefone.length; else elseTelefoneTemplate">
+        <div class="col-xs-4 col-xs-12" *ngFor="let tel of telefone">
+          <strong>Telefone: </strong> ({{tel?.TELEFONE.DDD}}) {{tel?.TELEFONE.NUMERO | telefone}}
+          <a class="input-remove icones-editar-excluir"
+            (click)="deletarTelefoneFamiliar(tel.TELEFONE.CODIGO, convenio?.NUMERO_CONVENIO)">
+            <span><i class="fa fa-close"></i></span>
+          </a>
+          <a class="input-edit icones-editar-excluir" data-toggle="modal" (click)="buscarTelefone(tel.TELEFONE.CODIGO)"
+            attr.data-target="#modalEditarTelefone{{convenio?.NUMERO_CONVENIO}}">
+            <span><i class="fa fa-pencil"></i></span></a>
         </div>
+      </ng-container>
+
+      <ng-template #elseTelefoneTemplate>
+        <div class="col-xs-4 col-xs-12">
+          {{convenio?.PARENTESCO_TITULAR}} não possui telefone cadastrado. Adicione um clicando em +
+        </div>
+      </ng-template>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalExibirConvenio{{convenio?.NUMERO_CONVENIO}}" tabindex="-1" role="dialog"
+    attr.aria-labelledby="modalExibirConvenio{{convenio?.NUMERO_CONVENIO}}" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="col-sm-12 col-sm-12" id="formTitle">
+            <h4 class="text-center"><strong>Informações de Convênio</strong></h4>
+          </div>
           <div class="box-body">
 
             <div class="col-xs-6 col-xs-12" *ngFor="let telefone of telefones" style="margin-top: 10px;">
               <strong>Telefone: </strong> ({{telefone?.TELEFONE.DDD}}) {{telefone?.TELEFONE.NUMERO | telefone}}
             </div>
-            
+
             <div class="col-xs-6 col-xs-12" style="margin-top: 10px;">
               <strong>Endereço: </strong> {{convenio?.ENDERECO}}
             </div>
-          
+
             <div class="col-xs-6 col-xs-12" style="margin-top: 10px;">
               <strong>Nº: </strong> {{convenio?.NUMERO}}
             </div>
-          
+
             <div class="col-xs-6 col-xs-12" style="margin-top: 10px;">
               <strong>Bairro: </strong> {{convenio?.BAIRRO}}
             </div>
-          
+
             <div class="col-xs-6 col-xs-12" style="margin-top: 10px;">
               <strong>Complemento: </strong> {{convenio?.COMPLEMENTO}}
             </div>
-          
+
             <div class="col-xs-6 col-xs-12" style="margin-top: 10px;">
               <strong>Cidade: </strong> {{convenio?.CIDADE}}
             </div>
-          
+
             <div class="col-xs-6 col-xs-12" style="margin-top: 10px;">
               <strong>Estado: </strong> {{convenio?.ESTADO}}
             </div>
-          
+
             <div class="col-xs-6 col-xs-12" style="margin-top: 10px;">
               <strong>CEP: </strong> {{convenio?.CEP}}
             </div>
-          
+
             <div class="col-xs-6 col-xs-12" style="margin-top: 10px;">
               <strong>Referência: </strong> {{convenio?.REFERENCIA}}
             </div>
-            
+
           </div>
         </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
 
-  
+
   <hr class="col-md-12">
 
-  <!-- INICIO MODAL NOVO CONVENIO -->
+  <!-- INICIO MODAL EDITAR CONVENIO -->
   <div class="modal fade" id="modalEditarConvenio{{convenio?.NUMERO_CONVENIO}}" tabindex="-1" role="dialog"
     attr.aria-labelledby="modalEditarConvenio{{convenio?.NUMERO_CONVENIO}}" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -135,7 +169,6 @@
                   <input type="text" class="form-control" formControlName="PARENTESCO_TITULAR"
                     placeholder="Parentesco Titular" autocomplete="off" maxlength="100">
                 </div>
-
               </div>
             </div>
           </form>
@@ -151,3 +184,93 @@
   </div>
   <!-- FIM MODAL NOVO CONVENIO -->
 </div>
+
+
+<!-- MODAL NOVO TELEFONE -->
+<div class="modal fade" id="modalNovoTelefone{{convenio?.NUMERO_CONVENIO}}" tabindex="-1" role="dialog"
+  attr.aria-labelledby="modalNovoTelefone{{convenio?.NUMERO_CONVENIO}}" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form [formGroup]="novoTelefoneForm" novalidate>
+          <div class="box-body">
+            <div>
+              <div class="col-sm-12 col-sm-12">
+                <h4 class="text-center">
+                  <strong>Adicionar novo telefone</strong>
+                </h4>
+              </div>
+              <div class="row">
+                <div class="col-sm-5 col-sm-12">
+                  <salv-input-container errorMessage="Campo Obrigatório" label="DDD">
+                    <span class="text-danger">*</span>
+                    <input type="text" class="form-control" formControlName="DDD" placeholder="DDD" autocomplete="off"
+                      mask="00">
+                  </salv-input-container>
+                </div>
+                <div class="col-sm-7 col-sm-12">
+                  <salv-input-container errorMessage="Campo Obrigatório" label="Número">
+                    <span class="text-danger">*</span>
+                    <input type="text" class="form-control" formControlName="NUMERO" placeholder="Número"
+                      mask="00000-0000" autocomplete="off">
+                  </salv-input-container>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-success"
+          (click)="novoTelefone(this.novoTelefoneForm.value, convenio?.NUMERO_CONVENIO)"
+          [disabled]="!novoTelefoneForm.valid" data-dismiss="modal">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- FIM MODAL NOVO TELEFONE -->
+
+<!-- MODAL EDITAR TELEFONE -->
+<div class="modal fade" id="modalEditarTelefone{{convenio?.NUMERO_CONVENIO}}" tabindex="-1" role="dialog"
+  attr.aria-labelledby="modalEditarTelefone{{convenio?.NUMERO_CONVENIO}}" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form [formGroup]="novoTelefoneForm" novalidate>
+          <div class="box-body">
+            <div>
+              <div class="col-sm-12 col-sm-12">
+                <h4 class="text-center">
+                  <strong>Editar telefone</strong>
+                </h4>
+              </div>
+              <div class="row">
+                <div class="col-sm-5 col-sm-12">
+                  <salv-input-container errorMessage="Campo Obrigatório" label="DDD">
+                    <span class="text-danger">*</span>
+                    <input type="text" class="form-control" formControlName="DDD" placeholder="DDD" autocomplete="off"
+                      mask="00">
+                  </salv-input-container>
+                </div>
+                <div class="col-sm-7 col-sm-12">
+                  <salv-input-container errorMessage="Campo Obrigatório" label="Número">
+                    <span class="text-danger">*</span>
+                    <input type="text" class="form-control" formControlName="NUMERO" placeholder="Número"
+                      mask="00000-0000" autocomplete="off">
+                  </salv-input-container>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-success" (click)="editarTelefone(this.novoTelefoneForm.value)"
+          [disabled]="!novoTelefoneForm.valid" data-dismiss="modal">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- FIM MODAL EDITAR TELEFONE -->

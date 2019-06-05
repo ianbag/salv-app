@@ -20,9 +20,15 @@ export class InfosConvenioComponent implements OnInit {
 
   residenteConvenios: Residente_Convenio[]
   convenioResidenteForm: FormGroup
+  convenioTelefoneParentescoForm: FormGroup
+  novoTelefoneForm: FormGroup
+
+  codigoTelefone: number
+
   numeroConvenio: number
-  
+
   telefones: Telefone[] = []
+  telefone: Telefone[] = []
 
   constructor(
     private residentesService: ResidentesService,
@@ -35,14 +41,16 @@ export class InfosConvenioComponent implements OnInit {
 
   ngOnInit() {
     this.spinner.show();
-    
+
     setTimeout(() => {
+      this.getTelefones()
       this.cs.telefoneById(this.convenio.CONVENIO_CODIGO.toString()).subscribe(resT => {
         this.telefones = resT
         this.spinner.hide()
         console.log(this.telefones)
       })
     }, 500)
+
 
 
     this.residentesService.convenios()
@@ -54,15 +62,27 @@ export class InfosConvenioComponent implements OnInit {
       PARENTESCO_TITULAR: this.formBuilder.control(null, []),
       CONVENIO_CODIGO: this.formBuilder.control(null, [Validators.required]),
     })
+
+    this.convenioTelefoneParentescoForm = this.formBuilder.group({
+      NUMERO_CONVENIO: this.formBuilder.control(null, [Validators.required]),
+      TELEFONE_CODIGO: this.formBuilder.control(null, [Validators.required]),
+    })
+
+    this.novoTelefoneForm = this.formBuilder.group({
+      DDD: this.formBuilder.control(null, [Validators.required]),
+      NUMERO: this.formBuilder.control(null, [Validators.required])
+    })
+
+
   }
 
+
+
   //getTelefonesConvenio() {
-    //this.residentesService.telefonesConvenio()
-      //.subscribe(telconv => this.telefonesConvenio = telconv)
-      //console.log(this.telefonesConvenio)
+  //this.residentesService.telefonesConvenio()
+  //.subscribe(telconv => this.telefonesConvenio = telconv)
+  //console.log(this.telefonesConvenio)
   //}
-
-
 
   setValuesConvenioForm(convenio: Residente_Convenio) {
     convenio.CONVENIO_CODIGO = this.convenio.CONVENIO_CODIGO
@@ -95,6 +115,68 @@ export class InfosConvenioComponent implements OnInit {
               delete this.convenio
               this.notificationService.notify(`Convenio deletado com sucesso!`)
               this.atualizaConvenio.emit(res)
+            })
+        }
+      })
+  }
+
+  getTelefones() {
+    this.residentesService.telefoneParentescoByID(this.convenio.NUMERO_CONVENIO)
+      .subscribe(telefone => {
+        this.telefone = telefone
+        console.log(this.telefone)
+      })
+  }
+
+  novoTelefone(telefone: Telefone, numeroConvenio) {
+    this.residentesService.createNewTelefoneParentesco(telefone, numeroConvenio).
+      subscribe(res => {
+        if (res['errors']) {
+          res['errors'].forEach(error => {
+            this.notificationService.notify(`Houve um erro! ${error.message}`)
+          })
+        } else {
+          this.getTelefones()
+          this.novoTelefoneForm.reset()
+          this.notificationService.notify(`Telefone adicionado com sucesso!`)
+        }
+      })
+  }
+
+
+  buscarTelefone(codigo) {
+    this.residentesService.telefoneById(codigo).subscribe(resTel => {
+      this.codigoTelefone = resTel.CODIGO
+      this.novoTelefoneForm.patchValue({
+        DDD: resTel.DDD,
+        NUMERO: resTel.NUMERO
+      })
+    })
+  }
+
+  editarTelefone(telefone: Telefone) {
+    this.residentesService.updateTelefone(telefone, this.codigoTelefone)
+      .subscribe(res => {
+        if (res['errors']) {
+          res['errors'].forEach(error => {
+            this.notificationService.notify(`Houve um erro! ${error.message}`)
+          })
+        } else {
+          this.getTelefones()
+          this.novoTelefoneForm.reset()
+          this.notificationService.notify(`Telefone atualizado com sucesso!`)
+        }
+      })
+  }
+
+  deletarTelefoneFamiliar(idTelefone, idParentesco) {
+    this.dialogConfirmService.confirm(`Deseja excluir o telefone?`)
+      .then((isTrue) => {
+        if (isTrue) {
+          this.residentesService.deleteTelefoneParentesco(idTelefone, idParentesco)
+            .subscribe(res => {
+              this.getTelefones()
+              this.notificationService.notify(`Telefone deletado com sucesso!`)
             })
         }
       })
