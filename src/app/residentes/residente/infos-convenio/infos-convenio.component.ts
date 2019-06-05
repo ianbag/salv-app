@@ -47,7 +47,6 @@ export class InfosConvenioComponent implements OnInit {
       this.cs.telefoneById(this.convenio.CONVENIO_CODIGO.toString()).subscribe(resT => {
         this.telefones = resT
         this.spinner.hide()
-        console.log(this.telefones)
       })
     }, 500)
 
@@ -124,7 +123,6 @@ export class InfosConvenioComponent implements OnInit {
     this.residentesService.telefoneParentescoByID(this.convenio.NUMERO_CONVENIO)
       .subscribe(telefone => {
         this.telefone = telefone
-        console.log(this.telefone)
       })
   }
 
