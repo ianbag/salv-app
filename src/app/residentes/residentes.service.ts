@@ -4,7 +4,7 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Residente, Pessoa, Residente_Convenio, Certidao_Casamento } from './residente/residente.model';
 import { Familiar, Endereco, Telefone } from './residente/infos-familiar/familiar.model';
-import { Convenio } from './residente/infos-convenio/convenio.model';
+import { Convenio, Telefone_Parentesco } from './residente/infos-convenio/convenio.model';
 import { Beneficio } from './residente/infos-beneficios/beneficio.model';
 
 @Injectable()
@@ -180,9 +180,15 @@ export class ResidentesService {
         })
     }
 
-    createNewConvenio(residenteConvenio: Residente_Convenio, codigoResidente) {
+    createNewConvenio(residenteConvenio: Residente_Convenio, codigoResidente, telefoneParentesco: Telefone) {
         residenteConvenio.RESIDENTE_CODIGO = codigoResidente
-        return this.http.post<any>(`${SALV_API}/residente_convenio`, residenteConvenio)
+        if(telefoneParentesco == undefined)
+            return this.http.post<any>(`${SALV_API}/residente_convenio`, residenteConvenio)
+        else{
+            return this.http.post<any>(`${SALV_API}/residente_convenio`, residenteConvenio).switchMap(res => {
+                return this.createNewTelefoneParentesco(telefoneParentesco, res.NUMERO_CONVENIO)
+            })
+        }
     }
 
     updateConvenio(convenio_codigo: any, residenteConvenio: Residente_Convenio) {
