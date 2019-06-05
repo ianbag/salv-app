@@ -49,6 +49,10 @@ export class ResidentesService {
         return this.http.get<Telefone[]>(`${SALV_API}/telefone_familiar/${id}`)
     }
 
+    telefoneParentescoByID(id): Observable<Telefone[]> {
+        return this.http.get<Telefone[]>(`${SALV_API}/telefone_parentesco/${id}`)
+    }
+
     convenioById(id: string): Observable<Convenio[]> {
         return this.http.get<Convenio[]>(`${SALV_API}/residente_convenio/${id}`)
     } // remover
@@ -79,6 +83,10 @@ export class ResidentesService {
 
     deleteTelefoneFamiliar(idTelefone: number, idFamiliar: number): Observable<any> {
         return this.http.delete<any>(`${SALV_API}/telefone_familiar/${idTelefone}/${idFamiliar}`)
+    }
+
+    deleteTelefoneParentesco(idTelefone: number, idNumero: number): Observable<any> {
+        return this.http.delete<any>(`${SALV_API}/telefone_parentesco/${idTelefone}/${idNumero}`)
     }
 
     deleteFamiliar(idResidente: number, idFamiliar: number): Observable<any> {
@@ -202,6 +210,16 @@ export class ResidentesService {
 
     updateBeneficio(beneficio: Beneficio, NOME_BENEFICIO, CODIGO_RESIDENTE) {
         return this.http.put<any>(`${SALV_API}/beneficio/${CODIGO_RESIDENTE}/${NOME_BENEFICIO}`, beneficio)
+    }
+
+    createNewTelefoneParentesco(telefone: Telefone, NUMERO_CONVENIO) {
+        return this.http.post<any>(`${SALV_API}/telefone`, telefone).switchMap(resTelefone => {
+            let TELEFONES_FAMILIARES = {
+                NUMERO_CONVENIO: NUMERO_CONVENIO,
+                TELEFONE_CODIGO: resTelefone.CODIGO
+            }
+            return this.http.post<any>(`${SALV_API}/telefone_parentesco`, TELEFONES_FAMILIARES)
+        })
     }
 
     reportResidentes(status): Observable<Blob> {
